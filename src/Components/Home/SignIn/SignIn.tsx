@@ -1,20 +1,20 @@
-import * as React from 'react';
-import Navbar from '../HomeComponents/navbar';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
-import Footer from '../HomeComponents/footer';
-import Col from 'react-bootstrap/Col';
-import '../SignUp/signup.css';
-import signinwelcome from '../../../assets/3.jpg';
-import fb from '../../../assets/fbsignup.png';
-import google from '../../../assets/google.png';
-import linkedin from '../../../assets/linked.png';
-import { Link } from 'react-router-dom';
-import axios, { AxiosResponse } from 'axios';
-import { API } from '../../../config';
+import * as React from "react";
+import Navbar from "../HomeComponents/navbar";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import Footer from "../HomeComponents/footer";
+import Col from "react-bootstrap/Col";
+import "../SignUp/signup.css";
+import signinwelcome from "../../../assets/3.jpg";
+import fb from "../../../assets/fbsignup.png";
+import google from "../../../assets/google.png";
+import linkedin from "../../../assets/linked.png";
+import { Link } from "react-router-dom";
+import axios, { AxiosResponse } from "axios";
+import { API } from "../../../config";
 
 interface State {
   email: string;
@@ -24,9 +24,9 @@ interface State {
 }
 const SignIn: React.FunctionComponent = (props: any) => {
   const [state, setFormState] = React.useState<State>({
-    email: '',
-    password: '',
-    errorMessage: '',
+    email: "",
+    password: "",
+    errorMessage: "",
     isLoading: false,
   });
   const { email, password, errorMessage, isLoading } = state;
@@ -40,14 +40,14 @@ const SignIn: React.FunctionComponent = (props: any) => {
     axios
       .post<any, AxiosResponse<any>>(`${API}/accounts/login/`, data, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       })
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
           sessionStorage.setItem(
-            'userToken',
+            "userToken",
             JSON.stringify(response?.data?.token)
           );
           getUserInfo(response.data.token);
@@ -60,37 +60,37 @@ const SignIn: React.FunctionComponent = (props: any) => {
       })
       .catch((error) => {
         console.log(error.response);
-        if (error && error.response && error.response.data){
+        if (error && error.response && error.response.data) {
           setFormState({
             ...state,
-            errorMessage:error.response.data[0].message,
-            isLoading:false
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
           });
         }
         setFormState({
           ...state,
-          errorMessage: 'Failed to Login',
+          errorMessage: "Failed to Login",
           isLoading: false,
         });
       });
   };
-  const validateForm =(e)=>{
+  const validateForm = (e) => {
     e.preventDefault();
-      if (email==''){
-        return setFormState({
-          ...state,
-          errorMessage:'Please enter your email'
-        });
-      }
-      if(password==''){
-        return setFormState({
-          ...state,
-          errorMessage:'Please enter your password'
-        });
-      }
-      if(password && email){
-          sendFormData();
-      }
+    if (email === "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your email",
+      });
+    }
+    if (password === "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your password",
+      });
+    }
+    if (password && email) {
+      // sendFormData();
+    }
   };
   const getCurrentAssessmentPosition = (token: string): void => {
     axios
@@ -99,37 +99,37 @@ const SignIn: React.FunctionComponent = (props: any) => {
         console.log(response);
         if (
           (response.status === 200 &&
-            response.data[0].next === 'phase_four_sports') ||
-          response.data[0].next === 'phase_four_business' ||
-          response.data[0].next === 'phase_four_stem'
+            response.data[0].next === "phase_four_sports") ||
+          response.data[0].next === "phase_four_business" ||
+          response.data[0].next === "phase_four_stem"
         ) {
           return props.history.push(`/assessmentphasefour1`);
         }
-        if (response.status === 200 && response.data[0].next === 'phase_one') {
+        if (response.status === 200 && response.data[0].next === "phase_one") {
           return props.history.push(`/assessmentphaseone`);
         }
-        if (response.status === 200 && response.data[0].next === 'phase_two') {
+        if (response.status === 200 && response.data[0].next === "phase_two") {
           return props.history.push(`/assessmentphasetwo`);
         }
         if (
           response.status === 200 &&
-          response.data[0].next === 'phase_three'
+          response.data[0].next === "phase_three"
         ) {
           return props.history.push(`/assessmentphasethree`);
         }
-        if (response.status === 200 && response.data[0].next === 'phase_five') {
+        if (response.status === 200 && response.data[0].next === "phase_five") {
           return props.history.push(`/assessmentphasefive`);
         }
-        if (response.status === 200 && response.data[0].next === 'phase_six') {
+        if (response.status === 200 && response.data[0].next === "phase_six") {
           return props.history.push(`/assessmentphasesix`);
         }
         if (
           response.status === 200 &&
-          response.data[0].next === 'phase_seven'
+          response.data[0].next === "phase_seven"
         ) {
           return props.history.push(`/assessmentphaseseven`);
         }
-        if (response.status === 200 && response.data[0].next === 'home') {
+        if (response.status === 200 && response.data[0].next === "home") {
           return props.history.push(`/dashboard/personality`);
         }
       })
@@ -142,7 +142,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
     setFormState({
       ...state,
       [e.target.name]: e.target.value,
-      errorMessage: '',
+      errorMessage: "",
     });
   };
   const getUserInfo = (token: string): any => {
@@ -153,7 +153,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          sessionStorage.setItem('user', JSON.stringify(response?.data));
+          sessionStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
       .catch((error) => {
@@ -164,65 +164,72 @@ const SignIn: React.FunctionComponent = (props: any) => {
     <>
       <Navbar />
       <Container fluid={true}>
-        <Row className='kli'>
-          <Col md={5} className='mo'>
+        <Row className="kli">
+          <Col md={5} className="mo">
             <img
               src={signinwelcome}
-              className='signupimg img-fluid'
-              alt='SignupImage'
+              className="signupimg img-fluid"
+              alt="SignupImage"
             />
           </Col>
           <Col md={5}>
-            <div className='signwa'>Sign In</div>
-            <div className='signwa1'>To Get Clarity</div>
+            <div className="signwa">Sign In</div>
+            <div className="signwa1">To Get Clarity</div>
             {errorMessage && (
-              <Alert key={2} variant='danger'>
+              <Alert key={2} variant="danger">
                 {errorMessage}
               </Alert>
             )}
+            <Alert key={3} variant="info">
+              <div>
+                {" "}
+                We are upgrading our assessment to give you the best experience
+              </div>
+              <div>Signup to get notified once it goes live</div>
+            </Alert>
             <Form onSubmit={validateForm}>
-              <Form.Group controlId='formBasicEmail'>
+              <Form.Group controlId="formBasicEmail">
                 <Form.Control
-                  type='email'
-                  name='email'
-                  className='field1'
+                  type="email"
+                  name="email"
+                  className="field1"
                   value={email}
                   onChange={changeActionOnFormData}
-                  placeholder='Email Address'
+                  placeholder="Email Address"
                 />
               </Form.Group>
-              <Form.Group controlId='formBasicPassword'>
+              <Form.Group controlId="formBasicPassword">
                 <Form.Control
-                  type='password'
-                  name='password'
-                  className='field1'
+                  type="password"
+                  name="password"
+                  className="field1"
                   value={password}
                   onChange={changeActionOnFormData}
-                  placeholder='Password'
+                  placeholder="Password"
                 />
               </Form.Group>
-              <Button variant='primary' className='subbtn' type='submit'>
-                {!isLoading ? 'Sign In' : 'Signing In'}
+              <Button variant="primary" className="subbtn" type="submit">
+                {!isLoading ? "Sign In" : "Signing In"}
               </Button>
-              <div className='alreadyhave'>
+              <div className="alreadyhave">
                 Already have an account?
-                <Link to='/signup'>
-                  <span className='logn'> Sign Up</span>
+                <Link to="/signup">
+                  <span className="logn"> Sign Up</span>
                 </Link>
               </div>
-              <h6 className='text-divider'>
-                <span className='divider-text'>or connect using</span>
-                <div className='centeredline'></div>
+              <h6 className="text-divider">
+                <span className="divider-text">or connect using</span>
+                <div className="centeredline"></div>
               </h6>
-              <div className='socialwrapper'>
-                <div className='socialIcons1'>
-                  <img src={fb} alt='fb' />
+              <div className="socialwrapper">
+                <div className="socialIcons1">
+                  <img src={fb} alt="fb" />
                 </div>
-                <div className='socialIcons2'>
-                  <img src={google} alt='fb' />
+                <div className="socialIcons2">
+                  <img src={google} alt="fb" />
                 </div>
-                <div className='socialIcons3'>
-                  <img src={linkedin} alt='fb' />
+                <div className="socialIcons3">
+                  <img src={linkedin} alt="fb" />
                 </div>
               </div>
             </Form>

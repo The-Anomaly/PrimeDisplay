@@ -28,11 +28,11 @@ const AssessmentSixthPhaseComplete = () => {
       <Navbar />
       <Container fluid={true}>
         <Row className='firstrowcf cftcontent'>
-          <AssessmentFirstSection
-            progressBar={20}
-            phase='Phase 6'
-            nextPhase='Phase 7'
-            time={10}
+        <AssessmentFirstSection
+            progressBar={70}
+            phase="Phase 6"
+            nextPhase="Phase 7"
+            time={13}
           />
           <Col md={11}>
             <Row className='firstrowcf2 cftcontent'>

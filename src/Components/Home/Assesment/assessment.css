@@ -10,8 +10,27 @@
   padding-left: 2rem;
   padding-bottom: 2.2rem;
 }
-.firswidth{
-
+.flipdirection{
+  flex-direction: row-reverse;
+}
+.jcenter{
+  justify-content: center;
+  width: 100%;
+}
+.jcenter1{
+  justify-content: center;
+  width: 100%;
+}
+.modal-title{
+  font-size: 18px !important;
+  color: #2c2147;
+} 
+.modal-body{
+  font-size: 14px !important;
+  word-spacing: 1.4;
+  line-height: 1.6;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .wrapassess{
     display: flex;
@@ -563,4 +582,25 @@ a:hover{
   
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+@media(max-width:400px){
+  .assessquestion{
+    font-size: 1em;
+    padding-bottom: 1rem;
+  }
+  .assessrating {
+    font-size: 20px;
+    justify-content: flex-end;
+  }
+  .creative{
+    font-size: 1.3em;
+  }
+}
+.hgjs {
+  background: #9c1258;
+  color: #fff;
+  border: none;
+  width: 100%;
+  font-size: 14px;
 }

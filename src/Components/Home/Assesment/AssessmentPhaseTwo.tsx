@@ -271,11 +271,13 @@ const AssessmentSecondPhase = (props: any) => {
                 hideProgressBar={true}
                 position={toast.POSITION.TOP_CENTER}
               />
-              <div className="nxtbtnarea">
-                <button className="nxtbtn" onClick={submitForm}>
-                  Next
-                </button>
-              </div>
+              <Row className="jcenter1">
+                <div className="nxtbtnarea">
+                  <button className="nxtbtn" onClick={submitForm}>
+                    Next
+                  </button>
+                </div>
+              </Row>
             </Row>
           </Col>
         </Row>

@@ -30,7 +30,7 @@ const AssessmentThirdPhaseComplete = (props: any) => {
       <Container fluid={true}>
         <Row className='firstrowcf cftcontent'>
           <AssessmentFirstSection
-            progressBar={30}
+            progressBar={35}
             phase='Phase 3'
             nextPhase='Phase 4'
             time={10}

@@ -27,6 +27,9 @@ import AssessmentFourthPhaseComplete from './Components/Home/Assesment/Assessmen
 import AssessmentFifthPhaseComplete from './Components/Home/Assesment/Assessmentphasefivecomplete';
 import AssessmentSixthPhaseComplete from './Components/Home/Assesment/Assessmentsixthphasecomplete';
 import AssessmentSeventhPhaseComplete from './Components/Home/Assesment/Assessmentphasesevencompleted';
+import SignUpKigenni from './Components/Home/SignUp Kigenni/SignUpKigenni';
+import KigenniDashboard from './Components/KigenniDashboard/KigenniDashoard';
+import KigenniFullResultPage from './Components/KigenniDashboard/KigenniFullResultPage';
 
 
 const App: React.FC = () => {
@@ -61,6 +64,10 @@ const App: React.FC = () => {
               <Route exact path="/paymentplan" component={SelectPaymentPlan} />
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/signin" component={SignIn} />
+              {/* Kegenni starts here */}
+              <Route exact path="/signup/kigenni" component={SignUpKigenni} />
+              <Route exact path="/kigenni/dashboard" component={KigenniDashboard} />
+              <Route exact path="/kigenni/fullresult" component={KigenniFullResultPage} />
             </Switch>
         </BrowserRouter>
       </div>
