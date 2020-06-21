@@ -30,6 +30,9 @@ import AssessmentSeventhPhaseComplete from './Components/Home/Assesment/Assessme
 import SignUpKigenni from './Components/Home/SignUp Kigenni/SignUpKigenni';
 import KigenniDashboard from './Components/KigenniDashboard/KigenniDashoard';
 import KigenniFullResultPage from './Components/KigenniDashboard/KigenniFullResultPage';
+import ForgotPassword from './Components/Home/ForgotPassword/SignIn';
+import ResetPassword from './Components/Home/ResetPassword/Resetpassword';
+import PaymentSummary from './Components/KigenniDashboard/paymentsummary';
 
 
 const App: React.FC = () => {
@@ -64,10 +67,13 @@ const App: React.FC = () => {
               <Route exact path="/paymentplan" component={SelectPaymentPlan} />
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/signin" component={SignIn} />
+              <Route exact path="/forgotpassword" component={ForgotPassword} />
+              <Route exact path="/resetpassword/:userid/:token" component={ResetPassword} />
               {/* Kegenni starts here */}
               <Route exact path="/signup/kigenni" component={SignUpKigenni} />
-              <Route exact path="/kigenni/dashboard" component={KigenniDashboard} />
-              <Route exact path="/kigenni/fullresult" component={KigenniFullResultPage} />
+              <Route exact path="/paymentsummary" component={PaymentSummary} />
+              <Route exact path="/free/dashboard" component={KigenniDashboard} />
+              <Route exact path="/dashboard/fullresult" component={KigenniFullResultPage} />
             </Switch>
         </BrowserRouter>
       </div>

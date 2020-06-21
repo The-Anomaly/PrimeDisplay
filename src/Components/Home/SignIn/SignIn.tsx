@@ -8,6 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import Footer from "../HomeComponents/footer";
 import Col from "react-bootstrap/Col";
 import "../SignUp/signup.css";
+import "./SignIn.css";
 import signinwelcome from "../../../assets/3.jpg";
 import fb from "../../../assets/fbsignup.png";
 import google from "../../../assets/google.png";
@@ -15,6 +16,9 @@ import linkedin from "../../../assets/linked.png";
 import { Link } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
+import GoogleLogin from "react-google-login";
+import { useEffect } from "react";
+import FacebookAuth from "react-facebook-auth";
 
 interface State {
   email: string;
@@ -22,6 +26,13 @@ interface State {
   errorMessage: string;
   isLoading: boolean;
 }
+const facebookIcon = ({ onClick }) => {
+  return (
+    <span>
+      <img onClick={onClick} src={fb} alt="socailmedia1" />
+    </span>
+  );
+};
 const SignIn: React.FunctionComponent = (props: any) => {
   const [state, setFormState] = React.useState<State>({
     email: "",
@@ -30,6 +41,9 @@ const SignIn: React.FunctionComponent = (props: any) => {
     isLoading: false,
   });
   const { email, password, errorMessage, isLoading } = state;
+  useEffect(() => {
+    window.scrollTo(-0, -0);
+  }, []);
   const sendFormData = () => {
     setFormState({ ...state, isLoading: true });
     const data = {
@@ -63,7 +77,14 @@ const SignIn: React.FunctionComponent = (props: any) => {
         if (error && error.response && error.response.data) {
           setFormState({
             ...state,
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
+            isLoading: false,
+          });
+        }
+        if(error && error.response.status===404){
+         return setFormState({
+            ...state,
+            errorMessage: error?.response?.data.error,
             isLoading: false,
           });
         }
@@ -88,8 +109,8 @@ const SignIn: React.FunctionComponent = (props: any) => {
         errorMessage: "Please enter your password",
       });
     }
-    if (password && email) {
-      // sendFormData();
+    else{
+      sendFormData();
     }
   };
   const getCurrentAssessmentPosition = (token: string): void => {
@@ -130,14 +151,13 @@ const SignIn: React.FunctionComponent = (props: any) => {
           return props.history.push(`/assessmentphaseseven`);
         }
         if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/dashboard/personality`);
+          return props.history.push(`/free/dashboard`);
         }
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   const changeActionOnFormData = (e: any) => {
     setFormState({
       ...state,
@@ -160,6 +180,74 @@ const SignIn: React.FunctionComponent = (props: any) => {
         console.log(error);
       });
   };
+  const responseGoogle = (response) => {
+    console.log(response);
+    console.log(response.profileObj);
+    const data = {
+      name: response.profileObj.name,
+      email: response.profileObj.email,
+      user_id: response.googleId,
+      imageUrl: response.profileObj.imageUrl,
+      provider: "Google",
+    };
+    console.log(data);
+    axios
+      .post(`${API}/accounts/socialauth/`, data)
+      .then((response) => {
+        console.log(response?.data[0]?.token);
+        sessionStorage.setItem(
+          "userToken",
+          JSON.stringify(response?.data[0]?.token)
+        );
+        getCurrentAssessmentPosition(response.data[0]?.token);
+        getUserInfo(response.data[0]?.token);
+      })
+      .catch((error) => {
+        setFormState({
+          ...state,
+          errorMessage: "failed to login",
+        });
+      });
+  };
+  const errorGoogle = (error) => {
+    console.log(error);
+    setFormState({
+      ...state,
+      errorMessage: "failed to login",
+    });
+  };
+  const authenticate = (response) => {
+    if (response) {
+      const data = {
+        name: response.name,
+        email: response.email,
+        user_id: response.id,
+        provider: "facebook",
+        imageUrl:
+          response.picture && response.picture.data && response.picture.data.url
+            ? response.picture.data.url
+            : "",
+      };
+      axios
+        .post(`${API}/accounts/socialauth/`, data)
+        .then((response) => {
+          console.log(response?.data[0]?.token);
+          sessionStorage.setItem(
+            "userToken",
+            JSON.stringify(response?.data[0]?.token)
+          );
+          getCurrentAssessmentPosition(response.data[0]?.token);
+          getUserInfo(response.data[0]?.token);
+        })
+        .catch((error) => {
+          setFormState({
+            ...state,
+            errorMessage: "failed to login",
+          });
+        });
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -211,8 +299,11 @@ const SignIn: React.FunctionComponent = (props: any) => {
               <Button variant="primary" className="subbtn" type="submit">
                 {!isLoading ? "Sign In" : "Signing In"}
               </Button>
+              <div className="alreadyhave1">
+                <Link to="/forgotpassword">Forgot Password ?</Link>
+              </div>
               <div className="alreadyhave">
-                Already have an account?
+                Don't have an account?
                 <Link to="/signup">
                   <span className="logn"> Sign Up</span>
                 </Link>
@@ -223,11 +314,31 @@ const SignIn: React.FunctionComponent = (props: any) => {
               </h6>
               <div className="socialwrapper">
                 <div className="socialIcons1">
-                  <img src={fb} alt="fb" />
+                  <FacebookAuth
+                    appId="950826675353579"
+                    callback={authenticate}
+                    component={facebookIcon}
+                    autoLoad={false}
+                    reAuthenticate={true}
+                  />
                 </div>
-                <div className="socialIcons2">
-                  <img src={google} alt="fb" />
-                </div>
+                <GoogleLogin
+                  clientId="53707797583-8rbiv5j6gdac35ik840rtcc65pklp9e9.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <div className="socialIcons2">
+                      <img
+                        src={google}
+                        className="gooogg"
+                        onClick={renderProps.onClick}
+                        alt="fb"
+                      />
+                    </div>
+                  )}
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={errorGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
                 <div className="socialIcons3">
                   <img src={linkedin} alt="fb" />
                 </div>

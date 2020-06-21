@@ -1,60 +1,90 @@
-import * as React from 'react';
-import demoLogo from '../../../assets/clarity.png';
-import SideNav from 'react-simple-sidenav';
-import { Link } from 'react-router-dom';
-import '../Home/animate.css';
-import { NavIsLoggedOut } from './isloggedout';
-import { NavIsLoggedIn } from './isloggedIn';
+import * as React from "react";
+import demoLogo from "../../../assets/clarity.png";
+import SideNav from "react-simple-sidenav";
+import { Link,Redirect } from "react-router-dom";
+import "../Home/animate.css";
+import { NavIsLoggedOut } from "./isloggedout";
+import { NavIsLoggedIn } from "./isloggedIn";
+import { useEffect } from "react";
 
-const Navbar: React.FC = () => {
-  const [state, setShowNav] = React.useState({ showNav: false });
-  const { showNav } = state;
-  const domRef = React.useRef('');
+const Navbar: React.FC = (props: any) => {
+  const [state, setShowNav] = React.useState({
+    showNav: false,
+    userLoggedIn: false,
+    redirect: false,
+  });
+  const { showNav, userLoggedIn,redirect } = state;
+  useEffect(() => {
+    window.scrollTo(-0, -0);
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    if (token) {
+      setShowNav({ ...state, userLoggedIn: true });
+    } else {
+      setShowNav({ ...state, userLoggedIn: false });
+    }
+  }, []);
+  const setRedirect = () => {
+    setShowNav({
+      ...state,
+      redirect: true,
+    });
+  };
+  const renderRedirect = () => {
+    if (redirect) {
+      return <Redirect to='/' />
+    }
+  }
 
+  const logout = () => {
+    sessionStorage.clear();
+    setRedirect()
+  };
   const uniqueKeygen = (): number => {
     return Math.floor(Math.random() * 100);
   };
   return (
     <div>
+      {renderRedirect()}
       {/* mobile ends */}
-      <div className='Navsection '>
-        <div className='top-layer'>
+      <div className="Navsection ">
+        <div className="top-layer">
           {/* mobile */}
-          <div className='lakk'>
+          <div className="lakk">
             <SideNav
-              style={{ background: showNav ? 'rgba(0, 0, 0, 0.7)' : 'inherit' }}
-              navStyle={{ width: '70%', background: '#131313' }}
+              style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
+              navStyle={{ width: "70%", background: "#131313" }}
               showNav={showNav}
-              onHideNav={() => setShowNav({ showNav: true })}
+              onHideNav={() => setShowNav({ ...state, showNav: true })}
               titleStyle={{
-                backgroundColor: '#9c1258',
-                color: '#444444',
+                backgroundColor: "#9c1258",
+                color: "#444444",
                 paddingLeft: 10,
                 paddingBottom: 0,
                 paddingTop: 0,
                 fontSize: 17,
-                textAlign: 'left',
+                textAlign: "left",
               }}
-              itemStyle={{ backgroundColor: '#131313', paddingLeft: 25 }}
-              itemHoverStyle={{ backgroundColor: 'inherit' }}
+              itemStyle={{ backgroundColor: "#131313", paddingLeft: 25 }}
+              itemHoverStyle={{ backgroundColor: "inherit" }}
               title={[
                 <div
                   key={uniqueKeygen()}
                   style={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                    background: '#9c1258',
-                    padding: '0px 4px 1px 8px',
-                    color: 'white',
-                    fontSize: '4rem',
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    background: "#9c1258",
+                    padding: "0px 4px 1px 8px",
+                    color: "white",
+                    fontSize: "4rem",
                   }}
                 >
                   <span
                     className={
-                      showNav ? 'tymes animated lightSpeedIn' : 'tymes'
+                      showNav ? "tymes animated lightSpeedIn" : "tymes"
                     }
                     onClick={() =>
-                      setShowNav({ showNav: !showNav ? true : false })
+                      setShowNav({ ...state, showNav: !showNav ? true : false })
                     }
                   >
                     &times;
@@ -64,78 +94,81 @@ const Navbar: React.FC = () => {
               items={[
                 <div
                   className={
-                    showNav ? 'listwraper animated fadeInLeft' : 'listwraper'
+                    showNav ? "listwraper animated fadeInLeft" : "listwraper"
                   }
                 >
-                  <div className='listwraperMob'>
-                    <Link to='/'>Home</Link>
+                  <div className="listwraperMob">
+                    <Link to="/">Home</Link>
                   </div>
-                  <div className='listwraperMob'>
-                    <Link to='/about'>About</Link>
+                  <div className="listwraperMob">
+                    <Link to="/about">About</Link>
                   </div>
-                  <div className='listwraperMob'>
-                    <Link to='/clarityforteams'>Services</Link>
+                  <div className="listwraperMob">
+                    <Link to="/clarityforteams">Services</Link>
                   </div>
-                  <div className='listwraperMob'>
-                    <Link to='/faq'>Faq</Link>
+                  <div className="listwraperMob">
+                    <Link to="/faq">Faq</Link>
                   </div>
-                  <div className='listwraperMob'>Privacy Policy</div>
-                  <div className='listwraperMob'>
-                    <Link to='/signin'>
-                      <div className='navmobbtn'>Login</div>
+                  <div className="listwraperMob">Privacy Policy</div>
+                  <div className="listwraperMob">
+                    <Link to="/signin">
+                      <div className="navmobbtn">Login</div>
                     </Link>
                   </div>
-                  <div className='listwraperMob'>
-                    <Link to='/signup'>
-                      <div className='navmobbtn'>Sign Up</div>
+                  <div className="listwraperMob">
+                    <Link to="/signup">
+                      <div className="navmobbtn">Sign Up</div>
                     </Link>
                   </div>
                 </div>,
               ]}
             />
-            <div className='flexsss'>
-              <Link to='/'>
+            <div className="flexsss">
+              <Link to="/">
                 <img
                   src={demoLogo}
-                  className='clarity_logo'
-                  alt='clarity_logo'
+                  className="clarity_logo"
+                  alt="clarity_logo"
                 />
               </Link>
-              <div className='hamburgerwrap'>
+              <div className="hamburgerwrap">
                 <div
-                  className='hamburger'
+                  className="hamburger"
                   onClick={() =>
-                    setShowNav({ showNav: !showNav ? true : false })
+                    setShowNav({ ...state, showNav: !showNav ? true : false })
                   }
                 >
-                  <div className='line1'></div>
-                  <div className='line2'></div>
-                  <div className='line2'></div>
+                  <div className="line1"></div>
+                  <div className="line2"></div>
+                  <div className="line2"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className='nav-wrapper'>
-          <div className='nav_title'>
-            <div className='logo_clarity'>
-              <Link to='/'>
-                <img src={demoLogo} alt='clarity_logo' />
+        <div className="nav-wrapper">
+          <div className="nav_title">
+            <div className="logo_clarity">
+              <Link to="/">
+                <img src={demoLogo} alt="clarity_logo" />
               </Link>
             </div>
           </div>
-          <div className='nav_title'>
-            <span className='title'>
-              <Link to='/'>HOME</Link>
+          <div className="nav_title">
+            <span className="title">
+              <Link to="/">HOME</Link>
             </span>
-            <span className='title'>
-              <Link to='/about'>ABOUT</Link>
+            <span className="title">
+              <Link to="/about">ABOUT</Link>
             </span>
-            <span className='title'>
-              <Link to='/clarityforteams'>SERVICES</Link>
+            <span className="title">
+              <Link to="/clarityforteams">SERVICES</Link>
             </span>
-            <NavIsLoggedOut />
-            {/* <NavIsLoggedIn/> */}
+            {!userLoggedIn ? (
+              <NavIsLoggedOut />
+            ) : (
+              <NavIsLoggedIn Logout={logout} />
+            )}
           </div>
         </div>
       </div>

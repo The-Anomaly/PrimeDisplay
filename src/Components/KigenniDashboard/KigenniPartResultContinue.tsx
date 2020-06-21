@@ -6,685 +6,510 @@ import Alert from "react-bootstrap/Alert";
 import "./kegennidashboard.css";
 import axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
-import Navbar from "../Home/HomeComponents/navbar";
-import Footer from "../Home/HomeComponents/footer";
 import firstlogo from "../../assets/image 1.png";
-import firstChart from "../../assets/Rectangle 37.png";
 import secondlogo from "../../assets/image 2.png";
+import thdlogo from "../../assets/gift.png";
 import vector1 from "../../assets/whiteicon1.png";
 import vector2 from "../../assets/whiteicon2.png";
 import notice from "../../assets/notice.png";
 import { CirclePie } from "salad-ui.chart";
 import { Chart } from "react-google-charts";
 import { useEffect, useState } from "react";
-import pinkimg from "../../assets/shielduser.png";
+import Spinner from "react-bootstrap/Spinner";
+import Testing from "./Testing";
+import HorizontalBar from "./HorizontalBar";
 
 interface State {
   fullname: string;
-  email: string;
-  phonenumber: string;
+  careerbussines: any;
+  jobfunctionchartdata: any;
+  averagecompetencechartdata: any;
+  strongcompetencechartdata: any;
+  weakcompetencechartdata: any;
+  client: any;
   successMsg: boolean;
   errorMessage: string;
   isLoading: boolean;
   width: number;
 }
-const KigenniRemainingResult: React.FunctionComponent = (props: any) => {
-  const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-  const [state, setFormState] = React.useState<State>({
+class KigenniRemainingResult extends React.Component<React.Props<any>> {
+  state: State = {
     fullname: "",
-    email: "",
-    phonenumber: "",
+    client: [],
+    careerbussines: [],
+    jobfunctionchartdata: [],
+    weakcompetencechartdata: [],
+    averagecompetencechartdata: [],
+    strongcompetencechartdata: [],
     errorMessage: "",
     successMsg: false,
     isLoading: false,
     width: 100,
-  });
-  const {
-    fullname,
-    email,
-    phonenumber,
-    errorMessage,
-    successMsg,
-    isLoading,
-    width,
-  } = state;
-
-  const sendFormData = (e) => {
-    e.preventDefault();
-    setFormState({ ...state, isLoading: true });
+  };
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
     const data = {};
     axios
-      .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
+      .get<any, AxiosResponse<any>>(`${API}/paiddashboard`, {
+        headers: { Authorization: `Token ${token}` },
+      })
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          setFormState({
-            ...state,
+          this.setState({
+            client: response.data[0],
+            careerbussines: response?.data[0]?.career_business_expression[0],
+            jobfunctionchartdata: response?.data[0]?.job_function_fit?.graph,
+            averagecompetencechartdata:
+              response?.data[0]?.average_career_competences?.graph,
+            weakcompetencechartdata:
+              response?.data[0]?.weak_career_competences?.graph,
+            strongcompetencechartdata:
+              response?.data[0].strong_career_competences.graph,
+            fullname: response.data[0].full_name,
             successMsg: true,
             isLoading: false,
           });
-          setInterval(props.history.push("/signin"), 5000);
         }
       })
       .catch((error) => {
         console.log(error.response);
         if (error && error.response && error.response.data) {
-          setFormState({
-            ...state,
+          this.setState({
             errorMessage: error.response.data[0].message,
             isLoading: false,
           });
         }
-        setFormState({
-          ...state,
-          errorMessage: "Signup failed",
+        this.setState({
+          errorMessage: "failed",
           isLoading: false,
         });
       });
+  }
+  capitalize = (s) => {
+    if (typeof s !== "string") return "";
+    return s.charAt(0).toUpperCase() + s.slice(1);
   };
-
-  const changeActionOnFormData = (e: any) => {
-    setFormState({
-      ...state,
-      [e.target.name]: e.target.value,
-      errorMessage: "",
-      successMsg: false,
-    });
-  };
-  const data = [
-    { text: "Man", value: 500 },
-    { text: "Woman", value: 300 },
-  ];
-  // useEffect(()=>{
-  //   useState({
-  //     ...state,
-  //     width:80
-  //   });
-  // },[]);
-  return (
-    <>
-      <Col md={10} className="">
-        <div className="kdashheader">
-          Jaiyeola Jones{" "}
-          <span className="kdashheaderlight"> Clarity Report</span>
-        </div>
-        <div className="kdash1">
-          It seems you're presently not on the right career track.{" "}
-          <span className="kdash1light"> see details below</span>
-        </div>
-        <div className="kdasharea">
-          <div>
-            <img src={firstlogo} className="kfirstlogo" alt="firstlogo" />
-          </div>
-          <div className="kprofilewrap">
-            <div className="kprofile">Profile</div>
-            <div className="kprofile2">Entrepreneur</div>
-            <div className="kprofile3">Growing Business</div>
-          </div>
-        </div>
-        <hr />
-        <div className="resultsec2">
-          <div className="resultsec22">
-            <CirclePie
-              width={190}
-              height={190}
-              strokeWidth={5}
-              labelColor={"#fff"}
-              labelFontSize={"38px"}
-              strokeColor={"#fff"}
-              railColor={"#17375c77"}
-              fillColor={"#001833"}
-              percent={30}
-              padding={0}
-            />
-            {/* <img src={firstChart} className="firstChart" alt="firstChart" /> */}
-          </div>
-          <div className="csfitscore">
-            <div className="csfitscore1">Your Career Fitness Score</div>
-            <div className="csbody">
-              It seems you're presently not on the right career track. You are
-              presently unsure of yourself and you’ve felt a lack of
-              self-understanding for a longtime. You’re like a blank canvas and
-              may be experiencing some level of low self-esteem, always watching
-              your step, being self and image conscious. But more painful is,
-              right now you have very little clue what you want to do with your
-              life. Your interests and talents are highly multifaceted that you
-              wonder what to focus on, how to merge things and not lose your
-              essence.
+  render() {
+    const {
+      fullname,
+      client,
+      careerbussines,
+      jobfunctionchartdata,
+      averagecompetencechartdata,
+      weakcompetencechartdata,
+      strongcompetencechartdata,
+      isLoading,
+      width,
+    } = this.state;
+    console.log(careerbussines);
+    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    console.log(client);
+    return (
+      <>
+        {!isLoading ? (
+          <Col md={10} className="">
+            <div className="kdashheader">
+              {fullname ? fullname : ""}{" "}
+              <span className="kdashheaderlight"> Clarity Report</span>
             </div>
-          </div>
-        </div>
-        <hr />
-        <div className="resultsec3">
-          <div className="reskwrap">
-            <div className="csfitscore1 reskheader">
-              Your Career Personality type
+            <div className="kdash1">
+              <span className="kdash1light">
+                <a href="#seek"> see details below</a>
+              </span>
             </div>
-            <div className="">
-              Intellectual Researcher and your unique mission is exploring the
-              world through knowledge and translate that insight from knowledge
-              to innovative solutions
-            </div>
-          </div>
-          <div>
-            <img src={secondlogo} className="secondlogo" alt="secondlogo" />
-          </div>
-        </div>
-        <div className="resultsec3">
-          <div className="resultt">
-            Your mind is full of imagination and excitement. You are extremely
-            intellectual and sound; you are a conceptual problem solver and
-            often show flashes of creative brilliance. Outwardly quiet,
-            reserved, and detached, you are inwardly absorbed in analyzing
-            problems. You enjoy subjects or topics that stimulate your
-            intellect. You prefer to find and use logical principles to
-            understand what you’re being taught and like conversations that are
-            purposeful. May often argue to the point of hair-splitting just for
-            fun. You may get bored if stuck on one thing for too long. Learning
-            about something new and diving into it head on is fun for you. You
-            enjoy many different subjects, it might be reading, writing,
-            different sports, listening to music, going to concerts or playing
-            video games and would rather explore different subjects than be
-            stuck to one.
-          </div>
-        </div>
-        <div>
-          <div className="kz1">
-            <div className="contkflex">
-              <div className="kz2">
-                <img src={vector1} className="kl3" alt="vector2" />
-                <div>Your Strengths</div>
+            <div className="kdasharea">
+              <div>
+                <img src={firstlogo} className="kfirstlogo" alt="firstlogo" />
               </div>
-              <div className="kz12">
-                <ul className="grapwrap">
-                  <li className="grapssin">
-                    Grasping abstract concepts and puzzles without difficulty
-                  </li>
-                  <li className="grapssin">
-                    High concentration ability; a natural ability to focus and
-                    get "into the zone" when working on a problem. You can
-                    absorb your mind completely with an issue, and work it
-                    through with amazing speed and accuracy.
-                  </li>
-                  <li className="grapssin">
-                    Imaginative and original, always excited about new ideas and
-                    intellectual discussion.
-                  </li>
-                  <li className="grapssin">A good sense of humor.</li>
-                  <li className="grapssin">
-                    Honest and straightforward, its black and white not shades
-                    of grey.
-                  </li>
-                  <li className="grapssin">
-                    Incredibly passionate and enthusiastic about subjects or
-                    projects that they’re interested in and will skip meals and
-                    lose sleep to complete a task which sparks your passion.
-                  </li>
-                </ul>
+              <div className="kprofilewrap">
+                <div className="kprofile">Profile</div>
+                <div className="kprofile2">{client.profile}</div>
+                {/* <div className="kprofile3">Growing Business</div> */}
               </div>
             </div>
-            <div className="contkflex">
-              <div className="kz2a">
-                <img src={vector2} className="kl3" alt="vector2" />
-                <div>Your Weaknesses</div>
+            <hr />
+            <div className="resultsec2" id="seek">
+              <div className="resultsec22">
+                <CirclePie
+                  width={190}
+                  height={190}
+                  strokeWidth={5}
+                  labelColor={"#fff"}
+                  labelFontSize={"38px"}
+                  strokeColor={"#fff"}
+                  railColor={"#17375c77"}
+                  fillColor={"#001833"}
+                  percent={client?.career_fitness?.score}
+                  padding={0}
+                />
+                {/* <img src={firstChart} className="firstChart" alt="firstChart" /> */}
               </div>
-              <div className="kz12">
-                <ul className="grapwrap">
-                  <li className="grapssin">
-                    Not considering others feelings and can offend others people
-                    to the core.
-                  </li>
-                  <li className="grapssin">
-                    Indecisiveness, because you are open to different ideas and
-                    different ways of thinking it becomes crippling to commit to
-                    a decision.
-                  </li>
-                  <li className="grapssin">
-                    Not very collaborative, going against conformity and the
-                    social norms to be unconventional and unique which within
-                    certain groups and situations this can cause frictions.
-                  </li>
-                  <li className="grapssin">
-                    Deriving a high from working that puts your health at risk.
-                  </li>
-                  <li className="grapssin">
-                    Making bets on premature ideas, you get excited about and
-                    share ideas that are not fully formed, or lack evidence to
-                    back them up relying on just your intuition.
-                  </li>
-                  <li className="grapssin">
-                    Tend to isolate yourself from people.
-                  </li>
-                </ul>
+              <div className="csfitscore">
+                <div className="csfitscore1">Your Career Fitness Score</div>
+                <div className="vbnc1"> {client?.career_fitness?.heading} </div>
+                <div className="csbody">{client?.career_fitness?.body}</div>
               </div>
             </div>
-          </div>
-        </div>
-        <hr />
-        <div>
-          <div className="competence">Your Strong Competences</div>
-        </div>
-        <div>
-          <Chart
-            width={"100%"}
-            height={"500px"}
-            chartType="Bar"
-            loader={<div>Loading Chart</div>}
-            data={[
-              ["Skills", "Score"],
-              ["Persuasion", 1000],
-              ["Agile Work Ethic", 1000],
-              ["Technical Mastery", 300],
-              ["Counselling", 350],
-              ["Admin", 350],
-              ["Eloquence", 950],
-              ["Technology Appreciation", 750],
-              ["Technical Mechanical", 650],
-            ]}
-            options={{
-              backgroundColor: "red",
-              chart: {
-                title: "",
-              },
-              colors: ["#001833"],
-            }}
-            rootProps={{ "data-testid": "2" }}
-          />
-        </div>
-        <div className="otherinfo">
-          <span className="ikls">Persuasion:</span> an exceptional ability to
-          listen to people and talk them into agreeing with your thoughts or
-          ideas. <br />
-          <span className="ikls">Agile work ethic:</span> exceptional at doing
-          things quick and efficiently to get the best the results.
-          <br />
-          <span className="ikls">Technical Mastery & Flexibility:</span>{" "}
-          exceptional at figuring out how things work in any given domain and
-          doing it very well.
-        </div>
-        <hr />
-        {/* Average Competence Starts Here */}
-        <div>
-          <div className="competence">Average Competences</div>
-        </div>
-        <div>
-          <Chart
-            width={"100%"}
-            height={"500px"}
-            chartType="Bar"
-            loader={<div>Loading Chart</div>}
-            data={[
-              ["Skills", "Score"],
-              ["Persuasion", 600],
-              ["Agile Work Ethic", 500],
-              ["Technical Mastery", 300],
-              ["Counselling", 350],
-              ["Admin", 350],
-              ["Eloquence", 950],
-              ["Technology Appreciation", 750],
-              ["Technical Mechanical", 650],
-            ]}
-            options={{
-              backgroundColor: "red",
-              chart: {
-                title: "",
-              },
-              colors: ["#001833"],
-            }}
-            rootProps={{ "data-testid": "2" }}
-          />
-        </div>
-        <div className="otherinfo">
-          <span className="ikls">Administration:</span> an exceptional ability
-          to listen to people and talk them into agreeing with your thoughts or
-          ideas. <br />
-          <span className="ikls">Analytical:</span> average ability for thinking
-          conceptually, learning fast, observing and make connections between
-          concepts or asking probing questions.
-          <br />
-          <span className="ikls">Creativity:</span> growing ability for seeing
-          or implementing beauty and innovation in different forms of
-          expression.
-        </div>
-        <hr />
-        <br />
-        <div>
-          <div className="competence">
-            Most Suitable Career-Business Expression
-          </div>
-          <div className="resultsec2">
-            <div className="resultsec22">
-              <CirclePie
-                width={190}
-                height={190}
-                strokeWidth={5}
-                labelColor={"#fff"}
-                labelFontSize={"38px"}
-                strokeColor={"#fff"}
-                railColor={"#17375c77"}
-                fillColor={"#001833"}
-                percent={70}
-                padding={0}
-              />
-              {/* <img src={firstChart} className="firstChart" alt="firstChart" /> */}
-            </div>
-            <div className="csfitscore">
-              <div className="csfitscore1">Creative Industry</div>
-              <div className="csbody">
-                <span className="competence1"> Performing Arts</span>:
-                Performing Art is an art form in which artists use their body or
-                voice to convey artistic expression. Performing arts tends to
-                include a wide range of specialisms, including dance,
-                choreography, comedy, music, drama e.t.c <br />
-                <span className="competence1"> Animation & Graphics</span>: is
-                the expression of visual images or design in still pictures or
-                moving in rapid succession created to inform, illustrate, or
-                entertain. It includes specialization areas in in UI/UX Design,
-                Graphic design, Animation, Game design and development.
-                <br />
-              </div>
-            </div>
-          </div>
-          {/* Pie Chart Section */}
-          <div className="resultsec2">
-            <div className="resultsec22">
-              <CirclePie
-                width={190}
-                height={190}
-                strokeWidth={5}
-                labelColor={"#fff"}
-                labelFontSize={"38px"}
-                strokeColor={"#fff"}
-                railColor={"#17375c77"}
-                fillColor={"#001833"}
-                percent={60}
-                padding={0}
-              />
-            </div>
-            <div className="csfitscore">
-              <div className="csfitscore1">Humanitarian Industry</div>
-              <div className="csbody">
-                <span className="competence1"> Education and Training</span>:
-                Impart knowledge and guide people down the right path. Careers/
-                businesses to explore Corporate Training & Team building,
-                Education Administration & Management, Education Regulation:
-                Examining, Inspection & Policy, Education Resources: Libraries,
-                I.T & Maintenance, Educational Psychology, Guidance &
-                Counselling, Teaching Abroad Teaching: Adult Education, Evening
-                Classes & Private Tutoring, Teaching Assistant, Teaching:
-                Community, Social & Public Services, Teaching: Further &
-                Vocational Education, Teaching: Higher Education, University
-                Lecturing & Academic Research, Teaching: Pre-school & Early
-                Years Teaching: Primary, Teaching: Secondary & Sixth form,
-                Teaching : Special Needs Education, Educational Support Services
-                & Supply.
-                <br />
-                <span className="competence1"> NGO’s & Charity</span>: is
-                Champion a cause that changes the lives of people positively.
-                Career/ Business areas to explore include but not limited to
-                Administration, Campaigning, Communication & Marketing,
-                Community Development & Mobilization, Fundraising Advocacy,
-                International Aids & Development Policy, research &
-                Implementation, Project Management & Coordination, Volunteering
-                <br />
-              </div>
-            </div>
-          </div>
-          <div className="nlodd">
-            <div className="resultsec13">
-              <div className="reskwrap13">
+            <hr />
+            <div className="resultsec3">
+              <div className="reskwrap">
                 <div className="csfitscore1 reskheader">
                   Your Career Personality type
                 </div>
                 <div className="">
-                  Intellectual Researcher and your unique mission is exploring
-                  the world through knowledge and translate that insight from
-                  knowledge to innovative solutions
+                  {client?.career_personality_type?.short_description}
                 </div>
               </div>
-              <div>
+            </div>
+            <div className="resultsec31">
+              <div className="col-md-6">
                 <img
-                  src={pinkimg}
-                  className="secondlogo img-fluid"
+                  src={secondlogo}
+                  className="secondlogo pds"
                   alt="secondlogo"
                 />
               </div>
-            </div>
-          </div>
-          {/* white background section */}
-          <div className="stbly">
-            <div className="stbly1">Stability: "I like to know the future"</div>
-            <div>
-              You are energized by feeling secure. Surprises are not fun for
-              you. You want to know the future as much as is humanly possible.
-              Routine, order, predictability, and stability are key factors for
-              a stress-free life for you. Sometimes, you'll even give up a more
-              fulfilling job to increase a feeling of stability. This motivator
-              comes more naturally as the environment dictates. Having children,
-              getting older, having a want to secure past successes, and the
-              likes can increase the want for stability. Fortunately, your
-              confidence and stress-management capabilities can go up with this
-              type of planning.
-            </div>
-          </div>
-          {/* dark blue background section */}
-          <div className="tipswrapper">
-            <div>
-              <div className="stbly1">Tips to Harnessing This Motivator:</div>
-              <div>
-                1. Only seek work, finances, and other deals with a long-term
-                commitment{" "}
-              </div>{" "}
-              <div>
-                2. Seek a position with a "job for life" philosophy. Contract
-                work is not for you{" "}
-              </div>
-              <div>
-                3. Research and obtain achievable professional qualifications.
-                Make one small step toward further status credibility{" "}
-              </div>{" "}
-              <div>
-                {" "}
-                4. Consider cutting back on your riskier projects and do work
-                that meets basic human needs first and foremost{" "}
-              </div>{" "}
-              <div>
-                5. Only work with well-established organizations. You need
-                confidence in a solid base
+              <div className="resultt col-md-6">
+                {client?.career_personality_type?.graph?.map((data, index) => {
+                  return (
+                    <div className="">
+                      <div className="ttp">{data.name}</div>
+                      <HorizontalBar value={data.value.value1} />
+                      <div className="btmwrap">
+                        <div>{data.value.name1}</div>
+                        <div>{data.value.name2}</div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-            <div className="notice">
-              <img src={notice} alt="notice" />
-            </div>
-          </div>
-          {/* white background section */}
-          <div className="stbly">
-            <div className="stbly1">Status: "I have social standing"</div>
             <div>
-              You are energized and excited with gaining more prestige within
-              your circles. You might even consider taking a lower paid position
-              in order to gain more social positioning in a wider community. You
-              really do enjoy being an important figure in the community. You’d
-              do what it takes to not be perceived as socially inferior. You may
-              have to seek roles and positions that already hold social prestige
-              in order to be motivated. Seeking higher titles and roles must be
-              seen as a worthwhile reward for efforts in order to energize you.
-              Empty titles or roles will not do it for you if the rest of the
-              community feels the same way.
-            </div>
-          </div>
-          {/* dark blue background section */}
-          <div className="tipswrapper">
-            <div>
-              <div className="stbly1">Tips to Harnessing This Motivator:</div>
-              <div>
-                1. Only seek work, finances, and other deals with a long-term
-                commitment{" "}
-              </div>{" "}
-              <div>
-                2. Seek a position with a "job for life" philosophy. Contract
-                work is not for you{" "}
-              </div>
-              <div>
-                3. Research and obtain achievable professional qualifications.
-                Make one small step toward further status credibility{" "}
-              </div>{" "}
-              <div>
-                {" "}
-                4. Consider cutting back on your riskier projects and do work
-                that meets basic human needs first and foremost{" "}
-              </div>{" "}
-              <div>
-                5. Only work with well-established organizations. You need
-                confidence in a solid base
-              </div>
-            </div>
-            <div className="notice">
-              <img src={notice} alt="notice" />
-            </div>
-          </div>
-          {/* Your work style */}
-          <div className="competence">Your Work Style</div>
-          <div>
-            <div className="kz1">
-              <div className="contkflex">
-                <div className="kz2">
-                  <img src={vector1} className="kl3" alt="vector2" />
-                  <div>Prioritizing</div>
+              <div className="kz1">
+                <div className="contkflex">
+                  <div className="kz2">
+                    <img src={vector1} className="kl3" alt="vector2" />
+                    <div>Your Strengths</div>
+                  </div>
+                  <div className="kz12">
+                    <ul className="grapwrap">
+                      {client?.strengths?.map((strength, index) => (
+                        <li className="grapssin" key={index}>
+                          {strength}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div className="kz12">
-                  <ul className="grapwrap">
-                    <li className="grapssin">
-                      You are analytical, realistic and logical thinker who
-                      likes to know how long a task will take beforehand, so you
-                      can plan your work days more efficiently. Your rigidly
-                      prioritize your task focusing on executing them in order
-                      of importance.
-                    </li>
-                    <li className="grapssin">
-                      High concentration ability; a natural ability to focus and
-                      get "into the zone" when working on a problem. You can
-                      absorb your mind completely with an issue, and work it
-                      through with amazing speed and accuracy.
-                    </li>
-                    <li className="grapssin">
-                      Imaginative and original, always excited about new ideas
-                      and intellectual discussion.
-                    </li>
-                    <li className="grapssin">A good sense of humor.</li>
-                    <li className="grapssin">
-                      Honest and straightforward, its black and white not shades
-                      of grey.
-                    </li>
-                    <li className="grapssin">
-                      Incredibly passionate and enthusiastic about subjects or
-                      projects that they’re interested in and will skip meals
-                      and lose sleep to complete a task which sparks your
-                      passion.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="contkflex">
-                <div className="kz2a">
-                  <img src={vector2} className="kl3" alt="vector2" />
-                  <div>Planning</div>
-                </div>
-                <div className="kz12">
-                  <ul className="grapwrap">
-                    <li className="grapssin">
-                      Not considering others feelings and can offend others
-                      people to the core.
-                    </li>
-                    <li className="grapssin">
-                      Indecisiveness, because you are open to different ideas
-                      and different ways of thinking it becomes crippling to
-                      commit to a decision.
-                    </li>
-                    <li className="grapssin">
-                      Not very collaborative, going against conformity and the
-                      social norms to be unconventional and unique which within
-                      certain groups and situations this can cause frictions.
-                    </li>
-                    <li className="grapssin">
-                      Deriving a high from working that puts your health at
-                      risk.
-                    </li>
-                    <li className="grapssin">
-                      Making bets on premature ideas, you get excited about and
-                      share ideas that are not fully formed, or lack evidence to
-                      back them up relying on just your intuition.
-                    </li>
-                    <li className="grapssin">
-                      Tend to isolate yourself from people.
-                    </li>
-                  </ul>
+                <div className="contkflex">
+                  <div className="kz2a">
+                    <img src={vector2} className="kl3" alt="vector2" />
+                    <div>Your Weaknesses</div>
+                  </div>
+                  <div className="kz12">
+                    <ul className="grapwrap">
+                      {client?.weaknesses?.map((weakness, index) => (
+                        <li className="grapssin" key={index}>
+                          {weakness}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <hr />
-          {/* Your Job Function Fit style barchart */}
-          <div className="competence">Your Job Function Fit</div>
-          <div>
-            <Chart
-              width={"100%"}
-              height={"500px"}
-              chartType="Bar"
-              loader={<div>Loading Chart</div>}
-              data={[
-                ["Skills", "Score"],
-                ["Persuasion", 600],
-                ["Agile Work Ethic", 500],
-                ["Technical Mastery", 300],
-                ["Counselling", 350],
-                ["Admin", 350],
-                ["Eloquence", 950],
-                ["Technology Appreciation", 750],
-                ["Technical Mechanical", 650],
-              ]}
-              options={{
-                backgroundColor: "red",
-                chart: {
-                  title: "",
-                },
-                colors: ["#001833"],
-              }}
-              rootProps={{ "data-testid": "2" }}
-            />
-          </div>
-          <hr />
-          <div className="otherinfo">
-            <span className="ikls">
-              Description of your top job function fit (aspects of an
-              organization you can thrive in)
-            </span>{" "}
-            <br />
-            <span className="ikls">
-              Management (Entrepreneurship or C-level suite)
-            </span>
+            <hr />
             <div>
-              {" "}
-              You enjoy setting the strategy and seeing it executed. You would
-              thrive in roles where you have the ultimate decision-making
-              authority from operations; determining the direction taken by a
-              work team, a business unit, or an entire company; and controlling
-              resources to actualize a business vision.
+              <div className="competence">Your Strong Competences</div>
+            </div>
+            <div className="row">
+              <div className="resultt col-md-6">
+                {client?.strong_career_competences?.graph1?.map(
+                  (data, index) => {
+                    return (
+                      <div className="">
+                        <div className="ttp1">{data.name}</div>
+                        <Testing value={data.value} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+              <div className="resultt col-md-6">
+                {client?.strong_career_competences?.graph2?.map(
+                  (data, index) => {
+                    return (
+                      <div className="">
+                        <div className="ttp1">{data.name}</div>
+                        <Testing value={data.value} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </div>
+            <div className="otherinfo">
+              {client?.strong_career_competences?.fields?.map((data, index) => (
+                <div>
+                  <span className="ikls">{data.name} </span> {data.value}
+                  <br />
+                </div>
+              ))}
+            </div>
+            <hr/>
+            {/* Average Competence Starts Here */}
+            <div>
+              {client?.average_career_competences &&
+              client?.average_career_competences?.graph1.length > 0 ? (
+                <div className="competence">Average Competences</div>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="row">
+             <div className="resultt col-md-6">
+                {client?.average_career_competences?.graph1?.map(
+                  (data, index) => {
+                    return (
+                      <div className="">
+                        <div className="ttp1">{data.name}</div>
+                        <Testing value={data.value} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+              <div className="resultt col-md-6">
+                {client?.average_career_competences?.graph2?.map(
+                  (data, index) => {
+                    return (
+                      <div className="">
+                        <div className="ttp1">{data.name}</div>
+                        <Testing value={data.value} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </div>
+            <div className="otherinfo">
+              {client?.average_career_competences?.fields?.map(
+                (data, index) => (
+                  <div>
+                    <span className="ikls">{data.name} </span> {data.value}
+                    <br />
+                  </div>
+                )
+              )}
+            </div>
+            <hr/>
+            {/* ?akskks? */}
+            {/* Average Competence Starts Here */}
+            <div>
+              {client?.weak_career_competences
+              ? (
+                <div className="competence">Weak Career Competence</div>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="row"> 
+              <div className="resultt col-md-6">
+                {client?.weak_career_competences?.graph1?.map(
+                  (data, index) => {
+                    return (
+                      <div className="">
+                        <div className="ttp1">{data.name}</div>
+                        <Testing value={data.value} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+              <div className="resultt col-md-6">
+                {client?.weak_career_competences?.graph2?.map(
+                  (data, index) => {
+                    return (
+                      <div className="">
+                        <div className="ttp1">{data.name}</div>
+                        <Testing value={data.value} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </div>
+            <div className="otherinfo">
+              {client?.weak_career_competences?.fields?.map((data, index) => (
+                <div>
+                  <span className="ikls">{data.name} </span> {data.value}
+                  <br />
+                </div>
+              ))}
             </div>
             <br />
-            <span className="ikls">Sales & Marketing </span>{" "}
+            <hr />
+            <br />
             <div>
-              {" "}
-              You enjoy persuading others, to buy a product, service, proposal
-              or cause. You would thrive in roles that enable you make
-              persuasive presentations to interested parties to buy something,
-              support an initiative, or contribute resources to a project.{" "}
+              <div className="competence">
+                Most Suitable Career-Business Expression
+              </div>
+              {client?.career_business_expression?.map((doc, index) => (
+                <div className="resultsec2" key={index}>
+                  <div className="resultsec22">
+                    <CirclePie
+                      width={190}
+                      height={190}
+                      strokeWidth={5}
+                      labelColor={"#fff"}
+                      labelFontSize={"38px"}
+                      strokeColor={"#fff"}
+                      railColor={"#17375c77"}
+                      fillColor={"#001833"}
+                      percent={doc?.score}
+                      padding={0}
+                    />
+                  </div>
+                  <div className="csfitscore">
+                    <div className="csfitscore1">
+                      {this.capitalize(doc?.industry)}
+                    </div>
+                    {doc?.fields?.map((item, index) => (
+                      <div className="csbody" key={index}>
+                        <span className="competence1">
+                          {this.capitalize(item.name)}
+                        </span>
+                        :{this.capitalize(item.value)} <br />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              <div className="nlodd">
+                <div className="resultsec13">
+                  <div className="reskwrap13">
+                    <div className="csfitscore1 reskheader">
+                      Your Top Career Drivers
+                    </div>
+
+                    {client?.career_drivers?.highlights?.map((data, index) => (
+                      <div className="" key={index}>
+                        <div>{data}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <img
+                      src={thdlogo}
+                      className="secondlogo img-fluid"
+                      alt="secondlogo"
+                    />
+                  </div>
+                </div>
+              </div>
+              {/* white background section */}
+              {client?.career_drivers?.fields?.map((data, index) => (
+                <div>
+                  <div className="stbly">
+                    <div className="stbly1">{data.heading}</div>
+                    <div>{data.body}</div>
+                  </div>
+                  <div className="tipswrapper">
+                    <div>
+                      <div className="stbly1">
+                        Tips to Harnessing This Motivator:
+                      </div>
+                      {data?.tips?.map((dataindata, index) => (
+                        <div key={index}>
+                          {index + 1}.{"  "}
+                          {dataindata}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="notice">
+                      <img src={notice} className="noticee" alt="notice" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {/* dark blue background section */}
+              {/* Your work style */}
+              <div className="competence">Your Work Style</div>
+              <div>
+                <div className="kz1">
+                  {client?.work_style?.map((data, index) => (
+                    <div className="contkflex" key={index}>
+                      <div className="kz2">
+                        <img src={vector1} className="kl3" alt="vector2" />
+                        <div>{data.name}</div>
+                      </div>
+                      <div className="kz12">
+                        <ul className="grapwrap">
+                          {data.value.map((dataindata, index) => (
+                            <li className="grapssin">{dataindata}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <hr />
+              {/* Your Job Function Fit style barchart */}
+              <div className="competence">Your Job Function Fit</div>
+              <div className="chartss row">
+              <div className="resultt col-md-6">
+                {client?.job_function_fit?.graph1?.map(
+                  (data, index) => {
+                    return (
+                      <div className="">
+                        <div className="ttp1">{data.name}</div>
+                        <Testing value={data.value} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+              <div className="resultt col-md-6">
+                {client?.job_function_fit?.graph2?.map(
+                  (data, index) => {
+                    return (
+                      <div className="">
+                        <div className="ttp1">{data.name}</div>
+                        <Testing value={data.value} />
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+              </div>
+              <hr />
+              <div className="otherinfo">
+                {client?.job_function_fit?.field?.map((dataindata, index) => (
+                  <div key={index}>
+                    <span className="ikls">{dataindata.name} </span>{" "}
+                    <div> {dataindata.value}. </div>
+                    <br />
+                  </div>
+                ))}
+              </div>
             </div>
+          </Col>
+        ) : (
+          <div>
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
           </div>
-        </div>
-      </Col>
-    </>
-  );
-};
+        )}
+      </>
+    );
+  }
+}
 
 export default KigenniRemainingResult;
