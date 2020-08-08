@@ -75,14 +75,14 @@ const SignIn: React.FunctionComponent = (props: any) => {
       .catch((error) => {
         console.log(error.response);
         if (error && error.response && error.response.data) {
-          setFormState({
+          return setFormState({
             ...state,
             errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
           });
         }
-        if(error && error.response.status===404){
-         return setFormState({
+        if (error && error?.response?.status === 404) {
+          return setFormState({
             ...state,
             errorMessage: error?.response?.data.error,
             isLoading: false,
@@ -108,8 +108,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
         ...state,
         errorMessage: "Please enter your password",
       });
-    }
-    else{
+    } else {
       sendFormData();
     }
   };
@@ -120,14 +119,30 @@ const SignIn: React.FunctionComponent = (props: any) => {
         console.log(response);
         if (
           (response.status === 200 &&
+            response.data[0].next === "phase_four_nature") ||
+          response.data[0].next === "phase_four_health" ||
+          response.data[0].next === "phase_four_building" ||
+          response.data[0].next === "phase_four_creative"
+        ) {
+          return props.history.push(`/assessmentphasefour`);
+        }
+        if (
+          (response.status === 200 &&
             response.data[0].next === "phase_four_sports") ||
           response.data[0].next === "phase_four_business" ||
-          response.data[0].next === "phase_four_stem"
+          response.data[0].next === "phase_four_stem" ||
+          response.data[0].next === "phase_four_humanitarian"
         ) {
           return props.history.push(`/assessmentphasefour1`);
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
           return props.history.push(`/assessmentphaseone`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "onboarding_chat"
+        ) {
+          return props.history.push(`/clientchat`);
         }
         if (response.status === 200 && response.data[0].next === "phase_two") {
           return props.history.push(`/assessmentphasetwo`);
@@ -313,7 +328,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
                 <div className="centeredline"></div>
               </h6>
               <div className="socialwrapper">
-                <div className="socialIcons1">
+                {/* <div className="socialIcons1">
                   <FacebookAuth
                     appId="950826675353579"
                     callback={authenticate}
@@ -321,7 +336,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
                     autoLoad={false}
                     reAuthenticate={true}
                   />
-                </div>
+                </div> */}
                 <GoogleLogin
                   clientId="53707797583-8rbiv5j6gdac35ik840rtcc65pklp9e9.apps.googleusercontent.com"
                   render={(renderProps) => (
@@ -339,9 +354,9 @@ const SignIn: React.FunctionComponent = (props: any) => {
                   onFailure={errorGoogle}
                   cookiePolicy={"single_host_origin"}
                 />
-                <div className="socialIcons3">
+                {/* <div className="socialIcons3">
                   <img src={linkedin} alt="fb" />
-                </div>
+                </div> */}
               </div>
             </Form>
           </Col>

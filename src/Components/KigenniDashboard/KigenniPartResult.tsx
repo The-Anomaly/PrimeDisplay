@@ -14,7 +14,7 @@ import thdlogo from "../../assets/gift.png";
 import vector1 from "../../assets/whiteicon1.png";
 import vector2 from "../../assets/whiteicon2.png";
 import notice from "../../assets/notice.png";
-import HorizontalBar from './HorizontalBar';
+import HorizontalBar from "./HorizontalBar";
 
 interface State {
   fullname: string;
@@ -91,8 +91,7 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         if (response?.data[0]?.message === true) {
-          //  return window.location.assign("/kigenni/fullresult")
-          // return browserHistory.push("/kigenni/fullresult");
+          return window.location.assign("/thirdpary/fullresult");
         }
       })
       .catch((error) => {
@@ -169,6 +168,25 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
             </div>
           </div>
           <hr />
+          <div>
+            <div className="tipswrapper">
+              <div>
+                <div className="stbly1">
+                  {client?.career_fitness?.quick_fix?.heading}
+                </div>
+                {client?.career_fitness?.quick_fix?.body?.map((data, index) => (
+                  <div key={index}>
+                    {index + 1}.{"  "}
+                    {data}
+                  </div>
+                ))}
+              </div>
+              <div className="notice">
+                <img src={notice} className="noticee" alt="notice" />
+              </div>
+            </div>
+          </div>
+          <hr />
           <div className="resultsec3">
             <div className="reskwrap">
               <div className="csfitscore1 reskheader">
@@ -180,28 +198,28 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
             </div>
           </div>
           <div className="resultsec31">
-              <div className="col-md-6">
-                <img
-                  src={secondlogo}
-                  className="secondlogo pds"
-                  alt="secondlogo"
-                />
-              </div>
-              <div className="resultt col-md-6">
-                {client?.career_personality_type?.graph?.map((data, index) => {
-                  return (
-                    <div className="">
-                      <div className="ttp">{data.name}</div>
-                      <HorizontalBar value={data.value.value1} />
-                      <div className="btmwrap">
-                        <div>{data.value.name1}</div>
-                        <div>{data.value.name2}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+            <div className="col-md-6">
+              <img
+                src={secondlogo}
+                className="secondlogo pds"
+                alt="secondlogo"
+              />
             </div>
+            <div className="resultt col-md-6">
+              {client?.career_personality_type?.graph?.map((data, index) => {
+                return (
+                  <div className="">
+                    <div className="ttp">{data.name}</div>
+                    <HorizontalBar value={data.value.value1} />
+                    <div className="btmwrap">
+                      <div>{data.value.name1}</div>
+                      <div>{data.value.name2}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
           <div className="nlodd">
             <div className="resultsec13">
               <div className="reskwrap13">

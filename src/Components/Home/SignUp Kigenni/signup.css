@@ -171,7 +171,7 @@ button.subbtn.ncn.btn.btn-primary{
 .socialwrapper{
     display: flex;
     margin-top: 1.5rem;
-    justify-content: space-between;
+    justify-content:center;
 }
 .socialIcons1{
     border: 1px solid #345495;

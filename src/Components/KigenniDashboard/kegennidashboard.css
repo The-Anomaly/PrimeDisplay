@@ -57,6 +57,7 @@
   margin-bottom: 1.2rem;
   border-radius: 6px;
   justify-content: space-around;
+  flex-direction: row;
 }
 .kprofile {
   font-size: 15px;
@@ -138,6 +139,10 @@
   .kdasharea {
     flex-wrap: wrap;
   }
+  .kfirstlogo {
+    width: 100%;
+    height: 180px;
+  }
 }
 @media (min-width: 780px) {
   .lkl {
@@ -170,7 +175,7 @@
   justify-content: center;
 }
 .resultt {
-  padding: 2rem;
+  padding: 1rem 0.1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -193,6 +198,11 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 1rem;
+  transition: transform 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.kitemwrapper:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 10px 18px #888888;
 }
 .v1strength {
   color: rgb(138, 136, 136);
@@ -259,7 +269,7 @@
 }
 .competence {
   margin-top: 3rem;
-  margin-bottom: .3rem;
+  margin-bottom: 1.3rem;
   font-weight: 700;
   letter-spacing: -0.3px;
   color: #001833;
@@ -310,10 +320,19 @@
 
 @media (max-width: 600px) {
   .kdasharea {
+    background: rgb(236, 236, 236);
+    display: flex;
     flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+    border-radius: 6px;
+    justify-content: space-around;
+    flex-direction: column-reverse;
   }
   .kfirstlogo {
     min-width: 211px;
+  }
+  .payheader {
+    font-size: 20px;
   }
   .resultsec2 {
     background: #ececec;
@@ -322,6 +341,7 @@
   }
   .resultsec3 {
     flex-wrap: wrap;
+    border-radius: 14px;
   }
   .noticee {
     display: none;
@@ -364,10 +384,16 @@
   }
   .kprofile2 {
     padding-left: 1rem;
+    font-size: 28px;
+    line-height: 30px;
   }
   .resultsec22 {
     margin-left: 1rem;
     margin-bottom: 1rem;
+  }
+  .kprofilewrap {
+    padding-left: 27vw;
+    padding-top: 2rem;
   }
 }
 
@@ -375,6 +401,151 @@
   font-size: 16px;
   font-weight: 900;
 }
+@media (max-width: 500px) {
+  .contkflex {
+    box-shadow: 1.5px 6px 10px rgba(24, 33, 77, 0.25);
+    border-radius: 10px;
+  }
+  .ttp1{
+    font-size: 14px;
+  }
+  .resultsec22{
+    margin: 0px;
+  }
+  .kl3 {
+    width: 27px;
+  }
+  .grapwrap {
+    text-align: left;
+    padding: 1rem 1rem;
+    line-height: 1.5;
+    word-spacing: 4px;
+  }
+  .resultsec2 {
+    background: #001833;
+  }
+  .career221 {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 26px;
+    text-align: justify;
+    word-spacing: 4px;
+    letter-spacing: -0.3px;
+  }
+  .competence1 {
+    color: #fff;
+  }
+  .cptext {
+    line-height: 1.8;
+    word-spacing: 4px;
+  }
+  .resultsec2 {
+    justify-content: center;
+    border-radius: 8px;
+  }
+  .csfitscore {
+    background: #001833;
+    color: #fff;
+  }
+  .csfitscore1 {
+    display: none;
+  }
+  .reskwrap {
+    padding-left: 0.5rem;
+    padding-top: 2.3rem;
+    padding-right: 0.2rem;
+    padding-bottom: 2rem;
+  }
+  .secondlogo {
+    display: none;
+  }
+  .careerpersonalityheader {
+    color: #001833;
+    font-size: 22px;
+    font-weight: 600;
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+    text-align: center;
+  }
+  .resultsec3 {
+    justify-content: center;
+  }
+  .csfitscore2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+    width: 100%;
+    text-align: center;
+  }
+  .tipstext {
+    word-spacing: 4.2px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 26px;
+    /* or 236% */
+    letter-spacing: -0.3px;
+  }
+  .tttpt{
+    padding-bottom: 1rem;
+  }
+  .csbody {
+    color: #fff;
+    padding-right: 0.3rem;
+    font-weight: 200;
+    font-size: 14px;
+    padding-bottom: 2rem;
+    word-spacing: 4.2px;
+    line-height: 26px;
+    opacity: .8;
+  }
+  .kigennidisabled {
+    display: none;
+  }
+  .juki {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+  }
+  .tipswrapper {
+    padding: 1rem;
+  }
+  .stbly1 {
+    text-align: center;
+    font-size: 17px;
+  }
+  .noticeee {
+    display: flex;
+    justify-content: center;
+  }
+  .noticeee1 {
+    width: 27px;
+  }
+  .underlinee {
+    border: 1px solid;
+    width: 90px;
+    margin: auto;
+  }
+}
+@media (min-width: 501px) {
+  .noticeee {
+    display: none;
+  }
+  .underlinee{
+    display:none;
+  }
+  .csfitscore2 {
+    display: none;
+  }
+  .liuii {
+    color: #fff;
+  }
+  .careerpersonalityheader {
+    display: none;
+  }
+}
+
 @media (max-width: 500px) {
   .vbnc1 {
     padding-bottom: 0.8rem;
@@ -391,17 +562,18 @@ a:hover {
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
+  word-spacing: 1.6px;
   line-height: 62px;
   text-align: center;
   letter-spacing: -2.4px;
-  color: #001833;
+  color: #001833ec;
 }
 .slcplan {
   color: #fff;
   background: #9c1258;
   display: block;
   padding: 0.4rem 1.5rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   width: 100%;
   text-align: center;
   border-radius: 1rem;
@@ -411,7 +583,7 @@ a:hover {
   background: transparent;
   display: block;
   padding: 0.4rem 1.5rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   width: 100%;
   text-align: center;
   color: #001833;
@@ -422,8 +594,8 @@ a:hover {
 .lmi1 {
   display: flex;
   align-items: center;
-  padding-top: 4.6rem;
-  padding-bottom: 1rem;
+  padding-top: 1.6rem;
+  padding-bottom: -0.9rem;
 }
 
 .lmi2 {
@@ -438,7 +610,12 @@ a:hover {
   font-size: 2rem;
   padding-right: 0.4rem;
 }
-
+.amurt {
+  text-decoration: line-through;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444444;
+}
 .amut1 {
   width: 30%;
   line-height: 1;
@@ -465,62 +642,371 @@ a:hover {
   border-radius: 8px;
   margin-top: 1rem;
 }
-.prems{
+.prems {
   font-size: 14px;
   font-weight: 700;
 }
-.premq{
+.premq {
   font-size: 14px;
 }
-.premq1{
+.premq1 {
   font-size: 14px;
   padding-bottom: 1.3rem;
 }
-.comps1{
+.comps1 {
   font-size: 13px;
   font-weight: 400;
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 .comps2 {
   font-size: 13px;
   font-weight: 500;
-  padding-top: .1rem;
+  padding-top: 0.1rem;
+  line-height: 2;
 }
-.slcplan{
+.slcplan {
   cursor: pointer;
 }
-.pds{
-  width:100%;
+.pds {
+  width: 100%;
 }
 
 .resultsec31 {
-    display: flex;
-    margin-top: 1.2rem;
-    justify-content: space-between;
-    background-color: #fff;
-    border-radius: 6px;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+  display: flex;
+  margin-top: 1.2rem;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
-.ttp{
+.ttp {
   text-align: center;
   font-weight: 600;
   font-size: 15px;
 }
-.ttp1{
+.ttp1 {
   text-align: left;
   font-weight: 500;
   font-size: 15px;
   padding-left: 1rem;
 }
-.btmwrap{
+.btmwrap {
   display: flex;
   justify-content: space-between;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 @media (max-width: 400px) {
-  .resultt{
-    padding: .1rem;
+  .resultt {
+    padding: 0.1rem;
   }
+}
+.retaketest {
+  background: #32335a;
+  border-radius: 1rem;
+  color: #fff;
+  border: 1px solid #32335a;
+}
+.retaketest:hover {
+  background: #32335a;
+  color: #fff;
+  border: 1px solid #32335a;
+}
+.retaketest1 {
+  background: #9c1258;
+  color: white;
+}
+.fkexx {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 3rem;
+}
+
+.percentoff {
+  font-size: 12px;
+  background: #ec9bc3;
+  color: #ececec;
+  margin-left: 0.5rem;
+}
+.modal-content {
+  border-radius: 0.6rem !important;
+}
+.feedbackques {
+  font-size: 13px;
+  padding-bottom: 0.2rem;
+}
+.modal-header {
+  border-bottom: none;
+}
+.modal-footer {
+  border-top: none;
+}
+.feedbackheader {
+  font-size: 14px;
+}
+.modal-content {
+  padding: 1rem;
+}
+@media (min-width: 576px) {
+  .modal-sm {
+    max-width: 429px;
+  }
+}
+textarea.form-control {
+  height: 93px;
+  padding: 10px 2rem;
+}
+::placeholder {
+  font-size: 14px;
+}
+.oius {
+  font-size: 14px;
+}
+.selecss {
+  margin-top: 0.1rem;
+}
+.flexsa {
+  display: flex;
+}
+.copylink {
+  color: #3965ff;
+  font-size: 13px;
+  /* display: inline-block; */
+  background: rgba(57, 100, 255, 0.315);
+  margin-left: 0.4rem;
+  /* display: flex; */
+  align-items: center;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  width: 215px;
+  border: none;
+  border-radius: 0.5rem;
+}
+.losj {
+  margin-bottom: 0.5rem;
+  font-size: 13px;
+}
+.selectopt {
+  border-color: #fff;
+}
+.getlink {
+  width: 36px;
+  margin-right: 0.2rem;
+}
+.bvcc {
+  display: flex;
+  padding-bottom: 0.4rem;
+}
+.feedbackques1 {
+  font-size: 12px;
+}
+.alert-success {
+  left: 22%;
+  text-align: center;
+  margin: auto;
+}
+.react-calendar {
+  width: inherit !important;
+  border: 0px solid #a0a096 !important;
+}
+.scheduleheader {
+  text-align: center;
+  letter-spacing: -2.4px;
+  font-size: 1.7em;
+  color: #001833;
+  padding-bottom: 1rem;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: #bbbbbb7e !important;
+  /* background: #fafbfd !important; */
+}
+.react-calendar__tile
+  .react-calendar__month-view__days__day
+  .react-calendar__month-view__days__day--weekend {
+  color: #ececec !important;
+}
+.react-calendar__tile--now {
+  background: none !important;
+  color: #a0a096 !important;
+}
+abbr[data-original-title],
+abbr[title] {
+  color: #a0a096 !important;
+}
+.fw2 {
+  margin-top: 1rem;
+}
+.whatdou {
+  border: 0px transparent;
+  background: #f5f7f9 !important;
+  border-radius: 8px;
+  padding-left: 2rem;
+}
+
+.react-calendar button {
+  color: #3a405b !important;
+  font-size: 12px !important;
+}
+.react-calendar__tile--active:enabled:hover {
+  color: #6e6e6e !important;
+  width: none !important;
+}
+.react-calendar__tile--active:enabled:focus {
+  color: #fff !important;
+  width: none !important;
+}
+.activeDate {
+  color: #3a405b !important;
+  text-align: center;
+  border: 1px solid rgba(226, 223, 223, 0.596);
+  border-bottom: 0.1px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  border-left: 0px;
+  border-right: 0px;
+  height: 35px;
+}
+.availabledate {
+  text-align: center;
+  color: #a5a5a5;
+  border: 1px solid rgba(226, 223, 223, 0.596);
+  border-bottom: 0.1px;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: not-allowed;
+  align-items: center;
+  border-left: 0px;
+  border-right: 0px;
+  height: 35px;
+}
+.availabledatewrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+}
+.bordenone {
+  border-bottom: none;
+}
+.shex {
+  justify-content: space-between;
+}
+.booksession {
+  background: #9c1258;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 1.6rem !important;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.jcenter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.notop {
+  border-top: 0px solid;
+}
+.enter11 {
+  font-size: 14px;
+  color: #6e6e6e;
+  padding-left: 0.4rem;
+  padding-bottom: 0.5rem;
+  position: relative;
+  top: 1.5rem;
+}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: none;
+  color: #3965ff;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background: transparent !important;
+  color: #3965ff;
+}
+
+.react-calendar__tile:disabled {
+  background: #fafbfd !important;
+  cursor: not-allowed;
+  color: #cac6c6 !important;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: #3965ff !important;
+}
+
+.leavereveiw {
+  padding-bottom: 1rem;
+  cursor: pointer;
+}
+.btnws {
+  font-size: 12px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 1rem;
+  min-width: 80px;
+}
+
+@media (max-width: 600px) {
+  .payheader {
+    font-size: 20px;
+  }
+  .centerr1 {
+    margin: auto;
+    margin-bottom: 4rem;
+  }
+}
+
+.write {
+  position: relative;
+  top: 1.9rem;
+  width: 13px;
+  left: 0.5rem;
+}
+@media (max-width: 500px) {
+  .calwrapper {
+    margin-bottom: 1rem;
+    margin-right: 0rem;
+  }
+  .fw2 {
+    margin-top: 0rem;
+  }
+  .leastbusexp {
+    text-align: center;
+  }
+}
+.calwrapper {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  padding-top: 0.5rem;
+  margin-right: 1rem;
+}
+.leastbusexp {
+  padding-top: 4rem;
+  color: #001833;
+  font-size: 22px;
+  font-weight: 600;
+  padding-top: 1rem;
+  padding-bottom: 0.4rem;
+  text-align: left;
+}
+.jksk {
+  margin-top: 3rem;
+}
+
+.fba{
+  margin-bottom: 1rem;
 }

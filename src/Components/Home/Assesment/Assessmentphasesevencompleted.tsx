@@ -49,7 +49,7 @@ const AssessmentSeventhPhaseComplete = () => {
                     your report
                   </div>
                   <div className="awesome2">
-                    <Link to="/kigenni/dashboard">
+                    <Link to="/free/dashboard">
                       <button className="awesomebtn">Get Results</button>
                     </Link>
                     <Link to="/">

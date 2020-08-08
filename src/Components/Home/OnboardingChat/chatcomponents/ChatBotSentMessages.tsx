@@ -1,16 +1,17 @@
-import * as React from 'react';
+import * as React from "react";
 
 interface ChatBotProps {
-    message:string
+  message: [];
 }
 
 const ChatBotSentMessages: React.FunctionComponent<ChatBotProps> = (props) => {
+  console.log(props)
   return (
-      <>
-        <div className="chatbotText">
-            {props.message}
-        </div>
-      </>
+    <>
+      {props?.message?.map((data, index) => {
+        return <div className="chatbotText sentbg" key={index}>{data}</div>;
+      })}
+    </>
   );
 };
 

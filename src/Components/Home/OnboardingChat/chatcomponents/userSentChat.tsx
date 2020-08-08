@@ -1,19 +1,19 @@
-import * as React from 'react';
-import chatgirl from '../../../../assets/chatgirl.png';
-
+import * as React from "react";
+import chatgirl from "../../../../assets/chatgirl.png";
 
 
 interface sentChatProps {
-    message:string
+  message: [];
 }
 
 const UserSentChat: React.FunctionComponent<sentChatProps> = (props) => {
   return (
-      <>
-        <div className="chatbotText">
-            {props.message}
-        </div>
-      </>
+    <>
+      {props.message?.map((data, index) => {
+        return (<div className="chatbotText userbg" key={index}>{data}</div>);
+      })
+    }
+    </>
   );
 };
 

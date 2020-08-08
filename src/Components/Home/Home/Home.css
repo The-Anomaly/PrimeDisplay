@@ -661,6 +661,12 @@ button{
   padding: 0.7rem 2rem;
   border-radius: 2.5rem;
 }
+.shiftlefff{
+  transition: transform .2s cubic-bezier(.785,.135,.15,.86) 0s;
+}
+.shiftlefff:hover{
+  transform: scale(1.05);
+}
 
 .line1active{
   transform: rotateZ(206deg);

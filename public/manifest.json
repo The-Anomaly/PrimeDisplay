@@ -3,19 +3,14 @@
   "name": "Clarity",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "./clarity.png",
+      "type": "image/png",
+      "sizes": "30x9"
     },
     {
-      "src": "logo192.png",
+      "src": "./clarity.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "clarity.png",
-      "type": "image/png",
-      "sizes": "144x144"
+      "sizes": "30x9"
     }
   ],
   "start_url": ".",

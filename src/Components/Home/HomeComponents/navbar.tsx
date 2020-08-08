@@ -1,11 +1,13 @@
 import * as React from "react";
 import demoLogo from "../../../assets/clarity.png";
 import SideNav from "react-simple-sidenav";
-import { Link,Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "../Home/animate.css";
 import { NavIsLoggedOut } from "./isloggedout";
 import { NavIsLoggedIn } from "./isloggedIn";
 import { useEffect } from "react";
+import Axios from "axios";
+import { API } from "../../../config";
 
 const Navbar: React.FC = (props: any) => {
   const [state, setShowNav] = React.useState({
@@ -13,7 +15,7 @@ const Navbar: React.FC = (props: any) => {
     userLoggedIn: false,
     redirect: false,
   });
-  const { showNav, userLoggedIn,redirect } = state;
+  const { showNav, userLoggedIn, redirect } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
     const availableToken = sessionStorage.getItem("userToken");
@@ -32,13 +34,73 @@ const Navbar: React.FC = (props: any) => {
   };
   const renderRedirect = () => {
     if (redirect) {
-      return <Redirect to='/' />
+      return <Redirect to="/" />;
     }
-  }
+  };
 
   const logout = () => {
     sessionStorage.clear();
-    setRedirect()
+    setRedirect();
+  };
+  const getCurrentAssessmentPosition = (): void => {
+    const availableToken = sessionStorage.getItem("userToken");
+    const token: string = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get(`${API}/progress`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        if (
+          (response.status === 200 &&
+            response.data[0].next === "phase_four_nature") ||
+          response.data[0].next === "phase_four_health" ||
+          response.data[0].next === "phase_four_building" ||
+          response.data[0].next === "phase_four_creative"
+        ) {
+          return props.history.push(`/assessmentphasefour`);
+        }
+        if (
+          (response.status === 200 &&
+            response.data[0].next === "phase_four_sports") ||
+          response.data[0].next === "phase_four_business" ||
+          response.data[0].next === "phase_four_stem" ||
+          response.data[0].next === "phase_four_humanitarian"
+        ) {
+          return props.history.push(`/assessmentphasefour1`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_one") {
+          return props.history.push(`/assessmentphaseone`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_two") {
+          return props.history.push(`/assessmentphasetwo`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "phase_three"
+        ) {
+          return props.history.push(`/assessmentphasethree`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_five") {
+          return props.history.push(`/assessmentphasefive`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_six") {
+          return props.history.push(`/assessmentphasesix`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "phase_seven"
+        ) {
+          return props.history.push(`/assessmentphaseseven`);
+        }
+        if (response.status === 200 && response.data[0].next === "home") {
+          return props.history.push(`/free/dashboard`);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const uniqueKeygen = (): number => {
     return Math.floor(Math.random() * 100);
@@ -110,16 +172,37 @@ const Navbar: React.FC = (props: any) => {
                     <Link to="/faq">Faq</Link>
                   </div>
                   <div className="listwraperMob">Privacy Policy</div>
-                  <div className="listwraperMob">
-                    <Link to="/signin">
-                      <div className="navmobbtn">Login</div>
-                    </Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/signup">
-                      <div className="navmobbtn">Sign Up</div>
-                    </Link>
-                  </div>
+                  {!userLoggedIn && (
+                    <>
+                      <div className="listwraperMob">
+                        <Link to="/signin">
+                          <div className="navmobbtn">Login</div>
+                        </Link>
+                      </div>
+                      <div className="listwraperMob">
+                        <Link to="/signup">
+                          <div className="navmobbtn">Sign Up</div>
+                        </Link>
+                      </div>
+                    </>
+                  )}
+                  {userLoggedIn && (
+                    <>
+                      <div className="listwraperMob">
+                        <div className="navmobbtn" onClick={logout}>
+                          Logout
+                        </div>
+                      </div>
+                      <div className="listwraperMob">
+                        <div
+                          className="navmobbtn"
+                          onClick={getCurrentAssessmentPosition}
+                        >
+                          Dashboard
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>,
               ]}
             />

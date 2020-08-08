@@ -504,15 +504,6 @@ const Assessmentfourthphase_1 = (props: any) => {
                       </div>
                     </div>
                   </Col>
-                  <Col md={1} className=" smalldisplay">
-                    <span
-                      className="rightarrow"
-                      title="Submit"
-                      onClick={submitForm}
-                    >
-                      &#8594;
-                    </span>
-                  </Col>
                 </Row>
               </Col>
               <ToastContainer

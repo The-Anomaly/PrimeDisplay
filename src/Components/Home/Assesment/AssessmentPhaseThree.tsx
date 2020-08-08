@@ -1,46 +1,46 @@
-import * as React from 'react';
-import '../Home/Home.css';
-import './assessment.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Footer from '../HomeComponents/footer';
-import Navbar from '../HomeComponents/navbar';
-import clock from '../../../assets/clock.png';
-import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-import { AssessmentFirstSection } from './AssessmentComponents/AssessmentFirstSection';
-import axios from 'axios';
-import { API } from '../../../config';
-import { ToastContainer, toast } from 'react-toastify';
+import * as React from "react";
+import "../Home/Home.css";
+import "./assessment.css";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Footer from "../HomeComponents/footer";
+import Navbar from "../HomeComponents/navbar";
+import clock from "../../../assets/clock.png";
+import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
+import axios from "axios";
+import { API } from "../../../config";
+import { ToastContainer, toast } from "react-toastify";
 
 // team
 
 const AssessmentThirdPhase = (props: any) => {
   const [value, setValue] = React.useState<number>(0);
   const [state, setCheckboxValue]: any = React.useState({
-    question1: '1',
-    question2: '1',
-    question3: '1',
-    question4: '1',
-    question5: '1',
-    question6: '1',
-    question7: '1',
-    question8: '1',
-    question9: '1',
-    question10: '1',
-    question11: '1',
-    question12: '1',
-    question13: '1',
-    question14: '1',
-    question15: '1',
-    question16: '1',
-    question17: '1',
-    question18: '1',
-    question19: '1',
-    question20: '1',
-    question21: '1',
-    question22: '1',
-    token: '',
+    question1: "1",
+    question2: "1",
+    question3: "1",
+    question4: "1",
+    question5: "1",
+    question6: "1",
+    question7: "1",
+    question8: "1",
+    question9: "1",
+    question10: "1",
+    question11: "1",
+    question12: "1",
+    question13: "1",
+    question14: "1",
+    question15: "1",
+    question16: "1",
+    question17: "1",
+    question18: "1",
+    question19: "1",
+    question20: "1",
+    question21: "1",
+    question22: "1",
+    token: "",
   });
   const {
     question1,
@@ -71,10 +71,10 @@ const AssessmentThirdPhase = (props: any) => {
   //cdm
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
-    const availableToken = sessionStorage.getItem('userToken');
+    const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : props.history.push('/login');
+      : props.history.push("/login");
     setCheckboxValue({ ...state, token });
   }, []);
 
@@ -121,7 +121,7 @@ const AssessmentThirdPhase = (props: any) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          props.history.push('/thirdphasecomplete');
+          props.history.push("/thirdphasecomplete");
         }
       })
       .catch((error) => {
@@ -130,1713 +130,1714 @@ const AssessmentThirdPhase = (props: any) => {
           notify(error.response.data[0].message);
         }
         if (error && error.response == undefined) {
-          notify('Failed to process! try again later');
+          notify("Failed to process! try again later");
         }
       });
   };
 
-  const notify = (message: string) => toast(message, { containerId: 'B' });
+  const notify = (message: string) => toast(message, { containerId: "B" });
 
   return (
     <div>
       <Navbar />
       <Container fluid={true}>
-        <Row className='firstrowcf cftcontent'>
+        <Row className="firstrowcf cftcontent">
           <AssessmentFirstSection
             progressBar={35}
-            phase='Phase 3'
-            nextPhase='Phase 4'
+            phase="Phase 3"
+            nextPhase="Phase 4"
             time={15}
           />
           <Col md={11}>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
-                  a. Paying attention to details is your specialty you can spot
+                <div className="firstquestion">
+                  a.Paying attention to details is your specialty; you can spot
                   errors from miles away
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question1'
+                        name="question1"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question1'
+                        name="question1"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question1'
+                        name="question1"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question1'
+                        name="question1"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question1'
+                        name="question1"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question1'
+                        name="question1"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question1'
+                        name="question1"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
-                b. Planning, organizing and ensuring things are properly done
+                <div className="firstquestion">
+                  b. Planning, organizing and ensuring things are properly done
                   by everyone no matter how annoying the tasks are, is who you
                   are
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question2'
+                        name="question2"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question2'
+                        name="question2"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question2'
+                        name="question2"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question2'
+                        name="question2"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question2'
+                        name="question2"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question2'
+                        name="question2"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question2'
+                        name="question2"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   c. As a student you are/were likely to look for the missing
                   links in what was being taught in class
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question3'
+                        name="question3"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question3'
+                        name="question3"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question3'
+                        name="question3"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question3'
+                        name="question3"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question3'
+                        name="question3"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question3'
+                        name="question3"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question3'
+                        name="question3"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   d. You often ask the questions no one likes to ask
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question4'
+                        name="question4"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question4'
+                        name="question4"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question4'
+                        name="question4"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question4'
+                        name="question4"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question4'
+                        name="question4"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question4'
+                        name="question4"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question4'
+                        name="question4"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   e. Functionality is more important than beauty to you
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question5'
+                        name="question5"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question5'
+                        name="question5"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question5'
+                        name="question5"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question5'
+                        name="question5"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question5'
+                        name="question5"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question5'
+                        name="question5"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question5'
+                        name="question5"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   f. To be honest you are not really exceptional at generating
                   creative ideas, it’s a struggle.
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question6'
+                        name="question6"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question6'
+                        name="question6"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question6'
+                        name="question6"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question6'
+                        name="question6"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question6'
+                        name="question6"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question6'
+                        name="question6"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question6'
+                        name="question6"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   g. You are quick to accommodate and help people, without
                   judging
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question7'
+                        name="question7"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question7'
+                        name="question7"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question7'
+                        name="question7"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question7'
+                        name="question7"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question7'
+                        name="question7"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question7'
+                        name="question7"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question7'
+                        name="question7"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   h. You are known for keeping your friends happy and laughing
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question8'
+                        name="question8"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question8'
+                        name="question8"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question8'
+                        name="question8"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question8'
+                        name="question8"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question8'
+                        name="question8"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question8'
+                        name="question8"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question8'
+                        name="question8"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
-                  i.One of your weaknesses is difficulty to influence/ inspire people to action.
+                <div className="firstquestion">
+                  i.One of your weaknesses is difficulty to influence/ inspire
+                  people to action.
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question9'
+                        name="question9"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question9'
+                        name="question9"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question9'
+                        name="question9"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question9'
+                        name="question9"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question9'
+                        name="question9"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question9'
+                        name="question9"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question9'
+                        name="question9"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   j. You can create the ideas/ initiatives but may find it
                   difficult pulling together the resources needed to implement
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question10'
+                        name="question10"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question10'
+                        name="question10"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question10'
+                        name="question10"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question10'
+                        name="question10"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question10'
+                        name="question10"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question10'
+                        name="question10"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question10'
+                        name="question10"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   k. Negotiating with people to achieve a win-win is an
                   exceptional skill you have
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question11'
+                        name="question11"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question11'
+                        name="question11"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question11'
+                        name="question11"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question11'
+                        name="question11"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question11'
+                        name="question11"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question11'
+                        name="question11"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question11'
+                        name="question11"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   l. You can easily network your way to get what you need from
                   who you need it from.
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question12'
+                        name="question12"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question12'
+                        name="question12"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question12'
+                        name="question12"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question12'
+                        name="question12"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question12'
+                        name="question12"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question12'
+                        name="question12"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question12'
+                        name="question12"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   m. When it comes to work, you have a deep desire to compete
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question13'
+                        name="question13"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question13'
+                        name="question13"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question13'
+                        name="question13"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question13'
+                        name="question13"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question13'
+                        name="question13"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question13'
+                        name="question13"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question13'
+                        name="question13"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   n. You always approach work with vigor and dexterity
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question14'
+                        name="question14"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question14'
+                        name="question14"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question14'
+                        name="question14"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question14'
+                        name="question14"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question14'
+                        name="question14"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question14'
+                        name="question14"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question14'
+                        name="question14"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   o. You disintegrate things and fix them back to satisfy your
                   curiosity
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question15'
+                        name="question15"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question15'
+                        name="question15"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question15'
+                        name="question15"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question15'
+                        name="question15"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question15'
+                        name="question15"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question15'
+                        name="question15"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question15'
+                        name="question15"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   p. You are inquisitive about how things work
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question16'
+                        name="question16"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question16'
+                        name="question16"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question16'
+                        name="question16"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question16'
+                        name="question16"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question16'
+                        name="question16"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question16'
+                        name="question16"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question16'
+                        name="question16"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   q. You find it difficult communicating your points and
                   opinions clearly
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question17'
+                        name="question17"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question17'
+                        name="question17"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question17'
+                        name="question17"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question17'
+                        name="question17"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question17'
+                        name="question17"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question17'
+                        name="question17"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question17'
+                        name="question17"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   r. It takes a while for you to understand instructions or
                   information shared
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question18'
+                        name="question18"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question18'
+                        name="question18"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question18'
+                        name="question18"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question18'
+                        name="question18"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question18'
+                        name="question18"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question18'
+                        name="question18"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question18'
+                        name="question18"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
-                  s. You super proficient in navigating apps and new technology
+                <div className="firstquestion">
+                  s. You are super proficient in navigating apps and new technology
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question19'
+                        name="question19"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question19'
+                        name="question19"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question19'
+                        name="question19"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question19'
+                        name="question19"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question19'
+                        name="question19"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question19'
+                        name="question19"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question19'
+                        name="question19"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
-                  t. You would prefer using an app to quickly get work done
-                  than do it manually first.
+                <div className="firstquestion">
+                  t. You would prefer using an app to quickly get work done than
+                  do it manually first.
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question20'
+                        name="question20"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question20'
+                        name="question20"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question20'
+                        name="question20"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question20'
+                        name="question20"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question20'
+                        name="question20"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question20'
+                        name="question20"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question20'
+                        name="question20"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   u. You keep trying new methods till you find an answer.
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question21'
+                        name="question21"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question21'
+                        name="question21"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question21'
+                        name="question21"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question21'
+                        name="question21"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question21'
+                        name="question21"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question21'
+                        name="question21"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question21'
+                        name="question21"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
             </Row>
-            <Row className='firstrowcf2 cftcontent'>
+            <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className='firstquestion'>
+                <div className="firstquestion">
                   v. You often follow your curiosity about a thing or subject.
                 </div>
-                <div className='rsliderclass9'>
-                  <div className='agree'>Agree</div>
-                  <div className='checkwrapper flipdirection'>
-                    <label className='checkcontainer'>
+                <div className="rsliderclass9">
+                  <div className="agree">Agree</div>
+                  <div className="checkwrapper flipdirection">
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={0}
                         onChange={onchange}
-                        name='question22'
+                        name="question22"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={1}
                         onChange={onchange}
-                        name='question22'
+                        name="question22"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={2}
                         onChange={onchange}
-                        name='question22'
+                        name="question22"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={3}
                         onChange={onchange}
-                        name='question22'
+                        name="question22"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={4}
                         onChange={onchange}
-                        name='question22'
+                        name="question22"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={5}
                         onChange={onchange}
-                        name='question22'
+                        name="question22"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
-                    <label className='checkcontainer'>
+                    <label className="checkcontainer">
                       <input
-                        type='radio'
+                        type="radio"
                         value={6}
                         onChange={onchange}
-                        name='question22'
+                        name="question22"
                       />
-                      <span className='checkmark'></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
-                  <div className='disagree'>Disagree</div>
+                  <div className="disagree">Disagree</div>
                 </div>
               </Col>
               <ToastContainer
                 enableMultiContainer
-                containerId={'B'}
-                toastClassName='bg-danger text-white'
+                containerId={"B"}
+                toastClassName="bg-danger text-white"
                 hideProgressBar={true}
                 position={toast.POSITION.TOP_CENTER}
               />

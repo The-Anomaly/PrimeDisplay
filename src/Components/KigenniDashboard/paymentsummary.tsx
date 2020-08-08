@@ -9,12 +9,13 @@ import { AxiosResponse } from "axios";
 import { API } from "../../config";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import Footer from "../Home/HomeComponents/footer";
 
 interface State {
   successMsg: boolean;
   errorMessage: string;
   user: any;
-  userInfos:any;
+  userInfos: any;
   isLoading: boolean;
 }
 
@@ -24,15 +25,15 @@ declare global {
   }
 }
 
-export default function PaymentSummary(props:any) {
+export default function PaymentSummary(props: any) {
   const [state, setFormState] = React.useState<State>({
     errorMessage: "",
     user: "",
-    userInfos:[],
+    userInfos: [],
     successMsg: false,
     isLoading: false,
   });
-  const { errorMessage, successMsg,userInfos , isLoading } = state;
+  const { errorMessage, successMsg, userInfos, isLoading } = state;
   React.useEffect(() => {
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
@@ -71,51 +72,52 @@ export default function PaymentSummary(props:any) {
   const payWithMonnify = (reference) => {
     const availableUser = sessionStorage.getItem("user");
     var user = availableUser
-    ? JSON.parse(availableUser)
-    : props.history.push("/signin");
+      ? JSON.parse(availableUser)
+      : props.history.push("/signin");
     try {
       window.MonnifySDK.initialize({
-        amount: 5500,
+        amount: 1000,
         currency: "NGN",
         reference,
-        customerFullName:user[0]?.first_name + "  "+ user[0]?.last_name,
+        customerFullName: user[0]?.first_name + "  " + user[0]?.last_name,
         customerEmail: "monnify@monnify.com",
-        customerMobileNumber: "08121281921",
-        apiKey: "MK_TEST_WQZNXHV9FY",
-        contractCode: "4978848198",
-        paymentDescription: "Test Pay",
-        isTestMode: true,
-        onComplete: function(response) {
+        customerMobileNumber: "",
+        apiKey: "MK_PROD_NNSGXTY6LF",
+        contractCode: "722431733218",
+        paymentDescription: "YUDIMY SERVICES LTD",
+        isTestMode: false,
+        redirect: false,
+        onComplete: function (response) {
           moveToFullResult();
-          if(response.paymentStatus=="OVERPAID"){
-             (notify("You current payment has exceeded the amount. The excess amount will be refunded within 24 hours"));
-                return setInterval(
-                    window.location.pathname = "/",
-                10000
+          if (response.paymentStatus == "OVERPAID") {
+            notify(
+              "You current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
-        }
-        if (response.paymentStatus==="PAID"){
+            return setInterval(
+              (window.location.pathname = "/thirdparty/overpaid"),
+              3000
+            );
+          }
+          if (response.paymentStatus === "PAID") {
             // console.log(response)
-                return setInterval(
-                    window.location.pathname = "/dashboard/fullresult",
-                9000
+            return setInterval(
+              (window.location.pathname = "/dashboard/fullresult"),
+              9000
             );
-        }
-        if (response.paymentStatus=="PENDING"){
-            (notify("Payment Pending"));
-                return setInterval(
-                    window.location.pathname = "/",
-                9000
+          }
+          if (response.paymentStatus == "PENDING") {
+            notify("Payment Pending");
+            return setInterval(
+              (window.location.pathname = "/thirdparty/pending"),
+              9000
             );
-        }
+          }
         },
-        onClose: function(data) {
-          //Implement what should happen when the modal is closed here
+        onClose: function (data) {
           console.log(data);
         },
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.log("Failed to initailize payment" + error);
     }
   };
@@ -130,7 +132,7 @@ export default function PaymentSummary(props:any) {
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
     axios
-      .get(`${API}/monnifypaymentreference`,{
+      .get(`${API}/monnifypaymentreference`, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
@@ -161,36 +163,51 @@ export default function PaymentSummary(props:any) {
   const checkIfUserHasAccessToViewAll = () => {
     requestForPayref();
   };
-  const moveToFullResult=()=>{
-    props.history.push("/kigenni/fullresult");
+  const moveToFullResult = () => {
+    props.history.push("/dashboard/fullresult");
   };
   return (
     <div>
       <Navbar />
       <Container fluid={true}>
         <Row className="kli6 bcbv">
-          <Col md={6}>
+          <Col md={8}>
             <div className="payheader">
-              Choose the plan that’s right for you
+              Get your Clarity Counselor's review on your competencies,
+              strengths, weaknesses and career match.
             </div>
+          </Col>
+          <Col md={9}>
             <Row className="centerr">
-              <Col md={4} className="centerr1">
-                <div className="prems">Premium</div>
-                <div className="premq">Get access to your complete result</div>
-                <div className="comps1">
-                  <span>&#10004;</span> Complete Assement Result
+              <Col xs={10} md={4} className="centerr1">
+                <div className="prems"> Counselor's Review</div>
+                <div className="premq">
+                  You'll be getting the counselor's insights on:
                 </div>
+                <div className="comps2"><span>&#10004;</span> Your Strengths</div>
+                <div className="comps2"><span>&#10004;</span> Your Weaknesses</div>
+                <div className="comps2"><span>&#10004;</span> Your Strong Career Competencies </div>
+                <div className="comps2">
+                <span>&#10004;</span> Your Weak & Average Career Competencies
+                </div>
+                <div className="comps2"><span>&#10004;</span> Work Style</div>
+                <div className="comps2"><span>&#10004;</span> The Best Roles To Apply for</div>
                 <div className="lmi1">
-                  <div className="amut">#5000</div>
+                  <div className="amut">&#8358;1,000</div>
                   <div className="amut1">one time payment</div>
                 </div>
-                <div className="slcplan"
+                <div>
+                  <span className="amurt">&#8358;10,000</span>{" "}
+                  <span className="percentoff">90%</span>{" "}
+                </div>
+                <div
+                  className="slcplan"
                   onClick={() => checkIfUserHasAccessToViewAll()}
                 >
-                  {!isLoading?"Select Plan":"processing..."}
+                  {!isLoading ? "Select Plan" : "processing..."}
                 </div>
               </Col>
-              <Col md={4} className="centerr2">
+              <Col xs={10} md={4} className="centerr2">
                 <div className="prems">Starter</div>
                 <div className="premq1">
                   Get access to your first three sections of your assessment
@@ -208,18 +225,15 @@ export default function PaymentSummary(props:any) {
                 <div className="lmi2">
                   <div className="amut">FREE</div>
                 </div>
-                <div
-                  className="slcplan1"
-                >
-                  <Link to="/kigenni/dashboard">
-                    Select Plan
-                  </Link>
+                <div className="slcplan1">
+                  <Link to="/free/dashboard">Select Plan</Link>
                 </div>
               </Col>
             </Row>
           </Col>
         </Row>
       </Container>
+      <Footer/>
     </div>
   );
 }

@@ -280,9 +280,9 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
                 <div className="centeredline"></div>
               </h6>
               <div className="socialwrapper">
-                <div className="socialIcons1">
+                {/* <div className="socialIcons1">
                   <img src={fb} alt="fb" />
-                </div>
+                </div> */}
                 <GoogleLogin
                   clientId="53707797583-8rbiv5j6gdac35ik840rtcc65pklp9e9.apps.googleusercontent.com"
                   render={(renderProps) => (
@@ -300,9 +300,9 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
                   onFailure={errorGoogle}
                   cookiePolicy={"single_host_origin"}
                 />
-                <div className="socialIcons3">
+                {/* <div className="socialIcons3">
                   <img src={linkedin} alt="fb" />
-                </div>
+                </div> */}
               </div>
             </Form>
           </Col>
