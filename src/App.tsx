@@ -36,6 +36,8 @@ import PaymentSummary from "./Components/KigenniDashboard/paymentsummary";
 import OnboardingChatPhase2 from "./Components/Home/OnboardingChat/onboardingchatphase2";
 import CouncellorDates from "./Components/KigenniDashboard/CouncellorDates";
 import CouncellorPaymentSummary from "./Components/KigenniDashboard/counsellorpaymentsummary";
+import EmailVerification from "./Components/Home/SignUpEmailVerification/SignUpEmailVerification";
+
 
 const App: React.FC = () => {
   return (
@@ -162,6 +164,11 @@ const App: React.FC = () => {
               exact
               path="/dashboard/fullresult"
               component={KigenniFullResultPage}
+            />
+                        <Route
+              exact
+              path="/verifyemail/:userid/:token"
+              component={EmailVerification}
             />
           </Switch>
         </BrowserRouter>
