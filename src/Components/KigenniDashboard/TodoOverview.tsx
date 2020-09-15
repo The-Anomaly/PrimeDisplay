@@ -8,13 +8,13 @@ import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 import SideBarNewDashboard from "./SideBarNewDashboard";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import greengood from "../../assets/greengood.png";
-import DashboardNav from './DashboardNavBar';
+import DashboardNav from "./DashboardNavBar";
 
 const TodoOverview = () => {
   return (
     <>
       <Container fluid={true} className="contann122">
-      <DashboardNav ov={true} />
+        <DashboardNav ov={true} />
         <Row>
           <SideBarNewDashboard ov={true} />
           <Col md={10} sm={12} className="prm">
@@ -58,17 +58,31 @@ const TodoOverview = () => {
                       </div>
                     </div>
                     <div className="greenbgcont">
-                        <img src={greengood} className="greengood" alt="goodimage"/>
-                        It Takes alot of Hero to even start a task, But seems
-                        you have super powers. Keep going Champ!!!
+                      <img
+                        src={greengood}
+                        className="greengood"
+                        alt="goodimage"
+                      />
+                      It Takes alot of Hero to even start a task, But seems you
+                      have super powers. Keep going Champ!!!
+                    </div>
+                    <div className="wrapline"></div>
+                    <div className="cww">
+                      <div className="cname">
+                        <div className="cww11">Task Title</div>
+                      </div>
+                      <div className="cdate cww11">Duration</div>
+                      <div className="ctime cww11">Time Created</div>
+                      <div className="ctime cww11">Status</div>
+                      <div className="ctime">
+                      </div>
                     </div>
                     <div className="wrapc2">
                       <div className="userimg22">
                         {/* <img src={userimg} className="userimg" alt="userimg" /> */}
                       </div>
                       <div className="cname">
-                        <div>Jayeola Jones</div>
-                        <div className="cemail1">jaye@user.com</div>
+                        <div>Set Up LinkedIn Profile...</div>
                       </div>
                       <div className="cdate">2 weeks</div>
                       <div className="ctime">09:30 AM - 10:00 AM</div>
@@ -76,16 +90,13 @@ const TodoOverview = () => {
                         <span className="cstatus">Completed</span>
                       </div>
                       <div className="ctime">
-                        <div className="savebtn">View</div>
+                        <div className="savebtn">View More</div>
                       </div>
                     </div>
                     <div className="wrapc2">
-                      <div className="userimg22">
-                        {/* <img src={userimg} className="userimg" alt="userimg" /> */}
-                      </div>
+                      <div className="userimg22"></div>
                       <div className="cname">
-                        <div>Jayeola Jones</div>
-                        <div className="cemail1">jaye@user.com</div>
+                        <div>Set Up LinkedIn Profile...</div>
                       </div>
                       <div className="cdate">2 weeks</div>
                       <div className="ctime">09:30 AM - 10:00 AM</div>
@@ -93,7 +104,7 @@ const TodoOverview = () => {
                         <span className="cstatus pending">Pending</span>
                       </div>
                       <div className="ctime">
-                        <div className="savebtn">View</div>
+                        <div className="savebtn">Complete Task</div>
                       </div>
                     </div>
                     <div className="viewall">View all Task</div>

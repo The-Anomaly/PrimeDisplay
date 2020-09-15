@@ -1725,6 +1725,8 @@ textarea.form-control.jobr {
   display: inline-block;
   font-weight: 700;
   cursor: pointer;
+  width: 122px;
+  text-align: center;
 }
 .printcv {
   padding-bottom: 1rem;
@@ -1957,7 +1959,7 @@ textarea.form-control.jobr {
   flex-direction: column;
   width: 20%;
   min-width: 133px;
-  max-width: 140px;
+  max-width: 170px;
 }
 .cdate {
   font-style: normal;
@@ -1990,10 +1992,16 @@ textarea.form-control.jobr {
   background: #fefefe;
   box-shadow: 0px 2px 6px rgba(24, 33, 77, 0.25);
   border-radius: 8px;
-  padding: 1rem 1rem;
+  padding: 1.4rem 1rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
   width: 97%;
+}
+.wrapline {
+  width: 97%;
+  border-top: 1px solid #bcbcbc;
+  padding-bottom: .7rem;
+  margin-top: 1.2rem;
 }
 .cname1,
 .cdate1,
@@ -2399,7 +2407,6 @@ textarea.form-control.jobr {
   align-items: center;
   text-align: center;
   justify-content: center;
-  letter-spacing: -0.4px;
   color: #1bb978;
   background: #d8f9da;
   border-radius: 8px;
@@ -2407,10 +2414,13 @@ textarea.form-control.jobr {
   width: 97%;
   margin-bottom: 1rem;
 }
-.greengood{
+.greengood {
   width: 25px;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
+}
+.mmber {
+  font-size: 16px;
+  text-align: center;
 }
 .mmber1 {
   text-align: center;
@@ -2418,7 +2428,7 @@ textarea.form-control.jobr {
   font-size: 12px;
   color: #252733;
 }
-.mmber1:hover{
+.mmber1:hover {
   color: inherit;
 }
 .mmber1 {
@@ -2640,4 +2650,17 @@ textarea.form-control.jobr {
   .firstoffour {
     max-width: 191px;
   }
+}
+.cww {
+  box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  flex-wrap: wrap;
+  width: 97%;
+  padding-left: 2rem;
+  padding-bottom: .6rem;
+}
+.cww11{
+  color: #979797 !important;
 }
