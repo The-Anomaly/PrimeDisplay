@@ -283,13 +283,6 @@ const SignIn: React.FunctionComponent = (props: any) => {
                 {errorMessage}
               </Alert>
             )}
-            <Alert key={3} variant="info">
-              <div>
-                {" "}
-                We are upgrading our assessment to give you the best experience
-              </div>
-              <div>Signup to get notified once it goes live</div>
-            </Alert>
             <Form onSubmit={validateForm}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Control

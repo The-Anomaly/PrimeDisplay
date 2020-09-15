@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import "./App.css";
 import Home from "./Components/Home/Home/Home";
 import { About } from "./Components/Home/About/About";
@@ -37,11 +37,35 @@ import OnboardingChatPhase2 from "./Components/Home/OnboardingChat/onboardingcha
 import CouncellorDates from "./Components/KigenniDashboard/CouncellorDates";
 import CouncellorPaymentSummary from "./Components/KigenniDashboard/counsellorpaymentsummary";
 import EmailVerification from "./Components/Home/SignUpEmailVerification/SignUpEmailVerification";
+import NewDashboardFullInsight from "./Components/KigenniDashboard/NewDashboardFullinsight";
+import CouncellorBookings from "./Components/KigenniDashboard/CouncellorBookings";
+import CounsellorsRecommendation from "./Components/KigenniDashboard/NewCouncellorsRecommendation";
+import NewDashboardSubsriptionPlan from "./Components/KigenniDashboard/NewDashboardSubsciptionPlan";
+import NewDashboardSettings from "./Components/KigenniDashboard/DashboardSettings";
+import NewDashboardChat from "./Components/KigenniDashboard/NewDashboardChat";
+import NewDashboardSupport from "./Components/KigenniDashboard/NewDashboardSupport";
+import CouncellorAllMessages from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorAllMessages";
+import CounsellorRecommendation from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorRecommendation";
+import CounsellorOverview from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorOverview";
+import CounsellorBookedSessions from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorBookedSessions";
+import ThirdPartyEmployersResult from "./Components/KigenniDashboard/ThirdPartyEmployersResult";
+import ThirdPartyEmployerViewOne from "./Components/KigenniDashboard/ThirdPartyEmployerViewOne";
+import OverPaid from "./Components/KigenniDashboard/Overpaid";
+import Pending from "./Components/KigenniDashboard/Pending";
+import NewDashboard from "./Components/KigenniDashboard/NewDashboard";
+import ProfileBuilder from "./Components/KigenniDashboard/ProfileBuilder";
+import NewDashboardJobOpportunities from "./Components/KigenniDashboard/NewDashboardJobOpportunities";
+import whatsapp from "./assets/whatsapp.png";
+import NewDashboardAllSubsriptionPlans from './Components/KigenniDashboard/NewDashboardAllSubscription';
+import NewDashboardCounsellorSubscription from './Components/KigenniDashboard/NewDashboardCounsellorSubscription';
 
 
 const App: React.FC = () => {
   return (
     <div className="App">
+      <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
+        <img src={whatsapp} className="whatsapp" alt="whatsapp" />
+      </a>
       <div>
         <BrowserRouter>
           <Switch>
@@ -51,6 +75,13 @@ const App: React.FC = () => {
             <Route exact path="/clientchat" component={OnboardingChat} />
             <Route exact path="/clientchat2" component={OnboardingChatPhase2} />
             <Route exact path="/clarityforteams" component={ClarityForTeams} />
+            <Route exact path="/overview" component={NewDashboard} />
+            <Route exact path="/profilebuilder" component={ProfileBuilder} />
+            <Route
+              exact
+              path="/jobopportunities"
+              component={NewDashboardJobOpportunities}
+            />
             <Route
               exact
               path="/recruitmentform"
@@ -154,22 +185,104 @@ const App: React.FC = () => {
             <Route
               exact
               path="/councellorfee"
-              component={CouncellorPaymentSummary}
+              component={NewDashboardCounsellorSubscription}
             />
             <Route exact path="/councellordates" component={CouncellorDates} />
             <Route exact path="/signup/kigenni" component={SignUpKigenni} />
-            <Route exact path="/paymentsummary" component={PaymentSummary} />
-            <Route exact path="/free/dashboard" component={KigenniDashboard} />
+            <Route exact path="/paymentsummary" component={NewDashboardAllSubsriptionPlans} />
+            <Route
+              exact
+              path="/free/dashboard"
+              component={() => <Redirect to="/overview" />}
+            />
             <Route
               exact
               path="/dashboard/fullresult"
-              component={KigenniFullResultPage}
+              component={() => <Redirect to="/fullresult" />}
             />
-                        <Route
+            <Route exact path="/paymentplan" component={SelectPaymentPlan} />
+            <Route
+              exact
+              path="/signup"
+              component={() => <Redirect to="/signup/thirdpary" />}
+            />
+            {/* Kegenni starts here */}
+            <Route exact path="/signup/thirdpary" component={SignUpKigenni} />
+            <Route
+              exact
+              path="/thirdpary/dashboard"
+              component={() => <Redirect to="/overview" />}
+            />
+            <Route
+              exact
+              path="/counsellorsrecommendation"
+              component={CounsellorsRecommendation}
+            />
+            <Route
+              exact
+              path="/dashboardsubsriptionplan"
+              component={NewDashboardSubsriptionPlan}
+            />
+            <Route
+              exact
+              path="/dashboardsettings"
+              component={NewDashboardSettings}
+            />
+            <Route exact path="/councellorchat" component={NewDashboardChat} />
+            <Route
+              exact
+              path="/dashboardsupport"
+              component={NewDashboardSupport}
+            />
+            <Route
+              exact
+              path="/counsellormessages"
+              component={CouncellorAllMessages}
+            />
+            <Route
+              exact
+              path="/counsellorrecommendations"
+              component={CounsellorRecommendation}
+            />
+            <Route
+              exact
+              path="/counselloroverview"
+              component={CounsellorOverview}
+            />
+            <Route
+              exact
+              path="/counsellorbookings"
+              component={CounsellorBookedSessions}
+            />
+            <Route
+              exact
+              path="/thirdpary/fullresult"
+              component={() => <Redirect to="/fullinsight" />}
+            />
+            <Route
+              exact
+              path="/employers/result"
+              component={ThirdPartyEmployersResult}
+            />
+            <Route
+              exact
+              path="/employers/result/:email"
+              component={ThirdPartyEmployerViewOne}
+            />
+            <Route exact path="/thirdparty/overpaid" component={OverPaid} />
+            <Route exact path="/thirdparty/pending" component={Pending} />
+            <Route
               exact
               path="/verifyemail/:userid/:token"
               component={EmailVerification}
             />
+            <Route
+              exact
+              path="/fullinsight"
+              component={NewDashboardFullInsight}
+            />
+            <Route exact path="/meetings" component={CouncellorBookings} />
+            <Route exact path="/councellordates" component={CouncellorDates} />
           </Switch>
         </BrowserRouter>
       </div>

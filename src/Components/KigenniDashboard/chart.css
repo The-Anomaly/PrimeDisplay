@@ -28,11 +28,15 @@
     font-size: 14px;
     align-items: center;
 }
+.mrauto{
+    margin: auto;
+}
 .areawrapperbnone{
     display: none;
 }
 .chartwar{
     display: flex;
+    margin-right: 1rem;
 }
 .changeinnerflex{
     flex-direction: row-reverse;

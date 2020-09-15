@@ -129,7 +129,10 @@ const AssessmentSeventhPhase = (props: any) => {
       .catch((error) => {
         console.log(error.response);
         if (error && error.response && error.response.data) {
-          notify(error.response.data[0].message);
+          notify(error?.response?.data[0]?.message);
+        }
+        if (error) {
+          notify("failed to send please try again later");
         }
       });
   };

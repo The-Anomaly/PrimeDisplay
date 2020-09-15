@@ -20,6 +20,7 @@ import HorizontalBar from "./HorizontalBar";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import write from "../../assets/write.png";
+import additionalinformation from "../../assets/additionalinformation.png";
 import Form from "react-bootstrap/Form";
 import Review from "../../assets/review.png";
 import Axios from "axios";
@@ -99,6 +100,12 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
             isLoading: false,
           });
         }
+      })
+      .then((resp) => {
+        //remove the # on the prefix of the url string and move the page to that postion on the page
+        let resultareawithtitle: string = window.location.hash;
+        resultareawithtitle = resultareawithtitle.substring(1);
+        this.moveTo(resultareawithtitle);
       })
       .catch((error) => {
         console.log(error.response);
@@ -214,18 +221,51 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
       });
   };
   checkIfUserHasMadePaymentForFullResult = (token: string) => {
-    // axios
-    //   .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-    //     headers: { Authorization: `Token ${token}` },
-    //   })
-    //   .then((response) => {
-    //     if (response?.data[0]?.message === false) {
-    //       return window.location.assign("/paymentsummary");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios
+      .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        if (
+          !response?.data[0]?.direction_plan &&
+          !response?.data[0]?.growth_plan &&
+          !response?.data[0]?.insight_plan
+        ) {
+          return window.location.assign("/thirdpary/dashboard");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  handleChatCheck = () => {
+    this.setState({ isLoading: true });
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    axios
+      .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        if (response?.data[0]?.direction_plan === true) {
+          return window.location.assign("/councellordates");
+        }
+        if (response?.data[0]?.direction_plan === false) {
+          return window.location.assign("/councellorfee");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  moveTo = (str) => {
+    const offsetTop: any = document?.getElementById(str)?.offsetTop;
+    window.scrollTo({
+      top: offsetTop,
+      behavior: "smooth",
+    });
   };
   render() {
     const {
@@ -350,8 +390,11 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 </Button>
               </Modal.Footer>
             </Modal>
-            <Col md={10} className="">
+            <Col md={11} className="">
               <div className="kdashheader">
+                <div className="bcash">
+                  <Link to="/overview">&#x2190;Back</Link>
+                </div>
                 {fullname ? fullname : ""}{" "}
                 <span className="kdashheaderlight"> Clarity Report</span>
               </div>
@@ -419,7 +462,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 </div>
               </div>
               <hr />
-              <div className="resultsec3">
+              <div className="resultsec3" id="personality">
                 <div className="reskwrap">
                   <div className="csfitscore1 juki  reskheader">
                     Career Personality type
@@ -462,7 +505,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 </div>
               </div>
               <div>
-                <div className="kz1">
+                <div className="kz1" id="strength">
                   <div className="contkflex">
                     <div className="kz2">
                       <img src={vector1} className="kl3" alt="vector2" />
@@ -481,7 +524,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   <div className="contkflex">
                     <div className="kz2a">
                       <img src={vector2} className="kl3" alt="vector2" />
-                      <div>Your Weaknesses</div>
+                      <div id="weakness">Your Weaknesses</div>
                     </div>
                     <div className="kz12">
                       <ul className="grapwrap">
@@ -497,7 +540,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               </div>
               <hr />
               {client?.strong_career_competences && (
-                <div>
+                <div id="stongcomp">
                   <div className="competence">Your Strong Competences</div>
                 </div>
               )}
@@ -532,7 +575,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   (data, index) => (
                     <div key={index}>
                       <span className="ikls">{data.name} </span>
-                       <span className="career221">{data.value}</span>
+                      <span className="career221">{data.value}</span>
                       <br />
                     </div>
                   )
@@ -540,7 +583,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               </div>
               <hr />
               {/* Average Competence Starts Here */}
-              <div>
+              <div id="avgcomp">
                 {client?.average_career_competences && (
                   <div className="competence">Average Competences</div>
                 )}
@@ -575,7 +618,8 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 {client?.average_career_competences?.fields?.map(
                   (data, index) => (
                     <div key={index}>
-                      <span className="ikls">{data.name} </span> {data.value}
+                      <span className="ikls">{data.name} </span>
+                      <div className="career221">{data.value}</div>
                       <br />
                     </div>
                   )
@@ -584,7 +628,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               <hr />
               {/* ?akskks? */}
               {/* Average Competence Starts Here */}
-              <div>
+              <div id="weak">
                 {client?.weak_career_competences ? (
                   <div className="competence">Weak Career Competence</div>
                 ) : (
@@ -620,7 +664,8 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               <div className="otherinfo">
                 {client?.weak_career_competences?.fields?.map((data, index) => (
                   <div key={index}>
-                    <span className="ikls">{data.name} </span> {data.value}
+                    <span className="ikls">{data.name} </span>
+                    <div className="career221">{data.value}</div>
                     <br />
                   </div>
                 ))}
@@ -629,7 +674,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               <hr />
               <br />
               <div>
-                <div className="competence">
+                <div className="competence" id="expression">
                   Most Suitable Career-Business Expression
                 </div>
                 {client?.career_business_expression?.map((doc, index) => (
@@ -668,13 +713,15 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     </div>
                   </div>
                 ))}
-                <div className="nlodd">
+                <div className="nlodd" id="careerdrivers">
                   <div className="resultsec13">
                     <div className="reskwrap13">
                       <div className="csfitscore1 reskheader">
                         Your Top Career Drivers
                       </div>
-
+                      <div className="csfitscore1 juki  reskheader">
+                        Your Top Career Drivers
+                      </div>
                       {client?.career_drivers?.highlights?.map(
                         (data, index) => (
                           <div className="" key={index}>
@@ -697,7 +744,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   <div>
                     <div className="stbly">
                       <div className="stbly1">{data.heading}</div>
-                      <div>{data.body}</div>
+                      <div className="career221">{data.body}</div>
                     </div>
                     <div className="tipswrapper">
                       <div>
@@ -727,7 +774,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 ))}
                 {/* dark blue background section */}
                 {/* Your work style */}
-                <div className="competence">Your Work Style</div>
+                <div className="competence" id="style">
+                  Your Work Style
+                </div>
                 <div>
                   <div className="kz1">
                     {client?.work_style?.map((data, index) => (
@@ -739,7 +788,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                         <div className="kz12">
                           <ul className="grapwrap">
                             {data.value.map((dataindata, index) => (
-                              <li className="grapssin">{dataindata}</li>
+                              <li className="grapssin career221">
+                                {dataindata}
+                              </li>
                             ))}
                           </ul>
                         </div>
@@ -749,7 +800,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 </div>
                 <hr />
                 {/* Your Job Function Fit style barchart */}
-                <div className="competence">Your Job Function Fit</div>
+                <div className="competence" id="jobfunction">
+                  Your Job Function Fit
+                </div>
                 <div className="chartss row">
                   <div className="resultt col-md-6">
                     {client?.job_function_fit?.graph1?.map((data, index) => {
@@ -806,13 +859,24 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 rows={10}
               ></textarea>
             </Col>
-            <Col md={10} className="fkexx">
-              <Button className="retaketest">
-                <Link to="/councellorfee">Chat with a councellor</Link>
-              </Button>
-              <Button className="retaketest" onClick={this.openWarning}>
-                Retake Assessment
-              </Button>
+            <Col md={12} className="jcenter1">
+              <div className="coonfused">Still Confused ???</div>
+              <div className="pool">
+                Let our pool of experienced counsellors guide you to better
+                maximise your results{" "}
+              </div>
+              <div className="additional">
+                {" "}
+                <img src={additionalinformation} alt="additionalinformation" />
+              </div>
+              <div className="check11">
+                <Button className="retaketest" onClick={this.handleChatCheck}>
+                  Speak with a counsellor
+                </Button>
+                <Button className="retaketest2" onClick={this.openWarning}>
+                  Retake Assessment
+                </Button>
+              </div>
             </Col>
             <Modal show={showWarning} onHide={this.CloseWarning}>
               <Modal.Body>

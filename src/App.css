@@ -29,3 +29,19 @@
     transform: rotate(360deg);
   }
 }
+
+
+@media (max-width: 430px) {
+  .whatsapp {
+    width: 40px;
+    position: fixed;
+    bottom: 2rem;
+    left: 1rem;
+    z-index: 100;
+  }
+}
+@media(min-width:431px){
+  .whatsapp{
+    display: none;
+  }
+}

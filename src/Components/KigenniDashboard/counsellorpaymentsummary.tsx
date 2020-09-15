@@ -8,6 +8,7 @@ import axios from "axios";
 import { AxiosResponse } from "axios";
 import { API } from "../../config";
 import { toast } from "react-toastify";
+import checkcircle from "../../assets/checkcircle.png";
 import { Link } from "react-router-dom";
 
 interface State {
@@ -75,7 +76,7 @@ export default function CouncellorPaymentSummary(props: any) {
       : props.history.push("/signin");
     try {
       window.MonnifySDK.initialize({
-        amount: 3500,
+        amount: 5000,
         currency: "NGN",
         reference,
         customerFullName: user[0]?.first_name + "  " + user[0]?.last_name,
@@ -83,10 +84,9 @@ export default function CouncellorPaymentSummary(props: any) {
         customerMobileNumber: "",
         apiKey: "MK_PROD_NNSGXTY6LF",
         contractCode: "722431733218",
-        paymentDescription: "YUDIMY SERVICES LTD",
+        paymentDescription: "Book Session",
         isTestMode: false,
         onComplete: function (response) {
-          moveToFullResult();
           if (response.paymentStatus == "OVERPAID") {
             notify(
               "You current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
@@ -163,27 +163,73 @@ export default function CouncellorPaymentSummary(props: any) {
   };
   return (
     <div>
-      <Navbar />
       <Container fluid={true}>
         <Row className="kli6 bcbv">
-          <Col md={6}>
+          <Col md={12}>
             <div className="payheader">
               Choose the plan that’s right for you
             </div>
             <Row className="centerr">
-              <Col md={4} className="centerr1">
-                <div className="prems">Premium</div>
-                <div className="premq">Get access to your complete result</div>
-                <div className="comps1">
-                  <span>&#10004;</span> Complete Assement Result
+              <Col xs={10} md={5} className="centerr1 chag11">
+                <div className="planinsight">Book Session</div>
+                <div className="oneoff">(One-off Plan)</div>
+                <div className="percentoff chage">
+                  Now <b>&nbsp; 50% &nbsp;</b> OFF!
+                </div>{" "}
+                <div className="duration"></div>
+                <div className="prems">
+                  {" "}
+                  Book a counselling session with a Counsellor
+                </div>
+                <div className="comps2">
+                  <span>
+                    <img
+                      src={checkcircle}
+                      className="checkcircle"
+                      alt="checkcircle"
+                    />
+                  </span>{" "}
+                  Chat with a counsellor for 35mins
+                </div>
+                <div className="comps2">
+                  <span>
+                    <img
+                      src={checkcircle}
+                      className="checkcircle"
+                      alt="checkcircle"
+                    />
+                  </span>{" "}
+                  Identify road blocks that can limit you from landing your
+                  dream job.{" "}
+                </div>
+                <div className="comps2">
+                  <span>
+                    <img
+                      src={checkcircle}
+                      className="checkcircle"
+                      alt="checkcircle"
+                    />
+                  </span>{" "}
+                  Get personalized recommendations on things to do for acing
+                  interviews, defining your path and succeeding.
+                </div>
+                <div className="comps2">
+                  <span>
+                    <img
+                      src={checkcircle}
+                      className="checkcircle"
+                      alt="checkcircle"
+                    />
+                  </span>{" "}
+                  Get a actionable career strategy.{" "}
                 </div>
                 <div className="lmi1">
-                  <div className="amut">&#8358;3500</div>
+                  <div className="amut">&#8358;5,000</div>
                   <div className="amut1">one time payment</div>
                 </div>
-                {/* <div>
-                  <span className="amurt">&#8358;10,000</span>{" "}
-                </div> */}
+                <div>
+                  {/* <span className="amurt">&#8358;10,000</span>{" "} */}
+                </div>
                 <div
                   className="slcplan"
                   onClick={() => checkIfUserHasAccessToViewAll()}

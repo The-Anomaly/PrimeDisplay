@@ -23,15 +23,15 @@ import { Link } from "react-router-dom";
 const KigenniDashboard: React.FunctionComponent = (props: any) => {
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <Container fluid={true}>
         <Row className="kli6 bcbv">
           <KigenniPartResult />
-          <Col md={10}>
+          <Col md={10} className="jksk">
             <div className="text-center">
               <div className="fullresult">
                 <Link to="/paymentsummary">
-                  See Full Result <span>&#8594;</span>
+                  Access  Counselor's Review <span>&#8594;</span>
                 </Link>
               </div>
             </div>

@@ -33,11 +33,12 @@ const Footer: React.FC = (props) => {
                                 <div className='footer_tit'>Services</div>
                                 <div className='About-Us'>Clarity by Yudimy Services Ltd.</div>
                                 <div className='About-Us'><Link to='/clarityforteams' className='linksss'>Clarity for Teams</Link></div>
+                                <div className='About-Us'><Link to='/faq' className='linksss'>FAQ</Link></div>
                             </div>
                             <div>
-                                <div className='footer_tit'>Connect</div>
-                                <div className='About-Us'><Link to='/faq' className='linksss'>Contact Us</Link></div>
-                                <div className='About-Us'><Link to='/faq' className='linksss'>FAQ</Link></div>
+                                <div className='footer_tit'>Contact Us</div>
+                                <div className='About-Us'><span className='linksss'>Email: clarity@yudimy.com</span></div>
+                                <div className='About-Us'><span className='linksss'>Phone: +234817610060</span></div>
                             </div>
                         </div>
                     </Col>

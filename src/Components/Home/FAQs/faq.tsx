@@ -58,13 +58,11 @@ const Faq: React.FunctionComponent = (props) => {
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
                     <p className="faq-answers">
-                      <span className="specailtext">
-                        Clarity helps you get concisely discover and define your
-                        career path through self-discovery of your strengths,
-                        weaknesses, abilities and competencies. It doesn't just
-                        stop there we help you organize your priorities so you
-                        are able to work at the optimum.{" "}
-                      </span>
+                      Clarity helps you get concisely discover and define your
+                      career path through self-discovery of your strengths,
+                      weaknesses, abilities and competencies. It doesn't just
+                      stop there we help you organize your priorities so you are
+                      able to work at the optimum.{" "}
                     </p>
                   </Card.Body>
                 </Accordion.Collapse>
@@ -84,11 +82,13 @@ const Faq: React.FunctionComponent = (props) => {
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
                     {" "}
-                    We totally understand, but we also know $11-$20 dollars is
-                    not a lot of money if you are ready to take your work-life up
-                    the notch all through the year. You can however, start
-                    getting the free clarity report on your strengths and
-                    weaknesses.
+                    <p className="faq-answers">
+                      We totally understand, but we also know $11-$20 dollars is
+                      not a lot of money if you are ready to take your work-life
+                      up the notch all through the year. You can however, start
+                      getting the free clarity report on your strengths and
+                      weaknesses.
+                    </p>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -124,7 +124,7 @@ const Faq: React.FunctionComponent = (props) => {
                         work on maximizing your potential.
                       </div>
                       <div>
-                        We don’t stop here,  we recommend you to opportunities
+                        We don’t stop here, we recommend you to opportunities
                         that will help improve your standard of living and make
                         you feel fulfilled.
                       </div>
@@ -145,10 +145,13 @@ const Faq: React.FunctionComponent = (props) => {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="4">
                   <Card.Body>
-                    For now, Clarity is a web-application that you can book-mark
-                    on your browser and save to your phone home-screen so at
-                    every point you can access your dashboard. We are working on
-                    building the mobile version for better experience.{" "}
+                    <p className="faq-answers">
+                      For now, Clarity is a web-application that you can
+                      book-mark on your browser and save to your phone
+                      home-screen so at every point you can access your
+                      dashboard. We are working on building the mobile version
+                      for better experience.{" "}
+                    </p>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -163,10 +166,12 @@ const Faq: React.FunctionComponent = (props) => {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="5">
                   <Card.Body>
-                    Clarity assessment is available to entrepreneurs, working
-                    professionals, undergraduate students, students who want to
-                    want to make a difference with their career and be relevant
-                    in the 4th industrial revolution.
+                    <p className="faq-answers">
+                      Clarity assessment is available to entrepreneurs, working
+                      professionals, undergraduate students, students who want
+                      to want to make a difference with their career and be
+                      relevant in the 4th industrial revolution.
+                    </p>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -182,13 +187,15 @@ const Faq: React.FunctionComponent = (props) => {
                 <Accordion.Collapse eventKey="7">
                   <Card.Body>
                     {" "}
-                    Like doctors we take privacy really seriously, except we
-                    believe there’s a life threatening situation we refer to
-                    appropriate quarters. We ensure conversations are private,
-                    providing a safe space to rant, learn and take progressive
-                    action. We are emphatic and yet intentional about your
-                    personal development so every effort on clarity is propelled
-                    to move you forward.
+                    <p className="faq-answers">
+                      Like doctors we take privacy really seriously, except we
+                      believe there’s a life threatening situation we refer to
+                      appropriate quarters. We ensure conversations are private,
+                      providing a safe space to rant, learn and take progressive
+                      action. We are emphatic and yet intentional about your
+                      personal development so every effort on clarity is
+                      propelled to move you forward.
+                    </p>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>

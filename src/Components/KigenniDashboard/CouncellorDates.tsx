@@ -203,7 +203,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
               </div>
             </Col>
             <Col md={8} className="fw2">
-              <img src={write} alt="write" className="write"/>
+              <img src={write} alt="write" className="write" />
               <textarea
                 className="form-control whatdou"
                 id=""
@@ -219,7 +219,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
               <Row className="shex">
                 <Col md={5}>
                   <div className="enter11">Enter your phone number</div>
-                  <img src={write} alt="write" className="write"/>
+                  <img src={write} alt="write" className="write" />
                   <input
                     className="form-control whatdou"
                     id=""
