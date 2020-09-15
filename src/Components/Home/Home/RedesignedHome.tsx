@@ -26,7 +26,7 @@ const RedesignedHome: React.FC = () => {
       <Container fluid={true}>
         <Row className="newfirstrow">
           <Col md={12} className="navcontrols">
-
+            
           </Col>
           <Col md={12}></Col>
         </Row>

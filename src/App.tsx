@@ -56,9 +56,9 @@ import NewDashboard from "./Components/KigenniDashboard/NewDashboard";
 import ProfileBuilder from "./Components/KigenniDashboard/ProfileBuilder";
 import NewDashboardJobOpportunities from "./Components/KigenniDashboard/NewDashboardJobOpportunities";
 import whatsapp from "./assets/whatsapp.png";
-import NewDashboardAllSubsriptionPlans from './Components/KigenniDashboard/NewDashboardAllSubscription';
-import NewDashboardCounsellorSubscription from './Components/KigenniDashboard/NewDashboardCounsellorSubscription';
-
+import NewDashboardAllSubsriptionPlans from "./Components/KigenniDashboard/NewDashboardAllSubscription";
+import NewDashboardCounsellorSubscription from "./Components/KigenniDashboard/NewDashboardCounsellorSubscription";
+import TodoOverview from './Components/KigenniDashboard/TodoOverview';
 
 const App: React.FC = () => {
   return (
@@ -189,7 +189,11 @@ const App: React.FC = () => {
             />
             <Route exact path="/councellordates" component={CouncellorDates} />
             <Route exact path="/signup/kigenni" component={SignUpKigenni} />
-            <Route exact path="/paymentsummary" component={NewDashboardAllSubsriptionPlans} />
+            <Route
+              exact
+              path="/paymentsummary"
+              component={NewDashboardAllSubsriptionPlans}
+            />
             <Route
               exact
               path="/free/dashboard"
@@ -243,6 +247,11 @@ const App: React.FC = () => {
               exact
               path="/counsellorrecommendations"
               component={CounsellorRecommendation}
+            />
+            <Route
+              exact
+              path="/todooverview"
+              component={TodoOverview}
             />
             <Route
               exact

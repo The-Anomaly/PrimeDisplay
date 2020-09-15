@@ -139,8 +139,54 @@ const DashboardNav = (props: any) => {
                 />
                 Career Insight
               </div>
+              <div className={props.chat ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/councellorchat">
+              <img
+                src={props.chat ? chatactive : chatinactive}
+                className="sideimage"
+                alt="sideimage"
+              />
+              Chat with a Counsellor
+            </Link>
+          </div>
+          <div className={props.councrec ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/counsellorsrecommendation">
+              <img
+                src={
+                  props.councrec ? recommedationactive : recommedationinactive
+                }
+                className="sideimage"
+                alt="sideimage"
+              />
+              Counsellors Recommendation
+            </Link>
+          </div>
+          <div className={props.jobrec ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/jobopportunities">
+              <img
+                src={props.jobrec ? jobrecommedationactive : jobrecommedationinactive}
+                className="sideimage"
+                alt="sideimage"
+              />
+              Job Recommendation
+            </Link>
+          </div>
+          <div className={props.builder ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/profilebuilder">
+              <img
+                src={props.builder ? profilebuilder : profilebuilderinactive}
+                className="sideimage"
+                alt="sideimage"
+              />
+              Profile Builder
+            </Link>
+          </div>
               <div className="divide_thro"></div>
-              <div className={props.councrec ? "activegb" : "gbn"}>
+              {/* <div className={props.councrec ? "activegb" : "gbn"}>
                 {" "}
                 <Link to="/counsellorsrecommendation">
                   <img
@@ -154,7 +200,7 @@ const DashboardNav = (props: any) => {
                   />
                   Counsellors Recommendation
                 </Link>
-              </div>
+              </div> */}
               <div className={props.subscription ? "activegb" : "gbn"}>
                 {" "}
                 <Link to="/dashboardsubsriptionplan">

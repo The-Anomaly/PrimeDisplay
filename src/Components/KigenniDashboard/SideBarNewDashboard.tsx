@@ -91,16 +91,15 @@ const SideBarNewDashboard = (props: any) => {
             />
             Career Insight
           </div>
-          <div className="divide_thro"></div>
-          <div className={props.settings ? "activegb" : "gbn"}>
+          <div className={props.chat ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/dashboardsettings">
+            <Link to="/councellorchat">
               <img
-                src={props.settings ? settingsactive : settingsinactive}
+                src={props.chat ? chatactive : chatinactive}
                 className="sideimage"
                 alt="sideimage"
               />
-              Settings
+              Chat with a Counsellor
             </Link>
           </div>
           <div className={props.councrec ? "activegb" : "gbn"}>
@@ -114,6 +113,40 @@ const SideBarNewDashboard = (props: any) => {
                 alt="sideimage"
               />
               Counsellors Recommendation
+            </Link>
+          </div>
+          <div className={props.jobrec ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/jobopportunities">
+              <img
+                src={props.jobrec ? jobrecommedationactive : jobrecommedationinactive}
+                className="sideimage"
+                alt="sideimage"
+              />
+              Job Recommendation
+            </Link>
+          </div>
+          <div className={props.builder ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/profilebuilder">
+              <img
+                src={props.builder ? profilebuilder : profilebuilderinactive}
+                className="sideimage"
+                alt="sideimage"
+              />
+              Profile Builder
+            </Link>
+          </div>
+          <div className="divide_thro"></div>
+          <div className={props.settings ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/dashboardsettings">
+              <img
+                src={props.settings ? settingsactive : settingsinactive}
+                className="sideimage"
+                alt="sideimage"
+              />
+              Settings
             </Link>
           </div>
           <div className={props.subscription ? "activegb" : "gbn"}>

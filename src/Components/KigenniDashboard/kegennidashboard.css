@@ -1991,8 +1991,9 @@ textarea.form-control.jobr {
   box-shadow: 0px 2px 6px rgba(24, 33, 77, 0.25);
   border-radius: 8px;
   padding: 1rem 1rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
+  width: 97%;
 }
 .cname1,
 .cdate1,
@@ -2352,12 +2353,10 @@ textarea.form-control.jobr {
   font-size: 14px;
   padding-top: 0.5rem;
   cursor: pointer;
+  width: 97%;
 }
 .firstoffour {
-  background: rgb(178, 227, 255);
-  /* width: 216px; */
   height: 120px;
-  border: 1px solid transparent;
   box-sizing: border-box;
   border-radius: 8px;
   display: flex;
@@ -2367,11 +2366,17 @@ textarea.form-control.jobr {
   flex: 1;
   flex-wrap: wrap;
   min-width: 150px;
+  color: #9fa2b4;
   margin-bottom: 1rem;
+  border: 1px solid #dfe0eb;
 }
-/* .firstoffour:hover {
+.firstoffour:hover .mmber:hover {
+  color: #3751ff !important;
+}
+.firstoffour:hover {
   border: 1px solid #3751ff;
-} */
+  color: #3751ff !important;
+}
 .fourinfo {
   background: #ffffff;
   padding-top: 2rem;
@@ -2386,21 +2391,41 @@ textarea.form-control.jobr {
   justify-content: center;
   align-items: center;
 }
-
-.mmber {
+.greenbgcont {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: -0.4px;
+  color: #1bb978;
+  background: #d8f9da;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 97%;
+  margin-bottom: 1rem;
+}
+.greengood{
+  width: 25px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.mmber1 {
   text-align: center;
   letter-spacing: 0.4px;
   font-size: 12px;
-  /* grayscale / gray */
-  color: #9fa2b4;
+  color: #252733;
+}
+.mmber1:hover{
+  color: inherit;
 }
 .mmber1 {
   font-size: 20px;
   font-weight: 500;
   text-align: center;
   letter-spacing: 1px;
-  /* grayscale / black */
-  color: #252733;
 }
 .wwrap {
   display: flex;
@@ -2515,7 +2540,7 @@ textarea.form-control.jobr {
   font-size: 14px;
 }
 .coloredtapping {
-  border-top:  5px solid #9c1258;
+  border-top: 5px solid #9c1258;
 }
 .accas2 {
   font-size: 14px;
@@ -2579,8 +2604,8 @@ textarea.form-control.jobr {
   font-size: 14px;
   padding-top: 0.5rem;
 }
- .gfts{
-  background: linear-gradient(225deg, #A6D6FF 0%, #0084F4 100%);
+.gfts {
+  background: linear-gradient(225deg, #a6d6ff 0%, #0084f4 100%);
   border-radius: 8px;
   display: inline;
   align-items: center;
@@ -2590,26 +2615,29 @@ textarea.form-control.jobr {
   order: 0;
   align-self: center;
   margin: 10px 0px;
-  padding: .6rem 2rem;
+  padding: 0.6rem 2rem;
   cursor: pointer;
 }
-.gfts1{
+.gfts1 {
   text-align: right;
   min-width: 200px;
 }
 @media (max-width: 800px) {
-  .emp12c{
+  .emp12c {
     width: 100% !important;
     margin-bottom: 1rem !important;
   }
-  .ssdd112{
+  .ssdd112 {
     justify-content: center;
     padding-left: 0px;
     text-align: center;
   }
-  .gfts1{
+  .gfts1 {
     margin-left: 0px;
     margin-bottom: 1rem;
     text-align: center;
+  }
+  .firstoffour {
+    max-width: 191px;
   }
 }
