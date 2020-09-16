@@ -44,7 +44,7 @@ const Faq: React.FunctionComponent = (props) => {
             <Accordion
               activeKey={activeKey}
               defaultActiveKey=""
-              onSelect={(e) => setActiveKey(e)}
+              // onSelect={(e) => setActiveKey(e)}
             >
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">

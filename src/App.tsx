@@ -59,6 +59,7 @@ import whatsapp from "./assets/whatsapp.png";
 import NewDashboardAllSubsriptionPlans from "./Components/KigenniDashboard/NewDashboardAllSubscription";
 import NewDashboardCounsellorSubscription from "./Components/KigenniDashboard/NewDashboardCounsellorSubscription";
 import TodoOverview from './Components/KigenniDashboard/TodoOverview';
+import CVProfileBuilder from "./Components/KigenniDashboard/CVProfileBuilder";
 
 const App: React.FC = () => {
   return (
@@ -289,6 +290,11 @@ const App: React.FC = () => {
               exact
               path="/fullinsight"
               component={NewDashboardFullInsight}
+            />
+            <Route
+              exact
+              path="/cvdashboard"
+              component={CVProfileBuilder}
             />
             <Route exact path="/meetings" component={CouncellorBookings} />
             <Route exact path="/councellordates" component={CouncellorDates} />
