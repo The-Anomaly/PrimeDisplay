@@ -11,10 +11,12 @@ import firstlogo from "../../assets/image 1.png";
 import Button from "react-bootstrap/Button";
 import { CirclePie } from "salad-ui.chart";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import norecommendations from "../../assets/no recommendations.png";
 import DashboardNav from "./DashboardNavBar";
+import alertTriangle from "../../assets/alert-triangle.png";
+import alertTrianglegray from "../../assets/alertTrianglegray.png";
 
 class CounsellorsRecommendation extends React.Component {
   state: any = {
@@ -50,7 +52,6 @@ class CounsellorsRecommendation extends React.Component {
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
-    this.checkIfUserHasMadePaymentForFullResult(token);
     const data = {};
     Axios.get<any, AxiosResponse<any>>(
       `${API}/dashboard/counsellorrecommendation`,
@@ -78,7 +79,27 @@ class CounsellorsRecommendation extends React.Component {
         });
       });
   }
-  checkIfUserHasMadePaymentForFullResult = (token: string) => {};
+  makeRecommendationToDo = () => {
+    this.setState({ isLoading: true });
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        if (response?.data[0]?.direction_plan === true) {
+          return window.location.assign("/councellordates");
+        }
+        if (response?.data[0]?.direction_plan === false) {
+          return window.location.assign("/councellorfee");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   onchange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -149,19 +170,61 @@ class CounsellorsRecommendation extends React.Component {
                     <Col md={12} className="youwss">
                       {counsellor &&
                         counsellor?.map((data, i) => (
-                          <div className="usersentwrap1" key={i}>
-                            <div className="youwrap">
-                              <span className="you11b">
-                                {data.counsellor_name}
-                              </span>
+                          <>
+                            <div className="usersentwrap1" key={i}>
+                              <div className="youwrap">
+                                <span className="you11b">
+                                  {data.counsellor_name}
+                                </span>{" "}
+                                <span className="youdate">{data.date}</span>
+                              </div>
+                              <div className="councellors_response">
+                                {data.text}
+                              </div>
                             </div>
-                            <div className="councellors_response">
-                              {data.text}
-                            </div>
-                            <div className="youwrap textrrr">
-                              <span className="youdate">{data.date}</span>
-                            </div>
-                          </div>
+                            {data.todo  === false && (
+                              <Col md={12} className="zeropad">
+                                <div className="notpaid notppd graybgds">
+                                  <div className="notpaid1">
+                                    <img
+                                      src={alertTrianglegray}
+                                      className="caution caurtn"
+                                      alt="caution"
+                                    />
+                                    <div className="notpaidtext1 notpaidtext">
+                                      Convert this recommendation to a task
+                                    </div>
+                                  </div>
+                                  <div className="retaketest upss smtd smtdis">
+                                    <Link to="/paymentsummary">
+                                      Covert to ToDo{" "}
+                                    </Link>
+                                  </div>
+                                </div>
+                              </Col>
+                            )}
+                            {data.todo && (
+                              <Col md={12} className="zeropad">
+                                <div className="notpaid notppd">
+                                  <div className="notpaid1">
+                                    <img
+                                      src={alertTriangle}
+                                      className="caution caurtn"
+                                      alt="caution"
+                                    />
+                                    <div className="notpaidtext1 notpaidtext">
+                                      Convert this recommendation to a task
+                                    </div>
+                                  </div>
+                                  <div className="retaketest upss smtd">
+                                    <Link to="/paymentsummary">
+                                      Covert to ToDo{" "}
+                                    </Link>
+                                  </div>
+                                </div>
+                              </Col>
+                            )}
+                          </>
                         ))}
                       {counsellor.length === 0 && (
                         <div className="norec">

@@ -1995,12 +1995,12 @@ textarea.form-control.jobr {
   padding: 1.4rem 1rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
-  width: 97%;
+  width: 93%;
 }
 .wrapline {
-  width: 97%;
-  border-top: 1px solid #bcbcbc;
-  padding-bottom: .7rem;
+  width: 93%;
+  border-top: 1px solid #bcbcbcb6;
+  padding-bottom: 1.4rem;
   margin-top: 1.2rem;
 }
 .cname1,
@@ -2036,6 +2036,8 @@ textarea.form-control.jobr {
   border-radius: 8px;
   padding: 0.1rem 0.4rem;
   justify-content: center;
+  width: 105px;
+  margin: auto;
 }
 .pending {
   text-align: center;
@@ -2163,6 +2165,7 @@ textarea.form-control.jobr {
   color: #fff;
   padding-left: 2rem;
 }
+
 .notpaid {
   display: flex;
   justify-content: space-between;
@@ -2361,7 +2364,7 @@ textarea.form-control.jobr {
   font-size: 14px;
   padding-top: 0.5rem;
   cursor: pointer;
-  width: 97%;
+  width: 93%;
 }
 .firstoffour {
   height: 120px;
@@ -2390,7 +2393,7 @@ textarea.form-control.jobr {
   padding-top: 2rem;
   padding-bottom: 2rem;
   font-family: Muli;
-  width: 100%;
+  width: 94%;
   margin-right: 1rem;
 }
 .fouri1a {
@@ -2411,7 +2414,7 @@ textarea.form-control.jobr {
   background: #d8f9da;
   border-radius: 8px;
   padding: 1rem;
-  width: 97%;
+  width: 93%;
   margin-bottom: 1rem;
 }
 .greengood {
@@ -2427,13 +2430,13 @@ textarea.form-control.jobr {
   letter-spacing: 0.4px;
   font-size: 12px;
   color: #252733;
+  font-weight: bold;
 }
 .mmber1:hover {
   color: inherit;
 }
 .mmber1 {
   font-size: 20px;
-  font-weight: 500;
   text-align: center;
   letter-spacing: 1px;
 }
@@ -2657,10 +2660,51 @@ textarea.form-control.jobr {
   justify-content: space-between;
   font-size: 13px;
   flex-wrap: wrap;
-  width: 97%;
+  width: 89%;
   padding-left: 2rem;
-  padding-bottom: .6rem;
+  padding-bottom: 0.6rem;
 }
-.cww11{
+.cww11 {
   color: #979797 !important;
+}
+.notpaidtext1 {
+  font-size: 16px;
+}
+.smtd {
+  font-size: 14px;
+  text-align: center;
+}
+.notppd {
+  width: 90%;
+  margin-top: 0.3rem;
+  background: #18214d;
+}
+.zeropad {
+  padding-left: 0px;
+  margin-bottom: 3rem;
+  margin-top: .5rem;
+}
+
+.graybgds {
+  background: #f8f8f8;
+}
+.graybgds .notpaidtext {
+  color: #a5a5a5 !important;
+}
+.smtdis,
+.smtdis > a {
+  background: #a5a5a5;
+  border: 1px solid #a5a5a5;
+  cursor: not-allowed;
+}
+.smtdis:hover {
+  background: #a5a5a5;
+  border: 1px solid #a5a5a5;
+}
+.caurtn {
+  width: 35px;
+}
+.tdw1,.tdw0 {
+  width: 20%;
+  text-align: left;
 }

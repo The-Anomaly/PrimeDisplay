@@ -9,8 +9,53 @@ import SideBarNewDashboard from "./SideBarNewDashboard";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import greengood from "../../assets/greengood.png";
 import DashboardNav from "./DashboardNavBar";
+import { withRouter } from "react-router-dom";
+import Axios, { AxiosResponse } from "axios";
+import { API } from "../../config";
 
-const TodoOverview = () => {
+const TodoOverview = withRouter((props: any) => {
+  const [state, setFormState] = React.useState<any>({
+    errorMessage: "",
+    user: "",
+    successMsg: false,
+    isLoading: false,
+  });
+  const { errorMessage, successMsg, user, isLoading } = state;
+  React.useEffect(() => {
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+    const data = {};
+    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/tasks-summary`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          setFormState({
+            ...state,
+            user: response.data,
+            successMsg: true,
+            isLoading: false,
+          });
+        }
+      })
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setFormState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setFormState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  }, []);
+  console.log(user);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -31,28 +76,21 @@ const TodoOverview = () => {
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Total Tasks </div>
-                            <div className="mmber1">80</div>
+                            <div className="mmber1">{user?.total_tasks}</div>
                           </div>
                         </div>
                         <div className="firstoffour">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Task Completed</div>
-                            <div className="mmber1">80</div>
+                            <div className="mmber1">{user?.pending_tasks}</div>
                           </div>
                         </div>
                         <div className="firstoffour">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Task Pending</div>
-                            <div className="mmber1">80</div>
-                          </div>
-                        </div>
-                        <div className="firstoffour">
-                          <div className="fouri1"></div>
-                          <div className="fouri1a">
-                            <div className="mmber">Tasks Not Started</div>
-                            <div className="mmber1">8</div>
+                            <div className="mmber1">{user?.completed_tasks}</div>
                           </div>
                         </div>
                       </div>
@@ -68,25 +106,24 @@ const TodoOverview = () => {
                     </div>
                     <div className="wrapline"></div>
                     <div className="cww">
-                      <div className="cname">
+                      <div className="cname tdw0">
                         <div className="cww11">Task Title</div>
                       </div>
-                      <div className="cdate cww11">Duration</div>
-                      <div className="ctime cww11">Time Created</div>
-                      <div className="ctime cww11">Status</div>
-                      <div className="ctime">
-                      </div>
+                      <div className="cdate cww11 tdw1">Duration</div>
+                      <div className="ctime cww11 tdw1">Time Created</div>
+                      <div className="ctime cww11 tdw1">Status</div>
+                      <div className="ctime "></div>
                     </div>
                     <div className="wrapc2">
                       <div className="userimg22">
                         {/* <img src={userimg} className="userimg" alt="userimg" /> */}
                       </div>
-                      <div className="cname">
+                      <div className="cname tdw0">
                         <div>Set Up LinkedIn Profile...</div>
                       </div>
-                      <div className="cdate">2 weeks</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cstatus2">
+                      <div className="cdate tdw1">2 weeks</div>
+                      <div className="ctime tdw1">09:30 AM - 10:00 AM</div>
+                      <div className="cstatus2 tdw1">
                         <span className="cstatus">Completed</span>
                       </div>
                       <div className="ctime">
@@ -117,5 +154,5 @@ const TodoOverview = () => {
       </Container>
     </>
   );
-};
+});
 export default TodoOverview;

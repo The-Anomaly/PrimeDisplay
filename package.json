@@ -31,6 +31,7 @@
     "react-simple-charts": "0.0.19",
     "react-simple-sidenav": "^1.0.1",
     "react-star-rating-component": "^1.4.1",
+    "react-to-pdf": "0.0.13",
     "react-toastify": "^5.5.0",
     "salad-ui.chart": "^1.1.55",
     "typescript": "^3.7.3"

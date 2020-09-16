@@ -58,7 +58,8 @@ import NewDashboardJobOpportunities from "./Components/KigenniDashboard/NewDashb
 import whatsapp from "./assets/whatsapp.png";
 import NewDashboardAllSubsriptionPlans from "./Components/KigenniDashboard/NewDashboardAllSubscription";
 import NewDashboardCounsellorSubscription from "./Components/KigenniDashboard/NewDashboardCounsellorSubscription";
-import TodoOverview from './Components/KigenniDashboard/TodoOverview';
+import TodoOverview from "./Components/KigenniDashboard/TodoOverview";
+import TestPdf from "./Components/KigenniDashboard/TestPdf";
 
 const App: React.FC = () => {
   return (
@@ -248,11 +249,9 @@ const App: React.FC = () => {
               path="/counsellorrecommendations"
               component={CounsellorRecommendation}
             />
-            <Route
-              exact
-              path="/todooverview"
-              component={TodoOverview}
-            />
+            <Route exact path="/todooverview" component={TodoOverview} />
+            <Route exact path="/pdf" component={TestPdf} />
+
             <Route
               exact
               path="/counselloroverview"
