@@ -64,6 +64,7 @@ import CVProfileBuilder from "./Components/KigenniDashboard/CVProfileBuilder";
 import TodoList from "./Components/KigenniDashboard/TodoList";
 import ViewMoreModal from "./Components/KigenniDashboard/ViewMoreModal";
 import CompleteTaskModal from "./Components/KigenniDashboard/CompleteTaskModal";
+import CreateTaskModal from "./Components/KigenniDashboard/CreateTaskModal";
 
 const App: React.FC = () => {
   return (
@@ -312,6 +313,11 @@ const App: React.FC = () => {
               exact
               path="/completetask"
               component={CompleteTaskModal}
+            />
+            <Route
+              exact
+              path="/createtask"
+              component={CreateTaskModal}
             />
             <Route exact path="/meetings" component={CouncellorBookings} />
             <Route exact path="/councellordates" component={CouncellorDates} />

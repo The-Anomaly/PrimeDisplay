@@ -92,71 +92,98 @@
 }
 
 @media (max-width: 800px) {
-    .modal-content {
-        padding: 1.2rem;
-    }
-    .close_view {
-        margin-top: -2.3rem;
-        margin-right: 1rem;
-    }
-    .closeview {
-        width: 6%;
-    }
-    .modal-body {
-        padding-top: 2rem;
-    }
-    .task_det, .date_info {
-        padding: 0.5rem;
-    }
-    .date_section {
-        width: 47%;
-    }
+  .modal-content {
+    padding: 1.2rem;
+  }
+  .close_view {
+    margin-top: -2.3rem;
+    margin-right: 1rem;
+  }
+  .closeview {
+    width: 6%;
+  }
+  .modal-body {
+    padding-top: 2rem;
+  }
+  .task_det,
+  .date_info {
+    padding: 0.5rem;
+  }
+  .date_section {
+    width: 47%;
+  }
 }
 
 @media (max-width: 600px) {
-    .modal-content {
-        padding: 1.2rem 0.6rem;
-    }
-    .date_info {
-        padding: 0.2rem;
-    }
-    .date_det {
-        flex-direction: column;
-    }
-    .date_section {
-        width: 75%;
-    }
-    .sec1 {
-        margin-top: 1rem;
-    }
-    .date_info {
-        padding: 0.8rem;
-    }
-    .markit {
-        padding: 0.4rem 0.6rem;
-    }
+  .modal-content {
+    padding: 1.2rem 0.6rem;
+  }
+  .date_info {
+    padding: 0.2rem;
+  }
+  .date_det {
+    flex-direction: column;
+  }
+  .date_section {
+    width: 75%;
+  }
+  .sec1 {
+    margin-top: 1rem;
+  }
+  .date_info {
+    padding: 0.8rem;
+  }
+  .markit {
+    padding: 0.4rem 0.6rem;
+  }
 }
 
 @media (max-width: 400px) {
-    .closeview {
-        width: 10%;
-    }
-    .close_view {
-        margin-right: 0.2rem;
-    }
-    .task_det {
-        height: 80px;
-    }
-    .date_section {
-        width: 90%;
-    }
+  .closeview {
+    width: 10%;
+  }
+  .close_view {
+    margin-right: 0.2rem;
+  }
+  .task_det {
+    height: 80px;
+  }
+  .date_section {
+    width: 90%;
+  }
 }
 
 @media (max-width: 350px) {
-    .date_section {
-        width: 100%;
-    }
-    .close_view {
-        margin-right: 0;
-    }
+  .date_section {
+    width: 100%;
+  }
+  .close_view {
+    margin-right: 0;
+  }
+}
+
+/*Create Task Modal Styling*/
+.create_body {
+  padding: 3rem 5rem;
+}
+.create_title {
+  font-size: 20px !important;
+}
+.create_det {
+  height: 60px;
+}
+.createit {
+  font-size: 15px;
+}
+
+@media (max-width: 800px) {
+  .create_body {
+    padding: 2rem 2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .create_body {
+    padding: 2rem 1rem;
+  }
 }
