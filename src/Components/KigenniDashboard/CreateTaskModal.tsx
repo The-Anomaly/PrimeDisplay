@@ -10,7 +10,7 @@ const CreateTaskModal = () => {
   const closeModal = () => {
     setState({
       ...state,
-      isOpen: true,
+      isOpen: false,
     });
   };
 
