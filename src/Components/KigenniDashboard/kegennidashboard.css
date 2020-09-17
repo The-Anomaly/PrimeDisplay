@@ -3061,3 +3061,116 @@ textarea.form-control.jobr {
   word-spacing: normal;
   padding-left: 1rem;
 }
+/*All Tasks Page Styling*/
+.firstqq {
+  padding-top: 2rem;
+}
+.begin {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1.2rem;
+}
+.create_task {
+  color: #ffffff;
+  background: #9C1258;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 0.6rem 1.5rem;
+  width: fit-content;
+  height: fit-content;
+  margin-right: 8rem;
+  font-weight: 600;
+}
+.create {
+  width: 13px;
+  margin-left: 6px;
+  margin-bottom: 3px;
+}
+.view_list {
+  font-size: 13px;
+  font-weight: 500;
+}
+.yellowbg {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: -0.4px;
+  color: #FFAD08;
+  background: #FEFDE6;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 97%;
+  margin-bottom: 1rem;
+}
+.yellowgood{
+  width: 32px;
+  margin-left: -7rem;
+  margin-right: 1.5rem;
+}
+.task_table {
+  font-size: 13px;
+  color: #979797;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+  justify-content: space-around;
+  padding: 1.5rem;
+  margin-right: 18rem;
+}
+.task_title {
+  margin-right: 4rem;
+}
+.task_duration {
+  margin-right: 2rem;
+}
+.task_time {
+  margin-right: 2rem;
+}
+.task_status {
+  
+}
+.tasklist {
+  font-size: 13px;
+  padding: 1.1rem 1rem 1.1rem 2.2rem;
+}
+.todo_name {
+  max-width: 170px;
+}
+.todo_date {
+  font-size: 13px;
+  max-width: 150px;
+}
+.todo_status {
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 0.2rem 1.2rem;
+  width: 6.5rem;
+  height: fit-content;
+  font-weight: 600;
+}
+.todo_button {
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 0.35rem 1.5rem;
+  width: fit-content;
+  height: fit-content;
+  font-weight: 600;
+}
+.next_page {
+  color: #979797;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 4rem 1rem 1.8rem;
+}
+.page_num {
+  color: #18214D;
+}
+.page_change {
+  width: 30px;
+  margin-left: 0.5rem;
+}

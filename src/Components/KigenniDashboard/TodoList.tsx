@@ -9,13 +9,16 @@ import SideBarNewDashboard from "./SideBarNewDashboard";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import greengood from "../../assets/greengood.png";
 import DashboardNav from "./DashboardNavBar";
-import { withRouter } from "react-router-dom";
+import whiteplus from "../../assets/whiteplus.svg";
+import yellowthumb from "../../assets/yellowthumb.svg";
+import prevpage from "../../assets/prevpage.svg";
+import nextpage from "../../assets/nextpage.svg";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
 import { Link } from "react-router-dom";
 const moment = require("moment");
 
-const TodoOverview = withRouter((props: any) => {
+const TodoList = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
     user: "",
@@ -74,7 +77,6 @@ const TodoOverview = withRouter((props: any) => {
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-  console.log(tasklist);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -82,90 +84,100 @@ const TodoOverview = withRouter((props: any) => {
         <Row>
           <SideBarNewDashboard todo={true} />
           <Col md={10} sm={12} className="prm">
-            <DashboardLargeScreenNav title="Todo Overview" />
+            <DashboardLargeScreenNav title="All Tasks" />
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
-                <DashboardUsernameheader welcomeText=" Welcome to your Todo sections" />
+                <div className="begin">
+                  <DashboardUsernameheader welcomeText="View list of all available tasks" />
+                  <span className="create_task">
+                    Create New Task
+                    <img
+                      className="create"
+                      src={whiteplus}
+                      alt="create new task"
+                    />
+                  </span>
+                </div>
                 <Row>
-                  <Col md={12}>
-                    <div className="wwrap">
-                      <div className="fourinfo">
-                        <div className="firstoffour">
-                          <div className="fouri1"></div>
-                          <div className="fouri1a">
-                            <div className="mmber">Total Tasks </div>
-                            <div className="mmber1">{user?.total_tasks}</div>
-                          </div>
-                        </div>
-                        <div className="firstoffour">
-                          <div className="fouri1"></div>
-                          <div className="fouri1a">
-                            <div className="mmber">Task Completed</div>
-                            <div className="mmber1">{user?.pending_tasks}</div>
-                          </div>
-                        </div>
-                        <div className="firstoffour">
-                          <div className="fouri1"></div>
-                          <div className="fouri1a">
-                            <div className="mmber">Task Pending</div>
-                            <div className="mmber1">
-                              {user?.completed_tasks}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="greenbgcont">
+                  <Col md={11}>
+                    <div className="yellowbg">
                       <img
-                        src={greengood}
-                        className="greengood"
+                        src={yellowthumb}
+                        className="yellowgood"
                         alt="goodimage"
                       />
-                      It Takes alot of Hero to even start a task, But seems you
-                      have super powers. Keep going Champ!!!
+                      It takes alot of heroes to even start a task, but it seems
+                      like you have super powers. Keep going Champ!!!
                     </div>
-                    <div className="wrapline"></div>
-                    <div className="cww">
-                      <div className="cname tdw0">
-                        <div className="cww11">Task Title</div>
-                      </div>
-                      <div className="cdate cww11 tdw1">Duration</div>
-                      <div className="ctime cww11 tdw1">Time Created</div>
-                      <div className="ctime cww11 tdw1 tdw1s ">Status</div>
-                      <div className="ctime "></div>
+                    <div className="task_table">
+                      <span className="task_title">Task Title</span>
+                      <span className="task_duration">Duration</span>
+                      <span className="task_time">Time Created</span>
+                      <span className="task_status">Status</span>
                     </div>
-                    {tasklist.splice(0,2).map((data, i) => (
-                      <div className="wrapc2">
-                        <div className="userimg22">
-                          {/* <img src={userimg} className="userimg" alt="userimg" /> */}
+                    {tasklist.map((data, i) => (
+                      <div className="wrapc2 tasklist" key={i}>
+                        <div className="cname todo_name">{data?.title}</div>
+                        <div className="cdate todo_date">
+                          {data?.duration}
+                          {(data.duration = 1 ? "week" : "weeks")}
                         </div>
-                        <div className="cname tdw0">
-                          <div className="eplimit">{data?.title}</div>
-                        </div>
-                        <div className="cdate tdw1">{data?.duration}</div>
-                        <div className="ctime tdw1">
+                        <div className="ctime todo_time">
                           {formatTime(data?.date_created)}
                         </div>
-                        <div className="cstatus2 tdw1">
+                        <div className="cstatus2">
                           <span
                             className={
                               data.status === "pending"
-                                ? "cstatus pending"
-                                : "cstatus"
+                                ? "cstatus todo_status pending"
+                                : "cstatus todo_status"
                             }
                           >
                             {capitalizeFirstLetter(data.status)}
                           </span>
                         </div>
                         <div className="ctime">
-                          <div className="savebtn">View More</div>
+                          <div className="savebtn todo_button">
+                            Complete Task
+                          </div>
                         </div>
                       </div>
                     ))}
-                    <Link to="/todolist">
-                      <div className="viewall">View all Task</div>
-                    </Link>
+                    
+                    <div className="wrapc2 tasklist">
+                      <div className="cname todo_name">
+                        Start new Javascript Cour...
+                      </div>
+                      <div className="cdate todo_date">2 weeks</div>
+                      <div className="ctime todo_time">09:30 AM - 10:00 AM</div>
+                      <div className="cstatus2">
+                        <span className="cstatus todo_status pending">
+                          Pending
+                        </span>
+                      </div>
+                      <div className="ctime">
+                        <div className="savebtn todo_button">Complete Task</div>
+                      </div>
+                    </div>
+                    <div className="next_page">
+                      <div>
+                        Displaying <span className="page_num">6</span> out of{" "}
+                        <span className="page_num">100</span>
+                      </div>
+                      <div>
+                        <img
+                          className="page_change"
+                          src={prevpage}
+                          alt="previous page"
+                        />
+                        <img
+                          className="page_change"
+                          src={nextpage}
+                          alt="next page"
+                        />
+                      </div>
+                    </div>
                   </Col>
                 </Row>
               </Col>
@@ -175,5 +187,5 @@ const TodoOverview = withRouter((props: any) => {
       </Container>
     </>
   );
-});
-export default TodoOverview;
+};
+export default TodoList;

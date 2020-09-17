@@ -134,7 +134,9 @@ const SideBarNewDashboard = (props: any) => {
                   <Link to="/todooverview">
                     <div className="task112">Task Overview</div>
                   </Link>
-                  <div className="task112">All Task</div>
+                  <Link to="/todolist">
+                    <div className="task112">All Task</div>
+                  </Link>
                 </Card.Body>
               </Accordion.Collapse>
             </Accordion>

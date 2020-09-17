@@ -170,7 +170,9 @@ const DashboardNav = (props: any) => {
                   <Link to="/todooverview">
                     <div className="task112">Task Overview</div>
                   </Link>
+                  <Link to="/todoList">
                   <div className="task112">All Task</div>
+                  </Link>
                 </Card.Body>
               </Accordion.Collapse>
             </Accordion>
