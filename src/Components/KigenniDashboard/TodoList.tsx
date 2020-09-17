@@ -25,8 +25,11 @@ const TodoList = (props: any) => {
     tasklist: [],
     successMsg: false,
     isLoading: false,
+    nextLink: "",
+    prevLink: "",
+    count: "",
   });
-  const { errorMessage, tasklist, user, isLoading } = state;
+  const { errorMessage, tasklist, nextLink, prevLink, user, isLoading } = state;
   React.useEffect(() => {
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
@@ -51,6 +54,9 @@ const TodoList = (props: any) => {
               successMsg: true,
               isLoading: false,
               tasklist: [...res1.data.results],
+              count: res1.data.count,
+              nextLink: res1.data.next,
+              prevLink: res1.data.previous,
             });
           }
         })
@@ -70,6 +76,57 @@ const TodoList = (props: any) => {
         });
       });
   }, []);
+  const LoadOldData = () => {
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${prevLink}`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((res) => {
+        console.log(res);
+        setFormState({
+          ...state,
+          tasklist: res.data,
+          count: res.data.count,
+          nextLink: res.data.next,
+          prevLink: res.data.previous,
+        });
+      })
+      .catch((err) => {
+        if (err?.status === 401) {
+          props.history.push("/signin");
+        }
+        console.log(err);
+      });
+  };
+  const LoadNewData = () => {
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${nextLink}`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((res) => {
+        console.log(res);
+        setFormState({
+          ...state,
+          tasklist: res.data,
+          count: res.data.count,
+          nextLink: res.data.next,
+          prevLink: res.data.previous,
+        });
+      })
+      .catch((err) => {
+        if (err?.status === 401) {
+          props.history.push("/signin");
+        }
+        console.log(err);
+      });
+  };
+
   const formatTime = (date) => {
     const dateTime = moment(date).format("Do MMM YYYY");
     return dateTime;
@@ -144,7 +201,7 @@ const TodoList = (props: any) => {
                         </div>
                       </div>
                     ))}
-                    
+
                     <div className="wrapc2 tasklist">
                       <div className="cname todo_name">
                         Start new Javascript Cour...
@@ -162,20 +219,26 @@ const TodoList = (props: any) => {
                     </div>
                     <div className="next_page">
                       <div>
-                        Displaying <span className="page_num">6</span> out of{" "}
-                        <span className="page_num">100</span>
+                        Displaying <span className="page_num">1</span> out of{" "}
+                        <span className="page_num">{state.count}</span>
                       </div>
                       <div>
-                        <img
-                          className="page_change"
-                          src={prevpage}
-                          alt="previous page"
-                        />
-                        <img
-                          className="page_change"
-                          src={nextpage}
-                          alt="next page"
-                        />
+                        {prevLink && (
+                          <img
+                            className="page_change"
+                            src={prevpage}
+                            alt="previous page"
+                            onClick={LoadOldData}
+                          />
+                        )}
+                        {nextLink && (
+                          <img
+                            className="page_change"
+                            src={nextpage}
+                            onClick={LoadNewData}
+                            alt="next page"
+                          />
+                        )}
                       </div>
                     </div>
                   </Col>

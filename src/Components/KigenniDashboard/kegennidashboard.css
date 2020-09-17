@@ -3173,4 +3173,5 @@ textarea.form-control.jobr {
 .page_change {
   width: 30px;
   margin-left: 0.5rem;
+  cursor: pointer;
 }
