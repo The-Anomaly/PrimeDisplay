@@ -58,7 +58,8 @@ import NewDashboardJobOpportunities from "./Components/KigenniDashboard/NewDashb
 import whatsapp from "./assets/whatsapp.png";
 import NewDashboardAllSubsriptionPlans from "./Components/KigenniDashboard/NewDashboardAllSubscription";
 import NewDashboardCounsellorSubscription from "./Components/KigenniDashboard/NewDashboardCounsellorSubscription";
-import TodoOverview from './Components/KigenniDashboard/TodoOverview';
+import TodoOverview from "./Components/KigenniDashboard/TodoOverview";
+import TestPdf from "./Components/KigenniDashboard/TestPdf";
 import CVProfileBuilder from "./Components/KigenniDashboard/CVProfileBuilder";
 import TodoList from "./Components/KigenniDashboard/TodoList";
 import ViewMoreModal from "./Components/KigenniDashboard/ViewMoreModal";
@@ -79,7 +80,7 @@ const App: React.FC = () => {
             <Route exact path="/clientchat2" component={OnboardingChatPhase2} />
             <Route exact path="/clarityforteams" component={ClarityForTeams} />
             <Route exact path="/overview" component={NewDashboard} />
-            <Route exact path="/profilebuilder" component={ProfileBuilder} />
+            <Route exact path="/profilebuilder" component={CVProfileBuilder} />
             <Route
               exact
               path="/jobopportunities"
@@ -251,11 +252,9 @@ const App: React.FC = () => {
               path="/counsellorrecommendations"
               component={CounsellorRecommendation}
             />
-            <Route
-              exact
-              path="/todooverview"
-              component={TodoOverview}
-            />
+            <Route exact path="/todooverview" component={TodoOverview} />
+            <Route exact path="/generatecv" component={TestPdf} />
+
             <Route
               exact
               path="/counselloroverview"
@@ -296,7 +295,7 @@ const App: React.FC = () => {
             <Route
               exact
               path="/cvdashboard"
-              component={CVProfileBuilder}
+              component={ProfileBuilder}
             />
             <Route
               exact

@@ -24,6 +24,9 @@ import "../Home/Home/Home.css";
 import { Link } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
+import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
+import union from "../../assets/Union.png";
 
 const SideBarNewDashboard = (props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
@@ -115,11 +118,38 @@ const SideBarNewDashboard = (props: any) => {
               Counsellors Recommendation
             </Link>
           </div>
+          <div className={props.todo ? "activegb" : "gbn"}>
+            {" "}
+            <Accordion defaultActiveKey="">
+              <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
+                <img
+                  src={props.todo ? profilebuilder : profilebuilderinactive}
+                  className="sideimage"
+                  alt="sideimage"
+                />
+                Task Todo
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="5">
+                <Card.Body>
+                  <Link to="/todooverview">
+                    <div className="task112">Task Overview</div>
+                  </Link>
+                  <Link to="/todolist">
+                    <div className="task112">All Task</div>
+                  </Link>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Accordion>
+          </div>
           <div className={props.jobrec ? "activegb" : "gbn"}>
             {" "}
             <Link to="/jobopportunities">
               <img
-                src={props.jobrec ? jobrecommedationactive : jobrecommedationinactive}
+                src={
+                  props.jobrec
+                    ? jobrecommedationactive
+                    : jobrecommedationinactive
+                }
                 className="sideimage"
                 alt="sideimage"
               />

@@ -7,14 +7,17 @@ import avatar from "../../assets/avatar.svg";
 import SideBarNewDashboard from "./SideBarNewDashboard";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
-import firstlogo from "../../assets/image 1.png";
 import Button from "react-bootstrap/Button";
 import { CirclePie } from "salad-ui.chart";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import norecommendations from "../../assets/no recommendations.png";
 import DashboardNav from "./DashboardNavBar";
+import alertTriangle from "../../assets/alert-triangle.png";
+import alertTrianglegray from "../../assets/alertTrianglegray.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class CounsellorsRecommendation extends React.Component {
   state: any = {
@@ -50,7 +53,6 @@ class CounsellorsRecommendation extends React.Component {
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
-    this.checkIfUserHasMadePaymentForFullResult(token);
     const data = {};
     Axios.get<any, AxiosResponse<any>>(
       `${API}/dashboard/counsellorrecommendation`,
@@ -78,7 +80,31 @@ class CounsellorsRecommendation extends React.Component {
         });
       });
   }
-  checkIfUserHasMadePaymentForFullResult = (token: string) => {};
+  makeRecommendationToDo = (id) => {
+    this.setState({ isLoading: true });
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    const data = {
+      id,
+    };
+    Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/make-todo`, data, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        if (response?.data) {
+          this.notify("Successfull created task")
+          setTimeout(()=>{
+            this.componentDidMount()
+          },3000)
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   onchange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -109,6 +135,7 @@ class CounsellorsRecommendation extends React.Component {
         console.log(error);
       });
   };
+  notify = (message: string) => toast(message, { containerId: "B" });
   render() {
     const { fullname, message, isLoading, width, counsellor } = this.state;
     return (
@@ -149,19 +176,61 @@ class CounsellorsRecommendation extends React.Component {
                     <Col md={12} className="youwss">
                       {counsellor &&
                         counsellor?.map((data, i) => (
-                          <div className="usersentwrap1" key={i}>
-                            <div className="youwrap">
-                              <span className="you11b">
-                                {data.counsellor_name}
-                              </span>
+                          <>
+                            <div className="usersentwrap1" key={i}>
+                              <div className="youwrap">
+                                <span className="you11b">
+                                  {data.counsellor_name}
+                                </span>{" "}
+                                <span className="youdate">{data.date}</span>
+                              </div>
+                              <div className="councellors_response">
+                                {data.text}
+                              </div>
                             </div>
-                            <div className="councellors_response">
-                              {data.text}
-                            </div>
-                            <div className="youwrap textrrr">
-                              <span className="youdate">{data.date}</span>
-                            </div>
-                          </div>
+                            {data.todo && (
+                              <Col md={12} className="zeropad">
+                                <div className="notpaid notppd graybgds">
+                                  <div className="notpaid1">
+                                    <img
+                                      src={alertTrianglegray}
+                                      className="caution caurtn"
+                                      alt="caution"
+                                    />
+                                    <div className="notpaidtext1 notpaidtext">
+                                      Convert this recommendation to a task
+                                    </div>
+                                  </div>
+                                  <div className="retaketest upss smtd smtdis">
+                                    <Link to="/paymentsummary">
+                                      Covert to ToDo{" "}
+                                    </Link>
+                                  </div>
+                                </div>
+                              </Col>
+                            )}
+                            {data.todo  === false && (
+                              <Col md={12} className="zeropad">
+                                <div className="notpaid notppd">
+                                  <div className="notpaid1">
+                                    <img
+                                      src={alertTriangle}
+                                      className="caution caurtn"
+                                      alt="caution"
+                                    />
+                                    <div className="notpaidtext1 notpaidtext">
+                                      Convert this recommendation to a task
+                                    </div>
+                                  </div>
+                                  <div className="retaketest upss smtd">
+                                    <div onClick={()=>this.makeRecommendationToDo(data.id)}>
+                                      Covert to ToDo{" "}
+                                    </div>
+                                  </div>
+                                </div>
+                              </Col>
+                            )}
+                          </>
                         ))}
                       {counsellor.length === 0 && (
                         <div className="norec">
@@ -183,6 +252,13 @@ class CounsellorsRecommendation extends React.Component {
               </Row>
             </Col>
           </Row>
+          <ToastContainer
+            enableMultiContainer
+            containerId={"B"}
+            toastClassName="bg-info text-white"
+            hideProgressBar={true}
+            position={toast.POSITION.TOP_CENTER}
+          />
         </Container>
       </>
     );

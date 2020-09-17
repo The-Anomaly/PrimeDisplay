@@ -25,6 +25,7 @@ import plus from "../../assets/plus.svg";
 import x from "../../assets/x.svg";
 import book from "../../assets/book.svg";
 import dropdown from "../../assets/dropdown.svg";
+const moment = require("moment");
 
 class CVProfileBuilder extends React.Component {
   state: any = {
@@ -181,40 +182,6 @@ class CVProfileBuilder extends React.Component {
       referenceemail: "",
     });
   };
-  addExperience = () => {
-    const Experiencez = [
-      {
-        organisation: this.state.organizationname,
-        position: this.state.organizationposition,
-        job_description: this.state.jobdescription,
-        current: this.state.mycurrentwork,
-        started_from: this.state.startDate,
-        to: this.state.endDate,
-      },
-    ];
-    const [
-      { organisation, position, job_description, current, started_from, to },
-    ] = Experiencez;
-    if (
-      organisation === "" ||
-      position === "" ||
-      job_description === "" ||
-      started_from === ""
-    ) {
-      return this.notify("Please enter new work experience details");
-    }
-    this.setState({
-      experiences: [...this.state.experiences, ...Experiencez].reverse(),
-    });
-    this.setState({
-      organizationname: "",
-      organizationposition: "",
-      jobdescription: "",
-      mycurrentwork: "",
-      startDate: "",
-      endDate: "",
-    });
-  };
   submitForm = (e) => {
     e.preventDefault();
     const {
@@ -264,6 +231,7 @@ class CVProfileBuilder extends React.Component {
       });
   };
   componentDidMount() {
+    window.scrollTo(-0, -0);
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profilebuilder`, {
@@ -274,10 +242,10 @@ class CVProfileBuilder extends React.Component {
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
-          experiences: res.data.user_experiences,
-          certifications: res.data.certification,
-          education: res.data.education,
-          references: res.data.user_refernce,
+          experiences: [...res.data.user_experiences],
+          certifications: [...res.data.certification],
+          education: [...res.data.education],
+          references: [...res.data.user_refernce],
           socials: res.data.user_social,
           facebook: res.data.user_social.facebook,
           linkedin: res.data.user_social.linkedin,
@@ -294,6 +262,7 @@ class CVProfileBuilder extends React.Component {
   }
   componentWillMount() {
     this.setState({ isLoading: true });
+    const self: any = this;
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -308,6 +277,9 @@ class CVProfileBuilder extends React.Component {
           this.setState({
             user: response.data,
           });
+          if (response.data.new_user) {
+            self.props.history.push("/cvdashboard");
+          }
         }
       })
       .catch((error) => {
@@ -416,6 +388,10 @@ class CVProfileBuilder extends React.Component {
       mountedExperience: [{ [e.target.id]: e.target.value }],
     });
   };
+  formatTime = (date) => {
+    const dateTime = moment(date).format("MMM YYYY");
+    return dateTime;
+  };
   render() {
     const {
       fullname,
@@ -456,7 +432,7 @@ class CVProfileBuilder extends React.Component {
       width,
       user,
     } = this.state;
-    console.log(user);
+    console.log(references);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -507,14 +483,16 @@ class CVProfileBuilder extends React.Component {
                       <Row className="rowla">
                         <Col md={12}>
                           <div className="whatdoudo">About </div>
-                          <div className="edittt"><img className="edit_icon" src={editicon} alt="edit icon"/></div>
-                          <textarea
-                            className="form-control jobr bout"
-                            value={about}
-                            onChange={this.handleChange}
-                            id="about"
-                            placeholder="Provide a description of what defines you and your process"
-                          />
+                          <div className="edittt">
+                            <Link to="/cvdashboard/#about">
+                              <img
+                                className="edit_icon"
+                                src={editicon}
+                                alt="edit icon"
+                              />
+                            </Link>
+                          </div>
+                          <div className="aboutprv">{about}</div>
                         </Col>
                       </Row>
                       <Row className="rowla">
@@ -522,51 +500,49 @@ class CVProfileBuilder extends React.Component {
                           <div className="whatdoudo offpad">
                             <div className="what12">
                               Experience{" "}
-                              <div
-                                className="plusnew"
-                                onClick={this.addExperience}
-                                title="Add entry"
-                              >
-                                <span className="addone"><img className="add_icon" src={plus} alt="add icon" /></span>
+                              <div className="plusnew" title="Add entry">
+                                <span className="addone">
+                                  <Link to="/cvdashboard/#experience">
+                                    <img
+                                      className="add_icon"
+                                      src={plus}
+                                      alt="add icon"
+                                    />
+                                  </Link>
+                                </span>
                               </div>
                             </div>
                           </div>
                           <Row className="cvexperience">
-                            <Row className="roww">
-                              <Col md={1} sm={1} className="buildingbg" >
-                                <img className="building" src={building} alt="building icon" />
-                              </Col>
-                              <Col md={9} sm={8} className="cvexp" >
-                                <div className="role">Frontend Developer</div>
-                                <div className="company">Netflix</div>
-                                <div className="time">July 2019 - Present  6 months</div>
-                                <hr/>
-                              </Col>
-                            </Row>
-                            <Row className="roww">
-                              <Col md={1} sm={1} className="buildingbg" >
-                                <img className="building" src={building} alt="building icon" />
-                              </Col>
-                              <Col md={9} sm={8} className="cvexp" >
-                                <div className="role">Full stack Developer Intern</div>
-                                <div className="company">Microsoft</div>
-                                <div className="time">July 2018 - July 2020  1 year</div>
-                                <hr/>
-                              </Col>
-                            </Row>
-                            <Row className="roww">
-                              <Col md={1} sm={1} className="buildingbg" >
-                                <img className="building" src={building} alt="building icon" />
-                              </Col>
-                              <Col md={9} sm={8} className="cvexp" >
-                                <div className="role">Backend Developer Intern</div>
-                                <div className="company">Amazon</div>
-                                <div className="time">July 2017 - July 2018  1 year</div>
-                                <hr/>
-                              </Col>
-                            </Row>
+                            {experiences.map((data, i) => (
+                              <Row className="roww">
+                                <Col md={1} sm={1} className="buildingbg">
+                                  <img
+                                    className="building"
+                                    src={building}
+                                    alt="building icon"
+                                  />
+                                </Col>
+                                <Col md={9} sm={8} className="cvexp">
+                                  <div className="role">{data.position}</div>
+                                  <div className="company">
+                                    {data.organisation}
+                                  </div>
+                                  <div className="time">
+                                    {this.formatTime(data.started_from)} -
+                                    {data.current ? " Present" : ""}{" "}
+                                    {data?.end_date}
+                                  </div>
+                                  <hr />
+                                </Col>
+                              </Row>
+                            ))}
                           </Row>
-                          <a href="#" className="showmore">Show More</a>
+                          {false && (
+                            <a href="#" className="showmore">
+                              Show More
+                            </a>
+                          )}
                         </Col>
                       </Row>
                       <hr />
@@ -575,12 +551,16 @@ class CVProfileBuilder extends React.Component {
                           <div className="whatdoudo offpad">
                             <div className="what12 lass">
                               Skills{" "}
-                              <div
-                                className="plusnew"
-                                onClick={this.addNewSkill}
-                                title="Add entry"
-                              >
-                                <span className="addone"><img className="add_icon" src={plus} alt="add icon" /></span>
+                              <div className="plusnew" title="Add entry">
+                                <span className="addone">
+                                  <Link to="/cvdashboard/#skills">
+                                    <img
+                                      className="add_icon"
+                                      src={plus}
+                                      alt="add icon"
+                                    />
+                                  </Link>
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -594,53 +574,64 @@ class CVProfileBuilder extends React.Component {
                                   className="dlete"
                                   onClick={() => this.deleteSkill(ind)}
                                 >
-                                  <img className="skill_cancel" src={x} alt="delete skill"/>
+                                  {/* <img
+                                    className="skill_cancel"
+                                    src={x}
+                                    alt="delete skill"
+                                  /> */}
                                 </span>
                               </div>
                             ))}
                           </div>
-                          <input
-                            type="text"
-                            value={skill}
-                            id="skill"
-                            onKeyPress={(e) => {
-                              console.log(e);
-                              if (e.key == "Enter") {
-                                this.addNewSkill();
-                              }
-                            }}
-                            onChange={this.handleChange}
-                            className="form-control jobr"
-                          />
+                          <div className="aboutprv jobr"></div>
                         </Col>
                       </Row>
-                      
+
                       <Row className="rowla skill_row">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
                             <div className="what12">
                               Education{" "}
-                              <div
-                                className="plusnew"
-                                onClick={this.addNewEducation}
-                                title="Add entry"
-                              >
-                                <span className="addone"><img className="add_icon" src={plus} alt="add icon" /></span>
+                              <div className="plusnew" title="Add entry">
+                                <span className="addone">
+                                  <Link to="/cvdashboard/#education">
+                                    <img
+                                      className="add_icon"
+                                      src={plus}
+                                      alt="add icon"
+                                    />
+                                  </Link>
+                                </span>
                               </div>
                             </div>
                           </div>
                           <Row>
-                            <div className="cveducation">
-                              <span>
-                              <img className="cvedu" src={book} alt="book icon" />
-                              </span>
-                              <span className="sch_details">
-                                <div className="school">University of Lagos</div>
-                                <div className="course">Bachelor of Arts</div>
-                                <div className="location">Yaba, Lagos state, Nigeria</div>
-                              </span>
-                              <a className="edit_descrip">Edit Description</a>
-                            </div>
+                            {education.map((data, i) => (
+                              <div className="cveducation" key={i}>
+                                <span>
+                                  <img
+                                    className="cvedu"
+                                    src={book}
+                                    alt="book icon"
+                                  />
+                                </span>
+                                <span className="sch_details">
+                                  <div className="school">
+                                    {data.institution}
+                                  </div>
+                                  <div className="course">{data.degree}</div>
+                                  <div className="location">
+                                    {data.location}
+                                  </div>
+                                </span>
+                                <Link
+                                  className="edit_descrip"
+                                  to="/cvdashboard/#education"
+                                >
+                                  Edit Description
+                                </Link>
+                              </div>
+                            ))}
                           </Row>
                         </Col>
                       </Row>
@@ -649,43 +640,61 @@ class CVProfileBuilder extends React.Component {
                           <div className="whatdoudo offpadd1">
                             <div className="what12">
                               Certification{" "}
-                              <div
-                                className="plusnew"
-                                onClick={this.addNewCertification}
-                                title="Add entry"
-                              >
-                                <span className="addone"><img className="add_icon" src={plus} alt="add icon" /></span>
+                              <div className="plusnew" title="Add entry">
+                                <span className="addone">
+                                  <Link to="/cvdashboard/#certification">
+                                    <img
+                                      className="add_icon"
+                                      src={plus}
+                                      alt="add icon"
+                                    />
+                                  </Link>
+                                </span>
                               </div>
                             </div>
                           </div>
                           <Row className="cvexperience">
-                            <Row className="roww">
-                              <Col md={1} sm={1} className="buildingbg" >
-                                <img className="building" src={building} alt="building icon" />
-                              </Col>
-                              <Col md={9} sm={8} className="cvexp" >
-                                <div className="role">Digital Marketing from zero to hero</div>
-                                <div className="company">Google Business school</div>
-                                <div className="time">Issued June 2020 . No Expiration Date</div>
-                                <hr/>
-                              </Col>
-                              <div className="dropit">
-                                <img className="drop" src={dropdown} alt="dropdown" />
-                              </div>
-                            </Row>
-                            <Row className="roww">
-                              <Col md={1} sm={1} className="buildingbg" >
-                                <img className="building" src={building} alt="building icon" />
-                              </Col>
-                              <Col md={9} sm={8} className="cvexp" >
-                                <div className="role">Frontend Developer Nano Degree</div>
-                                <div className="company">Udacity</div>
-                                <div className="time">Issued June 2018 . No Expiration Date</div>
-                                <hr/>
-                              </Col>
-                            </Row>
+                            {certifications.map((data, i) => (
+                              <Row className="roww">
+                                <Col md={1} sm={1} className="buildingbg">
+                                  <img
+                                    className="building"
+                                    src={building}
+                                    alt="building icon"
+                                  />
+                                </Col>
+                                <Col md={9} sm={8} className="cvexp">
+                                  <div className="role">
+                                    {data.certificate_name}
+                                  </div>
+                                  <div className="company">
+                                    {data.institution}
+                                  </div>
+                                  <div className="time">
+                                    Issued {this.formatTime(data.valid_from)}
+                                    {" - "}
+                                    {data.does_not_expire
+                                      ? "No Expiration Date"
+                                      : ""}{" "}
+                                    {this.formatTime(data.valid_from)}
+                                  </div>
+                                  <hr />
+                                </Col>
+                                <div className="dropit">
+                                  <img
+                                    className="drop"
+                                    src={dropdown}
+                                    alt="dropdown"
+                                  />
+                                </div>
+                              </Row>
+                            ))}
                           </Row>
-                          <a href="#" className="showmore">Show More</a>
+                          {false && (
+                            <a href="#" className="showmore">
+                              Show More
+                            </a>
+                          )}
                         </Col>
                       </Row>
                     </Col>
@@ -696,35 +705,33 @@ class CVProfileBuilder extends React.Component {
                       <div className="whatdoudo unbtm">
                         <div className="what12">
                           Reference{" "}
-                          <div
-                            className="plusnew"
-                            onClick={this.addNewReferences}
-                            title="Add entry"
-                          >
-                            <span className="addone"><img className="add_icon" src={plus} alt="add icon" /></span>
+                          <div className="plusnew" title="Add entry">
+                            <span className="addone">
+                              <Link to="/cvdashboard/#reference">
+                                <img
+                                  className="add_icon"
+                                  src={plus}
+                                  alt="add icon"
+                                />
+                              </Link>
+                            </span>
                           </div>
                         </div>
                       </div>
-                      <Row>
-                        <div className="cvreference">
+                      {references.map((data, i) => (
+                        <Row key={i}>
+                          <div className="cvreference">
                             <span className="ref_details">
-                              <div className="name">Professor Williams Donlop</div>
-                              <div className="mail">williams@donlop.com</div>
-                              <div className="phone">+234 567 876 3456</div>
-                              <div className="relation">Father</div>
+                              <div className="name">{data.name}</div>
+                              <div className="mail">{data.ref_email}</div>
+                              <div className="phone">{data.phone}</div>
+                              <div className="relation">
+                                {data.relationship}
+                              </div>
                             </span>
-                            </div>
-                      </Row>
-                      <Row>
-                        <div className="cvreference">
-                            <span className="ref_details">
-                              <div className="name">Professor Williams Donlop</div>
-                              <div className="mail">williams@donlop.com</div>
-                              <div className="phone">+234 567 876 3456</div>
-                              <div className="relation">Father</div>
-                            </span>
-                            </div>
-                      </Row>
+                          </div>
+                        </Row>
+                      ))}
                     </Col>
                   </Row>
                   <Row className="rowla">
@@ -732,26 +739,35 @@ class CVProfileBuilder extends React.Component {
                       <div className="whatdoudo offpadd1">
                         <div className="what12">
                           Social Media Link{""}
-                        <div
-                            className="plusnew"
-                            title="Add entry"
-                          >
-                            <span className="addone"><img className="add_icon" src={plus} alt="add icon" /></span>
+                          <div className="plusnew" title="Add entry">
+                            <span className="addone">
+                              <Link to="/cvdashboard/#socialmedia">
+                                <img
+                                  className="add_icon"
+                                  src={plus}
+                                  alt="add icon"
+                                />
+                              </Link>
+                            </span>
                           </div>
                         </div>
                       </div>
                       <Row className="cvsocial">
-                        <a className="social1"href="#">https:://twiter.com/jaiyeolajones</a>
-                        <a className="social1" href="#">https:://linkedin.com/in/jaiyeolajones</a>
+                        {linkedin && <a className="social1">{linkedin}</a>}
+                        {facebook && <a className="social1">{facebook}</a>}
+                        {instagram && <a className="social1">{instagram}</a>}
+                        {twitter && <a className="social1">{twitter}</a>}
                       </Row>
                     </Col>
                   </Row>
                   <Row>
                     <Col md={12} className="printcv">
-                      <div className="savebtn savecv" onClick={this.submitForm}>
-                        Save
-                      </div>
-                      <div className="print savecv">Generate CV</div>
+                      <Link to="/cvdashboard">
+                        <div className="savebtn savecv">Edit</div>
+                      </Link>
+                      <Link to="/generatecv">
+                        <div className="print savecv">Generate CV</div>
+                      </Link>
                     </Col>
                   </Row>
                 </Col>

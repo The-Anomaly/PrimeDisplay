@@ -1711,7 +1711,7 @@ textarea.form-control.jobr {
   color: #9c1258;
   border: 1px solid #9c1258;
   border-radius: 8px;
-  padding: 0.1rem 0.7rem;
+  padding: 0.4rem 0.7rem;
   display: inline-block;
   font-weight: 700;
   margin-left: 1rem;
@@ -1721,10 +1721,12 @@ textarea.form-control.jobr {
   background: #9c1258;
   border-radius: 8px;
   border: 1px solid #9c1258;
-  padding: 0.2rem 0.9rem;
+  padding: 0.4rem 0.9rem;
   display: inline-block;
   font-weight: 700;
   cursor: pointer;
+  width: 122px;
+  text-align: center;
 }
 .printcv {
   padding-bottom: 1rem;
@@ -1957,7 +1959,7 @@ textarea.form-control.jobr {
   flex-direction: column;
   width: 20%;
   min-width: 133px;
-  max-width: 140px;
+  max-width: 170px;
 }
 .cdate {
   font-style: normal;
@@ -1990,10 +1992,16 @@ textarea.form-control.jobr {
   background: #fefefe;
   box-shadow: 0px 2px 6px rgba(24, 33, 77, 0.25);
   border-radius: 8px;
-  padding: 1rem 1rem;
+  padding: 1.4rem 1rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
-  width: 97%;
+  width: 93%;
+}
+.wrapline {
+  width: 93%;
+  border-top: 1px solid #bcbcbcb6;
+  padding-bottom: 1.4rem;
+  margin-top: 1.2rem;
 }
 .cname1,
 .cdate1,
@@ -2028,6 +2036,7 @@ textarea.form-control.jobr {
   border-radius: 8px;
   padding: 0.1rem 0.4rem;
   justify-content: center;
+  width: 105px;
 }
 .pending {
   text-align: center;
@@ -2155,6 +2164,7 @@ textarea.form-control.jobr {
   color: #fff;
   padding-left: 2rem;
 }
+
 .notpaid {
   display: flex;
   justify-content: space-between;
@@ -2353,7 +2363,7 @@ textarea.form-control.jobr {
   font-size: 14px;
   padding-top: 0.5rem;
   cursor: pointer;
-  width: 97%;
+  width: 93%;
 }
 .firstoffour {
   height: 120px;
@@ -2382,7 +2392,7 @@ textarea.form-control.jobr {
   padding-top: 2rem;
   padding-bottom: 2rem;
   font-family: Muli;
-  width: 100%;
+  width: 94%;
   margin-right: 1rem;
 }
 .fouri1a {
@@ -2399,31 +2409,33 @@ textarea.form-control.jobr {
   align-items: center;
   text-align: center;
   justify-content: center;
-  letter-spacing: -0.4px;
   color: #1bb978;
   background: #d8f9da;
   border-radius: 8px;
   padding: 1rem;
-  width: 97%;
+  width: 93%;
   margin-bottom: 1rem;
 }
-.greengood{
+.greengood {
   width: 25px;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
+}
+.mmber {
+  font-size: 16px;
+  text-align: center;
 }
 .mmber1 {
   text-align: center;
   letter-spacing: 0.4px;
   font-size: 12px;
   color: #252733;
+  font-weight: bold;
 }
-.mmber1:hover{
+.mmber1:hover {
   color: inherit;
 }
 .mmber1 {
   font-size: 20px;
-  font-weight: 500;
   text-align: center;
   letter-spacing: 1px;
 }
@@ -2641,7 +2653,76 @@ textarea.form-control.jobr {
     max-width: 191px;
   }
 }
+.cww {
+  box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  flex-wrap: wrap;
+  width: 96%;
+  padding-left: 1rem;
+  padding-bottom: 0.6rem;
+}
+.cww11 {
+  color: #979797 !important;
+}
+.notpaidtext1 {
+  font-size: 16px;
+}
+.smtd {
+  font-size: 14px;
+  text-align: center;
+}
+.notppd {
+  width: 90%;
+  margin-top: 0.3rem;
+  background: #18214d;
+}
+.zeropad {
+  padding-left: 0px;
+  margin-bottom: 3rem;
+  margin-top: 0.5rem;
+}
 
+.graybgds {
+  background: #f8f8f8;
+}
+.graybgds .notpaidtext {
+  color: #a5a5a5 !important;
+}
+.smtdis,
+.smtdis > a {
+  background: #a5a5a5;
+  border: 1px solid #a5a5a5;
+  cursor: not-allowed;
+}
+.smtdis:hover {
+  background: #a5a5a5;
+  border: 1px solid #a5a5a5;
+}
+.caurtn {
+  width: 35px;
+}
+.tdw1 {
+  width: 19%;
+  text-align: left;
+  justify-content: end;
+}
+.eplimit {
+  width: 158px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block !important;
+  overflow: hidden;
+}
+.tdw0 {
+  width: 158px !important;
+  white-space: nowrap;
+  text-overflow: ellipsis !important;
+  text-decoration: none;
+  display: block !important;
+  margin-right: 2.1rem;
+}
 /* CV Dashboard Styling*/
 .edittt {
   position: absolute;
@@ -2654,7 +2735,7 @@ textarea.form-control.jobr {
 }
 .bout {
   border-radius: 8px;
-  border: 1px solid #DEDDDD;
+  border: 1px solid #dedddd;
   height: 110px;
   padding-right: 3rem !important;
 }
@@ -2668,7 +2749,7 @@ textarea.form-control.jobr {
   flex-direction: column;
 }
 .buildingbg {
-  background: #DEDDDD;
+  background: #dedddd;
   border-radius: 8px;
   padding: 1rem 2.5rem 1rem 1.15rem;
   height: 80px;
@@ -2682,20 +2763,22 @@ textarea.form-control.jobr {
   padding-left: 3rem;
   padding-bottom: 0rem;
 }
-.role, .company {
+.role,
+.company {
   font-weight: 600;
 }
 .time {
-  color: #A4A6B3;
+  color: #a4a6b3;
 }
 .showmore {
-  color: #936DFF !important;
+  color: #936dff !important;
   font-size: 13px;
   text-decoration: none;
   margin-left: 9rem;
 }
-.showmore:hover, .showmore:active {
-  color: #936DFF;
+.showmore:hover,
+.showmore:active {
+  color: #936dff;
   font-size: 14px;
 }
 .ll122 {
@@ -2720,7 +2803,7 @@ textarea.form-control.jobr {
   margin-bottom: 0rem;
 }
 .cveducation {
-  border: 1px solid #DEDDDD;
+  border: 1px solid #dedddd;
   border-radius: 8px;
   font-size: 13px;
   display: flex;
@@ -2733,31 +2816,39 @@ textarea.form-control.jobr {
 .cvedu {
   width: 17px;
 }
-.sch_details, .ref_details {
+.sch_details,
+.ref_details {
   padding-left: 1.2rem;
 }
-.school, .name {
+.school,
+.name {
   font-weight: 600;
 }
-.course, .location, .mail, .phone, .relation {
+.course,
+.location,
+.mail,
+.phone,
+.relation {
   font-weight: 500;
 }
 .edit_descrip {
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 4rem;
-  color: #936DFF !important;
+  color: #936dff !important;
   text-decoration: none;
+  cursor: pointer;
 }
-.edit_descrip:hover, .edit_descrip:active {
-  color: #936DFF;
+.edit_descrip:hover,
+.edit_descrip:active {
+  color: #936dff;
   font-size: 14px;
 }
 .drop {
   width: 12px;
 }
 .cvreference {
-  border: 1px solid #DEDDDD;
+  border: 1px solid #dedddd;
   border-radius: 8px;
   font-size: 13px;
   display: flex;
@@ -2772,10 +2863,9 @@ textarea.form-control.jobr {
   display: flex;
   justify-content: space-around;
   padding: 1.5rem 0rem;
-  margin-left: -7rem;
 }
 .social1 {
-  color: #936DFF;
+  color: #936dff;
 }
 .printcv {
   font-size: 13px;
@@ -2799,7 +2889,7 @@ textarea.form-control.jobr {
   }
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
   .edittt {
     width: 93%;
   }
@@ -2839,16 +2929,21 @@ textarea.form-control.jobr {
     height: 60px;
     padding: 1.9% 8.5% 2% 2%;
   }
-  .jobr, .cvexp {
+  .jobr,
+  .cvexp {
     font-size: 13px;
   }
   .cvexp {
     padding-left: 2rem;
   }
-  .showmore, .edit_descrip {
+  .showmore,
+  .edit_descrip {
     font-size: 12px;
   }
-  .showmore:active, .showmore:hover, .edit_descrip:active, .edit_descrip:hover {
+  .showmore:active,
+  .showmore:hover,
+  .edit_descrip:active,
+  .edit_descrip:hover {
     font-size: 13px;
   }
   .showmore {
@@ -2875,17 +2970,22 @@ textarea.form-control.jobr {
   .idds {
     font-size: 22px;
   }
-  .ch11, .liee {
+  .ch11,
+  .liee {
     font-size: 12px;
   }
   .whatdoudo {
     font-size: 13px;
   }
-  .jobr, .cvexp, .cveducation, .cvreference, .cvsocial {
+  .jobr,
+  .cvexp,
+  .cveducation,
+  .cvreference,
+  .cvsocial {
     font-size: 12px;
   }
   .printcv {
-    font-size: 11px
+    font-size: 11px;
   }
   .savecv {
     padding-bottom: 3px;
@@ -2913,7 +3013,7 @@ textarea.form-control.jobr {
   }
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
   .kdashheader {
     max-height: 170px;
   }
@@ -2923,7 +3023,11 @@ textarea.form-control.jobr {
   .bout {
     padding-right: 2rem;
   }
-  .jobr, .cvexp, .cveducation, .cvreference, .cvsocial {
+  .jobr,
+  .cvexp,
+  .cveducation,
+  .cvreference,
+  .cvsocial {
     font-size: 11px;
   }
   .cvexp {
@@ -2940,7 +3044,23 @@ textarea.form-control.jobr {
     padding-bottom: 0.4rem;
   }
 }
+.aboutprv {
+  height: 100px;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #dedddd;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.hpadd{
+  padding-left: 0px;
+  display: inline;
+}
 
+.task112{
+  word-spacing: normal;
+  padding-left: 1rem;
+}
 /*All Tasks Page Styling*/
 .firstqq {
   padding-top: 2rem;

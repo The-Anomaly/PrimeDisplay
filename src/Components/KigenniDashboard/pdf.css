@@ -1,0 +1,191 @@
+.mainwrap {
+    width: 700px;
+    margin-top: 2rem;
+    background: white;
+    /* margin: auto; */
+    margin-left: 0px;
+    margin-bottom: 2rem;
+  }
+  .namecv {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 0.3px;
+  }
+  .wrapper {
+    background: #071bb1;
+    color: #fff;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+  .careernm {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-size: 36px;
+    line-height: 41px;
+    letter-spacing: 0.3px;
+    color: #ffffff;
+  }
+  .dsnwrap {
+    width: 69%;
+    margin: auto;
+    text-align: left;
+    position: relative;
+    left: 9rem;
+  }
+  .wrap2 {
+    display: flex;
+    background: white;
+    justify-content: space-around;
+    padding-top: 1rem;
+  }
+  .contact22 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.3px;
+    color: #000000;
+    font-family: "Ubuntu-Medium";
+  }
+  .contactw {
+    padding-bottom: 1rem;
+    display: flex;
+    max-width: 360px;
+    width: 360px;
+    flex-direction: column;
+    justify-content: inherit;
+  }
+  .mkbold {
+    font-weight: 500;
+  }
+  .contactw2 {
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 26px;
+  }
+  .userimage {
+    position: absolute;
+    width: 147px;
+    height: 180px;
+    max-width: 147px;
+    max-height: 180px;
+  }
+  .userpic {
+    position: relative;
+    bottom: 5.5rem;
+    right: 2rem;
+  }
+  .rapsecarea {
+    display: flex;
+    margin-left: 3.2rem;
+  }
+  .skilssandcert {
+    width: 147px;
+  }
+  .skilssandcert1 {
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: inherit;
+    margin-left: 3.5rem;
+    max-width: 370px;
+    font-size: 14px;
+  }
+  .box1 {
+    display: flex;
+    padding-bottom: 0.5rem;
+    width: 350px;
+  }
+  .box3 {
+    display: flex;
+    padding-bottom: 0.5rem;
+    padding-top: 2rem;
+    width: 350px;
+  }
+  .date1 {
+    margin-left: 2rem;
+    font-weight: 500;
+  }
+  .box1txt {
+    font-weight: 400;
+    font-size: 16px;
+    width: 160px;
+  }
+  .slss {
+    padding-bottom: 0.5rem;
+  }
+  .temptext {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.3px;
+    color: #000000;
+  }
+  .skillstext {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 2;
+    color: #000000;
+  }
+  .shortline {
+    border-top: 1px solid #000000;
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+  .shortline1 {
+    border-top: 1px solid #000000;
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  .closed {
+    padding-top: 0.8rem;
+  }
+  .certinst {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.3px;
+    color: #000000;
+  }
+  .certem {
+    padding-bottom: 0.4rem;
+  }
+  .minofwrks {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    color: #000000;
+  }
+  .firstcol {
+    width: 50%;
+  }
+  .bluebg1 {
+    max-width: 300px;
+  }
+  .careernm {
+    max-width: 450px;
+  }
+  .backgroundcv{
+    background: #e5e5e5;
+  }
+  .genpdf{
+    background: none;
+    border: 1px solid #9c1258;
+    border-radius: 8px;
+  }
+  .padpdf{
+    text-align: center;
+    padding-right: 4rem;
+    padding-top: 1rem;
+  }
+  .jcenter2{
+    display: flex;
+    justify-content: center;
+  }
