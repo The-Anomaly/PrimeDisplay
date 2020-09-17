@@ -1711,7 +1711,7 @@ textarea.form-control.jobr {
   color: #9c1258;
   border: 1px solid #9c1258;
   border-radius: 8px;
-  padding: 0.1rem 0.7rem;
+  padding: 0.4rem 0.7rem;
   display: inline-block;
   font-weight: 700;
   margin-left: 1rem;
@@ -1721,7 +1721,7 @@ textarea.form-control.jobr {
   background: #9c1258;
   border-radius: 8px;
   border: 1px solid #9c1258;
-  padding: 0.2rem 0.9rem;
+  padding: 0.4rem 0.9rem;
   display: inline-block;
   font-weight: 700;
   cursor: pointer;
@@ -2037,7 +2037,6 @@ textarea.form-control.jobr {
   padding: 0.1rem 0.4rem;
   justify-content: center;
   width: 105px;
-  margin: auto;
 }
 .pending {
   text-align: center;
@@ -2660,8 +2659,8 @@ textarea.form-control.jobr {
   justify-content: space-between;
   font-size: 13px;
   flex-wrap: wrap;
-  width: 89%;
-  padding-left: 2rem;
+  width: 96%;
+  padding-left: 1rem;
   padding-bottom: 0.6rem;
 }
 .cww11 {
@@ -2682,7 +2681,7 @@ textarea.form-control.jobr {
 .zeropad {
   padding-left: 0px;
   margin-bottom: 3rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .graybgds {
@@ -2704,7 +2703,352 @@ textarea.form-control.jobr {
 .caurtn {
   width: 35px;
 }
-.tdw1,.tdw0 {
-  width: 20%;
+.tdw1 {
+  width: 19%;
   text-align: left;
+  justify-content: end;
+}
+.eplimit {
+  width: 158px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block !important;
+  overflow: hidden;
+}
+.tdw0 {
+  width: 158px !important;
+  white-space: nowrap;
+  text-overflow: ellipsis !important;
+  text-decoration: none;
+  display: block !important;
+  margin-right: 2.1rem;
+}
+/* CV Dashboard Styling*/
+.edittt {
+  position: absolute;
+  width: 95%;
+  text-align: end;
+}
+.edit_icon {
+  margin-top: 0.8rem;
+  width: 18px;
+}
+.bout {
+  border-radius: 8px;
+  border: 1px solid #dedddd;
+  height: 110px;
+  padding-right: 3rem !important;
+}
+.add_icon {
+  width: 20px;
+}
+.cvexperience {
+  padding-left: 40px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.buildingbg {
+  background: #dedddd;
+  border-radius: 8px;
+  padding: 1rem 2.5rem 1rem 1.15rem;
+  height: 80px;
+}
+.building {
+  width: 50px;
+}
+.cvexp {
+  font-size: 13px;
+  line-height: 23px;
+  padding-left: 3rem;
+  padding-bottom: 0rem;
+}
+.role,
+.company {
+  font-weight: 600;
+}
+.time {
+  color: #a4a6b3;
+}
+.showmore {
+  color: #936dff !important;
+  font-size: 13px;
+  text-decoration: none;
+  margin-left: 9rem;
+}
+.showmore:hover,
+.showmore:active {
+  color: #936dff;
+  font-size: 14px;
+}
+.ll122 {
+  margin-left: 1rem;
+  margin-top: 0.4rem;
+}
+.skill_row {
+  padding-top: 1rem;
+}
+.skills {
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.dlete {
+  margin-left: 8px;
+}
+.skill_cancel {
+  width: 18px;
+}
+.newrowla {
+  margin-bottom: 0rem;
+}
+.cveducation {
+  border: 1px solid #dedddd;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  line-height: 23px;
+  padding: 1.3rem 1.1rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  width: 97%;
+}
+.cvedu {
+  width: 17px;
+}
+.sch_details,
+.ref_details {
+  padding-left: 1.2rem;
+}
+.school,
+.name {
+  font-weight: 600;
+}
+.course,
+.location,
+.mail,
+.phone,
+.relation {
+  font-weight: 500;
+}
+.edit_descrip {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 4rem;
+  color: #936dff !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+.edit_descrip:hover,
+.edit_descrip:active {
+  color: #936dff;
+  font-size: 14px;
+}
+.drop {
+  width: 12px;
+}
+.cvreference {
+  border: 1px solid #dedddd;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  line-height: 23px;
+  padding: 1.3rem 2rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  width: 97%;
+}
+.cvsocial {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-around;
+  padding: 1.5rem 0rem;
+}
+.social1 {
+  color: #936dff;
+}
+.printcv {
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 4rem;
+}
+.savecv {
+  padding-bottom: 8px;
+  text-align: center;
+  padding-top: 8px;
+}
+
+@media (max-width: 1200px) {
+  .building {
+    width: 40px;
+  }
+  .buildingbg {
+    height: 70px;
+    padding: 1.9% 2% 2% 1.6%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .edittt {
+    width: 93%;
+  }
+  .cvsocial {
+    margin-left: 0rem;
+  }
+  .savecv {
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+  .roww {
+    max-height: 120px;
+  }
+  .showmore {
+    margin-left: 7.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .prm {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .idds {
+    font-size: 25px;
+  }
+  .ch11 {
+    font-size: 14px;
+  }
+  .liee {
+    font-size: 14px;
+  }
+  .building {
+    width: 35px;
+  }
+  .buildingbg {
+    height: 60px;
+    padding: 1.9% 8.5% 2% 2%;
+  }
+  .jobr,
+  .cvexp {
+    font-size: 13px;
+  }
+  .cvexp {
+    padding-left: 2rem;
+  }
+  .showmore,
+  .edit_descrip {
+    font-size: 12px;
+  }
+  .showmore:active,
+  .showmore:hover,
+  .edit_descrip:active,
+  .edit_descrip:hover {
+    font-size: 13px;
+  }
+  .showmore {
+    margin-left: 6rem;
+  }
+  .plusnew1 {
+    font-size: 11px;
+  }
+  .printcv {
+    padding-bottom: 2rem;
+  }
+  .roww {
+    max-height: 100px;
+  }
+  .skill_row {
+    padding-top: 0rem;
+  }
+  .edittt {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .idds {
+    font-size: 22px;
+  }
+  .ch11,
+  .liee {
+    font-size: 12px;
+  }
+  .whatdoudo {
+    font-size: 13px;
+  }
+  .jobr,
+  .cvexp,
+  .cveducation,
+  .cvreference,
+  .cvsocial {
+    font-size: 12px;
+  }
+  .printcv {
+    font-size: 11px;
+  }
+  .savecv {
+    padding-bottom: 3px;
+    padding-top: 3px;
+  }
+  .edit_icon {
+    width: 14px;
+  }
+  .building {
+    width: 27px;
+  }
+  .buildingbg {
+    height: 48px;
+    width: 48px;
+  }
+  .cvexp {
+    width: 75%;
+  }
+}
+
+@media (max-width: 500px) {
+  .prm {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .kdashheader {
+    max-height: 170px;
+  }
+  .edittt {
+    width: 86%;
+  }
+  .bout {
+    padding-right: 2rem;
+  }
+  .jobr,
+  .cvexp,
+  .cveducation,
+  .cvreference,
+  .cvsocial {
+    font-size: 11px;
+  }
+  .cvexp {
+    padding-left: 1rem;
+  }
+  .showmore {
+    margin-left: 4.5rem;
+  }
+  .cvsocial {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .social1 {
+    padding-bottom: 0.4rem;
+  }
+}
+.aboutprv {
+  height: 100px;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #dedddd;
+  box-sizing: border-box;
+  border-radius: 8px;
 }

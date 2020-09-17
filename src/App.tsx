@@ -60,6 +60,7 @@ import NewDashboardAllSubsriptionPlans from "./Components/KigenniDashboard/NewDa
 import NewDashboardCounsellorSubscription from "./Components/KigenniDashboard/NewDashboardCounsellorSubscription";
 import TodoOverview from "./Components/KigenniDashboard/TodoOverview";
 import TestPdf from "./Components/KigenniDashboard/TestPdf";
+import CVProfileBuilder from "./Components/KigenniDashboard/CVProfileBuilder";
 
 const App: React.FC = () => {
   return (
@@ -77,7 +78,7 @@ const App: React.FC = () => {
             <Route exact path="/clientchat2" component={OnboardingChatPhase2} />
             <Route exact path="/clarityforteams" component={ClarityForTeams} />
             <Route exact path="/overview" component={NewDashboard} />
-            <Route exact path="/profilebuilder" component={ProfileBuilder} />
+            <Route exact path="/profilebuilder" component={CVProfileBuilder} />
             <Route
               exact
               path="/jobopportunities"
@@ -288,6 +289,11 @@ const App: React.FC = () => {
               exact
               path="/fullinsight"
               component={NewDashboardFullInsight}
+            />
+            <Route
+              exact
+              path="/cvdashboard"
+              component={ProfileBuilder}
             />
             <Route exact path="/meetings" component={CouncellorBookings} />
             <Route exact path="/councellordates" component={CouncellorDates} />

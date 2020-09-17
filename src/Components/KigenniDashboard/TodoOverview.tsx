@@ -12,34 +12,45 @@ import DashboardNav from "./DashboardNavBar";
 import { withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
+const moment = require("moment");
 
 const TodoOverview = withRouter((props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
     user: "",
+    tasklist: [],
     successMsg: false,
     isLoading: false,
   });
-  const { errorMessage, successMsg, user, isLoading } = state;
+  const { errorMessage, tasklist, user, isLoading } = state;
   React.useEffect(() => {
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/tasks-summary`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          setFormState({
-            ...state,
-            user: response.data,
-            successMsg: true,
-            isLoading: false,
-          });
-        }
-      })
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/tasks-summary`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/todo`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res, res1) => {
+          console.log(res1);
+          if (res.status === 200) {
+            setFormState({
+              ...state,
+              user: res.data,
+              successMsg: true,
+              isLoading: false,
+              tasklist: [...res1.data.results],
+            });
+          }
+        })
+      )
       .catch((error) => {
         if (error && error.response && error.response.data) {
           setFormState({
@@ -55,7 +66,14 @@ const TodoOverview = withRouter((props: any) => {
         });
       });
   }, []);
-  console.log(user);
+  const formatTime = (date) => {
+    const dateTime = moment(date).format("Do MMM YYYY");
+    return dateTime;
+  };
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  console.log(tasklist);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -69,7 +87,7 @@ const TodoOverview = withRouter((props: any) => {
                 <div className="kdashheader npps"></div>
                 <DashboardUsernameheader welcomeText=" Welcome to your Todo sections" />
                 <Row>
-                  <Col md={11}>
+                  <Col md={12}>
                     <div className="wwrap">
                       <div className="fourinfo">
                         <div className="firstoffour">
@@ -90,7 +108,9 @@ const TodoOverview = withRouter((props: any) => {
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Task Pending</div>
-                            <div className="mmber1">{user?.completed_tasks}</div>
+                            <div className="mmber1">
+                              {user?.completed_tasks}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -111,39 +131,37 @@ const TodoOverview = withRouter((props: any) => {
                       </div>
                       <div className="cdate cww11 tdw1">Duration</div>
                       <div className="ctime cww11 tdw1">Time Created</div>
-                      <div className="ctime cww11 tdw1">Status</div>
+                      <div className="ctime cww11 tdw1 tdw1s ">Status</div>
                       <div className="ctime "></div>
                     </div>
-                    <div className="wrapc2">
-                      <div className="userimg22">
-                        {/* <img src={userimg} className="userimg" alt="userimg" /> */}
+                    {tasklist.map((data, i) => (
+                      <div className="wrapc2">
+                        <div className="userimg22">
+                          {/* <img src={userimg} className="userimg" alt="userimg" /> */}
+                        </div>
+                        <div className="cname tdw0">
+                          <div className="eplimit">{data?.title}</div>
+                        </div>
+                        <div className="cdate tdw1">{data?.duration}</div>
+                        <div className="ctime tdw1">
+                          {formatTime(data?.date_created)}
+                        </div>
+                        <div className="cstatus2 tdw1">
+                          <span
+                            className={
+                              data.status === "pending"
+                                ? "cstatus pending"
+                                : "cstatus"
+                            }
+                          >
+                            {capitalizeFirstLetter(data.status)}
+                          </span>
+                        </div>
+                        <div className="ctime">
+                          <div className="savebtn">View More</div>
+                        </div>
                       </div>
-                      <div className="cname tdw0">
-                        <div>Set Up LinkedIn Profile...</div>
-                      </div>
-                      <div className="cdate tdw1">2 weeks</div>
-                      <div className="ctime tdw1">09:30 AM - 10:00 AM</div>
-                      <div className="cstatus2 tdw1">
-                        <span className="cstatus">Completed</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn">View More</div>
-                      </div>
-                    </div>
-                    <div className="wrapc2">
-                      <div className="userimg22"></div>
-                      <div className="cname">
-                        <div>Set Up LinkedIn Profile...</div>
-                      </div>
-                      <div className="cdate">2 weeks</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cstatus2">
-                        <span className="cstatus pending">Pending</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn">Complete Task</div>
-                      </div>
-                    </div>
+                    ))}
                     <div className="viewall">View all Task</div>
                   </Col>
                 </Row>

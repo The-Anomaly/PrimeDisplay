@@ -69,7 +69,13 @@ class ProfileBuilder extends React.Component {
     endDate: "",
     width: 100,
   };
-
+  moveTo = (str) => {
+    const offsetTop: any = document?.getElementById(str)?.offsetTop;
+    window.scrollTo({
+      top: offsetTop,
+      behavior: "smooth",
+    });
+  };
   addNewSkill = () => {
     const skillz = [
       {
@@ -278,6 +284,12 @@ class ProfileBuilder extends React.Component {
           instagram: res.data.user_social.instagram,
           twitter: res.data.user_social.twitter,
         });
+      })
+      .then((resp) => {
+        //remove the # on the prefix of the url string and move the page to that postion on the page
+        let resultareawithtitle: string = window.location.hash;
+        resultareawithtitle = resultareawithtitle.substring(1);
+        this.moveTo(resultareawithtitle);
       })
       .catch((err) => {
         if (err) {
@@ -500,7 +512,9 @@ class ProfileBuilder extends React.Component {
                       <hr />
                       <Row className="rowla">
                         <Col md={12}>
-                          <div className="whatdoudo">About </div>
+                          <div className="whatdoudo" id="about">
+                            About{" "}
+                          </div>
                           <input
                             type="text"
                             className="form-control jobr"
@@ -512,7 +526,7 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                       <hr />
-                      <Row className="rowla">
+                      <Row className="rowla" id="experience">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
                             <div className="what12">
@@ -720,7 +734,7 @@ class ProfileBuilder extends React.Component {
                         ))}
                       </Row>
                       <hr />
-                      <Row className="rowla">
+                      <Row className="rowla" id="education">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
                             <div className="what12">
@@ -969,7 +983,7 @@ class ProfileBuilder extends React.Component {
                       </Row>
                       <hr />
                       <Row className="rowla">
-                        <Col md={12}>
+                        <Col md={12} id="certification">
                           <div className="whatdoudo offpadd1">
                             <div className="what12">
                               Certification{" "}
@@ -1145,7 +1159,7 @@ class ProfileBuilder extends React.Component {
                   </Row>
                   <hr />
                   <Row>
-                    <Col md={12}>
+                    <Col md={12} id="reference">
                       <div className="whatdoudo unbtm">
                         <div className="what12">
                           Reference{" "}
@@ -1310,7 +1324,7 @@ class ProfileBuilder extends React.Component {
                   </Row>
                   <hr />
                   <Row className="rowla">
-                    <Col md={12}>
+                    <Col md={12} id="socialmedia">
                       <div className="whatdoudo offpadd1">
                         <div className="what12">Social Media Link</div>
                       </div>
@@ -1371,7 +1385,10 @@ class ProfileBuilder extends React.Component {
                       <div className="savebtn" onClick={this.submitForm}>
                         Submit
                       </div>
-                      <div className="print">Preview</div>
+                      <Link to="/profilebuilder">
+                        {" "}
+                        <div className="print">Preview</div>
+                      </Link>
                     </Col>
                   </Row>
                 </Col>

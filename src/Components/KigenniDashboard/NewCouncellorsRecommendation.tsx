@@ -7,7 +7,6 @@ import avatar from "../../assets/avatar.svg";
 import SideBarNewDashboard from "./SideBarNewDashboard";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
-import firstlogo from "../../assets/image 1.png";
 import Button from "react-bootstrap/Button";
 import { CirclePie } from "salad-ui.chart";
 import Modal from "react-bootstrap/Modal";
@@ -17,6 +16,8 @@ import norecommendations from "../../assets/no recommendations.png";
 import DashboardNav from "./DashboardNavBar";
 import alertTriangle from "../../assets/alert-triangle.png";
 import alertTrianglegray from "../../assets/alertTrianglegray.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class CounsellorsRecommendation extends React.Component {
   state: any = {
@@ -79,21 +80,25 @@ class CounsellorsRecommendation extends React.Component {
         });
       });
   }
-  makeRecommendationToDo = () => {
+  makeRecommendationToDo = (id) => {
     this.setState({ isLoading: true });
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+    const data = {
+      id,
+    };
+    Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/make-todo`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        if (response?.data[0]?.direction_plan === true) {
-          return window.location.assign("/councellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/councellorfee");
+        console.log(response);
+        if (response?.data) {
+          this.notify("Successfull created task")
+          setTimeout(()=>{
+            this.componentDidMount()
+          },3000)
         }
       })
       .catch((error) => {
@@ -130,6 +135,7 @@ class CounsellorsRecommendation extends React.Component {
         console.log(error);
       });
   };
+  notify = (message: string) => toast(message, { containerId: "B" });
   render() {
     const { fullname, message, isLoading, width, counsellor } = this.state;
     return (
@@ -182,7 +188,7 @@ class CounsellorsRecommendation extends React.Component {
                                 {data.text}
                               </div>
                             </div>
-                            {data.todo  === false && (
+                            {data.todo === false && (
                               <Col md={12} className="zeropad">
                                 <div className="notpaid notppd graybgds">
                                   <div className="notpaid1">
@@ -217,9 +223,9 @@ class CounsellorsRecommendation extends React.Component {
                                     </div>
                                   </div>
                                   <div className="retaketest upss smtd">
-                                    <Link to="/paymentsummary">
+                                    <div onClick={()=>this.makeRecommendationToDo(data.id)}>
                                       Covert to ToDo{" "}
-                                    </Link>
+                                    </div>
                                   </div>
                                 </div>
                               </Col>
@@ -246,6 +252,13 @@ class CounsellorsRecommendation extends React.Component {
               </Row>
             </Col>
           </Row>
+          <ToastContainer
+            enableMultiContainer
+            containerId={"B"}
+            toastClassName="bg-info text-white"
+            hideProgressBar={true}
+            position={toast.POSITION.TOP_CENTER}
+          />
         </Container>
       </>
     );
