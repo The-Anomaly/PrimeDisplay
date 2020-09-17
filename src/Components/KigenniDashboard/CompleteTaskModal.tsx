@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import "./todomodal.css";
 import close from "../../assets/close.svg";
 
-const ViewMoreModal = () => {
+const CompleteTaskModal = () => {
   const [state, setState] = useState({
     isOpen: true,
   });
@@ -17,7 +17,7 @@ const ViewMoreModal = () => {
   return (
     <div>
       <Modal show={state.isOpen} centered={true} onHide={closeModal}>
-        <Modal.Title className="modal_title">Task Details</Modal.Title>
+      <Modal.Title className="modal_title">Complete Task</Modal.Title>
         <span className="close_view">
           <img className="closeview" src={close} alt="close" />
         </span>
@@ -31,26 +31,18 @@ const ViewMoreModal = () => {
             <textarea className="task_det"></textarea>
           </div>
           <div className="modal_det">
-            <div className="titlee">Notes</div>
-            <textarea className="task_det"></textarea>
+            <div className="titlee">Add Note</div>
+            <textarea className="note_det" placeholder="Enter Extra Notes"></textarea>
           </div>
-          <div className="date_det modal_det">
-            <div className="date_section">
-              <div className="titlee">Date Created</div>
-              <input className="date_info" type="date" name="date created"/>
-            </div>
-            <div className="date_section sec1">
-              <div className="titlee">Date Completed</div>
-              <input className="date_info" type="date" name="date completed"/>
-            </div>
+          <div className="request_input">
+            <a className="request" href="#" >Request Counselors Input</a>
           </div>
-          <div className="modal_det">
-            <div className="titlee">Counselor's Input</div>
-            <textarea className="task_det"></textarea>
+          <div className="mark_complete">
+            <div className="savebtn todo_button markit">Mark as Complete</div>
           </div>
         </Modal.Body>
       </Modal>
     </div>
   );
 };
-export default ViewMoreModal;
+export default CompleteTaskModal;

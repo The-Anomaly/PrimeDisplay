@@ -1,0 +1,162 @@
+/*View More Modal Styling*/
+.modal-dialog {
+  max-width: 60%;
+}
+.modal-content {
+  padding: 2.3rem;
+}
+.modal_title {
+  text-align: center;
+  font-weight: 600;
+  line-height: 2;
+}
+.close_view {
+  margin-top: -3rem;
+}
+.closeview {
+  width: 4%;
+  float: right;
+}
+.modal-body {
+  padding-top: 3rem;
+}
+.modal_det {
+  padding-bottom: 1.3rem;
+}
+.titlee {
+  font-weight: 600;
+  font-size: 14px;
+}
+.task_det {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  background: #f5f7f9;
+  border-radius: 5px;
+  border: none;
+  font-size: 13px;
+  padding: 1rem;
+  resize: none;
+}
+.date_section {
+  width: 49%;
+}
+.date_det {
+  display: flex;
+  justify-content: space-between;
+}
+.date_info {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  background: #f5f7f9;
+  border-radius: 5px;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+.note_det {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  background: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #dedddd;
+  padding: 1rem;
+  font-size: 13px;
+  resize: none;
+}
+.request {
+  color: #3751ff;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 28px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.request:hover,
+.request:active {
+  font-size: 14px;
+  color: #3751ff;
+}
+.request_input {
+  margin-top: -1rem;
+}
+.mark_complete {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.markit {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+@media (max-width: 800px) {
+    .modal-content {
+        padding: 1.2rem;
+    }
+    .close_view {
+        margin-top: -2.3rem;
+        margin-right: 1rem;
+    }
+    .closeview {
+        width: 6%;
+    }
+    .modal-body {
+        padding-top: 2rem;
+    }
+    .task_det, .date_info {
+        padding: 0.5rem;
+    }
+    .date_section {
+        width: 47%;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 1.2rem 0.6rem;
+    }
+    .date_info {
+        padding: 0.2rem;
+    }
+    .date_det {
+        flex-direction: column;
+    }
+    .date_section {
+        width: 75%;
+    }
+    .sec1 {
+        margin-top: 1rem;
+    }
+    .date_info {
+        padding: 0.8rem;
+    }
+    .markit {
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .closeview {
+        width: 10%;
+    }
+    .close_view {
+        margin-right: 0.2rem;
+    }
+    .task_det {
+        height: 80px;
+    }
+    .date_section {
+        width: 90%;
+    }
+}
+
+@media (max-width: 350px) {
+    .date_section {
+        width: 100%;
+    }
+    .close_view {
+        margin-right: 0;
+    }
+}
