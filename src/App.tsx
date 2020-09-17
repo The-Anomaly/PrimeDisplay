@@ -251,7 +251,7 @@ const App: React.FC = () => {
               component={CounsellorRecommendation}
             />
             <Route exact path="/todooverview" component={TodoOverview} />
-            <Route exact path="/pdf" component={TestPdf} />
+            <Route exact path="/generatecv" component={TestPdf} />
 
             <Route
               exact

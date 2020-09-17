@@ -231,7 +231,7 @@ class CVProfileBuilder extends React.Component {
       });
   };
   componentDidMount() {
-    window.scrollTo(-0,-0)
+    window.scrollTo(-0, -0);
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profilebuilder`, {
@@ -765,7 +765,9 @@ class CVProfileBuilder extends React.Component {
                       <Link to="/cvdashboard">
                         <div className="savebtn savecv">Edit</div>
                       </Link>
-                      <div className="print savecv">Generate CV</div>
+                      <Link to="/generatecv">
+                        <div className="print savecv">Generate CV</div>
+                      </Link>
                     </Col>
                   </Row>
                 </Col>

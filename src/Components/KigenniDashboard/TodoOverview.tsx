@@ -77,9 +77,9 @@ const TodoOverview = withRouter((props: any) => {
   return (
     <>
       <Container fluid={true} className="contann122">
-        <DashboardNav ov={true} />
+        <DashboardNav todo={true} />
         <Row>
-          <SideBarNewDashboard ov={true} />
+          <SideBarNewDashboard todo={true} />
           <Col md={10} sm={12} className="prm">
             <DashboardLargeScreenNav title="Todo Overview" />
             <Row>

@@ -188,7 +188,7 @@ class CounsellorsRecommendation extends React.Component {
                                 {data.text}
                               </div>
                             </div>
-                            {data.todo === false && (
+                            {data.todo && (
                               <Col md={12} className="zeropad">
                                 <div className="notpaid notppd graybgds">
                                   <div className="notpaid1">
@@ -209,7 +209,7 @@ class CounsellorsRecommendation extends React.Component {
                                 </div>
                               </Col>
                             )}
-                            {data.todo && (
+                            {data.todo  === false && (
                               <Col md={12} className="zeropad">
                                 <div className="notpaid notppd">
                                   <div className="notpaid1">

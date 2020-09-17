@@ -3052,3 +3052,12 @@ textarea.form-control.jobr {
   box-sizing: border-box;
   border-radius: 8px;
 }
+.hpadd{
+  padding-left: 0px;
+  display: inline;
+}
+
+.task112{
+  word-spacing: normal;
+  padding-left: 1rem;
+}
