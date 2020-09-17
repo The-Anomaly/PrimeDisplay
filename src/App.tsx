@@ -61,6 +61,7 @@ import NewDashboardCounsellorSubscription from "./Components/KigenniDashboard/Ne
 import TodoOverview from './Components/KigenniDashboard/TodoOverview';
 import CVProfileBuilder from "./Components/KigenniDashboard/CVProfileBuilder";
 import TodoList from "./Components/KigenniDashboard/TodoList";
+import ViewMoreModal from "./Components/KigenniDashboard/ViewMoreModal";
 
 const App: React.FC = () => {
   return (
@@ -301,6 +302,11 @@ const App: React.FC = () => {
               exact
               path="/todolist"
               component={TodoList}
+            />
+            <Route
+              exact
+              path="/viewmore"
+              component={ViewMoreModal}
             />
             <Route exact path="/meetings" component={CouncellorBookings} />
             <Route exact path="/councellordates" component={CouncellorDates} />
