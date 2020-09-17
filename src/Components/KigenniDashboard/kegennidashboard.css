@@ -3119,7 +3119,7 @@ textarea.form-control.jobr {
   display: flex;
   justify-content: space-around;
   padding: 1.5rem;
-  margin-right: 18rem;
+  margin-right: 30%;
 }
 .task_title {
   margin-right: 4rem;
@@ -3129,9 +3129,6 @@ textarea.form-control.jobr {
 }
 .task_time {
   margin-right: 2rem;
-}
-.task_status {
-  
 }
 .tasklist {
   font-size: 13px;
