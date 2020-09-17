@@ -16,6 +16,7 @@ import nextpage from "../../assets/nextpage.svg";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
 import { Link } from "react-router-dom";
+import CompleteTaskModal from "./CompleteTaskModal"
 const moment = require("moment");
 
 const TodoList = (props: any) => {
@@ -81,6 +82,7 @@ const TodoList = (props: any) => {
     <>
       <Container fluid={true} className="contann122">
         <DashboardNav todo={true} />
+        <CompleteTaskModal />
         <Row>
           <SideBarNewDashboard todo={true} />
           <Col md={10} sm={12} className="prm">
@@ -139,7 +141,7 @@ const TodoList = (props: any) => {
                         </div>
                         <div className="ctime">
                           <div className="savebtn todo_button">
-                            Complete Task
+                          <div onClick={CompleteTaskModal}>Complete Task</div>
                           </div>
                         </div>
                       </div>
@@ -157,7 +159,9 @@ const TodoList = (props: any) => {
                         </span>
                       </div>
                       <div className="ctime">
-                        <div className="savebtn todo_button">Complete Task</div>
+                        <div className="savebtn todo_button">
+                          <Link to="/completetask">Complete Task</Link>
+                          </div>
                       </div>
                     </div>
                     <div className="next_page">

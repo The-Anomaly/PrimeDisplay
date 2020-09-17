@@ -18,9 +18,9 @@ const ViewMoreModal = () => {
     <div>
       <Modal show={state.isOpen} centered={true} onHide={closeModal}>
         <Modal.Title className="modal_title">Task Details</Modal.Title>
-        <span className="close_view">
+        <a className="close_view" onClick={closeModal}>
           <img className="closeview" src={close} alt="close" />
-        </span>
+        </a>
         <Modal.Body>
           <div className="modal_det">
             <div className="titlee">Task Title</div>
