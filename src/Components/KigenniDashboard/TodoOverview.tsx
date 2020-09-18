@@ -122,11 +122,11 @@ const TodoOverview = withRouter((props: any) => {
                         className="greengood"
                         alt="goodimage"
                       />
-                      It Takes alot of Hero to even start a task, But seems you
+                      It Takes a lot of heroes to even start a task, but it seems like you
                       have super powers. Keep going Champ!!!
                     </div>
                     <div className="wrapline"></div>
-                    <div className="cww">
+                    {/* <div className="cww">
                       <div className="cname tdw0">
                         <div className="cww11">Task Title</div>
                       </div>
@@ -134,20 +134,66 @@ const TodoOverview = withRouter((props: any) => {
                       <div className="ctime cww11 tdw1">Time Created</div>
                       <div className="ctime cww11 tdw1 tdw1s ">Status</div>
                       <div className="ctime "></div>
+                    </div> */}
+                    <div className="task_table">
+                      <span className="task_title">Task Title</span>
+                      <span className="task_duration">Duration</span>
+                      <span className="task_time">Time Created</span>
+                      <span className="task_status">Status</span>
                     </div>
+
                     {tasklist.splice(0,2).map((data, i) => (
-                      <div className="wrapc2">
-                        <div className="userimg22">
-                          {/* <img src={userimg} className="userimg" alt="userimg" /> */}
-                        </div>
-                        <div className="cname tdw0">
+                      <div className="wrapc2 tasklist">
+                        {/* <div className="cname tdw0">
                           <div className="eplimit">{data?.title}</div>
+                        </div> */}
+
+                        <div>
+                          <span className="task_title lowerr">Task Title</span>
+                          <div className="cname todo_name">{data?.title}</div>
                         </div>
-                        <div className="cdate tdw1">{data?.duration}</div>
-                        <div className="ctime tdw1">
+
+                        <div className="period">
+                        <div>
+                          <span className="task_duration lowerr">Duration</span>
+                          <div className="cdate todo_date">
+                          {data?.duration}
+                          {(data.duration = 1 ? "week" : "weeks")}
+                          </div>
+                        </div>
+                        <div className="durr">
+                          <span className="task_time lowerr">Time Created</span>
+                          <div className="ctime todo_time">
                           {formatTime(data?.date_created)}
+                          </div>
                         </div>
-                        <div className="cstatus2 tdw1">
+                        </div>
+
+                        {/* <div className="cdate tdw1">{data?.duration}</div> */}
+                        {/* <div className="ctime tdw1">
+                          {formatTime(data?.date_created)}
+                        </div> */}
+
+                        <div className="period">
+                        <div className="cstatus2 stat">
+                          <span
+                            className={
+                              data.status === "pending"
+                                ? "cstatus todo_status pending"
+                                : "cstatus todo_status"
+                            }
+                          >
+                            {capitalizeFirstLetter(data.status)}
+                          </span>
+                        </div>
+                        <div className="ctime">
+                          <div className="savebtn todo_button">
+                          <div>Complete Task</div>
+                          </div>
+                        </div>
+                        </div>
+
+                        {/* <div className="cstatus2 tdw1">
                           <span
                             className={
                               data.status === "pending"
@@ -157,10 +203,10 @@ const TodoOverview = withRouter((props: any) => {
                           >
                             {capitalizeFirstLetter(data.status)}
                           </span>
-                        </div>
-                        <div className="ctime">
+                        </div> */}
+                        {/* <div className="ctime">
                           <div className="savebtn">View More</div>
-                        </div>
+                        </div> */}
                       </div>
                     ))}
                     <Link to="/todolist">
