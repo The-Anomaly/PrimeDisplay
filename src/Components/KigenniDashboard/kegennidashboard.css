@@ -2391,7 +2391,6 @@ textarea.form-control.jobr {
   background: #ffffff;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  font-family: Muli;
   width: 94%;
   margin-right: 1rem;
 }
@@ -3070,6 +3069,9 @@ textarea.form-control.jobr {
   justify-content: space-between;
   padding-bottom: 1.2rem;
 }
+.closeview{
+  cursor: pointer;
+}
 .create_task {
   color: #ffffff;
   background: #9C1258;
@@ -3080,6 +3082,7 @@ textarea.form-control.jobr {
   height: fit-content;
   margin-right: 8rem;
   font-weight: 600;
+  cursor: pointer;
 }
 .create {
   width: 13px;
@@ -3156,6 +3159,7 @@ textarea.form-control.jobr {
   width: fit-content;
   height: fit-content;
   font-weight: 600;
+  cursor: pointer;
 }
 .next_page {
   color: #979797;
@@ -3171,4 +3175,12 @@ textarea.form-control.jobr {
   width: 30px;
   margin-left: 0.5rem;
   cursor: pointer;
+}
+.modcomplete .modal-dialog{
+  width: 45%;
+}
+textarea, .task_det:focus{
+  border: #0084f4 !important;
+  outline: none;
+  box-shadow: none;
 }

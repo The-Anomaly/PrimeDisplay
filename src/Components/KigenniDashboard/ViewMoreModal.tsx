@@ -10,16 +10,26 @@ const ViewMoreModal = () => {
   const closeModal = () => {
     setState({
       ...state,
-      isOpen: true,
+      isOpen: false,
     });
   };
 
   return (
     <div>
-      <Modal show={state.isOpen} centered={true} onHide={closeModal}>
+      <Modal
+        show={state.isOpen}
+        className="modcomplete"
+        centered={true}
+        onHide={closeModal}
+      >
         <Modal.Title className="modal_title">Task Details</Modal.Title>
         <span className="close_view">
-          <img className="closeview" src={close} alt="close" />
+          <img
+            className="closeview"
+            onClick={closeModal}
+            src={close}
+            alt="close"
+          />
         </span>
         <Modal.Body>
           <div className="modal_det">
@@ -37,11 +47,11 @@ const ViewMoreModal = () => {
           <div className="date_det modal_det">
             <div className="date_section">
               <div className="titlee">Date Created</div>
-              <input className="date_info" type="date" name="date created"/>
+              <input className="date_info" type="date" name="date created" />
             </div>
             <div className="date_section sec1">
               <div className="titlee">Date Completed</div>
-              <input className="date_info" type="date" name="date completed"/>
+              <input className="date_info" type="date" name="date completed" />
             </div>
           </div>
           <div className="modal_det">
