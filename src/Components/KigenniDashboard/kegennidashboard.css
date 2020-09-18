@@ -3120,6 +3120,8 @@ textarea.form-control.jobr {
   justify-content: space-around;
   padding: 1.5rem;
   margin-right: 30%;
+  width: 73%;
+  margin-left: -5%;
 }
 .task_title {
   margin-right: 4rem;
@@ -3136,6 +3138,7 @@ textarea.form-control.jobr {
 }
 .todo_name {
   max-width: 170px;
+  min-width: 50px;
 }
 .todo_date {
   font-size: 13px;
@@ -3170,4 +3173,172 @@ textarea.form-control.jobr {
 .page_change {
   width: 30px;
   margin-left: 0.5rem;
+}
+.lowerr {
+  display: none;
+}
+.period {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+}
+
+@media (max-width: 1200px) {
+  .task_time {
+    margin-right: 0.5rem;
+  }
+  .todo_button {
+    padding: 0.35rem 0.5rem;
+  }
+  .yellowgood {
+    margin-left: 0rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .yellowgood {
+    width: 28px;
+    margin-right: 1rem;
+  }
+  .yellowbg {
+    font-size: 13px;
+  }
+  .task_table {
+    margin-left: -2%;
+  }
+  .task_title {
+    margin-right: 10%;
+  }
+  .task_duration {
+    margin-right: 10%;
+  }
+  .task_time {
+    margin-right: 10%;
+  }
+  .task_status {
+    margin-right: 2%;
+  }
+  .tasklist {
+    width: 97%;
+  }
+  .todo_status {
+    padding: 0.2rem 1rem;
+    width: 5.5rem;
+  }
+  .todo_name {
+    max-width: 80px;
+    min-width: 30px;
+    width: 20%;
+  }
+  .todo_date {
+    max-width: 130px;
+  }
+  .todo_time {
+    max-width: 150px;
+    margin-right: 5%;
+  }
+}
+
+@media (max-width: 800px) {
+  .yellowbg {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  .task_table {
+    display: none;
+  }
+  .tasklist {
+    padding-bottom: 25px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+    font-size: 14px;
+    margin-left: 15%;
+  }
+  .todo_name, .todo_date, .todo_time {
+    width: 100%;
+    max-width: 100%;
+    padding-top: 1px;
+  }
+  .lowerr {
+    display: block;
+    padding-top: 10px;
+    width: 100%;
+    font-size: 13px;
+  }
+  .stat {
+    padding-top: 10px;
+  }
+  .period {
+    justify-content: space-between;
+    width: 80%;
+    padding-top: 8px;
+  }
+  .durr {
+    margin-right: 7%;
+  }
+  .todo_button {
+    margin-top: 8%;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+@media (max-width: 770px) {
+  .tasklist {
+    width: 60%;
+  }
+  .period {
+    width: 90%;
+  }
+  .durr {
+    margin-right: 8%;
+  }
+}
+
+@media (max-width: 600px) {
+  .tasklist {
+    width: 70%;
+    margin-left: 10%;
+  }
+  .durr {
+    margin-right: 9%;
+  }
+  .todo_date {
+    padding-right: 2rem;
+  }
+  .create_task {
+    margin-right: 0rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .yellowbg {
+    width: 90%;
+  }
+}
+
+@media (max-width: 545px) {
+  .period {
+    width: 97%;
+  }
+  .durr {
+    margin-right: 8%;
+  }
+}
+
+@media (max-width: 400px) {
+  .create {
+    display: none;
+  }
+}
+
+@media (max-width: 440px) {
+  .yellowbg {
+    width: 90%;
+  }
+  .tasklist {
+    width: 90%;
+    margin-left: 0%;
+  }
 }
