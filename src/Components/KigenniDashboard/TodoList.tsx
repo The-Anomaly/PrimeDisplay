@@ -15,7 +15,6 @@ import prevpage from "../../assets/prevpage.svg";
 import nextpage from "../../assets/nextpage.svg";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
-import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import "./todomodal.css";
 import Alert from "react-bootstrap/Alert";
@@ -39,33 +38,99 @@ const TodoList = (props: any) => {
     selectedUserId: "",
     task_title: "",
     task_description: "",
+    duration: "",
+    title: "",
+    description: "",
     add_note: "",
     isOpen: false,
+    id: 1,
+    CreateTaskModalisOpen: false,
   });
   const { errorMessage, tasklist, nextLink, prevLink, user, success } = state;
-  const { task_title, task_description, add_note, isOpen } = modalState;
+  const {
+    task_title,
+    task_description,
+    task_duration,
+    duration,
+    title,
+    description,
+    add_note,
+    isOpen,
+    id,
+    CreateTaskModalisOpen,
+  } = modalState;
   const closeModalForCompleteTask = () => {
     setModState({
       ...modalState,
       isOpen: false,
     });
   };
-  const OpenIscompleteModal = (x) => {
+  const closeModalCreateTaskModal = () => {
+    setModState({
+      ...modalState,
+      CreateTaskModalisOpen: false,
+      success: false,
+    });
+  };
+  const onchange = (e: any) => {
+    setModState({
+      ...modalState,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const OpenIscompleteModal = (x: any) => {
     setModState({
       ...modalState,
       isOpen: true,
+      id: x,
     });
-    getTaskdetails(x);
+    getTaskdetails();
   };
-  const submitTaskIsCompleteForm = (id) => {
+  const submitTaskIsCompleteForm = () => {
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+    console.log(modalState.id);
+    const data = {
+      id: parseInt(id),
+    };
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/dashboard/complete-task`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        console.log(res);
+        setModState({
+          ...modalState,
+          success: true,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+        setFormState({
+          ...state,
+          errorMessage: "Server Error",
+        });
+      });
+  };
+  const createNewTask = () => {
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
     const data = {
-      id,
+      title,
+      description,
+      duration,
     };
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/todo`, {
+    Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/todo`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
@@ -178,33 +243,21 @@ const TodoList = (props: any) => {
       });
   };
 
-  const formatTime = (date) => {
+  const formatTime = (date: any) => {
     const dateTime = moment(date).format("Do MMM YYYY");
     return dateTime;
   };
-  const capitalizeFirstLetter = (string) => {
+  const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-  const getTaskdetails = async (id: any | void) => {
-    const availableToken = sessionStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : props.history.push("/signin");
-    console.log(id);
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/complete-task/${id}`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then(async (res) => {
-        console.log(res);
-        await setModState({
-          ...modalState,
-          isOpen: true,
-          ...res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const getTaskdetails: any = () => {
+    let result: any = {};
+    tasklist.forEach((task, i) => {
+      if (task.id == id) {
+        result = task;
+      }
+    });
+    return result;
   };
   return (
     <>
@@ -219,7 +272,15 @@ const TodoList = (props: any) => {
                 <div className="kdashheader npps"></div>
                 <div className="begin">
                   <DashboardUsernameheader welcomeText="View list of all available tasks" />
-                  <span className="create_task">
+                  <span
+                    className="create_task"
+                    onClick={() => {
+                      setModState({
+                        ...modalState,
+                        CreateTaskModalisOpen: true,
+                      });
+                    }}
+                  >
                     Create New Task
                     <img
                       className="create"
@@ -229,7 +290,7 @@ const TodoList = (props: any) => {
                   </span>
                 </div>
                 <Row>
-                  <Col md={11}>
+                  <Col md={12}>
                     <div className="yellowbg">
                       <img
                         src={yellowthumb}
@@ -267,12 +328,21 @@ const TodoList = (props: any) => {
                           </span>
                         </div>
                         <div className="ctime">
-                          <div
-                            className="savebtn todo_button"
-                            onClick={() => OpenIscompleteModal(data.id)}
-                          >
-                            Complete Task
-                          </div>
+                          {data.status !== "pending" ? (
+                            <div
+                              className="savebtn"
+                              onClick={() => OpenIscompleteModal(data.id)}
+                            >
+                              View More
+                            </div>
+                          ) : (
+                            <div
+                              className="savebtn todo_button"
+                              onClick={() => OpenIscompleteModal(data.id)}
+                            >
+                              Complete Task
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -311,9 +381,7 @@ const TodoList = (props: any) => {
         show={isOpen}
         className="modcomplete"
         centered={true}
-        onEntering={getTaskdetails}
         onHide={closeModalForCompleteTask}
-        backdrop="static"
       >
         <Modal.Title className="modal_title">Complete Task</Modal.Title>
         <div className="text-center">{errorMessage}</div>
@@ -333,23 +401,30 @@ const TodoList = (props: any) => {
         <Modal.Body>
           <div className="modal_det">
             <div className="titlee">Task Title</div>
-            <textarea className="task_det" name="title">
-              {task_title}
-            </textarea>
+            <textarea
+              className="task_det"
+              name="title"
+              disabled={true}
+              value={getTaskdetails()?.title}
+            />
           </div>
           <div className="modal_det">
             <div className="titlee">Task Description</div>
-            <textarea className="task_det" name="task_description">
-              {task_description}
-            </textarea>
+            <textarea
+              className="task_det"
+              name="task_description"
+              disabled={true}
+              value={getTaskdetails()?.description}
+            />
           </div>
           <div className="modal_det">
             <div className="titlee">Note</div>
             <textarea
               className="note_det"
-              placeholder="Enter Extra Notes"
+              placeholder="Extra Notes"
               name="add_note"
-              value={add_note}
+              disabled={true}
+              value={getTaskdetails()?.notes}
             />
           </div>
           <div className="request_input">
@@ -363,6 +438,65 @@ const TodoList = (props: any) => {
               onClick={submitTaskIsCompleteForm}
             >
               Mark as Complete
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={CreateTaskModalisOpen}
+        centered={true}
+        onHide={closeModalCreateTaskModal}
+        className="modcomplete"
+      >
+        <Modal.Title className="modal_title create_title">
+          Create Task
+        </Modal.Title>
+        {success && (
+          <Alert variant={"info"} className="text-center">
+            Created Task
+          </Alert>
+        )}
+        <a className="close_view" onClick={closeModalCreateTaskModal}>
+          <img className="closeview" src={close} alt="close" />
+        </a>
+        <Modal.Body className="create_body">
+          <div className="modal_det">
+            <div className="titlee">Task Title</div>
+            <textarea
+              className="note_det create_det"
+              placeholder="Enter a Task Title"
+              value={title}
+              name={"title"}
+              onChange={onchange}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Description</div>
+            <textarea
+              className="note_det"
+              placeholder="Enter a Task Description"
+              value={description}
+              name={"description"}
+              onChange={onchange}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Task Duration</div>
+            <input
+              className="note_det create_det "
+              type="text"
+              placeholder="Enter Duration"
+              value={duration}
+              name={"duration"}
+              onChange={onchange}
+            />
+          </div>
+          <div className="mark_complete">
+            <div
+              className="savebtn todo_button markit createit"
+              onClick={createNewTask}
+            >
+              Create Task
             </div>
           </div>
         </Modal.Body>

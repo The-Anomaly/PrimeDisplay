@@ -12,7 +12,12 @@ import DashboardNav from "./DashboardNavBar";
 import { withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
+import Modal from "react-bootstrap/Modal";
+import "./todomodal.css";
+import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
+import close from "../../assets/close.svg";
+import { useState } from "react";
 const moment = require("moment");
 
 const TodoOverview = withRouter((props: any) => {
@@ -20,10 +25,24 @@ const TodoOverview = withRouter((props: any) => {
     errorMessage: "",
     user: "",
     tasklist: [],
+    alltask: [],
     successMsg: false,
     isLoading: false,
   });
-  const { errorMessage, tasklist, user, isLoading } = state;
+  const [modalState, setModState] = useState<any>({
+    selectedUserId: "",
+    task_title: "",
+    task_description: "",
+    duration: "",
+    title: "",
+    description: "",
+    success: false,
+    add_note: "",
+    isOpen: false,
+    id: 1,
+    CreateTaskModalisOpen: false,
+  });
+  const { errorMessage, tasklist, user, success, alltask, isLoading } = state;
   React.useEffect(() => {
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
@@ -48,6 +67,7 @@ const TodoOverview = withRouter((props: any) => {
               successMsg: true,
               isLoading: false,
               tasklist: [...res1.data.results],
+              alltask: [...res1.data.results],
             });
           }
         })
@@ -67,12 +87,83 @@ const TodoOverview = withRouter((props: any) => {
         });
       });
   }, []);
+  const {
+    task_title,
+    task_description,
+    task_duration,
+    duration,
+    title,
+    description,
+    add_note,
+    isOpen,
+    id,
+    CreateTaskModalisOpen,
+  } = modalState;
+  const OpenIscompleteModal = (x: any) => {
+    setModState({
+      ...modalState,
+      isOpen: true,
+      id: x,
+    });
+    getTaskdetails();
+  };
   const formatTime = (date) => {
     const dateTime = moment(date).format("Do MMM YYYY");
     return dateTime;
   };
+  const closeModalForCompleteTask = () => {
+    setModState({
+      ...modalState,
+      isOpen: false,
+    });
+    window.location.reload()
+  };
+  const getTaskdetails: any = () => {
+    let result: any = {};
+    console.log(alltask);
+    alltask.forEach((task, i) => {
+      if (task.id == id) {
+        result = task;
+      }
+    });
+    return result;
+  };
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  const submitTaskIsCompleteForm = () => {
+    const availableToken = sessionStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+    console.log(modalState.id);
+    const data = {
+      id: parseInt(id),
+    };
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/dashboard/complete-task`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        console.log(res);
+        setModState({
+          ...modalState,
+          success: true,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+        setFormState({
+          ...state,
+          errorMessage: "Server Error",
+        });
+      });
   };
   console.log(tasklist);
   return (
@@ -102,7 +193,7 @@ const TodoOverview = withRouter((props: any) => {
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Task Completed</div>
-                            <div className="mmber1">{user?.pending_tasks}</div>
+                            <div className="mmber1">{user?.completed_tasks}</div>
                           </div>
                         </div>
                         <div className="firstoffour">
@@ -110,7 +201,7 @@ const TodoOverview = withRouter((props: any) => {
                           <div className="fouri1a">
                             <div className="mmber">Task Pending</div>
                             <div className="mmber1">
-                              {user?.completed_tasks}
+                              {user?.pending_tasks}
                             </div>
                           </div>
                         </div>
@@ -135,7 +226,7 @@ const TodoOverview = withRouter((props: any) => {
                       <div className="ctime cww11 tdw1 tdw1s ">Status</div>
                       <div className="ctime "></div>
                     </div>
-                    {tasklist.splice(0,2).map((data, i) => (
+                    {tasklist.splice(0, 2).map((data, i) => (
                       <div className="wrapc2">
                         <div className="userimg22">
                           {/* <img src={userimg} className="userimg" alt="userimg" /> */}
@@ -159,7 +250,21 @@ const TodoOverview = withRouter((props: any) => {
                           </span>
                         </div>
                         <div className="ctime">
-                          <div className="savebtn">View More</div>
+                          {data.status !== "pending" ? (
+                            <div
+                              className="savebtn"
+                              onClick={() => OpenIscompleteModal(data.id)}
+                            >
+                              View More
+                            </div>
+                          ) : (
+                            <div
+                              className="savebtn todo_button"
+                              onClick={() => OpenIscompleteModal(data.id)}
+                            >
+                              Complete Task
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -173,6 +278,71 @@ const TodoOverview = withRouter((props: any) => {
           </Col>
         </Row>
       </Container>
+      <Modal
+        show={isOpen}
+        className="modcomplete"
+        centered={true}
+        onHide={closeModalForCompleteTask}
+      >
+        <Modal.Title className="modal_title">Complete Task</Modal.Title>
+        <div className="text-center">{errorMessage}</div>
+        {success && (
+          <Alert variant={"info"} className="text-center">
+            Sent
+          </Alert>
+        )}
+        <span className="close_view">
+          <img
+            className="closeview"
+            onClick={closeModalForCompleteTask}
+            src={close}
+            alt="close"
+          />
+        </span>
+        <Modal.Body>
+          <div className="modal_det">
+            <div className="titlee">Task Title</div>
+            <textarea
+              className="task_det"
+              name="title"
+              disabled={true}
+              value={getTaskdetails()?.title}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Task Description</div>
+            <textarea
+              className="task_det"
+              name="task_description"
+              disabled={true}
+              value={getTaskdetails()?.description}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Note</div>
+            <textarea
+              className="note_det"
+              placeholder="Extra Notes"
+              name="add_note"
+              disabled={true}
+              value={getTaskdetails()?.notes}
+            />
+          </div>
+          <div className="request_input">
+            <a className="request" href="#">
+              Request Counselors Input
+            </a>
+          </div>
+          <div className="mark_complete">
+            <div
+              className="savebtn todo_button markit"
+              onClick={submitTaskIsCompleteForm}
+            >
+              Mark as Complete
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 });

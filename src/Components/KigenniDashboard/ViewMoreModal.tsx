@@ -23,14 +23,9 @@ const ViewMoreModal = () => {
         onHide={closeModal}
       >
         <Modal.Title className="modal_title">Task Details</Modal.Title>
-        <span className="close_view">
-          <img
-            className="closeview"
-            onClick={closeModal}
-            src={close}
-            alt="close"
-          />
-        </span>
+        <a className="close_view" onClick={closeModal}>
+          <img className="closeview" src={close} alt="close" />
+        </a>
         <Modal.Body>
           <div className="modal_det">
             <div className="titlee">Task Title</div>

@@ -3106,13 +3106,15 @@ textarea.form-control.jobr {
   background: #FEFDE6;
   border-radius: 8px;
   padding: 1rem;
-  width: 97%;
+  width: 93%;
   margin-bottom: 1rem;
+  margin: auto;
+  margin-left: 0rem;
 }
 .yellowgood{
   width: 32px;
-  margin-left: -7rem;
-  margin-right: 1.5rem;
+  margin-left: 0rem;
+  margin-right: 1.0rem;
 }
 .task_table {
   font-size: 13px;
@@ -3181,6 +3183,11 @@ textarea.form-control.jobr {
 }
 textarea, .task_det:focus{
   border: #0084f4 !important;
-  outline: none;
+  outline: 1px solid #ebe6e6;
+  box-shadow: none;
+}
+input, .create_det:focus{
+  border: #0084f4 !important;
+  outline: 1px solid #ebe6e6;
   box-shadow: none;
 }
