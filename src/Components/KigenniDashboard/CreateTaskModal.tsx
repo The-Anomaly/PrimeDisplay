@@ -5,22 +5,19 @@ import close from "../../assets/close.svg";
 
 const CreateTaskModal = () => {
   const [state, setState] = useState({
-    isOpen: true,
+    CreateTaskModalisOpen: true,
   });
-  const closeModal = () => {
+  const closeModalCreateTaskModal = () => {
     setState({
       ...state,
-      isOpen: false,
+      CreateTaskModalisOpen: false,
     });
   };
 
   return (
     <div>
-      <Modal show={state.isOpen} centered={true} onHide={closeModal}>
+      <Modal show={state.CreateTaskModalisOpen} centered={true} onHide={closeModalCreateTaskModal}>
       <Modal.Title className="modal_title create_title">Create Task</Modal.Title>
-        <a className="close_view" onClick={closeModal}>
-          <img className="closeview" src={close} alt="close" />
-        </a>
         <Modal.Body className="create_body">
           <div className="modal_det">
             <div className="titlee">Task Title</div>
