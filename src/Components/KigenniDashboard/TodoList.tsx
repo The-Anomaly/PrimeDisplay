@@ -308,15 +308,29 @@ const TodoList = (props: any) => {
                     </div>
                     {tasklist.map((data, i) => (
                       <div className="wrapc2 tasklist" key={i}>
-                        <div className="cname todo_name">{data?.title}</div>
-                        <div className="cdate todo_date">
+                        <div>
+                          <span className="task_title lowerr">Task Title</span>
+                          <div className="cname todo_name">{data?.title}</div>
+                        </div>
+
+                        <div className="period">
+                        <div>
+                          <span className="task_duration lowerr">Duration</span>
+                          <div className="cdate todo_date">
                           {data?.duration}
-                          {data.duration == 1 ? " week" : " weeks"}
+                          {(data.duration = 1 ? "week" : "weeks")}
+                          </div>
                         </div>
-                        <div className="ctime todo_time">
+                        <div className="durr">
+                          <span className="task_time lowerr">Time Created</span>
+                          <div className="ctime todo_time">
                           {formatTime(data?.date_created)}
+                          </div>
                         </div>
-                        <div className="cstatus2">
+                        </div>
+                        
+                        <div className="period">
+                        <div className="cstatus2 stat">
                           <span
                             className={
                               data.status === "pending"
@@ -343,6 +357,7 @@ const TodoList = (props: any) => {
                               Complete Task
                             </div>
                           )}
+                        </div>
                         </div>
                       </div>
                     ))}
@@ -481,11 +496,11 @@ const TodoList = (props: any) => {
             />
           </div>
           <div className="modal_det">
-            <div className="titlee">Task Duration</div>
+            <div className="titlee">Task Duration(Days)</div>
             <input
               className="note_det create_det "
-              type="text"
-              placeholder="Enter Duration"
+              type="number"
+              placeholder="Enter Duration "
               value={duration}
               name={"duration"}
               onChange={onchange}
