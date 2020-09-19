@@ -217,42 +217,51 @@ const TodoOverview = withRouter((props: any) => {
                       have super powers. Keep going Champ!!!
                     </div>
                     <div className="wrapline"></div>
-                    <div className="cww">
-                      <div className="cname tdw0">
-                        <div className="cww11">Task Title</div>
+                    <div className="cww task_table newtt">
+                      <div className="cname tdw0 nuname">
+                        <div className="cww11 task_title">Task Title</div>
                       </div>
-                      <div className="cdate cww11 tdw1">Duration</div>
-                      <div className="ctime cww11 tdw1">Time Created</div>
-                      <div className="ctime cww11 tdw1 tdw1s ">Status</div>
+                      <div className="cdate cww11 tdw1 task_duration newdur">Duration</div>
+                      <div className="ctime cww11 tdw1 task_time nudate">Date Created</div>
+                      <div className="ctime cww11 tdw1 tdw1s task_status">Status</div>
                       <div className="ctime "></div>
                     </div>
                     {tasklist.splice(0, 2).map((data, i) => (
-                      <div className="wrapc2">
-                        <div className="userimg22">
-                          {/* <img src={userimg} className="userimg" alt="userimg" /> */}
+                      <div className="wrapc2 tasklist listit">
+                        <div className="cname tdw0 titl newtitl">
+                        <span className="task_title lowerr">Task Title</span>
+                          <div className="eplimit cname todo_name">{data?.title}</div>
                         </div>
-                        <div className="cname tdw0">
-                          <div className="eplimit">{data?.title}</div>
+
+                        <div className="weeks">
+                        <span className="task_duration lowerr">Duration</span>
+                        <div className="cdate tdw1 todo_date">{data?.duration}</div>
                         </div>
-                        <div className="cdate tdw1">{data?.duration}</div>
-                        <div className="ctime tdw1">
+
+                        <div className="durr">
+                        <span className="task_time lowerr">Date Created</span>
+                        <div className="ctime tdw1 todo_time">
                           {formatTime(data?.date_created)}
                         </div>
-                        <div className="cstatus2 tdw1">
+                        </div>
+
+                        
+                        <div className="cstatus2 tdw1 stat">
                           <span
                             className={
                               data.status === "pending"
-                                ? "cstatus pending"
-                                : "cstatus"
+                                ? "cstatus todo_status pending"
+                                : "cstatus todo_status"
                             }
                           >
                             {capitalizeFirstLetter(data.status)}
                           </span>
                         </div>
-                        <div className="ctime">
+
+                        <div className="ctime todoo">
                           {data.status !== "pending" ? (
                             <div
-                              className="savebtn"
+                              className="savebtn todo_button"
                               onClick={() => OpenIscompleteModal(data.id)}
                             >
                               View More

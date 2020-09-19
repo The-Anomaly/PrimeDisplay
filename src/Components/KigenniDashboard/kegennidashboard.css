@@ -3125,34 +3125,41 @@ textarea.form-control.jobr {
   justify-content: space-around;
   padding: 1.5rem;
   margin-right: 30%;
-  width: 81%;
+  width: 75%;
   margin-left: -5%;
 }
 .task_title {
   margin-right: 4rem;
 }
 .task_duration {
-  margin-right: 2rem;
+  margin-right: 0rem;
 }
 .task_time {
-  margin-right: 2rem;
+  margin-right: 0rem;
 }
 .tasklist {
   font-size: 13px;
-  padding: 1.1rem 1rem 1.1rem 2.2rem;
+  padding: 1.1rem 3rem 1.1rem 2.2rem;
 }
 .todo_name {
+  min-width: 135px;
   max-width: 170px;
-  min-width: 50px;
-  width: 158px;
+  flex: 30%;
   text-overflow: ellipsis;
   white-space: nowrap;
-  display: inline-block !important;
+  display: inline-block;
   overflow: hidden;
 }
 .todo_date {
   font-size: 13px;
+  min-width: 90px;
   max-width: 150px;
+  flex: 10%;
+}
+.todo_time {
+  max-width: 150px;
+    min-width: 100px;
+    flex: 20%;
 }
 .todo_status {
   border-radius: 5px;
@@ -3161,6 +3168,11 @@ textarea.form-control.jobr {
   width: 6.5rem;
   height: fit-content;
   font-weight: 600;
+}
+.todoo {
+  max-width: 150px;
+    min-width: 140px;
+    flex: 20%;
 }
 .todo_button {
   border-radius: 5px;
@@ -3203,12 +3215,7 @@ input,
 }
 .lowerr {
   display: none;
-}
-.period {
-  display: flex;
-  justify-content: space-between;
-  width: 34%;
-  padding-right: 2rem;
+  color: #979797;
 }
 
 @media (max-width: 1200px) {
@@ -3220,6 +3227,9 @@ input,
   }
   .yellowgood {
     margin-left: 0rem;
+  }
+  .tasklist {
+    padding-right: 1rem;
   }
 }
 
@@ -3233,9 +3243,10 @@ input,
   }
   .task_table {
     margin-left: -2%;
+    width: 70%;
   }
   .task_title {
-    margin-right: 10%;
+    margin-right: 20%;
   }
   .task_duration {
     margin-right: 10%;
@@ -3254,16 +3265,23 @@ input,
     width: 5.5rem;
   }
   .todo_name {
-    max-width: 80px;
-    min-width: 30px;
-    width: 20%;
+    max-width: 120px;
+    min-width: 100px;
+  }
+  .durr {
+    margin-right: 2%;
   }
   .todo_date {
-    max-width: 130px;
+    max-width: 100px;
+    min-width: 80px;
   }
   .todo_time {
     max-width: 150px;
     margin-right: 5%;
+    min-width: 110px;
+  }
+  .stat {
+    width: 100px;
   }
 }
 
@@ -3277,7 +3295,6 @@ input,
   }
   .tasklist {
     padding-bottom: 25px;
-    flex-direction: column;
     align-items: flex-start;
     width: 70%;
     font-size: 14px;
@@ -3289,6 +3306,7 @@ input,
     width: 100%;
     max-width: 100%;
     padding-top: 1px;
+    justify-content: flex-start;
   }
   .lowerr {
     display: block;
@@ -3299,11 +3317,6 @@ input,
   .stat {
     padding-top: 10px;
   }
-  .period {
-    justify-content: space-between;
-    width: 80%;
-    padding-top: 8px;
-  }
   .durr {
     margin-right: 7%;
   }
@@ -3311,30 +3324,60 @@ input,
     margin-top: 8%;
     padding: 0.2rem 0.5rem;
   }
+  .titl {
+    flex: 100%;
+  }
+  .weeks {
+    flex: 40%;
+  }
+  .durr {
+    flex: 40%;
+  }
+  .stat, .todoo {
+    flex: 40%;
+    justify-content: flex-start;
+    padding-top: 1.2rem;
+  }
+  .stat {
+    padding-top: 1.8rem;
+  }
+  .todoo {
+    margin-right: 1rem;
+  }
 }
 
 @media (max-width: 770px) {
   .tasklist {
     width: 60%;
   }
-  .period {
-    width: 90%;
-  }
   .durr {
     margin-right: 8%;
   }
 }
 
+@media (max-width: 670px) {
+  .todoo {
+    margin-right: 0rem;
+  }
+  .tasklist {
+    padding-left: 1rem;
+  }
+}
+
 @media (max-width: 600px) {
   .tasklist {
-    width: 70%;
-    margin-left: 10%;
+    width: 85%;
+    margin-left: 4%;
+    padding-left: 2rem;
   }
   .durr {
     margin-right: 9%;
   }
   .todo_date {
     padding-right: 2rem;
+  }
+  .todoo {
+    margin-right: 8%;
   }
   .create_task {
     margin-right: 0rem;
@@ -3350,22 +3393,18 @@ input,
     padding-left: 1rem;
   }
   .tasklist{
-    width: 100% !important;
+    width: 80%;
     padding: 1.1rem 1rem 1.1rem 1rem;
   }
   .todo_button{
     margin-top: 4%;
   }
-  .period{
-    width: 100% !important;
-    padding-right: 0px;
+  .todoo {
+    margin-right: 5%;
   }
 }
 
 @media (max-width: 545px) {
-  .period {
-    width: 100%;
-  }
   .durr {
     margin-right: 11%;
   }
@@ -3382,14 +3421,77 @@ input,
   .create {
     display: none;
   }
-}
-
-@media (max-width: 440px) {
+  .tasklist {
+    width: 100%;
+    margin-left: 0%;
+    padding: 1.1rem 1rem 1.1rem 2rem;
+  }
   .yellowbg {
     width: 90%;
   }
+}
+
+@media (max-width: 350px) {
   .tasklist {
-    width: 90%;
-    margin-left: 0%;
+    padding: 1.1rem 1rem 1.1rem 1rem;
+  }
+  .todoo {
+    margin-right: 2%;
+  }
+}
+
+/*Todo Overview Responsiveness*/
+.newtt {
+  width: 85%;
+  margin-left: 0%;
+}
+.nuname {
+  margin-right: 10%;
+}
+
+@media (max-width: 1100px) {
+  .nuname {
+    margin-right: 8%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .newtt {
+    width: 89%;
+  }
+  .newdur {
+    margin-right: 2%;
+  }
+  .nudate {
+    margin-right: 4%;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 801px) {
+  .nuname {
+    margin-right: -2%;
+    width: 120px !important;
+  }
+  .newtitl {
+    margin-right: 0rem;
+    width: 20% !important;
+    min-width: 100px;
+    display: flex !important;
+    justify-content: flex-start;
+  }
+  .listit {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 800px) {
+  .listit {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .newtitl {
+    margin-right: 3.1rem;
   }
 }

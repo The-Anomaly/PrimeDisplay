@@ -303,33 +303,31 @@ const TodoList = (props: any) => {
                     <div className="task_table">
                       <span className="task_title">Task Title</span>
                       <span className="task_duration">Duration</span>
-                      <span className="task_time">Time Created</span>
+                      <span className="task_time">Date Created</span>
                       <span className="task_status">Status</span>
                     </div>
                     {tasklist.map((data, i) => (
                       <div className="wrapc2 tasklist" key={i}>
-                        <div>
+                        <div className="titl">
                           <span className="task_title lowerr">Task Title</span>
                           <div className="cname todo_name">{data?.title}</div>
                         </div>
 
-                        <div className="period">
-                        <div>
+                        <div className="weeks">
                           <span className="task_duration lowerr">Duration</span>
                           <div className="cdate todo_date">
                           {data?.duration}
                           {(data.duration = 1 ? "week" : "weeks")}
                           </div>
                         </div>
+                        
                         <div className="durr">
-                          <span className="task_time lowerr">Time Created</span>
+                          <span className="task_time lowerr">Date Created</span>
                           <div className="ctime todo_time">
                           {formatTime(data?.date_created)}
                           </div>
                         </div>
-                        </div>
                         
-                        <div className="period">
                         <div className="cstatus2 stat">
                           <span
                             className={
@@ -341,10 +339,10 @@ const TodoList = (props: any) => {
                             {capitalizeFirstLetter(data.status)}
                           </span>
                         </div>
-                        <div className="ctime">
+                        <div className="ctime todoo">
                           {data.status !== "pending" ? (
                             <div
-                              className="savebtn"
+                              className="savebtn todo_button"
                               onClick={() => OpenIscompleteModal(data.id)}
                             >
                               View More
@@ -358,10 +356,9 @@ const TodoList = (props: any) => {
                             </div>
                           )}
                         </div>
-                        </div>
                       </div>
                     ))}
-                    <div className="next_page">
+                      <div className="next_page">
                       <div>
                         Displaying <span className="page_num">1</span> out of{" "}
                         <span className="page_num">{state.count}</span>
