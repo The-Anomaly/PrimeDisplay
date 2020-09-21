@@ -39,7 +39,6 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
       email,
       domain:"clarity"
     };
-    console.log(API);
     axios
       .post<any, AxiosResponse<any>>(`${API}/claritypasswordresetemail`, data, {
         headers: {
@@ -47,7 +46,6 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
         },
       })
       .then((response) => {
-        console.log(response?.data[0]?.message);
         if (response.status === 200) {
          return setFormState({
             ...state,
@@ -61,7 +59,6 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           setFormState({
             ...state,
@@ -92,7 +89,6 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
     axios
       .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
       .then((response) => {
-        console.log(response);
         if (
           (response.status === 200 &&
             response.data[0].next === "phase_four_sports") ||
@@ -130,7 +126,6 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   const changeActionOnFormData = (e: any) => {
@@ -147,18 +142,14 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           sessionStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   const responseGoogle = (response) => {
-    console.log(response);
-    console.log(response.profileObj);
     const data = {
       name: response.profileObj.name,
       email: response.profileObj.email,
@@ -166,11 +157,9 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
       imageUrl: response.profileObj.imageUrl,
       provider: "Google",
     };
-    console.log(data);
     axios
       .post(`${API}/accounts/socialauth/`, data)
       .then((response) => {
-        console.log(response?.data[0]?.token);
         sessionStorage.setItem(
           "userToken",
           JSON.stringify(response?.data[0]?.token)
@@ -186,7 +175,6 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
       });
   };
   const errorGoogle = (error) => {
-    console.log(error);
     setFormState({
       ...state,
       errorMessage: "failed to login",

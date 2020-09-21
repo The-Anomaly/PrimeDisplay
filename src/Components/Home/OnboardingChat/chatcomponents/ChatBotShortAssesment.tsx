@@ -10,7 +10,6 @@ type ChatBotProps = {
 const ChatBotShortAssessment: React.FunctionComponent<ChatBotProps> = (
   props
 ) => {
-  console.log(props);
   const [state, setCheckboxValue]: any = React.useState<any>({
     question1: "1",
   });

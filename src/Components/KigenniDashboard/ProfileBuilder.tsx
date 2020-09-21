@@ -232,7 +232,6 @@ class ProfileBuilder extends React.Component {
       endDate,
       userHasAddedExperience,
     } = this.state;
-    console.log({ startDate, endDate });
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
@@ -244,7 +243,6 @@ class ProfileBuilder extends React.Component {
       reference: references,
       social_media: { instagram, facebook, linkedin, twitter },
     };
-    console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/profilebuilder`,
       data,
@@ -253,12 +251,10 @@ class ProfileBuilder extends React.Component {
       }
     )
       .then((res) => {
-        console.log(res);
         this.notify("Successful");
       })
       .catch((err) => {
         if (err) {
-          console.log(err.response);
           this.notify("Failed to send");
         }
       });
@@ -270,7 +266,6 @@ class ProfileBuilder extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res);
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
@@ -293,7 +288,6 @@ class ProfileBuilder extends React.Component {
       })
       .catch((err) => {
         if (err) {
-          console.log(err.response);
           this.notify("Failed to fetch data");
         }
       });
@@ -309,7 +303,6 @@ class ProfileBuilder extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           this.setState({
             user: response.data,
@@ -317,7 +310,6 @@ class ProfileBuilder extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -334,7 +326,6 @@ class ProfileBuilder extends React.Component {
     this.setState({
       [e.target.id]: e.target.value,
     });
-    console.log(e.target.value);
   };
   CloseWarning = () => {
     this.setState({
@@ -354,7 +345,6 @@ class ProfileBuilder extends React.Component {
     this.setState({
       mycurrentwork: this.state.mycurrentwork ? false : true,
     });
-    console.log(this.state.mycurrentwork);
   };
   onchangeCurrentStudy = (e: any) => {
     this.setState({
@@ -362,19 +352,16 @@ class ProfileBuilder extends React.Component {
         ? false
         : true,
     });
-    console.log(this.state.mycurrentwork);
   };
   onchange = (e: any) => {
     this.setState({
       mycurrentwork: this.state.mycurrentwork ? false : true,
     });
-    console.log(this.state.mycurrentwork);
   };
   onchange1 = (e: any) => {
     this.setState({
       expirationStatus: this.state.expirationStatus ? false : true,
     });
-    console.log(this.state.expirationStatus);
   };
   deleteExperience = (id) => {
     const Experiences = this.state.experiences;
@@ -382,7 +369,6 @@ class ProfileBuilder extends React.Component {
     this.setState({
       experiences: Experiences,
     });
-    console.log(Experiences);
   };
   deleteReference = (id) => {
     const References = this.state.references;
@@ -404,13 +390,10 @@ class ProfileBuilder extends React.Component {
     this.setState({
       certifications: Certifications,
     });
-    console.log(Certifications);
   };
   deleteSkill = (id): void => {
     const Skills = this.state.skills;
-    console.log(Skills[id]);
     const foundIndex = Skills.indexOf(Skills[id]);
-    console.log(foundIndex);
     Skills.splice(id, 1);
     this.setState({
       skills: Skills,
@@ -462,7 +445,6 @@ class ProfileBuilder extends React.Component {
       width,
       user,
     } = this.state;
-    console.log(user);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -614,7 +596,6 @@ class ProfileBuilder extends React.Component {
                                 onChange={this.handleChange}
                                 className="form-control jobr"
                                 onKeyPress={(e) => {
-                                  console.log(e);
                                   if (e.key == "Enter") {
                                     this.addExperience();
                                   }
@@ -824,7 +805,6 @@ class ProfileBuilder extends React.Component {
                                 className="fmc jobr subhyt"
                                 onChange={this.handleChange}
                                 onKeyPress={(e) => {
-                                  console.log(e);
                                   if (e.key == "Enter") {
                                     this.addNewEducation();
                                   }
@@ -971,7 +951,6 @@ class ProfileBuilder extends React.Component {
                             value={skill}
                             id="skill"
                             onKeyPress={(e) => {
-                              console.log(e);
                               if (e.key == "Enter") {
                                 this.addNewSkill();
                               }
@@ -1058,7 +1037,6 @@ class ProfileBuilder extends React.Component {
                                 disabled={expirationStatus ? true : false}
                                 onChange={this.handleChange}
                                 onKeyPress={(e) => {
-                                  console.log(e);
                                   if (e.key == "Enter") {
                                     this.addNewCertification();
                                   }
@@ -1230,7 +1208,6 @@ class ProfileBuilder extends React.Component {
                             className="form-control jobr subhyt"
                             placeholder=""
                             onKeyPress={(e) => {
-                              console.log(e);
                               if (e.key == "Enter") {
                                 this.addNewReferences();
                               }

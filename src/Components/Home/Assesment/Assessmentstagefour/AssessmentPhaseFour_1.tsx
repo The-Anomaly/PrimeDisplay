@@ -92,7 +92,6 @@ const Assessmentfourthphase_1 = (props: any) => {
       ...state,
       [name]: nextValue.toString(),
     });
-    console.log(state);
   };
   //subform
   const submitForm = (e: any) => {
@@ -162,7 +161,6 @@ const Assessmentfourthphase_1 = (props: any) => {
           )
         )
         .catch((error) => {
-          console.log(error.response);
           if (error && error.response && error.response.data) {
             notify(error.response.data[0].message);
           }

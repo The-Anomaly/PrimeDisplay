@@ -30,12 +30,10 @@ class CounsellorRecommendation extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res.data);
         window.location.assign("/assessmentphaseone");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -54,13 +52,11 @@ class CounsellorRecommendation extends React.Component {
       }
     )
       .then((response) => {
-        console.log(response);
         this.setState({
           counsellor: response.data,
         });
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -101,7 +97,6 @@ class CounsellorRecommendation extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   render() {

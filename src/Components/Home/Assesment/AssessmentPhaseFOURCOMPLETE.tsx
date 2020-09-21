@@ -21,7 +21,6 @@ const AssessmentFourthPhaseComplete = () => {
     const user: User = sessionStorage.getItem('user');
     const currentUser = JSON.parse(user ? user : '');
     setName(currentUser[0].first_name);
-    console.log(currentUser[0].first_name);
   }, []);
   return (
     <div>

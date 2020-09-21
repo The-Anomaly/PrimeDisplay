@@ -116,14 +116,11 @@ class NewDashboardJobOpportunities extends React.Component {
       }
     )
       .then((res) => {
-        console.log(res.data);
         this.notify("Successful");
       })
       .catch((err) => {
-        console.log(err.response);
         this.notify("failed");
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -144,12 +141,10 @@ class NewDashboardJobOpportunities extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error?.response?.data[0]?.message,
@@ -188,7 +183,6 @@ class NewDashboardJobOpportunities extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           this.setState({
             user: response.data,
@@ -196,7 +190,6 @@ class NewDashboardJobOpportunities extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,

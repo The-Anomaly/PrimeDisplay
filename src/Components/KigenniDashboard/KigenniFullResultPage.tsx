@@ -56,7 +56,6 @@ const KigenniFullResultPage: React.FunctionComponent = (props: any) => {
     axios
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           setFormState({
             ...state,
@@ -67,7 +66,6 @@ const KigenniFullResultPage: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           setFormState({
             ...state,

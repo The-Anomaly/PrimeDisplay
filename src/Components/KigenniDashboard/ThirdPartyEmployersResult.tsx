@@ -89,7 +89,6 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
     const Result = getResult
       ? JSON.parse(getResult)
       : window.location.assign("/employersview");
-    console.log(Result);
     this.setState({
       employer: Result,
       fullname: Result?.full_name,
@@ -121,12 +120,10 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((res) => {
-        console.log(res.data);
         window.location.assign("/assessmentphaseone");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -188,7 +185,6 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         this.setState({
           isLoading1: false,
           success: true,
@@ -201,7 +197,6 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
         }, 1500);
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           isLoading1: false,
           show: false,
@@ -227,7 +222,6 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   moveTo = (str) => {
@@ -246,7 +240,6 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
       isLoading,
       employer,
     }: any = this.state;
-    console.log(employer);
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
     return (
       <>

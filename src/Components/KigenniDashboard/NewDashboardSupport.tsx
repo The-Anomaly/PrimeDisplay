@@ -47,12 +47,10 @@ class NewDashboardSupport extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res.data);
         this.notify("Successful");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
           this.notify("Failed to send");
         }
       });
@@ -64,7 +62,6 @@ class NewDashboardSupport extends React.Component {
     //   headers: { Authorization: `Token ${token}` },
     // })
     //   .then((response) => {
-    //     console.log(response);
     //     if (
     //       response?.data[0]?.direction_plan ||
     //       response?.data[0]?.growth_plan ||
@@ -74,7 +71,6 @@ class NewDashboardSupport extends React.Component {
     //     }
     //   })
     //   .catch((error) => {
-    //     console.log(error);
     //   });
   };
   handleChange = (e) => {

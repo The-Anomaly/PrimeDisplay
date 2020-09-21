@@ -84,7 +84,6 @@ const Assessmentfourthphase = (props: any) => {
       ...state,
       [name]: nextValue.toString(),
     });
-    console.log(state);
   };
   //subform
   const submitForm = (e: any) => {
@@ -120,7 +119,6 @@ const Assessmentfourthphase = (props: any) => {
       q39c: rate15,
       q39d: rate16,
     };
-    console.log(firstApiData);
     axios
       .all([
         axios.post(`${API}/careerinterestcreative`, firstApiData, {
@@ -139,10 +137,6 @@ const Assessmentfourthphase = (props: any) => {
       .then(
         axios.spread(
           (firstresponse, secondresponse, thirdresponse, fourthresp) => {
-            console.log(firstresponse);
-            console.log(secondresponse);
-            console.log(thirdresponse);
-            console.log(fourthresp);
             if (
               firstresponse?.status == 200 &&
               secondresponse?.status == 200 &&
@@ -155,7 +149,6 @@ const Assessmentfourthphase = (props: any) => {
         )
       )
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           notify(error.response.data[0].message);
         }

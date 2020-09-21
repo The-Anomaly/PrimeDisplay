@@ -96,17 +96,14 @@ const AssessmentSixthPhase = (props: any) => {
         q68: question7,
         q69: question8,
       };
-      console.log(data);
       axios
         .post(`${API}/workstyle`, data, {
           headers: { Authorization: `Token ${token}` },
         })
         .then((response) => {
-          console.log(response);
           handleSuccess(response);
         })
         .catch((error) => {
-          console.log(error.response);
           handleErrors(error);
         });
     } else {

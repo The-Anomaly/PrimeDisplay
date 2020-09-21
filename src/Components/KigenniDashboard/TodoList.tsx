@@ -91,7 +91,6 @@ const TodoList = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
-    console.log(modalState.id);
     const data = {
       id: parseInt(id),
     };
@@ -103,7 +102,6 @@ const TodoList = (props: any) => {
       }
     )
       .then((res) => {
-        console.log(res);
         setModState({
           ...modalState,
           success: true,
@@ -113,7 +111,6 @@ const TodoList = (props: any) => {
         }, 2000);
       })
       .catch((err) => {
-        console.log(err);
         setFormState({
           ...state,
           errorMessage: "Server Error",
@@ -134,7 +131,6 @@ const TodoList = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res);
         setFormState({
           ...state,
           success: true,
@@ -142,7 +138,6 @@ const TodoList = (props: any) => {
         // setTimeout(closeModalForCompleteTask, 2000);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
   React.useEffect(() => {
@@ -161,8 +156,6 @@ const TodoList = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res1);
-          console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,
@@ -201,7 +194,6 @@ const TodoList = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res);
         setFormState({
           ...state,
           tasklist: res.data,
@@ -214,7 +206,6 @@ const TodoList = (props: any) => {
         if (err?.status === 401) {
           props.history.push("/signin");
         }
-        console.log(err);
       });
   };
   const LoadNewData = () => {
@@ -226,7 +217,6 @@ const TodoList = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res);
         setFormState({
           ...state,
           tasklist: res.data,
@@ -239,7 +229,6 @@ const TodoList = (props: any) => {
         if (err?.status === 401) {
           props.history.push("/signin");
         }
-        console.log(err);
       });
   };
 
