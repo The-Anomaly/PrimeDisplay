@@ -765,7 +765,7 @@ class CVProfileBuilder extends React.Component {
                       <Link to="/cvdashboard">
                         <div className="savebtn savecv">Edit</div>
                       </Link>
-                      <Link to="/generatecv">
+                      <Link to="/generatecv" target="blank">
                         <div className="print savecv">Generate CV</div>
                       </Link>
                     </Col>

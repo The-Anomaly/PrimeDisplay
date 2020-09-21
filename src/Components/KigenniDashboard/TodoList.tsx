@@ -20,6 +20,7 @@ import "./todomodal.css";
 import Alert from "react-bootstrap/Alert";
 import close from "../../assets/close.svg";
 import { useState } from "react";
+import ViewMoreModal from "./ViewMoreModal";
 const moment = require("moment");
 
 const TodoList = (props: any) => {
@@ -44,13 +45,14 @@ const TodoList = (props: any) => {
     add_note: "",
     isOpen: false,
     id: 1,
+    viewmoreisOpen: false,
     CreateTaskModalisOpen: false,
   });
   const { errorMessage, tasklist, nextLink, prevLink, user, success } = state;
   const {
     task_title,
     task_description,
-    task_duration,
+    viewmoreisOpen,
     duration,
     title,
     description,
@@ -72,6 +74,22 @@ const TodoList = (props: any) => {
       success: false,
     });
   };
+  const closeViewMoreModal = () => {
+    setModState({
+      ...modalState,
+      viewmoreisOpen: false,
+      success: false,
+    });
+  };
+  const openViewMoreModal = (x: any) => {
+    setModState({
+      ...modalState,
+      viewmoreisOpen: true,
+      id: x,
+    });
+    getTaskdetails();
+  };
+
   const onchange = (e: any) => {
     setModState({
       ...modalState,
@@ -314,50 +332,54 @@ const TodoList = (props: any) => {
                         </div>
 
                         <div className="period">
-                        <div>
-                          <span className="task_duration lowerr">Duration</span>
-                          <div className="cdate todo_date">
-                          {data?.duration}
-                          {(data.duration = 1 ? "week" : "weeks")}
+                          <div>
+                            <span className="task_duration lowerr">
+                              Duration
+                            </span>
+                            <div className="cdate todo_date">
+                              {data?.duration}
+                              {(data.duration = 1 ? "week" : "weeks")}
+                            </div>
+                          </div>
+                          <div className="durr">
+                            <span className="task_time lowerr">
+                              Time Created
+                            </span>
+                            <div className="ctime todo_time">
+                              {formatTime(data?.date_created)}
+                            </div>
                           </div>
                         </div>
-                        <div className="durr">
-                          <span className="task_time lowerr">Time Created</span>
-                          <div className="ctime todo_time">
-                          {formatTime(data?.date_created)}
-                          </div>
-                        </div>
-                        </div>
-                        
+
                         <div className="period">
-                        <div className="cstatus2 stat">
-                          <span
-                            className={
-                              data.status === "pending"
-                                ? "cstatus todo_status pending"
-                                : "cstatus todo_status"
-                            }
-                          >
-                            {capitalizeFirstLetter(data.status)}
-                          </span>
-                        </div>
-                        <div className="ctime">
-                          {data.status !== "pending" ? (
-                            <div
-                              className="savebtn"
-                              onClick={() => OpenIscompleteModal(data.id)}
+                          <div className="cstatus2 stat">
+                            <span
+                              className={
+                                data.status === "pending"
+                                  ? "cstatus todo_status pending"
+                                  : "cstatus todo_status"
+                              }
                             >
-                              View More
-                            </div>
-                          ) : (
-                            <div
-                              className="savebtn todo_button"
-                              onClick={() => OpenIscompleteModal(data.id)}
-                            >
-                              Complete Task
-                            </div>
-                          )}
-                        </div>
+                              {capitalizeFirstLetter(data.status)}
+                            </span>
+                          </div>
+                          <div className="ctime">
+                            {data.status !== "pending" ? (
+                              <div
+                                className="savebtn"
+                                onClick={() => openViewMoreModal(data.id)}
+                              >
+                                View More
+                              </div>
+                            ) : (
+                              <div
+                                className="savebtn todo_button"
+                                onClick={() => OpenIscompleteModal(data.id)}
+                              >
+                                Complete Task
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -513,6 +535,57 @@ const TodoList = (props: any) => {
             >
               Create Task
             </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={viewmoreisOpen}
+        className="modcomplete"
+        centered={true}
+        onHide={closeViewMoreModal}
+      >
+        <Modal.Title className="modal_title">Task Details</Modal.Title>
+        <a className="close_view" onClick={closeViewMoreModal}>
+          <img className="closeview" src={close} alt="close" />
+        </a>
+        <Modal.Body>
+          <div className="modal_det">
+            <div className="titlee">Task Title</div>
+            <textarea
+              className="task_det"
+              disabled={true}
+              value={getTaskdetails()?.title}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Task Description</div>
+            <textarea
+              className="task_det"
+              disabled={true}
+              value={getTaskdetails()?.description}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Notes</div>
+            <textarea
+              className="task_det"
+              disabled={true}
+              value={getTaskdetails()?.notes}
+            />
+          </div>
+          <div className="date_det modal_det">
+            <div className="date_section">
+              <div className="titlee">Date Created</div>
+              <input className="date_info" type="date" disabled={true} value={getTaskdetails()?.date_created} name="date created" />
+            </div>
+            <div className="date_section sec1">
+              <div className="titlee">Date Completed</div>
+              <input className="date_info" type="date" disabled={true} value={getTaskdetails()?.date_completed} name="date completed" />
+            </div>
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Counselor's Input</div>
+            <textarea className="task_det" disabled={true}></textarea>
           </div>
         </Modal.Body>
       </Modal>

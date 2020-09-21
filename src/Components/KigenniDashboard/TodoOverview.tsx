@@ -35,6 +35,7 @@ const TodoOverview = withRouter((props: any) => {
     task_description: "",
     duration: "",
     title: "",
+    viewmoreisOpen:false,
     description: "",
     success: false,
     add_note: "",
@@ -92,6 +93,7 @@ const TodoOverview = withRouter((props: any) => {
     task_description,
     task_duration,
     duration,
+    viewmoreisOpen,
     title,
     description,
     add_note,
@@ -99,6 +101,21 @@ const TodoOverview = withRouter((props: any) => {
     id,
     CreateTaskModalisOpen,
   } = modalState;
+  const closeViewMoreModal = () => {
+    setModState({
+      ...modalState,
+      viewmoreisOpen: false,
+      success: false,
+    });
+  };
+  const openViewMoreModal = (x: any) => {
+    setModState({
+      ...modalState,
+      viewmoreisOpen: true,
+      id: x,
+    });
+    getTaskdetails();
+  };
   const OpenIscompleteModal = (x: any) => {
     setModState({
       ...modalState,
@@ -116,7 +133,7 @@ const TodoOverview = withRouter((props: any) => {
       ...modalState,
       isOpen: false,
     });
-    window.location.reload()
+    window.location.reload();
   };
   const getTaskdetails: any = () => {
     let result: any = {};
@@ -193,16 +210,16 @@ const TodoOverview = withRouter((props: any) => {
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Task Completed</div>
-                            <div className="mmber1">{user?.completed_tasks}</div>
+                            <div className="mmber1">
+                              {user?.completed_tasks}
+                            </div>
                           </div>
                         </div>
                         <div className="firstoffour">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Task Pending</div>
-                            <div className="mmber1">
-                              {user?.pending_tasks}
-                            </div>
+                            <div className="mmber1">{user?.pending_tasks}</div>
                           </div>
                         </div>
                       </div>
@@ -253,7 +270,7 @@ const TodoOverview = withRouter((props: any) => {
                           {data.status !== "pending" ? (
                             <div
                               className="savebtn"
-                              onClick={() => OpenIscompleteModal(data.id)}
+                              onClick={() => openViewMoreModal(data.id)}
                             >
                               View More
                             </div>
@@ -340,6 +357,69 @@ const TodoOverview = withRouter((props: any) => {
             >
               Mark as Complete
             </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={viewmoreisOpen}
+        className="modcomplete"
+        centered={true}
+        onHide={closeViewMoreModal}
+      >
+        <Modal.Title className="modal_title">Task Details</Modal.Title>
+        <a className="close_view" onClick={closeViewMoreModal}>
+          <img className="closeview" src={close} alt="close" />
+        </a>
+        <Modal.Body>
+          <div className="modal_det">
+            <div className="titlee">Task Title</div>
+            <textarea
+              className="task_det"
+              disabled={true}
+              value={getTaskdetails()?.title}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Task Description</div>
+            <textarea
+              className="task_det"
+              disabled={true}
+              value={getTaskdetails()?.description}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Notes</div>
+            <textarea
+              className="task_det"
+              disabled={true}
+              value={getTaskdetails()?.notes}
+            />
+          </div>
+          <div className="date_det modal_det">
+            <div className="date_section">
+              <div className="titlee">Date Created</div>
+              <input
+                className="date_info"
+                type="date"
+                value={getTaskdetails()?.date_created}
+                disabled={true}
+                name="date created"
+              />
+            </div>
+            <div className="date_section sec1">
+              <div className="titlee">Date Completed</div>
+              <input
+                className="date_info"
+                type="date"
+                disabled={true}
+                value={getTaskdetails()?.date_completed}
+                name="date completed"
+              />
+            </div>
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Counselor's Input</div>
+            <textarea className="task_det" disabled={true}></textarea>
           </div>
         </Modal.Body>
       </Modal>
