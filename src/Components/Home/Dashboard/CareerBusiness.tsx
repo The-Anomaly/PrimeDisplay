@@ -39,7 +39,6 @@ const Careerbusiness: React.FunctionComponent<IAppProps> = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           updateState({
             ...state,
@@ -49,7 +48,6 @@ const Careerbusiness: React.FunctionComponent<IAppProps> = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
       });
   }, []);
 

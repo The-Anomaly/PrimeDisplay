@@ -83,7 +83,6 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           this.setState({
             client: response.data[0],
@@ -108,7 +107,6 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         this.moveTo(resultareawithtitle);
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -141,12 +139,10 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((res) => {
-        console.log(res.data);
         window.location.assign("/assessmentphaseone");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -200,7 +196,6 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         this.setState({
           isLoading1: false,
           success: true,
@@ -213,7 +208,6 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         }, 1500);
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           isLoading1: false,
           show: false,
@@ -235,7 +229,6 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   handleChatCheck = () => {
@@ -257,7 +250,6 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   moveTo = (str) => {
@@ -283,9 +275,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
       success,
       show,
     } = this.state;
-    console.log(careerbussines);
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-    console.log(client);
     return (
       <>
         {!isLoading ? (

@@ -10,7 +10,6 @@ interface btnProps{
 
 const TakeAssessment: React.FunctionComponent<btnProps> = (props:any) => {
   const directUserToAssessment=()=>{
-    console.log('speaking');
     const availableToken = sessionStorage.getItem('userToken');
     const token = availableToken?JSON.parse(availableToken):props.history.push('/signin');
     getCurrentAssessmentPosition(token);
@@ -18,7 +17,6 @@ const TakeAssessment: React.FunctionComponent<btnProps> = (props:any) => {
   const getCurrentAssessmentPosition=(token:string):void=>{
     axios.get(`${API}/progress`,{ headers: { 'Authorization': `Token ${token}` } })
     .then((response)=>{
-        console.log(response);
         if(response.status===200 && response.data[0].next==='phase_four_sports' ||  response.data[0].next==='phase_four_business'||  response.data[0].next==='phase_four_stem'){
            return props.history.push(`/assessmentphasefour1`);
         }

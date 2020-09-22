@@ -71,19 +71,16 @@ const AssessmentSecondPhase = (props: any) => {
       q12: question4,
       q13: question5,
     };
-    console.log(data);
     axios
       .post(`${API}/workpersonality`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           props.history.push("/secondphasecomplete");
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data)
           notify(error.response.data[0].message);
       });

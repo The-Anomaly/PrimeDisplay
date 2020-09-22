@@ -59,12 +59,10 @@ class NewDashboard extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res.data);
         window.location.assign("/assessmentphaseone");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -79,7 +77,6 @@ class NewDashboard extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           this.setState({
             client: response.data[0],
@@ -97,7 +94,6 @@ class NewDashboard extends React.Component {
         this.checkIfUserHasMadePayment();
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -111,7 +107,6 @@ class NewDashboard extends React.Component {
       });
   }
   checkIfUserHasMadePaymentForFullResult = () => {
-    console.log("checking")
     const availableToken: string | null = sessionStorage.getItem("userToken");
     const token: string = availableToken
       ? JSON.parse(availableToken)
@@ -120,7 +115,6 @@ class NewDashboard extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (
           response?.data[0]?.direction_plan ||
           response?.data[0]?.growth_plan ||
@@ -134,7 +128,6 @@ class NewDashboard extends React.Component {
         return window.location.assign("/paymentsummary");
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   checkIfUserHasMadePayment = () => {
@@ -146,7 +139,6 @@ class NewDashboard extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (
           response?.data[0]?.direction_plan ||
           response?.data[0]?.growth_plan ||
@@ -158,7 +150,6 @@ class NewDashboard extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   CloseWarning = () => {
@@ -188,7 +179,6 @@ class NewDashboard extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   openWarning = () => {

@@ -16,7 +16,6 @@ import {userContext} from '../../../createContext';
 
 export const RecruitmentAnalysisForm =()=> {
     const [ buttonIsActive,setIsactive ]:any = React.useState({FirstbuttonIsClicked:false,SecondbuttonIsClicked:false,ThirdbuttonIsClicked:false,FourthtbuttonIsClicked:false});
-    console.log(buttonIsActive)
     return (
     <div>
         <Navbar/>

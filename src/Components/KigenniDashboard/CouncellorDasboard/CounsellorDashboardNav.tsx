@@ -39,7 +39,6 @@ class CounsellorDashboardNav extends React.Component<any, any> {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           this.setState({
             ...response.data,
@@ -47,7 +46,6 @@ class CounsellorDashboardNav extends React.Component<any, any> {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,

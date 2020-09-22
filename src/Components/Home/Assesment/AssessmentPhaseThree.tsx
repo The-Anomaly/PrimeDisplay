@@ -113,19 +113,16 @@ const AssessmentThirdPhase = (props: any) => {
       q34: question21,
       q35: question22,
     };
-    console.log(data);
     axios
       .post(`${API}/naturalcompetence`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           props.history.push("/thirdphasecomplete");
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           notify(error.response.data[0].message);
         }

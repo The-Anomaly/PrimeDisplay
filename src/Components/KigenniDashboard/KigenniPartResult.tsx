@@ -58,7 +58,6 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           this.setState({
             client: response.data[0],
@@ -75,7 +74,6 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -94,7 +92,6 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (
           response?.data[0]?.direction_plan ||
           response?.data[0]?.growth_plan ||
@@ -104,7 +101,6 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   capitalize = (s) => {
@@ -121,12 +117,10 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((res) => {
-        console.log(res.data);
         window.location.assign("/assessmentphaseone");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -149,7 +143,6 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   CloseWarning = () => {
@@ -174,14 +167,12 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
       showWarning,
       width,
     } = this.state;
-    console.log(averagecompetencechartdata);
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
     const data = [
       { text: "Man", value: 500 },
       { text: "Woman", value: 300 },
     ];
 
-    console.log(client);
     return (
       <>
         <Col md={10} className="">

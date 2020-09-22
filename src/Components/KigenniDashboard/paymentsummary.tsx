@@ -74,7 +74,6 @@ export default function PaymentSummary(props: any) {
     var user = availableUser
       ? JSON.parse(availableUser)
       : props.history.push("/signin");
-    console.log(selectedplan);
     try {
       window.MonnifySDK.initialize({
         amount: cost,
@@ -99,7 +98,6 @@ export default function PaymentSummary(props: any) {
             );
           }
           if (response.paymentStatus === "PAID") {
-            // console.log(response)
             return setInterval(
               (window.location.pathname = "/thirdpary/fullresult"),
               1000
@@ -121,7 +119,6 @@ export default function PaymentSummary(props: any) {
         },
       });
     } catch (error) {
-      console.log("Failed to initailize payment" + error);
     }
   };
 
@@ -139,7 +136,6 @@ export default function PaymentSummary(props: any) {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         setFormState({
           ...state,
           user: response?.data[0]?.payment_reference,
@@ -154,7 +150,6 @@ export default function PaymentSummary(props: any) {
         }, 1000);
       })
       .catch((error) => {
-        console.log(error);
         setFormState({
           ...state,
           isLoading: false,

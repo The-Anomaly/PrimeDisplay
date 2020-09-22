@@ -121,17 +121,14 @@ const AssessmentFifthPhase = (props: any) => {
         q60: question17,
         q61: question18,
       };
-      console.log(data);
       axios
         .post(`${API}/careermotivator`, data, {
           headers: { Authorization: `Token ${token}` },
         })
         .then((response) => {
-          console.log(response);
           handleSuccess(response);
         })
         .catch((error) => {
-          console.log(error.response);
           handleErrors(error);
         });
     } else {

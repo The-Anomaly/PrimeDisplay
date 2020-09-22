@@ -27,7 +27,6 @@ export function SelectPaymentPlan(props: any) {
   });
 
   const payWithMonnify = () => {
-    console.log("function is running");
     try {
       window.MonnifySDK.initialize({
         amount: 5000,
@@ -46,15 +45,12 @@ export function SelectPaymentPlan(props: any) {
         },
         onComplete: function(response) {
           //Implement what happens when transaction is completed.
-          console.log(response);
         },
         onClose: function(data) {
           //Implement what should happen when the modal is closed here
-          console.log(data);
         },
       });
     } catch (error) {
-      console.log("Failed to initailize payment" + error);
     }
   };
 

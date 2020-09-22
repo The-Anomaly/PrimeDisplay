@@ -48,13 +48,11 @@ const StrengthAndWeakness: React.FunctionComponent<IAppProps> = (props:any) => {
     const token = availableToken?JSON.parse(availableToken):props.history.push('/signin')
     axios.get(`${API}/freedashboard`, { headers: { 'Authorization': `Token ${token}` } })
     .then(response=>{
-      console.log(response)
       if(response.status === 200){
           updateState({...state,result:response.data[0].career_personality_type,token:token,})
       }
     })
     .catch(error=>{
-     console.log(error.response) 
     })
 
   },[])

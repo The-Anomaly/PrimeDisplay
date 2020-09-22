@@ -86,7 +86,6 @@ class ThirdPartyEmployerViewOne extends React.Component<React.Props<any>> {
   componentWillMount() {
     this.setState({ isLoading: true });
     const self: any = this;
-    console.log(self?.props?.match?.params?.email);
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
@@ -95,7 +94,6 @@ class ThirdPartyEmployerViewOne extends React.Component<React.Props<any>> {
     axios
       .post<any, AxiosResponse<any>>(`${API}/employersview`, data)
       .then((response) => {
-        console.log(response);
         this.setState({
           employer: response.data[0],
           fullname: response.data[0]?.full_name,
@@ -114,7 +112,6 @@ class ThirdPartyEmployerViewOne extends React.Component<React.Props<any>> {
         this.setState({
           isLoading: false,
         });
-        console.log(err);
       });
   }
 
@@ -138,12 +135,10 @@ class ThirdPartyEmployerViewOne extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((res) => {
-        console.log(res.data);
         window.location.assign("/assessmentphaseone");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -205,7 +200,6 @@ class ThirdPartyEmployerViewOne extends React.Component<React.Props<any>> {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         this.setState({
           isLoading1: false,
           success: true,
@@ -218,7 +212,6 @@ class ThirdPartyEmployerViewOne extends React.Component<React.Props<any>> {
         }, 1500);
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           isLoading1: false,
           show: false,
@@ -244,7 +237,6 @@ class ThirdPartyEmployerViewOne extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   moveTo = (str) => {
@@ -263,7 +255,6 @@ class ThirdPartyEmployerViewOne extends React.Component<React.Props<any>> {
       isLoading,
       employer,
     }: any = this.state;
-    console.log(employer);
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
     return (
       <>

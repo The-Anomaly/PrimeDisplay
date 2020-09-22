@@ -97,7 +97,6 @@ export default function CouncellorPaymentSummary(props: any) {
             );
           }
           if (response.paymentStatus === "PAID") {
-            // console.log(response)
             return setInterval(
               (window.location.pathname = "/thirdpary/fullresult"),
               9000
@@ -109,11 +108,9 @@ export default function CouncellorPaymentSummary(props: any) {
           }
         },
         onClose: function (data) {
-          console.log(data);
         },
       });
     } catch (error) {
-      console.log("Failed to initailize payment" + error);
     }
   };
 
@@ -131,7 +128,6 @@ export default function CouncellorPaymentSummary(props: any) {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         setFormState({
           ...state,
           user: response?.data[0]?.payment_reference,
@@ -142,7 +138,6 @@ export default function CouncellorPaymentSummary(props: any) {
         }, 1000);
       })
       .catch((error) => {
-        console.log(error);
         setFormState({
           ...state,
           isLoading: false,

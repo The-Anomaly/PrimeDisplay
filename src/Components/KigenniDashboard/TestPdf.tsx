@@ -60,7 +60,6 @@ const TestPdf = () => {
   } = state;
   const ref: any = React.useRef();
   useEffect(() => {
-    console.log(ref);
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     axios
@@ -74,7 +73,6 @@ const TestPdf = () => {
       ])
       .then(
         axios.spread((res, res1) => {
-          console.log(res);
           setState({
             ...state,
             skills: [...res.data.skills],
@@ -90,14 +88,10 @@ const TestPdf = () => {
             twitter: res.data.user_social.twitter,
             ...res1.data,
           });
-          console.log(res.data.user_refernce);
-          console.log(res.data.user_experiences);
-          console.log(res.data.education);
         })
       )
       .catch((err) => {
         if (err) {
-          console.log(err.response);
           notify("Failed to fetch");
         }
       });
@@ -107,7 +101,6 @@ const TestPdf = () => {
     return dateTime;
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(skills);
   
   return (
     <div>

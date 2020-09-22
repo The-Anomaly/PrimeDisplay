@@ -61,18 +61,14 @@ class OnboardingChatPhase2 extends React.Component {
     const data = {
       profession: this.state.question1,
     };
-    console.log(data);
     Axios.post(`${API}/profile`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res);
         self.props.history.push("/assessmentphaseone");
       })
       .catch((err) => {
-        console.log(err);
       });
-    console.log(this.state.userMessage);
   };
   componentDidMount() {
     const availableToken = sessionStorage.getItem("userToken");
@@ -82,7 +78,6 @@ class OnboardingChatPhase2 extends React.Component {
   }
   render() {
     const { offline, userMessage, msg, wanaResponse } = this.state;
-    console.log(wanaResponse);
     return (
       <>
         <Navbar />
