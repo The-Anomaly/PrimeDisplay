@@ -222,7 +222,7 @@ const TodoList = (props: any) => {
         console.log(res);
         setFormState({
           ...state,
-          tasklist: res.data,
+          tasklist: [...res.data.results],
           count: res.data.count,
           nextLink: res.data.next,
           prevLink: res.data.previous,
@@ -247,7 +247,7 @@ const TodoList = (props: any) => {
         console.log(res);
         setFormState({
           ...state,
-          tasklist: res.data,
+          tasklist: [...res.data.results],
           count: res.data.count,
           nextLink: res.data.next,
           prevLink: res.data.previous,
@@ -321,65 +321,58 @@ const TodoList = (props: any) => {
                     <div className="task_table">
                       <span className="task_title">Task Title</span>
                       <span className="task_duration">Duration</span>
-                      <span className="task_time">Time Created</span>
+                      <span className="task_time">Date Created</span>
                       <span className="task_status">Status</span>
                     </div>
-                    {tasklist.map((data, i) => (
+                    {tasklist.length !== 0 && tasklist.map((data, i) => (
                       <div className="wrapc2 tasklist" key={i}>
-                        <div>
+                        <div className="titl">
                           <span className="task_title lowerr">Task Title</span>
                           <div className="cname todo_name">{data?.title}</div>
                         </div>
 
-                        <div className="period">
-                          <div>
-                            <span className="task_duration lowerr">
-                              Duration
-                            </span>
-                            <div className="cdate todo_date">
-                              {data?.duration}
-                              {(data.duration = 1 ? "week" : "weeks")}
-                            </div>
-                          </div>
-                          <div className="durr">
-                            <span className="task_time lowerr">
-                              Time Created
-                            </span>
-                            <div className="ctime todo_time">
-                              {formatTime(data?.date_created)}
-                            </div>
+                        <div className="weeks">
+                          <span className="task_duration lowerr">Duration</span>
+                          <div className="cdate todo_date">
+                            {data?.duration}
+                            {(data.duration = 1 ? "week" : "weeks")}
                           </div>
                         </div>
 
-                        <div className="period">
-                          <div className="cstatus2 stat">
-                            <span
-                              className={
-                                data.status === "pending"
-                                  ? "cstatus todo_status pending"
-                                  : "cstatus todo_status"
-                              }
+                        <div className="durr">
+                          <span className="task_time lowerr">Date Created</span>
+                          <div className="ctime todo_time">
+                            {formatTime(data?.date_created)}
+                          </div>
+                        </div>
+
+                        <div className="cstatus2 stat">
+                          <span
+                            className={
+                              data.status === "pending"
+                                ? "cstatus todo_status pending"
+                                : "cstatus todo_status"
+                            }
+                          >
+                            {capitalizeFirstLetter(data.status)}
+                          </span>
+                        </div>
+                        <div className="ctime todoo">
+                          {data.status !== "pending" ? (
+                            <div
+                              className="savebtn todo_button"
+                              onClick={() => OpenIscompleteModal(data.id)}
                             >
-                              {capitalizeFirstLetter(data.status)}
-                            </span>
-                          </div>
-                          <div className="ctime">
-                            {data.status !== "pending" ? (
-                              <div
-                                className="savebtn"
-                                onClick={() => openViewMoreModal(data.id)}
-                              >
-                                View More
-                              </div>
-                            ) : (
-                              <div
-                                className="savebtn todo_button"
-                                onClick={() => OpenIscompleteModal(data.id)}
-                              >
-                                Complete Task
-                              </div>
-                            )}
-                          </div>
+                              View More
+                            </div>
+                          ) : (
+                            <div
+                              className="savebtn todo_button"
+                              onClick={() => OpenIscompleteModal(data.id)}
+                            >
+                              Complete Task
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -576,11 +569,23 @@ const TodoList = (props: any) => {
           <div className="date_det modal_det">
             <div className="date_section">
               <div className="titlee">Date Created</div>
-              <input className="date_info" type="date" disabled={true} value={getTaskdetails()?.date_created} name="date created" />
+              <input
+                className="date_info"
+                type="date"
+                disabled={true}
+                value={getTaskdetails()?.date_created}
+                name="date created"
+              />
             </div>
             <div className="date_section sec1">
               <div className="titlee">Date Completed</div>
-              <input className="date_info" type="date" disabled={true} value={getTaskdetails()?.date_completed} name="date completed" />
+              <input
+                className="date_info"
+                type="date"
+                disabled={true}
+                value={getTaskdetails()?.date_completed}
+                name="date completed"
+              />
             </div>
           </div>
           <div className="modal_det">

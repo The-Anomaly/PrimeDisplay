@@ -90,6 +90,9 @@ const TestPdf = () => {
             twitter: res.data.user_social.twitter,
             ...res1.data,
           });
+          console.log(res.data.user_refernce);
+          console.log(res.data.user_experiences);
+          console.log(res.data.education);
         })
       )
       .catch((err) => {
@@ -105,6 +108,7 @@ const TestPdf = () => {
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
   console.log(skills);
+  
   return (
     <div>
       <Navbar />
@@ -172,20 +176,17 @@ const TestPdf = () => {
                 <div className="skilssandcert1">
                   <div className="shortline"></div>
                   <div className="slss contact22">Work Experience</div>
-                  <div>
+                  {experiences.map((x, i) => (
+                  <div key={i}>
                     <div className="box1">
-                      <div className="box1txt">Graphics Designer</div>
-                      <div className="date1">June 2020 - July 2020</div>
+                    {/* <div className="box1txt">{x.organisation}</div> */}
+                      <div className="box1txt">{x.position}</div>
+                      <div className="date1">{formatTime(x.started_from)} - {formatTime(x.to)}</div>
                     </div>
                     <div className="temptext">
-                      Risus, vel at pulvinar tempus, vel sem risus, aliquet nisi
-                      fringilla faucibus interdum commodo posuere ut nec sem
-                      congue enim ultricies molestie malesuada nullam feugiat
-                      feugiat in adipiscing nisl vel ut amet, eget lorem et a,
-                      faucibus mauris, tortor quam sit convallis aenean amet in
-                      sit sit mi dolor.
+                      {x.job_description}
                     </div>
-                    <div className="box3">
+                    {/* <div className="box3">
                       <div className="box1txt">UI/UX Designer</div>
                       <div className="date1">June 2020 - July 2020</div>
                     </div>
@@ -196,34 +197,43 @@ const TestPdf = () => {
                       feugiat in adipiscing nisl vel ut amet, eget lorem et a,
                       faucibus mauris, tortor quam sit convallis aenean amet in
                       sit sit mi dolor.
-                    </div>
+                    </div> */}
                     <div className="shortline1"></div>
                   </div>
+                  ))}
                   <div className="">
                     <div className="slss contact22">Education</div>
+                  {education.map((x, i) => (
+                    <div key={i}>
                     <div className="box1">
-                      <div className="box1txt">B.A English</div>
-                      <div className="date1">2010 - 2015</div>
+                      <div className="box1txt">{x.degree}</div>
+                      <div className="date1">{formatTime(x.start_date)} - {formatTime(x.end_date)}</div>
                     </div>
                     <div className="temptext">
+                      {x.institution + " " + x.location}
                       University Of Lagos, Lagos state, Nigeria
                     </div>
                     <div className="shortline1"></div>
                   </div>
+                  ))}
+                  </div>
                   <div className="">
                     <div className="slss contact22">Reference</div>
-                    <div className="box1">
+                    {references.map((x, i) => (
+                    <div className="box1" key={i}>
                       <div className="firstcol">
-                        <div className="namecv">Raji Fashola</div>
-                        <div className="minofwrks">Minister of Works</div>
-                        <div className="minofwrks">Abuja, Nigeria</div>
+                        <div className="namecv">{x.name}</div>
+                        <div className="minofwrks">{x.title}</div>
+                        <div className="minofwrks">{x.ref_email}</div>
+                        {/* <div className="minofwrks">Abuja, Nigeria</div> */}
                       </div>
-                      <div className="secolcv">
+                      {/* <div className="secolcv">
                         <div className="namecv">Amaechi Rotimi</div>
                         <div className="minofwrks">Minister of Works</div>
                         <div className="minofwrks">Abuja, Nigeria</div>
-                      </div>
+                      </div> */}
                     </div>
+                    ))}
                   </div>
                 </div>
               </div>
