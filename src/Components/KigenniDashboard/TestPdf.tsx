@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import Axios, { AxiosResponse } from "axios";
 import axios from "axios";
 import { API } from "../../config";
-import userimage from "../../assets/userimage.png";
+import userimg1 from "../../assets/userimg1.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const moment = require("moment");
@@ -126,7 +126,7 @@ const TestPdf = () => {
               </div>
               <div className="wrap2">
                 <div className="userpic">
-                  <img src={userimage} className="userimage" alt="profilepic" />
+                  <img src={userimg1} className="userimage" alt="profilepic" />
                 </div>
                 <div className="contactw">
                   <div className="contact22">Contacts</div>
