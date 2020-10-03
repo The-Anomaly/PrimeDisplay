@@ -3499,3 +3499,13 @@ input,
     margin-right: 3.1rem;
   }
 }
+
+@media (max-width: 400px) {
+  .hd {
+    padding: 0;
+    line-height: normal;
+  }
+  .hh {
+    margin-top: 5rem;
+  }
+}

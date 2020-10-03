@@ -130,7 +130,7 @@ const AssessmentSecondPhase = (props: any) => {
             </Row>
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
-                <div className="firstquestion">b. Your personal moto is</div>
+                <div className="firstquestion">b. Your personal motto is</div>
                 <div className="rsliderclassPol1">
                   <label className="checkcontainer1">
                     <input
@@ -212,8 +212,8 @@ const AssessmentSecondPhase = (props: any) => {
                 </div>
               </Col>
             </Row>
-            <Row className="firstrowcf2 cftcontent">
-              <Col md={12}>
+           <Row className="firstrowcf2 cftcontent">
+               {/* <Col md={12}>
                 <div className="firstquestion">
                   e. When your day ends how do you feel?
                 </div>
@@ -260,7 +260,7 @@ const AssessmentSecondPhase = (props: any) => {
                     Like you still have a lot to achieve
                   </label>
                 </div>
-              </Col>
+              </Col> */}
               <ToastContainer
                 enableMultiContainer
                 containerId={"B"}
@@ -275,7 +275,7 @@ const AssessmentSecondPhase = (props: any) => {
                   </button>
                 </div>
               </Row>
-            </Row>
+            </Row> 
           </Col>
         </Row>
         <Footer />

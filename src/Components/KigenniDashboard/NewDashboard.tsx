@@ -219,7 +219,7 @@ class NewDashboard extends React.Component {
               <Row>
                 <Col md={12} className="kisls">
                   <div className="kdashheader npps">
-                    <div className="fjss">
+                    <div className="fjss hd">
                       <div>
                         {" "}
                         <span className="kdashheaderlight idds">
@@ -262,7 +262,7 @@ class NewDashboard extends React.Component {
                   </div>
 
                   {!showfullresult && (
-                    <div className="notpaid">
+                    <div className="notpaid hh">
                       <div className="notpaid1">
                         <img src={caution} className="caution" alt="caution" />
                         <div className="notpaidtext">
