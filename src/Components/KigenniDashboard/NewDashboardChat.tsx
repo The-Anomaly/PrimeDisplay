@@ -34,7 +34,6 @@ class NewDashboardChat extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res.data);
         this.setState({
           message: "",
         });
@@ -42,7 +41,6 @@ class NewDashboardChat extends React.Component {
       })
       .catch((err) => {
         if (err) {
-          console.log(err.response);
           this.notify(err?.response?.data[0].message);
           this.setState({
             message: "",
@@ -63,14 +61,12 @@ class NewDashboardChat extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         this.setState({
           user: response.data,
           message: "",
         });
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,

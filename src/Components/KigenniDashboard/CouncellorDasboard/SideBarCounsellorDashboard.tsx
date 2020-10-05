@@ -37,8 +37,6 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
-        console.log(props);
         if (
           response?.data[0]?.direction_plan ||
           response?.data[0]?.growth_plan ||
@@ -55,14 +53,12 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   const logOut = () => {
     sessionStorage.clear();
     window.location.assign("/");
   };
-  console.log(props)
   return (
     <>
       <Col md={2} className={hidemobile ? "siddle siddlenone" : "siddle"}>

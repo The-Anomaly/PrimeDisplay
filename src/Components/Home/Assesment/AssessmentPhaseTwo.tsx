@@ -59,19 +59,16 @@ const AssessmentSecondPhase = (props: any) => {
       q10: question10,
       q13: question13,
     };
-    console.log(data);
     axios
       .post(`${API}/workpersonality`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           props.history.push("/secondphasecomplete");
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data)
           notify(error.response.data[0].message);
       });
@@ -283,8 +280,8 @@ const AssessmentSecondPhase = (props: any) => {
                 </div>
               </Col>
             </Row>
-            <Row className="firstrowcf2 cftcontent">
-              <Col md={12}>
+           <Row className="firstrowcf2 cftcontent">
+               {/* <Col md={12}>
                 <div className="firstquestion">
                   c. When your day ends how do you feel?
                 </div>
@@ -331,22 +328,22 @@ const AssessmentSecondPhase = (props: any) => {
                     Like you still have a lot to achieve
                   </label>
                 </div>
-              </Col>
-            </Row>
-            <ToastContainer
-              enableMultiContainer
-              containerId={"B"}
-              toastClassName="bg-danger text-white"
-              hideProgressBar={true}
-              position={toast.POSITION.TOP_CENTER}
-            />
-            <Row className="jcenter1">
-              <div className="nxtbtnarea">
-                <button className="nxtbtn" onClick={submitForm}>
-                  Next
-                </button>
-              </div>
-            </Row>
+              </Col> */}
+              <ToastContainer
+                enableMultiContainer
+                containerId={"B"}
+                toastClassName="bg-danger text-white"
+                hideProgressBar={true}
+                position={toast.POSITION.TOP_CENTER}
+              />
+              <Row className="jcenter1">
+                <div className="nxtbtnarea">
+                  <button className="nxtbtn" onClick={submitForm}>
+                    Next
+                  </button>
+                </div>
+              </Row>
+            </Row> 
           </Col>
         </Row>
         <Footer />

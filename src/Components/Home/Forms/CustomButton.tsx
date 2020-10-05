@@ -11,7 +11,6 @@ interface CustomBtnProps {
 const CustomButton: React.FunctionComponent<CustomBtnProps> = (props) => {
     // const {buttonIsActive,setIsactive} :any= React.useContext(userContext);
     const all:any= React.useContext(userContext);
-    console.log(all)
     const whineColor = "#9c1258";
     const white = "#fff";   
     const updateBtnStatus =()=>{

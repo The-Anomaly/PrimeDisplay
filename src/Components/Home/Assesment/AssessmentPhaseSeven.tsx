@@ -115,19 +115,16 @@ const AssessmentSeventhPhase = (props: any) => {
       q84: question15,
       q85: question16,
     };
-    console.log(data);
     axios
       .post(`${API}/workfunction`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           props.history.push("/assessmentphasesevencomplete");
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           notify(error?.response?.data[0]?.message);
         }

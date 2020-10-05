@@ -18,7 +18,6 @@ export function NavIsLoggedIn(props: IAppProps | any) {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (
           (response.status === 200 &&
             response.data[0].next === "phase_four_nature") ||
@@ -66,7 +65,6 @@ export function NavIsLoggedIn(props: IAppProps | any) {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   return (

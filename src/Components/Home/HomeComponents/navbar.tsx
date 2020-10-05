@@ -51,7 +51,6 @@ const Navbar: React.FC = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (
           (response.status === 200 &&
             response.data[0].next === "phase_four_nature") ||
@@ -99,7 +98,6 @@ const Navbar: React.FC = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   const uniqueKeygen = (): number => {

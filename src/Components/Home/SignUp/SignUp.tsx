@@ -64,11 +64,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
       password,
       password2: confirmPassword,
     };
-    console.log(data);
     axios
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
          return setFormState({
             ...state,
@@ -79,7 +77,6 @@ const SignUp: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
          return setFormState({
             ...state,
@@ -142,8 +139,6 @@ const SignUp: React.FunctionComponent = (props: any) => {
     });
   };
   const responseGoogle = (response) => {
-    console.log(response);
-    console.log(response.profileObj);
     const data = {
       name: response.profileObj.name,
       email: response.profileObj.email,
@@ -151,11 +146,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
       imageUrl: response.profileObj.imageUrl,
       provider: "Google",
     };
-    console.log(data);
     axios
       .post(`${API}/accounts/socialauth/`, data)
       .then((response) => {
-        console.log(response?.data[0]?.token);
         sessionStorage.setItem(
           "userToken",
           JSON.stringify(response?.data[0]?.token)
@@ -164,7 +157,6 @@ const SignUp: React.FunctionComponent = (props: any) => {
         getUserInfo(response.data[0]?.token);
       })
       .catch((error) => {
-        console.log(error)
         setFormState({
           ...state,
           errorMessage: "failed to login",
@@ -177,13 +169,11 @@ const SignUp: React.FunctionComponent = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           sessionStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   const errorGoogle = (response) => {
@@ -196,7 +186,6 @@ const SignUp: React.FunctionComponent = (props: any) => {
     axios
       .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
       .then((response) => {
-        console.log(response);
         if (
           (response.status === 200 &&
             response.data[0].next === "phase_four_sports") ||
@@ -234,7 +223,6 @@ const SignUp: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         setFormState({
           ...state,
           errorMessage:error?.response?.data?.detail

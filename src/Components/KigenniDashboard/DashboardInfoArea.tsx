@@ -42,7 +42,6 @@ const DashboardInfoArea = () => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           setStates({
             ...response.data,
@@ -50,7 +49,6 @@ const DashboardInfoArea = () => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           setStates({
             ...state,

@@ -42,13 +42,11 @@ class NewDashboardCounsellorSubscription extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         this.setState({
           plan: response.data.plan,
         });
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -68,7 +66,6 @@ class NewDashboardCounsellorSubscription extends React.Component {
 
   render() {
     const { fullname, message, isLoading, width, plan } = this.state;
-    console.log(plan);
     return (
       <>
         <Container fluid={true} className="contann122">

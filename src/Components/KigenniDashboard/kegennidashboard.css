@@ -2586,7 +2586,6 @@ textarea.form-control.jobr {
   .csfitscore {
     width: 96% !important;
   }
-  
 }
 .reess {
   width: 96%;
@@ -3159,8 +3158,8 @@ textarea.form-control.jobr {
 }
 .todo_time {
   max-width: 150px;
-    min-width: 100px;
-    flex: 20%;
+  min-width: 100px;
+  flex: 20%;
 }
 .todo_status {
   border-radius: 5px;
@@ -3172,8 +3171,8 @@ textarea.form-control.jobr {
 }
 .todoo {
   max-width: 150px;
-    min-width: 140px;
-    flex: 20%;
+  min-width: 140px;
+  flex: 20%;
 }
 .todo_button {
   border-radius: 5px;
@@ -3334,7 +3333,8 @@ input,
   .durr {
     flex: 40%;
   }
-  .stat, .todoo {
+  .stat,
+  .todoo {
     flex: 40%;
     justify-content: flex-start;
     padding-top: 1.2rem;
@@ -3390,14 +3390,14 @@ input,
   .yellowbg {
     width: 90%;
   }
-  .firstqq{
+  .firstqq {
     padding-left: 1rem;
   }
-  .tasklist{
+  .tasklist {
     width: 80%;
     padding: 1.1rem 1rem 1.1rem 1rem;
   }
-  .todo_button{
+  .todo_button {
     margin-top: 4%;
   }
   .todoo {
@@ -3417,7 +3417,7 @@ input,
     width: 150px;
     text-align: center;
   }
-  .begin{
+  .begin {
     flex-wrap: wrap;
   }
 }
@@ -3502,7 +3502,17 @@ input,
   .notpaid {
     margin-top: 9rem;
   }
-  .jobr{
-    padding-top: .9rem;
+  .jobr {
+    padding-top: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hd {
+    padding: 0;
+    line-height: normal;
+  }
+  .hh {
+    margin-top: 5rem;
   }
 }

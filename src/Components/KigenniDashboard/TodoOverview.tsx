@@ -137,7 +137,6 @@ const TodoOverview = withRouter((props: any) => {
   };
   const getTaskdetails: any = () => {
     let result: any = {};
-    console.log(alltask);
     alltask.forEach((task, i) => {
       if (task.id == id) {
         result = task;
@@ -153,7 +152,6 @@ const TodoOverview = withRouter((props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
-    console.log(modalState.id);
     const data = {
       id: parseInt(id),
     };
@@ -165,7 +163,6 @@ const TodoOverview = withRouter((props: any) => {
       }
     )
       .then((res) => {
-        console.log(res);
         setModState({
           ...modalState,
           success: true,
@@ -176,14 +173,12 @@ const TodoOverview = withRouter((props: any) => {
 
       })
       .catch((err) => {
-        console.log(err);
         setFormState({
           ...state,
           errorMessage: "Server Error",
         });
       });
   };
-  console.log(tasklist);
   return (
     <>
       <Container fluid={true} className="contann122">

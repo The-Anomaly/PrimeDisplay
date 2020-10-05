@@ -605,3 +605,26 @@ a:hover{
   width: 100%;
   font-size: 14px;
 }
+
+.assessmod {
+  max-width: 750px;
+  margin-left: 20%;
+}
+
+@media (max-width: 1100px) {
+  .assessmod {
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 850px) {
+  .assessmod {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .assessmod {
+    margin-left: 15%;
+  }
+}

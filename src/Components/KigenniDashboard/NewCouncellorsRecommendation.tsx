@@ -38,12 +38,10 @@ class CounsellorsRecommendation extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res.data);
         window.location.assign("/assessmentphaseone");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -61,13 +59,11 @@ class CounsellorsRecommendation extends React.Component {
       }
     )
       .then((response) => {
-        console.log(response);
         this.setState({
           counsellor: response.data,
         });
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -93,7 +89,6 @@ class CounsellorsRecommendation extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (response?.data) {
           this.notify("Successfull created task")
           setTimeout(()=>{
@@ -102,7 +97,6 @@ class CounsellorsRecommendation extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   onchange = (e) => {
@@ -132,7 +126,6 @@ class CounsellorsRecommendation extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   notify = (message: string) => toast(message, { containerId: "B" });

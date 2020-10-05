@@ -42,8 +42,6 @@ const SideBarNewDashboard = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
-        console.log(props);
         if (
           response?.data[0]?.direction_plan ||
           response?.data[0]?.growth_plan ||
@@ -55,7 +53,6 @@ const SideBarNewDashboard = (props: any) => {
         return window.location.assign("/paymentsummary");
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   const logOut = () => {

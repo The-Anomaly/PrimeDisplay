@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import Axios, { AxiosResponse } from "axios";
 import axios from "axios";
 import { API } from "../../config";
-import userimage from "../../assets/userimage.png";
+import userimg1 from "../../assets/userimg1.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const moment = require("moment");
@@ -60,7 +60,6 @@ const TestPdf = () => {
   } = state;
   const ref: any = React.useRef();
   useEffect(() => {
-    console.log(ref);
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     axios
@@ -74,7 +73,6 @@ const TestPdf = () => {
       ])
       .then(
         axios.spread((res, res1) => {
-          console.log(res);
           setState({
             ...state,
             skills: [...res.data.skills],
@@ -90,14 +88,10 @@ const TestPdf = () => {
             twitter: res.data.user_social.twitter,
             ...res1.data,
           });
-          console.log(res.data.user_refernce);
-          console.log(res.data.user_experiences);
-          console.log(res.data.education);
         })
       )
       .catch((err) => {
         if (err) {
-          console.log(err.response);
           notify("Failed to fetch");
         }
       });
@@ -107,7 +101,6 @@ const TestPdf = () => {
     return dateTime;
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(skills);
   
   return (
     <div>
@@ -133,7 +126,7 @@ const TestPdf = () => {
               </div>
               <div className="wrap2">
                 <div className="userpic">
-                  <img src={userimage} className="userimage" alt="profilepic" />
+                  <img src={userimg1} className="userimage" alt="profilepic" />
                 </div>
                 <div className="contactw">
                   <div className="contact22">Contacts</div>

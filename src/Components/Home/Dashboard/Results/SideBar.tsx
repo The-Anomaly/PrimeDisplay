@@ -20,7 +20,6 @@ export default function Sidebar (props:SideLinkProps) {
 const [ state,updateState ] = useState<any>({sideBarIsOpen:false,result:''})
 const { sideBarIsOpen } = state;
 const getDashContext:any = React.useContext(dashboardContext)
-console.log(getDashContext)
 
   return (   
     <>

@@ -38,7 +38,6 @@ class CouncellorBookings extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         this.setState({
           startDate: response.data[0].start,
           endDate: response.data[0].stop,
@@ -46,7 +45,6 @@ class CouncellorBookings extends React.Component<React.Props<any>> {
         });
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -83,10 +81,8 @@ class CouncellorBookings extends React.Component<React.Props<any>> {
         this.setState({
           calenderTime: response.data[0].message,
         });
-        console.log(response);
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -100,7 +96,6 @@ class CouncellorBookings extends React.Component<React.Props<any>> {
       });
   };
   onChange = (date) => {
-    console.log(typeof date.toString());
     this.getAvailableTime(date.toString());
     this.setState({
       date,
@@ -118,7 +113,6 @@ class CouncellorBookings extends React.Component<React.Props<any>> {
       phone,
       user_vent: feedbackText,
     };
-    console.log(data);
     axios
       .post<any, AxiosResponse<any>>(`${API}/chatwithcounsellor`, data, {
         headers: { Authorization: `Token ${token}` },
@@ -131,10 +125,8 @@ class CouncellorBookings extends React.Component<React.Props<any>> {
             self.props.history.push("/");
           }, 3000);
         }
-        console.log(response);
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -151,7 +143,6 @@ class CouncellorBookings extends React.Component<React.Props<any>> {
     toast(message, { containerId: "B" });
   };
   render() {
-    console.log(this.state.date);
     const {
       fullname,
       phone,

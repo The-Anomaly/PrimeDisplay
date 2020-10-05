@@ -70,7 +70,6 @@ class NewDashboardSettings extends React.Component {
       website_link,
       image,
     } = this.state;
-    console.log(image);
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = new FormData();
@@ -86,14 +85,15 @@ class NewDashboardSettings extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res.data);
-        this.notify("Successful");
+        //this.notify("Successful");
+        setTimeout(() => {
+          this.notify("Successful");
+          window.location.reload()
+        }, 2000);
       })
       .catch((err) => {
-        console.log(err.response);
         this.notify("failed");
         if (err) {
-          console.log(err);
         }
       });
   };
@@ -114,7 +114,6 @@ class NewDashboardSettings extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           this.setState({
             ...response.data,
@@ -122,7 +121,6 @@ class NewDashboardSettings extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -136,7 +134,6 @@ class NewDashboardSettings extends React.Component {
       });
   }
   handleRef=(data)=>{
-    console.log(data)
   }
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {

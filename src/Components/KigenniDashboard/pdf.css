@@ -71,6 +71,7 @@
     height: 180px;
     max-width: 147px;
     max-height: 180px;
+    object-fit: cover;
   }
   .userpic {
     position: relative;

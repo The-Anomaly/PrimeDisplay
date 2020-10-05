@@ -44,7 +44,6 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           sessionStorage.setItem("user", JSON.stringify(response?.data));
         }
@@ -53,7 +52,6 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
         });
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   useEffect(() => {
@@ -63,7 +61,6 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
     axios
       .get<any, AxiosResponse<any>>(`${API}/activate/${userid}/${token}`)
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           setFormState({
             ...state,
@@ -80,7 +77,6 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error?.response?.data?.error) {
           return setFormState({
             ...state,

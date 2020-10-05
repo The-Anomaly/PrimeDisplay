@@ -83,19 +83,16 @@ const AssessmentFirstPhase = (props: any) => {
       q7: value7,
       q8: value8,
     };
-    console.log(data);
     axios
       .post(`${API}/outofworkpersonality`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           props.history.push("/assessmentphasecomplete");
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error && error.response && error.response.data)
           notify(error.response.data[0].message);
       });
@@ -111,6 +108,7 @@ const AssessmentFirstPhase = (props: any) => {
         centered
         onHide={handleClose}
         animation={true}
+        className="assessmod"
       >
         <Modal.Header closeButton>
           <Modal.Title>Instructions</Modal.Title>

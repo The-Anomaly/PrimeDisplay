@@ -56,7 +56,6 @@ class OnboardingChat extends React.Component {
             self.history.push("/clientchat2");
           }
         }, 2000);
-        console.log(res);
         this.setState((state: any) => {
           return {
             userMessage: [...state.userMessage],
@@ -67,9 +66,7 @@ class OnboardingChat extends React.Component {
         this.componentDidMount();
       })
       .catch((err) => {
-        console.log(err);
       });
-    console.log(this.state.userMessage);
   };
   componentDidMount() {
     const self: any = this.props;
@@ -89,12 +86,10 @@ class OnboardingChat extends React.Component {
         });
       })
       .catch((err) => {
-        console.log(err.response);
       });
   }
   render() {
     const { offline, userMessage, msg, wanaResponse } = this.state;
-    console.log(wanaResponse);
     return (
       <>
         <Navbar />

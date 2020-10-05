@@ -5,7 +5,6 @@ interface ChatBotProps {
 }
 
 const ChatBotSentMessages: React.FunctionComponent<ChatBotProps> = (props) => {
-  console.log(props)
   return (
     <>
       {props?.message?.map((data, index) => {
