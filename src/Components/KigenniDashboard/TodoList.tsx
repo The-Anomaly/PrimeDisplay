@@ -413,7 +413,7 @@ const TodoList = (props: any) => {
       </Container>
       <Modal
         show={isOpen}
-        className="modcomplete"
+        className="modcomplete fixmodal"
         centered={true}
         onHide={closeModalForCompleteTask}
       >
@@ -480,7 +480,7 @@ const TodoList = (props: any) => {
         show={CreateTaskModalisOpen}
         centered={true}
         onHide={closeModalCreateTaskModal}
-        className="modcomplete"
+        className="modcomplete fixmodal"
       >
         <Modal.Title className="modal_title create_title">
           Create Task
@@ -537,7 +537,7 @@ const TodoList = (props: any) => {
       </Modal>
       <Modal
         show={viewmoreisOpen}
-        className="modcomplete"
+        className="modcomplete fixmodal"
         centered={true}
         onHide={closeViewMoreModal}
       >
