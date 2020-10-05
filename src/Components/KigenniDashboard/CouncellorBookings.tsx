@@ -122,7 +122,7 @@ class CouncellorBookings extends React.Component<React.Props<any>> {
           this.notify("Message Sent");
           setTimeout(() => {
             const self: any = this;
-            self.props.history.push("/");
+            self.props.history.push("/overview");
           }, 3000);
         }
       })

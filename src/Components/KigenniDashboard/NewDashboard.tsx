@@ -217,7 +217,7 @@ class NewDashboard extends React.Component {
             <Col md={10} sm={12} className="prm">
               <DashboardLargeScreenNav title="Overview" />
               <Row>
-                <Col md={12} className="kisls">
+                <Col md={12} className="kisls kisls22">
                   <div className="kdashheader npps">
                     <div className="fjss hd">
                       <div>

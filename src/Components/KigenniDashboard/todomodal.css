@@ -108,6 +108,9 @@
   .modal-body {
     padding-top: 2rem;
   }
+  .viewall{
+    margin-bottom: 1rem !important;
+  }
   .task_det,
   .date_info {
     padding: 0.5rem;

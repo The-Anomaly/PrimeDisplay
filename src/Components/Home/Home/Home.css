@@ -405,6 +405,7 @@ button {
 .footer_first_wrapper {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .iconwrapper {
   margin-top: 2rem;
@@ -496,6 +497,11 @@ button {
   width: 100%;
 }
 @media (max-width: 579px) {
+  .fittt {
+    width: 100%;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+  }
   .listwraperMob {
     font-size: 16px !important;
   }
@@ -561,6 +567,13 @@ button {
   }
   .reserved {
     margin-left: 1rem;
+  }
+}
+@media (max-width: 360px) {
+  .fittt1 {
+    width: 100%;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
   }
 }
 @media (max-width: 310px) {
