@@ -120,6 +120,7 @@ class ProfileBuilder extends React.Component {
       institutionLocation: "",
       education_valid_from: "",
       education_valid_till: "",
+      education_doesnot_expire: false,
     });
   };
   addNewCertification = () => {
@@ -156,6 +157,7 @@ class ProfileBuilder extends React.Component {
       valid_from: "",
       valid_till: "",
       expirationStatus: "",
+      certificateInstitution: "",
     });
   };
   addNewReferences = () => {
@@ -564,6 +566,7 @@ class ProfileBuilder extends React.Component {
                                     value={mycurrentwork}
                                     onChange={this.onchangeCurrentWork}
                                     name="mycurrentwork"
+                                    checked= {mycurrentwork === true}
                                   />
                                   <span className="checkmark"></span>
                                 </label>
@@ -773,6 +776,7 @@ class ProfileBuilder extends React.Component {
                                     value={education_doesnot_expire}
                                     onChange={this.onchangeCurrentStudy}
                                     name="education_doesnot_expire"
+                                    checked= {education_doesnot_expire === true}
                                   />
                                   <span className="checkmark"></span>
                                 </label>
@@ -1018,6 +1022,7 @@ class ProfileBuilder extends React.Component {
                                       value={expirationStatus}
                                       onChange={this.onchange1}
                                       id="expirationStatus"
+                                      checked= {expirationStatus === true}
                                     />
                                     <span className="checkmark"></span>
                                   </label>
