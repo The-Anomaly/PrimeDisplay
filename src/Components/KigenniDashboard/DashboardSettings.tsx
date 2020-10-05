@@ -84,7 +84,11 @@ class NewDashboardSettings extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        this.notify("Successful");
+        //this.notify("Successful");
+        setTimeout(() => {
+          this.notify("Successful");
+          window.location.reload()
+        }, 2000);
       })
       .catch((err) => {
         this.notify("failed");
