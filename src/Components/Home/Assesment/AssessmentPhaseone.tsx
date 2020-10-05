@@ -108,6 +108,7 @@ const AssessmentFirstPhase = (props: any) => {
         centered
         onHide={handleClose}
         animation={true}
+        className="assessmod"
       >
         <Modal.Header closeButton>
           <Modal.Title>Instructions</Modal.Title>
