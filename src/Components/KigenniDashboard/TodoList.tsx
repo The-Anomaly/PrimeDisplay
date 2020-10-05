@@ -20,6 +20,8 @@ import "./todomodal.css";
 import Alert from "react-bootstrap/Alert";
 import close from "../../assets/close.svg";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ViewMoreModal from "./ViewMoreModal";
 const moment = require("moment");
 
@@ -125,6 +127,7 @@ const TodoList = (props: any) => {
           ...modalState,
           success: true,
         });
+        notify("Successful");
         setTimeout(() => {
           window.location.reload();
         }, 2000);
@@ -159,11 +162,12 @@ const TodoList = (props: any) => {
             ...state,
             CreateTaskModalisOpen: false,
           });
+          window.location.reload();
         }, 3000);
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
+  const notify = (message: string) => toast(message, { containerId: "i" });
   React.useEffect(() => {
     const availableToken = sessionStorage.getItem("userToken");
     const token = availableToken
@@ -180,14 +184,15 @@ const TodoList = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
+          console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,
               user: res.data,
               successMsg: true,
               isLoading: false,
-              tasklist: [...res1.data.results],
-              count: res1.data.count,
+              tasklist: [...res1.data.results].reverse(),
+              count: res1.data.page,
               nextLink: res1.data.next,
               prevLink: res1.data.previous,
               total_pages: res1.data.total_pages,
@@ -382,8 +387,8 @@ const TodoList = (props: any) => {
                     <div className="next_page">
                       <div>
                         Displaying{" "}
-                        <span className="page_num">{state.count}</span>{" "}
-                        out of <span className="page_num">{state.total_pages}</span>
+                        <span className="page_num">{state.count}</span> out of{" "}
+                        <span className="page_num">{state.total_pages}</span>
                       </div>
                       <div>
                         {prevLink && (
@@ -598,6 +603,13 @@ const TodoList = (props: any) => {
           </div>
         </Modal.Body>
       </Modal>
+      <ToastContainer
+        enableMultiContainer
+        containerId={"i"}
+        toastClassName="bg-info text-white"
+        hideProgressBar={true}
+        position={toast.POSITION.TOP_CENTER}
+      />
     </>
   );
 };

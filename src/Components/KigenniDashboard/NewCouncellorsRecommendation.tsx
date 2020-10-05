@@ -148,7 +148,7 @@ class CounsellorsRecommendation extends React.Component {
                 </div>
               </div>
               <Row>
-                <Col md={12} className="kisls">
+                <Col md={12} className="kisls kisls22">
                   <div className="kdashheader npps">
                     <DashboardUsernameheader
                       welcomeText={
@@ -183,7 +183,7 @@ class CounsellorsRecommendation extends React.Component {
                             </div>
                             {data.todo && (
                               <Col md={12} className="zeropad">
-                                <div className="notpaid notppd graybgds">
+                                <div className="notpaid notppd graybgds notpaidfix">
                                   <div className="notpaid1">
                                     <img
                                       src={alertTrianglegray}
@@ -204,7 +204,7 @@ class CounsellorsRecommendation extends React.Component {
                             )}
                             {data.todo  === false && (
                               <Col md={12} className="zeropad">
-                                <div className="notpaid notppd">
+                                <div className="notpaid notppd notpaidfix">
                                   <div className="notpaid1">
                                     <img
                                       src={alertTriangle}
