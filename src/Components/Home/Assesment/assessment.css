@@ -20,6 +20,7 @@
 .jcenter1{
   justify-content: center;
   width: 100%;
+  margin: auto;
 }
 .modal-title{
   font-size: 18px !important;

@@ -34,6 +34,7 @@ const TodoList = (props: any) => {
     prevLink: "",
     count: "",
     success: "",
+    total_pages: "",
   });
   const [modalState, setModState] = useState<any>({
     selectedUserId: "",
@@ -157,7 +158,12 @@ const TodoList = (props: any) => {
           ...state,
           success: true,
         });
-        // setTimeout(closeModalForCompleteTask, 2000);
+        setTimeout(() => {
+          setFormState({
+            ...state,
+            CreateTaskModalisOpen: false,
+          });
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -191,6 +197,7 @@ const TodoList = (props: any) => {
               count: res1.data.count,
               nextLink: res1.data.next,
               prevLink: res1.data.previous,
+              total_pages: res1.data.total_pages,
             });
           }
         })
@@ -324,62 +331,70 @@ const TodoList = (props: any) => {
                       <span className="task_time">Date Created</span>
                       <span className="task_status">Status</span>
                     </div>
-                    {tasklist.length !== 0 && tasklist.map((data, i) => (
-                      <div className="wrapc2 tasklist" key={i}>
-                        <div className="titl">
-                          <span className="task_title lowerr">Task Title</span>
-                          <div className="cname todo_name">{data?.title}</div>
-                        </div>
+                    {tasklist.length !== 0 &&
+                      tasklist.map((data, i) => (
+                        <div className="wrapc2 tasklist" key={i}>
+                          <div className="titl">
+                            <span className="task_title lowerr">
+                              Task Title
+                            </span>
+                            <div className="cname todo_name">{data?.title}</div>
+                          </div>
 
-                        <div className="weeks">
-                          <span className="task_duration lowerr">Duration</span>
-                          <div className="cdate todo_date">
-                            {data?.duration}
-                            {(data.duration = 1 ? "week" : "weeks")}
+                          <div className="weeks">
+                            <span className="task_duration lowerr">
+                              Duration
+                            </span>
+                            <div className="cdate todo_date">
+                              {data?.duration}
+                              {data.duration === 1 ? " day" : " days"}
+                            </div>
+                          </div>
+
+                          <div className="durr">
+                            <span className="task_time lowerr">
+                              Date Created
+                            </span>
+                            <div className="ctime todo_time">
+                              {formatTime(data?.date_created)}
+                            </div>
+                          </div>
+
+                          <div className="cstatus2 stat">
+                            <span
+                              className={
+                                data.status === "pending"
+                                  ? "cstatus todo_status pending"
+                                  : "cstatus todo_status"
+                              }
+                            >
+                              {capitalizeFirstLetter(data.status)}
+                            </span>
+                          </div>
+                          <div className="ctime todoo">
+                            {data.status !== "pending" ? (
+                              <div
+                                className="savebtn todo_button"
+                                onClick={() => OpenIscompleteModal(data.id)}
+                              >
+                                View More
+                              </div>
+                            ) : (
+                              <div
+                                className="savebtn todo_button"
+                                onClick={() => OpenIscompleteModal(data.id)}
+                              >
+                                Complete Task
+                              </div>
+                            )}
                           </div>
                         </div>
-
-                        <div className="durr">
-                          <span className="task_time lowerr">Date Created</span>
-                          <div className="ctime todo_time">
-                            {formatTime(data?.date_created)}
-                          </div>
-                        </div>
-
-                        <div className="cstatus2 stat">
-                          <span
-                            className={
-                              data.status === "pending"
-                                ? "cstatus todo_status pending"
-                                : "cstatus todo_status"
-                            }
-                          >
-                            {capitalizeFirstLetter(data.status)}
-                          </span>
-                        </div>
-                        <div className="ctime todoo">
-                          {data.status !== "pending" ? (
-                            <div
-                              className="savebtn todo_button"
-                              onClick={() => OpenIscompleteModal(data.id)}
-                            >
-                              View More
-                            </div>
-                          ) : (
-                            <div
-                              className="savebtn todo_button"
-                              onClick={() => OpenIscompleteModal(data.id)}
-                            >
-                              Complete Task
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    ))}
+                      ))}
                     <div className="next_page">
                       <div>
-                        Displaying <span className="page_num">1</span> out of{" "}
-                        <span className="page_num">{state.count}</span>
+                        Displaying{" "}
+                        <span className="page_num">{state.count}</span>{" "}
+                        out of <span className="page_num">{state.total_pages}</span>
                       </div>
                       <div>
                         {prevLink && (
@@ -459,7 +474,7 @@ const TodoList = (props: any) => {
           </div>
           <div className="request_input">
             <a className="request" href="#">
-              Request Counselors Input
+              {/* Request Counselors Input */}
             </a>
           </div>
           <div className="mark_complete">

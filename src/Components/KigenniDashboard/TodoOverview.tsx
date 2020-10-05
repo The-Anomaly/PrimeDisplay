@@ -18,6 +18,7 @@ import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
 import close from "../../assets/close.svg";
 import { useState } from "react";
+import noplan from "../../assets/noplan.png";
 const moment = require("moment");
 
 const TodoOverview = withRouter((props: any) => {
@@ -60,15 +61,14 @@ const TodoOverview = withRouter((props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res1);
           if (res.status === 200) {
             setFormState({
               ...state,
               user: res.data,
               successMsg: true,
               isLoading: false,
-              tasklist: [...res1.data.results],
-              alltask: [...res1.data.results],
+              tasklist: [...res1.data.results].reverse(),
+              alltask: [...res1.data.results].reverse(),
             });
           }
         })
@@ -173,6 +173,7 @@ const TodoOverview = withRouter((props: any) => {
         setTimeout(() => {
           window.location.reload();
         }, 2000);
+
       })
       .catch((err) => {
         console.log(err);
@@ -303,6 +304,19 @@ const TodoOverview = withRouter((props: any) => {
                         </div>
                       </div>
                     ))}
+                    {alltask.length === 0 && (
+                      <div className="norec">
+                        <img
+                          src={noplan}
+                          className="norecommendations"
+                          alt="norecommendations"
+                        />
+                        <div className="udont1">Opps!!!</div>
+                        <div className="udont">
+                          You have not created any todos
+                        </div>
+                      </div>
+                    )}
                     <Link to="/todolist">
                       <div className="viewall">View all Task</div>
                     </Link>
@@ -323,7 +337,7 @@ const TodoOverview = withRouter((props: any) => {
         <div className="text-center">{errorMessage}</div>
         {success && (
           <Alert variant={"info"} className="text-center">
-            Sent
+           Task completed
           </Alert>
         )}
         <span className="close_view">

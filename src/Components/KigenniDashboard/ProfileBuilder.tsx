@@ -36,7 +36,7 @@ class ProfileBuilder extends React.Component {
     industry: "",
     education_valid_from: "",
     education_valid_till: "",
-    education_doesnot_expire: "",
+    education_doesnot_expire: false,
     certificateInstitution: "",
     valid_from: "",
     valid_till: "",
@@ -89,6 +89,7 @@ class ProfileBuilder extends React.Component {
     this.setState({
       skills: [...this.state.skills, ...skillz].reverse(),
       skill: "",
+      mycurrentwork:false
     });
   };
   addNewEducation = () => {
@@ -120,6 +121,7 @@ class ProfileBuilder extends React.Component {
       institutionLocation: "",
       education_valid_from: "",
       education_valid_till: "",
+      education_doesnot_expire:false
     });
   };
   addNewCertification = () => {
@@ -155,7 +157,7 @@ class ProfileBuilder extends React.Component {
       certificateName: "",
       valid_from: "",
       valid_till: "",
-      expirationStatus: "",
+      expirationStatus: false,
     });
   };
   addNewReferences = () => {

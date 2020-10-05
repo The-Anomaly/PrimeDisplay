@@ -2586,6 +2586,7 @@ textarea.form-control.jobr {
   .csfitscore {
     width: 96% !important;
   }
+  
 }
 .reess {
   width: 96%;
@@ -3497,5 +3498,11 @@ input,
 @media (max-width: 600px) {
   .newtitl {
     margin-right: 3.1rem;
+  }
+  .notpaid {
+    margin-top: 9rem;
+  }
+  .jobr{
+    padding-top: .9rem;
   }
 }

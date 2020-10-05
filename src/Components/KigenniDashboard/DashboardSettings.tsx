@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import DashboardNav from "./DashboardNavBar";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 
+
+
 class NewDashboardSettings extends React.Component {
   state: any = {
     last_name: "",
@@ -44,10 +46,9 @@ class NewDashboardSettings extends React.Component {
       email === "" ||
       address === "" ||
       phone === "" ||
-      job_description === "" ||
-      website_link === ""
+      job_description === ""
     ) {
-      return this.notify("All fields are required");
+      return this.notify("Please fill the required fields");
     } else {
       this.submitForm(e);
     }
