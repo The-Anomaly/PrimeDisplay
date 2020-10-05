@@ -54,7 +54,9 @@ class NewDashboardSettings extends React.Component {
       return this.notify("Please fill the required fields");
     } else {
       this.submitForm(e);
-      this.state.fillStatus = true;
+      this.setState({
+        fillStatus: true,
+      });
     }
   };
   handleImageChange = (e) => {
