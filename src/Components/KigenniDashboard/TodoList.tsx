@@ -376,7 +376,7 @@ const TodoList = (props: any) => {
                             ) : (
                               <div
                                 className="savebtn todo_button"
-                                onClick={() => OpenIscompleteModal(data.id)}
+                                onClick={() => openViewMoreModal(data.id)}
                               >
                                 Complete Task
                               </div>

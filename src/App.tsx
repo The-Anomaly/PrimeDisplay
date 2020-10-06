@@ -44,8 +44,7 @@ import NewDashboardSubsriptionPlan from "./Components/KigenniDashboard/NewDashbo
 import NewDashboardSettings from "./Components/KigenniDashboard/DashboardSettings";
 import NewDashboardChat from "./Components/KigenniDashboard/NewDashboardChat";
 import NewDashboardSupport from "./Components/KigenniDashboard/NewDashboardSupport";
-import CouncellorAllMessages from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorAllMessages";
-import CounsellorRecommendation from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorRecommendation";
+import CounsellorAllMessages from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorAllMessages";
 import CounsellorOverview from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorOverview";
 import CounsellorBookedSessions from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorBookedSessions";
 import ThirdPartyEmployersResult from "./Components/KigenniDashboard/ThirdPartyEmployersResult";
@@ -65,6 +64,12 @@ import TodoList from "./Components/KigenniDashboard/TodoList";
 import ViewMoreModal from "./Components/KigenniDashboard/ViewMoreModal";
 import CompleteTaskModal from "./Components/KigenniDashboard/CompleteTaskModal";
 import CreateTaskModal from "./Components/KigenniDashboard/CreateTaskModal";
+import CounsellorScheduledMeetings from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorScheduledMeetings";
+import CounsellorRecommendations1 from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorRecommendations1";
+import CounsellorRecommendation2 from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorRecommendation2";
+import CounsellorAssignedMembers from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorAssignedMembers";
+import CounsellorSupport from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorSupport";
+import CounsellorSettings from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorSettings";
 
 const App: React.FC = () => {
   return (
@@ -247,12 +252,32 @@ const App: React.FC = () => {
             <Route
               exact
               path="/counsellormessages"
-              component={CouncellorAllMessages}
+              component={CounsellorAllMessages}
             />
             <Route
               exact
-              path="/counsellorrecommendations"
-              component={CounsellorRecommendation}
+              path="/counsellorrecommendations2"
+              component={CounsellorRecommendation2}
+            />
+            <Route
+              exact
+              path="/counsellorrecommendations1"
+              component={CounsellorRecommendations1}
+            />
+            <Route
+              exact
+              path="/counsellorassignedmembers"
+              component={CounsellorAssignedMembers}
+            />
+            <Route
+              exact
+              path="/counsellorsupport"
+              component={CounsellorSupport}
+            />
+            <Route
+              exact
+              path="/counsellorsettings"
+              component={CounsellorSettings}
             />
             <Route exact path="/todooverview" component={TodoOverview} />
             <Route exact path="/generatecv" component={TestPdf} />
@@ -321,6 +346,7 @@ const App: React.FC = () => {
             />
             <Route exact path="/meetings" component={CouncellorBookings} />
             <Route exact path="/councellordates" component={CouncellorDates} />
+            <Route exact path="/councellormeetings" component={CounsellorScheduledMeetings} />
           </Switch>
         </BrowserRouter>
       </div>

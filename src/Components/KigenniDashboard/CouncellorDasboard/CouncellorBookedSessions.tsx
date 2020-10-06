@@ -9,8 +9,19 @@ import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
 import rightimg from "../../../assets/rightarrow.png";
 import leftimg from "../../../assets/leftarrow1.png";
+import Modal from "react-bootstrap/esm/Modal";
+import { useState } from "react";
 
 const CounsellorBookedSessions = () => {
+  const [state, setState] = useState({
+    isOpen: true,
+  });
+  const closeModal = () => {
+    setState({
+      ...state,
+      isOpen: true,
+    });
+  };
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -104,6 +115,9 @@ const CounsellorBookedSessions = () => {
           </Col>
         </Row>
       </Container>
+      <Modal show={state.isOpen} centered={true}>
+          Insert text
+      </Modal>
     </>
   );
 };

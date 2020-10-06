@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
 
-const CouncellorAllMessages = () => {
+const CounsellorAllMessages = () => {
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -55,4 +55,4 @@ const CouncellorAllMessages = () => {
     </>
   );
 };
-export default CouncellorAllMessages;
+export default CounsellorAllMessages;
