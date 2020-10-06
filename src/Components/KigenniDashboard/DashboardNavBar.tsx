@@ -141,7 +141,7 @@ const DashboardNav = (props: any) => {
               </div>
               <div className={props.chat ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/councellorchat">
+            <Link to="/counsellorchat">
               <img
                 src={props.chat ? chatactive : chatinactive}
                 className="sideimage"

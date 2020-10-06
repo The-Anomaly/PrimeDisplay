@@ -191,9 +191,14 @@ const App: React.FC = () => {
             <Route
               exact
               path="/councellorfee"
+              component={() => <Redirect to="/counsellorfee" />}
+            />
+             <Route
+              exact
+              path="/counsellorfee"
               component={NewDashboardCounsellorSubscription}
             />
-            <Route exact path="/councellordates" component={CouncellorDates} />
+            <Route exact path="/counsellordates" component={CouncellorDates} />
             <Route exact path="/signup/kigenni" component={SignUpKigenni} />
             <Route
               exact
@@ -238,7 +243,7 @@ const App: React.FC = () => {
               path="/dashboardsettings"
               component={NewDashboardSettings}
             />
-            <Route exact path="/councellorchat" component={NewDashboardChat} />
+            <Route exact path="/counsellorchat" component={NewDashboardChat} />
             <Route
               exact
               path="/dashboardsupport"
