@@ -168,6 +168,9 @@
   .flexa {
     width: 94%;
   }
+  .wrapc222{
+    width: 97%;
+  }
 }
 .csfitscore1 {
   font-weight: bold;
@@ -3091,7 +3094,7 @@ textarea.form-control.jobr {
   .searchit::placeholder {
     font-size: 12px;
   }
-  .getstarted{
+  .getstarted {
     padding: 0.5rem 0.3rem;
     width: 188px;
   }
@@ -3105,7 +3108,6 @@ textarea.form-control.jobr {
   .findit {
     margin-top: 2rem;
   }
-  
 }
 @media (max-width: 400px) {
   .msgs {
@@ -3116,7 +3118,6 @@ textarea.form-control.jobr {
   .searchit {
     width: 80vw;
   }
-
 }
 .dit {
   background: #fff !important;
@@ -3133,6 +3134,12 @@ textarea.form-control.jobr {
     padding: 0 !important;
   }
 }
-.imgCart33{
+.imgCart33 {
   margin: auto;
+}
+.second221 {
+  background: #ffffff;
+  border: 1px solid #3751ff;
+  box-sizing: border-box;
+  border-radius: 8px;
 }

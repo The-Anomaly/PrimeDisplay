@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
+import "./councellor.css";
 
 const CounsellorOverview = () => {
   return (
@@ -24,28 +25,28 @@ const CounsellorOverview = () => {
                   <Col md={11}>
                     <div className="wwrap">
                       <div className="fourinfo">
-                        <div className="firstoffour">
+                        <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Members Assigned</div>
                             <div className="mmber1">80</div>
                           </div>
                         </div>
-                        <div className="firstoffour">
+                        <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Sessions Booked</div>
                             <div className="mmber1">80</div>
                           </div>
                         </div>
-                        <div className="firstoffour">
+                        <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Completed</div>
                             <div className="mmber1">80</div>
                           </div>
                         </div>
-                        <div className="firstoffour">
+                        <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Pending</div>
@@ -57,7 +58,7 @@ const CounsellorOverview = () => {
                     <div className="yudd1">
                       Your next session is due tomorrow
                     </div>
-                    <div className="wrapc2">
+                    <div className="wrapc2 wrapc222">
                       <div className="userimg22">
                         <img src={userimg} className="userimg" alt="userimg" />
                       </div>
@@ -74,7 +75,7 @@ const CounsellorOverview = () => {
                         <div className="savebtn">View</div>
                       </div>
                     </div>
-                    <div className="wrapc2">
+                    <div className="wrapc2 wrapc222">
                       <div className="userimg22">
                         <img src={userimg} className="userimg" alt="userimg" />
                       </div>

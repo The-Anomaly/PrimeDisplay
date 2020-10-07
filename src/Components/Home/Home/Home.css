@@ -502,6 +502,9 @@ button {
     margin-left: 1rem;
     margin-bottom: 2rem;
   }
+  .imgCart{
+    min-width: 70px !important;
+  }
   .listwraperMob {
     font-size: 16px !important;
   }
