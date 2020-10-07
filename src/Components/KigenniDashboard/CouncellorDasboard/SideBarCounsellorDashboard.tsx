@@ -92,7 +92,7 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
           </div>
           <div className={props.messages ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/counsellorbookings">
+            <Link to="/counsellormessages">
               <img
                 src={props.messages ? chatactive : chatinactive}
                 className="sideimage"
@@ -103,7 +103,7 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
           </div>
           <div className={props.councrec ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/counsellorsrecommendation">
+            <Link to="/counsellorrecommendations1">
               <img
                 src={
                   props.councrec ? recommedationactive : recommedationinactive
@@ -116,7 +116,7 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
           </div>
           <div className={props.jobrec ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/jobopportunities">
+            <Link to="/counsellorassignedmembers">
               <img
                 src={
                   props.jobrec
@@ -132,7 +132,7 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
           <div className="divide_thro"></div>
           <div className={props.settings ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/dashboardsettings">
+            <Link to="/counsellorsettings">
               <img
                 src={props.settings ? settingsactive : settingsinactive}
                 className="sideimage"
@@ -143,7 +143,7 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
           </div>
           <div className={props.subscription ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/dashboardsubsriptionplan">
+            <Link to="/counsellorsupport">
               <img
                 src={
                   props.subscription ? subscriptionactive : subscriptioninactive

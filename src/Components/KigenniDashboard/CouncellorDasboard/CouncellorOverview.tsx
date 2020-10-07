@@ -16,7 +16,7 @@ const CounsellorOverview = () => {
         <Row>
           <SideBarCounsellorDashboard ov={true} />
           <Col md={10} sm={12} className="prm">
-            <CounsellorDashboardNav title="Booked Sessions" />
+            <CounsellorDashboardNav title="Overview" />
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
