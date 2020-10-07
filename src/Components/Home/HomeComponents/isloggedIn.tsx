@@ -1,22 +1,44 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import avatar from "../../../assets/avatar.svg";
 import Axios from "axios";
 import { API } from "../../../config";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Spinner from "react-bootstrap/Spinner";
 
 export interface IAppProps {
   Logout?: Function | any;
 }
 
-export function NavIsLoggedIn(props: IAppProps | any) {
-  useEffect(() => {
-    if (window.location.pathname == "/") {
-      console.log("should be cleared")
-      localStorage.clear();
-    }
+export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
+  const [state, setState] = useState({
+    showPreloader: false,
+    isloading: false,
+    IsUser: false,
   });
+  useEffect(() => {
+    const availableToken: any = localStorage.getItem("userToken");
+    const token: string = availableToken ? JSON.parse(availableToken) : "";
+    if (token) {
+      setState({
+        ...state,
+        IsUser: true,
+        showPreloader: true,
+      });
+    }
+    if (!token) {
+      setState({
+        ...state,
+        IsUser: false,
+        showPreloader: false,
+      });
+    }
+  }, []);
   const getCurrentAssessmentPosition = (): void => {
+    setState({
+      ...state,
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token: string = availableToken
       ? JSON.parse(availableToken)
@@ -25,6 +47,11 @@ export function NavIsLoggedIn(props: IAppProps | any) {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
+        console.log(response);
+        setState({
+          ...state,
+          isloading: false,
+        });
         if (
           (response.status === 200 &&
             response.data[0].next === "phase_four_nature") ||
@@ -68,16 +95,27 @@ export function NavIsLoggedIn(props: IAppProps | any) {
           return props.history.push(`/assessmentphaseseven`);
         }
         if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/free/dashboard`);
+          return props.history.push(`/overview`);
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setState({
+          ...state,
+          isloading: false,
+        });
+        console.log(error);
+      });
   };
   return (
     <React.Fragment>
       <div className="title1">
         <button onClick={props.Logout} className="title_ll">
           Log out
+        </button>
+      </div>
+      <div className="title1">
+        <button onClick={getCurrentAssessmentPosition} className="title_ll">
+          Dashboard
         </button>
       </div>
       <div className="title1">
@@ -88,6 +126,11 @@ export function NavIsLoggedIn(props: IAppProps | any) {
           <img src={avatar} className="useravatar" alt="avatar" />
         </span>
       </div>
+      {state.isloading && (
+        <div id="content">
+          <Spinner variant={"info"} animation="grow" />
+        </div>
+      )}
     </React.Fragment>
   );
-}
+});

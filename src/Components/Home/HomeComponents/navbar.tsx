@@ -18,11 +18,6 @@ const Navbar: React.FC = (props: any) => {
   const { showNav, userLoggedIn, redirect } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
-    if (window.location.pathname == "/") {
-      console.log("should be cleared1")
-      localStorage.clear();
-      localStorage.clear();
-    }
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (token) {
