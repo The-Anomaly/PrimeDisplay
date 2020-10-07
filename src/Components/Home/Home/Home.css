@@ -569,6 +569,16 @@ button {
     margin-left: 1rem;
   }
 }
+#content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  top: 50%;
+  z-index: 5;
+}
 @media (max-width: 360px) {
   .fittt1 {
     width: 100%;

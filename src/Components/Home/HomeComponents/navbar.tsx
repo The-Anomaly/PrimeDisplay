@@ -1,7 +1,7 @@
 import * as React from "react";
 import demoLogo from "../../../assets/clarity.png";
 import SideNav from "react-simple-sidenav";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import "../Home/animate.css";
 import { NavIsLoggedOut } from "./isloggedout";
 import { NavIsLoggedIn } from "./isloggedIn";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
 
-const Navbar: React.FC = (props: any) => {
+const Navbar = withRouter((props: any) => {
   const [state, setShowNav] = React.useState({
     showNav: false,
     userLoggedIn: false,
@@ -18,11 +18,6 @@ const Navbar: React.FC = (props: any) => {
   const { showNav, userLoggedIn, redirect } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
-    if (window.location.pathname == "/") {
-      console.log("should be cleared1")
-      localStorage.clear();
-      localStorage.clear();
-    }
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (token) {
@@ -102,8 +97,7 @@ const Navbar: React.FC = (props: any) => {
           return props.history.push(`/free/dashboard`);
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   const uniqueKeygen = (): number => {
     return Math.floor(Math.random() * 100);
@@ -260,5 +254,5 @@ const Navbar: React.FC = (props: any) => {
       </div>
     </div>
   );
-};
+});
 export default Navbar;
