@@ -3548,3 +3548,7 @@ input,
     margin-top: 1rem;
   }
 }
+
+.notfilled {
+  color: red;
+}

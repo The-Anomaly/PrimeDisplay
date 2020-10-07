@@ -3,12 +3,19 @@ import { Link } from "react-router-dom";
 import avatar from "../../../assets/avatar.svg";
 import Axios from "axios";
 import { API } from "../../../config";
+import { useEffect } from "react";
 
 export interface IAppProps {
   Logout?: Function | any;
 }
 
 export function NavIsLoggedIn(props: IAppProps | any) {
+  useEffect(() => {
+    if (window.location.pathname == "/") {
+      console.log("should be cleared")
+      sessionStorage.clear();
+    }
+  });
   const getCurrentAssessmentPosition = (): void => {
     const availableToken = sessionStorage.getItem("userToken");
     const token: string = availableToken
@@ -64,8 +71,7 @@ export function NavIsLoggedIn(props: IAppProps | any) {
           return props.history.push(`/free/dashboard`);
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   return (
     <React.Fragment>

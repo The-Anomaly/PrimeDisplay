@@ -1,5 +1,5 @@
 /*View More Modal Styling*/
-.modal-dialog {
+.modcomplete .modal-dialog {
   max-width: 60%;
 }
 .modal-content {
@@ -191,5 +191,23 @@
 @media (max-width: 700px) {
   .create_body {
     padding: 2rem 1rem;
+  }
+}
+
+.fixmodal .modal-dialog {
+  width: auto !important;
+  margin: 3rem auto;
+}
+
+@media (max-width: 575px) {
+  .fixmodal .modal-dialog {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 400px) {
+  .fixmodal .modal-dialog {
+    max-width: 95%;
+    margin: 1rem auto;
   }
 }

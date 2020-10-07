@@ -12,8 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 import DashboardNav from "./DashboardNavBar";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 
-
-
 class NewDashboardSettings extends React.Component {
   state: any = {
     last_name: "",
@@ -29,6 +27,7 @@ class NewDashboardSettings extends React.Component {
     showWarning: false,
     image: "",
     width: 100,
+    fillStatus: true,
   };
   validateForm = (e) => {
     const {
@@ -38,6 +37,8 @@ class NewDashboardSettings extends React.Component {
       address,
       phone,
       job_description,
+      website_link,
+      fillStatus,
     } = this.state;
     if (
       first_name === "" ||
@@ -47,9 +48,15 @@ class NewDashboardSettings extends React.Component {
       phone === "" ||
       job_description === ""
     ) {
+      this.setState({
+        fillStatus: false,
+      });
       return this.notify("Please fill the required fields");
     } else {
       this.submitForm(e);
+      this.setState({
+        fillStatus: true,
+      });
     }
   };
   handleImageChange = (e) => {
@@ -87,7 +94,7 @@ class NewDashboardSettings extends React.Component {
         //this.notify("Successful");
         setTimeout(() => {
           this.notify("Successful");
-          window.location.reload()
+          window.location.reload();
         }, 2000);
       })
       .catch((err) => {
@@ -132,8 +139,7 @@ class NewDashboardSettings extends React.Component {
         });
       });
   }
-  handleRef=(data)=>{
-  }
+  handleRef = (data) => {};
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
     const {
@@ -146,12 +152,13 @@ class NewDashboardSettings extends React.Component {
       last_name,
       job_description,
       website_link,
+      fillStatus,
     } = this.state;
 
     return (
       <>
         <Container fluid={true} className="contann122">
-          <DashboardNav settings={true}/>
+          <DashboardNav settings={true} />
           <Row>
             <SideBarNewDashboard settings={true} />
             <Col md={10} sm={12} className="prm">
@@ -164,7 +171,7 @@ class NewDashboardSettings extends React.Component {
                         {" "}
                         <div className="smalls">
                           <img
-                            src={image!==""?image:avatar}
+                            src={image !== "" ? image : avatar}
                             className="avatar avar"
                             alt="avatar"
                           />
@@ -182,7 +189,9 @@ class NewDashboardSettings extends React.Component {
                           >
                             Upload Image
                           </div>
-                          <span className="infoforimage">Image should be 80 &times; 80 pixels</span>
+                          <span className="infoforimage">
+                            Image should be 80 &times; 80 pixels
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -192,7 +201,14 @@ class NewDashboardSettings extends React.Component {
                       <hr />
                       <Row className="rowla">
                         <Col md={6}>
-                          <div className="whatdoudo">First Name </div>
+                          <div className="whatdoudo">
+                            First Name
+                            {this.state.fillStatus === false && first_name === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
                           <textarea
                             name="first_name"
                             value={first_name}
@@ -202,7 +218,14 @@ class NewDashboardSettings extends React.Component {
                           ></textarea>
                         </Col>
                         <Col md={6}>
-                          <div className="whatdoudo">Last Name </div>
+                          <div className="whatdoudo">
+                            Last Name 
+                            {this.state.fillStatus === false && last_name === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
                           <textarea
                             name="last_name"
                             value={last_name}
@@ -214,7 +237,14 @@ class NewDashboardSettings extends React.Component {
                       </Row>
                       <Row className="rowla">
                         <Col md={6}>
-                          <div className="whatdoudo">Address </div>
+                          <div className="whatdoudo">
+                            Address 
+                            {this.state.fillStatus === false && address === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
                           <textarea
                             name="address"
                             value={address}
@@ -226,7 +256,14 @@ class NewDashboardSettings extends React.Component {
                       </Row>
                       <Row className="rowla">
                         <Col md={6}>
-                          <div className="whatdoudo">Email </div>
+                          <div className="whatdoudo">
+                            Email 
+                            {this.state.fillStatus === false && email === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
                           <textarea
                             name="email"
                             value={email}
@@ -236,7 +273,14 @@ class NewDashboardSettings extends React.Component {
                           />
                         </Col>
                         <Col md={6}>
-                          <div className="whatdoudo">Phone Number </div>
+                          <div className="whatdoudo">
+                            Phone Number 
+                            {this.state.fillStatus === false && phone === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
                           <textarea
                             name="phone"
                             value={phone}
@@ -248,7 +292,14 @@ class NewDashboardSettings extends React.Component {
                       </Row>
                       <Row className="rowla">
                         <Col md={6}>
-                          <div className="whatdoudo">Occupation </div>
+                          <div className="whatdoudo">
+                            Occupation 
+                            {this.state.fillStatus === false && job_description === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
                           <textarea
                             name="job_description"
                             value={job_description}
