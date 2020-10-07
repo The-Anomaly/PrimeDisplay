@@ -26,7 +26,7 @@ class NewDashboardFullInsight extends React.Component {
   };
   submitForm = (e) => {
     e.preventDefault();
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
       message: this.state.message,
@@ -52,7 +52,7 @@ class NewDashboardFullInsight extends React.Component {
   notify = (message: string) => toast(message, { containerId: "B" });
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

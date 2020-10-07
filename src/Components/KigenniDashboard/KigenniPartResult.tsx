@@ -47,7 +47,7 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
   };
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -109,7 +109,7 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {};
     axios
@@ -126,7 +126,7 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
   };
   handleChatCheck = () => {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

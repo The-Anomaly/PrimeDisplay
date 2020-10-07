@@ -63,7 +63,7 @@ const AssessmentFifthPhase = (props: any) => {
   //cdm
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");

@@ -143,7 +143,7 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
       })
       .then((response) => {
         if (response.status === 200) {
-          sessionStorage.setItem("user", JSON.stringify(response?.data));
+          localStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
       .catch((error) => {
@@ -160,7 +160,7 @@ const ForgotPassword: React.FunctionComponent = (props: any) => {
     axios
       .post(`${API}/accounts/socialauth/`, data)
       .then((response) => {
-        sessionStorage.setItem(
+        localStorage.setItem(
           "userToken",
           JSON.stringify(response?.data[0]?.token)
         );

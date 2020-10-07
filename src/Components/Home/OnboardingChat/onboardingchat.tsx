@@ -40,7 +40,7 @@ class OnboardingChat extends React.Component {
   sendFormData = (e) => {
     e.preventDefault();
     const self: any = this.props;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : self.history.push("/signin");
@@ -70,7 +70,7 @@ class OnboardingChat extends React.Component {
   };
   componentDidMount() {
     const self: any = this.props;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : self.history.push("/signin");

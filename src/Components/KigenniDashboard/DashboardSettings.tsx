@@ -76,7 +76,7 @@ class NewDashboardSettings extends React.Component {
       website_link,
       image,
     } = this.state;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = new FormData();
     data.append("image", image);
@@ -111,7 +111,7 @@ class NewDashboardSettings extends React.Component {
   fileInput: HTMLInputElement | null | undefined;
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

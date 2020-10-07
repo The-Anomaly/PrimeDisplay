@@ -46,7 +46,7 @@ const TodoOverview = withRouter((props: any) => {
   });
   const { errorMessage, tasklist, user, success, alltask, isLoading } = state;
   React.useEffect(() => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
@@ -148,7 +148,7 @@ const TodoOverview = withRouter((props: any) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
   const submitTaskIsCompleteForm = () => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");

@@ -37,7 +37,7 @@ class NewDashboardSupport extends React.Component {
   };
   submitForm = (e) => {
     e.preventDefault();
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
       issue_category: this.state.issue,

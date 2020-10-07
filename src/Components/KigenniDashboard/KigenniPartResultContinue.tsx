@@ -73,7 +73,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
   };
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -131,7 +131,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {};
     axios
@@ -183,7 +183,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
     e.preventDefault();
     this.setState({ isLoading1: true });
     const { rate1, feebackselect, feedbacktext } = this.state;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -233,7 +233,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
   };
   handleChatCheck = () => {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

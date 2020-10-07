@@ -52,7 +52,7 @@ class NewDashboard extends React.Component {
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {};
     Axios.get<any, AxiosResponse<any>>(`${API}/retakeassessment`, {
@@ -68,7 +68,7 @@ class NewDashboard extends React.Component {
   };
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -107,7 +107,7 @@ class NewDashboard extends React.Component {
       });
   }
   checkIfUserHasMadePaymentForFullResult = () => {
-    const availableToken: string | null = sessionStorage.getItem("userToken");
+    const availableToken: string | null = localStorage.getItem("userToken");
     const token: string = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -131,7 +131,7 @@ class NewDashboard extends React.Component {
       });
   };
   checkIfUserHasMadePayment = () => {
-    const availableToken: string | null = sessionStorage.getItem("userToken");
+    const availableToken: string | null = localStorage.getItem("userToken");
     const token: string = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -163,7 +163,7 @@ class NewDashboard extends React.Component {
   };
   handleChatCheck = () => {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

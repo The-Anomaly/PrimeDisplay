@@ -235,7 +235,7 @@ class ProfileBuilder extends React.Component {
       endDate,
       userHasAddedExperience,
     } = this.state;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
       about,
@@ -263,7 +263,7 @@ class ProfileBuilder extends React.Component {
       });
   };
   componentDidMount() {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profilebuilder`, {
       headers: { Authorization: `Token ${token}` },
@@ -297,7 +297,7 @@ class ProfileBuilder extends React.Component {
   }
   componentWillMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

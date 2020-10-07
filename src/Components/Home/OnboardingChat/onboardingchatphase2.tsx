@@ -54,7 +54,7 @@ class OnboardingChatPhase2 extends React.Component {
   sendFormData = (e) => {
     const self: any = this;
     e.preventDefault();
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -71,7 +71,7 @@ class OnboardingChatPhase2 extends React.Component {
       });
   };
   componentDidMount() {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

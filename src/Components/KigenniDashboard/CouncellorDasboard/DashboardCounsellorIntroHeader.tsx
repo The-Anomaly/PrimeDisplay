@@ -35,7 +35,7 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
   };
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

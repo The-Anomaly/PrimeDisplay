@@ -20,10 +20,10 @@ const Navbar: React.FC = (props: any) => {
     window.scrollTo(-0, -0);
     if (window.location.pathname == "/") {
       console.log("should be cleared1")
-      sessionStorage.clear();
-      sessionStorage.clear();
+      localStorage.clear();
+      localStorage.clear();
     }
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (token) {
       setShowNav({ ...state, userLoggedIn: true });
@@ -44,11 +44,11 @@ const Navbar: React.FC = (props: any) => {
   };
 
   const logout = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     setRedirect();
   };
   const getCurrentAssessmentPosition = (): void => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token: string = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

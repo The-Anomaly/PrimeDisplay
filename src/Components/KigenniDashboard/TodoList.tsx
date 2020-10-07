@@ -108,7 +108,7 @@ const TodoList = (props: any) => {
     getTaskdetails();
   };
   const submitTaskIsCompleteForm = () => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
@@ -140,7 +140,7 @@ const TodoList = (props: any) => {
       });
   };
   const createNewTask = () => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
@@ -169,7 +169,7 @@ const TodoList = (props: any) => {
   };
   const notify = (message: string) => toast(message, { containerId: "i" });
   React.useEffect(() => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
@@ -216,7 +216,7 @@ const TodoList = (props: any) => {
       });
   }, []);
   const LoadOldData = () => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
@@ -239,7 +239,7 @@ const TodoList = (props: any) => {
       });
   };
   const LoadNewData = () => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");

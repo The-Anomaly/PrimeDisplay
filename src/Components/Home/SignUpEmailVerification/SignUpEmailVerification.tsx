@@ -45,7 +45,7 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
       })
       .then((response) => {
         if (response.status === 200) {
-          sessionStorage.setItem("user", JSON.stringify(response?.data));
+          localStorage.setItem("user", JSON.stringify(response?.data));
         }
         setTimeout(() => {
           props.history.push("/clientchat");
@@ -69,7 +69,7 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
           });
           getUserInfo(response?.data[0]?.token);
           if (response?.data[0]?.token) {
-            sessionStorage.setItem(
+            localStorage.setItem(
               "userToken",
               JSON.stringify(response?.data[0]?.token)
             );

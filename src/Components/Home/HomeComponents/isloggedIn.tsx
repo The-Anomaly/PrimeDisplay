@@ -13,11 +13,11 @@ export function NavIsLoggedIn(props: IAppProps | any) {
   useEffect(() => {
     if (window.location.pathname == "/") {
       console.log("should be cleared")
-      sessionStorage.clear();
+      localStorage.clear();
     }
   });
   const getCurrentAssessmentPosition = (): void => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token: string = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

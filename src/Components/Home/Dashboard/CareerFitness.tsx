@@ -33,7 +33,7 @@ const CareerFitness: React.FunctionComponent<IAppProps> = (props: any) => {
   });
   const { sideBarIsOpen, result } = state;
   useEffect(() => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");

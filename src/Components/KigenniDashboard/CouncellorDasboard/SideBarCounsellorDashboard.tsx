@@ -1,6 +1,6 @@
 import * as React from "react";
 import Col from "react-bootstrap/Col";
-import imgCart from "../../../assets/clarity.png";
+import imgCart from "../../../assets/Claritylogo.png";
 import logout from "../../../assets/log-out.png";
 import Overview_inactive from "../../../assets/Overview_inactive.png";
 import chatinactive from "../../../assets/Chat with a counsellor_inactive.png";
@@ -22,6 +22,7 @@ import "../../Home/Home/Home.css";
 import { Link, withRouter } from 'react-router-dom';
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
+import "./councellor.css";
 
 const SideBarCounsellorDashboard =withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
@@ -29,7 +30,7 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
     sethidemobile(hidemobile ? false : true);
   };
   const checkIfUserHasMadePaymentForFullResult = () => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -56,14 +57,14 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
       });
   };
   const logOut = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     window.location.assign("/");
   };
   return (
     <>
       <Col md={2} className={hidemobile ? "siddle siddlenone" : "siddle"}>
         <div className="dlex">
-          <img src={imgCart} className="imgCart" alt="imgCart" />
+          <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
         </div>{" "}
         <div className={hidemobile ? "navitemnone" : "navitem1"}>
           <div className={props.ov ? "activegb" : "gbn"}>

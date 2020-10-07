@@ -199,7 +199,7 @@ class CVProfileBuilder extends React.Component {
       endDate,
       userHasAddedExperience,
     } = this.state;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
       about,
@@ -228,7 +228,7 @@ class CVProfileBuilder extends React.Component {
   };
   componentDidMount() {
     window.scrollTo(-0, -0);
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profilebuilder`, {
       headers: { Authorization: `Token ${token}` },
@@ -257,7 +257,7 @@ class CVProfileBuilder extends React.Component {
   componentWillMount() {
     this.setState({ isLoading: true });
     const self: any = this;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

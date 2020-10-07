@@ -14,12 +14,12 @@ import { useState } from "react";
 
 const CounsellorBookedSessions = () => {
   const [state, setState] = useState({
-    isOpen: true,
+    isOpen: false,
   });
   const closeModal = () => {
     setState({
       ...state,
-      isOpen: true,
+      isOpen: false,
     });
   };
   return (

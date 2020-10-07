@@ -17,7 +17,7 @@ const AssessmentFirstPhaseComplete = () => {
   const [name, setName] = React.useState('');
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
-    const user: User = sessionStorage.getItem('user');
+    const user: User = localStorage.getItem('user');
     const currentUser = JSON.parse(user ? user : '');
     setName(currentUser[0].first_name);
   }, []);

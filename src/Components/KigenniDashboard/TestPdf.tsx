@@ -60,7 +60,7 @@ const TestPdf = () => {
   } = state;
   const ref: any = React.useRef();
   useEffect(() => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     axios
       .all([

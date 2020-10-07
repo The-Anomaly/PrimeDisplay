@@ -50,11 +50,11 @@ const DashboardNav = (props: any) => {
       });
   };
   const logOut = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     window.location.assign("/");
   };
   const checkIfUserHasMadePaymentForFullResult = () => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

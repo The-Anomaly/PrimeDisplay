@@ -19,7 +19,7 @@ declare global {
 export function SelectPaymentPlan(props: any) {
   useEffect(() => {
     // window.scrollTo(-0,0);
-    const fetchuser: any = sessionStorage.getItem("user");
+    const fetchuser: any = localStorage.getItem("user");
     const currentUser = fetchuser
       ? JSON.parse(fetchuser)
       : props.history.push("/signin");

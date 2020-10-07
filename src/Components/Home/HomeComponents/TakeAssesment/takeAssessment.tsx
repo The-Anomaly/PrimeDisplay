@@ -10,7 +10,7 @@ interface btnProps{
 
 const TakeAssessment: React.FunctionComponent<btnProps> = (props:any) => {
   const directUserToAssessment=()=>{
-    const availableToken = sessionStorage.getItem('userToken');
+    const availableToken = localStorage.getItem('userToken');
     const token = availableToken?JSON.parse(availableToken):props.history.push('/signin');
     getCurrentAssessmentPosition(token);
   };

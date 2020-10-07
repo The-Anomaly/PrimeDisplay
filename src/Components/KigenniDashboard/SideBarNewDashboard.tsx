@@ -34,7 +34,7 @@ const SideBarNewDashboard = (props: any) => {
     sethidemobile(hidemobile ? false : true);
   };
   const checkIfUserHasMadePaymentForFullResult = () => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -56,7 +56,7 @@ const SideBarNewDashboard = (props: any) => {
       });
   };
   const logOut = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     window.location.assign("/");
   };
   return (
@@ -65,7 +65,7 @@ const SideBarNewDashboard = (props: any) => {
         <div className="dlex">
           <Link to="/overview">
             {" "}
-            <img src={imgCart} className="imgCart" alt="imgCart" />
+            <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
           </Link>
         </div>{" "}
         <div className={hidemobile ? "navitemnone" : "navitem1"}>

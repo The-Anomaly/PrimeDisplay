@@ -23,7 +23,7 @@ class CounsellorRecommendation2 extends React.Component {
   };
   submitForm = (e) => {
     e.preventDefault();
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {};
     Axios.get<any, AxiosResponse<any>>(`${API}/retakeassessment`, {
@@ -39,7 +39,7 @@ class CounsellorRecommendation2 extends React.Component {
   };
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -81,7 +81,7 @@ class CounsellorRecommendation2 extends React.Component {
   };
   handleChatCheck = () => {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

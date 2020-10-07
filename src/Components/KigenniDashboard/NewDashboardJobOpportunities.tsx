@@ -97,7 +97,7 @@ class NewDashboardJobOpportunities extends React.Component {
       opportunities_open_to,
       present_industry,
     } = this.state;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
       social_media,
@@ -131,7 +131,7 @@ class NewDashboardJobOpportunities extends React.Component {
   };
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -174,7 +174,7 @@ class NewDashboardJobOpportunities extends React.Component {
   };
   componentWillMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

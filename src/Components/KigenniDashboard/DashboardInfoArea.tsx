@@ -32,7 +32,7 @@ const DashboardInfoArea = () => {
     website_link,
   } = state;
   useEffect(() => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

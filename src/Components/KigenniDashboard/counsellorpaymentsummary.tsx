@@ -35,7 +35,7 @@ export default function CouncellorPaymentSummary(props: any) {
   });
   const { errorMessage, successMsg, userInfos, isLoading } = state;
   React.useEffect(() => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
@@ -70,7 +70,7 @@ export default function CouncellorPaymentSummary(props: any) {
       });
   }, []);
   const payWithMonnify = (reference) => {
-    const availableUser = sessionStorage.getItem("user");
+    const availableUser = localStorage.getItem("user");
     var user = availableUser
       ? JSON.parse(availableUser)
       : props.history.push("/signin");
@@ -119,7 +119,7 @@ export default function CouncellorPaymentSummary(props: any) {
       ...state,
       isLoading: true,
     });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");

@@ -39,7 +39,7 @@ class NewDashboardSupport extends React.Component {
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {};
     Axios.get<any, AxiosResponse<any>>(`${API}/retakeassessment`, {
@@ -55,7 +55,7 @@ class NewDashboardSupport extends React.Component {
   };
   componentDidMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");

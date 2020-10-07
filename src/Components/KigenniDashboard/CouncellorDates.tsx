@@ -28,7 +28,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   };
   componentWillMount() {
     this.setState({ isLoading: true });
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -67,7 +67,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     });
   };
   getAvailableTime = (date) => {
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
@@ -102,7 +102,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   };
   sendMessageToCounselor = () => {
     const { date, time, phone, feedbackText } = this.state;
-    const availableToken = sessionStorage.getItem("userToken");
+    const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
