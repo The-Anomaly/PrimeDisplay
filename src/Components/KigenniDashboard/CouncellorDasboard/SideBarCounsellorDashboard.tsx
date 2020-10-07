@@ -156,7 +156,7 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
           </div>
           <div className={props.support ? "activegb" : "gbn"}>
             {" "}
-            <Link to="dashboardsupport">
+            <Link to="/ratings">
               <img
                 src={props.support ? starrating : starrating}
                 className="sideimage"
