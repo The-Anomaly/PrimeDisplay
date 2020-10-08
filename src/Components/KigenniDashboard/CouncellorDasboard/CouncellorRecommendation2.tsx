@@ -107,7 +107,7 @@ class CounsellorRecommendation2 extends React.Component {
           <Row>
             <SideBarCounsellorDashboard councrec={true}/>
             <Col md={10} sm={12} className="prm">
-              <CounsellorDashboardNav title="Booked Sessions" />
+              <CounsellorDashboardNav title="Counsellors Recommendation" />
               <Row>
                 <Col md={12} className="firstqq">
                   <div className="kdashheader npps"></div>

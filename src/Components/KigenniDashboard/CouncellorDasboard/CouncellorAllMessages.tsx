@@ -24,8 +24,8 @@ const CounsellorAllMessages = () => {
                   welcomeText="Summary of all messages to and from members assigned to you"
                 />
                 <Row>
-                  <Col md={11} className="mssaag">
-                    <div className="useri1222">
+                  <Col md={12} className="mssaag">
+                    <div className="useri1222 ui1222 ">
                       <div className="sjsso">
                         <img src={userimg} className="userimg" alt="jayeolajones" />
                       </div>

@@ -7,44 +7,56 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
+import norecommendations from "../../../assets/no recommendations.png";
+import { useState } from "react";
 
 const CounsellorRecommendations1 = () => {
+  const [state, setState] = useState({ counsellor: [] });
+  const { counsellor }: any = state;
   return (
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarCounsellorDashboard messages={true} />
+          <SideBarCounsellorDashboard councrec={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Counsellors Recommendation" />
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader
-                  searcharea={true}
-                  welcomeText="Summary of all messages to and from members assigned to you"
+                  welcomeText="All recommendations made to (Username )"
                 />
                 <Row>
-                  <Col md={11} className="mssaag">
-                    <div className="useri1222">
-                      <div className="sjsso">
-                        <img src={userimg} className="userimg" alt="jayeolajones" />
-                      </div>
-                      <div className="sjsso1">
-                        <div>
-                          <span className="username11">Jayeola Jones</span>
-                          <span className="useremail11">jaye@user.com</span>
+                  <Col md={12} className="youwss">
+                    {counsellor &&
+                      counsellor?.map((data, i) => (
+                        <>
+                          <div className="usersentwrap1" key={i}>
+                            <div className="youwrap">
+                              <span className="you11b">
+                                {data.counsellor_name}
+                              </span>{" "}
+                              <span className="youdate">{data.date}</span>
+                            </div>
+                            <div className="councellors_response">
+                              {data.text}
+                            </div>
+                          </div>
+                        </>
+                      ))}
+                    {counsellor.length === 0 && (
+                      <div className="norec">
+                        <img
+                          src={norecommendations}
+                          className="norecommendations"
+                          alt="norecommendations"
+                        />
+                        <div className="udont1">Opps!!!</div>
+                        <div className="udont">
+                          You dont have any Recommendation yet
                         </div>
-                        <div className="messagedetails">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Id mi, mattis at ipsum ullamcorper blandit
-                          pharetra. Est elit, morbi elementum faucibus nec morbi
-                          eget aliquet adipiscing. Sapien urna volutpat mattis
-                          cursus non et mauris tellus laoreet. Metus potenti leo
-                          nulla nulla pretium id.
-                        </div>
                       </div>
-                      <div className="tymeline sjsso2">6 days Ago</div>
-                    </div>
+                    )}
                   </Col>
                 </Row>
               </Col>

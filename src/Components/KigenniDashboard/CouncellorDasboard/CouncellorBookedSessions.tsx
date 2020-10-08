@@ -64,29 +64,29 @@ const CounsellorBookedSessions = () => {
 
                         <div className="ctwo">
                           <div>
-                            <div className="lowerr nulower">Name</div>
+                            <div className="lowerr nulower counlowerr">Name</div>
                             <div className="userrdet1 det1">JaiyeOla jones</div>
                             <div className="userrdet2 memb">jj@gmail.com</div>
                           </div>
                         </div>
 
                         <div className="cthree">
-                          <div className="lowerr nulower">Date</div>
+                          <div className="lowerr nulower counlowerr">Date</div>
                           <div>July 20</div>
                         </div>
 
                         <div className="cfour">
-                          <div className="lowerr nulower">Time</div>
+                          <div className="lowerr nulower counlowerr">Time</div>
                           <div className="">09:30 AM - 10:00 AM</div>
                         </div>
 
                         <div className="cfive">
-                          <div className="lowerr nulower">Member Type</div>
+                          <div className="lowerr nulower counlowerr">Member Type</div>
                           <div className="clarity12b">clarity</div>
                         </div>
 
                         <div className="csix">
-                          <div className="lowerr nulower sess counstat">Status</div>
+                          <div className="lowerr nulower sess counstat counlowerr">Status</div>
                           <span className="complt pltd">Completed</span>
                         </div>
 

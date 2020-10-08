@@ -63,7 +63,7 @@ const SideBarNewDashboard = (props: any) => {
     <>
       <Col md={2} className={hidemobile ? "siddle siddlenone" : "siddle"}>
         <div className="dlex">
-          <Link to="/overview">
+          <Link to="/">
             {" "}
             <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
           </Link>

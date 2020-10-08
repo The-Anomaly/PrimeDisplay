@@ -18,7 +18,6 @@ import { API } from "../../../config";
 import GoogleLogin from "react-google-login";
 import { useEffect } from "react";
 
-
 interface State {
   firstname: string;
   lastname: string;
@@ -68,7 +67,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
       .then((response) => {
         if (response.status === 200) {
-         return setFormState({
+          return setFormState({
             ...state,
             successMsg: response.data[0].message,
             isLoading: false,
@@ -78,7 +77,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
       })
       .catch((error) => {
         if (error && error.response && error.response.data) {
-         return setFormState({
+          return setFormState({
             ...state,
             errorMessage: error.response.data[0].message,
             isLoading: false,
@@ -130,6 +129,14 @@ const SignUp: React.FunctionComponent = (props: any) => {
       sendFormData();
     }
   };
+  const handleActionOnFormData = (e) => {
+    setFormState({
+      ...state,
+      whereDidYouLearnAboutUs: e.target.value,
+      errorMessage: "",
+      successMsg: false,
+    });
+  };
   const changeActionOnFormData = (e: any) => {
     setFormState({
       ...state,
@@ -173,8 +180,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
           localStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   const errorGoogle = (response) => {
     setFormState({
@@ -225,13 +231,13 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .catch((error) => {
         setFormState({
           ...state,
-          errorMessage:error?.response?.data?.detail
+          errorMessage: error?.response?.data?.detail,
         });
       });
   };
-  useEffect(()=>{
-    window.scrollTo(-0,-0)
-  },[])
+  useEffect(() => {
+    window.scrollTo(-0, -0);
+  }, []);
   return (
     <>
       <Navbar />
@@ -249,7 +255,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
             <div className="signwa1">To Get Clarity</div>
             {successMsg && (
               <Alert key={1} variant="info">
-               {successMsg}
+                {successMsg}
               </Alert>
             )}
             {errorMessage && (
@@ -314,12 +320,30 @@ const SignUp: React.FunctionComponent = (props: any) => {
               </Form.Group>
               <Form.Group controlId="formBasicEmail1">
                 <Form.Control
-                  className="field1"
-                  onChange={changeActionOnFormData}
-                  value={whereDidYouLearnAboutUs}
+                  as="select"
+                  className="field1 form-control"
+                  onChange={handleActionOnFormData}
                   name="whereDidYouLearnAboutUs"
-                  placeholder="Where did you hear about us?"
-                />
+                >
+                  <option className="selectopt">
+                    Where did you hear about us?
+                  </option>
+                  <option className="selectopt" value="Facebook">
+                    Facebook
+                  </option>
+                  <option className="selectopt" value="Linkedin">
+                    Linkedin
+                  </option>
+                  <option className="selectopt" value="Instagram">
+                    Instagram
+                  </option>
+                  <option className="selectopt" value="Referal Link">
+                    Referal Link
+                  </option>
+                  <option className="selectopt" value="Referal Link">
+                    Friend
+                  </option>
+                </Form.Control>
               </Form.Group>
               <Button variant="primary" className="subbtn" type="submit">
                 {!isLoading ? "Sign Up" : "Signing Up"}

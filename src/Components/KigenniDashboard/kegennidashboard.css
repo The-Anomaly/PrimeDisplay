@@ -1867,7 +1867,7 @@ textarea.form-control.jobr {
   margin-top: 1rem;
   margin-right: 2rem;
   width: 97%;
-  margin-left: 1rem;
+  margin: auto;
 }
 .sendmeess {
   background: #9c1258;
@@ -1878,7 +1878,7 @@ textarea.form-control.jobr {
   margin-right: 1.4rem;
   font-size: 14px;
   text-align: right;
-  font-weight: 200;
+  font-weight:bold !important;
   display: inline;
   padding: 0.4rem 0.8rem;
   border-radius: 10px;

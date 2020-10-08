@@ -30,7 +30,6 @@ import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import union from "../../assets/Union.png";
 
-
 const DashboardNav = (props: any) => {
   const [user, setNewState] = React.useState("");
   const [showNav, setShowNav]: any = React.useState(false);
@@ -46,8 +45,7 @@ const DashboardNav = (props: any) => {
         window.location.pathname = "/";
         localStorage.clear();
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
   const logOut = () => {
     localStorage.clear();
@@ -70,16 +68,18 @@ const DashboardNav = (props: any) => {
         ) {
           return window.location.assign("/thirdpary/fullresult");
         }
-          return window.location.assign("/paymentsummary")
+        return window.location.assign("/paymentsummary");
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   return (
     <div>
       <Row>
         <div className="hnav">
-          <img src={imgCart} className="imgCart" alt="imgCart" />
+          <Link to="/">
+            {" "}
+            <img src={imgCart} className="imgCart" alt="imgCart" />
+          </Link>
           <div className="hamburger" onClick={() => setShowNav(true)}>
             <div className="line2a"></div>
             <div className="line2a"></div>
@@ -140,74 +140,86 @@ const DashboardNav = (props: any) => {
                 Career Insight
               </div>
               <div className={props.chat ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/counsellorchat">
-              <img
-                src={props.chat ? chatactive : chatinactive}
-                className="sideimage"
-                alt="sideimage"
-              />
-              Chat with a Counsellor
-            </Link>
-          </div>
-          <div className={props.todo ? "activegb" : "gbn"}>
-            {" "}
-            <Accordion defaultActiveKey="">
-              <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
-                <img
-                  src={props.todo ? profilebuilder : profilebuilderinactive}
-                  className="sideimage"
-                  alt="sideimage"
-                />
-                Task Todo
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="5">
-                <Card.Body>
-                  <Link to="/todooverview">
-                    <div className="task112">Task Overview</div>
-                  </Link>
-                  <Link to="/todoList">
-                  <div className="task112">All Task</div>
-                  </Link>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Accordion>
-          </div>
-          <div className={props.councrec ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/counsellorsrecommendation">
-              <img
-                src={
-                  props.councrec ? recommedationactive : recommedationinactive
-                }
-                className="sideimage"
-                alt="sideimage"
-              />
-              Counsellors Recommendation
-            </Link>
-          </div>
-          <div className={props.jobrec ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/jobopportunities">
-              <img
-                src={props.jobrec ? jobrecommedationactive : jobrecommedationinactive}
-                className="sideimage"
-                alt="sideimage"
-              />
-              Job Recommendation
-            </Link>
-          </div>
-          <div className={props.builder ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/profilebuilder">
-              <img
-                src={props.builder ? profilebuilder : profilebuilderinactive}
-                className="sideimage"
-                alt="sideimage"
-              />
-              Profile Builder
-            </Link>
-          </div>
+                {" "}
+                <Link to="/counsellorchat">
+                  <img
+                    src={props.chat ? chatactive : chatinactive}
+                    className="sideimage"
+                    alt="sideimage"
+                  />
+                  Chat with a Counsellor
+                </Link>
+              </div>
+              <div className={props.todo ? "activegb" : "gbn"}>
+                {" "}
+                <Accordion defaultActiveKey="">
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    className="hpadd"
+                    eventKey="5"
+                  >
+                    <img
+                      src={props.todo ? profilebuilder : profilebuilderinactive}
+                      className="sideimage"
+                      alt="sideimage"
+                    />
+                    Task Todo
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="5">
+                    <Card.Body>
+                      <Link to="/todooverview">
+                        <div className="task112">Task Overview</div>
+                      </Link>
+                      <Link to="/todoList">
+                        <div className="task112">All Task</div>
+                      </Link>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Accordion>
+              </div>
+              <div className={props.councrec ? "activegb" : "gbn"}>
+                {" "}
+                <Link to="/counsellorsrecommendation">
+                  <img
+                    src={
+                      props.councrec
+                        ? recommedationactive
+                        : recommedationinactive
+                    }
+                    className="sideimage"
+                    alt="sideimage"
+                  />
+                  Counsellors Recommendation
+                </Link>
+              </div>
+              <div className={props.jobrec ? "activegb" : "gbn"}>
+                {" "}
+                <Link to="/jobopportunities">
+                  <img
+                    src={
+                      props.jobrec
+                        ? jobrecommedationactive
+                        : jobrecommedationinactive
+                    }
+                    className="sideimage"
+                    alt="sideimage"
+                  />
+                  Job Recommendation
+                </Link>
+              </div>
+              <div className={props.builder ? "activegb" : "gbn"}>
+                {" "}
+                <Link to="/profilebuilder">
+                  <img
+                    src={
+                      props.builder ? profilebuilder : profilebuilderinactive
+                    }
+                    className="sideimage"
+                    alt="sideimage"
+                  />
+                  Profile Builder
+                </Link>
+              </div>
               <div className="divide_thro"></div>
               {/* <div className={props.councrec ? "activegb" : "gbn"}>
                 {" "}
