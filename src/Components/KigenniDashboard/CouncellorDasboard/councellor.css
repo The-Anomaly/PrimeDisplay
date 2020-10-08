@@ -3143,3 +3143,181 @@ textarea.form-control.jobr {
   box-sizing: border-box;
   border-radius: 8px;
 }
+
+/*Counsellor Booked Session*/
+.booked {
+  max-width: 100%
+}
+.counview {
+  color: #fff;
+    background: #9c1258;
+    border-radius: 5px;
+    border: 1px solid #9c1258;
+    width: 4rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    font-size: 90%;
+}
+.pltd {
+  padding: 0.4rem 1.2rem;
+  font-size: 90%;
+}
+.cone {
+  text-align: center;
+  flex: 10%;
+}
+.ctwo {
+  padding-right: 1.5rem;
+  flex: 20%;
+}
+.cthree {
+  padding-right: 1.5rem;
+  flex: 10%;
+}
+.cfour {
+  padding-right: 1.5rem;
+  flex: 20%;
+}
+.cfive {
+  padding-right: 1rem;
+  flex: 10%;
+}
+.csix {
+  padding-right: 1rem;
+  flex: 15%;
+}
+.cseven {
+  padding-right: 1rem;
+  flex: 10%;
+}
+
+@media (max-width: 958px) {
+  .counheading {
+    display: none;
+  }
+  .booked {
+    padding: 2rem;
+    padding-bottom: 3rem;
+  }
+  .counlowerr {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .cone {
+    flex: 15%;
+  }
+  .ctwo {
+    flex: 30%;
+    height: 5rem;
+  }
+  .cthree {
+    flex: 25%;
+    height: 5rem;
+  }
+  .cfour {
+    flex: 30%;
+    height: 5rem;
+  }
+  .cfive {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+  }
+  .csix {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+  }
+  .cseven {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+    padding-top: 3.3rem;
+  }
+  .counstat {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .cseven {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .booked {
+    margin-right: 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .booked {
+    padding: 1rem 2rem;
+    max-width: 90%;
+    margin-left: 2%;
+  }
+  .cone {
+    flex: 20%;
+  }
+  .ctwo {
+    flex: 50%;
+  }
+  .cthree {
+    flex: 20%;
+  }
+  .cfour {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .cfive {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .csix {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .cseven {
+    flex: 50%;
+    margin-top: 1rem;
+    padding-top: 3rem;
+  }
+  .counstat {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .booked {
+    padding: 1rem;
+    max-width: 100%;
+    margin-right: 2rem;
+    margin-left: 0;
+  }
+  .cone {
+    flex: 100%;
+  }
+  .ctwo {
+    flex: 65%;
+    margin-top: 1rem;
+  }
+  .cthree {
+    flex: 35%;
+    margin-top: 1rem;
+  }
+  .cfour {
+    flex: 65%;
+  }
+  .cfive {
+    flex: 35%;
+  }
+  .csix {
+    flex: 65%;
+  }
+  .cseven {
+    flex: 35%;
+  }
+}

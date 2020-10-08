@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
-import userimg from "../../../assets/userimg.png";
+import userimg1 from "../../../assets/userimg1.png";
 import rightimg from "../../../assets/rightarrow.png";
 import leftimg from "../../../assets/leftarrow1.png";
 import Modal from "react-bootstrap/esm/Modal";
@@ -26,7 +26,7 @@ const CounsellorBookedSessions = () => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarCounsellorDashboard bookedsession={true}/>
+          <SideBarCounsellorDashboard bookedsession={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Booked Sessions" />
             <Row>
@@ -35,68 +35,111 @@ const CounsellorBookedSessions = () => {
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
                 <Row>
                   <Col md={11}>
-                    <div className="yudd1">
-                      Your next session is due tomorrow
+                    <div className="teammembr teamheading counheading">
+                      <div className="tname">
+                        <div>Name</div>
+                      </div>
+                      <div className="tarea">
+                        <div>Date</div>
+                      </div>
+                      <div className="tteam">
+                        <div>Time</div>
+                      </div>
+                      <div className="tteam">
+                        <div>Member Type</div>
+                      </div>
+                      <div className="tstatus">
+                        <div>Status</div>
+                      </div>
                     </div>
-                    {/* <div className="wrapc1">
-                      <div className="cname1">Name</div>
-                      <div className="cdate1">Date</div>
-                      <div className="ctime1">Time</div>
-                      <div className="ctime1">Member type</div>
-                      <div className="cstatus1">Status</div>
-                    </div> */}
-                    <div className="wrapc2">
-                      <div className="cname hhius">
-                        <div className="userimg22">
+                    <div className="msgs teammembr booked">
+                      <div className="fromerit summary">
+                        <div className="cone">
                           <img
-                            src={userimg}
-                            className="userimg"
-                            alt="userimg"
+                            className="user_image"
+                            src={userimg1}
+                            alt="user image"
                           />
                         </div>
-                        <div className="ssds1">
-                          <div>Jayeola Jones</div>
-                          <div className="cemail1">jaye@user.com</div>
+
+                        <div className="ctwo">
+                          <div>
+                            <div className="lowerr nulower">Name</div>
+                            <div className="userrdet1 det1">JaiyeOla jones</div>
+                            <div className="userrdet2 memb">jj@gmail.com</div>
+                          </div>
+                        </div>
+
+                        <div className="cthree">
+                          <div className="lowerr nulower">Date</div>
+                          <div>July 20</div>
+                        </div>
+
+                        <div className="cfour">
+                          <div className="lowerr nulower">Time</div>
+                          <div className="">09:30 AM - 10:00 AM</div>
+                        </div>
+
+                        <div className="cfive">
+                          <div className="lowerr nulower">Member Type</div>
+                          <div className="clarity12b">clarity</div>
+                        </div>
+
+                        <div className="csix">
+                          <div className="lowerr nulower sess counstat">Status</div>
+                          <span className="complt pltd">Completed</span>
+                        </div>
+
+                        <div className="cseven">
+                          <div className="counview">View</div>
                         </div>
                       </div>
-                      <div className="cdate">July 20</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cdate">
-                        <div className="clarity12b">Clarity</div>
-                      </div>
-                      <div className="cstatus2">
-                        <span className="cstatus">Completed</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn ssoso">View</div>
-                      </div>
                     </div>
-                    <div className="wrapc2">
-                      <div className="cname hhius">
-                        <div className="userimg22">
+
+                    <div className="msgs teammembr booked">
+                      <div className="fromerit summary">
+                        <div className="cone">
                           <img
-                            src={userimg}
-                            className="userimg"
-                            alt="userimg"
+                            className="user_image"
+                            src={userimg1}
+                            alt="user image"
                           />
                         </div>
-                        <div className="ssds1">
-                          <div>Jayeola Jones</div>
-                          <div className="cemail1">jaye@user.com</div>
+
+                        <div className="ctwo">
+                          <div>
+                            <div className="lowerr nulower counlowerr">Name</div>
+                            <div className="userrdet1 det1">JaiyeOla jones</div>
+                            <div className="userrdet2 memb">jj@gmail.com</div>
+                          </div>
+                        </div>
+
+                        <div className="cthree">
+                          <div className="lowerr nulower counlowerr">Date</div>
+                          <div>July 20</div>
+                        </div>
+
+                        <div className="cfour">
+                          <div className="lowerr nulower counlowerr">Time</div>
+                          <div className="">09:30 AM - 10:00 AM</div>
+                        </div>
+
+                        <div className="cfive">
+                          <div className="lowerr nulower counlowerr">Member Type</div>
+                          <div className="clarity12b">clarity</div>
+                        </div>
+
+                        <div className="csix">
+                          <div className="lowerr nulower sess counstat counlowerr">Status</div>
+                          <span className="pend pltd">Pending</span>
+                        </div>
+
+                        <div className="cseven">
+                          <div className="counview">View</div>
                         </div>
                       </div>
-                      <div className="cdate">July 20</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cdate">
-                        <div className="clarity12b">Clarity</div>
-                      </div>
-                      <div className="cstatus2">
-                        <span className="cstatus pending">Pending</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn ssoso">View</div>
-                      </div>
                     </div>
+
                     <div className="dspl">
                       <span>Dispalying 6 out of 100</span>
                       <div>
@@ -116,7 +159,7 @@ const CounsellorBookedSessions = () => {
         </Row>
       </Container>
       <Modal show={state.isOpen} centered={true}>
-          Insert text
+        Insert text
       </Modal>
     </>
   );
