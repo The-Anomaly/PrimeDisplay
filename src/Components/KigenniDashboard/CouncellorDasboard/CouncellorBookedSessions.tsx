@@ -33,24 +33,26 @@ const CounsellorBookedSessions = () => {
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
-                <Row>
+                <Row className="letss">
                   <Col md={11}>
                     <div className="teammembr teamheading counheading">
-                      <div className="tname">
+                      <div className="cone">{" "}</div>
+                      <div className="ctwo">
                         <div>Name</div>
                       </div>
-                      <div className="tarea">
+                      <div className="cthree">
                         <div>Date</div>
                       </div>
-                      <div className="tteam">
+                      <div className="cfour">
                         <div>Time</div>
                       </div>
-                      <div className="tteam">
+                      <div className="cfive">
                         <div>Member Type</div>
                       </div>
-                      <div className="tstatus">
+                      <div className="csix">
                         <div>Status</div>
                       </div>
+                      <div className="cseven">{" "}</div>
                     </div>
                     <div className="msgs teammembr booked">
                       <div className="fromerit summary">

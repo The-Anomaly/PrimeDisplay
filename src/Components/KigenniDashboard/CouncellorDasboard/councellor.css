@@ -3155,6 +3155,10 @@ textarea.form-control.jobr {
 }
 
 /*Counsellor Booked Session*/
+.counheading {
+  max-width: 100%;
+  font-size: 95%;
+}
 .booked {
   max-width: 100%
 }
@@ -3204,6 +3208,9 @@ textarea.form-control.jobr {
 }
 
 @media (max-width: 958px) {
+  .letss {
+    margin-top: 2rem;
+  }
   .counheading {
     display: none;
   }
