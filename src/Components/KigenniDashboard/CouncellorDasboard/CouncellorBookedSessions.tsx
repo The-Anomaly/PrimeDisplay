@@ -7,8 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg1 from "../../../assets/userimg1.png";
-import rightimg from "../../../assets/rightarrow.png";
-import leftimg from "../../../assets/leftarrow1.png";
+import prevpage from "../../../assets/prevpage.svg";
+import nextpage from "../../../assets/nextpage.svg";
 import Modal from "react-bootstrap/esm/Modal";
 import { useState } from "react";
 
@@ -142,17 +142,24 @@ const CounsellorBookedSessions = () => {
                       </div>
                     </div>
 
-                    <div className="dspl">
-                      <span>Dispalying 6 out of 100</span>
-                      <div>
-                        <img src={leftimg} className="leftimg" alt="leftimg" />
-                        <img
-                          src={rightimg}
-                          className="rightimg"
-                          alt="leftimg"
-                        />
-                      </div>
+                    <div className="next_page">
+                    <div>
+                      Displaying <span className="page_num">1</span>{" "}
+                      out of <span className="page_num">6</span>
                     </div>
+                    <div>
+                        <img
+                          className="page_change"
+                          src={prevpage}
+                          alt="previous page"
+                        />
+                        <img
+                          className="page_change"
+                          src={nextpage}
+                          alt="next page"
+                        />
+                    </div>
+                  </div>
                   </Col>
                 </Row>
               </Col>

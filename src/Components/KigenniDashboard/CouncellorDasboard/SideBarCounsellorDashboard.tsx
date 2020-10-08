@@ -23,6 +23,7 @@ import { Link, withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import "./councellor.css";
+import clockactive from "../../../assets/clock_active.png"
 
 const SideBarCounsellorDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
@@ -115,12 +116,12 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               Your Recommendations
             </Link>
           </div>
-          <div className={props.jobrec ? "activegb" : "gbn"}>
+          <div className={props.assignedmemb ? "activegb" : "gbn"}>
             {" "}
             <Link to="/counsellorassignedmembers">
               <img
                 src={
-                  props.jobrec
+                  props.assignedmemb
                     ? jobrecommedationactive
                     : jobrecommedationinactive
                 }
@@ -128,6 +129,21 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
                 alt="sideimage"
               />
               Assigned Members
+            </Link>
+          </div>
+          <div className={props.counmeeting ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/counsellormeetings">
+              <img
+                src={
+                  props.counmeeting
+                    ? clockactive
+                    : clockactive
+                }
+                className="sideimage"
+                alt="sideimage"
+              />
+              Scheduled Meetings
             </Link>
           </div>
           <div className="divide_thro"></div>

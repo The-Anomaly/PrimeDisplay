@@ -3338,3 +3338,56 @@ textarea.form-control.jobr {
     flex: 35%;
   }
 }
+ /*Scheduled Meeting*/
+.meethead {
+  max-width: 93%;
+}
+.sched {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+@media (max-width: 1000px) {
+  .sched {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .schbod {
+    margin-left: 8%;
+  }
+  .sched {
+    font-size: 1.5rem;
+  }
+  .schdate {
+    flex: 30%;
+    height: 4rem;
+  }
+  .schtime {
+    flex: 30%;
+    height: 4rem;
+  }
+  .schstat {
+    flex: 30%;
+    padding-top: 2rem;
+    height: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .schbod {
+    margin-left: 0;
+    max-width: 90%;
+  }
+  .schdate {
+    flex: 50%;
+  }
+  .schtime {
+    flex: 50%;
+  }
+  .schstat {
+    flex: 100%;
+    margin-left: 50%;
+  }
+}

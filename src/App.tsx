@@ -345,7 +345,7 @@ const App: React.FC = () => {
             <Route exact path="/councellordates" component={CouncellorDates} />
             <Route
               exact
-              path="/councellormeetings"
+              path="/counsellormeetings"
               component={CounsellorScheduledMeetings}
             />
           </Switch>
