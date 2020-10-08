@@ -19,12 +19,12 @@ import starrating from "../../../assets/starrating.png";
 import supportinactive from "../../../assets/Support_inactive.png";
 import overview from "../../../assets/overview.png";
 import "../../Home/Home/Home.css";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import "./councellor.css";
 
-const SideBarCounsellorDashboard =withRouter((props: any) => {
+const SideBarCounsellorDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
   const changeHideStatus = () => {
     sethidemobile(hidemobile ? false : true);
@@ -53,8 +53,7 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
           return window.location.assign("/paymentsummary");
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   const logOut = () => {
     localStorage.clear();
@@ -64,7 +63,9 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
     <>
       <Col md={2} className={hidemobile ? "siddle siddlenone" : "siddle"}>
         <div className="dlex">
-          <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
+          <Link to="/">
+            <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
+          </Link>
         </div>{" "}
         <div className={hidemobile ? "navitemnone" : "navitem1"}>
           <div className={props.ov ? "activegb" : "gbn"}>

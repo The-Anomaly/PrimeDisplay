@@ -70,6 +70,8 @@ import CounsellorRecommendation2 from "./Components/KigenniDashboard/CouncellorD
 import CounsellorAssignedMembers from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorAssignedMembers";
 import CounsellorSupport from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorSupport";
 import CounsellorSettings from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorSettings";
+import CounsellorMessageOneUser from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorMessagesOneUser";
+import CouncellorRecommendationsToAll from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorRecommendationsToAll";
 
 const App: React.FC = () => {
   return (
@@ -198,7 +200,7 @@ const App: React.FC = () => {
               path="/councellorfee"
               component={() => <Redirect to="/counsellorfee" />}
             />
-             <Route
+            <Route
               exact
               path="/counsellorfee"
               component={NewDashboardCounsellorSubscription}
@@ -281,6 +283,11 @@ const App: React.FC = () => {
             />
             <Route
               exact
+              path="/counsellorrecommendations3"
+              component={CouncellorRecommendationsToAll}
+            />
+            <Route
+              exact
               path="/counsellorsettings"
               component={CounsellorSettings}
             />
@@ -304,6 +311,11 @@ const App: React.FC = () => {
             />
             <Route
               exact
+              path="/counsellormessagehistory"
+              component={CounsellorMessageOneUser}
+            />
+            <Route
+              exact
               path="/employers/result"
               component={ThirdPartyEmployersResult}
             />
@@ -324,34 +336,18 @@ const App: React.FC = () => {
               path="/fullinsight"
               component={NewDashboardFullInsight}
             />
-            <Route
-              exact
-              path="/cvdashboard"
-              component={ProfileBuilder}
-            />
-            <Route
-              exact
-              path="/todolist"
-              component={TodoList}
-            />
-            <Route
-              exact
-              path="/viewmore"
-              component={ViewMoreModal}
-            />
-            <Route
-              exact
-              path="/completetask"
-              component={CompleteTaskModal}
-            />
-            <Route
-              exact
-              path="/createtask"
-              component={CreateTaskModal}
-            />
+            <Route exact path="/cvdashboard" component={ProfileBuilder} />
+            <Route exact path="/todolist" component={TodoList} />
+            <Route exact path="/viewmore" component={ViewMoreModal} />
+            <Route exact path="/completetask" component={CompleteTaskModal} />
+            <Route exact path="/createtask" component={CreateTaskModal} />
             <Route exact path="/meetings" component={CouncellorBookings} />
             <Route exact path="/councellordates" component={CouncellorDates} />
-            <Route exact path="/councellormeetings" component={CounsellorScheduledMeetings} />
+            <Route
+              exact
+              path="/councellormeetings"
+              component={CounsellorScheduledMeetings}
+            />
           </Switch>
         </BrowserRouter>
       </div>

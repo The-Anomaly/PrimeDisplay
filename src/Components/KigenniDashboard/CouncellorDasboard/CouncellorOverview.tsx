@@ -22,7 +22,7 @@ const CounsellorOverview = () => {
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader rating={true} welcomeText="Find below an overview of all activities with clarity" />
                 <Row>
-                  <Col md={11}>
+                  <Col md={12}>
                     <div className="wwrap">
                       <div className="fourinfo">
                         <div className="firstoffour second221">

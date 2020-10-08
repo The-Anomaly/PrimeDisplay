@@ -168,9 +168,13 @@
   .flexa {
     width: 94%;
   }
-  .wrapc222{
+  .wrapc222 {
     width: 97%;
   }
+  .dspl,.ui1222 {
+    width: 97%;
+  }
+  
 }
 .csfitscore1 {
   font-weight: bold;
@@ -1867,6 +1871,9 @@ textarea.form-control.jobr {
   width: 97%;
   margin-left: 1rem;
 }
+.sendtcont:focus {
+  border: 1px solid #ced4da !important;
+}
 .sendmeess {
   background: #9c1258;
   color: #fff;
@@ -3142,4 +3149,7 @@ textarea.form-control.jobr {
   border: 1px solid #3751ff;
   box-sizing: border-box;
   border-radius: 8px;
+}
+.kislsoo {
+  padding-left: 0.1rem !important;
 }

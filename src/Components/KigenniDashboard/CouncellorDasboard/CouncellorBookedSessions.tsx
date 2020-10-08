@@ -34,7 +34,7 @@ const CounsellorBookedSessions = () => {
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
                 <Row>
-                  <Col md={11}>
+                  <Col md={12}>
                     <div className="yudd1">
                       Your next session is due tomorrow
                     </div>
@@ -45,7 +45,7 @@ const CounsellorBookedSessions = () => {
                       <div className="ctime1">Member type</div>
                       <div className="cstatus1">Status</div>
                     </div> */}
-                    <div className="wrapc2">
+                    <div className="wrapc2 wrapc222">
                       <div className="cname hhius">
                         <div className="userimg22">
                           <img
@@ -71,7 +71,7 @@ const CounsellorBookedSessions = () => {
                         <div className="savebtn ssoso">View</div>
                       </div>
                     </div>
-                    <div className="wrapc2">
+                    <div className="wrapc2 wrapc222">
                       <div className="cname hhius">
                         <div className="userimg22">
                           <img
