@@ -6,9 +6,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
-import userimg from "../../../assets/userimg.png";
-import rightimg from "../../../assets/rightarrow.png";
-import leftimg from "../../../assets/leftarrow1.png";
+import userimg1 from "../../../assets/userimg1.png";
+import prevpage from "../../../assets/prevpage.svg";
+import nextpage from "../../../assets/nextpage.svg";
 import Modal from "react-bootstrap/esm/Modal";
 import { useState } from "react";
 
@@ -23,82 +23,173 @@ const CounsellorAssignedMembers = () => {
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
-                <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
+                <DashboardCounsellorIntroHeader welcomeText="List of all the members assigned to you" />
                 <Row>
-                  <Col md={11}>
-                    <div className="yudd1">
-                      Your next session is due tomorrow
+                  <Col md={12}>
+                    <div className="teammembr teamheading counheading mheadd">
+                      <div className="mone"> </div>
+                      <div className="mtwo">
+                        <div>Name</div>
+                      </div>
+                      <div className="mthree">
+                        <div>Personality Type</div>
+                      </div>
+                      <div className="mfour">
+                        <div>Availability</div>
+                      </div>
+                      <div className="mfive">
+                        <div>Status</div>
+                      </div>
+                      <div className="msix"> </div>
                     </div>
-                    {/* <div className="wrapc1">
-                      <div className="cname1">Name</div>
-                      <div className="cdate1">Date</div>
-                      <div className="ctime1">Time</div>
-                      <div className="ctime1">Member type</div>
-                      <div className="cstatus1">Status</div>
-                    </div> */}
-                    <div className="wrapc2">
-                      <div className="cname hhius">
-                        <div className="userimg22">
+                  <div className="msgs teammembr booked bookedover signed">
+                      <div className="fromerit summary">
+                        <div className="mone">
                           <img
-                            src={userimg}
-                            className="userimg"
-                            alt="userimg"
+                            className="user_image"
+                            src={userimg1}
+                            alt="user image"
                           />
                         </div>
-                        <div className="ssds1">
-                          <div>Jayeola Jones</div>
-                          <div className="cemail1">jaye@user.com</div>
+
+                        <div className="mtwo">
+                          <div>
+                            <div className="lowerr nulower counlowerr mhead">
+                              Name
+                            </div>
+                            <div className="userrdet1 det1">JaiyeOla jones</div>
+                            <div className="userrdet2 memb">jj@gmail.com</div>
+                          </div>
+                        </div>
+
+                        <div className="mthree">
+                          <div className="lowerr nulower counlowerr mhead">Personality Type</div>
+                          <div>Intellectual Researcher</div>
+                        </div>
+
+                        <div className="mfour">
+                          <div className="lowerr nulower counlowerr mhead">Availability</div>
+                          <div className="notavail">Not Available</div>
+                        </div>
+                        <div className="mfive">
+                          <div className="lowerr nulower sess counstat counlowerr mhead">
+                            Status
+                          </div>
+                          <span className="complt pltd">Completed</span>
+                        </div>
+                        
+                        <div className="msix">
+                          <div className="counview mbtn">View Result</div>
                         </div>
                       </div>
-                      <div className="cdate">July 20</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cdate">
-                        <div className="clarity12b">Clarity</div>
-                      </div>
-                      <div className="cstatus2">
-                        <span className="cstatus">Completed</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn ssoso">View</div>
-                      </div>
                     </div>
-                    <div className="wrapc2">
-                      <div className="cname hhius">
-                        <div className="userimg22">
+
+                    <div className="msgs teammembr booked bookedover signed">
+                      <div className="fromerit summary">
+                        <div className="mone">
                           <img
-                            src={userimg}
-                            className="userimg"
-                            alt="userimg"
+                            className="user_image"
+                            src={userimg1}
+                            alt="user image"
                           />
                         </div>
-                        <div className="ssds1">
-                          <div>Jayeola Jones</div>
-                          <div className="cemail1">jaye@user.com</div>
+
+                        <div className="mtwo">
+                          <div>
+                            <div className="lowerr nulower counlowerr mhead">
+                              Name
+                            </div>
+                            <div className="userrdet1 det1">JaiyeOla jones</div>
+                            <div className="userrdet2 memb">jj@gmail.com</div>
+                          </div>
+                        </div>
+
+                        <div className="mthree">
+                          <div className="lowerr nulower counlowerr mhead">Personality Type</div>
+                          <div>Intellectual Researcher</div>
+                        </div>
+
+                        <div className="mfour">
+                          <div className="lowerr nulower counlowerr mhead">Availability</div>
+                          <div className="avail">Available</div>
+                        </div>
+
+                        <div className="mfive">
+                          <div className="lowerr nulower sess counstat counlowerr mhead">
+                            Status
+                          </div>
+                          <span className="complt pltd">Completed</span>
+                        </div>
+
+                        <div className="msix">
+                          <div className="counview mbtn">View Result</div>
                         </div>
                       </div>
-                      <div className="cdate">July 20</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cdate">
-                        <div className="clarity12b">Clarity</div>
-                      </div>
-                      <div className="cstatus2">
-                        <span className="cstatus pending">Pending</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn ssoso">View</div>
+                    </div>
+
+                    <div className="msgs teammembr booked bookedover signed">
+                      <div className="fromerit summary">
+                        <div className="mone">
+                          <img
+                            className="user_image"
+                            src={userimg1}
+                            alt="user image"
+                          />
+                        </div>
+
+                        <div className="mtwo">
+                          <div>
+                            <div className="lowerr nulower counlowerr mhead">
+                              Name
+                            </div>
+                            <div className="userrdet1 det1">JaiyeOla jones</div>
+                            <div className="userrdet2 memb">jj@gmail.com</div>
+                          </div>
+                        </div>
+
+                        <div className="mthree">
+                          <div className="lowerr nulower counlowerr mhead">Personality Type</div>
+                          <div>--/--</div>
+                        </div>
+
+                        <div className="mfour">
+                          <div className="lowerr nulower counlowerr mhead">Availability</div>
+                          <div className="">--/--</div>
+                        </div>
+
+                        <div className="mfive">
+                          <div className="lowerr nulower sess counstat counlowerr mhead">
+                            Status
+                          </div>
+                          <span className="pend pltd">Pending</span>
+                        </div>
+
+                        <div className="msix">
+                          <div className="counview mbtn mbtnblu">Send Message</div>
+                        </div>
                       </div>
                     </div>
-                    <div className="dspl">
-                      <span>Dispalying 6 out of 100</span>
+
+                    <div className="next_page">
                       <div>
-                        <img src={leftimg} className="leftimg" alt="leftimg" />
+                        Displaying <span className="page_num">1</span> out of{" "}
+                        <span className="page_num">6</span>
+                      </div>
+                      <div>
                         <img
-                          src={rightimg}
-                          className="rightimg"
-                          alt="leftimg"
+                          className="page_change"
+                          src={prevpage}
+                          alt="previous page"
+                        />
+                        <img
+                          className="page_change"
+                          src={nextpage}
+                          alt="next page"
                         />
                       </div>
                     </div>
+                    
+                    
                   </Col>
                 </Row>
               </Col>

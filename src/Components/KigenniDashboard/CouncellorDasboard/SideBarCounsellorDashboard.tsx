@@ -24,6 +24,8 @@ import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import "./councellor.css";
 import clockactive from "../../../assets/clock_active.png"
+import clockinactive from "../../../assets/clock_inactive.png"
+import referralinactive from "../../../assets/referral_inactive.png"
 
 const SideBarCounsellorDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
@@ -138,12 +140,27 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
                 src={
                   props.counmeeting
                     ? clockactive
-                    : clockactive
+                    : clockinactive
                 }
                 className="sideimage"
                 alt="sideimage"
               />
               Scheduled Meetings
+            </Link>
+          </div>
+          <div className={props.counreferral ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/counsellormeetings">
+              <img
+                src={
+                  props.counreferral
+                    ? referralinactive
+                    : referralinactive
+                }
+                className="sideimage"
+                alt="sideimage"
+              />
+              Referrals
             </Link>
           </div>
           <div className="divide_thro"></div>

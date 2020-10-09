@@ -34,9 +34,9 @@ const CounsellorBookedSessions = () => {
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
                 <Row className="letss">
-                  <Col md={11}>
+                  <Col md={12}>
                     <div className="teammembr teamheading counheading">
-                      <div className="cone">{" "}</div>
+                      <div className="cone"> </div>
                       <div className="ctwo">
                         <div>Name</div>
                       </div>
@@ -52,9 +52,9 @@ const CounsellorBookedSessions = () => {
                       <div className="csix">
                         <div>Status</div>
                       </div>
-                      <div className="cseven">{" "}</div>
+                      <div className="cseven"> </div>
                     </div>
-                    <div className="msgs teammembr booked">
+                    <div className="msgs teammembr booked bookedover">
                       <div className="fromerit summary">
                         <div className="cone">
                           <img
@@ -66,7 +66,9 @@ const CounsellorBookedSessions = () => {
 
                         <div className="ctwo">
                           <div>
-                            <div className="lowerr nulower counlowerr">Name</div>
+                            <div className="lowerr nulower counlowerr">
+                              Name
+                            </div>
                             <div className="userrdet1 det1">JaiyeOla jones</div>
                             <div className="userrdet2 memb">jj@gmail.com</div>
                           </div>
@@ -83,12 +85,16 @@ const CounsellorBookedSessions = () => {
                         </div>
 
                         <div className="cfive">
-                          <div className="lowerr nulower counlowerr">Member Type</div>
+                          <div className="lowerr nulower counlowerr">
+                            Member Type
+                          </div>
                           <div className="clarity12b">clarity</div>
                         </div>
 
                         <div className="csix">
-                          <div className="lowerr nulower sess counstat counlowerr">Status</div>
+                          <div className="lowerr nulower sess counstat counlowerr">
+                            Status
+                          </div>
                           <span className="complt pltd">Completed</span>
                         </div>
 
@@ -98,7 +104,7 @@ const CounsellorBookedSessions = () => {
                       </div>
                     </div>
 
-                    <div className="msgs teammembr booked">
+                    <div className="msgs teammembr booked bookedover">
                       <div className="fromerit summary">
                         <div className="cone">
                           <img
@@ -110,7 +116,9 @@ const CounsellorBookedSessions = () => {
 
                         <div className="ctwo">
                           <div>
-                            <div className="lowerr nulower counlowerr">Name</div>
+                            <div className="lowerr nulower counlowerr">
+                              Name
+                            </div>
                             <div className="userrdet1 det1">JaiyeOla jones</div>
                             <div className="userrdet2 memb">jj@gmail.com</div>
                           </div>
@@ -127,12 +135,16 @@ const CounsellorBookedSessions = () => {
                         </div>
 
                         <div className="cfive">
-                          <div className="lowerr nulower counlowerr">Member Type</div>
+                          <div className="lowerr nulower counlowerr">
+                            Member Type
+                          </div>
                           <div className="clarity12b">clarity</div>
                         </div>
 
                         <div className="csix">
-                          <div className="lowerr nulower sess counstat counlowerr">Status</div>
+                          <div className="lowerr nulower sess counstat counlowerr">
+                            Status
+                          </div>
                           <span className="pend pltd">Pending</span>
                         </div>
 
@@ -143,11 +155,11 @@ const CounsellorBookedSessions = () => {
                     </div>
 
                     <div className="next_page">
-                    <div>
-                      Displaying <span className="page_num">1</span>{" "}
-                      out of <span className="page_num">6</span>
-                    </div>
-                    <div>
+                      <div>
+                        Displaying <span className="page_num">1</span> out of{" "}
+                        <span className="page_num">6</span>
+                      </div>
+                      <div>
                         <img
                           className="page_change"
                           src={prevpage}
@@ -158,8 +170,8 @@ const CounsellorBookedSessions = () => {
                           src={nextpage}
                           alt="next page"
                         />
+                      </div>
                     </div>
-                  </div>
                   </Col>
                 </Row>
               </Col>

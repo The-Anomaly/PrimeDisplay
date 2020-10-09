@@ -3156,7 +3156,7 @@ textarea.form-control.jobr {
 
 /*Counsellor Booked Session*/
 .counheading {
-  max-width: 100%;
+  max-width: 97%;
   font-size: 95%;
 }
 .booked {
@@ -3207,7 +3207,7 @@ textarea.form-control.jobr {
   flex: 10%;
 }
 
-@media (max-width: 958px) {
+@media (max-width: 905px) {
   .letss {
     margin-top: 2rem;
   }
@@ -3270,7 +3270,7 @@ textarea.form-control.jobr {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 613px) {
   .booked {
     padding: 1rem 2rem;
     max-width: 90%;
@@ -3389,5 +3389,140 @@ textarea.form-control.jobr {
   .schstat {
     flex: 100%;
     margin-left: 50%;
+  }
+}
+
+.bookedover {
+  max-width: 97%;
+}
+.viewbook {
+  float: right;
+  margin-right: 3%;
+}
+.viewbook:hover {
+  font-size: 15px;
+  color: #3965ff;
+}
+
+/*Assigned Members*/
+.avail {
+  color: #1BB978;
+}
+.notavail {
+  color: #FF0000;
+}
+.mbtn {
+  width: 7.5rem;
+  padding: 0.6rem 1rem;
+}
+.mbtnblu {
+  background: #3965FF;
+  border: 1px solid #3965FF;
+}
+.mone {
+  flex: 10%;
+  text-align: center;
+}
+.mtwo {
+  flex: 20%;
+  padding-right: 1.5rem;
+}
+.mthree {
+  flex: 20%;
+  padding-right: 1.5rem;
+}
+.mfour {
+  flex: 15%;
+  padding-right: 1.5rem;
+}
+.mfive {
+  flex: 15%;
+  padding-right: 1.5rem;
+}
+.msix {
+  flex: 12%
+}
+
+@media(max-width: 950px) {
+  .mhead {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .mheadd {
+    display: none;
+  }
+  .signed {
+    padding: 2rem;
+  }
+  .mone{
+    height: 5rem;
+    flex: 30%;
+  }
+  .mtwo{
+    height: 5rem;
+    flex: 30%;
+  }
+  .mthree{
+    height: 5rem;
+    flex: 30%;
+  }
+  .mfour{
+    height: 5rem;
+    flex: 30%;
+    margin-top: 2rem;
+  }
+  .mfive{
+    height: 5rem;
+    flex: 30%;
+    margin-top: 2rem;
+  }
+  .msix{
+    height: 5rem;
+    flex: 30%;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .signed {
+    padding: 1rem;
+  }
+  .mone{
+    flex: 40%;
+  }
+  .mtwo{
+    flex: 60%;
+  }
+  .mthree{
+    flex: 50%;
+    margin-top: 2rem;
+  }
+  .mfour{
+    flex: 50%;
+  }
+  .mfive{
+    flex: 50%;
+  }
+  .msix{
+    flex: 50%;
+    padding-top: 2rem;
+  }
+}
+
+@media(max-width: 400px) {
+  .mbtn {
+    padding: 0.5rem 1rem;
+  }
+  .signed {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 342px) {
+  .msix {
+    flex: 100%;
+    padding-top: 0;
+    margin-top: 1rem;
   }
 }
