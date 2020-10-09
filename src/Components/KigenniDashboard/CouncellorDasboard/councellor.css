@@ -171,10 +171,10 @@
   .wrapc222 {
     width: 97%;
   }
-  .dspl,.ui1222 {
+  .dspl,
+  .ui1222 {
     width: 97%;
   }
-  
 }
 .csfitscore1 {
   font-weight: bold;
@@ -3152,4 +3152,17 @@ textarea.form-control.jobr {
 }
 .kislsoo {
   padding-left: 0.1rem !important;
+}
+.nocounmessage{
+  width: 25%;
+  min-width: 250px;
+  max-width: 500px;
+}
+.nomesgcoun{
+  text-align: center;
+  margin: auto;
+  padding-bottom: 1rem;
+}
+.kil123{
+  padding-top: 1rem;
 }

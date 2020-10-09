@@ -18,7 +18,7 @@ const CounsellorSupport = () => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarCounsellorDashboard bookedsession={true} />
+          <SideBarCounsellorDashboard support={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Support" />
             <Row>

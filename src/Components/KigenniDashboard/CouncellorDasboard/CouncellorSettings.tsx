@@ -18,10 +18,10 @@ const CounsellorSettings = () => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarCounsellorDashboard bookedsession={true} />
+          <SideBarCounsellorDashboard settings={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Settings" />
-            <Row>
+            <Row className="wrapc222">
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Please update your profile" />
