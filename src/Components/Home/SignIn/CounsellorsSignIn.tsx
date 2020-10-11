@@ -299,7 +299,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
               </div>
               <div className="alreadyhave">
                 Don't have an account?
-                <Link to="/signup">
+                <Link to="/counsellor/signup">
                   <span className="logn"> Sign Up</span>
                 </Link>
               </div>

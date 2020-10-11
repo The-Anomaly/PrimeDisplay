@@ -30,7 +30,7 @@ const AssessmentSecondPhase = (props: any) => {
     question13: "1",
     token: "",
   });
-  const { question9, question10, question13,token } = state;
+  const { question9, question10, question13, token } = state;
 
   //cdm
   React.useEffect((): any => {
@@ -52,7 +52,6 @@ const AssessmentSecondPhase = (props: any) => {
 
   //subform
   const submitForm = (e: any) => {
-    
     e.preventDefault();
     const data = {
       q9: question9,
@@ -280,8 +279,8 @@ const AssessmentSecondPhase = (props: any) => {
                 </div>
               </Col>
             </Row>
-           <Row className="firstrowcf2 cftcontent">
-               {/* <Col md={12}>
+            <Row className="firstrowcf2 cftcontent">
+              <Col md={12}>
                 <div className="firstquestion">
                   c. When your day ends how do you feel?
                 </div>
@@ -328,7 +327,9 @@ const AssessmentSecondPhase = (props: any) => {
                     Like you still have a lot to achieve
                   </label>
                 </div>
-              </Col> */}
+              </Col>
+            </Row>
+            <Row className="firstrowcf2 cftcontent">
               <ToastContainer
                 enableMultiContainer
                 containerId={"B"}
@@ -343,7 +344,7 @@ const AssessmentSecondPhase = (props: any) => {
                   </button>
                 </div>
               </Row>
-            </Row> 
+            </Row>
           </Col>
         </Row>
         <Footer />

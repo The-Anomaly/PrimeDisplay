@@ -47,7 +47,6 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
     email,
     password,
     confirmPassword,
-    whereDidYouLearnAboutUs,
     errorMessage,
     successMsg,
     isLoading,
@@ -59,21 +58,25 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
       first_name: firstname,
       last_name: lastname,
       email,
-      info: whereDidYouLearnAboutUs,
+      info:"Referral",
       password,
       password2: confirmPassword,
     };
     axios
-      .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
+      .post(`${API}/accounts/counsellor-signup`, data)
       .then((response) => {
-        if (response.status === 200) {
-          return setFormState({
-            ...state,
-            successMsg: response.data[0].message,
-            isLoading: false,
-          });
-          setTimeout(props.history.push("/signin"), 5000);
-        }
+        setFormState({
+          ...state,
+          successMsg: response.data[0].message,
+          isLoading: false,
+        });
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(response?.data[0]?.token)
+        );
+        setTimeout(() => {
+          props.history.push("/counselloroverview");
+        }, 2000);
       })
       .catch((error) => {
         if (error && error.response && error.response.data) {
@@ -90,7 +93,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
         });
       });
   };
-  const validateForm = (e) => {
+  const validateForm = (e) => { 
     e.preventDefault();
     if (firstname == "") {
       return setFormState({
@@ -109,13 +112,6 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
       return setFormState({
         ...state,
         errorMessage: "Please enter your email",
-      });
-    }
-
-    if (whereDidYouLearnAboutUs == "") {
-      return setFormState({
-        ...state,
-        errorMessage: "Please empty field",
       });
     }
 
@@ -252,7 +248,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
           </Col>
           <Col md={5}>
             <div className="signwa">Sign up</div>
-            <div className="signwa1 signtxti">Become a Clarity Consellor</div>
+            <div className="signwa1">Become a Clarity Counsellor</div>
             <div className="signtxt2">Enter Details</div>
             {successMsg && (
               <Alert key={1} variant="info">
@@ -324,7 +320,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
               </Button>
               <div className="alreadyhave">
                 Already have an account?
-                <Link to="/signin">
+                <Link to="/counsellor/signin">
                   <span className="logn"> Login</span>
                 </Link>
               </div>

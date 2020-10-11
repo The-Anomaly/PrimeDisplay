@@ -54,7 +54,7 @@ const CounsellorBookedSessions = () => {
                       </div>
                       <div className="cseven"> </div>
                     </div>
-                    <div className="msgs teammembr booked">
+                    <div className="msgs teammembr booked bookedover">
                       <div className="fromerit summary">
                         <div className="cone">
                           <img
@@ -104,7 +104,7 @@ const CounsellorBookedSessions = () => {
                       </div>
                     </div>
 
-                    <div className="msgs teammembr booked">
+                    <div className="msgs teammembr booked bookedover">
                       <div className="fromerit summary">
                         <div className="cone">
                           <img
