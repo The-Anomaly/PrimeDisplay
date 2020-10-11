@@ -2365,9 +2365,38 @@ textarea.form-control.jobr {
 .viewall {
   text-align: right;
   color: #3965ff;
+  width: 97%;
+  margin-bottom: 37px;
   font-size: 14px;
-  padding-top: 0.5rem;
+  padding: 13px 0px 13px 0px;
   cursor: pointer;
+  border-bottom: 1px solid #e5e5e5;
+}
+.view-box{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0px;
+
+}
+.box-1{
+  background-color: #c4c4c4;
+  height: 340px;
+  width: 94%;
+  border-radius: 3px;
+}
+.box-2{
+  background-color: #c4c4c4;
+  height: 340px;
+  width: 94%;
+  border-radius: 3px;
+}
+@media (max-width: 700px){
+  .view-box{
+    display: block;
+  }
+  .box-1{
+    margin-bottom: 17px;
+  }
 }
 .firstoffour {
   background: rgb(178, 227, 255);
@@ -3142,4 +3171,16 @@ textarea.form-control.jobr {
   border: 1px solid #3751ff;
   box-sizing: border-box;
   border-radius: 8px;
+}
+.bookingszmodal .modal-dialog{
+  width: 86%;
+  margin: auto;
+}
+@media (max-width: 600px){
+  .bookingszmodal{
+    width: 100;
+}
+.text-decription{
+  padding: 10px 1rem;
+}
 }

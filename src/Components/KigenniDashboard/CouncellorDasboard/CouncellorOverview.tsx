@@ -7,12 +7,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
+import CounsellorDashboardMobileNav from './CounsellorsDashboardNavBar';
 import "./councellor.css";
 
 const CounsellorOverview = () => {
   return (
     <>
       <Container fluid={true} className="contann122">
+        <CounsellorDashboardMobileNav ov={true}/>
         <Row>
           <SideBarCounsellorDashboard ov={true} />
           <Col md={10} sm={12} className="prm">
@@ -22,7 +24,7 @@ const CounsellorOverview = () => {
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader rating={true} welcomeText="Find below an overview of all activities with clarity" />
                 <Row>
-                  <Col md={11}>
+                  <Col md={12}>
                     <div className="wwrap">
                       <div className="fourinfo">
                         <div className="firstoffour second221">
@@ -94,7 +96,16 @@ const CounsellorOverview = () => {
                     </div>
                     <div className="viewall">View all Booked Session</div>
                   </Col>
+                
                 </Row>
+                <section className="view-box">
+                   <div className="box-1">
+
+                   </div>
+                   <div className="box-2">
+ 
+                   </div>
+                </section>
               </Col>
             </Row>
           </Col>
