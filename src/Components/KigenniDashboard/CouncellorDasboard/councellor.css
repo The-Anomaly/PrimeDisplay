@@ -3444,6 +3444,9 @@ textarea.form-control.jobr {
 }
 
 @media(max-width: 950px) {
+  .signedfjss {
+    margin-top: 1.5rem;
+  }
   .mhead {
     display: block;
     margin-bottom: 1rem;
@@ -3524,5 +3527,45 @@ textarea.form-control.jobr {
     flex: 100%;
     padding-top: 0;
     margin-top: 1rem;
+  }
+}
+
+/*Counselor All Messages*/
+.ssgs {
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.msg1 {
+  flex: 10%;
+  padding-right: 1.5rem;
+}
+.msg2 {
+  flex: 80%;
+  padding-right: 1.5rem;
+}
+.msg3 {
+  flex: 10%;
+}
+
+@media (max-width: 770px) {
+  .ssgs {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .sasag {
+    padding: 0;
+  }
+  .msg1, .msg2 {
+    padding-right: 0.5rem;
+  }
+  .imguserrr {
+    width: 35px;
+    height: 35px;
+  }
+  .nufont {
+    font-size: 13px;
   }
 }

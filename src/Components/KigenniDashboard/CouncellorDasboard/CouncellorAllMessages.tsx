@@ -24,17 +24,17 @@ const CounsellorAllMessages = () => {
                   welcomeText="Summary of all messages to and from members assigned to you"
                 />
                 <Row>
-                  <Col md={12} className="mssaag">
-                    <div className="useri1222 ui1222 ">
-                      <div className="sjsso">
-                        <img src={userimg} className="userimg" alt="jayeolajones" />
+                  <Col md={12} className="mssaag sasag">
+                    <div className="useri1222 ui1222 ssgs">
+                      <div className="msg1">
+                        <img src={userimg} className="userimg imguserrr" alt="jayeolajones" />
                       </div>
-                      <div className="sjsso1">
+                      <div className="msg2">
                         <div>
                           <span className="username11">Jayeola Jones</span>
                           <span className="useremail11">jaye@user.com</span>
                         </div>
-                        <div className="messagedetails">
+                        <div className="messagedetails nufont">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Id mi, mattis at ipsum ullamcorper blandit
                           pharetra. Est elit, morbi elementum faucibus nec morbi
@@ -43,7 +43,7 @@ const CounsellorAllMessages = () => {
                           nulla nulla pretium id.
                         </div>
                       </div>
-                      <div className="tymeline sjsso2">6 days Ago</div>
+                      <div className="tymeline msg3 nufont">6 days Ago</div>
                     </div>
                   </Col>
                 </Row>
