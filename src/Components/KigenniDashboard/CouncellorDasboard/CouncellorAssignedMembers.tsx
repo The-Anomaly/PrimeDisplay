@@ -17,7 +17,7 @@ const CounsellorAssignedMembers = () => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarCounsellorDashboard bookedsession={true}/>
+          <SideBarCounsellorDashboard assignedmemb={true}/>
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Assigned Members List" />
             <Row>
@@ -25,7 +25,7 @@ const CounsellorAssignedMembers = () => {
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
                 <Row>
-                  <Col md={11}>
+                  <Col md={12}>
                     <div className="yudd1">
                       Your next session is due tomorrow
                     </div>
@@ -36,7 +36,7 @@ const CounsellorAssignedMembers = () => {
                       <div className="ctime1">Member type</div>
                       <div className="cstatus1">Status</div>
                     </div> */}
-                    <div className="wrapc2">
+                    <div className="wrapc2 wrapc222">
                       <div className="cname hhius">
                         <div className="userimg22">
                           <img
@@ -62,7 +62,7 @@ const CounsellorAssignedMembers = () => {
                         <div className="savebtn ssoso">View</div>
                       </div>
                     </div>
-                    <div className="wrapc2">
+                    <div className="wrapc2 wrapc222">
                       <div className="cname hhius">
                         <div className="userimg22">
                           <img

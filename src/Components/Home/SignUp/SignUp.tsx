@@ -27,7 +27,9 @@ interface State {
   whereDidYouLearnAboutUs: string;
   errorMessage: string;
   successMsg: boolean;
+  error: boolean;
   isLoading: boolean;
+  isloading: boolean;
 }
 const SignUp: React.FunctionComponent = (props: any) => {
   const [state, setFormState] = React.useState<State>({
@@ -39,7 +41,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
     whereDidYouLearnAboutUs: "",
     errorMessage: "",
     successMsg: false,
+    error: false,
     isLoading: false,
+    isloading: false,
   });
   const {
     firstname,
@@ -134,6 +138,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
       ...state,
       whereDidYouLearnAboutUs: e.target.value,
       errorMessage: "",
+      error: false,
       successMsg: false,
     });
   };
@@ -142,6 +147,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
       ...state,
       [e.target.name]: e.target.value,
       errorMessage: "",
+      error: false,
       successMsg: false,
     });
   };
@@ -166,7 +172,39 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .catch((error) => {
         setFormState({
           ...state,
-          errorMessage: "failed to login",
+          errorMessage: "Failed to Sign Up",
+        });
+      });
+  };
+  const ResendSignUpEmail = () => {
+    setFormState({
+      ...state,
+      isloading: true,
+    });
+    const data = {
+      email,
+    };
+    axios
+      .post(`${API}/accounts/socialauth/`, data)
+      .then((response) => {
+        if (response.status == 200) {
+          return setFormState({
+            ...state,
+            successMsg: response.data[0].message,
+            isLoading: false,
+            isloading: false,
+            error:false,
+            errorMessage:""
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+        setFormState({
+          ...state,
+          errorMessage: "Failed to Sign Up",
+          isloading: false,
+          error: false,
         });
       });
   };
@@ -185,7 +223,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
   const errorGoogle = (response) => {
     setFormState({
       ...state,
-      errorMessage: "failed to login",
+      errorMessage: "Failed to Sign Up",
     });
   };
   const getCurrentAssessmentPosition = (token: string): void => {
@@ -345,6 +383,15 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </option>
                 </Form.Control>
               </Form.Group>
+              {state.error && (
+                <div className="resend22">
+                  Did not receive the email?{" "}
+                  <a onClick={ResendSignUpEmail} className="resend">
+                    {" "}
+                    {state.isloading ? "processing" : "resend"}
+                  </a>
+                </div>
+              )}
               <Button variant="primary" className="subbtn" type="submit">
                 {!isLoading ? "Sign Up" : "Signing Up"}
               </Button>

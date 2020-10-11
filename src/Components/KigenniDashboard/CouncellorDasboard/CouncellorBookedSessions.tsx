@@ -6,9 +6,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
-import userimg from "../../../assets/userimg.png";
-import rightimg from "../../../assets/rightarrow.png";
-import leftimg from "../../../assets/leftarrow1.png";
+import userimg1 from "../../../assets/userimg1.png";
+import prevpage from "../../../assets/prevpage.svg";
+import nextpage from "../../../assets/nextpage.svg";
 import Modal from "react-bootstrap/esm/Modal";
 import { useState } from "react";
 
@@ -26,85 +26,149 @@ const CounsellorBookedSessions = () => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarCounsellorDashboard bookedsession={true}/>
+          <SideBarCounsellorDashboard bookedsession={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Booked Sessions" />
-            <Row>
+            <Row className="wrapc222">
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
-                <Row>
+                <Row className="letss">
                   <Col md={12}>
-                    <div className="yudd1">
-                      Your next session is due tomorrow
+                    <div className="teammembr teamheading counheading">
+                      <div className="cone"> </div>
+                      <div className="ctwo">
+                        <div>Name</div>
+                      </div>
+                      <div className="cthree">
+                        <div>Date</div>
+                      </div>
+                      <div className="cfour">
+                        <div>Time</div>
+                      </div>
+                      <div className="cfive">
+                        <div>Member Type</div>
+                      </div>
+                      <div className="csix">
+                        <div>Status</div>
+                      </div>
+                      <div className="cseven"> </div>
                     </div>
-                    {/* <div className="wrapc1">
-                      <div className="cname1">Name</div>
-                      <div className="cdate1">Date</div>
-                      <div className="ctime1">Time</div>
-                      <div className="ctime1">Member type</div>
-                      <div className="cstatus1">Status</div>
-                    </div> */}
-                    <div className="wrapc2 wrapc222">
-                      <div className="cname hhius">
-                        <div className="userimg22">
+                    <div className="msgs teammembr booked">
+                      <div className="fromerit summary">
+                        <div className="cone">
                           <img
-                            src={userimg}
-                            className="userimg"
-                            alt="userimg"
+                            className="user_image"
+                            src={userimg1}
+                            alt="user image"
                           />
                         </div>
-                        <div className="ssds1">
-                          <div>Jayeola Jones</div>
-                          <div className="cemail1">jaye@user.com</div>
+
+                        <div className="ctwo">
+                          <div>
+                            <div className="lowerr nulower counlowerr">
+                              Name
+                            </div>
+                            <div className="userrdet1 det1">JaiyeOla jones</div>
+                            <div className="userrdet2 memb">jj@gmail.com</div>
+                          </div>
+                        </div>
+
+                        <div className="cthree">
+                          <div className="lowerr nulower counlowerr">Date</div>
+                          <div>July 20</div>
+                        </div>
+
+                        <div className="cfour">
+                          <div className="lowerr nulower counlowerr">Time</div>
+                          <div className="">09:30 AM - 10:00 AM</div>
+                        </div>
+
+                        <div className="cfive">
+                          <div className="lowerr nulower counlowerr">
+                            Member Type
+                          </div>
+                          <div className="clarity12b">clarity</div>
+                        </div>
+
+                        <div className="csix">
+                          <div className="lowerr nulower sess counstat counlowerr">
+                            Status
+                          </div>
+                          <span className="complt pltd">Completed</span>
+                        </div>
+
+                        <div className="cseven">
+                          <div className="counview">View</div>
                         </div>
                       </div>
-                      <div className="cdate">July 20</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cdate">
-                        <div className="clarity12b">Clarity</div>
-                      </div>
-                      <div className="cstatus2">
-                        <span className="cstatus">Completed</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn ssoso">View</div>
-                      </div>
                     </div>
-                    <div className="wrapc2 wrapc222">
-                      <div className="cname hhius">
-                        <div className="userimg22">
+
+                    <div className="msgs teammembr booked">
+                      <div className="fromerit summary">
+                        <div className="cone">
                           <img
-                            src={userimg}
-                            className="userimg"
-                            alt="userimg"
+                            className="user_image"
+                            src={userimg1}
+                            alt="user image"
                           />
                         </div>
-                        <div className="ssds1">
-                          <div>Jayeola Jones</div>
-                          <div className="cemail1">jaye@user.com</div>
+
+                        <div className="ctwo">
+                          <div>
+                            <div className="lowerr nulower counlowerr">
+                              Name
+                            </div>
+                            <div className="userrdet1 det1">JaiyeOla jones</div>
+                            <div className="userrdet2 memb">jj@gmail.com</div>
+                          </div>
+                        </div>
+
+                        <div className="cthree">
+                          <div className="lowerr nulower counlowerr">Date</div>
+                          <div>July 20</div>
+                        </div>
+
+                        <div className="cfour">
+                          <div className="lowerr nulower counlowerr">Time</div>
+                          <div className="">09:30 AM - 10:00 AM</div>
+                        </div>
+
+                        <div className="cfive">
+                          <div className="lowerr nulower counlowerr">
+                            Member Type
+                          </div>
+                          <div className="clarity12b">clarity</div>
+                        </div>
+
+                        <div className="csix">
+                          <div className="lowerr nulower sess counstat counlowerr">
+                            Status
+                          </div>
+                          <span className="pend pltd">Pending</span>
+                        </div>
+
+                        <div className="cseven">
+                          <div className="counview">View</div>
                         </div>
                       </div>
-                      <div className="cdate">July 20</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cdate">
-                        <div className="clarity12b">Clarity</div>
-                      </div>
-                      <div className="cstatus2">
-                        <span className="cstatus pending">Pending</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn ssoso">View</div>
-                      </div>
                     </div>
-                    <div className="dspl">
-                      <span>Dispalying 6 out of 100</span>
+
+                    <div className="next_page">
                       <div>
-                        <img src={leftimg} className="leftimg" alt="leftimg" />
+                        Displaying <span className="page_num">1</span> out of{" "}
+                        <span className="page_num">6</span>
+                      </div>
+                      <div>
                         <img
-                          src={rightimg}
-                          className="rightimg"
-                          alt="leftimg"
+                          className="page_change"
+                          src={prevpage}
+                          alt="previous page"
+                        />
+                        <img
+                          className="page_change"
+                          src={nextpage}
+                          alt="next page"
                         />
                       </div>
                     </div>
@@ -116,7 +180,7 @@ const CounsellorBookedSessions = () => {
         </Row>
       </Container>
       <Modal show={state.isOpen} centered={true}>
-          Insert text
+        Insert text
       </Modal>
     </>
   );

@@ -72,6 +72,8 @@ import CounsellorSupport from "./Components/KigenniDashboard/CouncellorDasboard/
 import CounsellorSettings from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorSettings";
 import CounsellorMessageOneUser from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorMessagesOneUser";
 import CouncellorRecommendationsToAll from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorRecommendationsToAll";
+import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
+import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 
 const App: React.FC = () => {
   return (
@@ -188,6 +190,16 @@ const App: React.FC = () => {
             <Route exact path="/paymentplan" component={SelectPaymentPlan} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
+            <Route
+              exact
+              path="/counsellor/signin"
+              component={CounsellorsSignIn}
+            />
+            <Route
+              exact
+              path="/counsellor/signup"
+              component={CounsellorSignUp}
+            />
             <Route exact path="/forgotpassword" component={ForgotPassword} />
             <Route
               exact
@@ -345,7 +357,7 @@ const App: React.FC = () => {
             <Route exact path="/councellordates" component={CouncellorDates} />
             <Route
               exact
-              path="/councellormeetings"
+              path="/counsellormeetings"
               component={CounsellorScheduledMeetings}
             />
           </Switch>

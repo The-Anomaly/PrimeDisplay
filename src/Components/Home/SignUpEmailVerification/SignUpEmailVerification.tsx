@@ -8,7 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import formemail from "../../../assets/formemail.png";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { useEffect } from "react";
 
 interface State {
@@ -20,7 +20,7 @@ interface State {
   kigenni: boolean;
   message: string;
 }
-const EmailVerification: React.FunctionComponent = (props: any) => {
+const EmailVerification = withRouter((props: any) => {
   const [state, setFormState] = React.useState<State>({
     email: "",
     errorMessage: "",
@@ -51,8 +51,7 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
           props.history.push("/clientchat");
         });
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   useEffect(() => {
     const token = props.match.params.token;
@@ -74,6 +73,7 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
               JSON.stringify(response?.data[0]?.token)
             );
           }
+          props.history.push("/assessmentphaseone");
         }
       })
       .catch((error) => {
@@ -153,6 +153,6 @@ const EmailVerification: React.FunctionComponent = (props: any) => {
       </Container>
     </>
   );
-};
+});
 
 export default EmailVerification;

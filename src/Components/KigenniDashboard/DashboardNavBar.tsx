@@ -76,7 +76,7 @@ const DashboardNav = (props: any) => {
     <div>
       <Row>
         <div className="hnav">
-          <Link to="/">
+          <Link to="/" className="ddaa">
             {" "}
             <img src={imgCart} className="imgCart" alt="imgCart" />
           </Link>

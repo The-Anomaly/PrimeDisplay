@@ -12,6 +12,14 @@
   background-color: #ffffff;
   padding-bottom: 4rem;
 }
+.resend{
+  font-weight: 600;
+  cursor: pointer;
+  color: #9c1258 !important;
+}
+.resend22{
+  font-size: 14px;
+}
 @media (min-width: 768px) {
   .kli {
     margin-top: 5rem;

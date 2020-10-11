@@ -2709,7 +2709,7 @@ textarea.form-control.jobr {
   flex-wrap: wrap;
 }
 .msgs {
-  max-width: 93%;
+  max-width: 97%;
   background: #fefefe;
   box-shadow: 0px 2px 6px rgba(24, 33, 77, 0.25);
   border-radius: 6px;
@@ -3165,4 +3165,243 @@ textarea.form-control.jobr {
 }
 .kil123{
   padding-top: 1rem;
+}
+
+/*Counsellor Booked Session*/
+.counheading {
+  max-width: 100%;
+  font-size: 95%;
+}
+.booked {
+  max-width: 100%
+}
+.counview {
+  color: #fff;
+    background: #9c1258;
+    border-radius: 5px;
+    border: 1px solid #9c1258;
+    width: 4rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    font-size: 90%;
+}
+.pltd {
+  padding: 0.4rem 1.2rem;
+  font-size: 90%;
+}
+.cone {
+  text-align: center;
+  flex: 10%;
+}
+.ctwo {
+  padding-right: 1.5rem;
+  flex: 20%;
+}
+.cthree {
+  padding-right: 1.5rem;
+  flex: 10%;
+}
+.cfour {
+  padding-right: 1.5rem;
+  flex: 20%;
+}
+.cfive {
+  padding-right: 1rem;
+  flex: 10%;
+}
+.csix {
+  padding-right: 1rem;
+  flex: 15%;
+}
+.cseven {
+  padding-right: 1rem;
+  flex: 10%;
+}
+
+@media (max-width: 958px) {
+  .letss {
+    margin-top: 2rem;
+  }
+  .counheading {
+    display: none;
+  }
+  .booked {
+    padding: 2rem;
+    padding-bottom: 3rem;
+  }
+  .counlowerr {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .cone {
+    flex: 15%;
+  }
+  .ctwo {
+    flex: 30%;
+    height: 5rem;
+  }
+  .cthree {
+    flex: 25%;
+    height: 5rem;
+  }
+  .cfour {
+    flex: 30%;
+    height: 5rem;
+  }
+  .cfive {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+  }
+  .csix {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+  }
+  .cseven {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+    padding-top: 3.3rem;
+  }
+  .counstat {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .cseven {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .booked {
+    margin-right: 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .booked {
+    padding: 1rem 2rem;
+    max-width: 90%;
+    margin-left: 2%;
+  }
+  .cone {
+    flex: 20%;
+  }
+  .ctwo {
+    flex: 50%;
+  }
+  .cthree {
+    flex: 20%;
+  }
+  .cfour {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .cfive {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .csix {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .cseven {
+    flex: 50%;
+    margin-top: 1rem;
+    padding-top: 3rem;
+  }
+  .counstat {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .booked {
+    padding: 1rem;
+    max-width: 100%;
+    margin-right: 2rem;
+    margin-left: 0;
+  }
+  .cone {
+    flex: 100%;
+  }
+  .ctwo {
+    flex: 65%;
+    margin-top: 1rem;
+  }
+  .cthree {
+    flex: 35%;
+    margin-top: 1rem;
+  }
+  .cfour {
+    flex: 65%;
+  }
+  .cfive {
+    flex: 35%;
+  }
+  .csix {
+    flex: 65%;
+  }
+  .cseven {
+    flex: 35%;
+  }
+}
+ /*Scheduled Meeting*/
+.meethead {
+  max-width: 97%;
+  width: 97%;
+}
+.sched {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+@media (max-width: 1000px) {
+  .sched {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .schbod {
+    margin-left: 8%;
+  }
+  .sched {
+    font-size: 1.5rem;
+  }
+  .schdate {
+    flex: 30%;
+    height: 4rem;
+  }
+  .schtime {
+    flex: 30%;
+    height: 4rem;
+  }
+  .schstat {
+    flex: 30%;
+    padding-top: 2rem;
+    height: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .schbod {
+    margin-left: 0;
+    max-width: 90%;
+  }
+  .schdate {
+    flex: 50%;
+  }
+  .schtime {
+    flex: 50%;
+  }
+  .schstat {
+    flex: 100%;
+    margin-left: 50%;
+  }
 }

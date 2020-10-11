@@ -2877,6 +2877,9 @@ textarea.form-control.jobr {
 .social1 {
   color: #936dff;
 }
+.ddaa{
+  display: flex;
+}
 .printcv {
   font-size: 13px;
   display: flex;
@@ -3213,7 +3216,8 @@ textarea.form-control.jobr {
   font-size: 13px;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 4rem 1rem 1.8rem;
+  width: 97%;
+  padding: 0.5rem 1rem 1rem 1.8rem;
 }
 .page_num {
   color: #18214d;

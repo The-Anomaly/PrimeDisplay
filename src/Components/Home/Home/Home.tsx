@@ -15,10 +15,15 @@ import stepone from "../../../assets/steptwo.png";
 import steptwo from "../../../assets/stepthree.png";
 import { Link } from "react-router-dom";
 
-const Home: React.FC = () => {
+const Home: React.FC = (props:any) => {
   const [name, setName] = React.useState("");
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    if (token) {
+      props.history.push("/overview")
+    }
   }, []);
   return (
     <div>
