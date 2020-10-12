@@ -187,7 +187,14 @@
     left: 0.5rem;
     width: 15px;
     height: 15px;
+    object-fit: scale-down;
 }
 .signform {
   padding-left: 2rem;
+}
+.diff23{
+  margin-bottom: -0.3rem;
+}
+.difg{
+  padding-bottom: 0px !important;
 }

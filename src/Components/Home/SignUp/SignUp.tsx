@@ -77,10 +77,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
         if (response.status === 200) {
           return setFormState({
             ...state,
-            errorMessage:"",
+            errorMessage: "",
             successMsg: response.data[0].message,
             isLoading: false,
-            error:true,
+            error: true,
           });
           setTimeout(props.history.push("/signin"), 5000);
         }
@@ -91,14 +91,14 @@ const SignUp: React.FunctionComponent = (props: any) => {
             ...state,
             errorMessage: error.response.data[0].message,
             isLoading: false,
-            error:true
+            error: true,
           });
         }
         setFormState({
           ...state,
           errorMessage: "Signup failed",
           isLoading: false,
-          error:true
+          error: true,
         });
       });
   };
@@ -198,11 +198,12 @@ const SignUp: React.FunctionComponent = (props: any) => {
         if (response.status == 200) {
           return setFormState({
             ...state,
-            successMsg: "Email sent, check your email for account activation link. It may take several minutes to arrive",
+            successMsg:
+              "Email sent, check your email for account activation link. It may take several minutes to arrive",
             isLoading: false,
             isloading: false,
-            error:true,
-            errorMessage:""
+            error: true,
+            errorMessage: "",
           });
         }
       })
@@ -298,7 +299,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
           </Col>
           <Col md={5}>
             <div className="signwa">Sign up</div>
-            <div className="signwa1">To Get Clarity</div>
+            <div className="signwa1 difg">To Get Clarity</div>
             {successMsg && (
               <Alert key={1} variant="info">
                 {successMsg}
@@ -312,8 +313,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
             <Form onSubmit={validateForm}>
               <Row>
                 <Col>
-                  <Form.Group controlId="formBasicCheckbox">
-                    <img className="signup_icon" src={names} alt="first name"/>
+                  <Form.Group controlId="formBasicCheckbox" className="diff23">
+                    <img className="signup_icon" src={names} alt="first name" />
                     <Form.Control
                       className="field1 signform"
                       value={firstname}
@@ -324,8 +325,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </Form.Group>
                 </Col>
                 <Col>
-                  <Form.Group controlId="formBasicCheckbox">
-                  <img className="signup_icon" src={names} alt="last name"/>
+                  <Form.Group controlId="formBasicCheckbox" className="diff23">
+                    <img className="signup_icon" src={names} alt="last name" />
                     <Form.Control
                       className="field1 signform"
                       name="lastname"
@@ -336,8 +337,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </Form.Group>
                 </Col>
               </Row>
-              <Form.Group controlId="formBasicEmail">
-              <img className="signup_icon" src={mail} alt="Email"/>
+              <Form.Group controlId="formBasicEmail" className="diff23">
+                <img className="signup_icon" src={mail} alt="Email" />
                 <Form.Control
                   type="email"
                   className="field1 signform"
@@ -347,8 +348,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   placeholder="Email Address"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-              <img className="signup_icon" src={lock} alt="password"/>
+              <Form.Group controlId="formBasicPassword" className="diff23">
+                <img className="signup_icon" src={lock} alt="password" />
                 <Form.Control
                   type="password"
                   className="field1 signform"
@@ -358,8 +359,12 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   placeholder="Password"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-              <img className="signup_icon" src={lock} alt="confirm password"/>
+              <Form.Group controlId="formBasicPassword" className="diff23">
+                <img
+                  className="signup_icon"
+                  src={lock}
+                  alt="confirm password"
+                />
                 <Form.Control
                   type="password"
                   className="field1 signform"
@@ -369,8 +374,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   placeholder="Confirm Password"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicEmail1">
-                <img className="signup_icon" src={question} alt="where"/>
+              <Form.Group controlId="formBasicEmail1" className="diff23">
+                <img className="signup_icon" src={question} alt="where" />
                 <Form.Control
                   as="select"
                   className="field1 form-control signform"
@@ -397,8 +402,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </option>
                 </Form.Control>
               </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-              <img className="signup_icon" src={question} alt="code"/>
+              <Form.Group controlId="formBasicEmail" className="">
+                <img className="signup_icon" src={question} alt="code" />
                 <Form.Control
                   type="email"
                   className="field1 signform"
@@ -408,15 +413,17 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   placeholder="Referral Code (Optional)"
                 />
               </Form.Group>
-              {state.error && (
-                <div className="resend22">
-                  Did not receive the email?{" "}
-                  <a onClick={ResendSignUpEmail} className="resend">
-                    {" "}
-                    {state.isloading ? "processing" : "resend"}
-                  </a>
-                </div>
-              )}
+              <div>
+                {state.error && (
+                  <div className="resend22">
+                    Did not receive the email?{" "}
+                    <a onClick={ResendSignUpEmail} className="resend">
+                      {" "}
+                      {state.isloading ? "processing" : "resend"}
+                    </a>
+                  </div>
+                )}
+              </div>
               <Button variant="primary" className="subbtn" type="submit">
                 {!isLoading ? "Sign Up" : "Signing Up"}
               </Button>
