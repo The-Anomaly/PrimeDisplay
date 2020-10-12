@@ -3573,3 +3573,15 @@ textarea.form-control.jobr {
 .counlink {
   cursor: pointer;
 }
+.goback {
+  color: white;
+  background: #9c1258;
+  border: 1px solid #9c1258;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 13px;
+  float: right;
+  margin: 1rem;
+  position: absolute;
+  right: 0;
+}
