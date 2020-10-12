@@ -143,56 +143,61 @@ const CounsellorOverview = (props: any) => {
                     <div className="yudd1">
                       Your next session is due tomorrow
                     </div>
-
-                    <div className="msgs teammembr booked bookedover">
-                      <div className="fromerit summary">
-                        <div className="cone">
-                          <img
-                            className="user_image"
-                            src={userimg1}
-                            alt="user image"
-                          />
-                        </div>
-
-                        <div className="ctwo">
-                          <div>
-                            <div className="lowerr nulower counlowerr">
-                              Name
+                    {counsellorData.map((data) => (
+                      <div className="msgs teammembr booked bookedover">
+                        <div className="fromerit summary">
+                          <div className="cone">
+                            <img
+                              className="user_image"
+                              src={userimg1}
+                              alt="user image"
+                            />
+                          </div>
+                          <div className="ctwo">
+                            <div>
+                              <div className="lowerr nulower counlowerr">
+                                Name
+                              </div>
+                              <div className="userrdet1 det1">
+                                JaiyeOla jones
+                              </div>
+                              <div className="userrdet2 memb">{data.email}</div>
                             </div>
-                            <div className="userrdet1 det1">JaiyeOla jones</div>
-                            <div className="userrdet2 memb">jj@gmail.com</div>
                           </div>
-                        </div>
 
-                        <div className="cthree">
-                          <div className="lowerr nulower counlowerr">Date</div>
-                          <div>July 20</div>
-                        </div>
-
-                        <div className="cfour">
-                          <div className="lowerr nulower counlowerr">Time</div>
-                          <div className="">09:30 AM - 10:00 AM</div>
-                        </div>
-
-                        <div className="cfive">
-                          <div className="lowerr nulower counlowerr">
-                            Member Type
+                          <div className="cthree">
+                            <div className="lowerr nulower counlowerr">
+                              Date
+                            </div>
+                            <div>July 20</div>
                           </div>
-                          <div className="clarity12b">clarity</div>
-                        </div>
-
-                        <div className="csix">
-                          <div className="lowerr nulower sess counstat counlowerr">
-                            Status
+                          <div className="cfour">
+                            <div className="lowerr nulower counlowerr">
+                              Time
+                            </div>
+                            <div className="">09:30 AM - 10:00 AM</div>
                           </div>
-                          <span className="complt pltd">Completed</span>
-                        </div>
 
-                        <div className="cseven">
-                          <div className="counview">View</div>
+                          <div className="cfive">
+                            <div className="lowerr nulower counlowerr">
+                              Member Type
+                            </div>
+                            <div className="clarity12b">clarity</div>
+                          </div>
+
+                          <div className="csix">
+                            <div className="lowerr nulower sess counstat counlowerr">
+                              Status
+                            </div>
+                            <span className="complt pltd">Completed</span>
+                          </div>
+
+                          <div className="cseven">
+                            <div className="counview">View</div>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    ))}
 
                     <div className="msgs teammembr booked bookedover">
                       <div className="fromerit summary">

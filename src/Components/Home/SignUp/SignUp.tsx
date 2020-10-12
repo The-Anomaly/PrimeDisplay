@@ -26,7 +26,7 @@ interface State {
   confirmPassword: string;
   whereDidYouLearnAboutUs: string;
   errorMessage: string;
-  successMsg: boolean;
+  successMsg: any;
   error: boolean;
   isLoading: boolean;
   isloading: boolean;
@@ -73,8 +73,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
         if (response.status === 200) {
           return setFormState({
             ...state,
+            errorMessage:"",
             successMsg: response.data[0].message,
             isLoading: false,
+            error:true,
           });
           setTimeout(props.history.push("/signin"), 5000);
         }
@@ -85,12 +87,14 @@ const SignUp: React.FunctionComponent = (props: any) => {
             ...state,
             errorMessage: error.response.data[0].message,
             isLoading: false,
+            error:true
           });
         }
         setFormState({
           ...state,
           errorMessage: "Signup failed",
           isLoading: false,
+          error:true
         });
       });
   };
@@ -185,15 +189,15 @@ const SignUp: React.FunctionComponent = (props: any) => {
       email,
     };
     axios
-      .post(`${API}/accounts/socialauth/`, data)
+      .post(`${API}/accounts/resend-email`, data)
       .then((response) => {
         if (response.status == 200) {
           return setFormState({
             ...state,
-            successMsg: response.data[0].message,
+            successMsg: "Email sent, check your email for account activation link. It may take several minutes to arrive",
             isLoading: false,
             isloading: false,
-            error:false,
+            error:true,
             errorMessage:""
           });
         }

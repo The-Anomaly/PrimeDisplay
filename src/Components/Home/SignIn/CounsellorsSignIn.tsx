@@ -75,7 +75,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
         if (error && error?.response?.status==500) {
           return setFormState({
             ...state,
-            errorMessage: "Failed to login internal server error.",
+            errorMessage: "Failed to login, internal server error.",
             isLoading: false,
           });
         }
