@@ -138,7 +138,7 @@ class CounsellorRecommendation2 extends React.Component {
                               className="norecommendations"
                               alt="norecommendations"
                             />
-                            <div className="udont1">Opps!!!</div>
+                            <div className="udont1">Oops!!!</div>
                             <div className="udont">
                               You dont have any Recommendation yet, you should
                               speak to a counsellor now

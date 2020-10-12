@@ -3569,3 +3569,7 @@ textarea.form-control.jobr {
     font-size: 13px;
   }
 }
+
+.counlink {
+  cursor: pointer;
+}
