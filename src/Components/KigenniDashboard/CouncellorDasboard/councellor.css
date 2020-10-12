@@ -3589,3 +3589,16 @@ textarea.form-control.jobr {
 .csetting {
   max-width: 100%;
 }
+.subsupport {
+  font-size: 14px;
+  min-width: auto;
+  border-radius: 5px;
+}
+.btnmarg {
+  margin: 1rem 0;
+}
+@media(max-width: 575px) {
+  .csupport {
+    max-width: 90%;
+  }
+}

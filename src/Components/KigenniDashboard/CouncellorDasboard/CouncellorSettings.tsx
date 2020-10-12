@@ -18,7 +18,7 @@ const CounsellorSettings = () => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarCounsellorDashboard bookedsession={true} />
+          <SideBarCounsellorDashboard settings={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Settings" />
             <Row>
@@ -65,8 +65,8 @@ const CounsellorSettings = () => {
                     ></textarea>
                   </Col>
                 </Row>
-                <div className="text-right">
-                  <div className="kskthin col-md-11">Save Profile</div>
+                <div className="text-left">
+                  <div className="kskthin col-md-11 retaketest subsupport">Save Profile</div>
                 </div>
               </Col>
             </Row>
