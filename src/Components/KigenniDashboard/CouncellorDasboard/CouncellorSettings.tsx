@@ -29,7 +29,7 @@ const CounsellorSettings = () => {
                 <div>
                   <hr />
                 </div>
-                <Row className="rowla">
+                <Row className="rowla csetting">
                   <Col md={6}>
                     <div className="whatdoudo">Name</div>
                     <textarea
@@ -47,7 +47,7 @@ const CounsellorSettings = () => {
                     ></textarea>
                   </Col>
                 </Row>
-                <Row className="rowla">
+                <Row className="rowla csetting">
                   <Col md={6}>
                     <div className="whatdoudo">Email</div>
                     <textarea
@@ -65,8 +65,8 @@ const CounsellorSettings = () => {
                     ></textarea>
                   </Col>
                 </Row>
-                <div className="text-right">
-                  <div className="kskthin col-md-11">Save Profile</div>
+                <div className="text-left">
+                  <div className="kskthin col-md-11 retaketest subsupport">Save Profile</div>
                 </div>
               </Col>
             </Row>

@@ -10,6 +10,7 @@ import userimg from "../../../assets/userimg.png";
 import norecommendations from "../../../assets/no recommendations.png";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
+import { Link } from "react-router-dom";
 
 class CounsellorRecommendation2 extends React.Component {
   state: any = {
@@ -108,6 +109,7 @@ class CounsellorRecommendation2 extends React.Component {
             <SideBarCounsellorDashboard councrec={true}/>
             <Col md={10} sm={12} className="prm">
               <CounsellorDashboardNav title="Counsellors Recommendation" />
+              <Link to="/counsellorrecommendations1" className="goback">&#8592;  Back</Link>
               <Row>
                 <Col md={12} className="firstqq">
                   <div className="kdashheader npps"></div>
@@ -138,7 +140,7 @@ class CounsellorRecommendation2 extends React.Component {
                               className="norecommendations"
                               alt="norecommendations"
                             />
-                            <div className="udont1">Opps!!!</div>
+                            <div className="udont1">Oops!!!</div>
                             <div className="udont">
                               You dont have any Recommendation yet, you should
                               speak to a counsellor now

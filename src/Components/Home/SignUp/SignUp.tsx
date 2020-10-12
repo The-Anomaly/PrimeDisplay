@@ -17,6 +17,10 @@ import axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import GoogleLogin from "react-google-login";
 import { useEffect } from "react";
+import names from "../../../assets/signup1.png";
+import mail from "../../../assets/mail_icon.png";
+import lock from "../../../assets/lock_icon.png";
+import question from "../../../assets/question_icon.png";
 
 interface State {
   firstname: string;
@@ -309,8 +313,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
               <Row>
                 <Col>
                   <Form.Group controlId="formBasicCheckbox">
+                    <img className="signup_icon" src={names} alt="first name"/>
                     <Form.Control
-                      className="field1"
+                      className="field1 signform"
                       value={firstname}
                       onChange={changeActionOnFormData}
                       name="firstname"
@@ -320,8 +325,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
                 </Col>
                 <Col>
                   <Form.Group controlId="formBasicCheckbox">
+                  <img className="signup_icon" src={names} alt="last name"/>
                     <Form.Control
-                      className="field1"
+                      className="field1 signform"
                       name="lastname"
                       value={lastname}
                       onChange={changeActionOnFormData}
@@ -331,9 +337,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
                 </Col>
               </Row>
               <Form.Group controlId="formBasicEmail">
+              <img className="signup_icon" src={mail} alt="Email"/>
                 <Form.Control
                   type="email"
-                  className="field1"
+                  className="field1 signform"
                   value={email}
                   name="email"
                   onChange={changeActionOnFormData}
@@ -341,9 +348,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
+              <img className="signup_icon" src={lock} alt="password"/>
                 <Form.Control
                   type="password"
-                  className="field1"
+                  className="field1 signform"
                   value={password}
                   name="password"
                   onChange={changeActionOnFormData}
@@ -351,9 +359,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
+              <img className="signup_icon" src={lock} alt="confirm password"/>
                 <Form.Control
                   type="password"
-                  className="field1"
+                  className="field1 signform"
                   value={confirmPassword}
                   name="confirmPassword"
                   onChange={changeActionOnFormData}
@@ -361,9 +370,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
                 />
               </Form.Group>
               <Form.Group controlId="formBasicEmail1">
+                <img className="signup_icon" src={question} alt="where"/>
                 <Form.Control
                   as="select"
-                  className="field1 form-control"
+                  className="field1 form-control signform"
                   onChange={handleActionOnFormData}
                   name="whereDidYouLearnAboutUs"
                 >
@@ -386,6 +396,17 @@ const SignUp: React.FunctionComponent = (props: any) => {
                     Friend
                   </option>
                 </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+              <img className="signup_icon" src={question} alt="code"/>
+                <Form.Control
+                  type="email"
+                  className="field1 signform"
+                  value={email}
+                  name="email"
+                  onChange={changeActionOnFormData}
+                  placeholder="Referral Code (Optional)"
+                />
               </Form.Group>
               {state.error && (
                 <div className="resend22">

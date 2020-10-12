@@ -23,8 +23,8 @@ const CounsellorAssignedMembers = () => {
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
-                <DashboardCounsellorIntroHeader welcomeText="List of all the members assigned to you" />
-                <Row>
+                <DashboardCounsellorIntroHeader welcomeText="List of all the members assigned to you"/>
+                <Row className="signedfjss">
                   <Col md={12}>
                     <div className="teammembr teamheading counheading mheadd">
                       <div className="mone"> </div>

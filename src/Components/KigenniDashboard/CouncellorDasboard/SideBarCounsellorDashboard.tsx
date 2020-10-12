@@ -17,6 +17,7 @@ import subscriptionactive from "../../../assets/Subcription_active.png";
 import subscriptioninactive from "../../../assets/Subscription_inactive.png";
 import starrating from "../../../assets/starrating.png";
 import supportinactive from "../../../assets/Support_inactive.png";
+import supportactive from "../../../assets/Support_active.png";
 import overview from "../../../assets/overview.png";
 import "../../Home/Home/Home.css";
 import { Link, withRouter } from "react-router-dom";
@@ -175,12 +176,12 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               Settings
             </Link>
           </div>
-          <div className={props.subscription ? "activegb" : "gbn"}>
+          <div className={props.counselorsupport ? "activegb" : "gbn"}>
             {" "}
             <Link to="/counsellorsupport">
               <img
                 src={
-                  props.subscription ? subscriptionactive : subscriptioninactive
+                  props.counselorsupport ? supportactive : supportinactive
                 }
                 className="sideimage"
                 alt="sideimage"

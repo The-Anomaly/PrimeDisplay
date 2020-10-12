@@ -9,6 +9,7 @@ import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
 import norecommendations from "../../../assets/no recommendations.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CounsellorRecommendations1 = () => {
   const [state, setState] = useState({ counsellor: [] });
@@ -24,39 +25,45 @@ const CounsellorRecommendations1 = () => {
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader
-                  welcomeText="All recommendations made to (Username )"
+                  welcomeText="Get insight to the overview of all your concerns"
                 />
                 <Row>
-                  <Col md={12} className="youwss">
-                    {counsellor &&
-                      counsellor?.map((data, i) => (
-                        <>
-                          <div className="usersentwrap1" key={i}>
-                            <div className="youwrap">
-                              <span className="you11b">
-                                {data.counsellor_name}
-                              </span>{" "}
-                              <span className="youdate">{data.date}</span>
-                            </div>
-                            <div className="councellors_response">
-                              {data.text}
-                            </div>
-                          </div>
-                        </>
-                      ))}
-                    {counsellor.length === 0 && (
+                <Col md={12} className="mssaag sasag">
+                  <Link to="/counsellorrecommendations2" className="counlink">
+                    <div className="useri1222 ui1222 ssgs">
+                      <div className="msg1">
+                        <img src={userimg} className="userimg imguserrr" alt="jayeolajones" />
+                      </div>
+                      <div className="msg2">
+                        <div>
+                          <span className="username11">Jaiye Jawon</span>
+                          <span className="useremail11">jaye@user.com</span>
+                        </div>
+                        <div className="messagedetails nufont">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Id mi, mattis at ipsum ullamcorper blandit
+                          pharetra. Est elit, morbi elementum faucibus nec morbi
+                          eget aliquet adipiscing. Sapien urna volutpat mattis
+                          cursus non et mauris tellus laoreet. Metus potenti leo
+                          nulla nulla pretium id.
+                        </div>
+                      </div>
+                      <div className="tymeline msg3 nufont">6 days Ago</div>
+                    </div>
+                    </Link>
+                    {/* {counsellor.length === 0 && (
                       <div className="norec">
                         <img
                           src={norecommendations}
                           className="norecommendations"
                           alt="norecommendations"
                         />
-                        <div className="udont1">Opps!!!</div>
+                        <div className="udont1">Oops!!!</div>
                         <div className="udont">
                           You dont have any Recommendation yet
                         </div>
                       </div>
-                    )}
+                    )} */}
                   </Col>
                 </Row>
               </Col>
