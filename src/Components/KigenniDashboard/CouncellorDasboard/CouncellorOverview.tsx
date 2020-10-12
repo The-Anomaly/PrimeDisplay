@@ -7,13 +7,94 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg1 from "../../../assets/userimg1.png";
+import userimg from "../../../assets/userimg.png";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import "./councellor.css";
 import { Link } from "react-router-dom";
+import Axios, { AxiosResponse } from "axios";
+import { API } from "../../../config";
+const moment = require("moment");
 
-const CounsellorOverview = () => {
+const CounsellorOverview = (props: any) => {
+  const [state, setFormState] = React.useState<any>({
+    errorMessage: "",
+    user: "",
+    counsellorData: [],
+    successMsg: false,
+    isLoading: false,
+    nextLink: "",
+    prevLink: "",
+    count: "",
+    success: "",
+    total_pages: "",
+  });
+  const {
+    user,
+    counsellorData,
+    successMsg,
+    nextLink,
+    prevLink,
+    errorMessage,
+    count,
+    total_pages,
+    isLoading,
+  } = state;
+  React.useEffect(() => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/todo`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/booked-sessions`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res, res1) => {
+          console.log(res);
+          if (res.status === 200) {
+            setFormState({
+              ...state,
+              user: res.data,
+              successMsg: true,
+              isLoading: false,
+              counsellorData: [...res1.data.results].reverse(),
+              count: res1.data.page,
+              nextLink: res1.data.next,
+              prevLink: res1.data.previous,
+              total_pages: res1.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setFormState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setFormState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  }, []);
+  const formatTime = (date) => {
+    const dateTime = moment(date).format("MMM YYYY");
+    return dateTime;
+  };
+  console.log(counsellorData);
   return (
     <>
       <Container fluid={true} className="contann122">
+        <CounsellorDashboardMobileNav ov={true} />
         <Row>
           <SideBarCounsellorDashboard ov={true} />
           <Col md={10} sm={12} className="prm">
@@ -162,9 +243,15 @@ const CounsellorOverview = () => {
                         </div>
                       </div>
                     </div>
-                    <Link className="viewall viewbook" to="/counsellorbookings">View all Booked Sessions</Link>
+                    <Link className="viewall viewbook" to="/counsellorbookings">
+                      View all Booked Sessions
+                    </Link>
                   </Col>
                 </Row>
+                <section className="view-box">
+                  <div className="box-1"></div>
+                  <div className="box-2"></div>
+                </section>
               </Col>
             </Row>
           </Col>

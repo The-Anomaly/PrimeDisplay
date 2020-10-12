@@ -11,3 +11,20 @@
 .alreadyhave1 {
   text-align: center;
 }
+.signtxt{
+  font-size: 14px !important; 
+  font-weight: bold !important;
+  margin-bottom: 0px;
+  padding-top: 1.5rem !important;
+  line-height: 0 !important;
+  color: #001833 !important;
+}
+.signtxt2{
+  font-size: 14px !important;
+  font-weight: bold !important;
+  margin-bottom: 10px;
+  color: #001833 !important;
+}
+.signtxti{
+  padding-bottom: 0px;
+}

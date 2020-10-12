@@ -67,7 +67,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
     <>
       <Col md={2} className={hidemobile ? "siddle siddlenone" : "siddle"}>
         <div className="dlex">
-          <Link to="/">
+          <Link to="/counselloroverview">
             <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
           </Link>
         </div>{" "}

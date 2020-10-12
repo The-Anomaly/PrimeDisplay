@@ -40,7 +40,7 @@
     margin-top: .6rem;
 }
 .form-control:focus{
-    outline: none;
+    outline: 1px solid #e6e6e6 !important;
 }
 input.reqname::placeholder  {
 color: #e6e6e6;
@@ -76,7 +76,7 @@ input.reqname::-ms-input-placeholder { /* Microsoft Edge */
 .form-control:focus {
     color: inherit;
     background-color: #fff;
-    border-color: none; 
+    border-color: #eeccee; 
     outline: none;
     box-shadow: none;
 }

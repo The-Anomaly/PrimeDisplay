@@ -9,12 +9,16 @@ import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg1 from "../../../assets/userimg1.png";
 import prevpage from "../../../assets/prevpage.svg";
 import nextpage from "../../../assets/nextpage.svg";
-import Modal from "react-bootstrap/esm/Modal";
+import userimg from "../../../assets/userimg.png";
+import rightimg from "../../../assets/rightarrow.png";
+import leftimg from "../../../assets/leftarrow1.png";
+import { Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const CounsellorBookedSessions = () => {
   const [state, setState] = useState({
-    isOpen: false,
+    isOpen: true,
   });
   const closeModal = () => {
     setState({
@@ -29,7 +33,7 @@ const CounsellorBookedSessions = () => {
           <SideBarCounsellorDashboard bookedsession={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Booked Sessions" />
-            <Row>
+            <Row className="wrapc222">
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
@@ -179,8 +183,104 @@ const CounsellorBookedSessions = () => {
           </Col>
         </Row>
       </Container>
-      <Modal show={state.isOpen} centered={true}>
-        Insert text
+      <Modal
+        show={state.isOpen}
+        size={"lg"}
+        className="bookingszmodal"
+        centered={true}
+      >
+        <Container>
+          <h6>Jaiyeola Jones</h6>
+          <Link to="counsellorbookings">
+            <span className="modal-btn">
+              View users result <i className="fa fa-arrow-right"></i>
+            </span>
+          </Link>
+
+          <form>
+            <label>issues raised by user</label>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="issues*"
+              cols={80}
+              rows={3}
+            />
+          </form>
+          <p className="to-do-header">Create a Todo Task</p>
+          <form className="to-do-form">
+            <Row>
+              <Col md={6}>
+                <label>Task Title</label>
+                <input
+                  type="text"
+                  placeholder="enter a title"
+                  name="taskTitle"
+                  className="form-control todo-input"
+                  size={25}
+                />
+              </Col>
+              <Col md={6}>
+                <label>Task Duration</label>
+                <input
+                  type="text"
+                  placeholder="Enter the number of days"
+                  className="form-control todo-input"
+                  size={25}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col md={12}>
+                <label>Task Description</label>
+                <textarea
+                  placeholder="Describe the nature of the task"
+                  cols={67}
+                  rows={3}
+                  className="form-control text-decription"
+                />
+              </Col>
+            </Row>
+          </form>
+          <div className="addmore">
+            <p>Add more &#43;</p>
+          </div>
+          <form>
+            <label>Take down notes during sessions</label>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="scribble down anything"
+              cols={80}
+              rows={3}
+            />
+            <Row>
+              <Col md={3}>
+                <label>Rate this session</label>
+              </Col>
+              <Col md={5} className="star-container">
+                <i className="fa fa-star ratings"></i>
+                <span className="fa fa-star ratings"></span>
+                <span className="fa fa-star ratings"></span>
+                <span className="fa fa-star ratings"></span>
+                <span className="fa fa-star ratings"></span>
+              </Col>
+            </Row>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="Say something about the session"
+              cols={80}
+              rows={3}
+            />
+          </form>
+
+          <div className="center-btn">
+            {" "}
+            <Link to="counsellorbookings">
+              <span className="modal-btn">
+                Close session <i className="fa fa-arrow-right"></i>
+              </span>
+            </Link>
+          </div>
+        </Container>
       </Modal>
     </>
   );

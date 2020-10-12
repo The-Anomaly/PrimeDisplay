@@ -17,7 +17,7 @@ const CounsellorAssignedMembers = () => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarCounsellorDashboard assignedmemb={true}/>
+          <SideBarCounsellorDashboard assignedmemb={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Assigned Members List" />
             <Row>
@@ -42,7 +42,7 @@ const CounsellorAssignedMembers = () => {
                       </div>
                       <div className="msix"> </div>
                     </div>
-                  <div className="msgs teammembr booked bookedover signed">
+                    <div className="msgs teammembr booked bookedover signed">
                       <div className="fromerit summary">
                         <div className="mone">
                           <img
@@ -63,12 +63,16 @@ const CounsellorAssignedMembers = () => {
                         </div>
 
                         <div className="mthree">
-                          <div className="lowerr nulower counlowerr mhead">Personality Type</div>
+                          <div className="lowerr nulower counlowerr mhead">
+                            Personality Type
+                          </div>
                           <div>Intellectual Researcher</div>
                         </div>
 
                         <div className="mfour">
-                          <div className="lowerr nulower counlowerr mhead">Availability</div>
+                          <div className="lowerr nulower counlowerr mhead">
+                            Availability
+                          </div>
                           <div className="notavail">Not Available</div>
                         </div>
                         <div className="mfive">
@@ -77,7 +81,7 @@ const CounsellorAssignedMembers = () => {
                           </div>
                           <span className="complt pltd">Completed</span>
                         </div>
-                        
+
                         <div className="msix">
                           <div className="counview mbtn">View Result</div>
                         </div>
@@ -105,12 +109,16 @@ const CounsellorAssignedMembers = () => {
                         </div>
 
                         <div className="mthree">
-                          <div className="lowerr nulower counlowerr mhead">Personality Type</div>
+                          <div className="lowerr nulower counlowerr mhead">
+                            Personality Type
+                          </div>
                           <div>Intellectual Researcher</div>
                         </div>
 
                         <div className="mfour">
-                          <div className="lowerr nulower counlowerr mhead">Availability</div>
+                          <div className="lowerr nulower counlowerr mhead">
+                            Availability
+                          </div>
                           <div className="avail">Available</div>
                         </div>
 
@@ -148,12 +156,16 @@ const CounsellorAssignedMembers = () => {
                         </div>
 
                         <div className="mthree">
-                          <div className="lowerr nulower counlowerr mhead">Personality Type</div>
+                          <div className="lowerr nulower counlowerr mhead">
+                            Personality Type
+                          </div>
                           <div>--/--</div>
                         </div>
 
                         <div className="mfour">
-                          <div className="lowerr nulower counlowerr mhead">Availability</div>
+                          <div className="lowerr nulower counlowerr mhead">
+                            Availability
+                          </div>
                           <div className="">--/--</div>
                         </div>
 
@@ -165,7 +177,9 @@ const CounsellorAssignedMembers = () => {
                         </div>
 
                         <div className="msix">
-                          <div className="counview mbtn mbtnblu">Send Message</div>
+                          <div className="counview mbtn mbtnblu">
+                            Send Message
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -188,8 +202,6 @@ const CounsellorAssignedMembers = () => {
                         />
                       </div>
                     </div>
-                    
-                    
                   </Col>
                 </Row>
               </Col>

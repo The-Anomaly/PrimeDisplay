@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
-import userimg from "../../../assets/userimg.png";
+import nocounmessage from "../../../assets/nocounmessage.svg";
 import { useEffect, useState } from "react";
 import { API } from "../../../config";
 import Axios, { AxiosResponse } from "axios";
@@ -105,7 +105,7 @@ const CounsellorMessageOneUser = () => {
                   welcomeText="This is a private chat with (Username)"
                 />
                 <Row>
-                  <Col md={12} className="kisls kislsoo">
+                  <Col md={12} className="kisls kislsoo kil123">
                     <div className="kdashheader npps">
                       <div></div>
                       <Col md={12} className="youwss">
@@ -143,6 +143,15 @@ const CounsellorMessageOneUser = () => {
                               </div>
                             </>
                           ))}
+                        {
+                          <div className="nomesgcoun">
+                            <img
+                              src={nocounmessage}
+                              className="nocounmessage"
+                              alt="nocounmessage"
+                            />
+                          </div>
+                        }
                         <div>
                           <textarea
                             className="form-control sendtcont"

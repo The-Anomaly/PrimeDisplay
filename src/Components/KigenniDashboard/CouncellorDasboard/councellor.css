@@ -171,10 +171,10 @@
   .wrapc222 {
     width: 97%;
   }
-  .dspl,.ui1222 {
+  .dspl,
+  .ui1222 {
     width: 97%;
   }
-  
 }
 .csfitscore1 {
   font-weight: bold;
@@ -2372,9 +2372,37 @@ textarea.form-control.jobr {
 .viewall {
   text-align: right;
   color: #3965ff;
+  width: 97%;
+  margin-bottom: 37px;
   font-size: 14px;
-  padding-top: 0.5rem;
+  padding: 13px 0px 13px 0px;
   cursor: pointer;
+  border-bottom: 1px solid #e5e5e5;
+}
+.view-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0px;
+}
+.box-1 {
+  background-color: #c4c4c4;
+  height: 340px;
+  width: 94%;
+  border-radius: 3px;
+}
+.box-2 {
+  background-color: #c4c4c4;
+  height: 340px;
+  width: 94%;
+  border-radius: 3px;
+}
+@media (max-width: 700px) {
+  .view-box {
+    display: block;
+  }
+  .box-1 {
+    margin-bottom: 17px;
+  }
 }
 .firstoffour {
   background: rgb(178, 227, 255);
@@ -2709,7 +2737,7 @@ textarea.form-control.jobr {
   flex-wrap: wrap;
 }
 .msgs {
-  max-width: 93%;
+  max-width: 97%;
   background: #fefefe;
   box-shadow: 0px 2px 6px rgba(24, 33, 77, 0.25);
   border-radius: 6px;
@@ -3153,6 +3181,19 @@ textarea.form-control.jobr {
 .kislsoo {
   padding-left: 0.1rem !important;
 }
+.nocounmessage {
+  width: 25%;
+  min-width: 250px;
+  max-width: 500px;
+}
+.nomesgcoun {
+  text-align: center;
+  margin: auto;
+  padding-bottom: 1rem;
+}
+.kil123 {
+  padding-top: 1rem;
+}
 
 /*Counsellor Booked Session*/
 .counheading {
@@ -3160,19 +3201,19 @@ textarea.form-control.jobr {
   font-size: 95%;
 }
 .booked {
-  max-width: 100%
+  max-width: 100%;
 }
 .counview {
   color: #fff;
-    background: #9c1258;
-    border-radius: 5px;
-    border: 1px solid #9c1258;
-    width: 4rem;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 0.4rem 1rem;
-    text-align: center;
-    font-size: 90%;
+  background: #9c1258;
+  border-radius: 5px;
+  border: 1px solid #9c1258;
+  width: 4rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  text-align: center;
+  font-size: 90%;
 }
 .pltd {
   padding: 0.4rem 1.2rem;
@@ -3338,9 +3379,10 @@ textarea.form-control.jobr {
     flex: 35%;
   }
 }
- /*Scheduled Meeting*/
+/*Scheduled Meeting*/
 .meethead {
-  max-width: 93%;
+  max-width: 97%;
+  width: 97%;
 }
 .sched {
   text-align: center;
@@ -3406,18 +3448,18 @@ textarea.form-control.jobr {
 
 /*Assigned Members*/
 .avail {
-  color: #1BB978;
+  color: #1bb978;
 }
 .notavail {
-  color: #FF0000;
+  color: #ff0000;
 }
 .mbtn {
   width: 7.5rem;
   padding: 0.6rem 1rem;
 }
 .mbtnblu {
-  background: #3965FF;
-  border: 1px solid #3965FF;
+  background: #3965ff;
+  border: 1px solid #3965ff;
 }
 .mone {
   flex: 10%;
@@ -3440,7 +3482,7 @@ textarea.form-control.jobr {
   padding-right: 1.5rem;
 }
 .msix {
-  flex: 12%
+  flex: 12%;
 }
 
 @media(max-width: 950px) {
@@ -3457,29 +3499,29 @@ textarea.form-control.jobr {
   .signed {
     padding: 2rem;
   }
-  .mone{
+  .mone {
     height: 5rem;
     flex: 30%;
   }
-  .mtwo{
+  .mtwo {
     height: 5rem;
     flex: 30%;
   }
-  .mthree{
+  .mthree {
     height: 5rem;
     flex: 30%;
   }
-  .mfour{
-    height: 5rem;
-    flex: 30%;
-    margin-top: 2rem;
-  }
-  .mfive{
+  .mfour {
     height: 5rem;
     flex: 30%;
     margin-top: 2rem;
   }
-  .msix{
+  .mfive {
+    height: 5rem;
+    flex: 30%;
+    margin-top: 2rem;
+  }
+  .msix {
     height: 5rem;
     flex: 30%;
     margin-top: 2rem;
@@ -3491,29 +3533,29 @@ textarea.form-control.jobr {
   .signed {
     padding: 1rem;
   }
-  .mone{
+  .mone {
     flex: 40%;
   }
-  .mtwo{
+  .mtwo {
     flex: 60%;
   }
-  .mthree{
+  .mthree {
     flex: 50%;
     margin-top: 2rem;
   }
-  .mfour{
+  .mfour {
     flex: 50%;
   }
-  .mfive{
+  .mfive {
     flex: 50%;
   }
-  .msix{
+  .msix {
     flex: 50%;
     padding-top: 2rem;
   }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .mbtn {
     padding: 0.5rem 1rem;
   }
@@ -3527,6 +3569,18 @@ textarea.form-control.jobr {
     flex: 100%;
     padding-top: 0;
     margin-top: 1rem;
+  }
+  .bookingszmodal .modal-dialog {
+    width: 86%;
+    margin: auto;
+  }
+}
+@media (max-width: 600px) {
+  .bookingszmodal {
+    width: 100;
+  }
+  .text-decription {
+    padding: 10px 1rem;
   }
 }
 

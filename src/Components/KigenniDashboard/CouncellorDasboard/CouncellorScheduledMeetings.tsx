@@ -122,7 +122,7 @@ const CounsellorScheduledMeetings = () => {
             </Row>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     </>
   );
