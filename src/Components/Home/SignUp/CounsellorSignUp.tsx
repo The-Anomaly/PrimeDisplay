@@ -58,7 +58,6 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
       first_name: firstname,
       last_name: lastname,
       email,
-      info:"Referral",
       password,
       password2: confirmPassword,
     };

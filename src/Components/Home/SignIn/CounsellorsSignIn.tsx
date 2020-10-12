@@ -51,7 +51,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
       password,
     };
     axios
-      .post<any, AxiosResponse<any>>(`${API}/accounts/login/`, data, {
+      .post<any, AxiosResponse<any>>(`${API}/accounts/counsellor-login`, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -63,7 +63,6 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
             JSON.stringify(response?.data?.token)
           );
           getUserInfo(response.data.token);
-          getCurrentAssessmentPosition(response.data.token);
         }
         setFormState({
           ...state,
@@ -71,6 +70,15 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
         });
       })
       .catch((error) => {
+        console.log(error.response)
+        
+        if (error && error?.response?.status==500) {
+          return setFormState({
+            ...state,
+            errorMessage: "Failed to login internal server error.",
+            isLoading: false,
+          });
+        }
         if (error && error.response && error.response.data) {
           return setFormState({
             ...state,
@@ -183,6 +191,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("user", JSON.stringify(response?.data));
+          props.history.push("/counselloroverview")
         }
       })
       .catch((error) => {

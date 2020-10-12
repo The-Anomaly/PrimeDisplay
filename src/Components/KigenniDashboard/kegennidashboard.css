@@ -3556,3 +3556,89 @@ input,
 .notfilled {
   color: red;
 }
+.modal-btn{
+  display: inline-block;
+  padding: 7px 27px;
+  background-color: #9c1258;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 5px;
+  margin-top: 7px;
+  margin-bottom: 27px;
+}
+.fa-arrow-right{
+  margin-left: 18px;
+}
+label{
+  font-size: 13px;
+  line-height: 32px;
+}
+.issues-textbox-1{
+  background-color: #f5f7f1;
+  outline: none;
+  margin-bottom: 12px;
+  resize: inherit;
+  overflow: hidden;
+  padding: 15px;
+  background-image: url(../../assets/write.png);
+  background-repeat: no-repeat;
+  background-position-x: 12px;
+  background-position-y: 13px;
+  background-size: 14px;
+}
+.issues-textbox-1:focus{
+  background-color: #f5f7f1;
+  border: none !important;
+  outline: none !important;
+}
+.issues-textbox-1::placeholder{
+  font-size: 12px;
+  color: #c5c7cd;
+}
+.to-do-header{
+  font-size: 12px;
+}
+.to-do-form{
+  padding: 23px;
+  border: 1px solid #c5c7cd;
+}
+.todo-text{
+  display: flex;
+  justify-content: space-around;
+}
+.todo-input{
+  padding: 8px;
+}
+input:focus{
+  border: none;
+}
+.todo-input::placeholder{
+  font-size: 12px;
+  color: #c5c7cd;
+}
+label{
+  display: block;
+  margin-bottom: 3px;
+}
+
+.text-decription{
+  padding: 19px;
+  resize: inherit;
+  overflow: hidden;
+}
+.text-decription::placeholder{
+  font-size: 12px;
+  color: #c5c7cd;
+}
+.addmore{
+  color: #3965ff;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.center-btn{
+  text-align: center;
+}
+
+.star-container{
+  padding-top: 5px;
+}
