@@ -3585,3 +3585,7 @@ textarea.form-control.jobr {
   position: absolute;
   right: 0;
 }
+
+.csetting {
+  max-width: 100%;
+}
