@@ -2339,10 +2339,16 @@ textarea.form-control.jobr {
   padding-top: 1rem;
 }
 .sss12 {
-  padding-right: 4rem;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: normal;
   font-weight: 500;
+  display: flex;
+}
+.ssnopad{
+  padding-right: 0% !important;
+}
+.s34{
+  line-height: 33px;
 }
 .yudd1 {
   letter-spacing: normal;
@@ -3651,8 +3657,32 @@ textarea.form-control.jobr {
 .btnmarg {
   margin: 1rem 0;
 }
+.counsellorpreloader2{
+  text-align: center;
+  height: 50%;
+  left: 30%;
+  position: absolute;
+}
+.counsellorpreloader{
+  width: 100%;
+  position: relative;
+  bottom: 50%;
+}
 @media(max-width: 575px) {
   .csupport {
     max-width: 90%;
   }
+  .counsellorpreloader2{
+    position: initial;
+  }
+  .counsellorpreloader{
+    bottom: 1px;
+  }
+}
+.noData{
+  width: 250px;
+}
+.empt{
+  text-align: center;
+  color: #202020;
 }

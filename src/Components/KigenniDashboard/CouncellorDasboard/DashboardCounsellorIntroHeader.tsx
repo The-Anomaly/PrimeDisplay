@@ -67,6 +67,7 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
     const { first_name, last_name, rate } = this.state;
+    console.log(this.props);
     return (
       <>
         <div className="fjss spis">
@@ -83,16 +84,23 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
             </div>
           </div>
           {this?.props?.rating && (
-            <div className="sss12">
-              <div className="sss1a"> Your Ratings</div>
-              <div className="assessrating">
-                <StarRatingComponent
-                  name="rate"
-                  starCount={5}
-                  value={rate}
-                  onStarClick={this.onStarClick}
-                  emptyStarColor={"#444"}
-                />
+            <div className="sss12 ssnopad">
+              <div>
+                <div className="sss1a"> Your Ratings</div>
+                <div className="assessrating">
+                  <StarRatingComponent
+                    name="rate"
+                    starCount={5}
+                    editing={false}
+                    value={this?.props?.ratingValue}
+                    onStarClick={this.onStarClick}
+                    emptyStarColor={"#444"}
+                  />
+                </div>
+              </div>
+              <div className="swrap23">
+                <div className="sss1a"> Your Counsellor ID</div>
+                <div className="s34"> {this?.props?.counsellorId}</div>
               </div>
             </div>
           )}

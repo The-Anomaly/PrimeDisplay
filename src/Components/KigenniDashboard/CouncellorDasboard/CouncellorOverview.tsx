@@ -13,6 +13,7 @@ import "./councellor.css";
 import { Link } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
+import noData from "../../../assets/no recommendations.png";
 const moment = require("moment");
 
 const CounsellorOverview = (props: any) => {
@@ -46,7 +47,7 @@ const CounsellorOverview = (props: any) => {
       : props.history.push("/counsellor/signin");
     const data = {};
     Axios.all([
-      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/todo`, {
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/overview`, {
         headers: { Authorization: `Token ${token}` },
       }),
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/booked-sessions`, {
@@ -90,7 +91,11 @@ const CounsellorOverview = (props: any) => {
     const dateTime = moment(date).format("MMM YYYY");
     return dateTime;
   };
-  console.log(counsellorData);
+  const formatHours = (date) => {
+    const dateTime = moment(date).format("h:mm:ss a");
+    return dateTime;
+  };
+  console.log(user);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -104,6 +109,8 @@ const CounsellorOverview = (props: any) => {
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader
                   rating={true}
+                  ratingValue={user.rating}
+                  counsellorId={user.counsellor_id}
                   welcomeText="Find below an overview of all activities with clarity"
                 />
                 <Row>
@@ -114,28 +121,28 @@ const CounsellorOverview = (props: any) => {
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Members Assigned</div>
-                            <div className="mmber1">80</div>
+                            <div className="mmber1">{user.members_assigned}</div>
                           </div>
                         </div>
                         <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Sessions Booked</div>
-                            <div className="mmber1">80</div>
+                            <div className="mmber1">{user.sessions_booked}</div>
                           </div>
                         </div>
                         <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Completed</div>
-                            <div className="mmber1">80</div>
+                            <div className="mmber1">{user?.completed}</div>
                           </div>
                         </div>
                         <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Pending</div>
-                            <div className="mmber1">8</div>
+                            <div className="mmber1">{user?.pending}</div>
                           </div>
                         </div>
                       </div>
@@ -143,7 +150,7 @@ const CounsellorOverview = (props: any) => {
                     <div className="yudd1">
                       Your next session is due tomorrow
                     </div>
-                    {counsellorData.map((data) => (
+                    {counsellorData.splice(0, 2).map((data) => (
                       <div className="msgs teammembr booked bookedover">
                         <div className="fromerit summary">
                           <div className="cone">
@@ -158,9 +165,7 @@ const CounsellorOverview = (props: any) => {
                               <div className="lowerr nulower counlowerr">
                                 Name
                               </div>
-                              <div className="userrdet1 det1">
-                                JaiyeOla jones
-                              </div>
+                              <div className="userrdet1 det1">{data.name}</div>
                               <div className="userrdet2 memb">{data.email}</div>
                             </div>
                           </div>
@@ -169,27 +174,33 @@ const CounsellorOverview = (props: any) => {
                             <div className="lowerr nulower counlowerr">
                               Date
                             </div>
-                            <div>July 20</div>
+                            <div>{formatTime(data.date)}</div>
                           </div>
                           <div className="cfour">
                             <div className="lowerr nulower counlowerr">
                               Time
                             </div>
-                            <div className="">09:30 AM - 10:00 AM</div>
+                            <div className="">{data.time}</div>
                           </div>
 
                           <div className="cfive">
                             <div className="lowerr nulower counlowerr">
                               Member Type
                             </div>
-                            <div className="clarity12b">clarity</div>
+                            <div className="clarity12b">{data.member_type}</div>
                           </div>
 
                           <div className="csix">
                             <div className="lowerr nulower sess counstat counlowerr">
                               Status
                             </div>
-                            <span className="complt pltd">Completed</span>
+                            <span
+                              className={
+                                !data.status ? "pend pltd" : "complt pltd"
+                              }
+                            >
+                              {!data.status ? "Pending" : "Completed"}
+                            </span>
                           </div>
 
                           <div className="cseven">
@@ -198,56 +209,16 @@ const CounsellorOverview = (props: any) => {
                         </div>
                       </div>
                     ))}
-
-                    <div className="msgs teammembr booked bookedover">
-                      <div className="fromerit summary">
-                        <div className="cone">
-                          <img
-                            className="user_image"
-                            src={userimg1}
-                            alt="user image"
-                          />
+                    {counsellorData.length === 0 && !isLoading && (
+                      <>
+                        <div className="text-center">
+                          <img src={noData} className="noData" alt="noData" />
                         </div>
-
-                        <div className="ctwo">
-                          <div>
-                            <div className="lowerr nulower counlowerr">
-                              Name
-                            </div>
-                            <div className="userrdet1 det1">JaiyeOla jones</div>
-                            <div className="userrdet2 memb">jj@gmail.com</div>
-                          </div>
+                        <div className="empt">
+                          You do not have any booked session
                         </div>
-
-                        <div className="cthree">
-                          <div className="lowerr nulower counlowerr">Date</div>
-                          <div>July 20</div>
-                        </div>
-
-                        <div className="cfour">
-                          <div className="lowerr nulower counlowerr">Time</div>
-                          <div className="">09:30 AM - 10:00 AM</div>
-                        </div>
-
-                        <div className="cfive">
-                          <div className="lowerr nulower counlowerr">
-                            Member Type
-                          </div>
-                          <div className="clarity12b">clarity</div>
-                        </div>
-
-                        <div className="csix">
-                          <div className="lowerr nulower sess counstat counlowerr">
-                            Status
-                          </div>
-                          <span className="pend pltd">Pending</span>
-                        </div>
-
-                        <div className="cseven">
-                          <div className="counview">View</div>
-                        </div>
-                      </div>
-                    </div>
+                      </>
+                    )}
                     <Link className="viewall viewbook" to="/counsellorbookings">
                       View all Booked Sessions
                     </Link>

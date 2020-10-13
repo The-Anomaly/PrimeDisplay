@@ -33,32 +33,6 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
   const changeHideStatus = () => {
     sethidemobile(hidemobile ? false : true);
   };
-  const checkIfUserHasMadePaymentForFullResult = () => {
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
-        ) {
-          return window.location.assign("/thirdpary/fullresult");
-        }
-        if (
-          response?.data[0]?.direction_plan &&
-          response?.data[0]?.growth_plan &&
-          response?.data[0]?.insight_plan === false
-        ) {
-          return window.location.assign("/paymentsummary");
-        }
-      })
-      .catch((error) => {});
-  };
   const logOut = () => {
     localStorage.clear();
     window.location.assign("/");
@@ -83,7 +57,6 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
             </Link>
           </div>
           <div
-            onClick={checkIfUserHasMadePaymentForFullResult}
             className={props.bookedsession ? "activegb" : "gbn"}
           >
             <Link to="/counsellorbookings">

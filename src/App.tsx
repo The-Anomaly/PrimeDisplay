@@ -323,7 +323,7 @@ const App: React.FC = () => {
             />
             <Route
               exact
-              path="/counsellormessagehistory"
+              path="/counsellormessagehistory/:email"
               component={CounsellorMessageOneUser}
             />
             <Route

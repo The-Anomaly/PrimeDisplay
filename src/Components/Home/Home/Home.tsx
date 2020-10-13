@@ -103,6 +103,12 @@ const Home: React.FC = (props: any) => {
     if (token) {
       getCurrentAssessmentPosition();
     }
+    else{
+      setState({
+        ...state,
+        isloading: false,
+      });
+    }
   }, []);
   return (
     <>

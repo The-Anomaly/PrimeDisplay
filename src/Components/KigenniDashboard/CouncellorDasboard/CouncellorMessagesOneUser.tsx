@@ -14,7 +14,7 @@ import DashboardUsernameheader from "../DashboardUsernameheader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const CounsellorMessageOneUser = () => {
+const CounsellorMessageOneUser = (props: any) => {
   const [state, setState] = useState<any>({
     isLoading: false,
     user: "",
@@ -57,18 +57,24 @@ const CounsellorMessageOneUser = () => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
+      : window.location.assign("/counsellor/signin");
+    const email = props.match.params.email;
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/chat`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        setState({
-          ...state,
-          user: response.data,
-          message: "",
-        });
-      })
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/get-chats/?email=${email}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((response) => {
+          console.log(response)
+          setState({
+            ...state,
+            user: response.data,
+            message: "",
+          });
+        })
+      )
       .catch((error) => {
         if (error && error.response && error.response.data) {
           setState({
