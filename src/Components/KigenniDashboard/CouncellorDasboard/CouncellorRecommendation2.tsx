@@ -11,6 +11,9 @@ import norecommendations from "../../../assets/no recommendations.png";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import { Link } from "react-router-dom";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+
+
 
 class CounsellorRecommendation2 extends React.Component {
   state: any = {
@@ -105,6 +108,7 @@ class CounsellorRecommendation2 extends React.Component {
     return (
       <>
         <Container fluid={true} className="contann122">
+        <CounsellorDashboardMobileNav councrec={true} />
           <Row>
             <SideBarCounsellorDashboard councrec={true}/>
             <Col md={10} sm={12} className="prm">

@@ -12,6 +12,9 @@ import nextpage from "../../../assets/nextpage.svg";
 import noData from "../../../assets/no recommendations.png";
 import rightimg from "../../../assets/rightarrow.png";
 import leftimg from "../../../assets/leftarrow1.png";
+import book from "../../../assets/book.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import preloader from "../../../assets/preloader2.gif";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -19,11 +22,12 @@ import { useState } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 const moment = require("moment");
 
 const CounsellorBookedSessions = (props: any) => {
   const [state, setState] = useState<any>({
-    isOpen: false,
+    isOpen: true,
     rate1: "0",
     errorMessage: "",
     user: "",
@@ -35,19 +39,27 @@ const CounsellorBookedSessions = (props: any) => {
     count: "",
     success: "",
     total_pages: "",
+    user_issues: "",
+    recommendations: [],
+    taskTitle: "",
+    taskDuration: "",
+    taskDescription: "",
+    session_notes: "",
+    session_about: "",
   });
-  const closeModal = () => {
-    setState({
-      ...state,
-      isOpen: false,
-    });
-  };
   const openModal = () => {
     setState({
       ...state,
       isOpen: true,
     });
   };
+  const closeModal = () => {
+    setState({
+      ...state,
+      isOpen: false,
+    });
+  };
+  const notify = (message: string) => toast(message, { containerId: "B" });
   const {
     rate1,
     nextLink,
@@ -56,6 +68,13 @@ const CounsellorBookedSessions = (props: any) => {
     prevLink,
     count,
     total_pages,
+    user_issues,
+    taskTitle,
+    taskDuration,
+    recommendations,
+    taskDescription,
+    session_notes,
+    session_about,
   } = state;
   const onStarClick = (nextValue, prevValue, name) => {
     setState({
@@ -221,9 +240,78 @@ const CounsellorBookedSessions = (props: any) => {
     const dateTime = moment(date).format("MMM YYYY");
     return dateTime;
   };
+  const inputChangeHandler = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const deleteEntry = (id) => {
+    const recommendation = recommendations;
+    recommendation.splice(id, 1);
+    setState({
+      ...state,
+      recommendations: recommendation,
+    });
+  };
+  const add_new_task = () => {
+    const recommendation = [
+      {
+        title: taskTitle,
+        description: taskDescription,
+        duration: taskDuration,
+      },
+    ];
+    if (taskTitle === "" || taskDescription === "" || taskDuration === "") {
+      return notify("Please complete the user todo entry");
+    }
+    setState({
+      ...state,
+      recommendations: [...recommendations, ...recommendation],
+    });
+  };
+  const complete_session = () => {
+    // if (
+    //   user_issues === "" ||
+    //   session_notes === "" ||
+    //   session_about === ""
+    // ) {
+    //   return notify("Please fill required feilds");
+    // }
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {
+      recommendations,
+      notes: session_notes,
+      rating: rate1,
+      say_something: session_about,
+      id: 12,
+    };
+    console.log(data);
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/counsellor/complete-session`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        console.log(res);
+        notify("Successful");
+        setTimeout(() => {
+          closeModal();
+        }, 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <Container fluid={true} className="contann122">
+        <CounsellorDashboardMobileNav bookedsession={true} />
         <Row>
           <SideBarCounsellorDashboard bookedsession={true} />
           <Col md={10} sm={12} className="prm">
@@ -377,7 +465,9 @@ const CounsellorBookedSessions = (props: any) => {
           <h6>Jaiyeola Jones</h6>
           <Link to="counsellorbookings">
             <span className="modal-btn">
-              View users result <i className="fa fa-arrow-right"></i>
+              <Link to="/counsellor/userinsight" target="blank">
+                View users result <i className="fa fa-arrow-right"></i>
+              </Link>
             </span>
           </Link>
 
@@ -385,6 +475,8 @@ const CounsellorBookedSessions = (props: any) => {
             <label>issues raised by user</label>
             <textarea
               className="issues-textbox-1 form-control"
+              name="user_issues"
+              onChange={inputChangeHandler}
               placeholder="issues*"
               cols={80}
               rows={3}
@@ -399,6 +491,7 @@ const CounsellorBookedSessions = (props: any) => {
                   type="text"
                   placeholder="enter a title"
                   name="taskTitle"
+                  onChange={inputChangeHandler}
                   className="form-control todo-input"
                   size={25}
                 />
@@ -409,6 +502,8 @@ const CounsellorBookedSessions = (props: any) => {
                   type="text"
                   placeholder="Enter the number of days"
                   className="form-control todo-input"
+                  name="taskDuration"
+                  onChange={inputChangeHandler}
                   size={25}
                 />
               </Col>
@@ -421,12 +516,31 @@ const CounsellorBookedSessions = (props: any) => {
                   cols={67}
                   rows={3}
                   className="form-control text-decription"
+                  name="taskDescription"
+                  onChange={inputChangeHandler}
                 />
               </Col>
             </Row>
           </form>
-          <div className="addmore">
+          <div className="addmore" onClick={add_new_task}>
             <p>Add more &#43;</p>
+          </div>
+          <div className="recommendationlist">
+            {recommendations.map((data, i) => (
+              <div className="cveducation" key={i}>
+                <span>
+                  <img className="cvedu" src={book} alt="book icon" />
+                </span>
+                <span className="sch_details">
+                  <div className="school">{data.title}</div>
+                  <div className="course">{data.duration}</div>
+                  <div className="location">{data.description}</div>
+                </span>
+                <span className="edit_descripd" onClick={() => deleteEntry(i)}>
+                  <span className="dwq12">&times;</span>
+                </span>
+              </div>
+            ))}
           </div>
           <form>
             <label>Take down notes during sessions</label>
@@ -435,6 +549,8 @@ const CounsellorBookedSessions = (props: any) => {
               placeholder="scribble down anything"
               cols={80}
               rows={3}
+              name="session_notes"
+              onChange={inputChangeHandler}
             />
             <Row>
               <Col md={3}>
@@ -459,11 +575,17 @@ const CounsellorBookedSessions = (props: any) => {
               rows={3}
             />
           </form>
-
+          <ToastContainer
+            enableMultiContainer
+            containerId={"B"}
+            toastClassName="bg-info text-white"
+            hideProgressBar={true}
+            position={toast.POSITION.TOP_CENTER}
+          />
           <div className="center-btn">
             {" "}
             <Link to="counsellorbookings">
-              <span className="modal-btn">
+              <span className="modal-btn" onClick={complete_session}>
                 Close session <i className="fa fa-arrow-right"></i>
               </span>
             </Link>

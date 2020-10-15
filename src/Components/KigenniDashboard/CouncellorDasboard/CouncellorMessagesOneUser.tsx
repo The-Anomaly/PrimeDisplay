@@ -13,6 +13,7 @@ import Axios, { AxiosResponse } from "axios";
 import DashboardUsernameheader from "../DashboardUsernameheader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 
 const CounsellorMessageOneUser = (props: any) => {
   const [state, setState] = useState<any>({
@@ -67,7 +68,7 @@ const CounsellorMessageOneUser = (props: any) => {
     ])
       .then(
         Axios.spread((response) => {
-          console.log(response)
+          console.log(response);
           setState({
             ...state,
             user: response.data,
@@ -99,6 +100,7 @@ const CounsellorMessageOneUser = (props: any) => {
   return (
     <>
       <Container fluid={true} className="contann122">
+        <CounsellorDashboardMobileNav messages={true} />
         <Row>
           <SideBarCounsellorDashboard messages={true} />
           <Col md={10} sm={12} className="prm">

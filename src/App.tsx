@@ -74,6 +74,7 @@ import CounsellorMessageOneUser from "./Components/KigenniDashboard/CouncellorDa
 import CouncellorRecommendationsToAll from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorRecommendationsToAll";
 import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
+import CounsellorViewUserResult from './Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUserResult';
 
 const App: React.FC = () => {
   return (
@@ -281,7 +282,7 @@ const App: React.FC = () => {
             <Route
               exact
               path="/counsellorrecommendations1"
-              component={CounsellorRecommendations1}
+              component={CouncellorRecommendationsToAll}
             />
             <Route
               exact
@@ -290,13 +291,19 @@ const App: React.FC = () => {
             />
             <Route
               exact
+              path="/counsellor/userinsight"
+              component={CounsellorViewUserResult}
+            />
+            
+            <Route
+              exact
               path="/counsellorsupport"
               component={CounsellorSupport}
             />
             <Route
               exact
               path="/counsellorrecommendations3"
-              component={CouncellorRecommendationsToAll}
+              component={CounsellorRecommendations1}
             />
             <Route
               exact
@@ -305,7 +312,6 @@ const App: React.FC = () => {
             />
             <Route exact path="/todooverview" component={TodoOverview} />
             <Route exact path="/generatecv" component={TestPdf} />
-
             <Route
               exact
               path="/counselloroverview"

@@ -2183,8 +2183,9 @@ textarea.form-control.jobr {
   background: #001833;
   border-radius: 8px;
   width: 96%;
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 .upss {
   padding: 0.4rem 0.6rem;
@@ -2695,7 +2696,7 @@ textarea.form-control.jobr {
 }
 
 .graybgds {
-  background: #f8f8f8;
+  background: #f8f8f8 !important;
 }
 .graybgds .notpaidtext {
   color: #a5a5a5 !important;
@@ -2705,6 +2706,11 @@ textarea.form-control.jobr {
   background: #a5a5a5;
   border: 1px solid #a5a5a5;
   cursor: not-allowed;
+  border-radius: 8px;
+  color: #fff;
+  margin-right: 1rem;
+  min-width: 159px;
+  cursor: pointer;
 }
 .smtdis:hover {
   background: #a5a5a5;
@@ -3537,6 +3543,9 @@ input,
   }
   .jobr {
     padding-top: 0.9rem;
+  }
+  .viewbook {
+    margin-right: 6%;
   }
 }
 

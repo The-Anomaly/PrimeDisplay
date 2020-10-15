@@ -12,11 +12,13 @@ import leftimg from "../../../assets/leftarrow1.png";
 import Modal from "react-bootstrap/esm/Modal";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 
 const CounsellorSupport = () => {
   return (
     <>
       <Container fluid={true} className="contann122">
+      <CounsellorDashboardMobileNav counselorsupport={true} />
         <Row>
           <SideBarCounsellorDashboard counselorsupport={true} />
           <Col md={10} sm={12} className="prm">

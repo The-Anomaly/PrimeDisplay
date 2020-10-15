@@ -364,6 +364,9 @@
     justify-content: space-around;
     flex-direction: column-reverse;
   }
+  .assessratingpa{
+    justify-content: flex-start;
+  }
   .ncb {
     width: 100%;
     text-align: center;
@@ -2338,17 +2341,24 @@ textarea.form-control.jobr {
   padding-left: 3rem;
   padding-top: 1rem;
 }
+.nvbv {
+  width: 100px;
+  border-right: 1px solid #dfe0eb;
+  margin-right: 9px;
+  height: 48px;
+}
 .sss12 {
   font-size: 14px;
   letter-spacing: normal;
   font-weight: 500;
   display: flex;
 }
-.ssnopad{
+.ssnopad {
   padding-right: 0% !important;
 }
-.s34{
+.s34 {
   line-height: 33px;
+  color: #979797;
 }
 .yudd1 {
   letter-spacing: normal;
@@ -2385,10 +2395,25 @@ textarea.form-control.jobr {
   cursor: pointer;
   border-bottom: 1px solid #e5e5e5;
 }
+.addmore {
+  cursor: pointer;
+}
+.edit_descripd {
+  font-size: 2rem;
+  width: 100%;
+  text-align: right;
+}
+.dwq12{
+  cursor: pointer;
+}
+.sch_details, .ref_details{
+  width: 100%;
+}
 .view-box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 0px;
+  margin-bottom: 2rem;
 }
 .box-1 {
   background-color: #c4c4c4;
@@ -2408,6 +2433,12 @@ textarea.form-control.jobr {
   }
   .box-1 {
     margin-bottom: 17px;
+  }
+  .viewall{
+    text-align: center;
+  }
+  .firstqq{
+    padding-left: 2rem;
   }
 }
 .firstoffour {
@@ -3491,7 +3522,7 @@ textarea.form-control.jobr {
   flex: 12%;
 }
 
-@media(max-width: 950px) {
+@media (max-width: 950px) {
   .signedfjss {
     margin-top: 1.5rem;
   }
@@ -3618,7 +3649,8 @@ textarea.form-control.jobr {
   .sasag {
     padding: 0;
   }
-  .msg1, .msg2 {
+  .msg1,
+  .msg2 {
     padding-right: 0.5rem;
   }
   .imguserrr {
@@ -3654,35 +3686,38 @@ textarea.form-control.jobr {
   min-width: auto;
   border-radius: 5px;
 }
+.text-decription{
+  padding-left: .5rem !important;
+}
 .btnmarg {
   margin: 1rem 0;
 }
-.counsellorpreloader2{
+.counsellorpreloader2 {
   text-align: center;
   height: 50%;
   left: 30%;
   position: absolute;
 }
-.counsellorpreloader{
+.counsellorpreloader {
   width: 100%;
   position: relative;
   bottom: 50%;
 }
-@media(max-width: 575px) {
+@media (max-width: 575px) {
   .csupport {
     max-width: 90%;
   }
-  .counsellorpreloader2{
+  .counsellorpreloader2 {
     position: initial;
   }
-  .counsellorpreloader{
+  .counsellorpreloader {
     bottom: 1px;
   }
 }
-.noData{
+.noData {
   width: 250px;
 }
-.empt{
+.empt {
   text-align: center;
   color: #202020;
 }

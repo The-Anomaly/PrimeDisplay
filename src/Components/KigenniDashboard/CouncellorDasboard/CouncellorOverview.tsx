@@ -121,7 +121,9 @@ const CounsellorOverview = (props: any) => {
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Members Assigned</div>
-                            <div className="mmber1">{user.members_assigned}</div>
+                            <div className="mmber1">
+                              {user.members_assigned}
+                            </div>
                           </div>
                         </div>
                         <div className="firstoffour second221">
@@ -209,7 +211,7 @@ const CounsellorOverview = (props: any) => {
                         </div>
                       </div>
                     ))}
-                    {counsellorData.length === 0 && !isLoading && (
+                    {counsellorData.length !> 0 && !isLoading && (
                       <>
                         <div className="text-center">
                           <img src={noData} className="noData" alt="noData" />

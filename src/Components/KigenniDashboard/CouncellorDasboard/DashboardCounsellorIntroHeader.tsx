@@ -85,9 +85,9 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
           </div>
           {this?.props?.rating && (
             <div className="sss12 ssnopad">
-              <div>
+              <div className="nvbv">
                 <div className="sss1a"> Your Ratings</div>
-                <div className="assessrating">
+                <div className="assessrating assessratingpa">
                   <StarRatingComponent
                     name="rate"
                     starCount={5}
