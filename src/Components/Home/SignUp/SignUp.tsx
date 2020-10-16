@@ -17,7 +17,10 @@ import axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import GoogleLogin from "react-google-login";
 import { useEffect } from "react";
-
+import names from "../../../assets/signup1.png";
+import mail from "../../../assets/mail_icon.png";
+import lock from "../../../assets/lock_icon.png";
+import question from "../../../assets/question_icon.png";
 
 interface State {
   firstname: string;
@@ -27,8 +30,10 @@ interface State {
   confirmPassword: string;
   whereDidYouLearnAboutUs: string;
   errorMessage: string;
-  successMsg: boolean;
+  successMsg: any;
+  error: boolean;
   isLoading: boolean;
+  isloading: boolean;
 }
 const SignUp: React.FunctionComponent = (props: any) => {
   const [state, setFormState] = React.useState<State>({
@@ -40,7 +45,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
     whereDidYouLearnAboutUs: "",
     errorMessage: "",
     successMsg: false,
+    error: false,
     isLoading: false,
+    isloading: false,
   });
   const {
     firstname,
@@ -68,26 +75,30 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
       .then((response) => {
         if (response.status === 200) {
-         return setFormState({
+          return setFormState({
             ...state,
+            errorMessage: "",
             successMsg: response.data[0].message,
             isLoading: false,
+            error: true,
           });
           setTimeout(props.history.push("/signin"), 5000);
         }
       })
       .catch((error) => {
         if (error && error.response && error.response.data) {
-         return setFormState({
+          return setFormState({
             ...state,
             errorMessage: error.response.data[0].message,
             isLoading: false,
+            error: true,
           });
         }
         setFormState({
           ...state,
           errorMessage: "Signup failed",
           isLoading: false,
+          error: true,
         });
       });
   };
@@ -130,11 +141,21 @@ const SignUp: React.FunctionComponent = (props: any) => {
       sendFormData();
     }
   };
+  const handleActionOnFormData = (e) => {
+    setFormState({
+      ...state,
+      whereDidYouLearnAboutUs: e.target.value,
+      errorMessage: "",
+      error: false,
+      successMsg: false,
+    });
+  };
   const changeActionOnFormData = (e: any) => {
     setFormState({
       ...state,
       [e.target.name]: e.target.value,
       errorMessage: "",
+      error: false,
       successMsg: false,
     });
   };
@@ -159,7 +180,40 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .catch((error) => {
         setFormState({
           ...state,
-          errorMessage: "failed to login",
+          errorMessage: "Failed to Sign Up",
+        });
+      });
+  };
+  const ResendSignUpEmail = () => {
+    setFormState({
+      ...state,
+      isloading: true,
+    });
+    const data = {
+      email,
+    };
+    axios
+      .post(`${API}/accounts/resend-email`, data)
+      .then((response) => {
+        if (response.status == 200) {
+          return setFormState({
+            ...state,
+            successMsg:
+              "Email sent, check your email for account activation link. It may take several minutes to arrive",
+            isLoading: false,
+            isloading: false,
+            error: true,
+            errorMessage: "",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+        setFormState({
+          ...state,
+          errorMessage: "Failed to Sign Up",
+          isloading: false,
+          error: false,
         });
       });
   };
@@ -173,13 +227,12 @@ const SignUp: React.FunctionComponent = (props: any) => {
           localStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   const errorGoogle = (response) => {
     setFormState({
       ...state,
-      errorMessage: "failed to login",
+      errorMessage: "Failed to Sign Up",
     });
   };
   const getCurrentAssessmentPosition = (token: string): void => {
@@ -225,13 +278,13 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .catch((error) => {
         setFormState({
           ...state,
-          errorMessage:error?.response?.data?.detail
+          errorMessage: error?.response?.data?.detail,
         });
       });
   };
-  useEffect(()=>{
-    window.scrollTo(-0,-0)
-  },[])
+  useEffect(() => {
+    window.scrollTo(-0, -0);
+  }, []);
   return (
     <>
       <Navbar />
@@ -246,10 +299,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
           </Col>
           <Col md={5}>
             <div className="signwa">Sign up</div>
-            <div className="signwa1">To Get Clarity</div>
+            <div className="signwa1 difg">To Get Clarity</div>
             {successMsg && (
               <Alert key={1} variant="info">
-               {successMsg}
+                {successMsg}
               </Alert>
             )}
             {errorMessage && (
@@ -260,9 +313,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
             <Form onSubmit={validateForm}>
               <Row>
                 <Col>
-                  <Form.Group controlId="formBasicCheckbox">
+                  <Form.Group controlId="formBasicCheckbox" className="diff23">
+                    <img className="signup_icon" src={names} alt="first name" />
                     <Form.Control
-                      className="field1"
+                      className="field1 signform"
                       value={firstname}
                       onChange={changeActionOnFormData}
                       name="firstname"
@@ -271,9 +325,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </Form.Group>
                 </Col>
                 <Col>
-                  <Form.Group controlId="formBasicCheckbox">
+                  <Form.Group controlId="formBasicCheckbox" className="diff23">
+                    <img className="signup_icon" src={names} alt="last name" />
                     <Form.Control
-                      className="field1"
+                      className="field1 signform"
                       name="lastname"
                       value={lastname}
                       onChange={changeActionOnFormData}
@@ -282,45 +337,93 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </Form.Group>
                 </Col>
               </Row>
-              <Form.Group controlId="formBasicEmail">
+              <Form.Group controlId="formBasicEmail" className="diff23">
+                <img className="signup_icon" src={mail} alt="Email" />
                 <Form.Control
                   type="email"
-                  className="field1"
+                  className="field1 signform"
                   value={email}
                   name="email"
                   onChange={changeActionOnFormData}
                   placeholder="Email Address"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group controlId="formBasicPassword" className="diff23">
+                <img className="signup_icon" src={lock} alt="password" />
                 <Form.Control
                   type="password"
-                  className="field1"
+                  className="field1 signform"
                   value={password}
                   name="password"
                   onChange={changeActionOnFormData}
                   placeholder="Password"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group controlId="formBasicPassword" className="diff23">
+                <img
+                  className="signup_icon"
+                  src={lock}
+                  alt="confirm password"
+                />
                 <Form.Control
                   type="password"
-                  className="field1"
+                  className="field1 signform"
                   value={confirmPassword}
                   name="confirmPassword"
                   onChange={changeActionOnFormData}
                   placeholder="Confirm Password"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicEmail1">
+              <Form.Group controlId="formBasicEmail1" className="diff23">
+                <img className="signup_icon" src={question} alt="where" />
                 <Form.Control
-                  className="field1"
-                  onChange={changeActionOnFormData}
-                  value={whereDidYouLearnAboutUs}
+                  as="select"
+                  className="field1 form-control signform"
+                  onChange={handleActionOnFormData}
                   name="whereDidYouLearnAboutUs"
-                  placeholder="Where did you hear about us?"
+                >
+                  <option className="selectopt">
+                    Where did you hear about us?
+                  </option>
+                  <option className="selectopt" value="Facebook">
+                    Facebook
+                  </option>
+                  <option className="selectopt" value="Linkedin">
+                    Linkedin
+                  </option>
+                  <option className="selectopt" value="Instagram">
+                    Instagram
+                  </option>
+                  <option className="selectopt" value="Referal Link">
+                    Referal Link
+                  </option>
+                  <option className="selectopt" value="Referal Link">
+                    Friend
+                  </option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail" className="">
+                <img className="signup_icon" src={question} alt="code" />
+                <Form.Control
+                  type="email"
+                  className="field1 signform"
+                  value={email}
+                  name="email"
+                  onChange={changeActionOnFormData}
+                  placeholder="Referral Code (Optional)"
                 />
               </Form.Group>
+              <div>
+                {state.error && (
+                  <div className="resend22">
+                    Did not receive the email?{" "}
+                    <a onClick={ResendSignUpEmail} className="resend">
+                      {" "}
+                      {state.isloading ? "processing" : "resend"}
+                    </a>
+                  </div>
+                )}
+              </div>
               <Button variant="primary" className="subbtn" type="submit">
                 {!isLoading ? "Sign Up" : "Signing Up"}
               </Button>

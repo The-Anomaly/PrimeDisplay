@@ -69,7 +69,7 @@ class CounsellorDashboardNav extends React.Component<any, any> {
           <div className="prm111">
             <span>{first_name ? first_name + " " + last_name : ""}</span>
             <span>
-              <Link to="/dashboardsettings">
+              <Link to="/counsellorsettings">
                 <img
                   src={image ? image : avatar}
                   className="avatar11"

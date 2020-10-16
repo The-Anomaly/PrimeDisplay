@@ -7,34 +7,42 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
+import norecommendations from "../../../assets/no recommendations.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+
 
 const CounsellorRecommendations1 = () => {
+  const [state, setState] = useState({ counsellor: [] });
+  const { counsellor }: any = state;
   return (
     <>
       <Container fluid={true} className="contann122">
+      <CounsellorDashboardMobileNav councrec={true} />
         <Row>
-          <SideBarCounsellorDashboard messages={true} />
+          <SideBarCounsellorDashboard councrec={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Counsellors Recommendation" />
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader
-                  searcharea={true}
-                  welcomeText="Summary of all messages to and from members assigned to you"
+                  welcomeText="Get insight to the overview of all your concerns"
                 />
                 <Row>
-                  <Col md={11} className="mssaag">
-                    <div className="useri1222">
-                      <div className="sjsso">
-                        <img src={userimg} className="userimg" alt="jayeolajones" />
+                <Col md={12} className="mssaag sasag">
+                  <Link to="/counsellorrecommendations2" className="counlink">
+                    <div className="useri1222 ui1222 ssgs">
+                      <div className="msg1">
+                        <img src={userimg} className="userimg imguserrr" alt="jayeolajones" />
                       </div>
-                      <div className="sjsso1">
+                      <div className="msg2">
                         <div>
-                          <span className="username11">Jayeola Jones</span>
+                          <span className="username11">Jaiye Jawon</span>
                           <span className="useremail11">jaye@user.com</span>
                         </div>
-                        <div className="messagedetails">
+                        <div className="messagedetails nufont">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Id mi, mattis at ipsum ullamcorper blandit
                           pharetra. Est elit, morbi elementum faucibus nec morbi
@@ -43,8 +51,22 @@ const CounsellorRecommendations1 = () => {
                           nulla nulla pretium id.
                         </div>
                       </div>
-                      <div className="tymeline sjsso2">6 days Ago</div>
+                      <div className="tymeline msg3 nufont">6 days Ago</div>
                     </div>
+                    </Link>
+                    {/* {counsellor.length === 0 && (
+                      <div className="norec">
+                        <img
+                          src={norecommendations}
+                          className="norecommendations"
+                          alt="norecommendations"
+                        />
+                        <div className="udont1">Oops!!!</div>
+                        <div className="udont">
+                          You dont have any Recommendation yet
+                        </div>
+                      </div>
+                    )} */}
                   </Col>
                 </Row>
               </Col>

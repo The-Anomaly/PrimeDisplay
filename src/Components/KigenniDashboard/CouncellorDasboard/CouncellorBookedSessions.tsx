@@ -6,122 +6,445 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
-import userimg from "../../../assets/userimg.png";
+import userimg1 from "../../../assets/userimg1.png";
+import prevpage from "../../../assets/prevpage.svg";
+import nextpage from "../../../assets/nextpage.svg";
+import noData from "../../../assets/no recommendations.png";
 import rightimg from "../../../assets/rightarrow.png";
 import leftimg from "../../../assets/leftarrow1.png";
+import book from "../../../assets/book.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import preloader from "../../../assets/preloader2.gif";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import StarRatingComponent from "react-star-rating-component";
+import Axios, { AxiosResponse } from "axios";
+import { API } from "../../../config";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+const moment = require("moment");
 
-const CounsellorBookedSessions = () => {
-  const [state, setState] = useState({
+const CounsellorBookedSessions = (props: any) => {
+  const [state, setState] = useState<any>({
     isOpen: true,
+    rate1: "0",
+    errorMessage: "",
+    user: "",
+    counsellorData: [],
+    successMsg: false,
+    isLoading: false,
+    nextLink: "",
+    prevLink: "",
+    count: "",
+    success: "",
+    total_pages: "",
     user_issues: "",
+    recommendations: [],
     taskTitle: "",
-    taskDuration:"",
+    taskDuration: "",
     taskDescription: "",
     session_notes: "",
-    session_about: ""
+    session_about: "",
   });
-  const { user_issues } = state; //state destructuring
+  const openModal = () => {
+    setState({
+      ...state,
+      isOpen: true,
+    });
+  };
   const closeModal = () => {
     setState({
       ...state,
       isOpen: false,
     });
   };
+  const notify = (message: string) => toast(message, { containerId: "B" });
+  const {
+    rate1,
+    nextLink,
+    isLoading,
+    counsellorData,
+    prevLink,
+    count,
+    total_pages,
+    user_issues,
+    taskTitle,
+    taskDuration,
+    recommendations,
+    taskDescription,
+    session_notes,
+    session_about,
+  } = state;
+  const onStarClick = (nextValue, prevValue, name) => {
+    setState({
+      ...state,
+      [name]: nextValue.toString(),
+    });
+  };
+  React.useEffect(() => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/booked-sessions`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/booked-sessions`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res, res1) => {
+          console.log(res);
+          if (res.status === 200) {
+            setState({
+              ...state,
+              user: res.data,
+              successMsg: true,
+              isLoading: false,
+              counsellorData: [...res1.data.results].reverse(),
+              count: res1.data.page,
+              nextLink: res1.data.next,
+              prevLink: res1.data.previous,
+              total_pages: res1.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  }, []);
+
+  const loadNewData = () => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${nextLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${nextLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res, res1) => {
+          console.log(res);
+          if (res.status === 200) {
+            setState({
+              ...state,
+              user: res.data,
+              successMsg: true,
+              isLoading: false,
+              counsellorData: [...res1.data.results].reverse(),
+              count: res1.data.page,
+              nextLink: res1.data.next,
+              prevLink: res1.data.previous,
+              total_pages: res1.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const loadPrevData = () => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${prevLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${prevLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res, res1) => {
+          console.log(res);
+          if (res.status === 200) {
+            setState({
+              ...state,
+              user: res.data,
+              successMsg: true,
+              isLoading: false,
+              counsellorData: [...res1.data.results].reverse(),
+              count: res1.data.page,
+              nextLink: res1.data.next,
+              prevLink: res1.data.previous,
+              total_pages: res1.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const formatTime = (date) => {
+    const dateTime = moment(date).format("MMM YYYY");
+    return dateTime;
+  };
   const inputChangeHandler = (e) => {
     setState({
       ...state,
       [e.target.name]: e.target.value,
     });
-
-    console.log([e.target.name]);
+  };
+  const deleteEntry = (id) => {
+    const recommendation = recommendations;
+    recommendation.splice(id, 1);
+    setState({
+      ...state,
+      recommendations: recommendation,
+    });
+  };
+  const add_new_task = () => {
+    const recommendation = [
+      {
+        title: taskTitle,
+        description: taskDescription,
+        duration: taskDuration,
+      },
+    ];
+    if (taskTitle === "" || taskDescription === "" || taskDuration === "") {
+      return notify("Please complete the user todo entry");
+    }
+    setState({
+      ...state,
+      recommendations: [...recommendations, ...recommendation],
+    });
+  };
+  const complete_session = () => {
+    // if (
+    //   user_issues === "" ||
+    //   session_notes === "" ||
+    //   session_about === ""
+    // ) {
+    //   return notify("Please fill required feilds");
+    // }
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {
+      recommendations,
+      notes: session_notes,
+      rating: rate1,
+      say_something: session_about,
+      id: 12,
+    };
+    console.log(data);
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/counsellor/complete-session`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        console.log(res);
+        notify("Successful");
+        setTimeout(() => {
+          closeModal();
+        }, 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
       <Container fluid={true} className="contann122">
+        <CounsellorDashboardMobileNav bookedsession={true} />
         <Row>
           <SideBarCounsellorDashboard bookedsession={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Booked Sessions" />
-            <Row>
+            <Row className="wrapc222">
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
-                <Row>
-                  <Col md={11}>
-                    <div className="yudd1">
-                      Your next session is due tomorrow
+                <Row className="letss">
+                  <Col md={12}>
+                    <div className="teammembr teamheading counheading">
+                      <div className="cone"> </div>
+                      <div className="ctwo">
+                        <div>Name</div>
+                      </div>
+                      <div className="cthree">
+                        <div>Date</div>
+                      </div>
+                      <div className="cfour">
+                        <div>Time</div>
+                      </div>
+                      <div className="cfive">
+                        <div>Member Type</div>
+                      </div>
+                      <div className="csix">
+                        <div>Status</div>
+                      </div>
+                      <div className="cseven"> </div>
                     </div>
-                    {/* <div className="wrapc1">
-                      <div className="cname1">Name</div>
-                      <div className="cdate1">Date</div>
-                      <div className="ctime1">Time</div>
-                      <div className="ctime1">Member type</div>
-                      <div className="cstatus1">Status</div>
-                    </div> */}
-                    <div className="wrapc2">
-                      <div className="cname hhius">
-                        <div className="userimg22">
-                          <img
-                            src={userimg}
-                            className="userimg"
-                            alt="userimg"
-                          />
-                        </div>
-                        <div className="ssds1">
-                          <div>Jayeola Jones</div>
-                          <div className="cemail1">jaye@user.com</div>
-                        </div>
-                      </div>
-                      <div className="cdate">July 20</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cdate">
-                        <div className="clarity12b">Clarity</div>
-                      </div>
-                      <div className="cstatus2">
-                        <span className="cstatus">Completed</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn ssoso">View</div>
-                      </div>
-                    </div>
-                    <div className="wrapc2">
-                      <div className="cname hhius">
-                        <div className="userimg22">
-                          <img
-                            src={userimg}
-                            className="userimg"
-                            alt="userimg"
-                          />
-                        </div>
-                        <div className="ssds1">
-                          <div>Jayeola Jones</div>
-                          <div className="cemail1">jaye@user.com</div>
-                        </div>
-                      </div>
-                      <div className="cdate">July 20</div>
-                      <div className="ctime">09:30 AM - 10:00 AM</div>
-                      <div className="cdate">
-                        <div className="clarity12b">Clarity</div>
-                      </div>
-                      <div className="cstatus2">
-                        <span className="cstatus pending">Pending</span>
-                      </div>
-                      <div className="ctime">
-                        <div className="savebtn ssoso">View</div>
-                      </div>
-                    </div>
-                    <div className="dspl">
-                      <span>Dispalying 6 out of 100</span>
-                      <div>
-                        <img src={leftimg} className="leftimg" alt="leftimg" />
+                    {isLoading && (
+                      <div className="counsellorpreloader2">
                         <img
-                          src={rightimg}
-                          className="rightimg"
-                          alt="leftimg"
+                          src={preloader}
+                          className="counsellorpreloader"
+                          alt="preloader"
                         />
+                      </div>
+                    )}
+                    {counsellorData.map((data) => (
+                      <div className="msgs teammembr booked bookedover">
+                        <div className="fromerit summary">
+                          <div className="cone">
+                            <img
+                              className="user_image"
+                              src={userimg1}
+                              alt="user image"
+                            />
+                          </div>
+                          <div className="ctwo">
+                            <div>
+                              <div className="lowerr nulower counlowerr">
+                                Name
+                              </div>
+                              <div className="userrdet1 det1">{data.name}</div>
+                              <div className="userrdet2 memb">{data.email}</div>
+                            </div>
+                          </div>
+                          <div className="cthree">
+                            <div className="lowerr nulower counlowerr">
+                              Date
+                            </div>
+                            <div>{formatTime(data.date)}</div>
+                          </div>
+                          <div className="cfour">
+                            <div className="lowerr nulower counlowerr">
+                              Time
+                            </div>
+                            <div className="">{data.time}</div>
+                          </div>
+
+                          <div className="cfive">
+                            <div className="lowerr nulower counlowerr">
+                              Member Type
+                            </div>
+                            <div className="clarity12b">{data.member_type}</div>
+                          </div>
+
+                          <div className="csix">
+                            <div className="lowerr nulower sess counstat counlowerr">
+                              Status
+                            </div>
+                            <span
+                              className={
+                                !data.status ? "pend pltd" : "complt pltd"
+                              }
+                            >
+                              {!data.status ? "Pending" : "Completed"}
+                            </span>
+                          </div>
+
+                          <div className="cseven">
+                            <div className="counview" onClick={openModal}>
+                              View
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    {counsellorData.length === 0 && !isLoading && (
+                      <>
+                        <div className="text-center">
+                          <img src={noData} className="noData" alt="noData" />
+                        </div>
+                        <div className="empt">
+                          You do not have any booked session
+                        </div>
+                      </>
+                    )}
+                    <div className="next_page">
+                      {counsellorData.length !== 0 && (
+                        <div>
+                          Displaying <span className="page_num">{count}</span>{" "}
+                          out of <span className="page_num">{total_pages}</span>
+                        </div>
+                      )}
+                      <div>
+                        {prevLink && (
+                          <img
+                            onClick={loadPrevData}
+                            className="page_change"
+                            src={prevpage}
+                            alt="previous page"
+                          />
+                        )}
+
+                        {nextLink && (
+                          <img
+                            onClick={loadNewData}
+                            className="page_change"
+                            src={nextpage}
+                            alt="next page"
+                          />
+                        )}
                       </div>
                     </div>
                   </Col>
@@ -136,12 +459,15 @@ const CounsellorBookedSessions = () => {
         size={"lg"}
         className="bookingszmodal"
         centered={true}
+        onHide={closeModal}
       >
         <Container>
           <h6>Jaiyeola Jones</h6>
           <Link to="counsellorbookings">
             <span className="modal-btn">
-              View users result <i className="fa fa-arrow-right"></i>
+              <Link to="/counsellor/userinsight" target="blank">
+                View users result <i className="fa fa-arrow-right"></i>
+              </Link>
             </span>
           </Link>
 
@@ -196,8 +522,25 @@ const CounsellorBookedSessions = () => {
               </Col>
             </Row>
           </form>
-          <div className="addmore">
+          <div className="addmore" onClick={add_new_task}>
             <p>Add more &#43;</p>
+          </div>
+          <div className="recommendationlist">
+            {recommendations.map((data, i) => (
+              <div className="cveducation" key={i}>
+                <span>
+                  <img className="cvedu" src={book} alt="book icon" />
+                </span>
+                <span className="sch_details">
+                  <div className="school">{data.title}</div>
+                  <div className="course">{data.duration}</div>
+                  <div className="location">{data.description}</div>
+                </span>
+                <span className="edit_descripd" onClick={() => deleteEntry(i)}>
+                  <span className="dwq12">&times;</span>
+                </span>
+              </div>
+            ))}
           </div>
           <form>
             <label>Take down notes during sessions</label>
@@ -214,11 +557,15 @@ const CounsellorBookedSessions = () => {
                 <label>Rate this session</label>
               </Col>
               <Col md={5} className="star-container">
-                <i className="fa fa-star ratings"></i>
-                <span className="fa fa-star ratings"></span>
-                <span className="fa fa-star ratings"></span>
-                <span className="fa fa-star ratings"></span>
-                <span className="fa fa-star ratings"></span>
+                <div className="assessrating">
+                  <StarRatingComponent
+                    name="rate1"
+                    starCount={5}
+                    value={rate1}
+                    onStarClick={onStarClick}
+                    emptyStarColor={"#444"}
+                  />
+                </div>
               </Col>
             </Row>
             <textarea
@@ -226,15 +573,19 @@ const CounsellorBookedSessions = () => {
               placeholder="Say something about the session"
               cols={80}
               rows={3}
-              name="session_about"
-              onChange={inputChangeHandler}
             />
           </form>
-
+          <ToastContainer
+            enableMultiContainer
+            containerId={"B"}
+            toastClassName="bg-info text-white"
+            hideProgressBar={true}
+            position={toast.POSITION.TOP_CENTER}
+          />
           <div className="center-btn">
             {" "}
             <Link to="counsellorbookings">
-              <span className="modal-btn">
+              <span className="modal-btn" onClick={complete_session}>
                 Close session <i className="fa fa-arrow-right"></i>
               </span>
             </Link>

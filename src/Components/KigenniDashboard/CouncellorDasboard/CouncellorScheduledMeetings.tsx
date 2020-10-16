@@ -10,36 +10,40 @@ import prevpage from "../../../assets/prevpage.svg";
 import nextpage from "../../../assets/nextpage.svg";
 import Navbar from "./../../Home/HomeComponents/navbar";
 import Footer from "./../../Home/HomeComponents/footer";
+import CounsellorDashboardNav from "./CounsellorDashboardNav";
+import SideBarCounsellorDashboard from "./SideBarCounsellorDashboard";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+
 
 const CounsellorScheduledMeetings = () => {
   return (
     <>
       <Container fluid={true} className="contann122">
+        <CounsellorDashboardMobileNav counmeeting={true} />
         <Row>
+          <SideBarCounsellorDashboard counmeeting={true} />
           <Col md={10} sm={12} className="prm">
-          <Navbar />
+            <CounsellorDashboardNav title="Scheduled Meetings" />
             <Row>
               <Col md={12} className="firstqq">
-                <div className="kdashheader npps"></div>
-                <DashboardCounsellorIntroHeader
-                  searcharea={true}
-                  welcomeText="Summary of all messages to and from members assigned to you"
-                />
-                  <div className="teammembr teamheading">
-                    <div className="tname">
-                      <div>Name</div>
-                    </div>
-                    <div className="tarea">
-                      <div>Thematic Area</div>
-                    </div>
-                    <div className="tteam">
-                      <div>Team</div>
-                    </div>
-                    <div className="tstatus">
-                      <div>Assessment Status</div>
-                    </div>
+                <div className="kdashheader npps sched">Scheduled Meetings</div>
+
+                <div className="teammembr teamheading meethead">
+                  <div className="imagesec"> </div>
+                  <div className="memberdet">
+                    <div>Name</div>
                   </div>
-                <div className="msgs teammembr">
+                  <div className="themarea">
+                    <div>Date</div>
+                  </div>
+                  <div className="team">
+                    <div>Time</div>
+                  </div>
+                  <div className="adminstat">
+                    <div>Status</div>
+                  </div>
+                </div>
+                <div className="msgs teammembr schbod">
                   <div className="fromerit summary">
                     <div className="userr imagesec">
                       <img
@@ -55,59 +59,72 @@ const CounsellorScheduledMeetings = () => {
                         <div className="userrdet2 memb">jj@gmail.com</div>
                       </div>
                     </div>
-                    <div className="themarea">
-                      <div className="lowerr nulower">Thematic Area</div>
-                      <div>insert text</div>
+                    <div className="themarea schdate">
+                      <div className="lowerr nulower">Date</div>
+                      <div>July 20</div>
                     </div>
-                    <div className="team">
-                      <div className="lowerr nulower">Team</div>
-                      <div>insert text</div>
+                    <div className="team schtime">
+                      <div className="lowerr nulower">Time</div>
+                      <div>09:30AM - 10:00AM</div>
                     </div>
-                    <div className="adminstat">
-                      <div className="lowerr nulower sess">
-                        Assessment Status
+                    <div className="adminstat schstat">
+                      <span className="pend pltd">Pending</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="msgs teammembr schbod">
+                  <div className="fromerit summary">
+                    <div className="userr imagesec">
+                      <img
+                        className="user_image"
+                        src={userimg1}
+                        alt="user image"
+                      />
+                    </div>
+                    <div className="memberdet">
+                      <div>
+                        <div className="lowerr nulower">Name</div>
+                        <div className="userrdet1 det1">JaiyeOla jones</div>
+                        <div className="userrdet2 memb">jj@gmail.com</div>
                       </div>
-                      <span className="pend">Pending</span>
                     </div>
-                    <div className="adminbtn">
-                      <div className="sendIV viewit">View Profile</div>
+                    <div className="themarea schdate">
+                      <div className="lowerr nulower">Date</div>
+                      <div>July 20</div>
+                    </div>
+                    <div className="team schtime">
+                      <div className="lowerr nulower">Time</div>
+                      <div>09:30AM - 10:00AM</div>
+                    </div>
+                    <div className="adminstat schstat">
+                      <span className="complt pltd">Completed</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="adminstat">
-                  <div className="lowerr nulower sess">Assessment Status</div>
-                  <span className="complt">Complete</span>
-                </div>
-
-                <div className="adminbtn">
-                  <div className={"sendIV viewit disabledview"}>
-                    View Profile
-                  </div>
-                </div>
                 <div className="next_page">
-                    <div>
-                      Displaying <span className="page_num">1</span>{" "}
-                      out of <span className="page_num">6</span>
-                    </div>
-                    <div>
-                        <img
-                          className="page_change"
-                          src={prevpage}
-                          alt="previous page"
-                        />
-                        <img
-                          className="page_change"
-                          src={nextpage}
-                          alt="next page"
-                        />
-                    </div>
+                  <div>
+                    Displaying <span className="page_num">1</span> out of{" "}
+                    <span className="page_num">6</span>
                   </div>
+                  <div>
+                    <img
+                      className="page_change"
+                      src={prevpage}
+                      alt="previous page"
+                    />
+                    <img
+                      className="page_change"
+                      src={nextpage}
+                      alt="next page"
+                    />
+                  </div>
+                </div>
               </Col>
             </Row>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     </>
   );

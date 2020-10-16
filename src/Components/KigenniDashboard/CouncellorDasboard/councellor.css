@@ -168,7 +168,11 @@
   .flexa {
     width: 94%;
   }
-  .wrapc222{
+  .wrapc222 {
+    width: 97%;
+  }
+  .dspl,
+  .ui1222 {
     width: 97%;
   }
 }
@@ -359,6 +363,9 @@
     border-radius: 6px;
     justify-content: space-around;
     flex-direction: column-reverse;
+  }
+  .assessratingpa{
+    justify-content: flex-start;
   }
   .ncb {
     width: 100%;
@@ -1867,6 +1874,9 @@ textarea.form-control.jobr {
   width: 97%;
   margin-left: 1rem;
 }
+.sendtcont:focus {
+  border: 1px solid #ced4da !important;
+}
 .sendmeess {
   background: #9c1258;
   color: #fff;
@@ -2331,11 +2341,24 @@ textarea.form-control.jobr {
   padding-left: 3rem;
   padding-top: 1rem;
 }
+.nvbv {
+  width: 100px;
+  border-right: 1px solid #dfe0eb;
+  margin-right: 9px;
+  height: 48px;
+}
 .sss12 {
-  padding-right: 4rem;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: normal;
   font-weight: 500;
+  display: flex;
+}
+.ssnopad {
+  padding-right: 0% !important;
+}
+.s34 {
+  line-height: 33px;
+  color: #979797;
 }
 .yudd1 {
   letter-spacing: normal;
@@ -2372,30 +2395,50 @@ textarea.form-control.jobr {
   cursor: pointer;
   border-bottom: 1px solid #e5e5e5;
 }
-.view-box{
+.addmore {
+  cursor: pointer;
+}
+.edit_descripd {
+  font-size: 2rem;
+  width: 100%;
+  text-align: right;
+}
+.dwq12{
+  cursor: pointer;
+}
+.sch_details, .ref_details{
+  width: 100%;
+}
+.view-box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 0px;
-
+  margin-bottom: 2rem;
 }
-.box-1{
+.box-1 {
   background-color: #c4c4c4;
   height: 340px;
   width: 94%;
   border-radius: 3px;
 }
-.box-2{
+.box-2 {
   background-color: #c4c4c4;
   height: 340px;
   width: 94%;
   border-radius: 3px;
 }
-@media (max-width: 700px){
-  .view-box{
+@media (max-width: 700px) {
+  .view-box {
     display: block;
   }
-  .box-1{
+  .box-1 {
     margin-bottom: 17px;
+  }
+  .viewall{
+    text-align: center;
+  }
+  .firstqq{
+    padding-left: 2rem;
   }
 }
 .firstoffour {
@@ -2731,7 +2774,7 @@ textarea.form-control.jobr {
   flex-wrap: wrap;
 }
 .msgs {
-  max-width: 93%;
+  max-width: 97%;
   background: #fefefe;
   box-shadow: 0px 2px 6px rgba(24, 33, 77, 0.25);
   border-radius: 6px;
@@ -3172,15 +3215,509 @@ textarea.form-control.jobr {
   box-sizing: border-box;
   border-radius: 8px;
 }
-.bookingszmodal .modal-dialog{
-  width: 86%;
-  margin: auto;
+.kislsoo {
+  padding-left: 0.1rem !important;
 }
-@media (max-width: 600px){
-  .bookingszmodal{
+.nocounmessage {
+  width: 25%;
+  min-width: 250px;
+  max-width: 500px;
+}
+.nomesgcoun {
+  text-align: center;
+  margin: auto;
+  padding-bottom: 1rem;
+}
+.kil123 {
+  padding-top: 1rem;
+}
+
+/*Counsellor Booked Session*/
+.counheading {
+  max-width: 97%;
+  font-size: 95%;
+}
+.booked {
+  max-width: 100%;
+}
+.counview {
+  color: #fff;
+  background: #9c1258;
+  border-radius: 5px;
+  border: 1px solid #9c1258;
+  width: 4rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  text-align: center;
+  font-size: 90%;
+}
+.pltd {
+  padding: 0.4rem 1.2rem;
+  font-size: 90%;
+}
+.cone {
+  text-align: center;
+  flex: 10%;
+}
+.ctwo {
+  padding-right: 1.5rem;
+  flex: 20%;
+}
+.cthree {
+  padding-right: 1.5rem;
+  flex: 10%;
+}
+.cfour {
+  padding-right: 1.5rem;
+  flex: 20%;
+}
+.cfive {
+  padding-right: 1rem;
+  flex: 10%;
+}
+.csix {
+  padding-right: 1rem;
+  flex: 15%;
+}
+.cseven {
+  padding-right: 1rem;
+  flex: 10%;
+}
+
+@media (max-width: 905px) {
+  .letss {
+    margin-top: 2rem;
+  }
+  .counheading {
+    display: none;
+  }
+  .booked {
+    padding: 2rem;
+    padding-bottom: 3rem;
+  }
+  .counlowerr {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .cone {
+    flex: 15%;
+  }
+  .ctwo {
+    flex: 30%;
+    height: 5rem;
+  }
+  .cthree {
+    flex: 25%;
+    height: 5rem;
+  }
+  .cfour {
+    flex: 30%;
+    height: 5rem;
+  }
+  .cfive {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+  }
+  .csix {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+  }
+  .cseven {
+    flex: 30%;
+    margin-top: 2rem;
+    height: 5rem;
+    padding-top: 3.3rem;
+  }
+  .counstat {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .cseven {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .booked {
+    margin-right: 5%;
+  }
+}
+
+@media (max-width: 613px) {
+  .booked {
+    padding: 1rem 2rem;
+    max-width: 90%;
+    margin-left: 2%;
+  }
+  .cone {
+    flex: 20%;
+  }
+  .ctwo {
+    flex: 50%;
+  }
+  .cthree {
+    flex: 20%;
+  }
+  .cfour {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .cfive {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .csix {
+    flex: 50%;
+    margin-top: 1rem;
+  }
+  .cseven {
+    flex: 50%;
+    margin-top: 1rem;
+    padding-top: 3rem;
+  }
+  .counstat {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .booked {
+    padding: 1rem;
+    max-width: 100%;
+    margin-right: 2rem;
+    margin-left: 0;
+  }
+  .cone {
+    flex: 100%;
+  }
+  .ctwo {
+    flex: 65%;
+    margin-top: 1rem;
+  }
+  .cthree {
+    flex: 35%;
+    margin-top: 1rem;
+  }
+  .cfour {
+    flex: 65%;
+  }
+  .cfive {
+    flex: 35%;
+  }
+  .csix {
+    flex: 65%;
+  }
+  .cseven {
+    flex: 35%;
+  }
+}
+/*Scheduled Meeting*/
+.meethead {
+  max-width: 97%;
+  width: 97%;
+}
+.sched {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+@media (max-width: 1000px) {
+  .sched {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .schbod {
+    margin-left: 8%;
+  }
+  .sched {
+    font-size: 1.5rem;
+  }
+  .schdate {
+    flex: 30%;
+    height: 4rem;
+  }
+  .schtime {
+    flex: 30%;
+    height: 4rem;
+  }
+  .schstat {
+    flex: 30%;
+    padding-top: 2rem;
+    height: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .schbod {
+    margin-left: 0;
+    max-width: 90%;
+  }
+  .schdate {
+    flex: 50%;
+  }
+  .schtime {
+    flex: 50%;
+  }
+  .schstat {
+    flex: 100%;
+    margin-left: 50%;
+  }
+}
+
+.bookedover {
+  max-width: 97%;
+}
+.viewbook {
+  float: right;
+  margin-right: 3%;
+}
+.viewbook:hover {
+  font-size: 15px;
+  color: #3965ff;
+}
+
+/*Assigned Members*/
+.avail {
+  color: #1bb978;
+}
+.notavail {
+  color: #ff0000;
+}
+.mbtn {
+  width: 7.5rem;
+  padding: 0.6rem 1rem;
+}
+.mbtnblu {
+  background: #3965ff;
+  border: 1px solid #3965ff;
+}
+.mone {
+  flex: 10%;
+  text-align: center;
+}
+.mtwo {
+  flex: 20%;
+  padding-right: 1.5rem;
+}
+.mthree {
+  flex: 20%;
+  padding-right: 1.5rem;
+}
+.mfour {
+  flex: 15%;
+  padding-right: 1.5rem;
+}
+.mfive {
+  flex: 15%;
+  padding-right: 1.5rem;
+}
+.msix {
+  flex: 12%;
+}
+
+@media (max-width: 950px) {
+  .signedfjss {
+    margin-top: 1.5rem;
+  }
+  .mhead {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .mheadd {
+    display: none;
+  }
+  .signed {
+    padding: 2rem;
+  }
+  .mone {
+    height: 5rem;
+    flex: 30%;
+  }
+  .mtwo {
+    height: 5rem;
+    flex: 30%;
+  }
+  .mthree {
+    height: 5rem;
+    flex: 30%;
+  }
+  .mfour {
+    height: 5rem;
+    flex: 30%;
+    margin-top: 2rem;
+  }
+  .mfive {
+    height: 5rem;
+    flex: 30%;
+    margin-top: 2rem;
+  }
+  .msix {
+    height: 5rem;
+    flex: 30%;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .signed {
+    padding: 1rem;
+  }
+  .mone {
+    flex: 40%;
+  }
+  .mtwo {
+    flex: 60%;
+  }
+  .mthree {
+    flex: 50%;
+    margin-top: 2rem;
+  }
+  .mfour {
+    flex: 50%;
+  }
+  .mfive {
+    flex: 50%;
+  }
+  .msix {
+    flex: 50%;
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .mbtn {
+    padding: 0.5rem 1rem;
+  }
+  .signed {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 342px) {
+  .msix {
+    flex: 100%;
+    padding-top: 0;
+    margin-top: 1rem;
+  }
+  .bookingszmodal .modal-dialog {
+    width: 86%;
+    margin: auto;
+  }
+}
+@media (max-width: 600px) {
+  .bookingszmodal {
     width: 100;
+  }
+  .text-decription {
+    padding: 10px 1rem;
+  }
+}
+
+/*Counselor All Messages*/
+.ssgs {
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.msg1 {
+  flex: 10%;
+  padding-right: 1.5rem;
+}
+.msg2 {
+  flex: 80%;
+  padding-right: 1.5rem;
+}
+.msg3 {
+  flex: 10%;
+}
+
+@media (max-width: 770px) {
+  .ssgs {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .sasag {
+    padding: 0;
+  }
+  .msg1,
+  .msg2 {
+    padding-right: 0.5rem;
+  }
+  .imguserrr {
+    width: 35px;
+    height: 35px;
+  }
+  .nufont {
+    font-size: 13px;
+  }
+}
+
+.counlink {
+  cursor: pointer;
+}
+.goback {
+  color: white;
+  background: #9c1258;
+  border: 1px solid #9c1258;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 13px;
+  float: right;
+  margin: 1rem;
+  position: absolute;
+  right: 0;
+}
+
+.csetting {
+  max-width: 100%;
+}
+.subsupport {
+  font-size: 14px;
+  min-width: auto;
+  border-radius: 5px;
 }
 .text-decription{
-  padding: 10px 1rem;
+  padding-left: .5rem !important;
 }
+.btnmarg {
+  margin: 1rem 0;
+}
+.counsellorpreloader2 {
+  text-align: center;
+  height: 50%;
+  left: 30%;
+  position: absolute;
+}
+.counsellorpreloader {
+  width: 100%;
+  position: relative;
+  bottom: 50%;
+}
+@media (max-width: 575px) {
+  .csupport {
+    max-width: 90%;
+  }
+  .counsellorpreloader2 {
+    position: initial;
+  }
+  .counsellorpreloader {
+    bottom: 1px;
+  }
+}
+.noData {
+  width: 250px;
+}
+.empt {
+  text-align: center;
+  color: #202020;
 }

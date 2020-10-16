@@ -7,11 +7,62 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
+import { Link, withRouter } from "react-router-dom";
+import Axios, { AxiosResponse } from "axios";
+import { API } from "../../../config";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 
-const CounsellorAllMessages = () => {
+const CounsellorAllMessages = withRouter((props: any) => {
+  const [state, setState] = React.useState<any>({
+    errorMessage: "",
+    user: [],
+    counsellorData: [],
+    isLoading: false,
+  });
+  const { errorMessage, user, counsellorData } = state;
+  React.useEffect(() => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/get-chats`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            setState({
+              ...state,
+              user: [...res.data],
+              counsellorData: [...res.data.results].reverse(),
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  }, []);
+  console.log(user);
   return (
     <>
       <Container fluid={true} className="contann122">
+        <CounsellorDashboardMobileNav messages={true} />
         <Row>
           <SideBarCounsellorDashboard messages={true} />
           <Col md={10} sm={12} className="prm">
@@ -24,27 +75,45 @@ const CounsellorAllMessages = () => {
                   welcomeText="Summary of all messages to and from members assigned to you"
                 />
                 <Row>
-                  <Col md={11} className="mssaag">
-                    <div className="useri1222">
-                      <div className="sjsso">
-                        <img src={userimg} className="userimg" alt="jayeolajones" />
-                      </div>
-                      <div className="sjsso1">
-                        <div>
-                          <span className="username11">Jayeola Jones</span>
-                          <span className="useremail11">jaye@user.com</span>
-                        </div>
-                        <div className="messagedetails">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Id mi, mattis at ipsum ullamcorper blandit
-                          pharetra. Est elit, morbi elementum faucibus nec morbi
-                          eget aliquet adipiscing. Sapien urna volutpat mattis
-                          cursus non et mauris tellus laoreet. Metus potenti leo
-                          nulla nulla pretium id.
-                        </div>
-                      </div>
-                      <div className="tymeline sjsso2">6 days Ago</div>
-                    </div>
+                  <Col md={12} className="mssaag sasag">
+                    {counsellorData &&
+                      counsellorData.map((data, i) => (
+                        <Link
+                          to={`/counsellormessagehistory/israel.hilary7@yahoo.com`}
+                        >
+                          <div className="useri1222 ui1222 ssgs">
+                            <div className="msg1">
+                              <img
+                                src={userimg}
+                                className="userimg imguserrr"
+                                alt="jayeolajones"
+                              />
+                            </div>
+                            <div className="msg2">
+                              <div>
+                                <span className="username11">
+                                  Jayeola Jones
+                                </span>
+                                <span className="useremail11">
+                                  jaye@user.com
+                                </span>
+                              </div>
+                              <div className="messagedetails nufont">
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Id mi, mattis at ipsum
+                                ullamcorper blandit pharetra. Est elit, morbi
+                                elementum faucibus nec morbi eget aliquet
+                                adipiscing. Sapien urna volutpat mattis cursus
+                                non et mauris tellus laoreet. Metus potenti leo
+                                nulla nulla pretium id.
+                              </div>
+                            </div>
+                            <div className="tymeline msg3 nufont">
+                              6 days Ago
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
                   </Col>
                 </Row>
               </Col>
@@ -54,5 +123,5 @@ const CounsellorAllMessages = () => {
       </Container>
     </>
   );
-};
+});
 export default CounsellorAllMessages;

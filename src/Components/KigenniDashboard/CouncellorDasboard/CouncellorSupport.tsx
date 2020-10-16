@@ -12,13 +12,15 @@ import leftimg from "../../../assets/leftarrow1.png";
 import Modal from "react-bootstrap/esm/Modal";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 
 const CounsellorSupport = () => {
   return (
     <>
       <Container fluid={true} className="contann122">
+      <CounsellorDashboardMobileNav counselorsupport={true} />
         <Row>
-          <SideBarCounsellorDashboard bookedsession={true} />
+          <SideBarCounsellorDashboard counselorsupport={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Support" />
             <Row>
@@ -26,6 +28,7 @@ const CounsellorSupport = () => {
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Having any issues or complain with our services, please contact our support or leave us a message!" />
                 <div className=""></div>
+                <Button className="retaketest subsupport btnmarg">Call Support</Button>
                 <div>
                   <hr />
                 </div>
@@ -34,7 +37,7 @@ const CounsellorSupport = () => {
                     <div className="worddd">Drop your message </div>
                   </div>
                   <Row>
-                    <Col md={6}>
+                    <Col md={6} sm={10} className="csupport">
                       <div className="Complain loop11">Issue category </div>
                       <Form.Control
                         as="select"
@@ -54,7 +57,7 @@ const CounsellorSupport = () => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col md={6}>
+                    <Col md={6} sm={10} className="csupport">
                       <div className="Complain loop11">Complain </div>
                       <textarea
                         name="complain"
@@ -65,7 +68,7 @@ const CounsellorSupport = () => {
                   </Row>
                   <Row className="subsbs">
                     <Col md={12}>
-                      <Button className="retaketest">Submit</Button>
+                      <Button className="retaketest subsupport">Submit</Button>
                     </Col>
                   </Row>
                 </Col>

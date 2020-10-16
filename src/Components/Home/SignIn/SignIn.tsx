@@ -18,7 +18,8 @@ import axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import GoogleLogin from "react-google-login";
 import { useEffect } from "react";
-import FacebookAuth from "react-facebook-auth";
+import lock from "../../../assets/lock_icon.png";
+import mail from "../../../assets/mail_icon.png";
 
 interface State {
   email: string;
@@ -165,8 +166,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
           return props.history.push(`/free/dashboard`);
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   const changeActionOnFormData = (e: any) => {
     setFormState({
@@ -185,8 +185,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
           localStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   const responseGoogle = (response) => {
     const data = {
@@ -271,21 +270,23 @@ const SignIn: React.FunctionComponent = (props: any) => {
               </Alert>
             )}
             <Form onSubmit={validateForm}>
-              <Form.Group controlId="formBasicEmail">
+              <Form.Group controlId="formBasicEmail" className="diff23">
+                <img className="signup_icon" src={mail} alt="last name" />
                 <Form.Control
                   type="email"
                   name="email"
-                  className="field1"
+                  className="field1 signform"
                   value={email}
                   onChange={changeActionOnFormData}
                   placeholder="Email Address"
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
+              <img className="signup_icon" src={lock} alt="last name" />
                 <Form.Control
                   type="password"
                   name="password"
-                  className="field1"
+                  className="field1 signform"
                   value={password}
                   onChange={changeActionOnFormData}
                   placeholder="Password"

@@ -496,6 +496,15 @@ button {
 .homebanner0 {
   width: 100%;
 }
+.isloadd1{
+  text-align: center;
+}
+.text-teala{
+  color: #58575a;
+  font-size: italic;
+  text-shadow: rgb(180, 177, 172);
+  font-weight: 400;
+}
 @media (max-width: 579px) {
   .fittt {
     width: 100%;

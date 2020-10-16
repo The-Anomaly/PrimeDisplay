@@ -1,6 +1,7 @@
 .signupimg {
   width: 100%;
   max-width: 425px;
+  object-fit: contain;
 }
 .mo {
   display: flex;
@@ -12,6 +13,14 @@
   background-color: #ffffff;
   padding-bottom: 4rem;
 }
+.resend {
+  font-weight: 600;
+  cursor: pointer;
+  color: #9c1258 !important;
+}
+.resend22 {
+  font-size: 14px;
+}
 @media (min-width: 768px) {
   .kli {
     margin-top: 5rem;
@@ -22,6 +31,12 @@
 @media (max-width: 500px) {
   .mo {
     justify-content: center;
+  }
+  .signup_icon {
+    top: 1.7rem;
+    left: 0.5rem;
+    width: 10px;
+    height: 10px;
   }
   .signupimg {
     width: 50%;
@@ -171,4 +186,22 @@
   max-width: 28px;
   margin-top: 2px;
   margin-bottom: 0.4rem;
+}
+
+.signup_icon {
+  position: relative;
+  top: 1.8rem;
+  left: 0.5rem;
+  width: 12px;
+  height: 12px;
+  object-fit: scale-down;
+}
+.signform {
+  padding-left: 1.7rem;
+}
+.diff23 {
+  margin-bottom: -0.3rem;
+}
+.difg {
+  padding-bottom: 0px !important;
 }

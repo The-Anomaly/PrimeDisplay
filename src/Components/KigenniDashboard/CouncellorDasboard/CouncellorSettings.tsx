@@ -12,16 +12,19 @@ import leftimg from "../../../assets/leftarrow1.png";
 import Modal from "react-bootstrap/esm/Modal";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+
 
 const CounsellorSettings = () => {
   return (
     <>
       <Container fluid={true} className="contann122">
+      <CounsellorDashboardMobileNav settings={true} />
         <Row>
-          <SideBarCounsellorDashboard bookedsession={true} />
+          <SideBarCounsellorDashboard settings={true} />
           <Col md={10} sm={12} className="prm">
             <CounsellorDashboardNav title="Settings" />
-            <Row>
+            <Row className="wrapc222">
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Please update your profile" />
@@ -29,7 +32,7 @@ const CounsellorSettings = () => {
                 <div>
                   <hr />
                 </div>
-                <Row className="rowla">
+                <Row className="rowla csetting">
                   <Col md={6}>
                     <div className="whatdoudo">Name</div>
                     <textarea
@@ -47,7 +50,7 @@ const CounsellorSettings = () => {
                     ></textarea>
                   </Col>
                 </Row>
-                <Row className="rowla">
+                <Row className="rowla csetting">
                   <Col md={6}>
                     <div className="whatdoudo">Email</div>
                     <textarea
@@ -65,8 +68,8 @@ const CounsellorSettings = () => {
                     ></textarea>
                   </Col>
                 </Row>
-                <div className="text-right">
-                  <div className="kskthin col-md-11">Save Profile</div>
+                <div className="text-left">
+                  <div className="kskthin col-md-11 retaketest subsupport">Save Profile</div>
                 </div>
               </Col>
             </Row>

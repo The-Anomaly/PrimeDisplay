@@ -194,10 +194,10 @@ class CounsellorsRecommendation extends React.Component {
                                       Convert this recommendation to a task
                                     </div>
                                   </div>
-                                  <div className="retaketest upss smtd smtdis">
-                                    <Link to="/paymentsummary">
+                                  <div className="upss smtd smtdis">
+                                    <a>
                                       Covert to ToDo{" "}
-                                    </Link>
+                                    </a>
                                   </div>
                                 </div>
                               </Col>

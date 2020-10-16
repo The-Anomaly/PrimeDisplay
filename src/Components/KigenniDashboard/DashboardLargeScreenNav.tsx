@@ -46,9 +46,9 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
         }
       })
       .catch((error) => {
-        if (error && error.response && error.response.data) {
+        if (error && error?.response && error?.response?.data) {
           this.setState({
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
           });
         }

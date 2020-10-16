@@ -17,44 +17,21 @@ import subscriptionactive from "../../../assets/Subcription_active.png";
 import subscriptioninactive from "../../../assets/Subscription_inactive.png";
 import starrating from "../../../assets/starrating.png";
 import supportinactive from "../../../assets/Support_inactive.png";
+import supportactive from "../../../assets/Support_active.png";
 import overview from "../../../assets/overview.png";
 import "../../Home/Home/Home.css";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import "./councellor.css";
+import clockactive from "../../../assets/clock_active.png"
+import clockinactive from "../../../assets/clock_inactive.png"
+import referralinactive from "../../../assets/referral_inactive.png"
 
-const SideBarCounsellorDashboard =withRouter((props: any) => {
+const SideBarCounsellorDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
   const changeHideStatus = () => {
     sethidemobile(hidemobile ? false : true);
-  };
-  const checkIfUserHasMadePaymentForFullResult = () => {
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
-        ) {
-          return window.location.assign("/thirdpary/fullresult");
-        }
-        if (
-          response?.data[0]?.direction_plan &&
-          response?.data[0]?.growth_plan &&
-          response?.data[0]?.insight_plan === false
-        ) {
-          return window.location.assign("/paymentsummary");
-        }
-      })
-      .catch((error) => {
-      });
   };
   const logOut = () => {
     localStorage.clear();
@@ -64,7 +41,9 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
     <>
       <Col md={2} className={hidemobile ? "siddle siddlenone" : "siddle"}>
         <div className="dlex">
-          <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
+          <Link to="/counselloroverview">
+            <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
+          </Link>
         </div>{" "}
         <div className={hidemobile ? "navitemnone" : "navitem1"}>
           <div className={props.ov ? "activegb" : "gbn"}>
@@ -78,7 +57,6 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
             </Link>
           </div>
           <div
-            onClick={checkIfUserHasMadePaymentForFullResult}
             className={props.bookedsession ? "activegb" : "gbn"}
           >
             <Link to="/counsellorbookings">
@@ -114,12 +92,12 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
               Your Recommendations
             </Link>
           </div>
-          <div className={props.jobrec ? "activegb" : "gbn"}>
+          <div className={props.assignedmemb ? "activegb" : "gbn"}>
             {" "}
             <Link to="/counsellorassignedmembers">
               <img
                 src={
-                  props.jobrec
+                  props.assignedmemb
                     ? jobrecommedationactive
                     : jobrecommedationinactive
                 }
@@ -127,6 +105,36 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
                 alt="sideimage"
               />
               Assigned Members
+            </Link>
+          </div>
+          <div className={props.counmeeting ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/counsellormeetings">
+              <img
+                src={
+                  props.counmeeting
+                    ? clockactive
+                    : clockinactive
+                }
+                className="sideimage"
+                alt="sideimage"
+              />
+              Scheduled Meetings
+            </Link>
+          </div>
+          <div className={props.counreferral ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/counsellormeetings">
+              <img
+                src={
+                  props.counreferral
+                    ? referralinactive
+                    : referralinactive
+                }
+                className="sideimage"
+                alt="sideimage"
+              />
+              Referrals
             </Link>
           </div>
           <div className="divide_thro"></div>
@@ -141,12 +149,12 @@ const SideBarCounsellorDashboard =withRouter((props: any) => {
               Settings
             </Link>
           </div>
-          <div className={props.subscription ? "activegb" : "gbn"}>
+          <div className={props.counselorsupport ? "activegb" : "gbn"}>
             {" "}
             <Link to="/counsellorsupport">
               <img
                 src={
-                  props.subscription ? subscriptionactive : subscriptioninactive
+                  props.counselorsupport ? supportactive : supportinactive
                 }
                 className="sideimage"
                 alt="sideimage"
