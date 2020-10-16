@@ -11,7 +11,6 @@ import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 
-
 const CouncellorRecommendationsToAll = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
@@ -33,12 +32,15 @@ const CouncellorRecommendationsToAll = (props: any) => {
           headers: { Authorization: `Token ${token}` },
         }
       ),
-      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/your-recommendations`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/counsellor/your-recommendations`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
     ])
       .then(
-        Axios.spread((res,res1) => {
+        Axios.spread((res, res1) => {
           console.log(res);
           if (res.status === 200) {
             setFormState({
@@ -68,7 +70,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
   return (
     <>
       <Container fluid={true} className="contann122">
-      <CounsellorDashboardMobileNav councrec={true} />
+        <CounsellorDashboardMobileNav councrec={true} />
         <Row>
           <SideBarCounsellorDashboard councrec={true} />
           <Col md={10} sm={12} className="prm">
@@ -93,21 +95,17 @@ const CouncellorRecommendationsToAll = (props: any) => {
                         </div>
                         <div className="sjsso1">
                           <div>
-                            <span className="username11">Jayeola Jones</span>
-                            <span className="useremail11">jaye@user.com</span>
+                            <span className="username11">{data.user_name}</span>
+                            <span className="useremail11">{data?.email}</span>
                           </div>
                           <div className="messagedetails">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Id mi, mattis at ipsum ullamcorper blandit
-                            pharetra. Est elit, morbi elementum faucibus nec
-                            morbi eget aliquet adipiscing. Sapien urna volutpat
-                            mattis cursus non et mauris tellus laoreet. Metus
-                            potenti leo nulla nulla pretium id.
+                            {data.description}
                           </div>
                         </div>
-                        <div className="tymeline sjsso2">6 days Ago</div>
+                        <div className="tymeline sjsso2">{data.date}</div>
                       </div>
                     ))}
+                    
                   </Col>
                 </Row>
               </Col>

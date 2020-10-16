@@ -146,8 +146,7 @@ class CounsellorRecommendation2 extends React.Component {
                             />
                             <div className="udont1">Oops!!!</div>
                             <div className="udont">
-                              You dont have any Recommendation yet, you should
-                              speak to a counsellor now
+                              You dont have any Recommendation yet
                             </div>
                           </div>
                         )}

@@ -27,10 +27,11 @@ const moment = require("moment");
 
 const CounsellorBookedSessions = (props: any) => {
   const [state, setState] = useState<any>({
-    isOpen: true,
-    rate1: "0",
+    isOpen: false,
+    rate1: 0,
     errorMessage: "",
     user: "",
+    name: "",
     counsellorData: [],
     successMsg: false,
     isLoading: false,
@@ -40,6 +41,7 @@ const CounsellorBookedSessions = (props: any) => {
     success: "",
     total_pages: "",
     user_issues: "",
+    sessionId: "",
     recommendations: [],
     taskTitle: "",
     taskDuration: "",
@@ -47,10 +49,20 @@ const CounsellorBookedSessions = (props: any) => {
     session_notes: "",
     session_about: "",
   });
-  const openModal = () => {
-    setState({
-      ...state,
-      isOpen: true,
+  const openModal = (id) => {
+    console.log(counsellorData);
+    counsellorData.forEach((data) => {
+      console.log(data);
+      if (data.id === id) {
+        console.log(data);
+        setState({
+          ...state,
+          name: data.name,
+          isOpen: true,
+          sessionId: data.id,
+          user_issues: data.user_vent,
+        });
+      }
     });
   };
   const closeModal = () => {
@@ -75,6 +87,8 @@ const CounsellorBookedSessions = (props: any) => {
     taskDescription,
     session_notes,
     session_about,
+    sessionId,
+    name,
   } = state;
   const onStarClick = (nextValue, prevValue, name) => {
     setState({
@@ -96,12 +110,9 @@ const CounsellorBookedSessions = (props: any) => {
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/booked-sessions`, {
         headers: { Authorization: `Token ${token}` },
       }),
-      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/booked-sessions`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
     ])
       .then(
-        Axios.spread((res, res1) => {
+        Axios.spread((res) => {
           console.log(res);
           if (res.status === 200) {
             setState({
@@ -109,11 +120,11 @@ const CounsellorBookedSessions = (props: any) => {
               user: res.data,
               successMsg: true,
               isLoading: false,
-              counsellorData: [...res1.data.results].reverse(),
-              count: res1.data.page,
-              nextLink: res1.data.next,
-              prevLink: res1.data.previous,
-              total_pages: res1.data.total_pages,
+              counsellorData: [...res.data.results].reverse(),
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
             });
           }
         })
@@ -268,46 +279,80 @@ const CounsellorBookedSessions = (props: any) => {
     setState({
       ...state,
       recommendations: [...recommendations, ...recommendation],
+      taskDuration: "",
+      taskDescription: "",
+      taskTitle: "",
     });
   };
   const complete_session = () => {
-    // if (
-    //   user_issues === "" ||
-    //   session_notes === "" ||
-    //   session_about === ""
-    // ) {
-    //   return notify("Please fill required feilds");
-    // }
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/counsellor/signin");
-    const data = {
-      recommendations,
-      notes: session_notes,
-      rating: rate1,
-      say_something: session_about,
-      id: 12,
-    };
-    console.log(data);
-    Axios.post<any, AxiosResponse<any>>(
-      `${API}/counsellor/complete-session`,
-      data,
-      {
-        headers: { Authorization: `Token ${token}` },
-      }
-    )
-      .then((res) => {
-        console.log(res);
-        notify("Successful");
-        setTimeout(() => {
-          closeModal();
-        }, 2000);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (taskTitle !== "" || taskDescription !== "" || taskDuration !== "") {
+      console.log("here");
+      const recommendation = [
+        {
+          title: taskTitle,
+          description: taskDescription,
+          duration: taskDuration,
+        },
+      ];
+      const data = {
+        recommendations: [...recommendations, ...recommendation],
+        notes: session_notes,
+        rating: rate1,
+        say_something: session_about,
+        id: sessionId,
+      };
+      console.log(data);
+      Axios.post<any, AxiosResponse<any>>(
+        `${API}/counsellor/complete-session`,
+        data,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      )
+        .then((res) => {
+          console.log(res);
+          notify("Successful");
+          setTimeout(() => {
+            // window.location.reload();
+          }, 2000);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }
+    if (taskTitle == "" || taskDescription == "" || taskDuration == "") {
+      const data = {
+        recommendations,
+        notes: session_notes,
+        rating: rate1,
+        say_something: session_about,
+        id: sessionId,
+      };
+      console.log(data);
+      Axios.post<any, AxiosResponse<any>>(
+        `${API}/counsellor/complete-session`,
+        data,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      )
+        .then((res) => {
+          console.log(res);
+          notify("Successful");
+          setTimeout(() => {
+            // window.location.reload();
+          }, 2000);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }
   };
+  console.log(name);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -350,8 +395,8 @@ const CounsellorBookedSessions = (props: any) => {
                         />
                       </div>
                     )}
-                    {counsellorData.map((data) => (
-                      <div className="msgs teammembr booked bookedover">
+                    {counsellorData.map((data, i) => (
+                      <div className="msgs teammembr booked bookedover" key={i}>
                         <div className="fromerit summary">
                           <div className="cone">
                             <img
@@ -403,7 +448,10 @@ const CounsellorBookedSessions = (props: any) => {
                           </div>
 
                           <div className="cseven">
-                            <div className="counview" onClick={openModal}>
+                            <div
+                              className="counview"
+                              onClick={() => openModal(data.id)}
+                            >
                               View
                             </div>
                           </div>
@@ -462,12 +510,12 @@ const CounsellorBookedSessions = (props: any) => {
         onHide={closeModal}
       >
         <Container>
-          <h6>Jaiyeola Jones</h6>
+          <h6>{name}</h6>
           <Link to="counsellorbookings">
             <span className="modal-btn">
-              <Link to="/counsellor/userinsight" target="blank">
+              <a href="/counsellor/userinsight" target="blank">
                 View users result <i className="fa fa-arrow-right"></i>
-              </Link>
+              </a>
             </span>
           </Link>
 
@@ -477,6 +525,7 @@ const CounsellorBookedSessions = (props: any) => {
               className="issues-textbox-1 form-control"
               name="user_issues"
               onChange={inputChangeHandler}
+              value={user_issues}
               placeholder="issues*"
               cols={80}
               rows={3}
@@ -491,18 +540,22 @@ const CounsellorBookedSessions = (props: any) => {
                   type="text"
                   placeholder="enter a title"
                   name="taskTitle"
+                  value={taskTitle}
                   onChange={inputChangeHandler}
                   className="form-control todo-input"
                   size={25}
                 />
               </Col>
               <Col md={6}>
-                <label>Task Duration</label>
+                <label>
+                  Task Duration <span className="dayss">(Days)</span>
+                </label>
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Enter the number of days"
                   className="form-control todo-input"
                   name="taskDuration"
+                  value={taskDuration}
                   onChange={inputChangeHandler}
                   size={25}
                 />
@@ -517,6 +570,7 @@ const CounsellorBookedSessions = (props: any) => {
                   rows={3}
                   className="form-control text-decription"
                   name="taskDescription"
+                  value={taskDescription}
                   onChange={inputChangeHandler}
                 />
               </Col>
@@ -533,7 +587,9 @@ const CounsellorBookedSessions = (props: any) => {
                 </span>
                 <span className="sch_details">
                   <div className="school">{data.title}</div>
-                  <div className="course">{data.duration}</div>
+                  <div className="course">
+                    {data.duration} {data.duration == 1 ? "day" : "days"}
+                  </div>
                   <div className="location">{data.description}</div>
                 </span>
                 <span className="edit_descripd" onClick={() => deleteEntry(i)}>
@@ -550,6 +606,7 @@ const CounsellorBookedSessions = (props: any) => {
               cols={80}
               rows={3}
               name="session_notes"
+              value={session_notes}
               onChange={inputChangeHandler}
             />
             <Row>
@@ -572,6 +629,9 @@ const CounsellorBookedSessions = (props: any) => {
               className="issues-textbox-1 form-control"
               placeholder="Say something about the session"
               cols={80}
+              onChange={inputChangeHandler}
+              value={session_about}
+              name="session_about"
               rows={3}
             />
           </form>

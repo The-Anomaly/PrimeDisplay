@@ -14,6 +14,12 @@ import { Link } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import noData from "../../../assets/no recommendations.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import preloader from "../../../assets/preloader2.gif";
+import StarRatingComponent from "react-star-rating-component";
+import { Modal } from "react-bootstrap";
+import book from "../../../assets/book.svg";
 const moment = require("moment");
 
 const CounsellorOverview = (props: any) => {
@@ -23,21 +29,32 @@ const CounsellorOverview = (props: any) => {
     counsellorData: [],
     successMsg: false,
     isLoading: false,
-    nextLink: "",
-    prevLink: "",
     count: "",
+    isOpen: false,
     success: "",
-    total_pages: "",
+    user_issues: "",
+    sessionId: "",
+    recommendations: [],
+    taskTitle: "",
+    taskDuration: "",
+    taskDescription: "",
+    session_notes: "",
+    session_about: "",
+    rate1: 0,
   });
   const {
     user,
+    rate1,
     counsellorData,
-    successMsg,
-    nextLink,
-    prevLink,
-    errorMessage,
-    count,
-    total_pages,
+    user_issues,
+    taskTitle,
+    taskDuration,
+    recommendations,
+    taskDescription,
+    session_notes,
+    session_about,
+    name,
+    sessionId,
     isLoading,
   } = state;
   React.useEffect(() => {
@@ -60,7 +77,7 @@ const CounsellorOverview = (props: any) => {
           if (res.status === 200) {
             setFormState({
               ...state,
-              user: res.data,
+              user: [...res1.data.results].reverse(),
               successMsg: true,
               isLoading: false,
               counsellorData: [...res1.data.results].reverse(),
@@ -87,14 +104,140 @@ const CounsellorOverview = (props: any) => {
         });
       });
   }, []);
+  const openModal = (id) => {
+    console.log(user);
+    user.forEach((data) => {
+      console.log(data);
+      if (data.id === id) {
+        setFormState({
+          ...state,
+          name: data.name,
+          isOpen: true,
+          sessionId: data.id,
+          user_issues: data.user_vent,
+        });
+      }
+    });
+  };
+  const closeModal = () => {
+    setFormState({
+      ...state,
+      isOpen: false,
+    });
+  };
+  const onStarClick = (nextValue, prevValue, name) => {
+    setFormState({
+      ...state,
+      [name]: nextValue.toString(),
+    });
+  };
   const formatTime = (date) => {
     const dateTime = moment(date).format("MMM YYYY");
     return dateTime;
   };
-  const formatHours = (date) => {
-    const dateTime = moment(date).format("h:mm:ss a");
-    return dateTime;
+  const inputChangeHandler = (e) => {
+    setFormState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
   };
+  const deleteEntry = (id) => {
+    const recommendation = recommendations;
+    recommendation.splice(id, 1);
+    setFormState({
+      ...state,
+      recommendations: recommendation,
+    });
+  };
+  const add_new_task = () => {
+    const recommendation = [
+      {
+        title: taskTitle,
+        description: taskDescription,
+        duration: taskDuration,
+      },
+    ];
+    if (taskTitle === "" || taskDescription === "" || taskDuration === "") {
+      return notify("Please complete the user todo entry");
+    }
+    setFormState({
+      ...state,
+      recommendations: [...recommendations, ...recommendation],
+      taskTitle: "",
+      taskDuration: "",
+      taskDescription: "",
+    });
+  };
+
+  const complete_session = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    if (taskTitle !== "" || taskDescription !== "" || taskDuration !== "") {
+      console.log("here");
+      const recommendation = [
+        {
+          title: taskTitle,
+          description: taskDescription,
+          duration: taskDuration,
+        },
+      ];
+      const data = {
+        recommendations: [...recommendations, ...recommendation],
+        notes: session_notes,
+        rating: rate1,
+        say_something: session_about,
+        id: sessionId,
+      };
+      console.log(data);
+      Axios.post<any, AxiosResponse<any>>(
+        `${API}/counsellor/complete-session`,
+        data,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      )
+        .then((res) => {
+          console.log(res);
+          notify("Successful");
+          setTimeout(() => {
+            // window.location.reload();
+          }, 2000);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }
+    if (taskTitle == "" || taskDescription == "" || taskDuration == "") {
+      const data = {
+        recommendations,
+        notes: session_notes,
+        rating: rate1,
+        say_something: session_about,
+        id: sessionId,
+      };
+      console.log(data);
+      Axios.post<any, AxiosResponse<any>>(
+        `${API}/counsellor/complete-session`,
+        data,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      )
+        .then((res) => {
+          console.log(res);
+          notify("Successful");
+          setTimeout(() => {
+            // window.location.reload();
+          }, 2000);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }
+  };
+  const notify = (message: string) => toast(message, { containerId: "B" });
   console.log(user);
   return (
     <>
@@ -152,8 +295,8 @@ const CounsellorOverview = (props: any) => {
                     <div className="yudd1">
                       Your next session is due tomorrow
                     </div>
-                    {counsellorData.splice(0, 2).map((data) => (
-                      <div className="msgs teammembr booked bookedover">
+                    {counsellorData.splice(0, 2).map((data, i) => (
+                      <div className="msgs teammembr booked bookedover" key={i}>
                         <div className="fromerit summary">
                           <div className="cone">
                             <img
@@ -206,12 +349,17 @@ const CounsellorOverview = (props: any) => {
                           </div>
 
                           <div className="cseven">
-                            <div className="counview">View</div>
+                            <div
+                              className="counview"
+                              onClick={() => openModal(data.id)}
+                            >
+                              View
+                            </div>
                           </div>
                         </div>
                       </div>
                     ))}
-                    {counsellorData.length !> 0 && !isLoading && (
+                    {counsellorData.length! > 0 && !isLoading && (
                       <>
                         <div className="text-center">
                           <img src={noData} className="noData" alt="noData" />
@@ -227,14 +375,162 @@ const CounsellorOverview = (props: any) => {
                   </Col>
                 </Row>
                 <section className="view-box">
-                  <div className="box-1"></div>
-                  <div className="box-2"></div>
+                  {/* <div className="box-1"></div>
+                  <div className="box-2"></div> */}
                 </section>
               </Col>
             </Row>
           </Col>
         </Row>
       </Container>
+      <Modal
+        show={state.isOpen}
+        size={"lg"}
+        className="bookingszmodal"
+        centered={true}
+        onHide={closeModal}
+      >
+        <Container>
+          <h6>{name}</h6>
+          <Link to="counsellorbookings">
+            <span className="modal-btn">
+              <a href="/counsellor/userinsight" target="blank">
+                View users result <i className="fa fa-arrow-right"></i>
+              </a>
+            </span>
+          </Link>
+
+          <form>
+            <label>issues raised by user</label>
+            <textarea
+              className="issues-textbox-1 form-control"
+              name="user_issues"
+              onChange={inputChangeHandler}
+              value={user_issues}
+              placeholder="issues*"
+              cols={80}
+              rows={3}
+            />
+          </form>
+          <p className="to-do-header">Create a Todo Task</p>
+          <form className="to-do-form">
+            <Row>
+              <Col md={6}>
+                <label>Task Title</label>
+                <input
+                  type="text"
+                  placeholder="enter a title"
+                  name="taskTitle"
+                  value={taskTitle}
+                  onChange={inputChangeHandler}
+                  className="form-control todo-input"
+                  size={25}
+                />
+              </Col>
+              <Col md={6}>
+                <label>
+                  Task Duration <span className="dayss">(Days)</span>
+                </label>
+                <input
+                  type="number"
+                  placeholder="Enter the number of days"
+                  className="form-control todo-input"
+                  name="taskDuration"
+                  value={taskDuration}
+                  onChange={inputChangeHandler}
+                  size={25}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col md={12}>
+                <label>Task Description</label>
+                <textarea
+                  placeholder="Describe the nature of the task"
+                  cols={67}
+                  rows={3}
+                  className="form-control text-decription"
+                  name="taskDescription"
+                  value={taskDescription}
+                  onChange={inputChangeHandler}
+                />
+              </Col>
+            </Row>
+          </form>
+          <div className="addmore" onClick={add_new_task}>
+            <p>Add more &#43;</p>
+          </div>
+          <div className="recommendationlist">
+            {recommendations.map((data, i) => (
+              <div className="cveducation" key={i}>
+                <span>
+                  <img className="cvedu" src={book} alt="book icon" />
+                </span>
+                <span className="sch_details">
+                  <div className="school">{data.title}</div>
+                  <div className="course">
+                    {data.duration == 1 ? "day" : "days"}
+                  </div>
+                  <div className="location">{data.description}</div>
+                </span>
+                <span className="edit_descripd" onClick={() => deleteEntry(i)}>
+                  <span className="dwq12">&times;</span>
+                </span>
+              </div>
+            ))}
+          </div>
+          <form>
+            <label>Take down notes during sessions</label>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="scribble down anything"
+              cols={80}
+              rows={3}
+              name="session_notes"
+              value={session_notes}
+              onChange={inputChangeHandler}
+            />
+            <Row>
+              <Col md={3}>
+                <label>Rate this session</label>
+              </Col>
+              <Col md={5} className="star-container">
+                <div className="assessrating">
+                  <StarRatingComponent
+                    name="rate1"
+                    starCount={5}
+                    value={rate1}
+                    onStarClick={onStarClick}
+                    emptyStarColor={"#444"}
+                  />
+                </div>
+              </Col>
+            </Row>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="Say something about the session"
+              value={session_about}
+              name="session_about"
+              onChange={inputChangeHandler}
+              cols={80}
+              rows={3}
+            />
+          </form>
+          <ToastContainer
+            enableMultiContainer
+            containerId={"B"}
+            toastClassName="bg-info text-white"
+            hideProgressBar={true}
+            position={toast.POSITION.TOP_CENTER}
+          />
+          <div className="center-btn">
+            {" "}
+            <span className="modal-btn" onClick={complete_session}>
+              Close session <i className="fa fa-arrow-right"></i>
+            </span>
+          </div>
+        </Container>
+      </Modal>
     </>
   );
 };
