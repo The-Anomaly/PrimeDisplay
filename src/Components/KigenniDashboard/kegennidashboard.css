@@ -3708,3 +3708,9 @@ label{
 .done{
   padding: 10px 40px;
 }
+.card .card-header{
+  background-color: #3965ff;
+}
+.accordion > .card .card-header {
+  background-color: inherit;
+}

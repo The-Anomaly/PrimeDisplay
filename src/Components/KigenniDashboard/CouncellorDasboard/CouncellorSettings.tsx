@@ -32,8 +32,23 @@ class CounsellorSettings extends React.Component {
     fillStatus: true,
   };
   validateForm = (e) => {
-    const { fullname, email, address, phone } = this.state;
-    if (email === "" || address === "" || phone === "" || fullname === "") {
+    const {
+      first_name,
+      last_name,
+      email,
+      address,
+      phone,
+      job_description,
+      website_link,
+    } = this.state;
+    if (
+      first_name === "" ||
+      last_name === "" ||
+      email === "" ||
+      address === "" ||
+      phone === "" ||
+      job_description === ""
+    ) {
       this.setState({
         fillStatus: false,
       });
@@ -52,16 +67,29 @@ class CounsellorSettings extends React.Component {
   };
   submitForm = (e) => {
     e.preventDefault();
-    const { fullname, email, address, phone, image } = this.state;
+    const {
+      first_name,
+      last_name,
+      email,
+      address,
+      phone,
+      job_description,
+      website_link,
+      image,
+    } = this.state;
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = new FormData();
     data.append("image", image);
+    data.append("last_name", last_name);
+    data.append("first_name", first_name);
     data.append("email", email);
     data.append("address", address);
     data.append("phone", phone);
+    data.append("job_description", job_description);
+    data.append("website_link", website_link);
     Axios.post<any, AxiosResponse<any>>(
-      `${API}/counsellors/create-settings`,
+      `${API}/counsellors/settings`,
       data,
       {
         headers: { Authorization: `Token ${token}` },
@@ -118,8 +146,18 @@ class CounsellorSettings extends React.Component {
       });
   }
   render() {
-    const { fullname, email, image, address, phone } = this.state;
-
+    const {
+      fullname,
+      email,
+      address,
+      image,
+      phone,
+      first_name,
+      last_name,
+      job_description,
+      website_link,
+      fillStatus,
+    } = this.state;
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -166,50 +204,134 @@ class CounsellorSettings extends React.Component {
                     </div>
                   </div>
                   <div>
-                    <hr />
                   </div>
-                  <Row className="rowla csetting">
-                    <Col md={6}>
-                      <div className="whatdoudo">Name</div>
-                      <textarea
-                        name="fullname"
-                        className="form-control jobr subhyt"
-                        placeholder="Your Full Name"
-                        value={fullname}
-                        onChange={this.handleChange}
-                      ></textarea>
-                    </Col>
-                    <Col md={6}>
-                      <div className="whatdoudo">Address</div>
-                      <textarea
-                        name="address"
-                        className="form-control jobr subhyt"
-                        value={address}
-                        onChange={this.handleChange}
-                        placeholder="Your House Address"
-                      ></textarea>
-                    </Col>
-                  </Row>
-                  <Row className="rowla csetting">
-                    <Col md={6}>
-                      <div className="whatdoudo">Email</div>
-                      <textarea
-                        name="email"
-                        value={email}
-                        className="form-control jobr subhyt"
-                        onChange={this.handleChange}
-                        placeholder="Your Email Address"
-                      ></textarea>
-                    </Col>
-                    <Col md={6}>
-                      <div className="whatdoudo">Phone Number</div>
-                      <textarea
-                        name="phone"
-                        value={phone}
-                        onChange={this.handleChange}
-                        className="form-control jobr subhyt"
-                        placeholder="Your House Address"
-                      ></textarea>
+                  <Row>
+                    <Col md={12}>
+                      <hr />
+                      <Row className="rowla">
+                        <Col md={6}>
+                          <div className="whatdoudo">
+                            First Name
+                            {this.state.fillStatus === false &&
+                            first_name === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <textarea
+                            name="first_name"
+                            value={first_name}
+                            onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                            placeholder=""
+                          ></textarea>
+                        </Col>
+                        <Col md={6}>
+                          <div className="whatdoudo">
+                            Last Name
+                            {this.state.fillStatus === false &&
+                            last_name === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <textarea
+                            name="last_name"
+                            value={last_name}
+                            onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                            placeholder=""
+                          ></textarea>
+                        </Col>
+                      </Row>
+                      <Row className="rowla">
+                        <Col md={6}>
+                          <div className="whatdoudo">
+                            Address
+                            {this.state.fillStatus === false &&
+                            address === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <textarea
+                            name="address"
+                            value={address}
+                            onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                            placeholder=""
+                          ></textarea>
+                        </Col>
+                        <Col md={6}>
+                          <div className="whatdoudo">
+                            Email
+                            {this.state.fillStatus === false && email === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <textarea
+                            name="email"
+                            value={email}
+                            onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                            placeholder=""
+                          />
+                        </Col>
+                      </Row>
+                      <Row className="rowla">
+                        <Col md={6}>
+                          <div className="whatdoudo">
+                            Phone Number
+                            {this.state.fillStatus === false && phone === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <textarea
+                            name="phone"
+                            value={phone}
+                            onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                            placeholder=""
+                          />
+                        </Col>
+                        <Col md={6}>
+                          <div className="whatdoudo">
+                            Occupation
+                            {this.state.fillStatus === false &&
+                            job_description === "" ? (
+                              <span className="notfilled"> *</span>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <textarea
+                            name="job_description"
+                            value={job_description}
+                            onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                            placeholder=""
+                          ></textarea>
+                        </Col>
+                      </Row>
+                      <Row className="rowla">
+                        <Col md={6}>
+                          <div className="whatdoudo">Website Link </div>
+                          <textarea
+                            name="website_link"
+                            value={website_link}
+                            onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                            placeholder=""
+                          ></textarea>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
                   <div className="text-left">

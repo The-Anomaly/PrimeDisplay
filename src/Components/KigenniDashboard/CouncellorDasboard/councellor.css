@@ -3733,3 +3733,6 @@ textarea.form-control.jobr {
 .modal-btn{
   cursor: pointer;
 }
+.ref_btn{
+  margin-top: .2rem;
+}

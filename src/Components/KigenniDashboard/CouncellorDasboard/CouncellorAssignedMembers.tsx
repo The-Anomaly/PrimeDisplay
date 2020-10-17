@@ -273,7 +273,7 @@ const CounsellorAssignedMembers = (props: any) => {
                             </div>
                             {data.status && (
                               <div className="msix">
-                                <div className="counview mbtn">View Result</div>
+                                <div className="counview mbtn"><a href={`/employers/result/${data.email}`} target="blank">View Result</a></div>
                               </div>
                             )}
                             {!data.status && (

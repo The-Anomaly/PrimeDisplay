@@ -26,6 +26,7 @@ const CounsellorOverview = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
     user: "",
+    chart: "",
     counsellorData: [],
     successMsg: false,
     isLoading: false,
@@ -45,6 +46,7 @@ const CounsellorOverview = (props: any) => {
   const {
     user,
     rate1,
+    chart,
     counsellorData,
     user_issues,
     taskTitle,
@@ -56,7 +58,7 @@ const CounsellorOverview = (props: any) => {
     name,
     sessionId,
     isLoading,
-  } = state;
+  }: any = state;
   React.useEffect(() => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -78,6 +80,7 @@ const CounsellorOverview = (props: any) => {
             setFormState({
               ...state,
               user: [...res1.data.results].reverse(),
+              chart: res.data,
               successMsg: true,
               isLoading: false,
               counsellorData: [...res1.data.results].reverse(),
@@ -238,7 +241,7 @@ const CounsellorOverview = (props: any) => {
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(user);
+  console.log(chart);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -252,8 +255,8 @@ const CounsellorOverview = (props: any) => {
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader
                   rating={true}
-                  ratingValue={user.rating}
-                  counsellorId={user.counsellor_id}
+                  ratingValue={chart.rating}
+                  counsellorId={chart.counsellor_id}
                   welcomeText="Find below an overview of all activities with clarity"
                 />
                 <Row>
@@ -265,7 +268,7 @@ const CounsellorOverview = (props: any) => {
                           <div className="fouri1a">
                             <div className="mmber">Members Assigned</div>
                             <div className="mmber1">
-                              {user.members_assigned}
+                              {chart?.members_assigned}
                             </div>
                           </div>
                         </div>
@@ -273,21 +276,23 @@ const CounsellorOverview = (props: any) => {
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Sessions Booked</div>
-                            <div className="mmber1">{user.sessions_booked}</div>
+                            <div className="mmber1">
+                              {chart?.sessions_booked}
+                            </div>
                           </div>
                         </div>
                         <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Completed</div>
-                            <div className="mmber1">{user?.completed}</div>
+                            <div className="mmber1">{chart?.completed}</div>
                           </div>
                         </div>
                         <div className="firstoffour second221">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
                             <div className="mmber">Pending</div>
-                            <div className="mmber1">{user?.pending}</div>
+                            <div className="mmber1">{chart?.pending}</div>
                           </div>
                         </div>
                       </div>

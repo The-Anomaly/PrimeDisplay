@@ -62,7 +62,9 @@ const CounsellorSupport = (props: any) => {
                 <DashboardCounsellorIntroHeader welcomeText="Having any issues or complain with our services, please contact our support or leave us a message!" />
                 <div className=""></div>
                 <Button className="retaketest subsupport btnmarg">
-                  Call Support
+                  <a href="tel:+234817610060" className="linkphone">
+                    Call Support
+                  </a>
                 </Button>
                 <div>
                   <hr />

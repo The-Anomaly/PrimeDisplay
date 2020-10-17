@@ -9,6 +9,8 @@ import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import userimg from "../../../assets/userimg.png";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
+import prevpage from "../../../assets/prevpage.svg";
+import nextpage from "../../../assets/nextpage.svg";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 
 const CouncellorRecommendationsToAll = (props: any) => {
@@ -17,8 +19,20 @@ const CouncellorRecommendationsToAll = (props: any) => {
     user: [],
     counsellorData: [],
     isLoading: false,
+    prevLink: "",
+    nextLink: "",
+    count: "",
+    total_pages: "",
   });
-  const { errorMessage, user, counsellorData } = state;
+  const {
+    errorMessage,
+    user,
+    counsellorData,
+    prevLink,
+    nextLink,
+    count,
+    total_pages,
+  } = state;
   React.useEffect(() => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -45,8 +59,11 @@ const CouncellorRecommendationsToAll = (props: any) => {
           if (res.status === 200) {
             setFormState({
               ...state,
-              user: [...res.data],
-              counsellorData: [...res1.data].reverse(),
+              user: [...res.data.results].reverse(),
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
             });
           }
         })
@@ -66,6 +83,107 @@ const CouncellorRecommendationsToAll = (props: any) => {
         });
       });
   }, []);
+  const loadNewData = () => {
+    setFormState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${nextLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${nextLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res, res1) => {
+          console.log(res);
+          if (res.status === 200) {
+            setFormState({
+              ...state,
+              successMsg: true,
+              isLoading: false,
+              user: [...res1.data.results].reverse(),
+              count: res1.data.page,
+              nextLink: res1.data.next,
+              prevLink: res1.data.previous,
+              total_pages: res1.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setFormState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setFormState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const loadPrevData = () => {
+    setFormState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${prevLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${prevLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res, res1) => {
+          console.log(res);
+          if (res.status === 200) {
+            setFormState({
+              ...state,
+              successMsg: true,
+              isLoading: false,
+              user: [...res1.data.results].reverse(),
+              count: res1.data.page,
+              nextLink: res1.data.next,
+              prevLink: res1.data.previous,
+              total_pages: res1.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setFormState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setFormState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+
   console.log(user);
   return (
     <>
@@ -105,7 +223,31 @@ const CouncellorRecommendationsToAll = (props: any) => {
                         <div className="tymeline sjsso2">{data.date}</div>
                       </div>
                     ))}
-                    
+                    <div className="next_page">
+                      <div>
+                        Displaying <span className="page_num">{count}</span> out
+                        of <span className="page_num">{total_pages}</span>
+                      </div>
+                      <div>
+                        {prevLink && (
+                          <img
+                            onClick={loadPrevData}
+                            className="page_change"
+                            src={prevpage}
+                            alt="previous page"
+                          />
+                        )}
+
+                        {nextLink && (
+                          <img
+                            onClick={loadNewData}
+                            className="page_change"
+                            src={nextpage}
+                            alt="next page"
+                          />
+                        )}
+                      </div>
+                    </div>
                   </Col>
                 </Row>
               </Col>

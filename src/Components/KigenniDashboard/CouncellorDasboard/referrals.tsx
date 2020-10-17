@@ -27,6 +27,8 @@ const Referrals = (props: any) => {
     count: "",
     success: "",
     total_pages: "",
+    referalInfo: "",
+    hascopiedLink: false,
     isLoading: false,
   });
   React.useEffect(() => {
@@ -42,9 +44,12 @@ const Referrals = (props: any) => {
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-members`, {
         headers: { Authorization: `Token ${token}` },
       }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/referral-link`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
     ])
       .then(
-        Axios.spread((res) => {
+        Axios.spread((res, res1) => {
           console.log(res);
           if (res.status === 200) {
             setState({
@@ -56,6 +61,7 @@ const Referrals = (props: any) => {
               prevLink: res.data.previous,
               total_pages: res.data.total_pages,
               isLoading: false,
+              referalInfo: res1.data.url,
             });
           }
         })
@@ -75,6 +81,18 @@ const Referrals = (props: any) => {
         });
       });
   }, []);
+  const changeCopiedState = () => {
+    setState({
+      ...state,
+      hascopiedLink: true,
+    });
+    setTimeout(() => {
+      setState({
+        ...state,
+        hascopiedLink: false,
+      });
+    }, 3000);
+  };
   const ModalClose = () => {
     setState({
       ...state,
@@ -191,7 +209,11 @@ const Referrals = (props: any) => {
     nextLink,
     count,
     total_pages,
+    referalInfo,
+    clarityLink,
+    hascopiedLink,
   } = state;
+  console.log(referalInfo);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -357,12 +379,21 @@ const Referrals = (props: any) => {
                     <input
                       type="text"
                       size={30}
+                      value={referalInfo}
                       className=" form-control ref_input"
                     />
-                    <span className="ref-modal-btn">Copy Link</span>
+                    <span
+                      className="ref-modal-btn"
+                      onClick={() => {
+                        navigator.clipboard.writeText(referalInfo);
+                        changeCopiedState();
+                      }}
+                    >
+                      {!hascopiedLink ? "Copy Link" : "Copied"}
+                    </span>
                   </div>
                   <div className="last_ref_modal_btn">
-                    <span className="ref_btn done">Done</span>
+                    <span className="ref_btn done" onClick={ModalClose}>Done</span>
                   </div>
                 </Container>
               </Modal>
