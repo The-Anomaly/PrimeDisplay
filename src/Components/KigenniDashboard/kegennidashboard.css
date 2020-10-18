@@ -3714,3 +3714,6 @@ label{
 .accordion > .card .card-header {
   background-color: inherit;
 }
+.precision1{
+  width: 110px !important;
+}

@@ -17,7 +17,7 @@ import { CirclePie } from "salad-ui.chart";
 import StarRatingComponent from "react-star-rating-component";
 import Spinner from "react-bootstrap/Spinner";
 import Testing from "./Testing";
-import precision from "../../assets/precision.svg";
+import precision from "../../assets/clarity.png";
 import HorizontalBar from "./HorizontalBar";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -248,7 +248,7 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
           <Row className="kli6 bcbv">
             <Col md={10} className="">
               <div className="prclogo">
-                <img src={precision} className="precision" alt="precision" />
+                <img src={precision} className="precision precision1" alt="precision" />
               </div>
             </Col>
           </Row>
@@ -365,7 +365,7 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
                     </Accordion>
                   </div>
                   <hr />
-                  {/* <div id="weak">
+                  <div id="weak">
                     {employer?.strong_career_competences ? (
                       <div className="competence">Strong Career Competence</div>
                     ) : (
@@ -674,7 +674,7 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
                         </Accordion.Collapse>
                       </Card>
                     </Accordion>
-                  </div> */}
+                  </div>
 
                   {/* WORK STYLE STARTS */}
                   <div id="weak">

@@ -20,6 +20,8 @@ import preloader from "../../../assets/preloader2.gif";
 import StarRatingComponent from "react-star-rating-component";
 import { Modal } from "react-bootstrap";
 import book from "../../../assets/book.svg";
+import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
 const moment = require("moment");
 
 const CounsellorOverview = (props: any) => {
@@ -37,6 +39,7 @@ const CounsellorOverview = (props: any) => {
     sessionId: "",
     recommendations: [],
     taskTitle: "",
+    session_email: "",
     taskDuration: "",
     taskDescription: "",
     session_notes: "",
@@ -57,6 +60,7 @@ const CounsellorOverview = (props: any) => {
     session_about,
     name,
     sessionId,
+    session_email,
     isLoading,
   }: any = state;
   React.useEffect(() => {
@@ -117,6 +121,7 @@ const CounsellorOverview = (props: any) => {
           name: data.name,
           isOpen: true,
           sessionId: data.id,
+          session_email: data.email,
           user_issues: data.user_vent,
         });
       }
@@ -397,14 +402,11 @@ const CounsellorOverview = (props: any) => {
       >
         <Container>
           <h6>{name}</h6>
-          <Link to="counsellorbookings">
-            <span className="modal-btn">
-              <a href="/counsellor/userinsight" target="blank">
-                View users result <i className="fa fa-arrow-right"></i>
-              </a>
-            </span>
-          </Link>
-
+          <span className="modal-btn">
+            <a href={`/employers/result/${session_email}`} target="blank">
+              View users result <i className="fa fa-arrow-right"></i>
+            </a>
+          </span>
           <form>
             <label>issues raised by user</label>
             <textarea
@@ -417,73 +419,88 @@ const CounsellorOverview = (props: any) => {
               rows={3}
             />
           </form>
-          <p className="to-do-header">Create a Todo Task</p>
-          <form className="to-do-form">
-            <Row>
-              <Col md={6}>
-                <label>Task Title</label>
-                <input
-                  type="text"
-                  placeholder="enter a title"
-                  name="taskTitle"
-                  value={taskTitle}
-                  onChange={inputChangeHandler}
-                  className="form-control todo-input"
-                  size={25}
-                />
-              </Col>
-              <Col md={6}>
-                <label>
-                  Task Duration <span className="dayss">(Days)</span>
-                </label>
-                <input
-                  type="number"
-                  placeholder="Enter the number of days"
-                  className="form-control todo-input"
-                  name="taskDuration"
-                  value={taskDuration}
-                  onChange={inputChangeHandler}
-                  size={25}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <label>Task Description</label>
-                <textarea
-                  placeholder="Describe the nature of the task"
-                  cols={67}
-                  rows={3}
-                  className="form-control text-decription"
-                  name="taskDescription"
-                  value={taskDescription}
-                  onChange={inputChangeHandler}
-                />
-              </Col>
-            </Row>
-          </form>
-          <div className="addmore" onClick={add_new_task}>
-            <p>Add more &#43;</p>
-          </div>
-          <div className="recommendationlist">
-            {recommendations.map((data, i) => (
-              <div className="cveducation" key={i}>
-                <span>
-                  <img className="cvedu" src={book} alt="book icon" />
-                </span>
-                <span className="sch_details">
-                  <div className="school">{data.title}</div>
-                  <div className="course">
-                    {data.duration == 1 ? "day" : "days"}
-                  </div>
-                  <div className="location">{data.description}</div>
-                </span>
-                <span className="edit_descripd" onClick={() => deleteEntry(i)}>
-                  <span className="dwq12">&times;</span>
-                </span>
-              </div>
-            ))}
-          </div>
+          <Accordion defaultActiveKey="">
+            <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
+              <p className="to-do-header councld">
+                {" "}
+                <span>Create a Todo Task</span>
+                <span className="tododw">+</span>
+              </p>
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="5">
+              <Card.Body>
+                <form className="to-do-form">
+                  <Row>
+                    <Col md={6}>
+                      <label>Task Title</label>
+                      <input
+                        type="text"
+                        placeholder="enter a title"
+                        name="taskTitle"
+                        value={taskTitle}
+                        onChange={inputChangeHandler}
+                        className="form-control todo-input"
+                        size={25}
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <label>
+                        Task Duration <span className="dayss">(Days)</span>
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="Enter the number of days"
+                        className="form-control todo-input"
+                        name="taskDuration"
+                        value={taskDuration}
+                        onChange={inputChangeHandler}
+                        size={25}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={12}>
+                      <label>Task Description</label>
+                      <textarea
+                        placeholder="Describe the nature of the task"
+                        cols={67}
+                        rows={3}
+                        className="form-control text-decription"
+                        name="taskDescription"
+                        value={taskDescription}
+                        onChange={inputChangeHandler}
+                      />
+                    </Col>
+                  </Row>
+                </form>
+                <div className="addmore" onClick={add_new_task}>
+                  <p>Save &#43;</p>
+                </div>
+                <div className="recommendationlist">
+                  {recommendations.map((data, i) => (
+                    <div className="cveducation" key={i}>
+                      <span>
+                        <img className="cvedu" src={book} alt="book icon" />
+                      </span>
+                      <span className="sch_details">
+                        <div className="school">{data.title}</div>
+                        <div className="course">
+                          {data.duration} {data.duration == 1 ? "day" : "days"}
+                        </div>
+                        <div className="location">{data.description}</div>
+                      </span>
+                      <span
+                        className="edit_descripd"
+                        onClick={() => deleteEntry(i)}
+                      >
+                        <span className="dwq12">&times;</span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Accordion>
           <form>
             <label>Take down notes during sessions</label>
             <textarea

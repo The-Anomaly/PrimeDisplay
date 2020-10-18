@@ -23,6 +23,8 @@ import StarRatingComponent from "react-star-rating-component";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
 const moment = require("moment");
 
 const CounsellorBookedSessions = (props: any) => {
@@ -32,6 +34,7 @@ const CounsellorBookedSessions = (props: any) => {
     errorMessage: "",
     user: "",
     name: "",
+    session_email: "",
     counsellorData: [],
     successMsg: false,
     isLoading: false,
@@ -59,6 +62,7 @@ const CounsellorBookedSessions = (props: any) => {
           ...state,
           name: data.name,
           isOpen: true,
+          session_email: data.email,
           sessionId: data.id,
           user_issues: data.user_vent,
         });
@@ -76,6 +80,7 @@ const CounsellorBookedSessions = (props: any) => {
     rate1,
     nextLink,
     isLoading,
+    session_email,
     counsellorData,
     prevLink,
     count,
@@ -317,7 +322,7 @@ const CounsellorBookedSessions = (props: any) => {
           console.log(res);
           notify("Successful");
           setTimeout(() => {
-            // window.location.reload();
+            window.location.reload();
           }, 2000);
         })
         .catch((err) => {
@@ -352,7 +357,7 @@ const CounsellorBookedSessions = (props: any) => {
         });
     }
   };
-  console.log(name);
+  console.log(session_email);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -511,14 +516,11 @@ const CounsellorBookedSessions = (props: any) => {
       >
         <Container>
           <h6>{name}</h6>
-          <Link to="counsellorbookings">
-            <span className="modal-btn">
-              <a href="/counsellor/userinsight" target="blank">
-                View users result <i className="fa fa-arrow-right"></i>
-              </a>
-            </span>
-          </Link>
-
+          <span className="modal-btn">
+            <a href={`/employers/result/${session_email}`} target="blank">
+              View users result <i className="fa fa-arrow-right"></i>
+            </a>
+          </span>
           <form>
             <label>issues raised by user</label>
             <textarea
@@ -531,73 +533,88 @@ const CounsellorBookedSessions = (props: any) => {
               rows={3}
             />
           </form>
-          <p className="to-do-header">Create a Todo Task</p>
-          <form className="to-do-form">
-            <Row>
-              <Col md={6}>
-                <label>Task Title</label>
-                <input
-                  type="text"
-                  placeholder="enter a title"
-                  name="taskTitle"
-                  value={taskTitle}
-                  onChange={inputChangeHandler}
-                  className="form-control todo-input"
-                  size={25}
-                />
-              </Col>
-              <Col md={6}>
-                <label>
-                  Task Duration <span className="dayss">(Days)</span>
-                </label>
-                <input
-                  type="number"
-                  placeholder="Enter the number of days"
-                  className="form-control todo-input"
-                  name="taskDuration"
-                  value={taskDuration}
-                  onChange={inputChangeHandler}
-                  size={25}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <label>Task Description</label>
-                <textarea
-                  placeholder="Describe the nature of the task"
-                  cols={67}
-                  rows={3}
-                  className="form-control text-decription"
-                  name="taskDescription"
-                  value={taskDescription}
-                  onChange={inputChangeHandler}
-                />
-              </Col>
-            </Row>
-          </form>
-          <div className="addmore" onClick={add_new_task}>
-            <p>Add more &#43;</p>
-          </div>
-          <div className="recommendationlist">
-            {recommendations.map((data, i) => (
-              <div className="cveducation" key={i}>
-                <span>
-                  <img className="cvedu" src={book} alt="book icon" />
-                </span>
-                <span className="sch_details">
-                  <div className="school">{data.title}</div>
-                  <div className="course">
-                    {data.duration} {data.duration == 1 ? "day" : "days"}
-                  </div>
-                  <div className="location">{data.description}</div>
-                </span>
-                <span className="edit_descripd" onClick={() => deleteEntry(i)}>
-                  <span className="dwq12">&times;</span>
-                </span>
-              </div>
-            ))}
-          </div>
+          <Accordion defaultActiveKey="">
+            <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
+              <p className="to-do-header councld">
+                {" "}
+                <span>Create a Todo Task</span>
+                <span className="tododw">+</span>
+              </p>
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="5">
+              <Card.Body>
+                <form className="to-do-form">
+                  <Row>
+                    <Col md={6}>
+                      <label>Task Title</label>
+                      <input
+                        type="text"
+                        placeholder="enter a title"
+                        name="taskTitle"
+                        value={taskTitle}
+                        onChange={inputChangeHandler}
+                        className="form-control todo-input"
+                        size={25}
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <label>
+                        Task Duration <span className="dayss">(Days)</span>
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="Enter the number of days"
+                        className="form-control todo-input"
+                        name="taskDuration"
+                        value={taskDuration}
+                        onChange={inputChangeHandler}
+                        size={25}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={12}>
+                      <label>Task Description</label>
+                      <textarea
+                        placeholder="Describe the nature of the task"
+                        cols={67}
+                        rows={3}
+                        className="form-control text-decription"
+                        name="taskDescription"
+                        value={taskDescription}
+                        onChange={inputChangeHandler}
+                      />
+                    </Col>
+                  </Row>
+                </form>
+                <div className="addmore" onClick={add_new_task}>
+                  <p>Save &#43;</p>
+                </div>
+                <div className="recommendationlist">
+                  {recommendations.map((data, i) => (
+                    <div className="cveducation" key={i}>
+                      <span>
+                        <img className="cvedu" src={book} alt="book icon" />
+                      </span>
+                      <span className="sch_details">
+                        <div className="school">{data.title}</div>
+                        <div className="course">
+                          {data.duration} {data.duration == 1 ? "day" : "days"}
+                        </div>
+                        <div className="location">{data.description}</div>
+                      </span>
+                      <span
+                        className="edit_descripd"
+                        onClick={() => deleteEntry(i)}
+                      >
+                        <span className="dwq12">&times;</span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Accordion>
           <form>
             <label>Take down notes during sessions</label>
             <textarea

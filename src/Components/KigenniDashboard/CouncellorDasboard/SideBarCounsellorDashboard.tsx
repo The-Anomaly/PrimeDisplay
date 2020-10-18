@@ -89,7 +89,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
                 className="sideimage"
                 alt="sideimage"
               />
-              Your Recommendations
+              Recommended Task
             </Link>
           </div>
           <div className={props.assignedmemb ? "activegb" : "gbn"}>

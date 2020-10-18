@@ -364,7 +364,7 @@
     justify-content: space-around;
     flex-direction: column-reverse;
   }
-  .assessratingpa{
+  .assessratingpa {
     justify-content: flex-start;
   }
   .ncb {
@@ -2403,10 +2403,11 @@ textarea.form-control.jobr {
   width: 100%;
   text-align: right;
 }
-.dwq12{
+.dwq12 {
   cursor: pointer;
 }
-.sch_details, .ref_details{
+.sch_details,
+.ref_details {
   width: 100%;
 }
 .view-box {
@@ -2434,10 +2435,10 @@ textarea.form-control.jobr {
   .box-1 {
     margin-bottom: 17px;
   }
-  .viewall{
+  .viewall {
     text-align: center;
   }
-  .firstqq{
+  .firstqq {
     padding-left: 2rem;
   }
 }
@@ -2611,6 +2612,7 @@ textarea.form-control.jobr {
 }
 .card-body {
   padding-top: 0px;
+  word-spacing: normal;
 }
 .prclogo {
   width: 200px;
@@ -3686,8 +3688,8 @@ textarea.form-control.jobr {
   min-width: auto;
   border-radius: 5px;
 }
-.text-decription{
-  padding-left: .5rem !important;
+.text-decription {
+  padding-left: 0.5rem !important;
 }
 .btnmarg {
   margin: 1rem 0;
@@ -3721,18 +3723,29 @@ textarea.form-control.jobr {
   text-align: center;
   color: #202020;
 }
-.issues-textbox-1{
+.issues-textbox-1 {
   font-size: 14px;
 }
-.dayss{
+.dayss {
   color: #5d5f61;
 }
-.ui1222{
+.ui1222 {
   margin-bottom: 1rem;
 }
-.modal-btn{
+.modal-btn {
   cursor: pointer;
 }
-.ref_btn{
-  margin-top: .2rem;
+.ref_btn {
+  margin-top: 0.2rem;
+}
+.councld {
+  background: #f5f7f1;
+  border-radius: 6px;
+  padding: 0.5rem 1rem 0.5rem 0.4rem;
+  margin-bottom: -0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.tododw {
+  color: #9c9c9c;
 }
