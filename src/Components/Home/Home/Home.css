@@ -914,12 +914,14 @@ button {
 }
 .newsecondrow {
   background: #ffffff;
+  padding: 3rem;
 }
 .secondtitle {
   color: #000000;
   font-family: "Brfirma-Bold";
   font-size: 35px;
-  margin: 2rem auto;
+  margin: 0rem auto;
+  padding-left: 6.5rem;
 }
 .secondtitle1 {
   color: #ffffff;
@@ -934,4 +936,23 @@ button {
   z-index: -1;
   width: 150px;
   height: 68px;
+}
+.crazycircle1 {
+  display: flex;
+}
+.crazycircle1 .lcircle1 {
+  margin-top: 8rem;
+  width: 403px;
+}
+.crazycircle1 .larrow1 {
+  margin-top: -10rem;
+  width: 470px;
+  margin-left: -2rem;
+}
+.crazycircle1 .lcircle2 {
+  width: 403px;
+  margin-top: -3rem;
+}
+.crazycircle2 {
+  display: flex;
 }
