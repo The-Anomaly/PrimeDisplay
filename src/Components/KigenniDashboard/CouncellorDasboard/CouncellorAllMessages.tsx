@@ -37,7 +37,6 @@ const CounsellorAllMessages = withRouter((props: any) => {
           if (res.status === 200) {
             setState({
               ...state,
-              user: [...res.data],
               counsellorData: [...res.data.results].reverse(),
             });
           }
@@ -76,8 +75,8 @@ const CounsellorAllMessages = withRouter((props: any) => {
                 />
                 <Row>
                   <Col md={12} className="mssaag sasag">
-                    {counsellorData &&
-                      counsellorData.map((data, i) => (
+                    {counsellorData?.map((data, i) => (
+                      <>
                         <Link
                           to={`/counsellormessagehistory/israel.hilary7@yahoo.com`}
                         >
@@ -92,10 +91,10 @@ const CounsellorAllMessages = withRouter((props: any) => {
                             <div className="msg2">
                               <div>
                                 <span className="username11">
-                                  Jayeola Jones
+                                  {data.user}
                                 </span>
                                 <span className="useremail11">
-                                  jaye@user.com
+                                  {data?.email}
                                 </span>
                               </div>
                               <div className="messagedetails nufont">
@@ -113,7 +112,8 @@ const CounsellorAllMessages = withRouter((props: any) => {
                             </div>
                           </div>
                         </Link>
-                      ))}
+                      </>
+                    ))}
                   </Col>
                 </Row>
               </Col>

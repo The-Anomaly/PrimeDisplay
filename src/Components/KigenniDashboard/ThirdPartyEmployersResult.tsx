@@ -629,7 +629,7 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
                         }
                       )}
                     </div>
-                  </div> */}
+                  </div> 
                   {/* <div className="otherinfo">
                     <Accordion defaultActiveKey="0" className="red112">
                       <Card className="cllsls">

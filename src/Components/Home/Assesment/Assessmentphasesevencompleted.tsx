@@ -22,6 +22,10 @@ const AssessmentSeventhPhaseComplete = () => {
     const currentUser = user ?JSON.parse(user):[{first_name:""}];
     setName(currentUser[0].first_name);
   }, []);
+  const logout = () => {
+    localStorage.clear();
+    window.location.assign("/");
+  };
   return (
     <div>
       <Navbar />
@@ -51,12 +55,10 @@ const AssessmentSeventhPhaseComplete = () => {
                     <Link to="/free/dashboard">
                       <button className="awesomebtn">Get Results</button>
                     </Link>
-                    <Link to="/">
                       {" "}
-                      <button className="awesomebtnsubmit">
+                      <button onClick={logout} className="awesomebtnsubmit">
                         Save Progress
                       </button>
-                    </Link>
                   </div>
                 </div>
               </Col>
