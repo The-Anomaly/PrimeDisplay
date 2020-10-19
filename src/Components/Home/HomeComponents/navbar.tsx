@@ -1,5 +1,5 @@
 import * as React from "react";
-import demoLogo from "../../../assets/clarity.png";
+import demoLogo from "../../../assets/claritydemo.png";
 import SideNav from "react-simple-sidenav";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import "../Home/animate.css";
@@ -8,6 +8,7 @@ import { NavIsLoggedIn } from "./isloggedIn";
 import { useEffect } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
+import { Row } from "react-bootstrap";
 
 const Navbar = withRouter((props: any) => {
   const [state, setShowNav] = React.useState({
@@ -107,7 +108,7 @@ const Navbar = withRouter((props: any) => {
       {renderRedirect()}
       {/* mobile ends */}
       <div className="Navsection ">
-        <div className="top-layer">
+        <div className="">
           {/* mobile */}
           <div className="lakk">
             <SideNav
@@ -226,7 +227,8 @@ const Navbar = withRouter((props: any) => {
             </div>
           </div>
         </div>
-        <div className="nav-wrapper">
+        <Row md={12}>
+        <div className="nav-wrapper redoNav">
           <div className="nav_title">
             <div className="logo_clarity">
               <Link to="/">
@@ -234,16 +236,25 @@ const Navbar = withRouter((props: any) => {
               </Link>
             </div>
           </div>
-          <div className="nav_title">
-            <span className="title">
-              <Link to="/">HOME</Link>
+          <div className="nav_title navtext">
+            <span className="title hhome">
+              <Link to="/">Home</Link>
             </span>
             <span className="title">
-              <Link to="/about">ABOUT</Link>
+              <Link to="/about">About Us</Link>
             </span>
             <span className="title">
+              <Link to="/about">Payments</Link>
+            </span>
+            <span className="title">
+              <Link to="/about">Contact Us</Link>
+            </span>
+            <span className="title">
+              <Link to="/about">FAQ</Link>
+            </span>
+            {/* <span className="title">
               <Link to="/clarityforteams">SERVICES</Link>
-            </span>
+            </span> */}
             {!userLoggedIn ? (
               <NavIsLoggedOut />
             ) : (
@@ -251,6 +262,7 @@ const Navbar = withRouter((props: any) => {
             )}
           </div>
         </div>
+        </Row>
       </div>
     </div>
   );

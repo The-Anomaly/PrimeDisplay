@@ -40,6 +40,33 @@
     url("//db.onlinewebfonts.com/t/ac9525e5f200f57332b3080d0db9d8f6.svg#Sailec-Medium")
       format("svg");
 }
+@font-face {
+  font-family: "Brfirma-Regular";
+  src: local('Brfirma-Regular'), 
+    url('../../../Fonts/Brfirma/BRFirma-Regular.ttf') 
+      format('truetype');
+}
+
+@font-face {
+  font-family: "Brfirma-Bold";
+  src: local('Brfirma-Bold'), 
+    url('../../../Fonts/Brfirma/BRFirma-Bold.ttf') 
+      format('truetype');
+}
+
+@font-face {
+  font-family: "Brfirma-BoldItalic";
+  src: local('Brfirma-BoldItalic'), 
+    url('../../../Fonts/Brfirma/BRFirma-BoldItalic.ttf') 
+      format('truetype');
+}
+
+@font-face {
+  font-family: "Brfirma-ExtraLight";
+  src: local('Brfirma-ExtraLight'), 
+    url('../../../Fonts/Brfirma/BRFirma-ExtraLight.ttf') 
+      format('truetype');
+}
 
 .top-layer {
   width: 100%;
@@ -825,4 +852,86 @@ button {
   border: 0.1px solid #b3b3b3;
   z-index: 3;
   position: relative;
+}
+
+/*Landing Page Redesign */
+.redoNav {
+  background: #23304C;
+  position: absolute;
+  width: 100%;
+  padding-top: 2rem;
+  padding-right: 4rem;
+  padding-left: 8rem;
+}
+.navtext {  
+  color: #ffffff;
+  font-family: "Brfirma-Regular";
+  letter-spacing: 0.3px;
+  font-size: 15px;
+}
+.hhome {
+  font-family: "Brfirma-Bold";
+}
+.backdrop {
+  background-image: url("../../../assets/herobackdrop1.svg");
+}
+.hometext {
+  color: #ffffff;
+  margin-top: 13rem;
+  margin-bottom: 15rem;
+  padding-left: 6rem;
+  padding-right: 2.5rem;
+  font-size: 45px;
+  font-family: "Brfirma-Bold";
+}
+.socials {
+  display: flex;
+  flex-direction: column;
+  margin-top: 19rem;
+  justify-content: space-around;
+  align-items: center;
+}
+.socials1 {
+  width: max-content;
+  padding-bottom: 2.5rem;
+}
+.signupbtn {
+  padding: 0.6rem 1rem;
+    width: 110px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.hstarted {
+    color: #fff;
+    background: #9c1258;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-size: 15px;
+    width: 190px;
+    text-align: center;
+    cursor: pointer;
+}
+.newsecondrow {
+  background: #ffffff;
+}
+.secondtitle {
+  color: #000000;
+  font-family: "Brfirma-Bold";
+  font-size: 35px;
+  margin: 2rem auto;
+}
+.secondtitle1 {
+  color: #ffffff;
+  padding-left: 0;
+  z-index: 1;
+  position: relative;
+}
+.secondimg {
+  position: relative;
+  top: -0.2rem;
+  right: 7rem;
+  z-index: -1;
+  width: 150px;
+  height: 68px;
 }

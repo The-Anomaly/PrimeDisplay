@@ -75,6 +75,7 @@ import CouncellorRecommendationsToAll from "./Components/KigenniDashboard/Counce
 import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 import CounsellorViewUserResult from './Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUserResult';
+import RedesignedHome from "./Components/Home/Home/RedesignedHome";
 
 const App: React.FC = () => {
   return (
@@ -366,6 +367,7 @@ const App: React.FC = () => {
               path="/counsellormeetings"
               component={CounsellorScheduledMeetings}
             />
+            <Route exact path="/redesign" component={RedesignedHome} />
           </Switch>
         </BrowserRouter>
       </div>
