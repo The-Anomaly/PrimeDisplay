@@ -27,7 +27,7 @@ interface State {
   lastname: string;
   email: string;
   password: string;
-  referalcode:string;
+  referalcode: string;
   confirmPassword: string;
   whereDidYouLearnAboutUs: string;
   errorMessage: string;
@@ -47,7 +47,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
     errorMessage: "",
     successMsg: false,
     error: false,
-    referalcode:"",
+    referalcode: "",
     isLoading: false,
     isloading: false,
   });
@@ -73,7 +73,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
       info: whereDidYouLearnAboutUs,
       password,
       password2: confirmPassword,
-      referralcode:referalcode,
+      referral_code: referalcode,
     };
     axios
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
@@ -90,7 +90,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response)
+        console.log(error.response);
         if (error && error.response && error.response.data) {
           return setFormState({
             ...state,
@@ -245,8 +245,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
       .then((response) => {
         if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_sports") ||
+          (
+          response.status === 200 &&
+          response.data[0].next === "phase_four_sports") ||
           response.data[0].next === "phase_four_business" ||
           response.data[0].next === "phase_four_stem"
         ) {

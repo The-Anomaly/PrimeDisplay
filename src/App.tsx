@@ -76,8 +76,19 @@ import CouncellorRecommendationsToAll from "./Components/KigenniDashboard/Counce
 import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 import CounsellorViewUserResult from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUserResult";
+import WebSocketInstance from "./websocket";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    const self: any = this;
+    WebSocketInstance?.addCallbacks(
+      self?.props?.setMessages?.bind(this),
+      self?.props?.addMessage?.bind(this)
+    );
+  }
+  componentDidMount() {}
   render() {
     return (
       <div className="App">
