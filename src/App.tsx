@@ -74,6 +74,7 @@ import CounsellorMessageOneUser from "./Components/KigenniDashboard/CouncellorDa
 import CouncellorRecommendationsToAll from "./Components/KigenniDashboard/CouncellorDasboard/CouncellorRecommendationsToAll";
 import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
+import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
 
 const App: React.FC = () => {
   return (
@@ -92,6 +93,7 @@ const App: React.FC = () => {
             <Route exact path="/clarityforteams" component={ClarityForTeams} />
             <Route exact path="/overview" component={NewDashboard} />
             <Route exact path="/profilebuilder" component={CVProfileBuilder} />
+            <Route exact path="/contact" component={Contactpage}/>
             <Route
               exact
               path="/jobopportunities"
