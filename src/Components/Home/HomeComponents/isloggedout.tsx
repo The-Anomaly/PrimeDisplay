@@ -8,7 +8,7 @@ export function NavIsLoggedOut(props: IAppProps) {
     <React.Fragment>
       <div className="title1 shiftlefff">
         <Link to="/signin">
-          <button className="title_t">LOGIN</button>
+          <button className="title_t signupbtn">Sign Up</button>
         </Link>
       </div>
     </React.Fragment>

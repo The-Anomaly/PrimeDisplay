@@ -1,3 +1,5 @@
+import { API } from "./config";
+
 interface WebSocketService {
   instance: any | null;
 }
@@ -18,7 +20,7 @@ class WebSocketService {
     const self: any = this;
     var ws_scheme: any = window.location.protocol == "https:" ? "wss" : "ws";
     const path =
-      ws_scheme + "://" + window.location.host + "/ws/chat" + `/${chatURL}/`;
+      ws_scheme + "://" + `${API}` + "/ws/chat" + `/${chatURL}/`;
     // const path = `ws://theminglemarket.com:8000/ws/chat/${chatURL}/`;
     console.log(path);
     self.socketRef = new WebSocket(path);

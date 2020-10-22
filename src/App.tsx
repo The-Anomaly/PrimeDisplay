@@ -77,6 +77,7 @@ import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 import CounsellorViewUserResult from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUserResult";
 import WebSocketInstance from "./websocket";
+import RedesignedHome from "./Components/Home/Home/RedesignedHome";
 
 class App extends Component {
   constructor(props) {
@@ -410,6 +411,7 @@ class App extends Component {
                 path="/counsellormeetings"
                 component={CounsellorScheduledMeetings}
               />
+                 <Route exact path="/redesign" component={RedesignedHome} />
             </Switch>
           </BrowserRouter>
         </div>
