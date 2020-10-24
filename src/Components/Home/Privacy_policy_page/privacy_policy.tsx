@@ -279,7 +279,7 @@ We do not sell the Personal Information of our users.<br></br>
 For more information about these rights, please contact us.<br></br>
 <br></br>
 
-California Online Privacy Protection Act (CalOPPA)
+<strong>California Online Privacy Protection Act (CalOPPA)</strong>
 <br></br><br></br>
 According to CalOPPA, personal information is defined as any data that may be used to identify a person
 Under the CalOPPA, California consumers have the right to:
@@ -291,7 +291,7 @@ Under the CalOPPA, California consumers have the right to:
 If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
 <br></br><br></br>
 
-Contact Us
+<strong>Contact Us</strong>
 <br></br><br></br>
 Don't hesitate to contact us if you have any questions.
 <br></br><br></br>
