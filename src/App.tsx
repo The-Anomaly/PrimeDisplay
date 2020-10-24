@@ -75,6 +75,8 @@ import CouncellorRecommendationsToAll from "./Components/KigenniDashboard/Counce
 import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
+import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
+import Privacy from "./Components/Home/Privacy_policy_page/privacy_policy"
 
 const App: React.FC = () => {
   return (
@@ -94,6 +96,8 @@ const App: React.FC = () => {
             <Route exact path="/overview" component={NewDashboard} />
             <Route exact path="/profilebuilder" component={CVProfileBuilder} />
             <Route exact path="/contact" component={Contactpage}/>
+            <Route exact path="/payment" component={Paymentpage}/>
+            <Route exact path="/privacy_policy" component={Privacy}/>
             <Route
               exact
               path="/jobopportunities"
