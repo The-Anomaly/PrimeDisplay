@@ -81,7 +81,8 @@ import RedesignedHome from "./Components/Home/Home/RedesignedHome";
 import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
 import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
 import Privacy from "./Components/Home/Privacy_policy_page/privacy_policy";
-import { msgActions } from "./Store/Actions/index";
+import * as msgActions from "./Store/Actions/index";
+import connect from "react-redux";
 
 class App extends Component {
   constructor(props) {
