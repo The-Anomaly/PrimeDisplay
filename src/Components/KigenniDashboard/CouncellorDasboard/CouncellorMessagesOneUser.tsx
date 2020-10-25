@@ -14,6 +14,8 @@ import DashboardUsernameheader from "../DashboardUsernameheader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+import { connect } from "react-redux";
+import WebSocketInstance from "../../../websocket";
 
 class CounsellorMessageOneUser extends React.Component {
   state = {
@@ -21,10 +23,54 @@ class CounsellorMessageOneUser extends React.Component {
     user: "",
     message: "",
   };
-  submitForm = (e) => {
+  props: any;
+  this: any;
+  constructor(props) {
+    super(props);
+    this.initialiseChat();
+  }
+
+  // UNSAFE_componentWillReceiveProps(newProps) {
+  //   console.log(newProps);
+  //   if (this.props.match.params.chatID !== newProps.match.params.chatID) {
+  //     WebSocketInstance.disconnect();
+  //     this.waitForSocketConnection(() => {
+  //       WebSocketInstance.fetchMessages(
+  //         this.props.username,
+  //         newProps?.match?.params?.chatID
+  //       );
+  //     });
+  //     WebSocketInstance.connect(newProps?.match?.params?.chatID);
+  //   }
+  // }
+  initialiseChat() {
+    this.waitForSocketConnection(() => {
+      WebSocketInstance.fetchMessages(
+        this.props.username,
+        this.props.match.params.chatID
+      );
+    });
+    console.log(this?.props?.match?.params?.chatID)
+    WebSocketInstance.connect(this?.props?.match?.params?.chatID);
+  }
+  waitForSocketConnection = (callback) => {
+    const component = this;
+    setTimeout(function () {
+      if (WebSocketInstance.state() === 1) {
+        console.log("conection is made!");
+        callback();
+        return;
+      } else {
+        console.log("waiting for connection....");
+        component.waitForSocketConnection(callback);
+      }
+    }, 100);
   };
+
+  submitForm = (e) => {};
   notify = (message: string) => toast(message, { containerId: "B" });
   componentWillMount() {
+    WebSocketInstance.connect(this.props.match.params.chatID);
     this.setState({
       isLoading: true,
     });
@@ -67,6 +113,19 @@ class CounsellorMessageOneUser extends React.Component {
       [e.target.name]: e.target.value,
     });
   };
+  sendMessageHandler = (e) => {
+    e.preventDefault();
+    const messageObject = {
+      from: this.props.username,
+      content: this.state.message,
+      chatId: this.props.match.params.chatID,
+    };
+    WebSocketInstance.newChatMessage(messageObject);
+    this.setState({
+      message: "",
+    });
+  };
+
   render() {
     const { user, message, isLoading }: any = this.state;
     return (
@@ -89,40 +148,35 @@ class CounsellorMessageOneUser extends React.Component {
                       <div className="kdashheader npps">
                         <div></div>
                         <Col md={12} className="youwss">
-                          {user &&
-                            user.map((data, ind) => (
-                              <>
-                                <div className="usersentwrap1" key={ind}>
-                                  <div className="youwrap">
-                                    <span className="you11">You</span>
-                                    <span className="youdate">
-                                      {data.message_date}
-                                    </span>
-                                  </div>
-                                  <div className="councellors_response">
-                                    {data.message}
-                                  </div>
+                          {
+                            <>
+                              <div className="usersentwrap1">
+                                <div className="youwrap">
+                                  <span className="you11">You</span>
+                                  <span className="youdate">1/1/2020</span>
                                 </div>
-                                <div className="hihh">
-                                  {data.response && (
-                                    <div className="couselorsentwrap2">
-                                      <div className="youwraprev">
-                                        <span className="youdate">
-                                          {data.response_date}
-                                        </span>
-                                        <span className="you11b">
-                                          Counsellor {data.counsellor}
-                                        </span>
-                                      </div>
-
-                                      <div className="councellors_response1">
-                                        {data.response}
-                                      </div>
+                                <div className="councellors_response">
+                                  Something happened
+                                </div>
+                              </div>
+                              <div className="hihh">
+                                {
+                                  <div className="couselorsentwrap2">
+                                    <div className="youwraprev">
+                                      <span className="youdate">1/21/2020</span>
+                                      <span className="you11b">
+                                        Counsellor Israel
+                                      </span>
                                     </div>
-                                  )}
-                                </div>
-                              </>
-                            ))}
+
+                                    <div className="councellors_response1">
+                                      Please what happened
+                                    </div>
+                                  </div>
+                                }
+                              </div>
+                            </>
+                          }
                           {
                             <div className="nomesgcoun">
                               <img
@@ -169,4 +223,11 @@ class CounsellorMessageOneUser extends React.Component {
     );
   }
 }
-export default CounsellorMessageOneUser;
+
+const mapStateToProps = (state) => {
+  return {
+    messages: state.message.messages,
+  };
+};
+
+export default connect(mapStateToProps)(CounsellorMessageOneUser);

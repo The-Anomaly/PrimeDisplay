@@ -81,6 +81,7 @@ import RedesignedHome from "./Components/Home/Home/RedesignedHome";
 import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
 import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
 import Privacy from "./Components/Home/Privacy_policy_page/privacy_policy";
+import { msgActions } from "./Store/Actions/index";
 
 class App extends Component {
   constructor(props) {
@@ -375,7 +376,7 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/counsellormessagehistory/:email"
+                path="/counsellormessagehistory/:email/:chatID"
                 component={CounsellorMessageOneUser}
               />
               <Route
@@ -424,4 +425,10 @@ class App extends Component {
     );
   }
 }
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMessage: (message) => dispatch(msgActions.addMessage(message)),
+    setMessages: (messages) => dispatch(msgActions.setMessages(messages)),
+  };
+};
+connect(null, mapDispatchToProps)(App);
