@@ -78,6 +78,9 @@ import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 import CounsellorViewUserResult from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUserResult";
 import WebSocketInstance from "./websocket";
 import RedesignedHome from "./Components/Home/Home/RedesignedHome";
+import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
+import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
+import Privacy from "./Components/Home/Privacy_policy_page/privacy_policy";
 
 class App extends Component {
   constructor(props) {
@@ -99,6 +102,10 @@ class App extends Component {
         <div>
           <BrowserRouter>
             <Switch>
+              <Route exact path="/contact" component={Contactpage} />
+              <Route exact path="/payment" component={Paymentpage} />
+              <Route exact path="/privacy_policy" component={Privacy} />
+              []
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/faq" component={Faq} />
@@ -329,13 +336,11 @@ class App extends Component {
                 path="/counsellor/userinsight"
                 component={CounsellorViewUserResult}
               />
-
               <Route
                 exact
                 path="/counsellor/userinsight"
                 component={CounsellorViewUserResult}
               />
-
               <Route
                 exact
                 path="/counsellorsupport"
@@ -411,7 +416,7 @@ class App extends Component {
                 path="/counsellormeetings"
                 component={CounsellorScheduledMeetings}
               />
-                 <Route exact path="/redesign" component={RedesignedHome} />
+              <Route exact path="/redesign" component={RedesignedHome} />
             </Switch>
           </BrowserRouter>
         </div>

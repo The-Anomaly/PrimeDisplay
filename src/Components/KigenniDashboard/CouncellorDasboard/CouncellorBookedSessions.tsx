@@ -12,6 +12,7 @@ import nextpage from "../../../assets/nextpage.svg";
 import noData from "../../../assets/no recommendations.png";
 import rightimg from "../../../assets/rightarrow.png";
 import leftimg from "../../../assets/leftarrow1.png";
+import expand from "../../../assets/minimize-2.png";
 import book from "../../../assets/book.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -533,20 +534,26 @@ const CounsellorBookedSessions = (props: any) => {
               rows={3}
             />
           </form>
-          <Accordion defaultActiveKey="">
-            <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
-              <p className="to-do-header councld">
-                {" "}
-                <span>Create a Todo Task</span>
-                <span className="tododw">+</span>
-              </p>
-            </Accordion.Toggle>
+          <Accordion defaultActiveKey="" className="councld1">
+            <div className="councld11">
+              <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
+                <p className="to-do-header councld">
+                  {" "}
+                  <span>Add Task</span>
+                </p>
+              </Accordion.Toggle>
+              <Accordion.Toggle as={Card.Header} eventKey="5">
+                <span className="tododw">
+                  <img src={expand} className="expand11" alt="expand" />
+                </span>
+              </Accordion.Toggle>
+            </div>
             <Accordion.Collapse eventKey="5">
               <Card.Body>
                 <form className="to-do-form">
-                  <Row>
+                  <Row className="taskrow">
                     <Col md={6}>
-                      <label>Task Title</label>
+                      <label className="taskcl">Task Title</label>
                       <input
                         type="text"
                         placeholder="enter a title"
@@ -558,7 +565,7 @@ const CounsellorBookedSessions = (props: any) => {
                       />
                     </Col>
                     <Col md={6}>
-                      <label>
+                      <label className="taskcl">
                         Task Duration <span className="dayss">(Days)</span>
                       </label>
                       <input
@@ -574,7 +581,7 @@ const CounsellorBookedSessions = (props: any) => {
                   </Row>
                   <Row>
                     <Col md={12}>
-                      <label>Task Description</label>
+                      <label className="taskcl">Task Description</label>
                       <textarea
                         placeholder="Describe the nature of the task"
                         cols={67}
@@ -588,9 +595,9 @@ const CounsellorBookedSessions = (props: any) => {
                   </Row>
                 </form>
                 <div className="addmore" onClick={add_new_task}>
-                  <p>Save &#43;</p>
+                  <p className="hjhh">Save &#43;</p>
                 </div>
-                <div className="recommendationlist">
+                {/* <div className="recommendationlist">
                   {recommendations.map((data, i) => (
                     <div className="cveducation" key={i}>
                       <span>
@@ -611,10 +618,89 @@ const CounsellorBookedSessions = (props: any) => {
                       </span>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </Card.Body>
             </Accordion.Collapse>
           </Accordion>
+          {recommendations.map((data, i) => (
+            <Accordion defaultActiveKey="" className="councld1">
+              <div className="councld11">
+                <Accordion.Toggle
+                  as={Card.Header}
+                  className="hpadd"
+                  eventKey="5"
+                >
+                  <p className="to-do-header councld">
+                    {" "}
+                    <span>{data.title}</span>
+                  </p>
+                </Accordion.Toggle>
+                <Accordion.Toggle as={Card.Header} eventKey="5">
+                  <span className="tododw">
+                    <img
+                      src={expand}
+                      className="expand11 movelft22"
+                      alt="expand"
+                    />
+                  </span>
+                  <span className="andtimes" onClick={() => deleteEntry(i)}>
+                    &times;
+                  </span>
+                </Accordion.Toggle>
+              </div>
+              <Accordion.Collapse eventKey="5">
+                <Card.Body>
+                  <div className="recommendationlist">
+                    <form className="to-do-form">
+                      <Row className="taskrow">
+                        <Col md={6}>
+                          <label className="taskcl">Task Title</label>
+                          <input
+                            type="text"
+                            placeholder="enter a title"
+                            name="taskTitle"
+                            value={data.title}
+                            onChange={inputChangeHandler}
+                            className="form-control todo-input"
+                            size={25}
+                          />
+                        </Col>
+                        <Col md={6}>
+                          <label className="taskcl">
+                            Task Duration <span className="dayss">(Days)</span>
+                          </label>
+                          <input
+                            type="number"
+                            placeholder="Enter the number of days"
+                            className="form-control todo-input"
+                            name="taskDuration"
+                            value={data.duration}
+                            onChange={inputChangeHandler}
+                            size={25}
+                          />
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md={12}>
+                          <label className="taskcl">Task Description</label>
+                          <textarea
+                            placeholder="Describe the nature of the task"
+                            cols={67}
+                            rows={3}
+                            className="form-control text-decription"
+                            name="taskDescription"
+                            value={data.description}
+                            onChange={inputChangeHandler}
+                          />
+                        </Col>
+                      </Row>
+                    </form>
+                    <p className="hjhh"></p>
+                  </div>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Accordion>
+          ))}
           <form>
             <label>Take down notes during sessions</label>
             <textarea
@@ -627,11 +713,9 @@ const CounsellorBookedSessions = (props: any) => {
               onChange={inputChangeHandler}
             />
             <Row>
-              <Col md={3}>
+              <Col md={6} className="dkcxx">
                 <label>Rate this session</label>
-              </Col>
-              <Col md={5} className="star-container">
-                <div className="assessrating">
+                <div className="assessrating dscvv1">
                   <StarRatingComponent
                     name="rate1"
                     starCount={5}

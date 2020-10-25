@@ -3753,10 +3753,36 @@ textarea.form-control.jobr {
 .ref_btn {
   margin-top: 0.2rem;
 }
+.councld11 {
+  display: flex;
+  justify-content: space-between;
+  padding: .4rem 2rem .4rem 1rem;
+  align-items: center;
+}
+.expand11{
+  width: 18px;
+}
+.councld1 {
+  background: #ffffff !important;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: -0.5rem;
+  display: flex;
+  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+  justify-content: space-between;
+  flex-direction: column;
+}
 .councld {
-  background: #f5f7f1;
-  border-radius: 6px;
-  padding: 0.5rem 1rem 0.5rem 0.4rem;
+  background: #ffffff !important;
+  border-radius: 14px;
+  padding: 1rem 1rem;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
   margin-bottom: -0.5rem;
   display: flex;
   justify-content: space-between;
@@ -3764,12 +3790,29 @@ textarea.form-control.jobr {
 .tododw {
   color: #9c9c9c;
 }
-
-.flxv1{
+.andtimes{
+  position: relative;
+  left: 5rem;
+  font-size: 20px;
+}
+.movelft22{
+  position: relative;
+  left: .9rem;
+}
+.flxv1 {
   display: flex;
   justify-content: space-between;
   width: 97%;
 }
-.ntfnd{
+.ntfnd {
   cursor: pointer;
+}
+.taskcl{
+  color: #434866;
+}
+.taskrow{
+  padding-bottom: .5rem;
+}
+.dscvv1{
+  margin-left: .2rem;
 }
