@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
+import preloader2 from "../../../assets/preloader2.gif";
 
 const Home: React.FC = (props: any) => {
   const [state, setState] = useState({
@@ -102,10 +103,22 @@ const Home: React.FC = (props: any) => {
     if (token) {
       getCurrentAssessmentPosition();
     }
+    else{
+      setState({
+        ...state,
+        isloading: false,
+      });
+    }
   }, []);
   return (
     <>
       <Navbar />
+      {isloading && (
+        <div className="isloadd1">
+          <img src={preloader2} className="preloader2" alt="preloader" />
+          <div className="text-teala">Resuming Session</div>
+        </div>
+      )}
       {!isloading && (
         <>
           <Container fluid={true}>

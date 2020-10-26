@@ -10,6 +10,8 @@ import userimg from "../../../assets/userimg.png";
 import norecommendations from "../../../assets/no recommendations.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+
 
 const CounsellorRecommendations1 = () => {
   const [state, setState] = useState({ counsellor: [] });
@@ -17,6 +19,7 @@ const CounsellorRecommendations1 = () => {
   return (
     <>
       <Container fluid={true} className="contann122">
+      <CounsellorDashboardMobileNav councrec={true} />
         <Row>
           <SideBarCounsellorDashboard councrec={true} />
           <Col md={10} sm={12} className="prm">

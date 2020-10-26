@@ -25,6 +25,17 @@ const Navbar = withRouter((props: any) => {
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
+      Axios.get(`${API}/progress`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+        .then((response) => {
+          if (response.status === 200 && response.data[0].next === "home") {
+            return props.history.push(`/free/dashboard`);
+          }
+        })
+        .catch((error) => {
+          
+        });
   }, []);
   const setRedirect = () => {
     setShowNav({
@@ -41,6 +52,7 @@ const Navbar = withRouter((props: any) => {
   const logout = () => {
     localStorage.clear();
     setRedirect();
+    window.location.assign("/")
   };
   const getCurrentAssessmentPosition = (): void => {
     const availableToken = localStorage.getItem("userToken");

@@ -27,10 +27,11 @@ interface State {
   lastname: string;
   email: string;
   password: string;
+  referalcode: string;
   confirmPassword: string;
   whereDidYouLearnAboutUs: string;
   errorMessage: string;
-  successMsg: boolean;
+  successMsg: any;
   error: boolean;
   isLoading: boolean;
   isloading: boolean;
@@ -46,6 +47,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
     errorMessage: "",
     successMsg: false,
     error: false,
+    referalcode: "",
     isLoading: false,
     isloading: false,
   });
@@ -55,6 +57,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
     email,
     password,
     confirmPassword,
+    referalcode,
     whereDidYouLearnAboutUs,
     errorMessage,
     successMsg,
@@ -70,6 +73,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
       info: whereDidYouLearnAboutUs,
       password,
       password2: confirmPassword,
+      referral_code: referalcode,
     };
     axios
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
@@ -77,24 +81,29 @@ const SignUp: React.FunctionComponent = (props: any) => {
         if (response.status === 200) {
           return setFormState({
             ...state,
+            errorMessage: "",
             successMsg: response.data[0].message,
             isLoading: false,
+            error: true,
           });
           setTimeout(props.history.push("/signin"), 5000);
         }
       })
       .catch((error) => {
+        console.log(error.response);
         if (error && error.response && error.response.data) {
           return setFormState({
             ...state,
             errorMessage: error.response.data[0].message,
             isLoading: false,
+            error: true,
           });
         }
         setFormState({
           ...state,
           errorMessage: "Signup failed",
           isLoading: false,
+          error: true,
         });
       });
   };
@@ -189,16 +198,17 @@ const SignUp: React.FunctionComponent = (props: any) => {
       email,
     };
     axios
-      .post(`${API}/accounts/socialauth/`, data)
+      .post(`${API}/accounts/resend-email`, data)
       .then((response) => {
         if (response.status == 200) {
           return setFormState({
             ...state,
-            successMsg: response.data[0].message,
+            successMsg:
+              "Email sent, check your email for account activation link. It may take several minutes to arrive",
             isLoading: false,
             isloading: false,
-            error:false,
-            errorMessage:""
+            error: true,
+            errorMessage: "",
           });
         }
       })
@@ -235,8 +245,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
       .then((response) => {
         if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_sports") ||
+          (
+          response.status === 200 &&
+          response.data[0].next === "phase_four_sports") ||
           response.data[0].next === "phase_four_business" ||
           response.data[0].next === "phase_four_stem"
         ) {
@@ -294,7 +305,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
           </Col>
           <Col md={5}>
             <div className="signwa">Sign up</div>
-            <div className="signwa1">To Get Clarity</div>
+            <div className="signwa1 difg">To Get Clarity</div>
             {successMsg && (
               <Alert key={1} variant="info">
                 {successMsg}
@@ -308,8 +319,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
             <Form onSubmit={validateForm}>
               <Row>
                 <Col>
-                  <Form.Group controlId="formBasicCheckbox">
-                    <img className="signup_icon" src={names} alt="first name"/>
+                  <Form.Group controlId="formBasicCheckbox" className="diff23">
+                    <img className="signup_icon" src={names} alt="first name" />
                     <Form.Control
                       className="field1 signform"
                       value={firstname}
@@ -320,8 +331,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </Form.Group>
                 </Col>
                 <Col>
-                  <Form.Group controlId="formBasicCheckbox">
-                  <img className="signup_icon" src={names} alt="last name"/>
+                  <Form.Group controlId="formBasicCheckbox" className="diff23">
+                    <img className="signup_icon" src={names} alt="last name" />
                     <Form.Control
                       className="field1 signform"
                       name="lastname"
@@ -332,8 +343,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </Form.Group>
                 </Col>
               </Row>
-              <Form.Group controlId="formBasicEmail">
-              <img className="signup_icon" src={mail} alt="Email"/>
+              <Form.Group controlId="formBasicEmail" className="diff23">
+                <img className="signup_icon" src={mail} alt="Email" />
                 <Form.Control
                   type="email"
                   className="field1 signform"
@@ -343,8 +354,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   placeholder="Email Address"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-              <img className="signup_icon" src={lock} alt="password"/>
+              <Form.Group controlId="formBasicPassword" className="diff23">
+                <img className="signup_icon" src={lock} alt="password" />
                 <Form.Control
                   type="password"
                   className="field1 signform"
@@ -354,8 +365,12 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   placeholder="Password"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-              <img className="signup_icon" src={lock} alt="confirm password"/>
+              <Form.Group controlId="formBasicPassword" className="diff23">
+                <img
+                  className="signup_icon"
+                  src={lock}
+                  alt="confirm password"
+                />
                 <Form.Control
                   type="password"
                   className="field1 signform"
@@ -365,8 +380,8 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   placeholder="Confirm Password"
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicEmail1">
-                <img className="signup_icon" src={question} alt="where"/>
+              <Form.Group controlId="formBasicEmail1" className="diff23">
+                <img className="signup_icon" src={question} alt="where" />
                 <Form.Control
                   as="select"
                   className="field1 form-control signform"
@@ -393,26 +408,28 @@ const SignUp: React.FunctionComponent = (props: any) => {
                   </option>
                 </Form.Control>
               </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-              <img className="signup_icon" src={question} alt="code"/>
+              <Form.Group controlId="formBasicEmail" className="">
+                <img className="signup_icon" src={question} alt="code" />
                 <Form.Control
-                  type="email"
+                  type="text"
                   className="field1 signform"
-                  value={email}
-                  name="email"
+                  value={referalcode}
+                  name="referalcode"
                   onChange={changeActionOnFormData}
                   placeholder="Referral Code (Optional)"
                 />
               </Form.Group>
-              {state.error && (
-                <div className="resend22">
-                  Did not receive the email?{" "}
-                  <a onClick={ResendSignUpEmail} className="resend">
-                    {" "}
-                    {state.isloading ? "processing" : "resend"}
-                  </a>
-                </div>
-              )}
+              <div>
+                {state.error && (
+                  <div className="resend22">
+                    Did not receive the email?{" "}
+                    <a onClick={ResendSignUpEmail} className="resend">
+                      {" "}
+                      {state.isloading ? "processing" : "resend"}
+                    </a>
+                  </div>
+                )}
+              </div>
               <Button variant="primary" className="subbtn" type="submit">
                 {!isLoading ? "Sign Up" : "Signing Up"}
               </Button>

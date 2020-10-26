@@ -190,6 +190,7 @@
   width: 80%;
   max-width: 129px;
   max-height: 102px;
+  object-fit: cover;
 }
 .aboutimgonesmall {
   margin-bottom: 1rem;

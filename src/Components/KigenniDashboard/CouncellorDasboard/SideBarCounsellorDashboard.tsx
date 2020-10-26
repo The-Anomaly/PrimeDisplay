@@ -33,32 +33,6 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
   const changeHideStatus = () => {
     sethidemobile(hidemobile ? false : true);
   };
-  const checkIfUserHasMadePaymentForFullResult = () => {
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
-        ) {
-          return window.location.assign("/thirdpary/fullresult");
-        }
-        if (
-          response?.data[0]?.direction_plan &&
-          response?.data[0]?.growth_plan &&
-          response?.data[0]?.insight_plan === false
-        ) {
-          return window.location.assign("/paymentsummary");
-        }
-      })
-      .catch((error) => {});
-  };
   const logOut = () => {
     localStorage.clear();
     window.location.assign("/");
@@ -83,7 +57,6 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
             </Link>
           </div>
           <div
-            onClick={checkIfUserHasMadePaymentForFullResult}
             className={props.bookedsession ? "activegb" : "gbn"}
           >
             <Link to="/counsellorbookings">
@@ -116,7 +89,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
                 className="sideimage"
                 alt="sideimage"
               />
-              Your Recommendations
+              Recommended Task
             </Link>
           </div>
           <div className={props.assignedmemb ? "activegb" : "gbn"}>
@@ -134,7 +107,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               Assigned Members
             </Link>
           </div>
-          <div className={props.counmeeting ? "activegb" : "gbn"}>
+          {/* <div className={props.counmeeting ? "activegb" : "gbn"}>
             {" "}
             <Link to="/counsellormeetings">
               <img
@@ -148,10 +121,10 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               />
               Scheduled Meetings
             </Link>
-          </div>
+          </div> */}
           <div className={props.counreferral ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/counsellormeetings">
+            <Link to="/referrals">
               <img
                 src={
                   props.counreferral
@@ -189,7 +162,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               Support
             </Link>
           </div>
-          <div className={props.support ? "activegb" : "gbn"}>
+          {/* <div className={props.support ? "activegb" : "gbn"}>
             {" "}
             <Link to="/ratings">
               <img
@@ -199,7 +172,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               />
               Ratings
             </Link>
-          </div>
+          </div> */}
           <div className={"gbn"}>
             {" "}
             <span onClick={logOut}>

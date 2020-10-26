@@ -161,9 +161,17 @@
     justify-content: center !important;
   }
 }
+.ssgs {
+  height: 173px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 @media (min-width: 780px) {
   .lkl {
     padding-left: 0rem;
+  }
+  .ssgs {
+    min-height: 131px;
   }
   .flexa {
     width: 94%;
@@ -174,6 +182,9 @@
   .dspl,
   .ui1222 {
     width: 97%;
+    min-height: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 .csfitscore1 {
@@ -363,6 +374,9 @@
     border-radius: 6px;
     justify-content: space-around;
     flex-direction: column-reverse;
+  }
+  .assessratingpa {
+    justify-content: flex-start;
   }
   .ncb {
     width: 100%;
@@ -2338,11 +2352,24 @@ textarea.form-control.jobr {
   padding-left: 3rem;
   padding-top: 1rem;
 }
+.nvbv {
+  width: 100px;
+  border-right: 1px solid #dfe0eb;
+  margin-right: 9px;
+  height: 48px;
+}
 .sss12 {
-  padding-right: 4rem;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: normal;
   font-weight: 500;
+  display: flex;
+}
+.ssnopad {
+  padding-right: 0% !important;
+}
+.s34 {
+  line-height: 33px;
+  color: #979797;
 }
 .yudd1 {
   letter-spacing: normal;
@@ -2379,10 +2406,26 @@ textarea.form-control.jobr {
   cursor: pointer;
   border-bottom: 1px solid #e5e5e5;
 }
+.addmore {
+  cursor: pointer;
+}
+.edit_descripd {
+  font-size: 2rem;
+  width: 100%;
+  text-align: right;
+}
+.dwq12 {
+  cursor: pointer;
+}
+.sch_details,
+.ref_details {
+  width: 100%;
+}
 .view-box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 0px;
+  margin-bottom: 2rem;
 }
 .box-1 {
   background-color: #c4c4c4;
@@ -2402,6 +2445,12 @@ textarea.form-control.jobr {
   }
   .box-1 {
     margin-bottom: 17px;
+  }
+  .viewall {
+    text-align: center;
+  }
+  .firstqq {
+    padding-left: 2rem;
   }
 }
 .firstoffour {
@@ -2574,6 +2623,7 @@ textarea.form-control.jobr {
 }
 .card-body {
   padding-top: 0px;
+  word-spacing: normal;
 }
 .prclogo {
   width: 200px;
@@ -3485,7 +3535,7 @@ textarea.form-control.jobr {
   flex: 12%;
 }
 
-@media(max-width: 950px) {
+@media (max-width: 950px) {
   .signedfjss {
     margin-top: 1.5rem;
   }
@@ -3612,7 +3662,8 @@ textarea.form-control.jobr {
   .sasag {
     padding: 0;
   }
-  .msg1, .msg2 {
+  .msg1,
+  .msg2 {
     padding-right: 0.5rem;
   }
   .imguserrr {
@@ -3648,11 +3699,120 @@ textarea.form-control.jobr {
   min-width: auto;
   border-radius: 5px;
 }
+.text-decription {
+  padding-left: 0.5rem !important;
+}
 .btnmarg {
   margin: 1rem 0;
 }
-@media(max-width: 575px) {
+.counsellorpreloader2 {
+  text-align: center;
+  height: 50%;
+  left: 30%;
+  position: absolute;
+}
+.counsellorpreloader {
+  width: 100%;
+  position: relative;
+  bottom: 50%;
+}
+@media (max-width: 575px) {
   .csupport {
     max-width: 90%;
   }
+  .counsellorpreloader2 {
+    position: initial;
+  }
+  .counsellorpreloader {
+    bottom: 1px;
+  }
+}
+.noData {
+  width: 250px;
+}
+.empt {
+  text-align: center;
+  color: #202020;
+}
+.issues-textbox-1 {
+  font-size: 14px;
+}
+.dayss {
+  color: #5d5f61;
+}
+.ui1222 {
+  margin-bottom: 1rem;
+  min-height: 130px;
+  height: 144px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.modal-btn {
+  cursor: pointer;
+}
+.ref_btn {
+  margin-top: 0.2rem;
+}
+.councld11 {
+  display: flex;
+  justify-content: space-between;
+  padding: .4rem 2rem .4rem 1rem;
+  align-items: center;
+}
+.expand11{
+  width: 18px;
+}
+.councld1 {
+  background: #ffffff !important;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: -0.5rem;
+  display: flex;
+  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.councld {
+  background: #ffffff !important;
+  border-radius: 14px;
+  padding: 1rem 1rem;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: -0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.tododw {
+  color: #9c9c9c;
+}
+.andtimes{
+  position: relative;
+  left: 5rem;
+  font-size: 20px;
+}
+.movelft22{
+  position: relative;
+  left: .9rem;
+}
+.flxv1 {
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+}
+.ntfnd {
+  cursor: pointer;
+}
+.taskcl{
+  color: #434866;
+}
+.taskrow{
+  padding-bottom: .5rem;
+}
+.dscvv1{
+  margin-left: .2rem;
 }

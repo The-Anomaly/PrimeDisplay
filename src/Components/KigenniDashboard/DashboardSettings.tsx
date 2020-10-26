@@ -38,7 +38,6 @@ class NewDashboardSettings extends React.Component {
       phone,
       job_description,
       website_link,
-      fillStatus,
     } = this.state;
     if (
       first_name === "" ||
