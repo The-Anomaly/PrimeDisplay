@@ -115,7 +115,7 @@ const SideBarNewDashboard = (props: any) => {
               Counsellors Recommendation
             </Link>
           </div>
-          <div className={props.todo ? "activegb" : "gbn"}>
+          <div className={props.todo ? "activegb jusas" : "gbn jusas"}>
             {" "}
             <Accordion defaultActiveKey="">
               <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">

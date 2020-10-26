@@ -196,7 +196,7 @@ class CounsellorsRecommendation extends React.Component {
                                   </div>
                                   <div className="upss smtd smtdis">
                                     <a>
-                                      Covert to ToDo{" "}
+                                    Set Reminder{" "}
                                     </a>
                                   </div>
                                 </div>
@@ -217,7 +217,7 @@ class CounsellorsRecommendation extends React.Component {
                                   </div>
                                   <div className="retaketest upss smtd">
                                     <div onClick={()=>this.makeRecommendationToDo(data.id)}>
-                                      Covert to ToDo{" "}
+                                      Set Reminder{" "}
                                     </div>
                                   </div>
                                 </div>

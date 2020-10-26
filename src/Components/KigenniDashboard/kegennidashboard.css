@@ -3557,10 +3557,12 @@ input,
     margin-top: 5rem;
   }
   .notpaidfix {
-    margin-top: 1rem;
+    margin-top: 1rem !important;
   }
 }
-
+.notpaidfix {
+  margin-top: .2rem !important;
+}
 .notfilled {
   color: red;
 }
@@ -3731,4 +3733,10 @@ label {
 }
 .precision1 {
   width: 110px !important;
+}
+.jusas{
+  margin-top: .4rem !important;
+}
+.couselorsentwrap2{
+  padding-bottom: 1rem;
 }

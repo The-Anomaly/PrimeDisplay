@@ -82,7 +82,7 @@ import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page"
 import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
 import Privacy from "./Components/Home/Privacy_policy_page/privacy_policy";
 import * as msgActions from "./Store/Actions/index";
-import connect from "react-redux";
+import { connect } from "react-redux";
 
 class App extends Component {
   constructor(props) {
@@ -90,8 +90,8 @@ class App extends Component {
     this.state = {};
     const self: any = this;
     WebSocketInstance?.addCallbacks(
-      self?.props?.setMessages?.bind(this),
-      self?.props?.addMessage?.bind(this)
+      self.props.setMessages.bind(this),
+      self.props.addMessage.bind(this)
     );
   }
   componentDidMount() {}
@@ -432,4 +432,4 @@ const mapDispatchToProps = (dispatch) => {
     setMessages: (messages) => dispatch(msgActions.setMessages(messages)),
   };
 };
-connect(null, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

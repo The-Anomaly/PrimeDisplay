@@ -1,4 +1,4 @@
-import { API, webSocketAPI } from './config';
+import { webSocketAPI } from "./config";
 
 interface WebSocketService {
   instance: any | null;
@@ -8,7 +8,7 @@ class WebSocketService {
   callbacks = {};
   static getInstance(): any {
     if (!WebSocketService.instance) {
-      WebSocketService.instance = new WebSocketService()
+      WebSocketService.instance = new WebSocketService();
     }
     return WebSocketService?.instance;
   }
@@ -48,7 +48,8 @@ class WebSocketService {
   socketNewMessage(data) {
     const parsedData = JSON.parse(data);
     const command = parsedData.command;
-    if (Object.keys(this?.callbacks)?.length === 0) {
+    console.log(data)
+    if (Object.keys(this.callbacks).length === 0) {
       return;
     }
     if (command === "messages") {
@@ -62,10 +63,9 @@ class WebSocketService {
     // }
   }
 
-  fetchMessages(username, chatId) {
+  fetchMessages(chatId) {
     this.sendMessage({
       command: "fetch_messages",
-      username: username,
       chatId: chatId,
     });
   }
@@ -85,7 +85,7 @@ class WebSocketService {
   // }
 
   // addCallbacks(messagesCallbacks, newMessageCallbacks, getOnlineUsers) {
-  //   this.callbacks["messages"] = messagesCallbacks;
+  //   this.callbacks["messages "] = messagesCallbacks;
   //   this.callbacks["new_message"] = newMessageCallbacks;
   //   this.callbacks["online_users"] = getOnlineUsers;
   // }
