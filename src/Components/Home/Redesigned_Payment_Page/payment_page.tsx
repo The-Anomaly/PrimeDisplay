@@ -13,7 +13,7 @@ const Paymentpage=()=>{
                 <Container>
                     <div className="payment-decription"><h3>We have curated payments plans with you in mind</h3></div>
                     <Row className="centered_payment">
-                        <Col md={3} className="margined_col">
+                        <Col md={3} sm={6} className="margined_col">
                             <Card className="h-300 shadow-sm bg-white payment-card">
                                <Card.Header className="payment-header">
                                    <h4>N0.00  <span>/one-off</span></h4> 
@@ -32,7 +32,7 @@ const Paymentpage=()=>{
                                </Card.Body>
                             </Card>
                         </Col>
-                        <Col md={3} sm={9} className="margined_col">
+                        <Col md={3} sm={6} className="margined_col">
                          <Card className=" shadow-sm bg-white payment-card">
                               <Card.Header className="payment-header">
                                    <h4>N3500  <span>/one-off</span></h4> 
@@ -55,7 +55,7 @@ const Paymentpage=()=>{
                                </Card.Body>
                             </Card>
                         </Col>
-                        <Col md={3} sm={9} className="margined_col">
+                        <Col md={3} sm={6} className="margined_col">
                         <Card className="h-300 shadow-sm bg-white payment-card">
                                <Card.Header className="payment-header">
                                    <h4>N10000  <span>/one-off</span></h4> 
@@ -75,7 +75,7 @@ const Paymentpage=()=>{
                         </Col>
                     </Row>
                     <Row className="centered_payment">
-                        <Col md={3}>
+                        <Col md={3} sm={6}>
                             <Card className="subcription-card">
                                 <Card.Header>
                                     <h6 className="red">Gift a Subscription</h6> 
