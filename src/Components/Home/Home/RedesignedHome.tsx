@@ -29,6 +29,12 @@ import arrow5 from "../../../assets/arrow5.svg";
 import ClientReview from "../HomeComponents/HearFromClients";
 import Think from "../HomeComponents/ThinkThisIsYou";
 import Footer from "../HomeComponents/newfooter";
+import laptop from "../../../assets/laptop.svg";
+import trust1 from "../../../assets/trust1.png";
+import trust2 from "../../../assets/trust2.png";
+import trust3 from "../../../assets/trust3.png";
+import trust4 from "../../../assets/trust4.png";
+import trust5 from "../../../assets/trust5.png";
 
 const RedesignedHome: React.FC = () => {
   const [name, setName] = React.useState("");
@@ -38,7 +44,7 @@ const RedesignedHome: React.FC = () => {
   return (
     <div>
       <Navbar />
-      <Container fluid={true}>
+      <Container className="homecontainer" fluid={true}>
         <Row className="newfirstrow backdrop">
           <Col md={6} className="navcontrols">
             {" "}
@@ -105,9 +111,15 @@ const RedesignedHome: React.FC = () => {
             <div>Are you struggling to figure out your next career move?</div>
             <div>Clarity by Yudimy is for you.</div>
           </div>
+          <div className="homelaptop">
+            <div className="homelaptop1">
+              <img src={laptop} />
+            </div>
+          </div>
           <div>
             <div className="fourthsec">
               <div className="fourthsubsec">
+                <img src={trust1} className="trustimg" />
                 <div className="fourthsubhead">
                   Career & Competence Evaluation Assessment
                 </div>
@@ -119,6 +131,7 @@ const RedesignedHome: React.FC = () => {
                 </div>
               </div>
               <div className="fourthsubsec">
+              <img src={trust2} className="trustimg"/>
                 <div className="fourthsubhead">Talk to a Counselor</div>
                 <div className="fourthsubtext">
                   Your career trajectory is a sum total of all the choices you
@@ -131,6 +144,7 @@ const RedesignedHome: React.FC = () => {
             </div>
             <div className="fourthsec">
               <div className="fourthsubsec">
+              <img src={trust3} className="trustimg" />
                 <div className="fourthsubhead">TO DO’s</div>
                 <div className="fourthsubtext">
                   Knowing the next step to take is one, getting there is another
@@ -141,6 +155,7 @@ const RedesignedHome: React.FC = () => {
                 </div>
               </div>
               <div className="fourthsubsec">
+              <img src={trust4} className="trustimg trustimgin" />
                 <div className="fourthsubhead">Growth Challenge</div>
                 <div className="fourthsubtext">
                   Beautiful things happen when preparation meets opportunity and
@@ -150,8 +165,19 @@ const RedesignedHome: React.FC = () => {
                 </div>
               </div>
             </div>
+            <div className="fourthsubsec fourthposit">
+            <img src={trust5} className="trustimg" />
+              <div className="fourthsubhead">
+                Career Positioning & Opportunity Recommendation
+              </div>
+              <div className="fourthsubtext">
+                As your career-talent managers committed to your success we work
+                with you to articule your unique value propostion, profile and
+                brand. Also, because we know understand you, we curate the best
+                opportunities and send them to you.
+              </div>
+            </div>
           </div>
-
         </Row>
         <ClientReview />
         <Think />
