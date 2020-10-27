@@ -17,18 +17,41 @@ import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import { connect } from "react-redux";
 import moment from "moment";
 import WebSocketInstance from "../../../websocket";
+import axios from "axios";
 
 class CounsellorMessageOneUser extends React.Component {
-  state = {
+  state: any = {
     isLoading: false,
     user: "",
     message: "",
+    userInfo: "",
   };
   props: any;
   this: any;
   constructor(props) {
     super(props);
     this.initialiseChat();
+  }
+  componentWillMount() {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : this.props.history.push("/counsellor/signin");
+    axios
+      .get(`${API}/currentuser`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          this.setState({
+            userInfo:response.data[0]
+          })
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   formatTime = (date) => {
     return moment(date).fromNow();
@@ -70,7 +93,7 @@ class CounsellorMessageOneUser extends React.Component {
   sendMessageHandler = (e) => {
     e.preventDefault();
     const messageObject = {
-      from: this.props.match.params.email,
+      from: this.state.userInfo.email,
       content: this.state.message,
       chatId: this.props.match.params.chatID,
     };
@@ -104,7 +127,7 @@ class CounsellorMessageOneUser extends React.Component {
                         <div></div>
                         <Col md={12} className="youwss">
                           {this.props.messages.map((data, i) => (
-                            <div>
+                            <div key={i}>
                               {data.author !==
                                 this.props.match.params.email && (
                                 <div className="usersentwrap1">
@@ -130,7 +153,9 @@ class CounsellorMessageOneUser extends React.Component {
                                       <span className="youdate">
                                         {this.formatTime(data.timestamp)}
                                       </span>
-                                      <span className="you11b">{data.author}</span>
+                                      <span className="you11b">
+                                        {data.author}
+                                      </span>
                                     </div>
 
                                     <div className="councellors_response1">

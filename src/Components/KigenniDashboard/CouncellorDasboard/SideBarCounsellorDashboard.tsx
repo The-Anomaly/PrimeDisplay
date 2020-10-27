@@ -35,7 +35,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
   };
   const logOut = () => {
     localStorage.clear();
-    window.location.assign("/");
+    window.location.assign("/counsellor/signin");
   };
   return (
     <>

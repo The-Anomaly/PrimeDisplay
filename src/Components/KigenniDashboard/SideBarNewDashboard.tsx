@@ -93,7 +93,7 @@ const SideBarNewDashboard = (props: any) => {
           </div>
           <div className={props.chat ? "activegb" : "gbn"}>
             {" "}
-            <Link to="/counsellorchat">
+            <Link to="/allusermessages">
               <img
                 src={props.chat ? chatactive : chatinactive}
                 className="sideimage"

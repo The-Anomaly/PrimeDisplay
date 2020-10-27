@@ -39,6 +39,7 @@ const CounsellorOverview = (props: any) => {
     user_issues: "",
     sessionId: "",
     recommendations: [],
+    nextSessionMessage:'',
     taskTitle: "",
     session_email: "",
     taskDuration: "",
@@ -60,6 +61,7 @@ const CounsellorOverview = (props: any) => {
     session_notes,
     session_about,
     name,
+    nextSessionMessage,
     sessionId,
     session_email,
     isLoading,
@@ -77,9 +79,12 @@ const CounsellorOverview = (props: any) => {
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/booked-sessions`, {
         headers: { Authorization: `Token ${token}` },
       }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/next-due-date`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
     ])
       .then(
-        Axios.spread((res, res1) => {
+        Axios.spread((res, res1,res2) => {
           console.log(res);
           if (res.status === 200) {
             setFormState({
@@ -93,6 +98,7 @@ const CounsellorOverview = (props: any) => {
               nextLink: res1.data.next,
               prevLink: res1.data.previous,
               total_pages: res1.data.total_pages,
+              nextSessionMessage:res2.data.message
             });
           }
         })
@@ -218,7 +224,7 @@ const CounsellorOverview = (props: any) => {
           console.log(err.response);
         });
     }
-    if (taskTitle == "" || taskDescription == "" || taskDuration == "") {
+    if (taskTitle === "" || taskDescription === "" || taskDuration === "") {
       const data = {
         recommendations,
         notes: session_notes,
@@ -304,7 +310,7 @@ const CounsellorOverview = (props: any) => {
                       </div>
                     </div>
                     <div className="yudd1">
-                      Your next session is due tomorrow
+                      {nextSessionMessage}
                     </div>
                     {counsellorData.splice(0, 2).map((data, i) => (
                       <div className="msgs teammembr booked bookedover" key={i}>

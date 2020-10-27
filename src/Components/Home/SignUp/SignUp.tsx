@@ -434,7 +434,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
                 {!isLoading ? "Sign Up" : "Signing Up"}
               </Button>
               <div className="alreadyhave">
-                Already have an account?
+                Already have an account? {" "}
                 <Link to="/signin">
                   <span className="logn"> Login</span>
                 </Link>
