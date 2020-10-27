@@ -27,6 +27,7 @@ interface State {
   lastname: string;
   email: string;
   password: string;
+  referalcode: string;
   confirmPassword: string;
   whereDidYouLearnAboutUs: string;
   errorMessage: string;
@@ -46,6 +47,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
     errorMessage: "",
     successMsg: false,
     error: false,
+    referalcode: "",
     isLoading: false,
     isloading: false,
   });
@@ -55,6 +57,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
     email,
     password,
     confirmPassword,
+    referalcode,
     whereDidYouLearnAboutUs,
     errorMessage,
     successMsg,
@@ -70,6 +73,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
       info: whereDidYouLearnAboutUs,
       password,
       password2: confirmPassword,
+      referral_code: referalcode,
     };
     axios
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
@@ -86,6 +90,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
+        console.log(error.response);
         if (error && error.response && error.response.data) {
           return setFormState({
             ...state,
@@ -240,8 +245,9 @@ const SignUp: React.FunctionComponent = (props: any) => {
       .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
       .then((response) => {
         if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_sports") ||
+          (
+          response.status === 200 &&
+          response.data[0].next === "phase_four_sports") ||
           response.data[0].next === "phase_four_business" ||
           response.data[0].next === "phase_four_stem"
         ) {
@@ -405,10 +411,10 @@ const SignUp: React.FunctionComponent = (props: any) => {
               <Form.Group controlId="formBasicEmail" className="">
                 <img className="signup_icon" src={question} alt="code" />
                 <Form.Control
-                  type="email"
+                  type="text"
                   className="field1 signform"
-                  value={email}
-                  name="email"
+                  value={referalcode}
+                  name="referalcode"
                   onChange={changeActionOnFormData}
                   placeholder="Referral Code (Optional)"
                 />

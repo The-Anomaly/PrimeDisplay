@@ -138,7 +138,7 @@ const CounsellorsDashboardMobileNav = (props: any) => {
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Your Recommendations
+                  Recommended Task
                 </Link>
               </div>
               <div className={props.assignedmemb ? "activegb" : "gbn"}>
@@ -156,20 +156,24 @@ const CounsellorsDashboardMobileNav = (props: any) => {
                   Assigned Members
                 </Link>
               </div>
-              <div className={props.counmeeting ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/counsellormeetings">
-                  <img
-                    src={props.counmeeting ? clockactive : clockinactive}
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Scheduled Meetings
-                </Link>
-              </div>
+              {/* <div className={props.counmeeting ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/counsellormeetings">
+              <img
+                src={
+                  props.counmeeting
+                    ? clockactive
+                    : clockinactive
+                }
+                className="sideimage"
+                alt="sideimage"
+              />
+              Scheduled Meetings
+            </Link>
+          </div> */}
               <div className={props.counreferral ? "activegb" : "gbn"}>
                 {" "}
-                <Link to="/counsellormeetings">
+                <Link to="/referrals">
                   <img
                     src={
                       props.counreferral ? referralinactive : referralinactive
@@ -205,17 +209,17 @@ const CounsellorsDashboardMobileNav = (props: any) => {
                   Support
                 </Link>
               </div>
-              <div className={props.support ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/ratings">
-                  <img
-                    src={props.support ? starrating : starrating}
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Ratings
-                </Link>
-              </div>
+              {/* <div className={props.support ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/ratings">
+              <img
+                src={props.support ? starrating : starrating}
+                className="sideimage"
+                alt="sideimage"
+              />
+              Ratings
+            </Link>
+          </div> */}
               <div className={"gbn"}>
                 {" "}
                 <span onClick={logOut}>

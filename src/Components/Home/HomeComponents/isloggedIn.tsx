@@ -15,6 +15,7 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
     showPreloader: false,
     isloading: false,
     IsUser: false,
+    userhasdashboard:false,
   });
   useEffect(() => {
     const availableToken: any = localStorage.getItem("userToken");
@@ -108,11 +109,11 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
   };
   return (
     <React.Fragment>
-      {/* <div className="title1">
+      <div className="title1">
         <button onClick={props.Logout} className="title_ll">
           Log out
         </button>
-      </div> */}
+      </div>
       <div className="title1">
         <button onClick={getCurrentAssessmentPosition} className="title_ll">
           Dashboard

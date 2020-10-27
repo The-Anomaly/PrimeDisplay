@@ -22,6 +22,10 @@ const AssessmentFourthPhaseComplete = () => {
     const currentUser = user ?JSON.parse(user):[{first_name:""}];
     setName(currentUser[0].first_name);
   }, []);
+  const logout = () => {
+    localStorage.clear();
+    window.location.assign("/");
+  };
   return (
     <div>
       <Navbar />
@@ -56,7 +60,7 @@ const AssessmentFourthPhaseComplete = () => {
                     </Link>
                     <Link to='/'>
                       {' '}
-                      <button className='awesomebtnsubmit'>
+                      <button onClick={logout} className='awesomebtnsubmit'>
                         Save Progress
                       </button>
                     </Link>
