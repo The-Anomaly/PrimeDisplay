@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 @font-face {
   font-family: "Sailec-Thin";
   src: url("//db.onlinewebfonts.com/t/b411263ff1ec9f3bdea1f4145d93ab18.eot");
@@ -42,30 +43,26 @@
 }
 @font-face {
   font-family: "Brfirma-Regular";
-  src: local('Brfirma-Regular'), 
-    url('../../../Fonts/Brfirma/BRFirma-Regular.ttf') 
-      format('truetype');
+  src: local("Brfirma-Regular"),
+    url("../../../Fonts/Brfirma/BRFirma-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Brfirma-Bold";
-  src: local('Brfirma-Bold'), 
-    url('../../../Fonts/Brfirma/BRFirma-Bold.ttf') 
-      format('truetype');
+  src: local("Brfirma-Bold"),
+    url("../../../Fonts/Brfirma/BRFirma-Bold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Brfirma-BoldItalic";
-  src: local('Brfirma-BoldItalic'), 
-    url('../../../Fonts/Brfirma/BRFirma-BoldItalic.ttf') 
-      format('truetype');
+  src: local("Brfirma-BoldItalic"),
+    url("../../../Fonts/Brfirma/BRFirma-BoldItalic.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Brfirma-ExtraLight";
-  src: local('Brfirma-ExtraLight'), 
-    url('../../../Fonts/Brfirma/BRFirma-ExtraLight.ttf') 
-      format('truetype');
+  src: local("Brfirma-ExtraLight"),
+    url("../../../Fonts/Brfirma/BRFirma-ExtraLight.ttf") format("truetype");
 }
 
 .top-layer {
@@ -523,10 +520,10 @@ button {
 .homebanner0 {
   width: 100%;
 }
-.isloadd1{
+.isloadd1 {
   text-align: center;
 }
-.text-teala{
+.text-teala {
   color: #58575a;
   font-size: italic;
   text-shadow: rgb(180, 177, 172);
@@ -538,7 +535,7 @@ button {
     margin-left: 1rem;
     margin-bottom: 2rem;
   }
-  .imgCart{
+  .imgCart {
     min-width: 70px !important;
   }
   .listwraperMob {
@@ -856,14 +853,14 @@ button {
 
 /*Landing Page Redesign */
 .redoNav {
-  background: #23304C;
+  background: transparent;
   position: absolute;
   width: 100%;
   padding-top: 2rem;
   padding-right: 4rem;
   padding-left: 8rem;
 }
-.navtext {  
+.navtext {
   color: #ffffff;
   font-family: "Brfirma-Regular";
   letter-spacing: 0.3px;
@@ -897,27 +894,29 @@ button {
 }
 .signupbtn {
   padding: 0.6rem 1rem;
-    width: 110px;
-    font-size: 15px;
-    border-radius: 5px;
+  width: 110px;
+  font-size: 15px;
+  border-radius: 5px;
 }
 .hstarted {
-    color: #fff;
-    background: #9c1258;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-top: 1rem;
-    font-size: 15px;
-    width: 190px;
-    text-align: center;
-    cursor: pointer;
+  color: #fff;
+  background: #9c1258;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 15px;
+  width: 190px;
+  text-align: center;
+  cursor: pointer;
 }
 .newsecondrow {
   background: #ffffff;
   padding: 3rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
 }
 .secondtitle {
-  color: #000000;
+  color: #18214d;
   font-family: "Brfirma-Bold";
   font-size: 35px;
   margin: 0rem auto;
@@ -941,18 +940,331 @@ button {
   display: flex;
 }
 .crazycircle1 .lcircle1 {
-  margin-top: 8rem;
-  width: 403px;
+  width: 30vw;
+  margin-top: 10%;
 }
 .crazycircle1 .larrow1 {
-  margin-top: -10rem;
-  width: 470px;
-  margin-left: -2rem;
+  width: 35vw;
+  margin-top: -13%;
+  margin-left: -2.5%;
 }
 .crazycircle1 .lcircle2 {
-  width: 403px;
-  margin-top: -3rem;
+  width: 30vw;
+  margin-top: -4%;
 }
 .crazycircle2 {
   display: flex;
+  width: 100%;
+  margin-top: -13%;
+}
+.crazycircle2 .larrow2 {
+  width: 5vw;
+  margin-left: 7.5%;
+}
+.crazycircle2 .lcircle3 {
+  width: 42vw;
+  margin-left: 19%;
+}
+.crazycircle2 .larrow3 {
+  width: 23vw;
+  margin-top: -22%;
+  margin-left: -7%;
+}
+.crazycircle3 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: -13%;
+}
+.crazycircle3 .lcircle4 {
+  width: 44vw;
+  margin-left: -2%;
+}
+.crazycircle3 .lcircle5 {
+  width: 40vw;
+  margin-right: -5%;
+}
+.crazycircle4 {
+  display: flex;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.crazycircle4 .larrow4 {
+  width: 13vw;
+  margin-top: -22%;
+}
+.crazycircle4 .lcircle6 {
+  width: 33vw;
+  margin-left: 9.5%;
+  margin-top: -5%;
+}
+.crazycircle4 .larrow5 {
+  width: 23vw;
+  margin-top: -32%;
+}
+.newthirdrow {
+  background: #23304c;
+  font-family: "Brfirma-Regular";
+  text-align: center;
+  padding: 3rem;
+  padding-top: 4rem;
+}
+.newthirdrowtext {
+  color: #ffffff;
+  font-size: 19px;
+  margin: 0 13rem;
+  letter-spacing: 0.2px;
+  line-height: 30px;
+}
+.newthirdrowbtn {
+  color: #23304c;
+  background: #ffffff;
+  width: 170px;
+  padding: 0.7rem 1rem;
+  margin: auto;
+  margin-top: 2rem;
+  border-radius: 5px;
+  font-family: "Brfirma-Bold";
+  font-size: 14px;
+  cursor: pointer;
+}
+.newfourthrow {
+  background: #ffffff;
+  padding: 2rem;
+  flex-direction: column;
+}
+.fourthttl {
+  font-size: 33px;
+}
+.fourthimg {
+  right: 5.6rem;
+}
+.fourthline {
+  border: 2px solid #9c1258;
+  margin: auto;
+  width: 170px;
+}
+.fourthtext {
+  text-align: center;
+  font-family: "Brfirma-Regular";
+  margin-top: 1.5rem;
+  letter-spacing: 0.4px;
+  margin-bottom: 2rem;
+}
+.fourthsec {
+  display: flex;
+  justify-content: space-between;
+  padding: 6rem 3rem;
+}
+.fourthsubsec {
+  text-align: center;
+  width: 290px;
+}
+.fourthsubhead {
+  font-family: "Brfirma-Bold";
+  font-size: 15px;
+  letter-spacing: 0.3px;
+}
+.fourthsubtext {
+  color: #666666;
+  font-family: "BRFirma-Regular";
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  margin-top: 0.7rem;
+}
+/*Hear From Clients*/
+.homemap {
+  background-image: url("../../../assets/map.svg");
+  padding: 3rem;
+}
+.homemaptitle {
+  margin: 0;
+  padding-left: 1rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+.homemapimg {
+  right: 8.2rem;
+}
+.clienttext {
+  color: #ffffff;
+  font-family: "BRFirma-Regular";
+  font-style: italic;
+  font-size: 13px;
+  margin-left: 2rem;
+  margin-right: 5rem;
+  width: 300px;
+  line-height: 25px;
+  letter-spacing: 0.3px;
+}
+.clientimg {
+  height: 84px;
+  width: 84px;
+}
+.homemapclient {
+  padding: 2rem 0;
+  padding-bottom: 0.5rem;
+}
+.homemapsec {
+  display: flex;
+  margin-left: 20%;
+  margin-bottom: 3rem;
+}
+.homemapsubsec {
+  display: flex;
+}
+.homemapline {
+  width: 100%;
+  border: 0.5px solid #ffffff;
+}
+.homemapbtmtxt {
+  color: #ffffff;
+  margin: auto;
+  margin-top: 2rem;
+  font-size: 21px;
+  letter-spacing: 0.3px;
+  font-family: "Brfirma-Regular";
+}
+/*Think This Is You*/
+.homethink {
+  background: #0c9fb3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+.homethinktxt {
+  font-family: "Luckiest Guy", cursive;
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.homethinkbtn {
+  color: #0c9fb3;
+  background: #ffffff;
+  text-align: center;
+  width: 150px;
+  font-family: "Brfirma-Regular";
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  font-size: 13.5px;
+  margin-top: 2rem;
+}
+
+/*Footer*/
+.home_footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 3rem;
+  padding-bottom: 2rem;
+}
+.footer_stay {
+  font-family: "Brfirma-Bold";
+  color: #001833;
+  font-size: 28px;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+.footer_signup {
+  color: #001833;
+  font-family: "Brfirma-Bold";
+  letter-spacing: 1px;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+.footer_maill {
+  margin: 2rem 0;
+  display: flex;
+}
+.footer_mail {
+  height: 50px;
+  width: 350px;
+  border-bottom-left-radius: 100px;
+  border-top-left-radius: 100px;
+  border: 1px solid #999999 !important;
+  font-family: "Brfirma-Regular";
+  padding-left: 2rem;
+  font-size: 13.5px;
+  letter-spacing: 0.6px;
+}
+.footer_mail::placeholder {
+  font-size: 13px;
+  color: #666666;
+  letter-spacing: 0.2px;
+}
+.footer_btn {
+  height: 50px;
+  width: 160px;
+  border-radius: 0px 100px 100px 0px;
+  background: #9c1258;
+  color: #ffffff;
+  font-family: "Brfirma-Bold";
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer_socials {
+  margin: 1.5rem 0;
+  width: 550px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.footer_social_1 {
+  width: 12px;
+}
+.footer_social_2 {
+  width: 30px;
+}
+.footer_social_3 {
+  width: 28px;
+}
+.footer_social_4 {
+  width: 28px;
+}
+.ftrnav {
+  font-family: "Brfirma-Regular";
+  color: #333333;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 600px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 0;
+  margin-top: 3.5rem;
+}
+.ftrpolicy {
+  font-family: "Brfirma-Regular";
+  color: #666666;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+.ftrterms::after {
+  content: " ";
+  display: inline-block;
+  border: 1px solid #666666;
+  height: 30px;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 1rem;
+}
+.ftrline {
+  border: 0.5px solid #666666;
+  width: 100%;
+}
+.ftrcpy {
+  font-family: "Brfirma-Regular";
+  color: #666666;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  margin-top: 1.5rem;
 }
