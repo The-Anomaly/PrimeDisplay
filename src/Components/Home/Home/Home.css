@@ -853,8 +853,8 @@ button {
 
 /*Landing Page Redesign */
 .redoNav {
-  background: transparent;
-  position: absolute;
+  position: relative;
+  background: #23304c;
   width: 100%;
   padding-top: 2rem;
   padding-right: 4rem;
@@ -878,10 +878,10 @@ button {
 }
 .hometext {
   color: #ffffff;
-  margin-top: 13rem;
+  margin-top: 10rem;
   margin-bottom: 15rem;
-  padding-left: 6rem;
-  padding-right: 2.5rem;
+  padding-left: 2rem;
+  padding-right: 6.5rem;
   font-size: 45px;
   font-family: "Brfirma-Bold";
 }
