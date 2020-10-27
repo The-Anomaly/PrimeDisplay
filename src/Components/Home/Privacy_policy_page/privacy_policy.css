@@ -22,9 +22,11 @@
 .policy-content{
     position: relative;
 }
-.card-header{
+.policy-header{
     text-align: center;
     color: #23304c;
+    background-color: #fff !important;
+    cursor: unset;
     padding-top: 41px;
     font-size: 19px;
     font-weight: 400;

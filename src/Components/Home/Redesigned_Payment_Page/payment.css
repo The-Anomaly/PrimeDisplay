@@ -10,12 +10,36 @@
     justify-content: center;
 }
 .payment-decription{
-    padding-bottom: 155px;
+    padding-bottom: 76px;
     color: #fff;
+}
+.payment-plans{
+    margin-bottom: 43px;
+    justify-content: space-around;
+}
+.plan-cards{
+    padding: 34px 0px 9px 0px;
+}
+.plan-card-arr{
+    position: relative;
+    text-align: center;
+    top: -17px;
+    font-size: 26px;
+    color: #fff;
+}
+.one-off{
+    color: #1bb978;
+    border-top: 5px solid #1bb978;
+}
+.pce{
+    color: #3965ff;
+    border-top: 5px solid #3965ff;
 }
 .payment-header{
     text-align: initial !important;
     padding-bottom: 12px !important;
+    background-color: #fff !important;
+    cursor: unset;
 }
 .payment-header span{
     font-size: 12px;
@@ -144,4 +168,21 @@
 .subcription-card{
     margin-top: 26px;
     border-radius: 8px !important;
+}
+.subscription-header{
+    background-color: #fff !important;
+    cursor: unset;
+}
+.card_btn--pce1{
+    margin: 0px !important;
+}
+.card_btn--pce2{
+    margin-top: 62px;
+    margin-bottom: 105px;
+}
+.card_btn--pce3{
+    margin-top: 163px !important;
+}
+.card-list-box{
+    display: flex;
 }

@@ -18,7 +18,7 @@ const Privacy=()=>{
                  <div className="centralized-content">
                      <Col md={11} className="policy-content">
                          <Card className="policy-card">
-                             <Card.Header>Update at 2020-09-09</Card.Header>
+                             <Card.Header className="policy-header">Update at 2020-09-09</Card.Header>
                              <Card.Body>
                              Yudimy (“we,” “our,” or “us”) is committed to protecting your privacy.  This Privacy Policy explains how your personal information is collected, used, and disclosed by Yudimy.
 This Privacy Policy applies to our website, and its associated subdomains (collectively, our “Service”) alongside our application, CLARITY. By accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy and our Terms of Service.
