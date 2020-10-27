@@ -855,13 +855,19 @@ button {
 .redoNav {
   position: relative;
   background: #23304c;
+  color: #ffffff;
   width: 100%;
   padding-top: 2rem;
   padding-right: 4rem;
   padding-left: 8rem;
+  padding-bottom: 2rem;
+}
+.nav_titlenew {
+  display: flex;
+  font-size: 14px;
+  font-weight: 300;
 }
 .navtext {
-  color: #ffffff;
   font-family: "Brfirma-Regular";
   letter-spacing: 0.3px;
   font-size: 15px;
@@ -1295,4 +1301,8 @@ button {
   font-size: 15px;
   letter-spacing: 0.5px;
   margin-top: 1.5rem;
+}
+.privacynav {
+  background: #ffffff;
+  color: #000000;
 }

@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
 import { Row } from "react-bootstrap";
+import demoLogoLight from "../../../assets/demologolight.png";
 
 const newNavbar = withRouter((props: any) => {
   const [state, setShowNav] = React.useState({
@@ -228,15 +229,18 @@ const newNavbar = withRouter((props: any) => {
           </div>
         </div>
         <Row md={12}>
-        <div className="nav-wrapper redoNav">
-          <div className="nav_title">
+        <div className={
+          props.mode === "light" ? "nav-wrapper redoNav privacynav": "nav-wrapper redoNav"
+          }>
+          <div className="nav_titlenew">
             <div className="logo_clarity">
               <Link to="/">
-                <img src={demoLogo} alt="clarity_logo" />
+                {
+                  props.mode === "light" ? <img src={demoLogoLight} alt="clarity_logo" /> : <img src={demoLogo} alt="clarity_logo" />}
               </Link>
             </div>
           </div>
-          <div className="nav_title navtext">
+          <div className="nav_titlenew navtext">
             <span className="title hhome">
               <Link to="/">Home</Link>
             </span>
