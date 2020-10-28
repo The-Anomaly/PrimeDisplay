@@ -994,6 +994,11 @@ button {
   width: 40vw;
   margin-right: -5%;
 }
+.crazycircle3 .larrow6 {
+  margin-right: -35%;
+  margin-top: -35%;
+  width: 7vw;
+}
 .crazycircle4 {
   display: flex;
   width: 80%;
@@ -1414,7 +1419,7 @@ button {
 .abthapprod {
   margin: auto;
   padding: 3rem 5rem;
-  padding-bottom: 9rem
+  padding-bottom: 9rem;
 }
 .abtprod {
   font-family: "Brfirma-Bold";
@@ -1436,25 +1441,26 @@ button {
 }
 .prodsec2 {
   flex: 50%;
-  font-family: 'Brfirma-Regular';
-    padding: 3rem;
+  font-family: "Brfirma-Regular";
+  padding: 3rem;
+  font-size: 15px;
 }
 .for1 {
-  font-family: 'Brfirma-Bold';
-    margin-bottom: 3rem;
-    font-size: 17px;
+  font-family: "Brfirma-Bold";
+  margin-bottom: 3rem;
+  font-size: 17px;
 }
 .prodindi {
   color: #ffffff;
-    letter-spacing: 0.5px;
-    padding-left: 0.3rem;
+  letter-spacing: 0.5px;
+  padding-left: 0.3rem;
 }
 .indibox {
   z-index: -1;
-    position: relative;
-    left: -6.6rem;
-    width: 115px;
-    top: -0.1rem;
+  position: relative;
+  left: -6.6rem;
+  width: 115px;
+  top: -0.1rem;
 }
 .prodgreentick {
   margin-right: 3rem;
@@ -1470,7 +1476,7 @@ button {
 }
 .indibox1 {
   left: -3.85rem;
-    width: 80px;
+  width: 80px;
 }
 .prodsec4 {
   background: #d8f9da;
@@ -1480,7 +1486,7 @@ button {
 }
 .sec4img {
   width: 100%;
-    padding-top: 5rem;
+  padding-top: 5rem;
 }
 .grntick {
   margin-left: 1rem;

@@ -26,6 +26,7 @@ import circle5 from "../../../assets/circle5.svg";
 import arrow4 from "../../../assets/arrow4.svg";
 import circle6 from "../../../assets/circle6.svg";
 import arrow5 from "../../../assets/arrow5.svg";
+import arrow6 from "../../../assets/arrow6.svg";
 import ClientReview from "../HomeComponents/HearFromClients";
 import Think from "../HomeComponents/ThinkThisIsYou";
 import Footer from "../HomeComponents/newfooter";
@@ -82,6 +83,7 @@ const RedesignedHome: React.FC = () => {
           </div>
           <div className="crazycircle3">
             <img src={circle4} className="lcircle4" />
+            <img src={arrow6} className="larrow6" />
             <img src={circle5} className="lcircle5" />
           </div>
           <div className="crazycircle4">
