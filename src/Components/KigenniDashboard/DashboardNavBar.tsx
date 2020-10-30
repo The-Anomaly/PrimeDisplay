@@ -150,6 +150,21 @@ const DashboardNav = (props: any) => {
                   Chat with a Counsellor
                 </Link>
               </div>
+              <div className={props.councrec ? "activegb" : "gbn"}>
+                {" "}
+                <Link to="/counsellorsrecommendation">
+                  <img
+                    src={
+                      props.councrec
+                        ? recommedationactive
+                        : recommedationinactive
+                    }
+                    className="sideimage"
+                    alt="sideimage"
+                  />
+                  Recommended Task
+                </Link>
+              </div>
               <div className={props.todo ? "activegb" : "gbn"}>
                 {" "}
                 <Accordion defaultActiveKey="">
@@ -177,21 +192,6 @@ const DashboardNav = (props: any) => {
                   </Accordion.Collapse>
                 </Accordion>
               </div>
-              <div className={props.councrec ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/counsellorsrecommendation">
-                  <img
-                    src={
-                      props.councrec
-                        ? recommedationactive
-                        : recommedationinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Counsellors Recommendation
-                </Link>
-              </div>
               <div className={props.jobrec ? "activegb" : "gbn"}>
                 {" "}
                 <Link to="/jobopportunities">
@@ -204,7 +204,7 @@ const DashboardNav = (props: any) => {
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Job Recommendation
+                 Opportunity Recommended
                 </Link>
               </div>
               <div className={props.builder ? "activegb" : "gbn"}>

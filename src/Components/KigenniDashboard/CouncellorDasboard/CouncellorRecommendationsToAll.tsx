@@ -224,10 +224,12 @@ const CouncellorRecommendationsToAll = (props: any) => {
                       </div>
                     ))}
                     <div className="next_page">
-                      <div>
-                        Displaying <span className="page_num">{count}</span> out
-                        of <span className="page_num">{total_pages}</span>
-                      </div>
+                      {user.length && (
+                        <div>
+                          Displaying <span className="page_num">{count}</span>{" "}
+                          out of <span className="page_num">{total_pages}</span>
+                        </div>
+                      )}
                       <div>
                         {prevLink && (
                           <img

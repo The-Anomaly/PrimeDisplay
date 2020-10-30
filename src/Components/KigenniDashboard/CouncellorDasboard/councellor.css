@@ -182,7 +182,7 @@
   .dspl,
   .ui1222 {
     width: 97%;
-    min-height: 150px;
+    min-height: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -3279,7 +3279,7 @@ textarea.form-control.jobr {
 }
 .cthree {
   padding-right: 1.5rem;
-  flex: 10%;
+  flex: 11%;
 }
 .cfour {
   padding-right: 1.5rem;
@@ -3640,6 +3640,9 @@ textarea.form-control.jobr {
   padding: 1rem;
   margin-bottom: 2rem;
 }
+.councld11 .card-header{
+  padding:0px ;
+}
 .msg1 {
   flex: 10%;
   padding-right: 1.5rem;
@@ -3742,8 +3745,8 @@ textarea.form-control.jobr {
 }
 .ui1222 {
   margin-bottom: 1rem;
-  min-height: 130px;
-  height: 144px;
+  min-height: 100px;
+  height: 108px;
   overflow: hidden;
   text-overflow: ellipsis;
 }

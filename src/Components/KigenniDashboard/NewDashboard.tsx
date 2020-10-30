@@ -127,8 +127,7 @@ class NewDashboard extends React.Component {
         }
         return window.location.assign("/paymentsummary");
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   checkIfUserHasMadePayment = () => {
     const availableToken: string | null = localStorage.getItem("userToken");
@@ -149,8 +148,7 @@ class NewDashboard extends React.Component {
           });
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   CloseWarning = () => {
     this.setState({
@@ -178,8 +176,7 @@ class NewDashboard extends React.Component {
           return window.location.assign("/counsellorfee");
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   openWarning = () => {
     this.setState({
@@ -252,12 +249,14 @@ class NewDashboard extends React.Component {
                       >
                         Call a counsellor
                       </Button>
-                      <Button
-                        className="retaketest2"
-                        onClick={this.openWarning}
-                      >
-                        Retake Assessment
-                      </Button>
+                      {showfullresult && (
+                        <Button
+                          className="retaketest2"
+                          onClick={this.openWarning}
+                        >
+                          Retake Assessment
+                        </Button>
+                      )}
                     </div>
                   </div>
 

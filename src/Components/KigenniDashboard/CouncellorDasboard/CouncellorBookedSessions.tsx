@@ -254,7 +254,7 @@ const CounsellorBookedSessions = (props: any) => {
       });
   };
   const formatTime = (date) => {
-    const dateTime = moment(date).format("MMM YYYY");
+    const dateTime = moment(date).format("Do MMM YYYY");
     return dateTime;
   };
   const inputChangeHandler = (e) => {
@@ -373,25 +373,28 @@ const CounsellorBookedSessions = (props: any) => {
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
                 <Row className="letss">
                   <Col md={12}>
-                    <div className="teammembr teamheading counheading">
-                      <div className="cone"> </div>
-                      <div className="ctwo">
-                        <div>Name</div>
+                    {counsellorData.length > 0 && (
+                      <div className="teammembr teamheading counheading">
+                        <div className="cone"> </div>
+                        <div className="ctwo">
+                          <div>Name</div>
+                        </div>
+                        <div className="cthree">
+                          <div>Date</div>
+                        </div>
+                        <div className="cfour">
+                          <div>Time</div>
+                        </div>
+                        <div className="cfive">
+                          <div>Member Type</div>
+                        </div>
+                        <div className="csix">
+                          <div>Status</div>
+                        </div>
+                        <div className="cseven"> </div>
                       </div>
-                      <div className="cthree">
-                        <div>Date</div>
-                      </div>
-                      <div className="cfour">
-                        <div>Time</div>
-                      </div>
-                      <div className="cfive">
-                        <div>Member Type</div>
-                      </div>
-                      <div className="csix">
-                        <div>Status</div>
-                      </div>
-                      <div className="cseven"> </div>
-                    </div>
+                    )}
+
                     {isLoading && (
                       <div className="counsellorpreloader2">
                         <img
@@ -712,7 +715,7 @@ const CounsellorBookedSessions = (props: any) => {
               value={session_notes}
               onChange={inputChangeHandler}
             />
-            <Row>
+            {/* <Row>
               <Col md={6} className="dkcxx">
                 <label>Rate this session</label>
                 <div className="assessrating dscvv1">
@@ -725,7 +728,7 @@ const CounsellorBookedSessions = (props: any) => {
                   />
                 </div>
               </Col>
-            </Row>
+            </Row> */}
             <textarea
               className="issues-textbox-1 form-control"
               placeholder="Say something about the session"

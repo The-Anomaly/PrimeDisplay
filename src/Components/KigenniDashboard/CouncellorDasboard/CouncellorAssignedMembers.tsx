@@ -194,22 +194,25 @@ const CounsellorAssignedMembers = (props: any) => {
                 <DashboardCounsellorIntroHeader welcomeText="List of all the members assigned to you" />
                 <Row className="signedfjss">
                   <Col md={12}>
-                    <div className="teammembr teamheading counheading mheadd">
-                      <div className="mone"> </div>
-                      <div className="mtwo">
-                        <div>Name</div>
+                    {counsellorData.length > 0 && (
+                      <div className="teammembr teamheading counheading mheadd">
+                        <div className="mone"> </div>
+                        <div className="mtwo">
+                          <div>Name</div>
+                        </div>
+                        <div className="mthree">
+                          <div>Personality Type</div>
+                        </div>
+                        <div className="mfour">
+                          <div>Availability</div>
+                        </div>
+                        <div className="mfive">
+                          <div>Status</div>
+                        </div>
+                        <div className="msix"> </div>
                       </div>
-                      <div className="mthree">
-                        <div>Personality Type</div>
-                      </div>
-                      <div className="mfour">
-                        <div>Availability</div>
-                      </div>
-                      <div className="mfive">
-                        <div>Status</div>
-                      </div>
-                      <div className="msix"> </div>
-                    </div>
+                    )}
+
                     {counsellorData &&
                       counsellorData.length > 0 &&
                       counsellorData.map((data, i) => (
@@ -273,7 +276,14 @@ const CounsellorAssignedMembers = (props: any) => {
                             </div>
                             {data.status && (
                               <div className="msix">
-                                <div className="counview mbtn"><a href={`/employers/result/${data.email}`} target="blank">View Result</a></div>
+                                <div className="counview mbtn">
+                                  <a
+                                    href={`/counsellor/result/${data.email}`}
+                                    target="blank"
+                                  >
+                                    View Result
+                                  </a>
+                                </div>
                               </div>
                             )}
                             {!data.status && (
@@ -297,10 +307,12 @@ const CounsellorAssignedMembers = (props: any) => {
                       </>
                     )}
                     <div className="next_page">
-                      <div>
-                        Displaying <span className="page_num">{count}</span> out
-                        of <span className="page_num">{total_pages}</span>
-                      </div>
+                      {counsellorData.length > 0 && (
+                        <div>
+                          Displaying <span className="page_num">{count}</span>{" "}
+                          out of <span className="page_num">{total_pages}</span>
+                        </div>
+                      )}
                       <div>
                         {prevLink && (
                           <img

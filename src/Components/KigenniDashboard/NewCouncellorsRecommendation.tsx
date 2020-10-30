@@ -18,17 +18,38 @@ import alertTriangle from "../../assets/alert-triangle.png";
 import alertTrianglegray from "../../assets/alertTrianglegray.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Alert } from "react-bootstrap";
+import close from "../../assets/close.svg";
 
 class CounsellorsRecommendation extends React.Component {
   state: any = {
     fullname: "",
     message: "",
     counsellor: "",
+    id: "",
     successMsg: false,
+    startDate: null,
+    endDate: null,
+    frequency: 1,
+    success: "",
     isLoading: false,
+    setReminderModal: false,
     showWarning: false,
     width: 100,
   };
+  closeModal = () => {
+    this.setState({
+      setReminderModal: false,
+    });
+  };
+  openModal = (id) => {
+    console.log(id);
+    this.setState({
+      setReminderModal: true,
+      id,
+    });
+  };
+
   submitForm = (e) => {
     e.preventDefault();
     const availableToken = localStorage.getItem("userToken");
@@ -76,27 +97,37 @@ class CounsellorsRecommendation extends React.Component {
         });
       });
   }
-  makeRecommendationToDo = (id) => {
+  makeRecommendationToDo = () => {
+    console.log(this.state.id);
     this.setState({ isLoading: true });
+    const { startDate, frequency } = this.state;
+    if (startDate === "" || frequency === "" || startDate === "") {
+      return this.notify("Please fill all");
+    }
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
     const data = {
-      id,
+      id: this.state.id,
+      start_date: this.state.startDate,
+      reminder_frequency: this.state.frequency,
     };
     Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/make-todo`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
         if (response?.data) {
-          this.notify("Successfull created task")
-          setTimeout(()=>{
-            this.componentDidMount()
-          },3000)
+          this.notify("Successfull created task");
+          setTimeout(() => {
+            this.componentDidMount();
+            this.closeModal();
+          }, 3000);
         }
       })
       .catch((error) => {
+        this.notify("Failed to process");
+        setTimeout(() => {}, 2000);
       });
   };
   onchange = (e) => {
@@ -125,12 +156,19 @@ class CounsellorsRecommendation extends React.Component {
           return window.location.assign("/counsellorfee");
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
-    const { fullname, message, isLoading, width, counsellor } = this.state;
+    const {
+      fullname,
+      startDate,
+      success,
+      frequency,
+      setReminderModal,
+      width,
+      counsellor,
+    } = this.state;
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -194,15 +232,16 @@ class CounsellorsRecommendation extends React.Component {
                                       Convert this recommendation to a task
                                     </div>
                                   </div>
-                                  <div className="upss smtd smtdis">
-                                    <a>
-                                    Set Reminder{" "}
-                                    </a>
+                                  <div
+                                    className="upss smtd smtdis"
+                                    onClick={() => this.openModal(data.id)}
+                                  >
+                                    <a>Set Reminder </a>
                                   </div>
                                 </div>
                               </Col>
                             )}
-                            {data.todo  === false && (
+                            {data.todo === false && (
                               <Col md={12} className="zeropad">
                                 <div className="notpaid notppd notpaidfix">
                                   <div className="notpaid1">
@@ -215,10 +254,11 @@ class CounsellorsRecommendation extends React.Component {
                                       Convert this recommendation to a task
                                     </div>
                                   </div>
-                                  <div className="retaketest upss smtd">
-                                    <div onClick={()=>this.makeRecommendationToDo(data.id)}>
-                                      Set Reminder{" "}
-                                    </div>
+                                  <div
+                                    className="retaketest upss smtd"
+                                    onClick={() => this.openModal(data.id)}
+                                  >
+                                    <div>Set Reminder </div>
                                   </div>
                                 </div>
                               </Col>
@@ -252,6 +292,56 @@ class CounsellorsRecommendation extends React.Component {
             hideProgressBar={true}
             position={toast.POSITION.TOP_CENTER}
           />
+          <Modal
+            show={setReminderModal}
+            centered={true}
+            onHide={this.closeModal}
+            className="modcomplete1 fixmodal"
+          >
+            <Modal.Title className="modal_title create_title">
+              Set Reminder
+            </Modal.Title>
+            {success && (
+              <Alert variant={"info"} className="text-center">
+                Successfull
+              </Alert>
+            )}
+            <a className="close_view" onClick={this.closeModal}>
+              <img className="closeview" src={close} alt="close" />
+            </a>
+            <Modal.Body className="create_body">
+              <div className="modal_det">
+                <div className="titlee">Start Date</div>
+                <input
+                  className="note_det create_det "
+                  type="date"
+                  placeholder="Select a preferred start date for your task"
+                  value={startDate}
+                  name={"startDate"}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="modal_det">
+                <div className="titlee">Reminder Frequency</div>
+                <input
+                  className="note_det create_det "
+                  type="number"
+                  placeholder="Enter Duration "
+                  value={frequency}
+                  name={"frequency"}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="mark_complete">
+                <div
+                  className="savebtn todo_button markit createit"
+                  onClick={() => this.makeRecommendationToDo()}
+                >
+                  Save
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
         </Container>
       </>
     );

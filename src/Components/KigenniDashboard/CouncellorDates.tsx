@@ -126,6 +126,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
+        this.notify("Failed to Send");
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -172,13 +173,14 @@ class CouncellorDates extends React.Component<React.Props<any>> {
             <Col md={2} className="availabledatewrapper">
               <div>
                 {calenderTime &&
-                  calenderTime.map((data) => (
+                  calenderTime.map((data,i) => (
                     <div
                       className={
                         data.status === "available"
                           ? "activeDate"
                           : "availabledate"
                       }
+                      key={i}
                     >
                       <input
                         type="radio"
@@ -188,7 +190,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                         onChange={this.selectedTimeHandler}
                       />
                       {"  "}
-                      <div>{data.time}</div>
+                      <div className="datelenght">{data.time}</div>
                     </div>
                   ))}
               </div>
@@ -220,7 +222,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                     placeholder="Phone number"
                   />
                 </Col>
-                <Col md={7} className="text-right jcenter">
+                <Col md={7} className="text-right skd11">
                   <div
                     className="booksession"
                     onClick={this.sendMessageToCounselor}

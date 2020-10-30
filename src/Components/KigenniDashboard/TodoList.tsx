@@ -23,6 +23,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ViewMoreModal from "./ViewMoreModal";
+import noplan from "../../assets/noplan.png";
 const moment = require("moment");
 
 const TodoList = (props: any) => {
@@ -46,16 +47,27 @@ const TodoList = (props: any) => {
     title: "",
     description: "",
     add_note: "",
+    frequency: "",
+    startDate: "",
     isOpen: false,
     id: 1,
     viewmoreisOpen: false,
     CreateTaskModalisOpen: false,
   });
-  const { errorMessage, tasklist, nextLink, prevLink, user, success } = state;
+  const {
+    errorMessage,
+    tasklist,
+    nextLink,
+    prevLink,
+    user,
+    success,
+  } = state;
   const {
     task_title,
     task_description,
     viewmoreisOpen,
+    startDate,
+    frequency,
     duration,
     title,
     description,
@@ -147,7 +159,9 @@ const TodoList = (props: any) => {
     const data = {
       title,
       description,
-      duration,
+      duration:Number(duration),
+      start_date:startDate,
+      reminder_frequency:frequency
     };
     Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/todo`, data, {
       headers: { Authorization: `Token ${token}` },
@@ -165,7 +179,10 @@ const TodoList = (props: any) => {
           window.location.reload();
         }, 3000);
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err.response)
+        notify("Failed to send")
+      });
   };
   const notify = (message: string) => toast(message, { containerId: "i" });
   React.useEffect(() => {
@@ -319,12 +336,14 @@ const TodoList = (props: any) => {
                       It takes alot of heroes to even start a task, but it seems
                       like you have super powers. Keep going Champ!!!
                     </div>
-                    <div className="task_table">
-                      <span className="task_title">Task Title</span>
-                      <span className="task_duration">Duration</span>
-                      <span className="task_time">Date Created</span>
-                      <span className="task_status">Status</span>
-                    </div>
+                    {tasklist.length > 0 && (
+                      <div className="task_table">
+                        <span className="task_title">Task Title</span>
+                        <span className="task_duration">Duration</span>
+                        <span className="task_time">Date Created</span>
+                        <span className="task_status">Status</span>
+                      </div>
+                    )}
                     {tasklist.length !== 0 &&
                       tasklist.map((data, i) => (
                         <div className="wrapc2 tasklist" key={i}>
@@ -384,12 +403,27 @@ const TodoList = (props: any) => {
                           </div>
                         </div>
                       ))}
-                    <div className="next_page">
-                      <div>
-                        Displaying{" "}
-                        <span className="page_num">{state.count}</span> out of{" "}
-                        <span className="page_num">{state.total_pages}</span>
+                    {tasklist.length === 0 && (
+                      <div className="norec">
+                        <img
+                          src={noplan}
+                          className="norecommendations"
+                          alt="norecommendations"
+                        />
+                        <div className="udont1">Opps!!!</div>
+                        <div className="udont">
+                          You have not created any todos
+                        </div>
                       </div>
+                    )}
+                    <div className="next_page">
+                      {tasklist.length > 0 && (
+                        <div>
+                          Displaying{" "}
+                          <span className="page_num">{state.count}</span> out of{" "}
+                          <span className="page_num">{state.total_pages}</span>
+                        </div>
+                      )}
                       <div>
                         {prevLink && (
                           <img
@@ -445,32 +479,31 @@ const TodoList = (props: any) => {
               name="title"
               disabled={true}
               value={getTaskdetails()?.title}
+              placeholder="Enter a Task title"
             />
           </div>
           <div className="modal_det">
-            <div className="titlee">Task Description</div>
+            <div className="titlee">Description</div>
             <textarea
               className="task_det"
               name="task_description"
               disabled={true}
+              placeholder="Enter a Task Description"
               value={getTaskdetails()?.description}
             />
           </div>
           <div className="modal_det">
-            <div className="titlee">Note</div>
+            <div className="titlee">Task Duration</div>
             <textarea
               className="note_det"
-              placeholder="Extra Notes"
+              placeholder="Enter number of days"
               name="add_note"
               disabled={true}
               value={getTaskdetails()?.notes}
             />
           </div>
-          <div className="request_input">
-            <a className="request" href="#">
-              {/* Request Counselors Input */}
-            </a>
-          </div>
+
+          <div className="request_input"></div>
           <div className="mark_complete">
             <div
               className="savebtn todo_button markit"
@@ -528,6 +561,28 @@ const TodoList = (props: any) => {
               value={duration}
               name={"duration"}
               onChange={onchange}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Start Date</div>
+            <input
+              className="note_det create_det "
+              type="date"
+              placeholder="Enter start date"
+              value={startDate}
+              name={"startDate"}
+              onChange={onchange}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Reminder Frequency</div>
+            <input
+              type={"number"}
+              className="note_det create_det "
+              name="frequency"
+              onChange={onchange}
+              placeholder="Select how frequent you want to be reminded"
+              value={getTaskdetails()?.frequency}
             />
           </div>
           <div className="mark_complete">

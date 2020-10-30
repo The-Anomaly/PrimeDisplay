@@ -25,6 +25,9 @@ const Navbar = withRouter((props: any) => {
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
+    if(window.location.pathname==="/counsellordates"){
+      return
+    }
       Axios.get(`${API}/progress`, {
         headers: { Authorization: `Token ${token}` },
       })

@@ -233,22 +233,25 @@ const Referrals = (props: any) => {
                 </div>
                 <Row className="signedfjss">
                   <Col md={12}>
-                    <div className="teammembr teamheading counheading mheadd">
-                      <div className="mone"> </div>
-                      <div className="mtwo">
-                        <div>Name</div>
+                    {counsellorData.length > 0 && (
+                      <div className="teammembr teamheading counheading mheadd">
+                        <div className="mone"> </div>
+                        <div className="mtwo">
+                          <div>Name</div>
+                        </div>
+                        <div className="mthree">
+                          <div>Personality Type</div>
+                        </div>
+                        <div className="mfour">
+                          <div>Availability</div>
+                        </div>
+                        <div className="mfive">
+                          <div>Status</div>
+                        </div>
+                        <div className="msix"> </div>
                       </div>
-                      <div className="mthree">
-                        <div>Personality Type</div>
-                      </div>
-                      <div className="mfour">
-                        <div>Availability</div>
-                      </div>
-                      <div className="mfive">
-                        <div>Status</div>
-                      </div>
-                      <div className="msix"> </div>
-                    </div>
+                    )}
+
                     {counsellorData &&
                       counsellorData.length > 0 &&
                       counsellorData.map((data, i) => (
@@ -336,10 +339,12 @@ const Referrals = (props: any) => {
                       </>
                     )}
                     <div className="next_page">
-                      <div>
-                        Displaying <span className="page_num">{count}</span> out
-                        of <span className="page_num">{total_pages}</span>
-                      </div>
+                      {counsellorData.length > 0 && (
+                        <div>
+                          Displaying <span className="page_num">{count}</span>{" "}
+                          out of <span className="page_num">{total_pages}</span>
+                        </div>
+                      )}
                       <div>
                         {prevLink && (
                           <img
@@ -393,7 +398,9 @@ const Referrals = (props: any) => {
                     </span>
                   </div>
                   <div className="last_ref_modal_btn">
-                    <span className="ref_btn done" onClick={ModalClose}>Done</span>
+                    <span className="ref_btn done" onClick={ModalClose}>
+                      Done
+                    </span>
                   </div>
                 </Container>
               </Modal>
