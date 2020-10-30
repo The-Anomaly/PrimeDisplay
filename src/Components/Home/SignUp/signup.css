@@ -12,6 +12,8 @@
   box-shadow: 0 8px 50px 0 rgba(0, 0, 0, 0.06);
   background-color: #ffffff;
   padding-bottom: 4rem;
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 .resend {
   font-weight: 600;
@@ -195,13 +197,15 @@
   width: 12px;
   height: 12px;
   object-fit: scale-down;
+  display: none;
 }
 .signform {
   padding-left: 1.7rem;
 }
 .diff23 {
-  margin-bottom: -0.3rem;
+  /* margin-bottom: -0.3rem; */
 }
 .difg {
   padding-bottom: 0px !important;
+  margin-bottom: 0.5rem;
 }

@@ -5,11 +5,13 @@ import  mark  from '../../../assets/mark-icn.png';
 import mark_blue from  '../../../assets/blue-mark.png';
 import mark_green from '../../../assets/green-mark.png';
 import './payment.css';
-
+import Navbar from '../HomeComponents/newnavbar';
+import Footer from '../HomeComponents/newfooter';
 
 const Monthly_plan = ()=>{
     return(
         <div>
+            <Navbar/>
              <div className="payment-section">
                 <Container>
                     <div className="payment-decription"><h3>We have curated payments plans with you in mind</h3></div>
@@ -51,7 +53,7 @@ const Monthly_plan = ()=>{
                                        <li><div className="card-list-box"><div><img src={mark} className="card-image"/></div>Career drivers abd how to leverage them</div></li>
                                        <li><div className="card-list-box"><div><img src={mark} className="card-image"/></div>Highlights on areas for career optimization</div></li>
                                        <li><div className="card-list-box"><div><img src={mark} className="card-image"/></div>Weekly curated recommended courses to take to strengthen your skill</div></li>
-                                       <li><img src={mark} className="card-image"/>Weekly Tailored job alerts</li>
+                                       <li className="cdlisadjmarg"><img src={mark} className="card-image"/>Weekly Tailored job alerts</li>
                                    </ul>
                                    <span className="card_btn card_btn--pce1 btn-yellow">Subscribe</span>
                                </Card.Body>
@@ -71,13 +73,13 @@ const Monthly_plan = ()=>{
                                        <li><img src={mark_blue} className="card-image" />Everything under <span>INSIGHT</span></li>
                                        <li><div className="card-list-box"><div><img src={mark_blue} className="card-image"/></div>40 minutes career-planning session with a clarity counsellor</div></li>
                                        <li><div className="card-list-box"><div><img src={mark_blue} className="card-image"/></div>Weekly Personalized Counsellors Recommendation on suitable personal & career activities</div></li>
-                                       <li><div className="card-list-box"><div><img src={mark_blue} className="card-image"/></div>Personal to-dos & reminder setting </div> </li>
+                                       <li><div className="card-list-box"><div><img src={mark_blue} className="card-image"/></div>Personal to-dos & reminder setting</div> </li>
                                    </ul>
                                    <span className="card_btn card_btn--pce2 btn-blue">Upgrade to Direction Plan</span>
                                </Card.Body>
                             </Card>
                         </Col>
-                        <Col md={3} sm={6} className="margined_col">
+                        <Col md={3} sm={8} className="margined_col">
                         <Card className="h-300 shadow-sm bg-white payment-card">
                                <Card.Header className="payment-header">
                                    <h4>N10000  <span>/month</span></h4> 
@@ -97,7 +99,7 @@ const Monthly_plan = ()=>{
                         </Col>
                     </Row>
                     <Row className="centered_payment">
-                        <Col md={3} sm={6}>
+                        <Col md={3} sm={6} className="margined_col">
                             <Card className="subcription-card">
                                 <Card.Header className="subscription-header">
                                     <h6 className="red">Gift a Subscription</h6> 
@@ -111,6 +113,7 @@ const Monthly_plan = ()=>{
                     </Row>
                 </Container>
             </div>
+         <Footer/>
         </div>
     )
 }

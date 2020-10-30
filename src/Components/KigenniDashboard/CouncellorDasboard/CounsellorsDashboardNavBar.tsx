@@ -51,7 +51,7 @@ const CounsellorsDashboardMobileNav = (props: any) => {
   };
   const logOut = () => {
     localStorage.clear();
-    window.location.assign("/");
+    window.location.assign("/counsellor/signin");
   };
   return (
     <div>

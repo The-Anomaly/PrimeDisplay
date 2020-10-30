@@ -1,5 +1,6 @@
 body{
     overflow: visible;
+     font-family: 'brfirma-regular';
 }
 .section-1{
     background-image: url(../../../assets/contact.png);

@@ -162,7 +162,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
                     {!errorMessage &&
                       counsellorData?.map((data, i) => (
                         <Link
-                          to={`/counsellormessagehistory/${data?.user}`}
+                          to={`/counsellormessagehistory/${data?.user}/${data.id}`}
                           key={i}
                         >
                           <div className="useri1222 ui1222 ssgs">
@@ -191,7 +191,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
                             </div>
                           </div>
                         </Link>
-                      ))}
+                      ))} 
                     {counsellorData.length === 0 && errorMessage && (
                       <div className="norec">
                         <img

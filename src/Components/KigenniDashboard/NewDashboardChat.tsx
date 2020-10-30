@@ -5,93 +5,98 @@ import Col from "react-bootstrap/Col";
 import "./kegennidashboard.css";
 import avatar from "../../assets/avatar.svg";
 import SideBarNewDashboard from "./SideBarNewDashboard";
-import Axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import DashboardNav from "./DashboardNavBar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
+import WebSocketInstance from "../../websocket";
+import moment from "moment";
+import { connect } from "react-redux";
 
 class NewDashboardChat extends React.Component {
   state: any = {
-    fullname: "",
-    message: "",
-    user: "",
-    successMsg: false,
     isLoading: false,
-    showWarning: false,
-    width: 100,
+    user: "",
+    message: "",
+    userInfo: "",
   };
-  submitForm = (e) => {
-    e.preventDefault();
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken ? JSON.parse(availableToken) : "";
-    const data = {
-      message: this.state.message,
-    };
-    Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/chat`, data, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((res) => {
-        this.setState({
-          message: "",
-        });
-        this.componentDidMount();
-      })
-      .catch((err) => {
-        if (err) {
-          this.notify(err?.response?.data[0].message);
-          this.setState({
-            message: "",
-          });
-        }
-      });
-  };
-  notify = (message: string) => toast(message, { containerId: "B" });
-  componentDidMount() {
-    this.setState({ isLoading: true });
+  props: any;
+  this: any;
+  constructor(props) {
+    super(props);
+    this.initialiseChat();
+  }
+  componentWillMount() {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    this.checkIfUserHasMadePaymentForFullResult(token);
-    const data = {};
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/chat`, {
-      headers: { Authorization: `Token ${token}` },
-    })
+      : this.props.history.push("/counsellor/signin");
+    axios
+      .get(`${API}/currentuser`, {
+        headers: { Authorization: `Token ${token}` },
+      })
       .then((response) => {
-        this.setState({
-          user: response.data,
-          message: "",
-        });
+        console.log(response);
+        if (response.status === 200) {
+          localStorage.setItem("user", JSON.stringify(response?.data));
+        }
       })
       .catch((error) => {
-        if (error && error.response && error.response.data) {
-          this.setState({
-            errorMessage: error.response.data[0].message,
-            isLoading: false,
-          });
-        }
-        this.setState({
-          errorMessage: "failed",
-          isLoading: false,
-        });
+        console.log(error);
       });
   }
-  checkIfUserHasMadePaymentForFullResult = (token: string) => {};
+  formatTime = (date) => {
+    return moment(date).fromNow();
+  };
+  initialiseChat() {
+    this.waitForSocketConnection(() => {
+      WebSocketInstance.fetchMessages(this.props.match.params.chatID);
+    });
+    WebSocketInstance.connect(this?.props?.match?.params?.chatID);
+  }
+  waitForSocketConnection = (callback) => {
+    const component = this;
+    setTimeout(function () {
+      if (WebSocketInstance.state() === 1) {
+        console.log("conection is made!");
+        callback();
+        return;
+      } else {
+        console.log("waiting for connection....");
+        component.waitForSocketConnection(callback);
+      }
+    }, 100);
+  };
+
+  submitForm = (e) => {};
+  notify = (message: string) => toast(message, { containerId: "B" });
+  componentWillUnmount() {
+    WebSocketInstance.disconnect();
+  }
   onchange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
-  capitalize = (s) => {
-    if (typeof s !== "string") return "";
-    return s.charAt(0).toUpperCase() + s.slice(1);
+  sendMessageHandler = (e) => {
+    e.preventDefault();
+    const messageObject = {
+      from: this.state.userInfo?.email,
+      content: this.state.message,
+      chatId: this.props.match.params.chatID,
+    };
+    WebSocketInstance.newChatMessage(messageObject);
+    this.setState({
+      message: "",
+    });
   };
 
   render() {
-    const { fullname, message, isLoading, width, user } = this.state;
+    console.log(this.props.messages);
+    const { isLoading, user, message }: any = this.state;
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -112,40 +117,40 @@ class NewDashboardChat extends React.Component {
                       <hr />
                     </div>
                     <Col md={12} className="youwss">
-                      {user &&
-                        user.map((data, ind) => (
-                          <>
+                      {this.props.messages?.map((data, ind) => (
+                        <>
+                          {data.author !== this.props.match.params.email && (
                             <div className="usersentwrap1" key={ind}>
                               <div className="youwrap">
                                 <span className="you11">You</span>
                                 <span className="youdate">
-                                  {data.message_date}
+                                  {this.formatTime(data.timestamp)}
                                 </span>
                               </div>
                               <div className="councellors_response">
-                                {data.message}
+                                {data.content}
                               </div>
                             </div>
-                            <div className="hihh">
-                              {data.response && (
-                                <div className="couselorsentwrap2">
-                                  <div className="youwraprev">
-                                    <span className="youdate">
-                                      {data.response_date}
-                                    </span>
-                                    <span className="you11b">
-                                      Counsellor {data.counsellor}
-                                    </span>
-                                  </div>
-
-                                  <div className="councellors_response1">
-                                    {data.response}
-                                  </div>
+                          )}
+                          <div className="hihh">
+                            {data.author === this.props.match.params.email && (
+                              <div className="couselorsentwrap2">
+                                <div className="youwraprev">
+                                  <span className="youdate">
+                                    {this.formatTime(data.timestamp)}
+                                  </span>
+                                  <span className="you11b">
+                                    Counsellor {data.counsellor}
+                                  </span>
                                 </div>
-                              )}
-                            </div>
-                          </>
-                        ))}
+                                <div className="councellors_response1">
+                                  {data.content}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </>
+                      ))}
                       <div>
                         <textarea
                           className="form-control sendtcont"
@@ -158,7 +163,7 @@ class NewDashboardChat extends React.Component {
                       <div className="texsss1">
                         <div
                           className="sendmeess col-md-11"
-                          onClick={this.submitForm}
+                          onClick={this.sendMessageHandler}
                         >
                           Send Message
                         </div>
@@ -181,4 +186,11 @@ class NewDashboardChat extends React.Component {
     );
   }
 }
-export default NewDashboardChat;
+
+const mapStateToProps = (state) => {
+  return {
+    messages: state.message.messages,
+  };
+};
+
+export default connect(mapStateToProps)(NewDashboardChat);

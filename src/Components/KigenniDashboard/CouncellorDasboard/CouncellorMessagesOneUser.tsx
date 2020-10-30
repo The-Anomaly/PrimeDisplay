@@ -14,60 +14,97 @@ import DashboardUsernameheader from "../DashboardUsernameheader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+import { connect } from "react-redux";
+import moment from "moment";
+import WebSocketInstance from "../../../websocket";
+import axios from "axios";
 
 class CounsellorMessageOneUser extends React.Component {
-  state = {
+  state: any = {
     isLoading: false,
     user: "",
     message: "",
+    userInfo: "",
   };
-  submitForm = (e) => {
-  };
-  notify = (message: string) => toast(message, { containerId: "B" });
+  props: any;
+  this: any;
+  constructor(props) {
+    super(props);
+    this.initialiseChat();
+  }
   componentWillMount() {
-    this.setState({
-      isLoading: true,
-    });
-    const self: any = this;
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : window.location.assign("/counsellor/signin");
-    const email = self.props.match.params.email;
-    const data = {};
-    Axios.all([
-      Axios.get<any, AxiosResponse<any>>(`${API}/get-chats/?email=${email}`, {
+      : this.props.history.push("/counsellor/signin");
+    axios
+      .get(`${API}/currentuser`, {
         headers: { Authorization: `Token ${token}` },
-      }),
-    ])
-      .then(
-        Axios.spread((response) => {
-          console.log(response);
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
           this.setState({
-            user: response.data,
-            message: "",
-          });
-        })
-      )
-      .catch((error) => {
-        if (error && error.response && error.response.data) {
-          this.setState({
-            errorMessage: error.response.data[0].message,
-            isLoading: false,
-          });
+            userInfo:response.data[0]
+          })
         }
-        this.setState({
-          errorMessage: "failed",
-          isLoading: false,
-        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
+  }
+  formatTime = (date) => {
+    return moment(date).fromNow();
+  };
+  initialiseChat() {
+    this.waitForSocketConnection(() => {
+      WebSocketInstance.fetchMessages(this.props.match.params.chatID);
+    });
+    WebSocketInstance.connect(this?.props?.match?.params?.chatID);
+  }
+  waitForSocketConnection = (callback) => {
+    const component = this;
+    setTimeout(function () {
+      if (WebSocketInstance.state() === 1) {
+        console.log("conection is made!");
+        callback();
+        return;
+      } else {
+        console.log("waiting for connection....");
+        component.waitForSocketConnection(callback);
+      }
+    }, 100);
+  };
+
+  submitForm = (e) => {};
+  notify = (message: string) => toast(message, { containerId: "B" });
+  // componentWillMount() {
+  //   WebSocketInstance.connect(this.props.match.params.chatID);
+  //   WebSocketInstance.fetchMessages(this.props.match.params.chatID);
+  // }
+  componentWillUnmount() {
+    WebSocketInstance.disconnect();
   }
   onchange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
+  sendMessageHandler = (e) => {
+    e.preventDefault();
+    const messageObject = {
+      from: this.state.userInfo.email,
+      content: this.state.message,
+      chatId: this.props.match.params.chatID,
+    };
+    WebSocketInstance.newChatMessage(messageObject);
+    this.setState({
+      message: "",
+    });
+  };
+
   render() {
+    console.log(this.props.messages);
     const { user, message, isLoading }: any = this.state;
     return (
       <>
@@ -89,41 +126,47 @@ class CounsellorMessageOneUser extends React.Component {
                       <div className="kdashheader npps">
                         <div></div>
                         <Col md={12} className="youwss">
-                          {user &&
-                            user.map((data, ind) => (
-                              <>
-                                <div className="usersentwrap1" key={ind}>
+                          {this.props.messages.map((data, i) => (
+                            <div key={i}>
+                              {data.author !==
+                                this.props.match.params.email && (
+                                <div className="usersentwrap1">
                                   <div className="youwrap">
-                                    <span className="you11">You</span>
+                                    <span className="you11">
+                                      Counsellor {data.author}
+                                    </span>
                                     <span className="youdate">
-                                      {data.message_date}
+                                      {this.formatTime(data.timestamp)}
                                     </span>
                                   </div>
                                   <div className="councellors_response">
-                                    {data.message}
+                                    {data.content}
                                   </div>
                                 </div>
-                                <div className="hihh">
-                                  {data.response && (
-                                    <div className="couselorsentwrap2">
-                                      <div className="youwraprev">
-                                        <span className="youdate">
-                                          {data.response_date}
-                                        </span>
-                                        <span className="you11b">
-                                          Counsellor {data.counsellor}
-                                        </span>
-                                      </div>
+                              )}
 
-                                      <div className="councellors_response1">
-                                        {data.response}
-                                      </div>
+                              <div className="hihh">
+                                {data.author ===
+                                  this.props.match.params.email && (
+                                  <div className="couselorsentwrap2">
+                                    <div className="youwraprev">
+                                      <span className="youdate">
+                                        {this.formatTime(data.timestamp)}
+                                      </span>
+                                      <span className="you11b">
+                                        {data.author}
+                                      </span>
                                     </div>
-                                  )}
-                                </div>
-                              </>
-                            ))}
-                          {
+
+                                    <div className="councellors_response1">
+                                      {data.content}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                          {this.props.messages.length === 0 && (
                             <div className="nomesgcoun">
                               <img
                                 src={nocounmessage}
@@ -131,7 +174,7 @@ class CounsellorMessageOneUser extends React.Component {
                                 alt="nocounmessage"
                               />
                             </div>
-                          }
+                          )}
                           <div>
                             <textarea
                               className="form-control sendtcont"
@@ -144,7 +187,7 @@ class CounsellorMessageOneUser extends React.Component {
                           <div className="texsss1">
                             <div
                               className="sendmeess col-md-11"
-                              onClick={this.submitForm}
+                              onClick={this.sendMessageHandler}
                             >
                               Send Message
                             </div>
@@ -169,4 +212,11 @@ class CounsellorMessageOneUser extends React.Component {
     );
   }
 }
-export default CounsellorMessageOneUser;
+
+const mapStateToProps = (state) => {
+  return {
+    messages: state.message.messages,
+  };
+};
+
+export default connect(mapStateToProps)(CounsellorMessageOneUser);

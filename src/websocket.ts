@@ -1,4 +1,4 @@
-import { API } from "./config";
+import { webSocketAPI } from "./config";
 
 interface WebSocketService {
   instance: any | null;
@@ -8,7 +8,7 @@ class WebSocketService {
   callbacks = {};
   static getInstance(): any {
     if (!WebSocketService.instance) {
-      WebSocketService.instance = new WebSocketService()
+      WebSocketService.instance = new WebSocketService();
     }
     return WebSocketService?.instance;
   }
@@ -19,8 +19,7 @@ class WebSocketService {
   connect(chatURL) {
     const self: any = this;
     var ws_scheme: any = window.location.protocol == "https:" ? "wss" : "ws";
-    const path =
-      ws_scheme + "://" + `${API}` + "/ws/chat" + `/${chatURL}/`;
+    const path = "wss://" + `${webSocketAPI}` + "/ws/chat" + `/${chatURL}/`;
     // const path = `ws://theminglemarket.com:8000/ws/chat/${chatURL}/`;
     console.log(path);
     self.socketRef = new WebSocket(path);
@@ -63,10 +62,9 @@ class WebSocketService {
     // }
   }
 
-  fetchMessages(username, chatId) {
+  fetchMessages(chatId) {
     this.sendMessage({
       command: "fetch_messages",
-      username: username,
       chatId: chatId,
     });
   }
@@ -86,7 +84,7 @@ class WebSocketService {
   // }
 
   // addCallbacks(messagesCallbacks, newMessageCallbacks, getOnlineUsers) {
-  //   this.callbacks["messages"] = messagesCallbacks;
+  //   this.callbacks["messages "] = messagesCallbacks;
   //   this.callbacks["new_message"] = newMessageCallbacks;
   //   this.callbacks["online_users"] = getOnlineUsers;
   // }

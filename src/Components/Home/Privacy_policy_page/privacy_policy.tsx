@@ -1,11 +1,14 @@
 import React from 'react';
-import { Container, Row, Col, Card} from 'react-bootstrap';
+import { Container, Col, Card} from 'react-bootstrap';
 import './privacy_policy.css';
+import Navbar from '../HomeComponents/newnavbar';
+import Footer from '../HomeComponents/newfooter';
 
 
 const Privacy=()=>{
     return(
         <div>
+          <Navbar/>
            <div className="policy_page">
               <Container>   
                  <div className="privacy-title">
@@ -13,13 +16,13 @@ const Privacy=()=>{
                  </div> 
                </Container>
            </div>
-            
+           <div className="policy-section">
                  <Container>
                  <div className="centralized-content">
                      <Col md={11} className="policy-content">
                          <Card className="policy-card">
                              <Card.Header className="policy-header">Update at 2020-09-09</Card.Header>
-                             <Card.Body>
+                             <Card.Body className="policy_card-body">
                              Yudimy (“we,” “our,” or “us”) is committed to protecting your privacy.  This Privacy Policy explains how your personal information is collected, used, and disclosed by Yudimy.
 This Privacy Policy applies to our website, and its associated subdomains (collectively, our “Service”) alongside our application, CLARITY. By accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy and our Terms of Service.
  <br></br><br></br>
@@ -98,9 +101,9 @@ We receive some information from the third parties when you contact us. For exam
 
 We may share the information that we collect, both personal and non-personal, with third parties such as advertisers, contest sponsors, promotional and marketing partners, and others who provide our content or whose products or services we think may interest you. We may also share it with our current and future affiliated companies and business partners, and if we are involved in a merger, asset sale or other business reorganization, we may also share or transfer your personal and non-personal information to our successors-in-interest.<br></br><br></br><br></br>
 
-  We may engage trusted third party service providers to perform functions and provide services to us, such as hosting and maintaining our servers and the website/app, database storage and management, e-mail management, storage marketing, credit card processing, customer service and fulfilling orders for products and services you may purchase through the website/app. We will likely share your personal information, and possibly some non-personal information, with these third parties to enable them to perform these services for us and for you.<br></br><br></br><br></br>
+We may engage trusted third party service providers to perform functions and provide services to us, such as hosting and maintaining our servers and the website/app, database storage and management, e-mail management, storage marketing, credit card processing, customer service and fulfilling orders for products and services you may purchase through the website/app. We will likely share your personal information, and possibly some non-personal information, with these third parties to enable them to perform these services for us and for you.<br></br><br></br><br></br>
 
-  We may share portions of our log file data, including IP addresses, for analytics purposes with third parties such as web analytics partners, application developers, and ad networks. If your IP address is shared, it may be used to estimate general location and other technographics such as connection speed, whether you have visited the website/app in a shared location, and type of the device used to visit the website/app. They may aggregate information about our advertising and what you see on the website/app and then provide auditing, research and reporting for us and our advertisers.   <br></br><br></br><br></br>
+We may share portions of our log file data, including IP addresses, for analytics purposes with third parties such as web analytics partners, application developers, and ad networks. If your IP address is shared, it may be used to estimate general location and other technographics such as connection speed, whether you have visited the website/app in a shared location, and type of the device used to visit the website/app. They may aggregate information about our advertising and what you see on the website/app and then provide auditing, research and reporting for us and our advertisers. <br></br><br></br><br></br>
 
 We may also disclose personal and non-personal information about you to government or law enforcement officials or private parties as we, in our sole discretion, believe necessary or appropriate in order to respond to claims, legal process (including subpoenas), to protect our rights and interests or those of a third party, the safety of the public or any person, to prevent or stop any illegal, unethical, or legally actionable activity, or to otherwise comply with applicable court orders, laws, rules and regulations.<br></br><br></br><br></br> 
 <br></br>
@@ -306,8 +309,10 @@ Don't hesitate to contact us if you have any questions.
                           </Card>
                      </Col>
                 </div>
-                </Container>
-        </div>
-    )
-}
+            </Container>
+          </div>
+     <Footer/>
+   </div>
+);
+};
 export default Privacy;

@@ -1,14 +1,17 @@
-import React from 'react'
-import { Container, Row, Col, Card} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import  mark  from '../../../assets/mark-icn.png';
-import mark_blue from  '../../../assets/blue-mark.png';
-import mark_green from '../../../assets/green-mark.png';
-import './payment.css';
+import React from "react";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import mark from "../../../assets/mark-icn.png";
+import mark_blue from "../../../assets/blue-mark.png";
+import mark_green from "../../../assets/green-mark.png";
+import "./payment.css";
+import Navbar from "../HomeComponents/newnavbar";
+import Footer from "../HomeComponents/newfooter";
 
 const Paymentpage=()=>{
     return(
         <div>
+            <Navbar/>
             <div className="payment-section">
                 <Container>
                     <div className="payment-decription"><h3>We have curated payments plans with you in mind</h3></div>
@@ -93,7 +96,7 @@ const Paymentpage=()=>{
                         </Col>
                     </Row>
                     <Row className="centered_payment">
-                        <Col md={3} sm={6}>
+                        <Col md={3} sm={6} className="margined_col">
                             <Card className="subcription-card">
                                 <Card.Header className="subscription-header">
                                     <h6 className="red">Gift a Subscription</h6> 
@@ -107,7 +110,8 @@ const Paymentpage=()=>{
                     </Row>
                 </Container>
             </div>
-        </div>
-    )
-}
+         <Footer/>
+       </div>
+    );   
+};
 export default Paymentpage;
