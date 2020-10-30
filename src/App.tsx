@@ -83,8 +83,9 @@ import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page"
 import Privacy from "./Components/Home/Privacy_policy_page/privacy_policy";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
-import NewDashboardAllMessages from "./Components/KigenniDashboard/NewDashboardAllMessages";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
+import NewDashboardAllMessages from './Components/KigenniDashboard/NewDashboardAllMessages';
+import { NewAbout } from "./Components/Home/About/NewAbout";
 
 class App extends Component {
   constructor(props) {
@@ -112,6 +113,7 @@ class App extends Component {
               []
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/aboutus" component={NewAbout} />
               <Route exact path="/faq" component={Faq} />
               <Route exact path="/clientchat" component={OnboardingChat} />
               <Route

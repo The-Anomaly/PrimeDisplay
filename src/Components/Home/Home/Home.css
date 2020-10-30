@@ -853,15 +853,21 @@ button {
 
 /*Landing Page Redesign */
 .redoNav {
-  background: transparent;
-  position: absolute;
+  position: relative;
+  background: #23304c;
+  color: #ffffff;
   width: 100%;
   padding-top: 2rem;
   padding-right: 4rem;
   padding-left: 8rem;
+  padding-bottom: 2rem;
+}
+.nav_titlenew {
+  display: flex;
+  font-size: 14px;
+  font-weight: 300;
 }
 .navtext {
-  color: #ffffff;
   font-family: "Brfirma-Regular";
   letter-spacing: 0.3px;
   font-size: 15px;
@@ -869,15 +875,19 @@ button {
 .hhome {
   font-family: "Brfirma-Bold";
 }
+.homecontainer {
+  padding: 0;
+}
 .backdrop {
   background-image: url("../../../assets/herobackdrop1.svg");
+  background-size: cover;
 }
 .hometext {
   color: #ffffff;
-  margin-top: 13rem;
+  margin-top: 10rem;
   margin-bottom: 15rem;
-  padding-left: 6rem;
-  padding-right: 2.5rem;
+  padding-left: 2rem;
+  padding-right: 6.5rem;
   font-size: 45px;
   font-family: "Brfirma-Bold";
 }
@@ -984,6 +994,11 @@ button {
   width: 40vw;
   margin-right: -5%;
 }
+.crazycircle3 .larrow6 {
+  margin-right: -35%;
+  margin-top: -35%;
+  width: 7vw;
+}
 .crazycircle4 {
   display: flex;
   width: 80%;
@@ -1055,7 +1070,7 @@ button {
 .fourthsec {
   display: flex;
   justify-content: space-between;
-  padding: 6rem 3rem;
+  padding: 2rem 3rem;
 }
 .fourthsubsec {
   text-align: center;
@@ -1073,9 +1088,33 @@ button {
   letter-spacing: 0.3px;
   margin-top: 0.7rem;
 }
+.homelaptop {
+  position: absolute;
+  width: 100%;
+}
+.homelaptop1 {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  top: 14rem;
+}
+.fourthposit {
+  margin: 1rem auto;
+  margin-bottom: 3rem;
+}
+.trustimg {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.trustimgin {
+  background: #17ddea;
+  border-radius: 50%;
+  padding: 0.875rem;
+}
 /*Hear From Clients*/
 .homemap {
   background-image: url("../../../assets/map.svg");
+  background-size: cover;
   padding: 3rem;
 }
 .homemaptitle {
@@ -1267,4 +1306,188 @@ button {
   font-size: 15px;
   letter-spacing: 0.5px;
   margin-top: 1.5rem;
+}
+.privacynav {
+  background: #ffffff;
+  color: #000000;
+}
+
+/*About Us*/
+.aboutfirstsec {
+  background-image: url(../../../assets/contact.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  padding: 6rem;
+  padding-left: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.aboutfirsthead {
+  font-family: "Brfirma-Bold";
+  font-size: 42px;
+  letter-spacing: 1px;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+.aboutfirsttxt {
+  font-family: "Brfirma-Regular";
+  margin-right: 36%;
+  font-size: 15px;
+  letter-spacing: 0.7px;
+  line-height: 25px;
+  margin-bottom: 6rem;
+}
+.withclaritytxt {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  padding-left: 4rem;
+}
+.abtwithclarityrow {
+  margin: auto;
+  background: #f8f8f8;
+  padding-bottom: 6rem;
+}
+.abtwithclarity {
+  color: #001833;
+  font-size: 28px;
+  width: 100%;
+  margin: 8rem 0 2rem 5rem;
+  font-weight: 600;
+}
+.abttick {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 650px;
+}
+.abtticktxt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 710px;
+  padding-left: 2.5rem;
+  width: 400px;
+}
+.yearlong1 {
+  margin-top: 1.5rem;
+}
+.yearlong2 {
+  margin-top: 2.5rem;
+}
+.yearlong3 {
+  margin-top: 1rem;
+}
+.withclarityimg {
+  display: flex;
+  justify-content: center;
+}
+.profimg1 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7rem;
+  align-self: center;
+  margin-right: 2rem;
+  height: 580px;
+  justify-content: space-evenly;
+}
+.profimg2 {
+  display: flex;
+  flex-direction: column;
+  height: 680px;
+  justify-content: space-evenly;
+}
+.profimg1b {
+  align-self: flex-end;
+}
+.profimg2a {
+  align-self: flex-start;
+}
+.tickdash {
+  border: 1px dashed #666666;
+  transform: rotate(90deg);
+  width: 60px;
+  margin-left: -0.8rem;
+}
+.tickdash1 {
+  width: 34px;
+}
+.abthapprod {
+  margin: auto;
+  padding: 3rem 5rem;
+  padding-bottom: 9rem;
+}
+.abtprod {
+  font-family: "Brfirma-Bold";
+  color: #001833;
+  font-size: 20px;
+  margin: 1.5rem auto;
+}
+.abtprodsec {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+.prodsec1 {
+  background: #d8f9da;
+  border-radius: 8px 8px 0px 8px;
+  flex: 50%;
+  text-align: center;
+  padding: 3rem;
+}
+.prodsec2 {
+  flex: 50%;
+  font-family: "Brfirma-Regular";
+  padding: 3rem;
+  font-size: 15px;
+}
+.for1 {
+  font-family: "Brfirma-Bold";
+  margin-bottom: 3rem;
+  font-size: 17px;
+}
+.prodindi {
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  padding-left: 0.3rem;
+}
+.indibox {
+  z-index: -1;
+  position: relative;
+  left: -6.6rem;
+  width: 115px;
+  top: -0.1rem;
+}
+.prodgreentick {
+  margin-right: 3rem;
+  margin-left: 3rem;
+  height: 28px;
+}
+.indilist {
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+.prodsec3 {
+  flex: 50%;
+}
+.indibox1 {
+  left: -3.85rem;
+  width: 80px;
+}
+.prodsec4 {
+  background: #d8f9da;
+  border-radius: 8px 8px 0px 8px;
+  flex: 50%;
+  width: 50%;
+}
+.sec4img {
+  width: 100%;
+  padding-top: 5rem;
+}
+.grntick {
+  margin-left: 1rem;
 }

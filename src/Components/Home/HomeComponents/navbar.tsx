@@ -206,12 +206,12 @@ const Navbar = withRouter((props: any) => {
                         </div>
                       </div>
                       <div className="listwraperMob">
-                        <div
+                        {/* <div
                           className="navmobbtn"
                           onClick={getCurrentAssessmentPosition}
                         >
                           Dashboard
-                        </div>
+                        </div> */}
                       </div>
                     </>
                   )}

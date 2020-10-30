@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
 import { Row } from "react-bootstrap";
+import demoLogoLight from "../../../assets/demologolight.png";
 
 const newNavbar = withRouter((props: any) => {
   const [state, setShowNav] = React.useState({
@@ -228,40 +229,50 @@ const newNavbar = withRouter((props: any) => {
           </div>
         </div>
         <Row md={12}>
-        <div className="nav-wrapper redoNav">
-          <div className="nav_title">
-            <div className="logo_clarity">
-              <Link to="/">
-                <img src={demoLogo} alt="clarity_logo" />
-              </Link>
+          <div
+            className={
+              props.mode === "light"
+                ? "nav-wrapper redoNav privacynav"
+                : "nav-wrapper redoNav"
+            }
+          >
+            <div className="nav_titlenew">
+              <div className="logo_clarity">
+                <Link to="/">
+                  {props.mode === "light" ? (
+                    <img src={demoLogoLight} alt="clarity_logo" />
+                  ) : (
+                    <img src={demoLogo} alt="clarity_logo" />
+                  )}
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="nav_title navtext">
-            <span className="title hhome">
-              <Link to="/">Home</Link>
-            </span>
-            <span className="title">
-              <Link to="/about">About Us</Link>
-            </span>
-            <span className="title">
-              <Link to="/about">Payments</Link>
-            </span>
-            <span className="title">
-              <Link to="/about">Contact Us</Link>
-            </span>
-            <span className="title">
-              <Link to="/about">FAQ</Link>
-            </span>
-            {/* <span className="title">
+            <div className="nav_titlenew navtext">
+              <span className="title hhome">
+                <Link to="/">Home</Link>
+              </span>
+              <span className="title">
+                <Link to="/about">About Us</Link>
+              </span>
+              <span className="title">
+                <Link to="/about">Payments</Link>
+              </span>
+              <span className="title">
+                <Link to="/about">Contact Us</Link>
+              </span>
+              <span className="title">
+                <Link to="/about">FAQ</Link>
+              </span>
+              {/* <span className="title">
               <Link to="/clarityforteams">SERVICES</Link>
             </span> */}
-            {!userLoggedIn ? (
-              <NavIsLoggedOut />
-            ) : (
-              <NavIsLoggedIn Logout={logout} />
-            )}
+              {!userLoggedIn ? (
+                <NavIsLoggedOut />
+              ) : (
+                <NavIsLoggedIn Logout={logout} />
+              )}
+            </div>
           </div>
-        </div>
         </Row>
       </div>
     </div>

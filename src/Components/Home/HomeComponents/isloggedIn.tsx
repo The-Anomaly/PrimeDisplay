@@ -114,11 +114,11 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
           Log out
         </button>
       </div>
-      <div className="title1">
+      {/* <div className="title1">
         <button onClick={getCurrentAssessmentPosition} className="title_ll">
           Dashboard
         </button>
-      </div>
+      </div> */}
       <div className="title1">
         <span
           className="useravatarwraper"
