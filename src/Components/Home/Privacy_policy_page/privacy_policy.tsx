@@ -1,14 +1,12 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import "./privacy_policy.css";
-import Navbar from "../HomeComponents/newnavbar";
 import Footer from "../HomeComponents/newfooter";
 import "./../Home/Home.css";
 
 const Privacy = () => {
   return (
     <div>
-      <Navbar mode="light" />
       <Container className="homecontainer" fluid={true}>
         <div className="policy_page">
           <Container>

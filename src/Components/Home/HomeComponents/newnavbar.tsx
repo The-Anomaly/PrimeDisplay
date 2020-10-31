@@ -228,7 +228,7 @@ const newNavbar = withRouter((props: any) => {
             </div>
           </div>
         </div>
-        <Row md={12}>
+        <Row md={12} className="nav_margin">
           <div
             className={
               props.mode === "light"
@@ -249,16 +249,16 @@ const newNavbar = withRouter((props: any) => {
             </div>
             <div className="nav_titlenew navtext">
               <span className="title hhome">
-                <Link to="/">Home</Link>
+                <Link to="/redesign">Home</Link>
               </span>
               <span className="title">
-                <Link to="/about">About Us</Link>
+                <Link to="/aboutus">About Us</Link>
               </span>
               <span className="title">
-                <Link to="/about">Payments</Link>
+                <Link to="/payment">Payments</Link>
               </span>
               <span className="title">
-                <Link to="/about">Contact Us</Link>
+                <Link to="/contact">Contact Us</Link>
               </span>
               <span className="title">
                 <Link to="/about">FAQ</Link>
