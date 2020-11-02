@@ -1497,13 +1497,7 @@ textarea.form-control.jobr {
 textarea.form-control.jobr {
   border: 0.1px solid inherit !important;
 }
-.gbn {
-  color: #a5a5a5;
-  line-height: 41px;
-  padding-left: 1rem;
-  cursor: pointer;
-  margin-top: 1px;
-}
+
 .gbn > a {
   cursor: pointer;
 }
@@ -3088,6 +3082,7 @@ textarea.form-control.jobr {
 .hpadd {
   padding-left: 0px;
   display: inline;
+  color: #a5a5a5;
 }
 
 .task112 {
@@ -3236,6 +3231,7 @@ textarea.form-control.jobr {
 .modcomplete .modal-dialog {
   width: 45%;
 }
+
 textarea,
 .task_det:focus {
   border: #0084f4 !important;
@@ -3739,4 +3735,25 @@ label {
 }
 .couselorsentwrap2{
   padding-bottom: 1rem;
+}
+.skd11{
+  margin-top: 1.8rem;
+}
+.gbn {
+  color: #a5a5a5 !important;
+  line-height: 41px;
+  padding-left: 1rem;
+  cursor: pointer;
+  margin-top: 1px;
+}
+.modcomplete1 .modal-dialog {
+  width: 34% !important;
+  min-width: 270px;
+}
+.datelenght{
+  width: 180px;
+  font-size: 14px;
+}
+.centrmargin{
+  margin: auto;
 }

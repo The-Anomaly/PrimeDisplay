@@ -25,6 +25,9 @@ const Navbar = withRouter((props: any) => {
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
+    if(window.location.pathname==="/counsellordates"){
+      return
+    }
       Axios.get(`${API}/progress`, {
         headers: { Authorization: `Token ${token}` },
       })
@@ -203,12 +206,12 @@ const Navbar = withRouter((props: any) => {
                         </div>
                       </div>
                       <div className="listwraperMob">
-                        <div
+                        {/* <div
                           className="navmobbtn"
                           onClick={getCurrentAssessmentPosition}
                         >
                           Dashboard
-                        </div>
+                        </div> */}
                       </div>
                     </>
                   )}

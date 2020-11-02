@@ -41,7 +41,9 @@ class NewDashboardChat extends React.Component {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          localStorage.setItem("user", JSON.stringify(response?.data));
+          this.setState({
+            userInfo:response.data[0].email
+          })
         }
       })
       .catch((error) => {
@@ -84,7 +86,7 @@ class NewDashboardChat extends React.Component {
   sendMessageHandler = (e) => {
     e.preventDefault();
     const messageObject = {
-      from: this.state.userInfo?.email,
+      from: this.state.userInfo,
       content: this.state.message,
       chatId: this.props.match.params.chatID,
     };
@@ -95,7 +97,7 @@ class NewDashboardChat extends React.Component {
   };
 
   render() {
-    console.log(this.props.messages);
+    console.log(this.state.userInfo);
     const { isLoading, user, message }: any = this.state;
     return (
       <>
@@ -119,7 +121,7 @@ class NewDashboardChat extends React.Component {
                     <Col md={12} className="youwss">
                       {this.props.messages?.map((data, ind) => (
                         <>
-                          {data.author !== this.props.match.params.email && (
+                          {data.author === this.props.match.params.email && (
                             <div className="usersentwrap1" key={ind}>
                               <div className="youwrap">
                                 <span className="you11">You</span>
@@ -133,7 +135,7 @@ class NewDashboardChat extends React.Component {
                             </div>
                           )}
                           <div className="hihh">
-                            {data.author === this.props.match.params.email && (
+                            {data.author !== this.props.match.params.email && (
                               <div className="couselorsentwrap2">
                                 <div className="youwraprev">
                                   <span className="youdate">

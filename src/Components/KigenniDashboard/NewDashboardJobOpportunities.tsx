@@ -352,18 +352,39 @@ class NewDashboardJobOpportunities extends React.Component {
                             <option value="Employed" key={""} id="">
                               Employed
                             </option>
+                            <option value="Student" key={""} id="">
+                              Student
+                            </option>
+                            <option value="Job Searching" key={""} id="">
+                              Job Searching
+                            </option>
+                            <option value="Employed-Multiple Jobs" key={""} id="">
+                              Employed-Multiple Jobs
+                            </option>
                           </Form.Control>
                         </Col>
                         <Col md={6}>
                           <div className="whatdoudo">
                             Opportunities Open to{" "}
                           </div>
-                          <textarea
+                          <Form.Control
+                            as="select"
+                            className="fmc jobr subhyt"
                             name="opportunities_open_to"
                             value={opportunities_open_to}
                             onChange={this.handleChange}
-                            className="form-control jobr subhyt"
-                          ></textarea>
+                            placeholder="Select the type of opportunity you are open for"
+                          >
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Courses/ trainings">
+                              Courses/ trainings
+                            </option>
+                            <option value="Scholarships">Scholarships</option>
+                            <option value="Business resources">
+                              Business resources
+                            </option>
+                          </Form.Control>
                         </Col>
                       </Row>
                       <Row className="rowla">

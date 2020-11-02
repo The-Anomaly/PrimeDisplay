@@ -112,7 +112,7 @@ const SideBarNewDashboard = (props: any) => {
                 className="sideimage"
                 alt="sideimage"
               />
-              Counsellors Recommendation
+              Recommended Task
             </Link>
           </div>
           <div className={props.todo ? "activegb jusas" : "gbn jusas"}>
@@ -150,7 +150,7 @@ const SideBarNewDashboard = (props: any) => {
                 className="sideimage"
                 alt="sideimage"
               />
-              Job Recommendation
+              Opportunity Recommended
             </Link>
           </div>
           <div className={props.builder ? "activegb" : "gbn"}>

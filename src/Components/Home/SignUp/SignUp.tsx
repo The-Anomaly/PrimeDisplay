@@ -216,7 +216,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
         console.log(error.response);
         setFormState({
           ...state,
-          errorMessage: "Failed to Sign Up",
+          errorMessage: error?.response?.data[0]?.message,
           isloading: false,
           error: false,
         });

@@ -46,7 +46,7 @@ const CounsellorOverview = (props: any) => {
     taskDescription: "",
     session_notes: "",
     session_about: "",
-    rate1: 0,
+    rate1: 5,
   });
   const {
     user,
@@ -139,6 +139,7 @@ const CounsellorOverview = (props: any) => {
       ...state,
       isOpen: false,
     });
+    window.location.reload()
   };
   const onStarClick = (nextValue, prevValue, name) => {
     setFormState({
@@ -147,7 +148,7 @@ const CounsellorOverview = (props: any) => {
     });
   };
   const formatTime = (date) => {
-    const dateTime = moment(date).format("MMM YYYY");
+    const dateTime = moment(date).format("Do MMM YYYY");
     return dateTime;
   };
   const inputChangeHandler = (e) => {
@@ -253,7 +254,7 @@ const CounsellorOverview = (props: any) => {
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(chart);
+  console.log(counsellorData);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -376,7 +377,7 @@ const CounsellorOverview = (props: any) => {
                         </div>
                       </div>
                     ))}
-                    {counsellorData.length! > 0 && !isLoading && (
+                    {counsellorData.length === 0 && !isLoading && (
                       <>
                         <div className="text-center">
                           <img src={noData} className="noData" alt="noData" />
@@ -410,7 +411,7 @@ const CounsellorOverview = (props: any) => {
         <Container>
           <h6>{name}</h6>
           <span className="modal-btn">
-            <a href={`/employers/result/${session_email}`} target="blank">
+            <a href={`/counsellor/result/${session_email}`} target="blank">
               View users result <i className="fa fa-arrow-right"></i>
             </a>
           </span>
@@ -604,7 +605,7 @@ const CounsellorOverview = (props: any) => {
               value={session_notes}
               onChange={inputChangeHandler}
             />
-            <Row>
+            {/* <Row>
               <Col md={3}>
                 <label>Rate this session</label>
               </Col>
@@ -619,7 +620,7 @@ const CounsellorOverview = (props: any) => {
                   />
                 </div>
               </Col>
-            </Row>
+            </Row> */}
             <textarea
               className="issues-textbox-1 form-control"
               placeholder="Say something about the session"

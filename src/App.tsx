@@ -83,6 +83,7 @@ import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page"
 import Privacy from "./Components/Home/Privacy_policy_page/privacy_policy";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
+import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
 import NewDashboardAllMessages from './Components/KigenniDashboard/NewDashboardAllMessages';
 import { NewAbout } from "./Components/Home/About/NewAbout";
 
@@ -392,6 +393,11 @@ class App extends Component {
                 exact
                 path="/usermessagehistory/:email/:chatID"
                 component={NewDashboardChat}
+              />
+              <Route
+                exact
+                path="/counsellor/result/:email"
+                component={FullResultForCounsellors}
               />
               <Route
                 exact
