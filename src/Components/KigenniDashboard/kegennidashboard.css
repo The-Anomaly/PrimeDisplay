@@ -1884,6 +1884,11 @@ textarea.form-control.jobr {
 }
 .norec {
   text-align: center;
+  min-height: 350px;
+}
+.dsdcx {
+  min-height: 350px;
+  width: 90%;
 }
 .norecommendations {
   width: 32%;
@@ -3557,7 +3562,7 @@ input,
   }
 }
 .notpaidfix {
-  margin-top: .2rem !important;
+  margin-top: 0.2rem !important;
 }
 .notfilled {
   color: red;
@@ -3622,11 +3627,11 @@ label {
 input:focus {
   border: none;
 }
-.dkcxx{
+.dkcxx {
   display: flex;
 }
-.dscvv1{
-  padding-left: 1rem;  
+.dscvv1 {
+  padding-left: 1rem;
 }
 .todo-input::placeholder {
   font-size: 12px;
@@ -3730,13 +3735,13 @@ label {
 .precision1 {
   width: 110px !important;
 }
-.jusas{
-  margin-top: .4rem !important;
+.jusas {
+  margin-top: 0.4rem !important;
 }
-.couselorsentwrap2{
+.couselorsentwrap2 {
   padding-bottom: 1rem;
 }
-.skd11{
+.skd11 {
   margin-top: 1.8rem;
 }
 .gbn {
@@ -3750,10 +3755,17 @@ label {
   width: 34% !important;
   min-width: 270px;
 }
-.datelenght{
+.datelenght {
   width: 180px;
   font-size: 14px;
 }
-.centrmargin{
+.centrmargin {
   margin: auto;
+}
+.newmessage12 {
+  position: absolute;
+  bottom: 0px;
+  right: 2rem;
+  width: 50px;
+  cursor: pointer;
 }

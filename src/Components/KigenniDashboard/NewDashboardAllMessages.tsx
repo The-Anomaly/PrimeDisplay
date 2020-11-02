@@ -14,6 +14,7 @@ import moment from "moment";
 import noplan from "../../assets/noplan.png";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
+import newmessage from "../../assets/newmessage.png";
 
 const NewDashboardAllMessages = withRouter((props: any) => {
   const [state, setState] = React.useState<any>({
@@ -53,7 +54,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
       .catch((error) => {
         console.log(error.response);
         if (error && error.response && error.response.data) {
-         return setState({
+          return setState({
             ...state,
             errorMessage: error?.response?.data?.message,
             isLoading: false,
@@ -93,6 +94,57 @@ const NewDashboardAllMessages = withRouter((props: any) => {
             return setState({
               ...state,
               userData: [...res.data].reverse(),
+              errorMessage: "",
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error?.response?.status === 400) {
+          setState({
+            ...state,
+            errorMessage: error.response.data.message,
+            userData: [],
+          });
+        }
+        console.log(error.response);
+        if (error && error.response && error.response.data) {
+          return setState({
+            ...state,
+            errorMessage: error?.response?.data?.message,
+            isLoading: false,
+            userData: [],
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const startChat = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const user1: any = localStorage.getItem("user");
+    const User = JSON.parse(user1);
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(res);
+          window.location.assign(
+            `/usermessagehistory/${user1.email}/${res.data.id}`
+          );
+          if (res.status === 200) {
+            return setState({
+              ...state,
               errorMessage: "",
             });
           }
@@ -210,6 +262,20 @@ const NewDashboardAllMessages = withRouter((props: any) => {
                     )}
                   </Col>
                 </Row>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                {" "}
+                <div className="dsdcx">
+                  <img
+                    src={newmessage}
+                    onClick={startChat}
+                    title="New Message"
+                    className="newmessage12"
+                    alt="newmessage"
+                  />{" "}
+                </div>
               </Col>
             </Row>
           </Col>
