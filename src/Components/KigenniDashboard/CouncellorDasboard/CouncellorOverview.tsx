@@ -46,7 +46,7 @@ const CounsellorOverview = (props: any) => {
     taskDescription: "",
     session_notes: "",
     session_about: "",
-    rate1: 0,
+    rate1: 5,
   });
   const {
     user,

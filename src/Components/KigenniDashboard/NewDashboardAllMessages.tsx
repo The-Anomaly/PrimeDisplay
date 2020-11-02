@@ -53,7 +53,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
       .catch((error) => {
         console.log(error.response);
         if (error && error.response && error.response.data) {
-          setState({
+         return setState({
             ...state,
             errorMessage: error?.response?.data?.message,
             isLoading: false,
