@@ -44,6 +44,7 @@ const CounsellorOverview = (props: any) => {
     session_email: "",
     taskDuration: "",
     taskDescription: "",
+    completedStatus:false,
     session_notes: "",
     session_about: "",
     rate1: 5,
@@ -57,6 +58,7 @@ const CounsellorOverview = (props: any) => {
     taskTitle,
     taskDuration,
     recommendations,
+    completedStatus,
     taskDescription,
     session_notes,
     session_about,
@@ -120,6 +122,7 @@ const CounsellorOverview = (props: any) => {
   }, []);
   const openModal = (id) => {
     console.log(user);
+    console.log(id);
     user.forEach((data) => {
       console.log(data);
       if (data.id === id) {
@@ -129,6 +132,7 @@ const CounsellorOverview = (props: any) => {
           isOpen: true,
           sessionId: data.id,
           session_email: data.email,
+          completedStatus:data.status,
           user_issues: data.user_vent,
         });
       }
@@ -218,7 +222,7 @@ const CounsellorOverview = (props: any) => {
           console.log(res);
           notify("Successful");
           setTimeout(() => {
-            // window.location.reload();
+            window.location.reload();
           }, 2000);
         })
         .catch((err) => {
@@ -537,6 +541,9 @@ const CounsellorOverview = (props: any) => {
           </Accordion>
           {recommendations.map((data, i) => (
             <Accordion defaultActiveKey="" className="councld1">
+              <button onClick={()=>{
+
+              }}>Edit</button>
               <div className="councld11">
                 <Accordion.Toggle
                   as={Card.Header}
@@ -573,6 +580,7 @@ const CounsellorOverview = (props: any) => {
                             placeholder="enter a title"
                             name="taskTitle"
                             value={data.title}
+                            disabled={true}
                             onChange={inputChangeHandler}
                             className="form-control todo-input"
                             size={25}
@@ -588,6 +596,7 @@ const CounsellorOverview = (props: any) => {
                             className="form-control todo-input"
                             name="taskDuration"
                             value={data.duration}
+                            disabled={true}
                             onChange={inputChangeHandler}
                             size={25}
                           />
@@ -602,6 +611,7 @@ const CounsellorOverview = (props: any) => {
                             rows={3}
                             className="form-control text-decription"
                             name="taskDescription"
+                            disabled={true}
                             value={data.description}
                             onChange={inputChangeHandler}
                           />
@@ -623,8 +633,14 @@ const CounsellorOverview = (props: any) => {
           />
           <div className="center-btn">
             {" "}
-            <span className="modal-btn" onClick={complete_session}>
-              Close session <i className="fa fa-arrow-right"></i>
+            <span
+              className="modal-btn"
+              onClick={() =>
+                completedStatus ? notify("Session closed") : complete_session()
+              }
+            >
+              {completedStatus ? "Session Closed" : " Close session"}{" "}
+              <i className="fa fa-arrow-right"></i>
             </span>
           </div>
         </Container>

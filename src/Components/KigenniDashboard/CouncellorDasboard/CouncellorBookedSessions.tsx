@@ -44,6 +44,7 @@ const CounsellorBookedSessions = (props: any) => {
     count: "",
     success: "",
     total_pages: "",
+    completedStatus: false,
     user_issues: "",
     sessionId: "",
     recommendations: [],
@@ -65,6 +66,7 @@ const CounsellorBookedSessions = (props: any) => {
           isOpen: true,
           session_email: data.email,
           sessionId: data.id,
+          completedStatus: data.status,
           user_issues: data.user_vent,
         });
       }
@@ -81,6 +83,7 @@ const CounsellorBookedSessions = (props: any) => {
     rate1,
     nextLink,
     isLoading,
+    completedStatus,
     session_email,
     counsellorData,
     prevLink,
@@ -536,6 +539,19 @@ const CounsellorBookedSessions = (props: any) => {
               rows={3}
             />
           </form>
+          <form>
+            <label>Take down notes during sessions</label>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="scribble down anything"
+              cols={80}
+              rows={3}
+              name="session_notes"
+              value={session_notes}
+              disabled={completedStatus}
+              onChange={inputChangeHandler}
+            />
+          </form>
           <Accordion defaultActiveKey="" className="councld1">
             <div className="councld11">
               <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
@@ -703,41 +719,6 @@ const CounsellorBookedSessions = (props: any) => {
               </Accordion.Collapse>
             </Accordion>
           ))}
-          <form>
-            <label>Take down notes during sessions</label>
-            <textarea
-              className="issues-textbox-1 form-control"
-              placeholder="scribble down anything"
-              cols={80}
-              rows={3}
-              name="session_notes"
-              value={session_notes}
-              onChange={inputChangeHandler}
-            />
-            {/* <Row>
-              <Col md={6} className="dkcxx">
-                <label>Rate this session</label>
-                <div className="assessrating dscvv1">
-                  <StarRatingComponent
-                    name="rate1"
-                    starCount={5}
-                    value={rate1}
-                    onStarClick={onStarClick}
-                    emptyStarColor={"#444"}
-                  />
-                </div>
-              </Col>
-            </Row> */}
-            <textarea
-              className="issues-textbox-1 form-control"
-              placeholder="Say something about the session"
-              cols={80}
-              onChange={inputChangeHandler}
-              value={session_about}
-              name="session_about"
-              rows={3}
-            />
-          </form>
           <ToastContainer
             enableMultiContainer
             containerId={"B"}
@@ -748,8 +729,16 @@ const CounsellorBookedSessions = (props: any) => {
           <div className="center-btn">
             {" "}
             <Link to="counsellorbookings">
-              <span className="modal-btn" onClick={complete_session}>
-                Close session <i className="fa fa-arrow-right"></i>
+              <span
+                className="modal-btn"
+                onClick={() =>
+                  completedStatus
+                    ?notify("Session closed") 
+                    :complete_session()
+                }
+              >
+                {completedStatus ? "Session Closed" : " Close session"}{" "}
+                <i className="fa fa-arrow-right"></i>
               </span>
             </Link>
           </div>

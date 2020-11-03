@@ -159,25 +159,6 @@ class NewDashboard extends React.Component {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-  handleChatCheck = () => {
-    this.setState({ isLoading: true });
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (response?.data[0]?.direction_plan === true) {
-          return window.location.assign("/counsellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/counsellorfee");
-        }
-      })
-      .catch((error) => {});
-  };
   openWarning = () => {
     this.setState({
       showWarning: true,
@@ -243,12 +224,11 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                     <div className="">
-                      <Button
-                        className="retaketest"
-                        onClick={this.handleChatCheck}
-                      >
-                        Call a counsellor
-                      </Button>
+                      <Link to="/counsellordates">
+                        <Button className="retaketest">
+                          Call a counsellor
+                        </Button>
+                      </Link>
                       {showfullresult && (
                         <Button
                           className="retaketest2"
@@ -259,7 +239,6 @@ class NewDashboard extends React.Component {
                       )}
                     </div>
                   </div>
-
                   {!showfullresult && (
                     <div className="notpaid hh">
                       <div className="notpaid1">

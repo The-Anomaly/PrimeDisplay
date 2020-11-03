@@ -138,9 +138,10 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     ])
       .then(
         Axios.spread((res) => {
+          console.log(User);
           console.log(res);
           window.location.assign(
-            `/usermessagehistory/${user1.email}/${res.data.id}`
+            `/usermessagehistory/${User[0].email}/${res.data.chatId}`
           );
           if (res.status === 200) {
             return setState({
@@ -254,29 +255,27 @@ const NewDashboardAllMessages = withRouter((props: any) => {
                         <div className="udont">{errorMessage}</div>
                         <div
                           className="udont1 ntfnd"
-                          onClick={() => getMessages()}
+                          onClick={() => startChat()}
                         >
-                          View messages
+                          Leave a Message
                         </div>
                       </div>
                     )}
+                    {/* <div className="dsdcx"> */}
+                      <img
+                        src={newmessage}
+                        onClick={startChat}
+                        title="New Message"
+                        className="newmessage12"
+                        alt="newmessage"
+                      />{" "}
+                    {/* </div> */}
                   </Col>
                 </Row>
               </Col>
             </Row>
             <Row>
-              <Col>
-                {" "}
-                <div className="dsdcx">
-                  <img
-                    src={newmessage}
-                    onClick={startChat}
-                    title="New Message"
-                    className="newmessage12"
-                    alt="newmessage"
-                  />{" "}
-                </div>
-              </Col>
+              <Col></Col>
             </Row>
           </Col>
         </Row>
