@@ -20,13 +20,13 @@ const Navbar = withRouter((props: any) => {
     window.scrollTo(-0, -0);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
+    if(window.location.pathname==="/counsellordates"){
+      return
+    }
     if (token) {
       setShowNav({ ...state, userLoggedIn: true });
     } else {
       setShowNav({ ...state, userLoggedIn: false });
-    }
-    if(window.location.pathname==="/counsellordates"){
-      return
     }
       Axios.get(`${API}/progress`, {
         headers: { Authorization: `Token ${token}` },
@@ -37,7 +37,7 @@ const Navbar = withRouter((props: any) => {
           }
         })
         .catch((error) => {
-          
+         console.log(error) 
         });
   }, []);
   const setRedirect = () => {

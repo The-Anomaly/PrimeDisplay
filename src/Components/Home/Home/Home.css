@@ -865,6 +865,7 @@ button {
   padding-right: 4rem;
   padding-left: 8rem;
   padding-bottom: 2rem;
+  transition: all.6s;
 }
 .nav_titlenew {
   display: flex;

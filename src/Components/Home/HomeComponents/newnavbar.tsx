@@ -12,6 +12,7 @@ import { Row } from "react-bootstrap";
 import demoLogoLight from "../../../assets/demologolight.png";
 
 const newNavbar = withRouter((props: any) => {
+  const [navbar, setNavbar] = React.useState(false);
   const [state, setShowNav] = React.useState({
     showNav: false,
     userLoggedIn: false,
@@ -22,11 +23,25 @@ const newNavbar = withRouter((props: any) => {
     window.scrollTo(-0, -0);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
+    if(window.location.pathname==="/counsellordates"){
+      return
+    }
     if (token) {
       setShowNav({ ...state, userLoggedIn: true });
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
+      Axios.get(`${API}/progress`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+        .then((response) => {
+          if (response.status === 200 && response.data[0].next === "home") {
+            return props.history.push(`/free/dashboard`);
+          }
+        })
+        .catch((error) => {
+         console.log(error) 
+        });
   }, []);
   const setRedirect = () => {
     setShowNav({
@@ -44,6 +59,17 @@ const newNavbar = withRouter((props: any) => {
     localStorage.clear();
     setRedirect();
   };
+
+  const handleScroll = () => {
+    console.log(window.scrollY);
+    if (window.scrollY > 720) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+  window.addEventListener("scroll", handleScroll);
+
   const getCurrentAssessmentPosition = (): void => {
     const availableToken = localStorage.getItem("userToken");
     const token: string = availableToken
@@ -231,19 +257,16 @@ const newNavbar = withRouter((props: any) => {
         <Row md={12} className="nav_margin">
           <div
             className={
-              props.mode === "light"
-                ? "nav-wrapper redoNav privacynav"
-                : "nav-wrapper redoNav"
+              navbar ? "nav-wrapper redoNav privacynav" : "nav-wrapper redoNav"
             }
           >
             <div className="nav_titlenew">
               <div className="logo_clarity">
                 <Link to="/">
-                  {props.mode === "light" ? (
-                    <img src={demoLogoLight} alt="clarity_logo" />
-                  ) : (
-                    <img src={demoLogo} alt="clarity_logo" />
-                  )}
+                  <img
+                    src={navbar ? demoLogoLight : demoLogo}
+                    alt="clarity_logo"
+                  />
                 </Link>
               </div>
             </div>
@@ -266,11 +289,16 @@ const newNavbar = withRouter((props: any) => {
               {/* <span className="title">
               <Link to="/clarityforteams">SERVICES</Link>
             </span> */}
-              {!userLoggedIn ? (
+              {/* {!userLoggedIn ? (
                 <NavIsLoggedOut />
               ) : (
                 <NavIsLoggedIn Logout={logout} />
-              )}
+              )} */}
+              <div className="title1 shiftlefff">
+                <Link to="/signin">
+                  <button className="title_t signupbtn">LOGIN</button>
+                </Link>
+              </div>
             </div>
           </div>
         </Row>
