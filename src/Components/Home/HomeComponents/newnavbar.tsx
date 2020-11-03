@@ -270,7 +270,7 @@ const newNavbar = withRouter((props: any) => {
                 </Link>
               </div>
             </div>
-            <div className="nav_titlenew navtext">
+            <div className="nav_titlenew">
               <span className="title hhome">
                 <Link to="/redesign">Home</Link>
               </span>
@@ -296,7 +296,7 @@ const newNavbar = withRouter((props: any) => {
               )} */}
               <div className="title1 shiftlefff">
                 <Link to="/signin">
-                  <button className="title_t signupbtn">LOGIN</button>
+                  <button className="title_t signupbtn newlogin">Login</button>
                 </Link>
               </div>
             </div>

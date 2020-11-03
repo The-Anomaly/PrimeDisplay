@@ -861,21 +861,17 @@ button {
   background: #23304c;
   color: #ffffff;
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 1.4rem;
   padding-right: 4rem;
   padding-left: 8rem;
-  padding-bottom: 2rem;
-  transition: all.6s;
+  padding-bottom: 1.4rem;
 }
 .nav_titlenew {
   display: flex;
   font-size: 14px;
   font-weight: 300;
-}
-.navtext {
   font-family: "Brfirma-Regular";
   letter-spacing: 0.3px;
-  font-size: 15px;
 }
 .hhome {
   font-family: "Brfirma-Bold";
@@ -1606,4 +1602,8 @@ button {
 }
 .grntick {
   margin-left: 1rem;
+}
+.newlogin {
+  font-size: 14px;
+  height: 40px;
 }
