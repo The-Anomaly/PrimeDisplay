@@ -39,7 +39,7 @@ const CounsellorOverview = (props: any) => {
     user_issues: "",
     sessionId: "",
     recommendations: [],
-    nextSessionMessage:'',
+    nextSessionMessage: "",
     taskTitle: "",
     session_email: "",
     taskDuration: "",
@@ -84,7 +84,7 @@ const CounsellorOverview = (props: any) => {
       }),
     ])
       .then(
-        Axios.spread((res, res1,res2) => {
+        Axios.spread((res, res1, res2) => {
           console.log(res);
           if (res.status === 200) {
             setFormState({
@@ -98,7 +98,7 @@ const CounsellorOverview = (props: any) => {
               nextLink: res1.data.next,
               prevLink: res1.data.previous,
               total_pages: res1.data.total_pages,
-              nextSessionMessage:res2.data.message
+              nextSessionMessage: res2.data.message,
             });
           }
         })
@@ -139,7 +139,7 @@ const CounsellorOverview = (props: any) => {
       ...state,
       isOpen: false,
     });
-    window.location.reload()
+    window.location.reload();
   };
   const onStarClick = (nextValue, prevValue, name) => {
     setFormState({
@@ -310,9 +310,7 @@ const CounsellorOverview = (props: any) => {
                         </div>
                       </div>
                     </div>
-                    <div className="yudd1">
-                      {nextSessionMessage}
-                    </div>
+                    <div className="yudd1">{nextSessionMessage}</div>
                     {counsellorData.splice(0, 2).map((data, i) => (
                       <div className="msgs teammembr booked bookedover" key={i}>
                         <div className="fromerit summary">
@@ -423,9 +421,31 @@ const CounsellorOverview = (props: any) => {
               onChange={inputChangeHandler}
               value={user_issues}
               placeholder="issues*"
+              disabled={true}
               cols={80}
               rows={3}
             />
+          </form>
+          <form>
+            <label>Take down notes during sessions</label>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="scribble down anything"
+              cols={80}
+              rows={3}
+              name="session_notes"
+              value={session_notes}
+              onChange={inputChangeHandler}
+            />
+            {/* <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="Say something about the session"
+              value={session_about}
+              name="session_about"
+              onChange={inputChangeHandler}
+              cols={80}
+              rows={3}
+            /> */}
           </form>
           <Accordion defaultActiveKey="" className="councld1">
             <div className="councld11">
@@ -594,43 +614,6 @@ const CounsellorOverview = (props: any) => {
               </Accordion.Collapse>
             </Accordion>
           ))}
-          <form>
-            <label>Take down notes during sessions</label>
-            <textarea
-              className="issues-textbox-1 form-control"
-              placeholder="scribble down anything"
-              cols={80}
-              rows={3}
-              name="session_notes"
-              value={session_notes}
-              onChange={inputChangeHandler}
-            />
-            {/* <Row>
-              <Col md={3}>
-                <label>Rate this session</label>
-              </Col>
-              <Col md={5} className="star-container">
-                <div className="assessrating">
-                  <StarRatingComponent
-                    name="rate1"
-                    starCount={5}
-                    value={rate1}
-                    onStarClick={onStarClick}
-                    emptyStarColor={"#444"}
-                  />
-                </div>
-              </Col>
-            </Row> */}
-            <textarea
-              className="issues-textbox-1 form-control"
-              placeholder="Say something about the session"
-              value={session_about}
-              name="session_about"
-              onChange={inputChangeHandler}
-              cols={80}
-              rows={3}
-            />
-          </form>
           <ToastContainer
             enableMultiContainer
             containerId={"B"}

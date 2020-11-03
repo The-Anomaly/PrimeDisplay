@@ -394,7 +394,6 @@ const CounsellorBookedSessions = (props: any) => {
                         <div className="cseven"> </div>
                       </div>
                     )}
-
                     {isLoading && (
                       <div className="counsellorpreloader2">
                         <img
@@ -435,7 +434,6 @@ const CounsellorBookedSessions = (props: any) => {
                             </div>
                             <div className="">{data.time}</div>
                           </div>
-
                           <div className="cfive">
                             <div className="lowerr nulower counlowerr">
                               Member Type
@@ -532,6 +530,7 @@ const CounsellorBookedSessions = (props: any) => {
               name="user_issues"
               onChange={inputChangeHandler}
               value={user_issues}
+              disabled={true}
               placeholder="issues*"
               cols={80}
               rows={3}
