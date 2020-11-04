@@ -44,7 +44,7 @@ const CounsellorOverview = (props: any) => {
     session_email: "",
     taskDuration: "",
     taskDescription: "",
-    completedStatus:false,
+    completedStatus: false,
     session_notes: "",
     session_about: "",
     rate1: 5,
@@ -132,7 +132,7 @@ const CounsellorOverview = (props: any) => {
           isOpen: true,
           sessionId: data.id,
           session_email: data.email,
-          completedStatus:data.status,
+          completedStatus: data.status,
           user_issues: data.user_vent,
         });
       }
@@ -441,7 +441,8 @@ const CounsellorOverview = (props: any) => {
               value={session_notes}
               onChange={inputChangeHandler}
             />
-            {/* <textarea
+            {/* 
+            <textarea
               className="issues-textbox-1 form-control"
               placeholder="Say something about the session"
               value={session_about}
@@ -449,7 +450,8 @@ const CounsellorOverview = (props: any) => {
               onChange={inputChangeHandler}
               cols={80}
               rows={3}
-            /> */}
+            /> 
+            */}
           </form>
           <Accordion defaultActiveKey="" className="councld1">
             <div className="councld11">
@@ -483,7 +485,8 @@ const CounsellorOverview = (props: any) => {
                     </Col>
                     <Col md={6}>
                       <label className="taskcl">
-                        How long should this take ?<span className="dayss">(Days)</span>
+                        How long should this take ?
+                        <span className="dayss">(Days)</span>
                       </label>
                       <input
                         type="number"
@@ -541,9 +544,7 @@ const CounsellorOverview = (props: any) => {
           </Accordion>
           {recommendations.map((data, i) => (
             <Accordion defaultActiveKey="" className="councld1">
-              <button onClick={()=>{
-
-              }}>Edit</button>
+              <button onClick={() => {}}>Edit</button>
               <div className="councld11">
                 <Accordion.Toggle
                   as={Card.Header}
@@ -588,7 +589,8 @@ const CounsellorOverview = (props: any) => {
                         </Col>
                         <Col md={6}>
                           <label className="taskcl">
-                            How long should this take? <span className="dayss">(Days)</span>
+                            How long should this take?{" "}
+                            <span className="dayss">(Days)</span>
                           </label>
                           <input
                             type="number"

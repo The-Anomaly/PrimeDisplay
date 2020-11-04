@@ -522,7 +522,7 @@ const CounsellorBookedSessions = (props: any) => {
         <Container>
           <h6>{name}</h6>
           <span className="modal-btn">
-            <a href={`/employers/result/${session_email}`} target="blank">
+            <a href={`/counsellor/result/${session_email}`} target="blank">
               View users result <i className="fa fa-arrow-right"></i>
             </a>
           </span>
