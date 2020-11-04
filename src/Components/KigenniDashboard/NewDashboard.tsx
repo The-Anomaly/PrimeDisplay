@@ -19,6 +19,8 @@ import PaidOverviewCard from "./overviewcardspaid";
 import { Link } from "react-router-dom";
 import HorizontalBar from "./HorizontalBar";
 
+
+
 interface State {
   fullname: string;
   careerbussines: any;

@@ -483,7 +483,7 @@ const CounsellorOverview = (props: any) => {
                     </Col>
                     <Col md={6}>
                       <label className="taskcl">
-                        Task Duration <span className="dayss">(Days)</span>
+                        How long should this take ?<span className="dayss">(Days)</span>
                       </label>
                       <input
                         type="number"
@@ -498,7 +498,7 @@ const CounsellorOverview = (props: any) => {
                   </Row>
                   <Row>
                     <Col md={12}>
-                      <label className="taskcl">Task Description</label>
+                      <label className="taskcl">Task Objective</label>
                       <textarea
                         placeholder="Describe the nature of the task"
                         cols={67}
@@ -588,7 +588,7 @@ const CounsellorOverview = (props: any) => {
                         </Col>
                         <Col md={6}>
                           <label className="taskcl">
-                            Task Duration <span className="dayss">(Days)</span>
+                            How long should this take? <span className="dayss">(Days)</span>
                           </label>
                           <input
                             type="number"
@@ -604,7 +604,7 @@ const CounsellorOverview = (props: any) => {
                       </Row>
                       <Row>
                         <Col md={12}>
-                          <label className="taskcl">Task Description</label>
+                          <label className="taskcl">Task Objective</label>
                           <textarea
                             placeholder="Describe the nature of the task"
                             cols={67}
