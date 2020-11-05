@@ -20,6 +20,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Alert } from "react-bootstrap";
 import close from "../../assets/close.svg";
+import StarRatingComponent from "react-star-rating-component";
+import axios from "axios";
 
 class CounsellorsRecommendation extends React.Component {
   state: any = {
@@ -33,10 +35,15 @@ class CounsellorsRecommendation extends React.Component {
     frequency: 1,
     success: "",
     isLoading: false,
+    ratingInfo: {},
     setReminderModal: false,
+    setRatingModal: true,
     showWarning: false,
     width: 100,
+    rate: "",
+    reason: "",
   };
+  props: any;
   closeModal = () => {
     this.setState({
       setReminderModal: false,
@@ -73,17 +80,25 @@ class CounsellorsRecommendation extends React.Component {
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(
-      `${API}/dashboard/counsellorrecommendation`,
-      {
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/dashboard/counsellorrecommendation`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
+      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/check-rating/`, {
         headers: { Authorization: `Token ${token}` },
-      }
-    )
-      .then((response) => {
-        this.setState({
-          counsellor: response.data,
-        });
-      })
+      }),
+    ])
+      .then(
+        axios.spread((response, response1) => {
+          this.setState({
+            counsellor: response.data,
+            ratingInfo: response1.data,
+          });
+        })
+      )
       .catch((error) => {
         if (error && error.response && error.response.data) {
           this.setState({
@@ -159,14 +174,55 @@ class CounsellorsRecommendation extends React.Component {
       .catch((error) => {});
   };
   notify = (message: string) => toast(message, { containerId: "B" });
+  onStarClick = (nextValue, prevValue, name) => {
+    this.setState({
+      [name]: nextValue.toString(),
+    });
+  };
+  handleSubmitChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+  closeRateSession = () => {
+    this.setState({
+      setRatingModal: false,
+    });
+  };
+  openRateSession = () => {
+    this.setState({
+      setRatingModal: true,
+    });
+  };
+  submitRating = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : this.props.history.push("/signin");
+    const data = {
+      rating: this.state.rate,
+    };
+    Axios.post(`${API}/counsellor/rating`, data, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   render() {
+    console.log(this.state.ratingInfo);
     const {
       fullname,
       startDate,
       success,
       frequency,
       setReminderModal,
-      width,
+      setRatingModal,
+      rate,
+      reason,
       counsellor,
     } = this.state;
     return (
@@ -338,6 +394,47 @@ class CounsellorsRecommendation extends React.Component {
                   onClick={() => this.makeRecommendationToDo()}
                 >
                   Save
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
+          <Modal
+            show={setRatingModal}
+            className="modcomplete4 fixmodal"
+            centered={true}
+            onHide={this.closeRateSession}
+          >
+            <Modal.Title className="modal_title">
+              <div className="pleaseRate">Please rate your last session</div>
+            </Modal.Title>
+            <a className="close_view" onClick={this.closeRateSession}>
+              <img className="closeview" src={close} alt="close" />
+            </a>
+            <Modal.Body>
+              {" "}
+              <div className="ratingcont">
+                <StarRatingComponent
+                  name="rate"
+                  starCount={5}
+                  value={rate}
+                  onStarClick={this.onStarClick}
+                  emptyStarColor={"#444"}
+                />
+              </div>
+              <div className="modal_det">
+                <textarea
+                  className="task_det"
+                  placeholder="Why your rating"
+                  disabled={true}
+                  value={reason}
+                  name="reason"
+                  onChange={this.handleSubmitChange}
+                ></textarea>
+              </div>
+              <div className="btnhandle">
+                <div>
+                  <span className="notnow">Not now</span>
+                  <span className="rightnow">Submit</span>
                 </div>
               </div>
             </Modal.Body>

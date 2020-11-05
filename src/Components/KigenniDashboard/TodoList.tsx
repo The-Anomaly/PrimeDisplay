@@ -35,6 +35,7 @@ const TodoList = (props: any) => {
     isLoading: false,
     nextLink: "",
     prevLink: "",
+    showratemodal: true,
     count: "",
     success: "",
     total_pages: "",
@@ -54,14 +55,7 @@ const TodoList = (props: any) => {
     viewmoreisOpen: false,
     CreateTaskModalisOpen: false,
   });
-  const {
-    errorMessage,
-    tasklist,
-    nextLink,
-    prevLink,
-    user,
-    success,
-  } = state;
+  const { errorMessage, tasklist, nextLink, prevLink, reason, success } = state;
   const {
     task_title,
     task_description,
@@ -72,6 +66,7 @@ const TodoList = (props: any) => {
     title,
     description,
     add_note,
+    rate,
     isOpen,
     id,
     CreateTaskModalisOpen,
@@ -159,9 +154,9 @@ const TodoList = (props: any) => {
     const data = {
       title,
       description,
-      duration:Number(duration),
-      start_date:startDate,
-      reminder_frequency:frequency
+      duration: Number(duration),
+      start_date: startDate,
+      reminder_frequency: frequency,
     };
     Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/todo`, data, {
       headers: { Authorization: `Token ${token}` },
@@ -180,8 +175,8 @@ const TodoList = (props: any) => {
         }, 3000);
       })
       .catch((err) => {
-        console.log(err.response)
-        notify("Failed to send")
+        console.log(err.response);
+        notify("Failed to send");
       });
   };
   const notify = (message: string) => toast(message, { containerId: "i" });
@@ -295,6 +290,7 @@ const TodoList = (props: any) => {
     });
     return result;
   };
+
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -655,30 +651,6 @@ const TodoList = (props: any) => {
           <div className="modal_det">
             <div className="titlee">Counselor's Input</div>
             <textarea className="task_det" disabled={true}></textarea>
-          </div>
-        </Modal.Body>
-      </Modal>
-      <Modal
-        show={true}
-        className="modcomplete fixmodal"
-        centered={true}
-        onHide={closeViewMoreModal}
-      >
-        <Modal.Title className="modal_title">
-          <div className="pleaseRate">Please rate your last session</div>
-        </Modal.Title>
-        <a className="close_view" onClick={closeViewMoreModal}>
-          <img className="closeview" src={close} alt="close" />
-        </a>
-        <Modal.Body>
-          <div className="modal_det">
-            <textarea className="task_det" placeholder="Why your rating" disabled={true}></textarea>
-          </div>
-          <div className="btnhandle">
-            <div>
-              <span>Not now</span>
-              <span>Submit</span>
-            </div>
           </div>
         </Modal.Body>
       </Modal>
