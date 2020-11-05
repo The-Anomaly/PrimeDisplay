@@ -44,6 +44,7 @@ const CounsellorBookedSessions = (props: any) => {
     count: "",
     success: "",
     total_pages: "",
+    completedStatus: false,
     user_issues: "",
     sessionId: "",
     recommendations: [],
@@ -65,6 +66,7 @@ const CounsellorBookedSessions = (props: any) => {
           isOpen: true,
           session_email: data.email,
           sessionId: data.id,
+          completedStatus: data.status,
           user_issues: data.user_vent,
         });
       }
@@ -81,6 +83,7 @@ const CounsellorBookedSessions = (props: any) => {
     rate1,
     nextLink,
     isLoading,
+    completedStatus,
     session_email,
     counsellorData,
     prevLink,
@@ -394,7 +397,6 @@ const CounsellorBookedSessions = (props: any) => {
                         <div className="cseven"> </div>
                       </div>
                     )}
-
                     {isLoading && (
                       <div className="counsellorpreloader2">
                         <img
@@ -435,7 +437,6 @@ const CounsellorBookedSessions = (props: any) => {
                             </div>
                             <div className="">{data.time}</div>
                           </div>
-
                           <div className="cfive">
                             <div className="lowerr nulower counlowerr">
                               Member Type
@@ -521,7 +522,7 @@ const CounsellorBookedSessions = (props: any) => {
         <Container>
           <h6>{name}</h6>
           <span className="modal-btn">
-            <a href={`/employers/result/${session_email}`} target="blank">
+            <a href={`/counsellor/result/${session_email}`} target="blank">
               View users result <i className="fa fa-arrow-right"></i>
             </a>
           </span>
@@ -532,9 +533,23 @@ const CounsellorBookedSessions = (props: any) => {
               name="user_issues"
               onChange={inputChangeHandler}
               value={user_issues}
+              disabled={true}
               placeholder="issues*"
               cols={80}
               rows={3}
+            />
+          </form>
+          <form>
+            <label>Take down notes during sessions</label>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="scribble down anything"
+              cols={80}
+              rows={3}
+              name="session_notes"
+              value={session_notes}
+              disabled={completedStatus}
+              onChange={inputChangeHandler}
             />
           </form>
           <Accordion defaultActiveKey="" className="councld1">
@@ -569,7 +584,8 @@ const CounsellorBookedSessions = (props: any) => {
                     </Col>
                     <Col md={6}>
                       <label className="taskcl">
-                        Task Duration <span className="dayss">(Days)</span>
+                        How long should this take?{" "}
+                        <span className="dayss">(Days)</span>
                       </label>
                       <input
                         type="number"
@@ -584,7 +600,7 @@ const CounsellorBookedSessions = (props: any) => {
                   </Row>
                   <Row>
                     <Col md={12}>
-                      <label className="taskcl">Task Description</label>
+                      <label className="taskcl">Task Objective</label>
                       <textarea
                         placeholder="Describe the nature of the task"
                         cols={67}
@@ -670,7 +686,8 @@ const CounsellorBookedSessions = (props: any) => {
                         </Col>
                         <Col md={6}>
                           <label className="taskcl">
-                            Task Duration <span className="dayss">(Days)</span>
+                            How long should this take?{" "}
+                            <span className="dayss">(Days)</span>
                           </label>
                           <input
                             type="number"
@@ -685,7 +702,7 @@ const CounsellorBookedSessions = (props: any) => {
                       </Row>
                       <Row>
                         <Col md={12}>
-                          <label className="taskcl">Task Description</label>
+                          <label className="taskcl">Task Objective</label>
                           <textarea
                             placeholder="Describe the nature of the task"
                             cols={67}
@@ -704,41 +721,6 @@ const CounsellorBookedSessions = (props: any) => {
               </Accordion.Collapse>
             </Accordion>
           ))}
-          <form>
-            <label>Take down notes during sessions</label>
-            <textarea
-              className="issues-textbox-1 form-control"
-              placeholder="scribble down anything"
-              cols={80}
-              rows={3}
-              name="session_notes"
-              value={session_notes}
-              onChange={inputChangeHandler}
-            />
-            {/* <Row>
-              <Col md={6} className="dkcxx">
-                <label>Rate this session</label>
-                <div className="assessrating dscvv1">
-                  <StarRatingComponent
-                    name="rate1"
-                    starCount={5}
-                    value={rate1}
-                    onStarClick={onStarClick}
-                    emptyStarColor={"#444"}
-                  />
-                </div>
-              </Col>
-            </Row> */}
-            <textarea
-              className="issues-textbox-1 form-control"
-              placeholder="Say something about the session"
-              cols={80}
-              onChange={inputChangeHandler}
-              value={session_about}
-              name="session_about"
-              rows={3}
-            />
-          </form>
           <ToastContainer
             enableMultiContainer
             containerId={"B"}
@@ -749,8 +731,16 @@ const CounsellorBookedSessions = (props: any) => {
           <div className="center-btn">
             {" "}
             <Link to="counsellorbookings">
-              <span className="modal-btn" onClick={complete_session}>
-                Close session <i className="fa fa-arrow-right"></i>
+              <span
+                className="modal-btn"
+                onClick={() =>
+                  completedStatus
+                    ? notify("Session closed")
+                    : complete_session()
+                }
+              >
+                {completedStatus ? "Session Closed" : " Close session"}{" "}
+                <i className="fa fa-arrow-right"></i>
               </span>
             </Link>
           </div>

@@ -658,6 +658,30 @@ const TodoList = (props: any) => {
           </div>
         </Modal.Body>
       </Modal>
+      <Modal
+        show={true}
+        className="modcomplete fixmodal"
+        centered={true}
+        onHide={closeViewMoreModal}
+      >
+        <Modal.Title className="modal_title">
+          <div className="pleaseRate">Please rate your last session</div>
+        </Modal.Title>
+        <a className="close_view" onClick={closeViewMoreModal}>
+          <img className="closeview" src={close} alt="close" />
+        </a>
+        <Modal.Body>
+          <div className="modal_det">
+            <textarea className="task_det" placeholder="Why your rating" disabled={true}></textarea>
+          </div>
+          <div className="btnhandle">
+            <div>
+              <span>Not now</span>
+              <span>Submit</span>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
       <ToastContainer
         enableMultiContainer
         containerId={"i"}

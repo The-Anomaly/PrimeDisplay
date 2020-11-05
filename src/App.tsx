@@ -86,8 +86,10 @@ import Monthly_plan from "./Components/Home/Redesigned_Payment_Page/Monthly_paym
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
-import NewDashboardAllMessages from './Components/KigenniDashboard/NewDashboardAllMessages';
+import NewDashboardAllMessages from "./Components/KigenniDashboard/NewDashboardAllMessages";
 import { NewAbout } from "./Components/Home/About/NewAbout";
+import CounsellorCVProfileBuilder from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorCVProfileBuilder";
+import CousellorProfileBuilderEdit from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorProfileBuilder";
 
 class App extends Component {
   constructor(props) {
@@ -319,6 +321,16 @@ class App extends Component {
                 exact
                 path="/allusermessages"
                 component={NewDashboardAllMessages}
+              />
+              <Route
+                exact
+                path="/counsellorprofilebuilder"
+                component={CounsellorCVProfileBuilder}
+              />
+              <Route
+                exact
+                path="/counsellorprofilebuilderedit"
+                component={CousellorProfileBuilderEdit}
               />
               <Route
                 exact

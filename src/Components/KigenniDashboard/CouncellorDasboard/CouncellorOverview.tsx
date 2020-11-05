@@ -39,11 +39,12 @@ const CounsellorOverview = (props: any) => {
     user_issues: "",
     sessionId: "",
     recommendations: [],
-    nextSessionMessage:'',
+    nextSessionMessage: "",
     taskTitle: "",
     session_email: "",
     taskDuration: "",
     taskDescription: "",
+    completedStatus: false,
     session_notes: "",
     session_about: "",
     rate1: 5,
@@ -57,6 +58,7 @@ const CounsellorOverview = (props: any) => {
     taskTitle,
     taskDuration,
     recommendations,
+    completedStatus,
     taskDescription,
     session_notes,
     session_about,
@@ -84,7 +86,7 @@ const CounsellorOverview = (props: any) => {
       }),
     ])
       .then(
-        Axios.spread((res, res1,res2) => {
+        Axios.spread((res, res1, res2) => {
           console.log(res);
           if (res.status === 200) {
             setFormState({
@@ -98,7 +100,7 @@ const CounsellorOverview = (props: any) => {
               nextLink: res1.data.next,
               prevLink: res1.data.previous,
               total_pages: res1.data.total_pages,
-              nextSessionMessage:res2.data.message
+              nextSessionMessage: res2.data.message,
             });
           }
         })
@@ -120,6 +122,7 @@ const CounsellorOverview = (props: any) => {
   }, []);
   const openModal = (id) => {
     console.log(user);
+    console.log(id);
     user.forEach((data) => {
       console.log(data);
       if (data.id === id) {
@@ -129,6 +132,7 @@ const CounsellorOverview = (props: any) => {
           isOpen: true,
           sessionId: data.id,
           session_email: data.email,
+          completedStatus: data.status,
           user_issues: data.user_vent,
         });
       }
@@ -139,7 +143,7 @@ const CounsellorOverview = (props: any) => {
       ...state,
       isOpen: false,
     });
-    window.location.reload()
+    window.location.reload();
   };
   const onStarClick = (nextValue, prevValue, name) => {
     setFormState({
@@ -218,7 +222,7 @@ const CounsellorOverview = (props: any) => {
           console.log(res);
           notify("Successful");
           setTimeout(() => {
-            // window.location.reload();
+            window.location.reload();
           }, 2000);
         })
         .catch((err) => {
@@ -310,9 +314,7 @@ const CounsellorOverview = (props: any) => {
                         </div>
                       </div>
                     </div>
-                    <div className="yudd1">
-                      {nextSessionMessage}
-                    </div>
+                    <div className="yudd1">{nextSessionMessage}</div>
                     {counsellorData.splice(0, 2).map((data, i) => (
                       <div className="msgs teammembr booked bookedover" key={i}>
                         <div className="fromerit summary">
@@ -423,9 +425,33 @@ const CounsellorOverview = (props: any) => {
               onChange={inputChangeHandler}
               value={user_issues}
               placeholder="issues*"
+              disabled={true}
               cols={80}
               rows={3}
             />
+          </form>
+          <form>
+            <label>Take down notes during sessions</label>
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="scribble down anything"
+              cols={80}
+              rows={3}
+              name="session_notes"
+              value={session_notes}
+              onChange={inputChangeHandler}
+            />
+            {/* 
+            <textarea
+              className="issues-textbox-1 form-control"
+              placeholder="Say something about the session"
+              value={session_about}
+              name="session_about"
+              onChange={inputChangeHandler}
+              cols={80}
+              rows={3}
+            /> 
+            */}
           </form>
           <Accordion defaultActiveKey="" className="councld1">
             <div className="councld11">
@@ -459,7 +485,8 @@ const CounsellorOverview = (props: any) => {
                     </Col>
                     <Col md={6}>
                       <label className="taskcl">
-                        Task Duration <span className="dayss">(Days)</span>
+                        How long should this take ?
+                        <span className="dayss">(Days)</span>
                       </label>
                       <input
                         type="number"
@@ -474,7 +501,7 @@ const CounsellorOverview = (props: any) => {
                   </Row>
                   <Row>
                     <Col md={12}>
-                      <label className="taskcl">Task Description</label>
+                      <label className="taskcl">Task Objective</label>
                       <textarea
                         placeholder="Describe the nature of the task"
                         cols={67}
@@ -517,6 +544,7 @@ const CounsellorOverview = (props: any) => {
           </Accordion>
           {recommendations.map((data, i) => (
             <Accordion defaultActiveKey="" className="councld1">
+              <button onClick={() => {}}>Edit</button>
               <div className="councld11">
                 <Accordion.Toggle
                   as={Card.Header}
@@ -553,6 +581,7 @@ const CounsellorOverview = (props: any) => {
                             placeholder="enter a title"
                             name="taskTitle"
                             value={data.title}
+                            disabled={true}
                             onChange={inputChangeHandler}
                             className="form-control todo-input"
                             size={25}
@@ -560,7 +589,8 @@ const CounsellorOverview = (props: any) => {
                         </Col>
                         <Col md={6}>
                           <label className="taskcl">
-                            Task Duration <span className="dayss">(Days)</span>
+                            How long should this take?{" "}
+                            <span className="dayss">(Days)</span>
                           </label>
                           <input
                             type="number"
@@ -568,6 +598,7 @@ const CounsellorOverview = (props: any) => {
                             className="form-control todo-input"
                             name="taskDuration"
                             value={data.duration}
+                            disabled={true}
                             onChange={inputChangeHandler}
                             size={25}
                           />
@@ -575,13 +606,14 @@ const CounsellorOverview = (props: any) => {
                       </Row>
                       <Row>
                         <Col md={12}>
-                          <label className="taskcl">Task Description</label>
+                          <label className="taskcl">Task Objective</label>
                           <textarea
                             placeholder="Describe the nature of the task"
                             cols={67}
                             rows={3}
                             className="form-control text-decription"
                             name="taskDescription"
+                            disabled={true}
                             value={data.description}
                             onChange={inputChangeHandler}
                           />
@@ -594,43 +626,6 @@ const CounsellorOverview = (props: any) => {
               </Accordion.Collapse>
             </Accordion>
           ))}
-          <form>
-            <label>Take down notes during sessions</label>
-            <textarea
-              className="issues-textbox-1 form-control"
-              placeholder="scribble down anything"
-              cols={80}
-              rows={3}
-              name="session_notes"
-              value={session_notes}
-              onChange={inputChangeHandler}
-            />
-            {/* <Row>
-              <Col md={3}>
-                <label>Rate this session</label>
-              </Col>
-              <Col md={5} className="star-container">
-                <div className="assessrating">
-                  <StarRatingComponent
-                    name="rate1"
-                    starCount={5}
-                    value={rate1}
-                    onStarClick={onStarClick}
-                    emptyStarColor={"#444"}
-                  />
-                </div>
-              </Col>
-            </Row> */}
-            <textarea
-              className="issues-textbox-1 form-control"
-              placeholder="Say something about the session"
-              value={session_about}
-              name="session_about"
-              onChange={inputChangeHandler}
-              cols={80}
-              rows={3}
-            />
-          </form>
           <ToastContainer
             enableMultiContainer
             containerId={"B"}
@@ -640,8 +635,14 @@ const CounsellorOverview = (props: any) => {
           />
           <div className="center-btn">
             {" "}
-            <span className="modal-btn" onClick={complete_session}>
-              Close session <i className="fa fa-arrow-right"></i>
+            <span
+              className="modal-btn"
+              onClick={() =>
+                completedStatus ? notify("Session closed") : complete_session()
+              }
+            >
+              {completedStatus ? "Session Closed" : " Close session"}{" "}
+              <i className="fa fa-arrow-right"></i>
             </span>
           </div>
         </Container>
