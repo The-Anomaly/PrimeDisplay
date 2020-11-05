@@ -1,6 +1,6 @@
 .payment-section{
     text-align: center;
-    padding: 30px 0px 30px 0px;
+    padding: 30px 0px 100px 0px;
     background-color: #23304c;
     background-size: cover;
     background-image: url(../../../assets/payment-img.png);
@@ -10,12 +10,40 @@
     justify-content: center;
 }
 .payment-decription{
-    padding-bottom: 155px;
+    padding-bottom: 76px;
     color: #fff;
+}
+.payment-decription>h3{
+    font-size: 20px;
+    font-family: 'brfirma-bold';
+}
+.payment-plans{
+    justify-content: space-around;
+}
+.plan-cards{
+    padding: 34px 0px 9px 0px;
+    font-family: 'brfirma-bold';
+}
+.plan-card-arr{
+    position: relative;
+    text-align: center;
+    top: -40px;
+    font-size: 61px;
+    color: #fff;
+}
+.one-off{
+    color: #1bb978;
+    border-top: 5px solid #1bb978;
+}
+.pce{
+    color: #3965ff;
+    border-top: 5px solid #3965ff;
 }
 .payment-header{
     text-align: initial !important;
     padding-bottom: 12px !important;
+    background-color: #fff !important;
+    cursor: unset;
 }
 .payment-header span{
     font-size: 12px;
@@ -33,6 +61,7 @@
 .card-div>h6 {
     color: #f3b103;
     font-size: 18px;
+    font-family: 'brfirma-bold';
 }
  .blue{
     color: #1dabf2 !important;
@@ -48,7 +77,7 @@
     text-align: initial;
 }
 .card-list li{
-    font-size: 13px;
+    font-size: 12px;
     color: #92969d;
     margin-bottom: 12px;
 }
@@ -103,7 +132,8 @@
     background-color: #f3b103;
 }
 .btn-blue{
-    margin: -3px 0px; 
+    margin: 8px 0px; 
+    font-size: 14px;
     background-color: #1dabf2; 
 }
 .btn-blue::after{
@@ -111,6 +141,7 @@
 }
 .btn-green{
     margin: 102px 0px;
+    font-size: 14px;
     background-color: #46d68c;
 }
 .btn-green::after{
@@ -121,16 +152,34 @@
         margin-bottom: 15px;
     }
 }
+@media screen and (max-width: 768px){
+    .margined_col{
+        min-width: 33%;
+    }
+    .card_btn--pce2 {
+        margin-top: 84px !important;
+        margin-bottom: 128px !important;
+    }
+    .card_btn--pce3 {
+        margin-top: 159px !important;
+        margin-bottom: 126px !important;
+    }
+    .btn-yellow{
+        margin: 142px 0px !important;
+    }
+}
 .red{
     color: #eb5757 !important;
-    font-size: 18px;
+    font-size: 21px;
+    font-family: 'brfirma-bold';
 }
 .sub-p{
-    font-size: 12px;
+    font-size: 13px;
     color: #92969d;
 }
 .btn-red{
     margin: 12px 0px !important;
+    font-size: 13px;
     color: #92969d;
     border: 1px solid #eb5757;
 }
@@ -144,4 +193,26 @@
 .subcription-card{
     margin-top: 26px;
     border-radius: 8px !important;
+}
+.subscription-header{
+    padding-top: 35px;
+    background-color: #fff !important;
+    cursor: unset;
+}
+.card_btn--pce1{
+    margin: 0px !important;
+}
+.card_btn--pce2{
+    margin-top: 68px;
+    margin-bottom: 127px;
+}
+.card_btn--pce3{
+    margin-top: 163px !important;
+    margin-bottom: 126px !important;
+}
+.card-list-box{
+    display: flex;
+}
+.cdlisadjmarg{
+    margin-bottom: 28px !important;
 }

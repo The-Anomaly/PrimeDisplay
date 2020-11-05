@@ -995,11 +995,6 @@ button {
   width: 40vw;
   margin-right: -5%;
 }
-.crazycircle3 .larrow6 {
-  margin-right: -35%;
-  margin-top: -35%;
-  width: 7vw;
-}
 .crazycircle4 {
   display: flex;
   width: 80%;
@@ -1187,9 +1182,9 @@ button {
   position: relative;
 }
 .trustimgin {
-  background: #17ddea;
-  border-radius: 50%;
-  padding: 0.875rem;
+  background: #17DDEA;
+    border-radius: 50%;
+    padding: 0.875rem;
 }
 .border1 {
   position: absolute;

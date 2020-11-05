@@ -1,5 +1,6 @@
 body{
     overflow: visible;
+     font-family: 'brfirma-regular';
 }
 .section-1{
     background-image: url(../../../assets/contact.png);
@@ -34,7 +35,7 @@ body{
     border: none;
     background-color: #f5f5f5;
     outline: none;
-    padding: 10px;
+    padding: 10px !important;
     margin-bottom: 9px;
     border-radius: 6px;
     resize: inherit;

@@ -80,7 +80,9 @@ import WebSocketInstance from "./websocket";
 import RedesignedHome from "./Components/Home/Home/RedesignedHome";
 import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
 import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
-import Privacy from "./Components/Home/Privacy_policy_page/privacy_policy";
+import Privacy from "./Components/Home/Legal_policy_page/privacy_policy";
+import Terms from "./Components/Home/Legal_policy_page/terms&conditions";
+import Monthly_plan from "./Components/Home/Redesigned_Payment_Page/Monthly_payment_plan";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
@@ -110,6 +112,8 @@ class App extends Component {
               <Route exact path="/contact" component={Contactpage} />
               <Route exact path="/payment" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
+              <Route exact path="/terms&conditions" component={Terms}/>
+              <Route exact path="/progressive_clarity_experience" component={Monthly_plan}/>
               []
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
