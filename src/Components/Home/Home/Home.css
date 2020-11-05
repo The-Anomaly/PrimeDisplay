@@ -860,7 +860,7 @@ button {
   z-index: 99;
   background: #23304c;
   color: #ffffff;
-  width: 100%;
+  width: 100vw;
   padding-top: 1.4rem;
   padding-right: 4rem;
   padding-left: 8rem;
@@ -879,7 +879,7 @@ button {
 .homecontainer {
   padding: 0;
 }
-.backdrop {
+.newfirstrow {
   background-image: url("../../../assets/herobackdrop1.svg");
   background-size: cover;
 }
@@ -1253,16 +1253,21 @@ button {
   width: 84px;
 }
 .homemapclient {
+  display: flex;
+  flex-direction: column;
   padding: 2rem 0;
   padding-bottom: 0.5rem;
+  margin: auto;
 }
 .homemapsec {
   display: flex;
-  margin-left: 20%;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
 }
 .homemapsubsec {
   display: flex;
+  margin-bottom: 2rem;
 }
 .homemapline {
   width: 100%;
@@ -1606,4 +1611,10 @@ button {
 .newlogin {
   font-size: 14px;
   height: 40px;
+}
+
+@media(max-width: 1200px) {
+  .hometext {
+    padding-right: 2rem;
+  }
 }

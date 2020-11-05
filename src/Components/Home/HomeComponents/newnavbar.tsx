@@ -62,7 +62,7 @@ const newNavbar = withRouter((props: any) => {
 
   const handleScroll = () => {
     console.log(window.scrollY);
-    if (window.scrollY > 720) {
+    if (window.scrollY > 750) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -197,7 +197,7 @@ const newNavbar = withRouter((props: any) => {
                     <Link to="/faq">Faq</Link>
                   </div>
                   <div className="listwraperMob">Privacy Policy</div>
-                  {!userLoggedIn && (
+                  {/* {!userLoggedIn && (
                     <>
                       <div className="listwraperMob">
                         <Link to="/signin">
@@ -210,8 +210,8 @@ const newNavbar = withRouter((props: any) => {
                         </Link>
                       </div>
                     </>
-                  )}
-                  {userLoggedIn && (
+                  )} */}
+                  {/* {userLoggedIn && (
                     <>
                       <div className="listwraperMob">
                         <div className="navmobbtn" onClick={logout}>
@@ -227,7 +227,7 @@ const newNavbar = withRouter((props: any) => {
                         </div>
                       </div>
                     </>
-                  )}
+                  )} */}
                 </div>,
               ]}
             />
@@ -254,12 +254,9 @@ const newNavbar = withRouter((props: any) => {
             </div>
           </div>
         </div>
-        <Row md={12} className="nav_margin">
-          <div
-            className={
-              navbar ? "nav-wrapper redoNav privacynav" : "nav-wrapper redoNav"
-            }
-          >
+        <Row md={12} className={
+              navbar ? "nav-wrapper redoNav nav_margin privacynav" : "nav-wrapper redoNav nav_margin"
+            }>
             <div className="nav_titlenew">
               <div className="logo_clarity">
                 <Link to="/">
@@ -300,7 +297,6 @@ const newNavbar = withRouter((props: any) => {
                 </Link>
               </div>
             </div>
-          </div>
         </Row>
       </div>
     </div>

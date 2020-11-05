@@ -6,7 +6,7 @@ import "../Home/Home.css";
 const ThinkThisIsYou = () => {
   return (
     <>
-    <Row className="homethink">
+    <Row md={12} className="homethink">
       <div className="homethinktxt">think this is you? lets help you fix that.<br />Take the free assesmenT</div>
       <div className="homethinkbtn">Get Started</div>
     </Row> 

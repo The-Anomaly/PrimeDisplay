@@ -14,7 +14,7 @@ const NewFooter: React.FC = (props) => {
   return (
     <div>
       {/* footer starts here */}
-      <Row className="home_footer">
+      <Row md={12} className="home_footer">
           <div className="footer_stay">STAY CONNECTED</div>
           <div className="footer_signup">signup to get news and tips from ur experts</div>
           <div className="footer_maill">

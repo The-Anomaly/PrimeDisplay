@@ -74,7 +74,7 @@ const RedesignedHome: React.FC = () => {
     <div>
       <Navbar />
       <Container fluid={true}>
-        <Row className="newfirstrow backdrop">
+        <Row md={12} className="newfirstrow">
           <Col md={6} className="navcontrols">
             {" "}
           </Col>
@@ -92,7 +92,7 @@ const RedesignedHome: React.FC = () => {
             <img src={linkedin} className="socials1" alt="linkedin" />
           </Col>
         </Row>
-        <Row className="newsecondrow">
+        <Row md={12} className="newsecondrow">
           <div className="secondtitle">
             It's a Crazy{" "}
             <span className="secondtitle1">
@@ -121,7 +121,7 @@ const RedesignedHome: React.FC = () => {
           </div>
         </Row>
         {press === false ? (
-          <Row className="newthirdrow">
+          <Row md={12} className="newthirdrow">
             <div className="newthirdrowtext">
               Clarity by Yudimy is a career mapping platform that helps you
               discover and define a clear road map with practical and actionable
@@ -133,7 +133,7 @@ const RedesignedHome: React.FC = () => {
             </div>
           </Row>
         ) : (
-          <Row className="thirdgetstarted">
+          <Row md={12} className="thirdgetstarted">
             <img className="gtclose" src={close} onClick={CloseGetStarted} alt="close" />
             <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
               <div className="thirdgthead">Start my personal Journey</div>
@@ -152,7 +152,7 @@ const RedesignedHome: React.FC = () => {
               </Card>
           </Row>
         )}
-        <Row className="newfourthrow">
+        <Row md={12} className="newfourthrow">
           <div className="secondtitle fourthttl">
             A navigator you can{" "}
             <span className="secondtitle1">
