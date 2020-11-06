@@ -12,6 +12,7 @@ import { Row } from "react-bootstrap";
 import demoLogoLight from "../../../assets/demologolight.png";
 
 const newNavbar = withRouter((props: any) => {
+  const [navbar, setNavbar] = React.useState(false);
   const [state, setShowNav] = React.useState({
     showNav: false,
     userLoggedIn: false,
@@ -22,11 +23,25 @@ const newNavbar = withRouter((props: any) => {
     window.scrollTo(-0, -0);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
+    if(window.location.pathname==="/counsellordates"){
+      return
+    }
     if (token) {
       setShowNav({ ...state, userLoggedIn: true });
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
+      Axios.get(`${API}/progress`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+        .then((response) => {
+          if (response.status === 200 && response.data[0].next === "home") {
+            return props.history.push(`/free/dashboard`);
+          }
+        })
+        .catch((error) => {
+         console.log(error) 
+        });
   }, []);
   const setRedirect = () => {
     setShowNav({
@@ -44,6 +59,17 @@ const newNavbar = withRouter((props: any) => {
     localStorage.clear();
     setRedirect();
   };
+
+  const handleScroll = () => {
+    console.log(window.scrollY);
+    if (window.scrollY > 750) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+  window.addEventListener("scroll", handleScroll);
+
   const getCurrentAssessmentPosition = (): void => {
     const availableToken = localStorage.getItem("userToken");
     const token: string = availableToken
@@ -171,7 +197,7 @@ const newNavbar = withRouter((props: any) => {
                     <Link to="/faq">Faq</Link>
                   </div>
                   <div className="listwraperMob">Privacy Policy</div>
-                  {!userLoggedIn && (
+                  {/* {!userLoggedIn && (
                     <>
                       <div className="listwraperMob">
                         <Link to="/signin">
@@ -184,8 +210,8 @@ const newNavbar = withRouter((props: any) => {
                         </Link>
                       </div>
                     </>
-                  )}
-                  {userLoggedIn && (
+                  )} */}
+                  {/* {userLoggedIn && (
                     <>
                       <div className="listwraperMob">
                         <div className="navmobbtn" onClick={logout}>
@@ -201,7 +227,7 @@ const newNavbar = withRouter((props: any) => {
                         </div>
                       </div>
                     </>
-                  )}
+                  )} */}
                 </div>,
               ]}
             />
@@ -228,37 +254,31 @@ const newNavbar = withRouter((props: any) => {
             </div>
           </div>
         </div>
-        <Row md={12}>
-          <div
-            className={
-              props.mode === "light"
-                ? "nav-wrapper redoNav privacynav"
-                : "nav-wrapper redoNav"
-            }
-          >
+        <Row md={12} className={
+              navbar ? "nav-wrapper redoNav nav_margin privacynav" : "nav-wrapper redoNav nav_margin"
+            }>
             <div className="nav_titlenew">
-              <div className="logo_clarity">
+              <div className="logo_clarity logo_clarity_new">
                 <Link to="/">
-                  {props.mode === "light" ? (
-                    <img src={demoLogoLight} alt="clarity_logo" />
-                  ) : (
-                    <img src={demoLogo} alt="clarity_logo" />
-                  )}
+                  <img
+                    src={navbar ? demoLogoLight : demoLogo}
+                    alt="clarity_logo"
+                  />
                 </Link>
               </div>
             </div>
-            <div className="nav_titlenew navtext">
+            <div className="nav_titlenew">
               <span className="title hhome">
-                <Link to="/">Home</Link>
+                <Link to="/redesign">Home</Link>
               </span>
               <span className="title">
-                <Link to="/about">About Us</Link>
+                <Link to="/aboutus">About Us</Link>
               </span>
               <span className="title">
-                <Link to="/about">Payments</Link>
+                <Link to="/payment">Payments</Link>
               </span>
               <span className="title">
-                <Link to="/about">Contact Us</Link>
+                <Link to="/contact">Contact Us</Link>
               </span>
               <span className="title">
                 <Link to="/about">FAQ</Link>
@@ -266,13 +286,17 @@ const newNavbar = withRouter((props: any) => {
               {/* <span className="title">
               <Link to="/clarityforteams">SERVICES</Link>
             </span> */}
-              {!userLoggedIn ? (
+              {/* {!userLoggedIn ? (
                 <NavIsLoggedOut />
               ) : (
                 <NavIsLoggedIn Logout={logout} />
-              )}
+              )} */}
+              <div className="title1 shiftlefff">
+                <Link to="/signin">
+                  <button className="title_t signupbtn newlogin">Login</button>
+                </Link>
+              </div>
             </div>
-          </div>
         </Row>
       </div>
     </div>

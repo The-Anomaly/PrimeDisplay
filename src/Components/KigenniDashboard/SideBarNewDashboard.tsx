@@ -91,7 +91,7 @@ const SideBarNewDashboard = (props: any) => {
             />
             Career Insight
           </div>
-          <div className={props.chat ? "activegb" : "gbn"}>
+          {/* <div className={props.chat ? "activegb" : "gbn"}>
             {" "}
             <Link to="/allusermessages">
               <img
@@ -101,6 +101,29 @@ const SideBarNewDashboard = (props: any) => {
               />
               Chat with a Counsellor
             </Link>
+          </div> */}
+          <div className={props.chat ? "activegb" : "gbn"}>
+            {" "}
+            <Accordion defaultActiveKey="">
+              <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="3">
+                <img
+                  src={props.chat ? chatactive : chatinactive}
+                  className="sideimage"
+                  alt="sideimage"
+                />
+                Talk to a Counsellor
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="3">
+                <Card.Body>
+                  <Link to="/councellordates">
+                    <div className="task112">Book a private session</div>
+                  </Link>
+                  <Link to="/allusermessages">
+                    <div className="task112">Ask a Counselor</div>
+                  </Link>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Accordion>
           </div>
           <div className={props.councrec ? "activegb" : "gbn"}>
             {" "}

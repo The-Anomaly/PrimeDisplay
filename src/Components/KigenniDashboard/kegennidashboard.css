@@ -1216,7 +1216,7 @@ abbr[title] {
   margin-right: 1rem;
   border: 1px solid #9c1258;
   border-color: #9c1258 !important;
-  width: 168px;
+  width: 190px !important;
   min-width: 159px;
 }
 .retaketest2:hover {
@@ -3767,4 +3767,16 @@ label {
   right: 2rem;
   width: 50px;
   cursor: pointer;
+}
+
+.youwss div .sendtcont{
+  font-size: 14px;
+}
+.messagewrp1{
+  position: fixed;
+  width: 80%;
+  background: #fff;
+  z-index: 2;
+  top: 78vh;
+  height: 100px;
 }

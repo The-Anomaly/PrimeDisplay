@@ -12,7 +12,7 @@ import client6 from "../../../assets/client6.png";
 const HearFromClients = () => {
   return (
     <>
-      <Row className="homemap">
+      <Row md={12} className="homemap">
         <div className="secondtitle homemaptitle">
           Hear from Happy{" "}
           <span className="secondtitle1">

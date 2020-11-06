@@ -36,17 +36,51 @@ import trust2 from "../../../assets/trust2.png";
 import trust3 from "../../../assets/trust3.png";
 import trust4 from "../../../assets/trust4.png";
 import trust5 from "../../../assets/trust5.png";
+import { Card } from "react-bootstrap";
+import close from "../../../assets/close.png";
+import border1 from "../../../assets/border1.png";
+import border2 from "../../../assets/border2.png";
+import border3 from "../../../assets/border3.png";
+import border4 from "../../../assets/border4.png";
+import border5 from "../../../assets/border5.png";
+import smarrow1 from "../../../assets/smarrow1.svg";
+import smarrow2 from "../../../assets/smarrow2.svg";
+import smarrow4 from "../../../assets/smarrow4.svg";
+import smarrow5 from "../../../assets/smarrow5.svg";
+import smcircle1 from "../../../assets/smcircle1.svg";
+import smcircle2 from "../../../assets/smcircle2.svg";
 
 const RedesignedHome: React.FC = () => {
   const [name, setName] = React.useState("");
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
   }, []);
+
+  const [state, setState] = React.useState<any>({
+    press: false,
+  });
+
+  const GetStarted = () => {
+    setState({
+      ...state,
+      press: true,
+    });
+  };
+
+  const CloseGetStarted =()=> {
+    setState({
+      ...state,
+      press: false,
+    });
+  }
+
+  const { press } = state;
+
   return (
     <div>
       <Navbar />
-      <Container className="homecontainer" fluid={true}>
-        <Row className="newfirstrow backdrop">
+      <Container fluid={true}>
+        <Row md={12} className="newfirstrow">
           <Col md={6} className="navcontrols">
             {" "}
           </Col>
@@ -64,7 +98,7 @@ const RedesignedHome: React.FC = () => {
             <img src={linkedin} className="socials1" alt="linkedin" />
           </Col>
         </Row>
-        <Row className="newsecondrow">
+        <Row md={12} className="newsecondrow">
           <div className="secondtitle">
             It's a Crazy{" "}
             <span className="secondtitle1">
@@ -74,34 +108,63 @@ const RedesignedHome: React.FC = () => {
           <div className="crazycircle1">
             <img src={circle1} className="lcircle1" />
             <img src={arrow1} className="larrow1" />
+            <img src={smarrow1} className="smarrow1" />
             <img src={circle2} className="lcircle2" />
           </div>
           <div className="crazycircle2">
             <img src={arrow2} className="larrow2" />
+            <img src={smarrow2} className="smarrow2" />
             <img src={circle3} className="lcircle3" />
+            <img src={smcircle1} className="smcircle1" />
             <img src={arrow3} className="larrow3" />
           </div>
           <div className="crazycircle3">
             <img src={circle4} className="lcircle4" />
+            <img src={smarrow4} className="smarrow4" />
             <img src={arrow6} className="larrow6" />
             <img src={circle5} className="lcircle5" />
           </div>
           <div className="crazycircle4">
             <img src={arrow4} className="larrow4" />
+            <img src={smarrow5} className="smarrow5" />
+            <img src={smcircle2} className="smcircle2" />
             <img src={circle6} className="lcircle6" />
             <img src={arrow5} className="larrow5" />
           </div>
         </Row>
-        <Row className="newthirdrow">
-          <div className="newthirdrowtext">
-            Clarity by Yudimy is a career mapping platform that helps you
-            discover and define a clear road map with practical and actionable
-            steps to get to your destination of meaningful and organized
-            work-life.
-          </div>
-          <div className="newthirdrowbtn">GET STARTED</div>
-        </Row>
-        <Row className="newfourthrow">
+        {press === false ? (
+          <Row md={12} className="newthirdrow">
+            <div className="newthirdrowtext">
+              Clarity by Yudimy is a career mapping platform that helps you
+              discover and define a clear road map with practical and actionable
+              steps to get to your destination of meaningful and organized
+              work-life.
+            </div>
+            <div className="newthirdrowbtn" onClick={GetStarted}>
+              GET STARTED
+            </div>
+          </Row>
+        ) : (
+          <Row md={12} className="thirdgetstarted">
+            <img className="gtclose" src={close} onClick={CloseGetStarted} alt="close" />
+            <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
+              <div className="thirdgthead">Start my personal Journey</div>
+              <div className="thirdgttxt">Lets give you a perception to what your career should look like</div>
+              <div className="thirdgtbtn1">Sign Up</div>
+              </Card>
+              <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
+              <div className="thirdgthead">Gift a Friend</div>
+              <div className="thirdgttxt">Give a gift of success. Choose from among the three different plans</div>
+              <div className="thirdgtbtn2">Get Started</div>
+              </Card>
+              <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
+              <div className="thirdgthead">Use Clarity for my Team</div>
+              <div className="thirdgttxt">Give a gift of success. Choose from among the three different plans</div>
+              <div className="thirdgtbtn3">Get Started</div>
+              </Card>
+          </Row>
+        )}
+        <Row md={12} className="newfourthrow">
           <div className="secondtitle fourthttl">
             A navigator you can{" "}
             <span className="secondtitle1">
@@ -115,12 +178,13 @@ const RedesignedHome: React.FC = () => {
           </div>
           <div className="homelaptop">
             <div className="homelaptop1">
-              <img src={laptop} />
+              <img className="laptop" src={laptop} />
             </div>
           </div>
           <div>
             <div className="fourthsec">
               <div className="fourthsubsec">
+                <img className="border1" src={border5} />
                 <img src={trust1} className="trustimg" />
                 <div className="fourthsubhead">
                   Career & Competence Evaluation Assessment
@@ -133,7 +197,8 @@ const RedesignedHome: React.FC = () => {
                 </div>
               </div>
               <div className="fourthsubsec">
-              <img src={trust2} className="trustimg"/>
+                <img className="border2" src={border2} />
+                <img src={trust2} className="trustimg" />
                 <div className="fourthsubhead">Talk to a Counselor</div>
                 <div className="fourthsubtext">
                   Your career trajectory is a sum total of all the choices you
@@ -146,7 +211,8 @@ const RedesignedHome: React.FC = () => {
             </div>
             <div className="fourthsec">
               <div className="fourthsubsec">
-              <img src={trust3} className="trustimg" />
+              <img className="border3" src={border3} />
+                <img src={trust3} className="trustimg" />
                 <div className="fourthsubhead">TO DO’s</div>
                 <div className="fourthsubtext">
                   Knowing the next step to take is one, getting there is another
@@ -157,7 +223,8 @@ const RedesignedHome: React.FC = () => {
                 </div>
               </div>
               <div className="fourthsubsec">
-              <img src={trust4} className="trustimg trustimgin" />
+              <img className="border4" src={border4} />
+                <img src={trust4} className="trustimg trustimgin" />
                 <div className="fourthsubhead">Growth Challenge</div>
                 <div className="fourthsubtext">
                   Beautiful things happen when preparation meets opportunity and
@@ -168,7 +235,8 @@ const RedesignedHome: React.FC = () => {
               </div>
             </div>
             <div className="fourthsubsec fourthposit">
-            <img src={trust5} className="trustimg" />
+            <img className="border5" src={border5} />
+              <img src={trust5} className="trustimg" />
               <div className="fourthsubhead">
                 Career Positioning & Opportunity Recommendation
               </div>

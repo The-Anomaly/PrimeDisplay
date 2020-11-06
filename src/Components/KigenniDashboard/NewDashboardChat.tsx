@@ -42,8 +42,8 @@ class NewDashboardChat extends React.Component {
         console.log(response);
         if (response.status === 200) {
           this.setState({
-            userInfo:response.data[0].email
-          })
+            userInfo: response.data[0].email,
+          });
         }
       })
       .catch((error) => {
@@ -153,21 +153,23 @@ class NewDashboardChat extends React.Component {
                           </div>
                         </>
                       ))}
-                      <div>
-                        <textarea
-                          className="form-control sendtcont"
-                          placeholder="Enter text"
-                          name="message"
-                          value={message}
-                          onChange={this.onchange}
-                        />
-                      </div>
-                      <div className="texsss1">
-                        <div
-                          className="sendmeess col-md-11"
-                          onClick={this.sendMessageHandler}
-                        >
-                          Send Message
+                      <div className="messagewrp1">
+                        <div>
+                          <textarea
+                            className="form-control sendtcont"
+                            placeholder="Enter text"
+                            name="message"
+                            value={message}
+                            onChange={this.onchange}
+                          />
+                        </div>
+                        <div className="texsss1">
+                          <div
+                            className="sendmeess col-md-11"
+                            onClick={this.sendMessageHandler}
+                          >
+                            Send Message
+                          </div>
                         </div>
                       </div>
                     </Col>

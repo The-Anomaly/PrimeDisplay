@@ -254,7 +254,7 @@ class CounsellorsRecommendation extends React.Component {
                         className="retaketest"
                         onClick={this.handleChatCheck}
                       >
-                        Speak with a counsellor
+                        Book a private session
                       </Button>
                     </div>
                     <div>
