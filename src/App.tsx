@@ -112,7 +112,6 @@ class App extends Component {
               <Route exact path="/contact" component={Contactpage} />
               <Route exact path="/payment" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
-              []
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/aboutus" component={NewAbout} />
