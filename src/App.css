@@ -45,3 +45,6 @@
     display: none;
   }
 }
+.App{
+  overflow-x: hidden;
+}

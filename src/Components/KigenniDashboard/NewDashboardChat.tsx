@@ -27,7 +27,7 @@ class NewDashboardChat extends React.Component {
   this: any;
   constructor(props) {
     super(props);
-    this.initialiseChat();
+    this.initialiseChat(props.match.params.chatID);
   }
   componentWillMount() {
     const availableToken = localStorage.getItem("userToken");
@@ -53,11 +53,12 @@ class NewDashboardChat extends React.Component {
   formatTime = (date) => {
     return moment(date).fromNow();
   };
-  initialiseChat() {
+  initialiseChat(id) {
     this.waitForSocketConnection(() => {
-      WebSocketInstance.fetchMessages(this.props.match.params.chatID);
+      WebSocketInstance.fetchMessages(id);
+      console.log(id)
     });
-    WebSocketInstance.connect(this?.props?.match?.params?.chatID);
+    WebSocketInstance.connect(id);
   }
   waitForSocketConnection = (callback) => {
     const component = this;
@@ -91,6 +92,7 @@ class NewDashboardChat extends React.Component {
       chatId: this.props.match.params.chatID,
     };
     WebSocketInstance.newChatMessage(messageObject);
+    WebSocketInstance.fetchMessages(this.props.match.params.chatID)
     this.setState({
       message: "",
     });
@@ -109,7 +111,7 @@ class NewDashboardChat extends React.Component {
               <DashboardLargeScreenNav title="Chat with a counsellor" />
               <Row>
                 <Col md={12} className="kisls">
-                  <div className="kdashheader npps">
+                  <div className="kdashheader npps nprr">
                     <DashboardUsernameheader
                       welcomeText={
                         " Need some clarification about your Career Insights? leave a message for your counsellor"
