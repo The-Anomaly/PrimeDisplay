@@ -934,7 +934,6 @@ button {
   font-family: "Brfirma-Bold";
   font-size: 35px;
   margin: 0rem auto;
-  padding-left: 6.5rem;
 }
 .secondtitle1 {
   color: #ffffff;
@@ -943,9 +942,9 @@ button {
   position: relative;
 }
 .secondimg {
-  position: relative;
-  top: -0.2rem;
-  right: 7rem;
+  position: absolute;
+  right: -46px;
+  top: -10px;
   z-index: -1;
   width: 150px;
   height: 68px;
@@ -1644,7 +1643,9 @@ button {
     font-size: 30px;
   }
   .secondimg {
-    right: 6rem;
+    right: -60px;
+    height: 55px;
+    top: -7px;
   }
 }
 
@@ -1653,7 +1654,8 @@ button {
     font-size: 28px;
   }
   .secondimg {
-    right: 5.6rem;
+    right: -48px;
+    width: 130px;
   }
   .crazycircle1,
   .crazycircle2,
@@ -1701,10 +1703,11 @@ button {
   }
   .crazycircle1 .smarrow1 {
     align-self: flex-end;
-    margin-right: 15%;
+    margin-right: 20%;
     margin-top: -10%;
     margin-bottom: 2rem;
     transform: rotate(-30deg);
+    width: 25%;
   }
   .crazycircle2 {
     margin-top: 0;
@@ -1712,6 +1715,7 @@ button {
   .crazycircle2 .smarrow2 {
     margin-left: auto;
     margin-right: 22%;
+    width: 20%;
   }
   .crazycircle2 .smcircle1 {
     align-self: flex-start;
@@ -1731,8 +1735,9 @@ button {
     width: 80%;
   }
   .crazycircle3 .smarrow4 {
-    order: 3;
-    margin-top: -8rem;
+    order: 3;    
+    width: 20%;
+    margin-top: -28%;
     margin-left: 20%;
     align-self: flex-start;
   }
@@ -1747,6 +1752,7 @@ button {
     align-self: flex-start;
     margin-left: 10%;
     margin-right: auto;
+    width: 25%;
   }
   .crazycircle4 .smcircle2 {
     width: 60%
@@ -1757,6 +1763,14 @@ button {
   .newthirdrowtext {
     font-size: 15px;
     margin: 0;
+  }
+  .secondtitle {
+    font-size: 24px;
+  }
+  .secondimg {
+    width: 105px;
+    height: 45px;
+    right: -33px;
   }
 }
 
@@ -1770,6 +1784,10 @@ button {
   }
   .newthirdrowbtn {
     width: 190px;
+  }
+  .secondimg {
+    width: 85px;
+    right: -14px;
   }
 }
 
