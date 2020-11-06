@@ -43,6 +43,12 @@ import border2 from "../../../assets/border2.png";
 import border3 from "../../../assets/border3.png";
 import border4 from "../../../assets/border4.png";
 import border5 from "../../../assets/border5.png";
+import smarrow1 from "../../../assets/smarrow1.svg";
+import smarrow2 from "../../../assets/smarrow2.svg";
+import smarrow4 from "../../../assets/smarrow4.svg";
+import smarrow5 from "../../../assets/smarrow5.svg";
+import smcircle1 from "../../../assets/smcircle1.svg";
+import smcircle2 from "../../../assets/smcircle2.svg";
 
 const RedesignedHome: React.FC = () => {
   const [name, setName] = React.useState("");
@@ -102,20 +108,26 @@ const RedesignedHome: React.FC = () => {
           <div className="crazycircle1">
             <img src={circle1} className="lcircle1" />
             <img src={arrow1} className="larrow1" />
+            <img src={smarrow1} className="smarrow1" />
             <img src={circle2} className="lcircle2" />
           </div>
           <div className="crazycircle2">
             <img src={arrow2} className="larrow2" />
+            <img src={smarrow2} className="smarrow2" />
             <img src={circle3} className="lcircle3" />
+            <img src={smcircle1} className="smcircle1" />
             <img src={arrow3} className="larrow3" />
           </div>
           <div className="crazycircle3">
             <img src={circle4} className="lcircle4" />
+            <img src={smarrow4} className="smarrow4" />
             <img src={arrow6} className="larrow6" />
             <img src={circle5} className="lcircle5" />
           </div>
           <div className="crazycircle4">
             <img src={arrow4} className="larrow4" />
+            <img src={smarrow5} className="smarrow5" />
+            <img src={smcircle2} className="smcircle2" />
             <img src={circle6} className="lcircle6" />
             <img src={arrow5} className="larrow5" />
           </div>

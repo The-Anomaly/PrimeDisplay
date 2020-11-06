@@ -258,7 +258,7 @@ const newNavbar = withRouter((props: any) => {
               navbar ? "nav-wrapper redoNav nav_margin privacynav" : "nav-wrapper redoNav nav_margin"
             }>
             <div className="nav_titlenew">
-              <div className="logo_clarity">
+              <div className="logo_clarity logo_clarity_new">
                 <Link to="/">
                   <img
                     src={navbar ? demoLogoLight : demoLogo}
