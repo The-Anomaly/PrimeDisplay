@@ -1137,7 +1137,7 @@ button {
   font-size: 33px;
 }
 .fourthimg {
-  right: 5.6rem;
+  right: -68px;
 }
 .fourthline {
   border: 2px solid #9c1258;
@@ -1695,11 +1695,11 @@ button {
   }
   .crazycircle1 .lcircle1 {
     align-self: flex-start;
-    width: 70%;
+    width: 65%;
   }
   .crazycircle1 .lcircle2 {
     align-self: flex-end;
-    width: 70%;
+    width: 65%;
   }
   .crazycircle1 .smarrow1 {
     align-self: flex-end;
@@ -1747,6 +1747,9 @@ button {
     order: 4;
     margin-left: -10%;
     margin-right: auto;
+  }
+  .crazycircle4 {
+    flex-direction: row;
   }
   .crazycircle4 .smarrow5 {
     align-self: flex-start;
