@@ -890,8 +890,8 @@ button {
   color: #ffffff;
   margin-top: 15rem;
   margin-bottom: 15rem;
-  padding-left: 2rem;
-  padding-right: 6.5rem;
+  padding-left: 4%;
+  padding-right: 5%;
   font-size: 45px;
   font-family: "Brfirma-Bold";
 }
@@ -1015,6 +1015,7 @@ button {
 .crazycircle4 .larrow5 {
   width: 23vw;
   margin-top: -32%;
+  margin-left: -5%;
 }
 .crazycircle3 .larrow6 {
   margin-right: -35%;
@@ -1181,7 +1182,7 @@ button {
   text-align: center;
   z-index: 10;
   width: 100%;
-  top: 14rem;
+  top: 12.5rem;
 }
 .laptop {
   width: 49%;
@@ -1633,6 +1634,21 @@ button {
 
 /*Redesign Mobile Responsiveness*/
 
+@media(max-width: 1200px) {
+  .homelaptop, .border1, .border2, .border3, .border4, .border5 {
+    display: none;
+  }
+  .fourthsec {
+    padding: 2rem 10%;
+  }
+  .fourthsubsec {
+    border: 1px dashed #666666;
+    border-radius: 130px;
+    padding: 1rem 3rem;
+    width: 350px;
+  }
+}
+
 @media (max-width: 1000px) {
   .newthirdrowtext {
     font-size: 16px;
@@ -1646,6 +1662,37 @@ button {
     right: -60px;
     height: 55px;
     top: -7px;
+  }
+  .fourthsec {
+    padding: 2rem 3%;
+  }
+  .fourthttl {
+    font-size: 28px;
+  }
+  .fourthimg {
+    right: -50px;
+    width: 120px;
+  }
+  .fourthline {
+    width: 140px;
+  }
+  .fourthtext {
+    font-size: 13px;
+  }
+  .fourthsubsec {
+    width: 330px;
+  }
+  .trustimg {
+    width: 50px;
+  }
+  .fourthsubhead {
+    font-size: 13px;
+  }
+  .fourthsubtext {
+    font-size: 12px;
+  }
+  .fourthposit {
+    margin-top: 0rem;
   }
 }
 
@@ -1759,6 +1806,26 @@ button {
   }
   .crazycircle4 .smcircle2 {
     width: 60%
+  }
+  .fourthttl {
+    font-size: 26px;
+  }
+  .fourthimg {
+    right: -35px;
+    top: -5px;
+    width: 100px;
+    height: 45px;
+  }
+  .fourthline {
+    width: 120px;
+  }
+  .fourthsubsec {
+    border: none;
+  }
+  .fourthsec {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1922,9 +1989,3 @@ button {
 }
 
 /*Hear From Clients*/
-
-@media (max-width: 1200px) {
-  .hometext {
-    padding-right: 2rem;
-  }
-}
