@@ -934,6 +934,7 @@ button {
   font-family: "Brfirma-Bold";
   font-size: 35px;
   margin: 0rem auto;
+  text-align: center;
 }
 .secondtitle1 {
   color: #ffffff;
@@ -1233,6 +1234,9 @@ button {
   margin-left: 4rem;
   width: 280px;
 }
+.leftborder, .rightborder {
+  display: none;
+}
 /*Hear From Clients*/
 .homemap {
   background-image: url("../../../assets/map.svg");
@@ -1246,7 +1250,7 @@ button {
   margin-bottom: 2rem;
 }
 .homemapimg {
-  right: 8.2rem;
+  right: -1.6rem;
 }
 .clienttext {
   color: #ffffff;
@@ -1826,6 +1830,29 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0;
+  }
+  .leftborder, .rightborder {
+    display: block;
+    position: absolute;
+    margin-top: 1.5rem;
+  }
+  .rightborder {
+    transform: rotate(180deg);
+    margin-left: 8rem
+  }
+  .leftborder {
+    margin-left: -4rem;
+  }
+  .leftborder1 {
+    margin-top: 1.7rem;
+    height: 262px;
+  }
+  .rightborder2 {
+    height: 265px;
+  }
+  .leftborder2 {
+    height: 266px;
   }
 }
 
@@ -1841,6 +1868,13 @@ button {
     width: 105px;
     height: 45px;
     right: -33px;
+  }
+  .fourthimg {
+    width: 90px;
+    right: -30px;
+  }
+  .fourthline {
+    width: 100px;
   }
 }
 
@@ -1858,6 +1892,27 @@ button {
   .secondimg {
     width: 85px;
     right: -14px;
+  }
+  .fourthttl {
+    font-size: 20px;
+  }
+  .fourthimg {
+    right: -15px;
+    width: 65px;
+    height: 35px;
+    top: -4px;
+  }
+  .newfourthrow {
+    padding: 2rem 0.5rem;
+  }
+  .fourthtext {
+    font-size: 12px;
+  }
+  .rightborder {
+    margin-left: 5.8rem;
+  }
+  .leftborder {
+    margin-left: -1.6rem;
   }
 }
 
@@ -1989,3 +2044,20 @@ button {
 }
 
 /*Hear From Clients*/
+
+@media (max-width: 1200px) {
+  .clientimg {
+    width: 70px;
+    height: 70px;
+  }
+  .clienttext {
+    width: 250px;
+    font-size: 12px;
+  }
+}
+
+@media(max-width: 1000px) {
+  .homemapimg {
+    right: -44px;
+  }
+}

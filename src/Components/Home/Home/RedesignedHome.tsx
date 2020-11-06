@@ -49,6 +49,7 @@ import smarrow4 from "../../../assets/smarrow4.svg";
 import smarrow5 from "../../../assets/smarrow5.svg";
 import smcircle1 from "../../../assets/smcircle1.svg";
 import smcircle2 from "../../../assets/smcircle2.svg";
+import smborder from "../../../assets/smborder.png"
 
 const RedesignedHome: React.FC = () => {
   const [name, setName] = React.useState("");
@@ -185,6 +186,7 @@ const RedesignedHome: React.FC = () => {
             <div className="fourthsec">
               <div className="fourthsubsec">
                 <img className="border1" src={border5} />
+                <img className="rightborder" src={smborder} />
                 <img src={trust1} className="trustimg" />
                 <div className="fourthsubhead">
                   Career & Competence Evaluation Assessment
@@ -198,6 +200,7 @@ const RedesignedHome: React.FC = () => {
               </div>
               <div className="fourthsubsec">
                 <img className="border2" src={border2} />
+                <img className="leftborder leftborder1" src={smborder} />
                 <img src={trust2} className="trustimg" />
                 <div className="fourthsubhead">Talk to a Counselor</div>
                 <div className="fourthsubtext">
@@ -212,6 +215,7 @@ const RedesignedHome: React.FC = () => {
             <div className="fourthsec">
               <div className="fourthsubsec">
               <img className="border3" src={border3} />
+              <img className="rightborder rightborder2" src={smborder} />
                 <img src={trust3} className="trustimg" />
                 <div className="fourthsubhead">TO DO’s</div>
                 <div className="fourthsubtext">
@@ -224,6 +228,7 @@ const RedesignedHome: React.FC = () => {
               </div>
               <div className="fourthsubsec">
               <img className="border4" src={border4} />
+              <img className="leftborder leftborder2" src={smborder} />
                 <img src={trust4} className="trustimg trustimgin" />
                 <div className="fourthsubhead">Growth Challenge</div>
                 <div className="fourthsubtext">
