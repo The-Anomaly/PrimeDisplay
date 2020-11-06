@@ -1,15 +1,68 @@
-import React from "react";
+import React,{ useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import locator from "../../../assets/locator.png";
 import seticon from "../../../assets/seticon.png";
-import email from "../../../assets/mail_icon.png";
+import Alert from "react-bootstrap/Alert";
+import mail from "../../../assets/mail_icon.png";
 import map from "../../../assets/map.png";
 import "./contact_page.css";
 import Navbar from "../HomeComponents/newnavbar";
 import Footer from "../HomeComponents/newfooter";
 import Think from "../HomeComponents/ThinkThisIsYou";
+import { API } from "../../../config";
+import axios from 'axios';
 
 const Contactpage = () => {
+
+  const [ state, setState ] = useState({
+    name:'',
+    email: '',
+    message: '',
+    successMessage:'' 
+  })
+     const {name, email, message,successMessage} = state
+     
+     const onSubmit=()=>{
+       const data={
+         name: name,
+         email: email,
+         message: message
+       }
+       console.log(data);
+         axios.post(`${API}/send-contact-support/`,data)
+         .then( response => {
+           setState({
+             ...state,
+             successMessage: 'your message has been sent'
+           })
+         })
+         .catch(error => {
+          setState({
+            ...state,
+            successMessage: 'failed to send message'
+          })
+         })
+     }
+     const validateForm= (e)=>{
+      e.preventDefault();
+      if ( name==='' || email === '' || message=== '' ) {
+        return setState({
+            ...state,
+            successMessage: 'all fields are required'
+           })
+      
+      }
+      if(name && email){
+        onSubmit();
+      }
+     }
+     const onChangeHandler= (e) =>{
+          setState({
+            ...state,
+            [e.target.name]: e.target.value
+          })
+     }
+
   return (
     <div>
     <Navbar />
@@ -20,9 +73,9 @@ const Contactpage = () => {
             <Col md={12} className="contact_us_div">
               <h2 className="heading_primary">Contact Us</h2>
               <p>
-                We are always excited to hear from you.<br></br>Have questions
+                We are always excited to hear from you.<br/>Have questions
                 or enquiries, need to integrate clarity to your system or
-                organizations?<br></br>Get in contact with our experts let us
+                organizations?<br/>Get in contact with our experts let us
                 set things in motion.
               </p>
             </Col>
@@ -33,29 +86,44 @@ const Contactpage = () => {
         <Container>
           <Row className="margintop">
             <Col md={4}>
-              <form className="contactform ">
+              <form className="contactform " onSubmit={validateForm}>
+                 
                 <h6 className="contact_form_header">Contact Us</h6>
                 <input
                   type="text"
                   placeholder="Your Name"
+                  name= "name"
+                  onChange={onChangeHandler}
+                  value= {name}
                   className="contact_info form-control"
                 />
-                <br></br>
+                <br/>
                 <input
                   type="text"
+                  name="email"
+                  onChange={onChangeHandler}
+                  value= {email}
                   placeholder="Your Email"
                   className="contact_info form-control"
                 />
-                <br></br>
+                <br/>
                 <textarea
                   placeholder="Your Message"
+                  name="message"
+                  onChange={onChangeHandler}
+                  value= {message}
                   cols={30}
                   rows={10}
                   className="contact_info form-control"
                 />
-                <div>
+                 {successMessage && (
+                   <Alert key={2} variant="success" className="cntfrm-mssg">
+                     {successMessage}
+                   </Alert>
+                   )}
+                <div className="cnrtctfrmd">
                   {" "}
-                  <span className="contact_btn">Send </span>
+                  <span className="contact_btn" onClick={onSubmit} >Send </span>
                 </div>
               </form>
             </Col>
@@ -73,7 +141,7 @@ const Contactpage = () => {
                   <p>(843)555-0130</p>
                 </Col>
                 <Col md={4} className="contact_icons">
-                  <img src={email} className="cnticns" />
+                  <img src={mail} className="cnticns" />
                   <p>willie.jennings@example.com</p>
                 </Col>
               </Row>

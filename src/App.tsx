@@ -83,6 +83,7 @@ import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page"
 import Privacy from "./Components/Home/Legal_policy_page/privacy_policy";
 import Terms from "./Components/Home/Legal_policy_page/terms&conditions";
 import Monthly_plan from "./Components/Home/Redesigned_Payment_Page/Monthly_payment_plan";
+import Signup from "./Components/Home/Redesigned_signup_page/signup";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import NewDashboardAllMessages from './Components/KigenniDashboard/NewDashboardAllMessages';
@@ -113,6 +114,7 @@ class App extends Component {
               <Route exact path="/privacy_policy" component={Privacy} />
               <Route exact path="/terms&conditions" component={Terms}/>
               <Route exact path="/progressive_clarity_experience" component={Monthly_plan}/>
+              <Route exact path="/newsignup" component={Signup}/>
               []
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
