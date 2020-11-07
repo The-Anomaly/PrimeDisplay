@@ -45,7 +45,7 @@ export const NewAbout = () => {
             <br />
             Professionals can
           </div>
-          <Col className="withclaritytxt" md={5}>
+          <Col className="withclaritytxt" md={5} sm={12}>
             <div className="abttick">
               <img className="tickdash1" src={tick} alt="tick" />
               <div className="tickdash">{""}</div>
@@ -88,12 +88,12 @@ export const NewAbout = () => {
           </Col>
           <Col className="withclarityimg" md={7}>
             <div className="profimg1">
-              <img src={prof1} alt="professional" />
+              <img className="profimg1a" src={prof1} alt="professional" />
               <img className="profimg1b" src={prof2} alt="professional" />
             </div>
             <div className="profimg2">
               <img className="profimg2a" src={prof3} alt="professional" />
-              <img src={prof4} alt="professional" />
+              <img className="profimg2b" src={prof4} alt="professional" />
             </div>
           </Col>
         </Row>
@@ -104,7 +104,7 @@ export const NewAbout = () => {
           </div>
           <div className="abtprodsec">
             <div className="prodsec1">
-              <img src={sec1} />
+              <img className="greenimg1" src={sec1} />
             </div>
             <div className="prodsec2">
               <div className="for1">
@@ -123,7 +123,7 @@ export const NewAbout = () => {
                 <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Lesser anxiety</span></div>
               </div>
             </div>
-            <div className="prodsec2">
+            <div className="prodsec2 prodsec3">
               <div className="for1">
                 For <span className="prodindi">Teams<img className="indibox indibox1" src={box1} /></span>
               </div>

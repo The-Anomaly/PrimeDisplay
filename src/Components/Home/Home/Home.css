@@ -1243,6 +1243,9 @@ button {
   background-size: cover;
   padding: 3rem;
 }
+.mapmobile {
+  display: none;
+}
 .homemaptitle {
   margin: 0;
   padding-left: 1rem;
@@ -1566,6 +1569,7 @@ button {
   color: #001833;
   font-size: 20px;
   margin: 1.5rem auto;
+  text-align: center;
 }
 .abtprodsec {
   display: flex;
@@ -1594,13 +1598,14 @@ button {
   color: #ffffff;
   letter-spacing: 0.5px;
   padding-left: 0.3rem;
+  position: relative;
 }
 .indibox {
   z-index: -1;
-  position: relative;
-  left: -6.6rem;
   width: 115px;
-  top: -0.1rem;
+  position: absolute;
+  left: 0rem;
+  top: -5px;
 }
 .prodgreentick {
   margin-right: 3rem;
@@ -1611,11 +1616,7 @@ button {
   margin-bottom: 1.5rem;
   display: flex;
 }
-.prodsec3 {
-  flex: 50%;
-}
 .indibox1 {
-  left: -3.85rem;
   width: 80px;
 }
 .prodsec4 {
@@ -2174,5 +2175,166 @@ button {
   .homemapsubsec {
     padding: 0 0.5rem;
     height: 420px;
+  }
+}
+
+/*About Us Responsiveness*/
+@media(max-width: 1200px) {
+  .withclaritytxt {
+    max-width: 60%;
+  }
+  .withclarityimg {
+    max-width: 40%;
+  }
+  .profimg1 {
+    height: 400px;
+    margin-top: -4rem;
+  }
+  .profimg2 {
+    height: 450px;
+    margin-top: 5rem;
+  }
+  .profimg1b {
+    width: 60%;
+  }
+  .profimg2a, .profimg1a {
+    width: 100%;
+  }
+  .profimg2b {
+    width: 80%;
+  }
+  .greenimg1 {
+    width: 100%;
+  }
+  .sec4img {
+    margin-top: 10%;
+  }
+}
+
+@media(max-width: 1000px) {
+  .withclarityimg {
+    display: none;
+  }
+  .withclaritytxt {
+    max-width: 80%;
+  }
+  .aboutfirsthead {
+    font-size: 36px;
+    margin-top: 10rem;
+  }
+  .aboutfirsttxt {
+    font-size: 14px;
+    margin-bottom: 3rem;
+    margin-right: 20%;
+  }
+  .prodsec2 {
+    padding-left: 1rem;
+    font-size: 13px;
+  }
+  .prodgreentick {
+    height: 20px;
+    margin: 0 1.5rem;
+  }
+  .for1 {
+    margin-left: 1rem;
+  }
+}
+
+@media(max-width: 800px) {
+  .aboutfirsttxt {
+    font-size: 13px;
+    margin-bottom: 2rem;
+    margin-right: 10%;
+  }
+  .prodsec1 {
+    order: 1;
+    max-width: 70%;
+    flex: 80%;
+  }
+  .prodsec2 {
+    order: 2;
+    flex: 80%;
+    max-width: 100%;
+  }
+  .prodsec3 {
+    order: 4;
+    flex: 80%;
+    max-width: 100%;
+  }
+  .prodsec4 {
+    order: 3;
+    flex: 80%;
+    max-width: 70%;
+  }
+  .sec4img {
+    padding: 0;
+    margin: 0;
+  }
+  .greenimg1 {
+    width: 60%;
+  }
+  .abtprod {
+    font-size: 18px;
+  }
+  .abtprodsec {
+    margin-top: 2rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .abtwithclarity {
+    font-size: 24px;
+    margin: 5rem 0 1rem 3rem;
+  }
+  .withclaritytxt {
+    padding-left: 0rem;
+    font-size: 15px;
+    margin-left: 2rem;
+    max-width: 90%;
+    padding-top: 1rem;
+  }
+  .aboutfirsttxt {
+    font-size: 12px;
+    margin-bottom: 2rem;
+    margin-right: 5%;
+  }
+  .aboutfirsthead {
+    font-size: 32px;
+    margin-top: 6rem;
+  }
+  .aboutfirstsec {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .abtticktxt {
+    padding-left: 1rem;
+  }
+  .tickdash1 {
+    width: 30px;
+  }
+  .abthapprod {
+    padding: 3rem;
+  }
+}
+
+@media(max-width: 400px) {
+  .aboutfirstsec {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .aboutfirsthead {
+    margin-top: 4rem;
+    font-size: 30px;
+    padding-right: 2rem;
+  }
+  .abtwithclarity {
+    font-size: 20px;
+    margin: 4rem 0 1rem 2rem;
+  }
+  .withclaritytxt {
+    font-size: 14px;
+  }
+  .abthapprod {
+    padding: 2rem;
   }
 }
