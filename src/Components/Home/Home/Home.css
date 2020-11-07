@@ -2060,4 +2060,119 @@ button {
   .homemapimg {
     right: -44px;
   }
+  .mapdesktop {
+    display: none;
+  }
+  .mapmobile {
+    display: block;
+    margin: auto;
+    margin-top: 3rem;
+  }
+  .homemaptitle {
+    width: 1000%;
+    text-align: left;
+  }
+  .homemapsubsec {
+    flex-direction: column;
+    height: 350px;
+  }
+  .clienttext {
+    width: 350px;
+    margin: 0;
+    margin-top: 2rem;
+    font-size: 14px;
+    line-height: 27px;
+  }
+  .mapmobile .carousel-indicators {
+    bottom: -3.5rem;
+  }
+  .mapmobile .carousel-indicators li {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .mapmobile .carousel-control-prev-icon {
+    margin-left: -10rem;
+  }
+  .mapmobile .carousel-control-next-icon {
+    margin-right: -7rem;
+  }
+  .mapname {
+    margin-top: 2rem;
+  }
+  .clientimg {
+    width: 80px;
+    height: 80px;
+  }
+  .homemapline {
+    margin-top: 4rem;
+  }
+  .homemapbtmtxt {
+    font-size: 18px;
+  }
+}
+
+@media(max-width: 800px) {
+  .homemapimg {
+    right: -32px;
+  }
+  .homemapbtmtxt {
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 600px) {
+  .homemapimg {
+    right: -21px;
+  }
+  .mapmobile .carousel-control-prev-icon {
+    margin-left: -8rem;
+  }
+  .mapmobile .carousel-control-next-icon {
+    margin-right: -6rem;
+  }
+  .clienttext {
+    width: 320px;
+  }
+  .homemap {
+    padding: 3rem 1rem;
+  }
+}
+
+@media(max-width: 450px) {
+  .mapmobile .carousel-control-prev-icon {
+    display: none;
+  }
+  .mapmobile .carousel-control-next-icon {
+    display: none;
+  }
+  .homemapbtmtxt {
+    text-align: center;
+    padding: 0 1rem;
+  }
+}
+
+@media(max-width: 400px) {
+  .homemaptitle {
+    margin-left: -1rem;
+  }
+  .homemapimg {
+    right: -10px;
+    width: 95px;
+  }
+  .clientimg {
+    width: 70px;
+    height: 70px;
+  }
+  .clienttext {
+    font-size: 13px;
+    width: 90%;
+    text-align: justify;
+  }
+  .homemapsubsec {
+    padding: 0 0.5rem;
+    height: 420px;
+  }
 }
