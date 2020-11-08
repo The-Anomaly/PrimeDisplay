@@ -30,8 +30,21 @@
     margin-bottom: 18px;
     font-weight: 900;
 }
+@keyframes move-sideway {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
 .sgnupfrmline{
     border: .1px solid #9999;
+    animation: move-sideway 1s ease-out .8s;
+    transition: transform .8s ease-in-out;
+    animation-fill-mode: backwards;
 }
 .sgnupdescr{
     position: relative;

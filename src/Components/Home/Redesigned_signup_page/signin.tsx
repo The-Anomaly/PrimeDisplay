@@ -54,7 +54,7 @@ const Signin = ()=>{
                   />
                 </label>
                 <div className="rdsigninp">
-                    <p>Forgot your password?</p>
+                    <p><Link to="/newsignin">Forgot your password?</Link></p>
                 </div>
                 <div className="rdsgnupfrmbtndv">
                   <span className="rdsgnfrmbtn rdsgnup-animated">Log In</span>
