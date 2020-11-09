@@ -115,7 +115,7 @@ const SideBarNewDashboard = (props: any) => {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="3">
                 <Card.Body>
-                  <Link to="/councellordates">
+                  <Link to="/councellordates" target="_blank">
                     <div className="task112">Book a private session</div>
                   </Link>
                   <Link to="/allusermessages">

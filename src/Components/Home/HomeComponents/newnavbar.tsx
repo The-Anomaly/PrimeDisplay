@@ -139,12 +139,13 @@ const newNavbar = withRouter((props: any) => {
           {/* mobile */}
           <div className="lakk">
             <SideNav
+              openFromRight={true}
               style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
               navStyle={{ width: "70%", background: "#131313" }}
               showNav={showNav}
               onHideNav={() => setShowNav({ ...state, showNav: true })}
               titleStyle={{
-                backgroundColor: "#9c1258",
+                backgroundColor: "#23304c",
                 color: "#444444",
                 paddingLeft: 10,
                 paddingBottom: 0,
@@ -160,7 +161,7 @@ const newNavbar = withRouter((props: any) => {
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
-                    background: "#9c1258",
+                    background: "#23304c",
                     padding: "0px 4px 1px 8px",
                     color: "white",
                     fontSize: "4rem",
@@ -185,18 +186,21 @@ const newNavbar = withRouter((props: any) => {
                   }
                 >
                   <div className="listwraperMob">
-                    <Link to="/">Home</Link>
+                    <Link to="/redesign">Home</Link>
                   </div>
                   <div className="listwraperMob">
-                    <Link to="/about">About</Link>
+                    <Link to="/aboutus">About</Link>
                   </div>
                   <div className="listwraperMob">
-                    <Link to="/clarityforteams">Services</Link>
+                    <Link to="/payment">Payments</Link>
+                  </div>
+                  <div className="listwraperMob">
+                    <Link to="/contact">Contact Us</Link>
                   </div>
                   <div className="listwraperMob">
                     <Link to="/faq">Faq</Link>
                   </div>
-                  <div className="listwraperMob">Privacy Policy</div>
+                  <div className="listwraperMob"><Link to="/privacy_policy">Privacy Policy</Link></div>
                   {/* {!userLoggedIn && (
                     <>
                       <div className="listwraperMob">
@@ -231,24 +235,24 @@ const newNavbar = withRouter((props: any) => {
                 </div>,
               ]}
             />
-            <div className="flexsss">
+            <div className="flexsss newflexsss">
               <Link to="/">
                 <img
                   src={demoLogo}
-                  className="clarity_logo"
+                  className="clarity_logo mobilelogo"
                   alt="clarity_logo"
                 />
               </Link>
               <div className="hamburgerwrap">
                 <div
-                  className="hamburger"
+                  className="hamburger newhamburger"
                   onClick={() =>
                     setShowNav({ ...state, showNav: !showNav ? true : false })
                   }
                 >
-                  <div className="line1"></div>
-                  <div className="line2"></div>
-                  <div className="line2"></div>
+                  <div className="line1 newline"></div>
+                  <div className="line2 newline"></div>
+                  <div className="line2 newline shrtline"></div>
                 </div>
               </div>
             </div>
@@ -263,24 +267,25 @@ const newNavbar = withRouter((props: any) => {
                   <img
                     src={navbar ? demoLogoLight : demoLogo}
                     alt="clarity_logo"
+                    className="logologo"
                   />
                 </Link>
               </div>
             </div>
             <div className="nav_titlenew">
-              <span className="title hhome">
+              <span className={props.home ? "title hhome" : "title"}>
                 <Link to="/redesign">Home</Link>
               </span>
-              <span className="title">
+              <span className={props.about ? "title hhome" : "title"}>
                 <Link to="/aboutus">About Us</Link>
               </span>
-              <span className="title">
+              <span className={props.payments ? "title hhome" : "title"}>
                 <Link to="/payment">Payments</Link>
               </span>
-              <span className="title">
+              <span className={props.contact ? "title hhome" : "title"}>
                 <Link to="/contact">Contact Us</Link>
               </span>
-              <span className="title">
+              <span className={props.ask ? "title hhome" : "title"}>
                 <Link to="/about">FAQ</Link>
               </span>
               {/* <span className="title">
@@ -291,7 +296,7 @@ const newNavbar = withRouter((props: any) => {
               ) : (
                 <NavIsLoggedIn Logout={logout} />
               )} */}
-              <div className="title1 shiftlefff">
+              <div className="title1 shiftlefff newshft">
                 <Link to="/signin">
                   <button className="title_t signupbtn newlogin">Login</button>
                 </Link>

@@ -11,7 +11,7 @@ import Footer from "../HomeComponents/newfooter";
 const Paymentpage=()=>{
     return(
         <div>
-            <Navbar/>
+            <Navbar payments={true} />
             <div className="payment-section">
                 <Container>
                     <div className="payment-decription"><h3>We have curated payments plans with you in mind</h3></div>
