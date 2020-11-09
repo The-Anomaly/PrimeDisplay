@@ -3794,3 +3794,10 @@ label {
     overflow: scroll;
   }
 }
+@media(min-width:600px){
+  .nprr{
+    max-height: initial;
+    height: 60vh;
+    overflow-y: scroll;
+  }
+}

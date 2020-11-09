@@ -90,6 +90,7 @@ import NewDashboardAllMessages from "./Components/KigenniDashboard/NewDashboardA
 import { NewAbout } from "./Components/Home/About/NewAbout";
 import CounsellorCVProfileBuilder from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorCVProfileBuilder";
 import CousellorProfileBuilderEdit from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorProfileBuilder";
+import CounsellorAssignedMembersViewOne from './Components/KigenniDashboard/CouncellorDasboard/CounsellorAssignedMembersViewOne';
 
 class App extends Component {
   constructor(props) {
@@ -114,10 +115,14 @@ class App extends Component {
               <Route exact path="/contact" component={Contactpage} />
               <Route exact path="/payment" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
-              <Route exact path="/terms&conditions" component={Terms}/>
-              <Route exact path="/progressive_clarity_experience" component={Monthly_plan}/>
+              <Route exact path="/terms&conditions" component={Terms} />
+              <Route
+                exact
+                path="/progressive_clarity_experience"
+                component={Monthly_plan}
+              />
               []
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={RedesignedHome} />
               <Route exact path="/about" component={About} />
               <Route exact path="/aboutus" component={NewAbout} />
               <Route exact path="/faq" component={Faq} />
@@ -356,6 +361,11 @@ class App extends Component {
                 exact
                 path="/counsellorassignedmembers"
                 component={CounsellorAssignedMembers}
+              />
+              <Route
+                exact
+                path="/counsellorassignedmembers/:id"
+                component={CounsellorAssignedMembersViewOne}
               />
               <Route exact path="/referrals" component={Referrals} />
               <Route

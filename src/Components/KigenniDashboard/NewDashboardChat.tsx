@@ -99,8 +99,8 @@ class NewDashboardChat extends React.Component {
   };
 
   render() {
-    console.log(this.state.userInfo);
     const { isLoading, user, message }: any = this.state;
+    console.log(this.props.messages)
     return (
       <>
         <Container fluid={true} className="contann122">

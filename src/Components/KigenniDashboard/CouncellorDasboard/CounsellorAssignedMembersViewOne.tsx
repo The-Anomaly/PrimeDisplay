@@ -15,19 +15,28 @@ import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import Axios, { AxiosResponse } from "axios";
 import noData from "../../../assets/no recommendations.png";
 import { API } from "../../../config";
-import { Link } from "react-router-dom";
+import CounsellorBookedSessionsComponent from "./CouncellorBookedSessionsComponent";
+import brfcase from "../../../assets/brfcase.png";
+import { Form } from "react-bootstrap";
 
-const CounsellorAssignedMembers = (props: any) => {
+const CounsellorAssignedMembersViewOne = (props: any) => {
   const [state, setState] = useState<any>({
     user: [],
     counsellorData: [],
     errorMessage: "",
     nextLink: "",
+    what_i_do: "",
+    isOpen: false,
     prevLink: "",
     count: "",
     success: "",
     total_pages: "",
     isLoading: false,
+    currently_seeking: "",
+    dob: "",
+    industry_interest: "",
+    present_pills: "",
+    opportunities: "",
   });
   React.useEffect(() => {
     setState({
@@ -172,13 +181,32 @@ const CounsellorAssignedMembers = (props: any) => {
         });
       });
   };
+  const closeModal = () => {
+    setState({
+      ...state,
+      isOpen: false,
+    });
+  };
+  const openModal = () => {
+    setState({
+      ...state,
+      isOpen: true,
+    });
+  };
   const {
     nextLink,
     isLoading,
     counsellorData,
     prevLink,
+    isOpen,
+    present_pills,
+    opportunities,
+    dob,
     count,
+    currently_seeking,
+    what_i_do,
     total_pages,
+    industry_interest,
   } = state;
   console.log(counsellorData);
   return (
@@ -192,118 +220,152 @@ const CounsellorAssignedMembers = (props: any) => {
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
-                <DashboardCounsellorIntroHeader welcomeText="List of all the members assigned to you" />
+                <DashboardCounsellorIntroHeader
+                  welcomeText={`This is a report of detailed information ${counsellorData.name}`}
+                />
                 <Row className="signedfjss">
                   <Col md={12}>
-                    {counsellorData.length > 0 && (
-                      <div className="teammembr teamheading counheading mheadd">
-                        <div className="mone"> </div>
-                        <div className="mtwo">
-                          <div>Name</div>
-                        </div>
-                        <div className="mthree">
-                          <div> Member Type</div>
-                        </div>
-                        <div className="msix"> </div>
+                    <div className="pink23">
+                      <div className="case23">
+                        <img src={brfcase} className="brfcase" alt="brfcase" />
+                        <span className="weww">Career Information</span>
                       </div>
-                    )}
-
-                    {counsellorData &&
-                      counsellorData.length > 0 &&
-                      counsellorData.map((data, i) => (
-                        <div
-                          className="msgs teammembr booked bookedover signed"
-                          key={i}
-                        >
-                          <Link to={`/counsellorassignedmembers/${data?.id}`}>
-                            <div className="fromerit summary">
-                              <div className="mone">
-                                <img
-                                  className="user_image"
-                                  src={userimg1}
-                                  alt="user image"
-                                />
-                              </div>
-                              <div className="mtwo">
-                                <div>
-                                  <div className="lowerr nulower counlowerr mhead">
-                                    Name
-                                  </div>
-                                  <div className="userrdet1 det1">
-                                    {data?.name}
-                                  </div>
-                                  <div className="userrdet2 memb">
-                                    {data?.email}
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="mthree">
-                                <div className="lowerr nulower counlowerr mhead">
-                                  Member type
-                                </div>
-                                <div className="clarity12b">Clarity</div>
-                              </div>
-                              {data.status && (
-                                <div className="msix">
-                                  <div className="counview mbtn">View More</div>
-                                </div>
-                              )}
-                              {!data.status && (
-                                <div className="msix">
-                                  <div className="counview mbtn mbtnblu">
-                                    Send Message
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          </Link>
+                      <div>
+                        <div className="msix">
+                          <div
+                            className="counview mbtn kalx"
+                            onClick={openModal}
+                          >
+                            View more details
+                          </div>
                         </div>
-                      ))}
+                      </div>
+                    </div>
                     {counsellorData.length === 0 && !isLoading && (
                       <>
                         <div className="text-center">
                           <img src={noData} className="noData" alt="noData" />
                         </div>
                         <div className="empt">
-                          You do not have any assigned members
+                          You do not have any assigned task
                         </div>
                       </>
                     )}
-                    <div className="next_page">
-                      {counsellorData.length > 0 && (
-                        <div>
-                          Displaying <span className="page_num">{count}</span>{" "}
-                          out of <span className="page_num">{total_pages}</span>
-                        </div>
-                      )}
-                      <div>
-                        {prevLink && (
-                          <img
-                            onClick={loadPrevData}
-                            className="page_change"
-                            src={prevpage}
-                            alt="previous page"
-                          />
-                        )}
-
-                        {nextLink && (
-                          <img
-                            onClick={loadNewData}
-                            className="page_change"
-                            src={nextpage}
-                            alt="next page"
-                          />
-                        )}
-                      </div>
-                    </div>
+                  </Col>
+                  <Col md={12} className="topp2">
+                    <div className="topp21"></div>
+                    <div className="sdxm">Sessions</div>
+                    <CounsellorBookedSessionsComponent />
                   </Col>
                 </Row>
               </Col>
             </Row>
           </Col>
         </Row>
+        <Modal
+          show={state.isOpen}
+          size={"lg"}
+          className="bookingszmodal"
+          centered={true}
+          onHide={closeModal}
+        >
+          <div className="careerpref">Career Preferences</div>
+          <Form>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="userfield1">
+                  <h6 className="gha">What i presently do</h6>
+                  <Form.Control
+                    type="text"
+                    className="userfield"
+                    id="what_i_do"
+                    value={what_i_do}
+                    name="what_i_do"
+                    placeholder=""
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="userfield1">
+                  <h6 className="gha">What industry i presently work in </h6>
+                  <Form.Control
+                    type="text"
+                    className="userfield"
+                    id="industry_interest"
+                    value={industry_interest}
+                    placeholder=""
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="userfield1">
+                  <h6 className="gha">
+                    What industry i am currently seeking opportunities
+                  </h6>
+                  <Form.Control
+                    type="text"
+                    className="userfield"
+                    value={currently_seeking}
+                    id="currently_seeking"
+                    placeholder=""
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="userfield1">
+                  <h6 className="gha">Present work status </h6>
+                  <Form.Control
+                    type="text"
+                    className="userfield"
+                    id="present_pills"
+                    value={present_pills}
+                    placeholder=""
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="userfield1">
+                  <h6 className="gha">Opportunities i am open to</h6>
+                  <Form.Control
+                    type="text"
+                    className="userfield"
+                    id="opportunities"
+                    value={opportunities}
+                    placeholder=""
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="userfield1">
+                  <h6 className="gha">Date of birth </h6>
+                  <Form.Control
+                    type="text"
+                    className="userfield"
+                    id="dob"
+                    value={dob}
+                    placeholder=""
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="sdsaa">
+              <Col md={6}>
+                <div className="fooass">View Assesment Result</div>
+              </Col>
+              <Col md={6}>
+                <div className="fooass counview1">
+                  View Professional Profile
+                </div>
+              </Col>
+            </Row>
+          </Form>
+        </Modal>
       </Container>
     </>
   );
 };
-export default CounsellorAssignedMembers;
+export default CounsellorAssignedMembersViewOne;

@@ -24,7 +24,7 @@ const newNavbar = withRouter((props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if(window.location.pathname==="/counsellordates"){
-      return
+      return;
     }
     if (token) {
       setShowNav({ ...state, userLoggedIn: true });
