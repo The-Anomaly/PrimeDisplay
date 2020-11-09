@@ -886,6 +886,9 @@ button {
   background-image: url("../../../assets/herobackdrop1.svg");
   background-size: cover;
 }
+.jaiyeimg, .mobilebg, .ellipse1, .ellipse2 {
+  display: none;
+}
 .hometext {
   color: #ffffff;
   margin-top: 15rem;
@@ -905,6 +908,9 @@ button {
 .socials1 {
   width: max-content;
   padding-bottom: 2.5rem;
+}
+.ssmedia {
+  cursor: pointer;
 }
 .signupbtn {
   padding: 0.6rem 1rem;
@@ -1652,6 +1658,29 @@ button {
     padding: 1rem 3rem;
     width: 350px;
   }
+  .newfirstrow {
+    background-image: url('../../../assets/mobilebackdrop.svg');
+  }
+  .home1 {
+    padding-top: 3rem;
+  }
+  .hometext {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 40px;
+    margin-top: 17rem;
+  }
+  .jaiyeimg {
+    display: block;
+    width: 30%;
+    position: relative;
+    top: 10rem;
+    left: 60%;
+  }
+  .mobilebg {
+    display: block;
+    width: 80%
+  }
 }
 
 @media (max-width: 1000px) {
@@ -1698,6 +1727,32 @@ button {
   }
   .fourthposit {
     margin-top: 0rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .mobilebg, .socials {
+    display: none;
+  }
+  .hometext {
+    order: 1;
+    padding-left: 4rem;
+    flex: 0 0 90%;
+    max-width: 90%;
+    margin-bottom: 0;
+    padding-right: 25%;
+    margin-top: 13rem;
+    font-size: 35px;
+  }
+  .home1 {
+    order: 2;
+    margin-left: 3rem;
+    margin-bottom: 10rem;
+  }
+  .jaiyeimg {
+    top: 0;
+    left: 0;
+    width: 60%;
   }
 }
 
@@ -1857,6 +1912,34 @@ button {
   }
 }
 
+@media(max-width: 767px) {
+  .jaiyeimg {
+    width: 45%;
+  }
+  .hometext {
+    padding-right: 10%;
+    margin-top: 10rem;
+  }
+  .home1 {
+    margin-bottom: 8rem;
+  }
+  .ellipse1 {
+    display: block;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 8rem;
+    right: 2rem;
+  }
+  .ellipse2 {
+    display: block;
+    position: absolute;
+    right: 3rem;
+    top: 13rem;
+    width: 50%;
+  }
+}
+
 @media (max-width: 600px) {
   .newthirdrowtext {
     font-size: 15px;
@@ -1876,6 +1959,23 @@ button {
   }
   .fourthline {
     width: 100px;
+  }
+  .hometext {
+    padding-right: 1rem;
+    padding-left: 2rem;
+  }
+  .home1 {
+    margin-left: 1rem;
+    margin-bottom: 8rem;
+  }
+  .ellipse1 {
+    right: 1.5rem;
+  }
+  .ellipse2 {
+    width: 65%;
+    height: 30rem;
+    right: 2rem;
+    top: 12.5rem;
   }
 }
 
@@ -1914,6 +2014,19 @@ button {
   }
   .leftborder {
     margin-left: -1.6rem;
+  }
+  .hometext {
+    font-size: 30px;
+  }
+  .ellipse1 {
+    width: 40px;
+    height: 40px;
+    right: 1rem;
+  }
+  .ellipse2 {
+    width: 80%;
+    height: 27rem;
+    right: 1.5rem;
   }
 }
 

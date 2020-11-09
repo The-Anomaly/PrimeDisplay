@@ -49,7 +49,11 @@ import smarrow4 from "../../../assets/smarrow4.svg";
 import smarrow5 from "../../../assets/smarrow5.svg";
 import smcircle1 from "../../../assets/smcircle1.svg";
 import smcircle2 from "../../../assets/smcircle2.svg";
-import smborder from "../../../assets/smborder.png"
+import smborder from "../../../assets/smborder.png";
+import jaiye from "../../../assets/jaiye.svg";
+import mobileimg from "../../../assets/mobilebackdrop2.svg";
+import ellipse1 from "../../../assets/ellipse1.png";
+import ellipse2 from "../../../assets/ellipse2.png";
 
 const RedesignedHome: React.FC = () => {
   const [name, setName] = React.useState("");
@@ -82,21 +86,28 @@ const RedesignedHome: React.FC = () => {
       <Navbar />
       <Container fluid={true}>
         <Row md={12} className="newfirstrow">
-          <Col md={6} className="navcontrols">
+          <img className="ellipse1" src={ellipse1} />
+          <img className="ellipse2" src={ellipse2} />
+          <Col md={6} className="navcontrols home1">
             {" "}
+            <img className="jaiyeimg" src={jaiye} alt="happy client"/>
+            <img className="mobilebg" src={mobileimg} />
           </Col>
           <Col md={5} sm={11} className="hometext">
-            <div>We are like a map but for your career.</div>
+            <div><div>We are like a map but for your career.</div>
             <div>Let's connect all the dots...</div>
 
             <div className="hstarted">GET STARTED</div>
+            </div>
+            
+            
           </Col>
           <Col md={1} className="socials">
             <img src={downarrow} className="socials1" alt="arrow" />
-            <img src={facebook} className="socials1" alt="facebook" />
-            <img src={twitter} className="socials1" alt="twitter" />
-            <img src={insta} className="socials1" alt="instagram" />
-            <img src={linkedin} className="socials1" alt="linkedin" />
+            <Link to="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="_blank"><img src={facebook} className="socials1 ssmedia" alt="facebook" /></Link>
+            <Link to="" target="_blank" ><img src={twitter} className="socials1 ssmedia" alt="twitter" /></Link>
+            <Link to="http://instagram.com/getclarity_" target="_blank"><img src={insta} className="socials1 ssmedia" alt="instagram" /></Link>
+            <Link to="" target="_blank"><img src={linkedin} className="socials1 ssmedia" alt="linkedin" /></Link>
           </Col>
         </Row>
         <Row md={12} className="newsecondrow">
