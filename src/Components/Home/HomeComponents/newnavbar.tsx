@@ -274,7 +274,7 @@ const newNavbar = withRouter((props: any) => {
             </div>
             <div className="nav_titlenew">
               <span className={props.home ? "title hhome" : "title"}>
-                <Link to="/redesign">Home</Link>
+                <Link to="/">Home</Link>
               </span>
               <span className={props.about ? "title hhome" : "title"}>
                 <Link to="/aboutus">About Us</Link>

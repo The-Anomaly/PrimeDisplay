@@ -28,7 +28,7 @@ const NewFooter: React.FC = (props) => {
             <Link to="" target="_blank"><img className="footer_social_4 ssmedia" src={linkedin} alt="linkedin" /></Link>
           </div>
           <div className="ftrnav">
-              <Link to="/redesign" ><span>HOME</span></Link>
+              <Link to="/" ><span>HOME</span></Link>
               <Link to="/aboutus"><span>ABOUT US</span></Link>
               <Link to="/contact"><span>CONTACT US</span></Link>
               <Link to="/payment" ><span>PAYMENT</span></Link>

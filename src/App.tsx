@@ -463,7 +463,7 @@ class App extends Component {
                 path="/counsellormeetings"
                 component={CounsellorScheduledMeetings}
               />
-              <Route exact path="/redesign" component={RedesignedHome} />
+              <Route exact path="/" component={RedesignedHome} />
             </Switch>
           </BrowserRouter>
         </div>
