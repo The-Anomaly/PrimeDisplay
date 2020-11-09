@@ -20,15 +20,17 @@ const Contactpage = () => {
     message: '',
     successMessage:'' 
   })
-     const {name, email, message,successMessage} = state
+     const {name, email, message, successMessage} = state
      
      const onSubmit=()=>{
+
        const data={
          name: name,
          email: email,
          message: message
        }
        console.log(data);
+      
          axios.post(`${API}/send-contact-support/`,data)
          .then( response => {
            setState({
@@ -43,6 +45,7 @@ const Contactpage = () => {
           })
          })
      }
+
      const validateForm= (e)=>{
       e.preventDefault();
       if ( name==='' || email === '' || message=== '' ) {
@@ -52,10 +55,11 @@ const Contactpage = () => {
            })
       
       }
-      if(name && email){
+      if(name && email && message){
         onSubmit();
       }
      }
+     
      const onChangeHandler= (e) =>{
           setState({
             ...state,
@@ -94,7 +98,7 @@ const Contactpage = () => {
                   placeholder="Your Name"
                   name= "name"
                   onChange={onChangeHandler}
-                  value= {name}
+                  value = {name}
                   className="contact_info form-control"
                 />
                 <br/>
