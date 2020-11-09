@@ -885,8 +885,13 @@ button {
 .newfirstrow {
   background-image: url("../../../assets/herobackdrop1.svg");
   background-size: cover;
+  margin-left: -18px;
+  margin-right: -17px;
 }
-.jaiyeimg, .mobilebg, .ellipse1, .ellipse2 {
+.jaiyeimg,
+.mobilebg,
+.ellipse1,
+.ellipse2 {
   display: none;
 }
 .hometext {
@@ -1240,7 +1245,8 @@ button {
   margin-left: 4rem;
   width: 280px;
 }
-.leftborder, .rightborder {
+.leftborder,
+.rightborder {
   display: none;
 }
 /*Hear From Clients*/
@@ -1645,8 +1651,13 @@ button {
 
 /*Redesign Mobile Responsiveness*/
 
-@media(max-width: 1200px) {
-  .homelaptop, .border1, .border2, .border3, .border4, .border5 {
+@media (max-width: 1200px) {
+  .homelaptop,
+  .border1,
+  .border2,
+  .border3,
+  .border4,
+  .border5 {
     display: none;
   }
   .fourthsec {
@@ -1659,7 +1670,7 @@ button {
     width: 350px;
   }
   .newfirstrow {
-    background-image: url('../../../assets/mobilebackdrop.svg');
+    background-image: url("../../../assets/mobilebackdrop.svg");
   }
   .home1 {
     padding-top: 3rem;
@@ -1679,7 +1690,7 @@ button {
   }
   .mobilebg {
     display: block;
-    width: 80%
+    width: 80%;
   }
 }
 
@@ -1731,7 +1742,8 @@ button {
 }
 
 @media (max-width: 900px) {
-  .mobilebg, .socials {
+  .mobilebg,
+  .socials {
     display: none;
   }
   .hometext {
@@ -1833,7 +1845,7 @@ button {
     order: 1;
     width: 12vw;
     margin: auto;
-    margin-right: 35%
+    margin-right: 35%;
   }
   .crazycircle3 .lcircle5 {
     order: 2;
@@ -1842,7 +1854,7 @@ button {
     width: 80%;
   }
   .crazycircle3 .smarrow4 {
-    order: 3;    
+    order: 3;
     width: 20%;
     margin-top: -28%;
     margin-left: 20%;
@@ -1865,7 +1877,7 @@ button {
     width: 25%;
   }
   .crazycircle4 .smcircle2 {
-    width: 60%
+    width: 60%;
   }
   .fourthttl {
     font-size: 26px;
@@ -1888,14 +1900,15 @@ button {
     justify-content: center;
     padding: 0;
   }
-  .leftborder, .rightborder {
+  .leftborder,
+  .rightborder {
     display: block;
     position: absolute;
     margin-top: 1.5rem;
   }
   .rightborder {
     transform: rotate(180deg);
-    margin-left: 8rem
+    margin-left: 8rem;
   }
   .leftborder {
     margin-left: -4rem;
@@ -1912,7 +1925,7 @@ button {
   }
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .jaiyeimg {
     width: 45%;
   }
@@ -1929,12 +1942,12 @@ button {
     width: 60px;
     position: absolute;
     top: 8rem;
-    right: 2rem;
+    right: 1rem;
   }
   .ellipse2 {
     display: block;
     position: absolute;
-    right: 3rem;
+    right: 2rem;
     top: 13rem;
     width: 50%;
   }
@@ -1968,13 +1981,10 @@ button {
     margin-left: 1rem;
     margin-bottom: 8rem;
   }
-  .ellipse1 {
-    right: 1.5rem;
-  }
   .ellipse2 {
     width: 65%;
     height: 30rem;
-    right: 2rem;
+    right: 1.5rem;
     top: 12.5rem;
   }
 }
@@ -2027,11 +2037,12 @@ button {
   .ellipse2 {
     width: 80%;
     height: 24rem;
-    right: 1.5rem;
+    right: 1rem;
+    top: 11rem;
   }
 }
 
-/*Footer*/
+/*Footer Responsiveness*/
 @media (max-width: 1000px) {
   .footer_stay {
     font-size: 26px;
@@ -2132,7 +2143,7 @@ button {
   }
 }
 
-/*Think This Is You*/
+/*Think This Is You Responsiveness*/
 @media (max-width: 1000px) {
   .homethinktxt {
     font-size: 26px;
@@ -2158,7 +2169,7 @@ button {
   }
 }
 
-/*Hear From Clients*/
+/*Hear From Clients Responsiveness*/
 
 @media (max-width: 1200px) {
   .clientimg {
@@ -2171,7 +2182,7 @@ button {
   }
 }
 
-@media(max-width: 1000px) {
+@media (max-width: 1000px) {
   .homemapimg {
     right: -44px;
   }
@@ -2229,7 +2240,7 @@ button {
   }
 }
 
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .homemapimg {
     right: -32px;
   }
@@ -2238,7 +2249,7 @@ button {
   }
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .homemapimg {
     right: -21px;
   }
@@ -2256,7 +2267,7 @@ button {
   }
 }
 
-@media(max-width: 450px) {
+@media (max-width: 450px) {
   .mapmobile .carousel-control-prev-icon {
     display: none;
   }
@@ -2269,7 +2280,7 @@ button {
   }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .homemaptitle {
     margin-left: -1rem;
   }
@@ -2293,7 +2304,7 @@ button {
 }
 
 /*About Us Responsiveness*/
-@media(max-width: 1200px) {
+@media (max-width: 1200px) {
   .withclaritytxt {
     max-width: 60%;
   }
@@ -2311,7 +2322,8 @@ button {
   .profimg1b {
     width: 60%;
   }
-  .profimg2a, .profimg1a {
+  .profimg2a,
+  .profimg1a {
     width: 100%;
   }
   .profimg2b {
@@ -2325,7 +2337,7 @@ button {
   }
 }
 
-@media(max-width: 1000px) {
+@media (max-width: 1000px) {
   .withclarityimg {
     display: none;
   }
@@ -2354,7 +2366,7 @@ button {
   }
 }
 
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .aboutfirsttxt {
     font-size: 13px;
     margin-bottom: 2rem;
@@ -2395,7 +2407,7 @@ button {
   }
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .abtwithclarity {
     font-size: 24px;
     margin: 5rem 0 1rem 3rem;
@@ -2431,7 +2443,7 @@ button {
   }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .aboutfirstsec {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -2450,5 +2462,49 @@ button {
   }
   .abthapprod {
     padding: 2rem;
+  }
+}
+
+/*Navbar Responsiveness*/
+@media (max-width: 1000px) {
+  .redoNav {
+    padding-left: 6rem;
+    padding-right: 2rem;
+  }
+  .nav_titlenew {
+    font-size: 13px;
+  }
+  .newlogin {
+    font-size: 12px;
+    width: 80px;
+    height: 30px;
+    padding: 0.3rem 1rem;
+  }
+  .logologo {
+    width: 100px;
+  }
+  div > .newshft {
+    padding-left: 0;
+  }
+}
+
+.newflexsss {
+  background: #23304c;
+  margin-right: -2px;
+}
+.mobilelogo {
+  margin-left: 1rem;
+}
+.newline {
+  background: #ffffff;
+}
+.shrtline {
+  width: 15px;
+  margin-left: 15px;
+}
+
+@media (max-width: 800px) {
+  .newhamburger {
+    background: transparent !important;
   }
 }
