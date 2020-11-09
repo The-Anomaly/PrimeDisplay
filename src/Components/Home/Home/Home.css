@@ -2017,6 +2017,7 @@ button {
   }
   .hometext {
     font-size: 30px;
+    margin-top: 8rem;
   }
   .ellipse1 {
     width: 40px;
@@ -2025,7 +2026,7 @@ button {
   }
   .ellipse2 {
     width: 80%;
-    height: 27rem;
+    height: 24rem;
     right: 1.5rem;
   }
 }

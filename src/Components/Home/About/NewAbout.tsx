@@ -25,7 +25,7 @@ export const NewAbout = () => {
   });
   return (
     <div>
-      <Navbar />
+      <Navbar about={true} />
       <Container className="homecontainer" fluid={true}>
         <Row className="aboutfirstsec">
           <div className="aboutfirsthead">ABOUT CLARITY</div>

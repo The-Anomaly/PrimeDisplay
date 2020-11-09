@@ -268,19 +268,19 @@ const newNavbar = withRouter((props: any) => {
               </div>
             </div>
             <div className="nav_titlenew">
-              <span className="title hhome">
+              <span className={props.home ? "title hhome" : "title"}>
                 <Link to="/redesign">Home</Link>
               </span>
-              <span className="title">
+              <span className={props.about ? "title hhome" : "title"}>
                 <Link to="/aboutus">About Us</Link>
               </span>
-              <span className="title">
+              <span className={props.payments ? "title hhome" : "title"}>
                 <Link to="/payment">Payments</Link>
               </span>
-              <span className="title">
+              <span className={props.contact ? "title hhome" : "title"}>
                 <Link to="/contact">Contact Us</Link>
               </span>
-              <span className="title">
+              <span className={props.ask ? "title hhome" : "title"}>
                 <Link to="/about">FAQ</Link>
               </span>
               {/* <span className="title">

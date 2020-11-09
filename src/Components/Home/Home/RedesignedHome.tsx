@@ -83,7 +83,7 @@ const RedesignedHome: React.FC = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar home={true} />
       <Container fluid={true}>
         <Row md={12} className="newfirstrow">
           <img className="ellipse1" src={ellipse1} />
