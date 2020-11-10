@@ -3801,3 +3801,6 @@ label {
     overflow-y: scroll;
   }
 }
+.textboxnonimg{
+  background-image: none;
+}

@@ -523,7 +523,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
           <form>
             <label>issues raised by user</label>
             <textarea
-              className="issues-textbox-1 form-control"
+              className="issues-textbox-1 form-control textboxnonimg"
               name="user_issues"
               onChange={inputChangeHandler}
               value={user_issues}
