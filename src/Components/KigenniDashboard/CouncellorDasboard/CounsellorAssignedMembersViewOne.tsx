@@ -19,6 +19,7 @@ import CounsellorBookedSessionsComponent from "./CouncellorBookedSessionsCompone
 import brfcase from "../../../assets/brfcase.png";
 import { Form } from "react-bootstrap";
 import completedTask from "../../../assets/completed-task.png";
+import TodoListComponent from "../TodoListComponent";
 
 const CounsellorAssignedMembersViewOne = (props: any) => {
   const [state, setState] = useState<any>({
@@ -244,16 +245,22 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
                     </div>
                     <div className="pink23">
                       <div className="case23">
-                        <img src={completedTask} className="brfcase" alt="brfcase" />
+                        <img
+                          src={completedTask}
+                          className="brfcase"
+                          alt="brfcase"
+                        />
                         <span className="weww">Task</span>{" "}
                         <span className="finda">
                           Find the list of all the taks assigned to this client
                         </span>
                       </div>
                       <div>
-                        <div className="msix">
-                        </div>
+                        <div className="msix"></div>
                       </div>
+                    </div>
+                    <div className="todo1a">
+                      <TodoListComponent />
                     </div>
                     {counsellorData.length === 0 && !isLoading && (
                       <>

@@ -207,7 +207,6 @@ const CounsellorAssignedMembers = (props: any) => {
                         <div className="msix"> </div>
                       </div>
                     )}
-
                     {counsellorData &&
                       counsellorData.length > 0 &&
                       counsellorData.map((data, i) => (

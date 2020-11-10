@@ -127,7 +127,6 @@ class App extends Component {
               <Route exact path="/progressive_clarity_experience" component={Monthly_plan}/>
               <Route exact path="/signup" component={Signup}/>
               <Route exact path="/signin" component={Signin}/>
-              []
               <Route exact path="/" component={RedesignedHome} />
               <Route exact path="/about" component={About} />
               <Route exact path="/aboutus" component={NewAbout} />
@@ -251,6 +250,11 @@ class App extends Component {
                 exact
                 path="/counsellor/signin"
                 component={CounsellorsSignIn}
+              />
+              <Route
+                exact
+                path="/old/signin"
+                component={SignIn}
               />
               <Route
                 exact
