@@ -1201,6 +1201,9 @@ abbr[title] {
   .centerr1 {
     margin-bottom: 2rem;
   }
+  .messagewrp1 {
+    width: 100%;
+  }
 }
 .coonfused {
   font-size: 26px;
@@ -1216,7 +1219,7 @@ abbr[title] {
   margin-right: 1rem;
   border: 1px solid #9c1258;
   border-color: #9c1258 !important;
-  width: 168px;
+  width: 190px !important;
   min-width: 159px;
 }
 .retaketest2:hover {
@@ -3767,4 +3770,41 @@ label {
   right: 2rem;
   width: 50px;
   cursor: pointer;
+}
+
+.youwss div .sendtcont {
+  font-size: 14px;
+}
+.messagewrp1 {
+  position: fixed;
+  width: 80%;
+  background: #fff;
+  z-index: 2;
+  top: 74vh;
+  height: 184px;
+}
+@media (max-width: 600px) {
+  .messagewrp1 {
+    width: 93%;
+    background: white;
+  }
+  .nprr{
+    max-height: initial;
+    height: 50vh;
+    overflow: scroll;
+  }
+}
+@media(min-width:600px){
+  .nprr{
+    max-height: initial;
+    height: 60vh;
+    overflow-y: scroll;
+  }
+}
+
+.chatht {
+  height: 60px;
+}
+.cchatht {
+  height: auto;
 }

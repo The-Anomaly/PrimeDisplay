@@ -95,6 +95,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       });
   };
   handleChatCheck = () => {
+    console.log("checking payment status")
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -163,6 +164,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   notify = (message: string) => {
     toast(message, { containerId: "B" });
   };
+   
   render() {
     const {
       fullname,

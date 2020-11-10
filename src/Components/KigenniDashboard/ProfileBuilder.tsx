@@ -107,8 +107,7 @@ class ProfileBuilder extends React.Component {
     if (
       degree === "" ||
       institution === "" ||
-      location === "" ||
-      start_date === ""
+      location === ""
     ) {
       return this.notify("Please enter all education data");
     }
@@ -143,7 +142,7 @@ class ProfileBuilder extends React.Component {
         does_not_expire,
       },
     ] = certificationz;
-    if (certificate_name === "" || institution === "" || valid_from === "") {
+    if (certificate_name === "" || institution === "") {
       return this.notify("Please enter all certification data");
     }
     this.setState({

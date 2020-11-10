@@ -30,7 +30,7 @@ class CounsellorMessageOneUser extends React.Component {
   this: any;
   constructor(props) {
     super(props);
-    this.initialiseChat();
+    this.initialiseChat(props.match.params.chatID);
   }
   componentWillMount() {
     const availableToken = localStorage.getItem("userToken");
@@ -45,8 +45,8 @@ class CounsellorMessageOneUser extends React.Component {
         console.log(response);
         if (response.status === 200) {
           this.setState({
-            userInfo:response.data[0]
-          })
+            userInfo: response.data[0],
+          });
         }
       })
       .catch((error) => {
@@ -56,11 +56,11 @@ class CounsellorMessageOneUser extends React.Component {
   formatTime = (date) => {
     return moment(date).fromNow();
   };
-  initialiseChat() {
+  initialiseChat(id) {
     this.waitForSocketConnection(() => {
-      WebSocketInstance.fetchMessages(this.props.match.params.chatID);
+      WebSocketInstance.fetchMessages(id);
     });
-    WebSocketInstance.connect(this?.props?.match?.params?.chatID);
+    WebSocketInstance.connect(id);
   }
   waitForSocketConnection = (callback) => {
     const component = this;
@@ -123,7 +123,7 @@ class CounsellorMessageOneUser extends React.Component {
                   />
                   <Row>
                     <Col md={12} className="kisls kislsoo kil123">
-                      <div className="kdashheader npps">
+                      <div className="kdashheader npps nprr">
                         <div></div>
                         <Col md={12} className="youwss">
                           {this.props.messages.map((data, i) => (
@@ -175,21 +175,23 @@ class CounsellorMessageOneUser extends React.Component {
                               />
                             </div>
                           )}
-                          <div>
-                            <textarea
-                              className="form-control sendtcont"
-                              placeholder="Enter text"
-                              name="message"
-                              value={message}
-                              onChange={this.onchange}
-                            />
-                          </div>
-                          <div className="texsss1">
-                            <div
-                              className="sendmeess col-md-11"
-                              onClick={this.sendMessageHandler}
-                            >
-                              Send Message
+                          <div className="messagewrp1">
+                            <div>
+                              <textarea
+                                className="form-control sendtcont"
+                                placeholder="Enter text"
+                                name="message"
+                                value={message}
+                                onChange={this.onchange}
+                              />
+                            </div>
+                            <div className="texsss1">
+                              <div
+                                className="sendmeess col-md-11"
+                                onClick={this.sendMessageHandler}
+                              >
+                                Send Message
+                              </div>
                             </div>
                           </div>
                         </Col>

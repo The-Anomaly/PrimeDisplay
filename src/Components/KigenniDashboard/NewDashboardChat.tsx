@@ -27,7 +27,7 @@ class NewDashboardChat extends React.Component {
   this: any;
   constructor(props) {
     super(props);
-    this.initialiseChat();
+    this.initialiseChat(props.match.params.chatID);
   }
   componentWillMount() {
     const availableToken = localStorage.getItem("userToken");
@@ -42,8 +42,8 @@ class NewDashboardChat extends React.Component {
         console.log(response);
         if (response.status === 200) {
           this.setState({
-            userInfo:response.data[0].email
-          })
+            userInfo: response.data[0].email,
+          });
         }
       })
       .catch((error) => {
@@ -53,11 +53,12 @@ class NewDashboardChat extends React.Component {
   formatTime = (date) => {
     return moment(date).fromNow();
   };
-  initialiseChat() {
+  initialiseChat(id) {
     this.waitForSocketConnection(() => {
-      WebSocketInstance.fetchMessages(this.props.match.params.chatID);
+      WebSocketInstance.fetchMessages(id);
+      console.log(id)
     });
-    WebSocketInstance.connect(this?.props?.match?.params?.chatID);
+    WebSocketInstance.connect(id);
   }
   waitForSocketConnection = (callback) => {
     const component = this;
@@ -91,14 +92,15 @@ class NewDashboardChat extends React.Component {
       chatId: this.props.match.params.chatID,
     };
     WebSocketInstance.newChatMessage(messageObject);
+    WebSocketInstance.fetchMessages(this.props.match.params.chatID)
     this.setState({
       message: "",
     });
   };
 
   render() {
-    console.log(this.state.userInfo);
     const { isLoading, user, message }: any = this.state;
+    console.log(this.props.messages)
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -109,7 +111,7 @@ class NewDashboardChat extends React.Component {
               <DashboardLargeScreenNav title="Chat with a counsellor" />
               <Row>
                 <Col md={12} className="kisls">
-                  <div className="kdashheader npps">
+                  <div className="kdashheader npps nprr cchatht">
                     <DashboardUsernameheader
                       welcomeText={
                         " Need some clarification about your Career Insights? leave a message for your counsellor"
@@ -153,21 +155,24 @@ class NewDashboardChat extends React.Component {
                           </div>
                         </>
                       ))}
-                      <div>
-                        <textarea
-                          className="form-control sendtcont"
-                          placeholder="Enter text"
-                          name="message"
-                          value={message}
-                          onChange={this.onchange}
-                        />
-                      </div>
-                      <div className="texsss1">
-                        <div
-                          className="sendmeess col-md-11"
-                          onClick={this.sendMessageHandler}
-                        >
-                          Send Message
+                      <div className="messagewrp1">
+                        <div>
+                          <input
+                            className="form-control sendtcont chatht"
+                            placeholder="Enter text"
+                            type="text"
+                            name="message"
+                            value={message}
+                            onChange={this.onchange}
+                          />
+                        </div>
+                        <div className="texsss1">
+                          <div
+                            className="sendmeess col-md-11"
+                            onClick={this.sendMessageHandler}
+                          >
+                            Send Message
+                          </div>
                         </div>
                       </div>
                     </Col>

@@ -83,6 +83,10 @@ import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page"
 import Privacy from "./Components/Home/Legal_policy_page/privacy_policy";
 import Terms from "./Components/Home/Legal_policy_page/terms&conditions";
 import Monthly_plan from "./Components/Home/Redesigned_Payment_Page/Monthly_payment_plan";
+import Signup from "./Components/Home/Redesigned_signup_page/signup";
+import Signin from "./Components/Home/Redesigned_signup_page/signin";
+import Email_confirm_page from "./Components/Home/Redesigned_confirmation_page/email_confirmation";
+import Acc_confirm_page from "./Components/Home/Redesigned_confirmation_page/account_confimatn";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
@@ -90,6 +94,7 @@ import NewDashboardAllMessages from "./Components/KigenniDashboard/NewDashboardA
 import { NewAbout } from "./Components/Home/About/NewAbout";
 import CounsellorCVProfileBuilder from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorCVProfileBuilder";
 import CousellorProfileBuilderEdit from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorProfileBuilder";
+import CounsellorAssignedMembersViewOne from './Components/KigenniDashboard/CouncellorDasboard/CounsellorAssignedMembersViewOne';
 
 class App extends Component {
   constructor(props) {
@@ -114,10 +119,23 @@ class App extends Component {
               <Route exact path="/contact" component={Contactpage} />
               <Route exact path="/payment" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
+              <Route exact path="/terms&conditions" component={Terms} />
+              <Route
+                exact
+                path="/progressive_clarity_experience"
+                component={Monthly_plan}
+              />
               <Route exact path="/terms&conditions" component={Terms}/>
               <Route exact path="/progressive_clarity_experience" component={Monthly_plan}/>
+              <Route exact path="/signup" component={Signup}/>
+              <Route exact path="/signin" component={Signin}/>
+              <Route exact path="/" component={RedesignedHome} />
+              {/* <Route exact path="/newsignup" component={Signup}/>
+              <Route exact path="/newsignin" component={Signin}/> */}
+              <Route exact path="/confirm_email" component={Email_confirm_page}/>
+              <Route exact path="/account_confirmation" component={Acc_confirm_page}/>
               []
-              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Home} /> */}
               <Route exact path="/about" component={About} />
               <Route exact path="/aboutus" component={NewAbout} />
               <Route exact path="/faq" component={Faq} />
@@ -235,11 +253,16 @@ class App extends Component {
               />
               <Route exact path="/paymentplan" component={SelectPaymentPlan} />
               <Route exact path="/signup" component={SignUp} />
-              <Route exact path="/signin" component={SignIn} />
+              <Route exact path="/signin" component={Signin} />
               <Route
                 exact
                 path="/counsellor/signin"
                 component={CounsellorsSignIn}
+              />
+              <Route
+                exact
+                path="/old/signin"
+                component={SignIn}
               />
               <Route
                 exact
@@ -357,6 +380,11 @@ class App extends Component {
                 path="/counsellorassignedmembers"
                 component={CounsellorAssignedMembers}
               />
+              <Route
+                exact
+                path="/counsellorassignedmembers/:id"
+                component={CounsellorAssignedMembersViewOne}
+              />
               <Route exact path="/referrals" component={Referrals} />
               <Route
                 exact
@@ -453,7 +481,7 @@ class App extends Component {
                 path="/counsellormeetings"
                 component={CounsellorScheduledMeetings}
               />
-              <Route exact path="/redesign" component={RedesignedHome} />
+              <Route exact path="/" component={RedesignedHome} />
             </Switch>
           </BrowserRouter>
         </div>

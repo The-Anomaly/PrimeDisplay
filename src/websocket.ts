@@ -63,6 +63,7 @@ class WebSocketService {
   }
 
   fetchMessages(chatId) {
+    console.log(chatId)
     this.sendMessage({
       command: "fetch_messages",
       chatId: chatId,

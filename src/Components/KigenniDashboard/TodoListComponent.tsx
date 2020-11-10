@@ -26,7 +26,7 @@ import ViewMoreModal from "./ViewMoreModal";
 import noplan from "../../assets/noplan.png";
 const moment = require("moment");
 
-const TodoList = (props: any) => {
+const TodoListComponent = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
     user: "",
@@ -293,159 +293,111 @@ const TodoList = (props: any) => {
 
   return (
     <>
-      <Container fluid={true} className="contann122">
-        <DashboardNav todo={true} />
+      <Col md={12} className="firstqq">
+        <div className="kdashheader npps"></div>
         <Row>
-          <SideBarNewDashboard todo={true} />
-          <Col md={10} sm={12} className="prm">
-            <DashboardLargeScreenNav title="All Tasks" />
-            <Row>
-              <Col md={12} className="firstqq">
-                <div className="kdashheader npps"></div>
-                <div className="begin">
-                  <DashboardUsernameheader welcomeText="View list of all available tasks" />
-                  <span
-                    className="create_task"
-                    onClick={() => {
-                      setModState({
-                        ...modalState,
-                        CreateTaskModalisOpen: true,
-                      });
-                    }}
-                  >
-                    Create New Task
-                    <img
-                      className="create"
-                      src={whiteplus}
-                      alt="create new task"
-                    />
-                  </span>
+          <Col md={12}>
+            {tasklist.length > 0 && (
+              <div className="task_table">
+                <span className="task_title">Task Title</span>
+                <span className="task_duration">Duration</span>
+                <span className="task_time">Date Created</span>
+                <span className="task_status">Status</span>
+              </div>
+            )}
+            {tasklist.length !== 0 &&
+              tasklist.map((data, i) => (
+                <div className="wrapc2 tasklist" key={i}>
+                  <div className="titl">
+                    <span className="task_title lowerr">Task Title</span>
+                    <div className="cname todo_name">{data?.title}</div>
+                  </div>
+
+                  <div className="weeks">
+                    <span className="task_duration lowerr">Duration</span>
+                    <div className="cdate todo_date">
+                      {data?.duration}
+                      {data.duration === 1 ? " day" : " days"}
+                    </div>
+                  </div>
+
+                  <div className="durr">
+                    <span className="task_time lowerr">Date Created</span>
+                    <div className="ctime todo_time">
+                      {formatTime(data?.date_created)}
+                    </div>
+                  </div>
+
+                  <div className="cstatus2 stat">
+                    <span
+                      className={
+                        data.status === "pending"
+                          ? "cstatus todo_status pending"
+                          : "cstatus todo_status"
+                      }
+                    >
+                      {capitalizeFirstLetter(data.status)}
+                    </span>
+                  </div>
+                  <div className="ctime todoo">
+                    {data.status !== "pending" ? (
+                      <div
+                        className="savebtn todo_button"
+                        onClick={() => OpenIscompleteModal(data.id)}
+                      >
+                        View More
+                      </div>
+                    ) : (
+                      <div
+                        className="savebtn todo_button"
+                        onClick={() => openViewMoreModal(data.id)}
+                      >
+                        Complete Task
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <Row>
-                  <Col md={12}>
-                    <div className="yellowbg">
-                      <img
-                        src={yellowthumb}
-                        className="yellowgood"
-                        alt="goodimage"
-                      />
-                      It takes alot of heroes to even start a task, but it seems
-                      like you have super powers. Keep going Champ!!!
-                    </div>
-                    {tasklist.length > 0 && (
-                      <div className="task_table">
-                        <span className="task_title">Task Title</span>
-                        <span className="task_duration">Duration</span>
-                        <span className="task_time">Date Created</span>
-                        <span className="task_status">Status</span>
-                      </div>
-                    )}
-                    {tasklist.length !== 0 &&
-                      tasklist.map((data, i) => (
-                        <div className="wrapc2 tasklist" key={i}>
-                          <div className="titl">
-                            <span className="task_title lowerr">
-                              Task Title
-                            </span>
-                            <div className="cname todo_name">{data?.title}</div>
-                          </div>
-
-                          <div className="weeks">
-                            <span className="task_duration lowerr">
-                              Duration
-                            </span>
-                            <div className="cdate todo_date">
-                              {data?.duration}
-                              {data.duration === 1 ? " day" : " days"}
-                            </div>
-                          </div>
-
-                          <div className="durr">
-                            <span className="task_time lowerr">
-                              Date Created
-                            </span>
-                            <div className="ctime todo_time">
-                              {formatTime(data?.date_created)}
-                            </div>
-                          </div>
-
-                          <div className="cstatus2 stat">
-                            <span
-                              className={
-                                data.status === "pending"
-                                  ? "cstatus todo_status pending"
-                                  : "cstatus todo_status"
-                              }
-                            >
-                              {capitalizeFirstLetter(data.status)}
-                            </span>
-                          </div>
-                          <div className="ctime todoo">
-                            {data.status !== "pending" ? (
-                              <div
-                                className="savebtn todo_button"
-                                onClick={() => OpenIscompleteModal(data.id)}
-                              >
-                                View More
-                              </div>
-                            ) : (
-                              <div
-                                className="savebtn todo_button"
-                                onClick={() => openViewMoreModal(data.id)}
-                              >
-                                Complete Task
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    {tasklist.length === 0 && (
-                      <div className="norec">
-                        <img
-                          src={noplan}
-                          className="norecommendations"
-                          alt="norecommendations"
-                        />
-                        <div className="udont1">Opps!!!</div>
-                        <div className="udont">
-                          You have not created any todos
-                        </div>
-                      </div>
-                    )}
-                    <div className="next_page">
-                      {tasklist.length > 0 && (
-                        <div>
-                          Displaying{" "}
-                          <span className="page_num">{state.count}</span> out of{" "}
-                          <span className="page_num">{state.total_pages}</span>
-                        </div>
-                      )}
-                      <div>
-                        {prevLink && (
-                          <img
-                            className="page_change"
-                            src={prevpage}
-                            alt="previous page"
-                            onClick={LoadOldData}
-                          />
-                        )}
-                        {nextLink && (
-                          <img
-                            className="page_change"
-                            src={nextpage}
-                            onClick={LoadNewData}
-                            alt="next page"
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
+              ))}
+            {tasklist.length === 0 && (
+              <div className="norec">
+                <img
+                  src={noplan}
+                  className="norecommendations"
+                  alt="norecommendations"
+                />
+                <div className="udont1">Opps!!!</div>
+                <div className="udont">This user does not have a todo</div>
+              </div>
+            )}
+            <div className="next_page">
+              {tasklist.length > 0 && (
+                <div>
+                  Displaying <span className="page_num">{state.count}</span> out
+                  of <span className="page_num">{state.total_pages}</span>
+                </div>
+              )}
+              <div>
+                {prevLink && (
+                  <img
+                    className="page_change"
+                    src={prevpage}
+                    alt="previous page"
+                    onClick={LoadOldData}
+                  />
+                )}
+                {nextLink && (
+                  <img
+                    className="page_change"
+                    src={nextpage}
+                    onClick={LoadNewData}
+                    alt="next page"
+                  />
+                )}
+              </div>
+            </div>
           </Col>
         </Row>
-      </Container>
+      </Col>
       <Modal
         show={isOpen}
         className="modcomplete fixmodal"
@@ -664,4 +616,4 @@ const TodoList = (props: any) => {
     </>
   );
 };
-export default TodoList;
+export default TodoListComponent;

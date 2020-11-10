@@ -313,11 +313,18 @@ const Referrals = (props: any) => {
                                 {!data.status ? "Pending" : "Completed"}
                               </span>
                             </div>
-                            {data.status && (
-                              <div className="msix">
-                                <div className="counview mbtn">View Result</div>
-                              </div>
-                            )}
+                            <a
+                              href={`/counsellor/result/${data?.email}`}
+                              target="blank"
+                            >
+                              {data.status && (
+                                <div className="msix">
+                                  <div className="counview mbtn">
+                                    View Result
+                                  </div>
+                                </div>
+                              )}
+                            </a>
                             {!data.status && (
                               <div className="msix">
                                 <div className="counview mbtn mbtnblu">

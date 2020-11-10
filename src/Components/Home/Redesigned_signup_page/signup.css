@@ -1,0 +1,198 @@
+
+.rdsignup-section{
+    background-color: #23304c;
+    color: #fff;
+    padding-bottom: 100px;
+}
+.rsignuprow{
+    justify-content: center;
+}
+.rsignupdiv{
+    text-align: center;
+    
+}
+.t_plinkspn{
+    color: #3965ff;
+}
+.rsignupdiv>p{
+    font-size: 18px;
+}
+.rdsignupform{
+    border-radius: 8px;
+    padding: 40px 45px 23px 45px;
+    background-color: #fff;
+    color: #23304c;
+    margin-top: 3rem;
+}
+.rdsignupfrmdv{
+    text-align: center;
+}
+.sgnfrmhder{
+    margin-bottom: 18px;
+    font-weight: 900;
+}
+@keyframes move-sideway {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+.sgnupfrmline{
+    border: .1px solid #9999;
+    animation: move-sideway 1s ease-out .8s;
+    transition: transform .8s ease-in-out;
+    animation-fill-mode: backwards;
+}
+.sgnupdescr{
+    position: relative;
+    font-size: 12px;
+    color: #23304c;
+    padding: 0px 13px;
+    top: -17px;
+    display: inline-block;
+    background-color: #fff;
+}
+.rdfrmlbl{
+    position: relative;
+    display: inline-block;
+    font-size: 11px;
+    top: 14px;
+    right: -13px;
+    color: #23304c;
+    background-color: #fff;
+    padding: 0px 13px;
+}
+.rdsignupinput{
+    padding: 24px 26px ;
+    border: 1px solid #9999 !important;
+    outline: none;
+    border-radius: 4px;
+}
+.rdsignupinput:focus{
+    outline: none !important;
+}
+.rdsignupinput::placeholder{
+    font-size: 11px;
+    color: #9999;
+}
+.rdseltinpt{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #9999;
+    appearance: none;
+    background-image: url(../../../assets/dwn-arrw.png);
+    background-repeat: no-repeat;
+    background-position-x: 212px;
+    background-position-y: 23px;
+    text-overflow: ellipsis;
+}
+.passwd-image{
+    background-image: url(../../../assets/eye.png);
+    background-repeat: no-repeat;
+    background-position-x: 490px;
+    background-position-y: 16px;
+    cursor: pointer;
+}
+.redsgnfrmpar{
+    font-size: 8px;
+    text-align: center;
+}
+.rdfrmlblslt{
+    position: relative;
+    display: inline-block;
+    font-size: 11px;
+    top: 9px;
+    right: -13px;
+    color: #23304c;
+    background-color: #fff;
+    padding: 0px 13px;
+}
+.rdseltinpt:focus{
+    outline: none !important;
+    border-color:  #9999;
+    text-overflow: ellipsis;
+}
+.rdfrmtinptt{
+    width: 100%;
+    padding: 12px 26px ;
+    border: 1px solid #9999 !important;
+    outline: none;
+    border-radius: 4px;
+   
+}
+.rdfrmtinptt::placeholder{
+    font-size: 11px;
+    color: #9999;
+}
+.rdfrmlblrf{
+    top: 9px;
+}
+.rdseltinpt:invalid{
+    color: #9999;
+    font-size: 11px;
+}
+.rdsltopt{
+    text-overflow: ellipsis;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.rdsgnupfrmbtndv{
+    text-align: center;
+    margin-top: 34px;
+    margin-bottom: 12px;
+}
+.rdsgnfrmbtn{
+    display: inline-block;
+    background-color: #9c1258;
+    color: #fff;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 13px 23px;
+    transition: 0.4s all;
+}
+.rdsgnup-animated{
+    animation: moveUp 0.4s ease-out 2s;
+    animation-fill-mode: backwards;
+}
+.rdsgnfrmbtn::after{
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+.rdsgnfrmbtn:hover{
+    transform: translateY(-0.2rem);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+.rdsgnfrmbtn:hover::after{
+    transform: scalex(1.2) scaleY(1.4);
+    opacity: 0;
+    background-color: #9c1258;
+}
+.rdsgnfrmbtn:active {
+    transform: translateY(-0.1rem);
+  } 
+  .rdsgnalready{
+      text-align: center;
+      color: #3965ff;
+      font-size: 13px;
+  }
+  .rdsigninp{
+      display: flex;
+      flex-direction: row-reverse;
+      color: #3965ff;
+      font-size: 13px;
+      margin-top: 9px;
+  }

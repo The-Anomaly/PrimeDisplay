@@ -28,7 +28,7 @@ import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 const moment = require("moment");
 
-const CounsellorBookedSessions = (props: any) => {
+const CounsellorBookedSessionsComponent = (props: any) => {
   const [state, setState] = useState<any>({
     isOpen: false,
     rate1: 0,
@@ -364,154 +364,148 @@ const CounsellorBookedSessions = (props: any) => {
   console.log(session_email);
   return (
     <>
-      <Container fluid={true} className="contann122">
-        <CounsellorDashboardMobileNav bookedsession={true} />
-        <Row>
-          <SideBarCounsellorDashboard bookedsession={true} />
-          <Col md={10} sm={12} className="prm">
-            <CounsellorDashboardNav title="Booked Sessions" />
-            <Row className="wrapc222">
-              <Col md={12} className="firstqq">
-                <div className="kdashheader npps"></div>
-                <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />
-                <Row className="letss">
-                  <Col md={12}>
-                    {counsellorData.length > 0 && (
-                      <div className="teammembr teamheading counheading">
-                        <div className="cone"> </div>
+      <Row>
+        <Col md={12} sm={12} className="prm">
+          <Row className="wrapc222">
+            <Col md={12} className="firstqq">
+              <div className="kdashheader npps"></div>
+              <Row className="letss">
+                <Col md={12}>
+                  {counsellorData.length > 0 && (
+                    <div className="teammembr teamheading counheading">
+                      <div className="cone"> </div>
+                      <div className="ctwo">
+                        <div>Name</div>
+                      </div>
+                      <div className="cthree">
+                        <div>Date</div>
+                      </div>
+                      <div className="cfour">
+                        <div>Time</div>
+                      </div>
+                      <div className="cfive">
+                        <div>Member Type</div>
+                      </div>
+                      <div className="csix">
+                        <div>Status</div>
+                      </div>
+                      <div className="cseven"> </div>
+                    </div>
+                  )}
+                  {isLoading && (
+                    <div className="counsellorpreloader2">
+                      <img
+                        src={preloader}
+                        className="counsellorpreloader"
+                        alt="preloader"
+                      />
+                    </div>
+                  )}
+                  {counsellorData.slice(0, 3).map((data, i) => (
+                    <div className="msgs teammembr booked bookedover" key={i}>
+                      <div className="fromerit summary">
+                        <div className="cone">
+                          <img
+                            className="user_image"
+                            src={userimg1}
+                            alt="user image"
+                          />
+                        </div>
                         <div className="ctwo">
-                          <div>Name</div>
+                          <div>
+                            <div className="lowerr nulower counlowerr">
+                              Name
+                            </div>
+                            <div className="userrdet1 det1">{data.name}</div>
+                            <div className="userrdet2 memb">{data.email}</div>
+                          </div>
                         </div>
                         <div className="cthree">
-                          <div>Date</div>
+                          <div className="lowerr nulower counlowerr">Date</div>
+                          <div>{formatTime(data.date)}</div>
                         </div>
                         <div className="cfour">
-                          <div>Time</div>
+                          <div className="lowerr nulower counlowerr">Time</div>
+                          <div className="">{data.time}</div>
                         </div>
                         <div className="cfive">
-                          <div>Member Type</div>
+                          <div className="lowerr nulower counlowerr">
+                            Member Type
+                          </div>
+                          <div className="clarity12b">{data.member_type}</div>
                         </div>
+
                         <div className="csix">
-                          <div>Status</div>
+                          <div className="lowerr nulower sess counstat counlowerr">
+                            Status
+                          </div>
+                          <span
+                            className={
+                              !data.status ? "pend pltd" : "complt pltd"
+                            }
+                          >
+                            {!data.status ? "Pending" : "Completed"}
+                          </span>
                         </div>
-                        <div className="cseven"> </div>
-                      </div>
-                    )}
-                    {isLoading && (
-                      <div className="counsellorpreloader2">
-                        <img
-                          src={preloader}
-                          className="counsellorpreloader"
-                          alt="preloader"
-                        />
-                      </div>
-                    )}
-                    {counsellorData.map((data, i) => (
-                      <div className="msgs teammembr booked bookedover" key={i}>
-                        <div className="fromerit summary">
-                          <div className="cone">
-                            <img
-                              className="user_image"
-                              src={userimg1}
-                              alt="user image"
-                            />
-                          </div>
-                          <div className="ctwo">
-                            <div>
-                              <div className="lowerr nulower counlowerr">
-                                Name
-                              </div>
-                              <div className="userrdet1 det1">{data.name}</div>
-                              <div className="userrdet2 memb">{data.email}</div>
-                            </div>
-                          </div>
-                          <div className="cthree">
-                            <div className="lowerr nulower counlowerr">
-                              Date
-                            </div>
-                            <div>{formatTime(data.date)}</div>
-                          </div>
-                          <div className="cfour">
-                            <div className="lowerr nulower counlowerr">
-                              Time
-                            </div>
-                            <div className="">{data.time}</div>
-                          </div>
-                          <div className="cfive">
-                            <div className="lowerr nulower counlowerr">
-                              Member Type
-                            </div>
-                            <div className="clarity12b">{data.member_type}</div>
-                          </div>
 
-                          <div className="csix">
-                            <div className="lowerr nulower sess counstat counlowerr">
-                              Status
-                            </div>
-                            <span
-                              className={
-                                !data.status ? "pend pltd" : "complt pltd"
-                              }
-                            >
-                              {!data.status ? "Pending" : "Completed"}
-                            </span>
-                          </div>
-
-                          <div className="cseven">
-                            <div
-                              className="counview"
-                              onClick={() => openModal(data.id)}
-                            >
-                              View
-                            </div>
+                        <div className="cseven">
+                          <div
+                            className="counview"
+                            onClick={() => openModal(data.id)}
+                          >
+                            View
                           </div>
                         </div>
-                      </div>
-                    ))}
-                    {counsellorData.length === 0 && !isLoading && (
-                      <>
-                        <div className="text-center">
-                          <img src={noData} className="noData" alt="noData" />
-                        </div>
-                        <div className="empt">
-                          You do not have any booked session
-                        </div>
-                      </>
-                    )}
-                    <div className="next_page">
-                      {counsellorData.length !== 0 && (
-                        <div>
-                          Displaying <span className="page_num">{count}</span>{" "}
-                          out of <span className="page_num">{total_pages}</span>
-                        </div>
-                      )}
-                      <div>
-                        {prevLink && (
-                          <img
-                            onClick={loadPrevData}
-                            className="page_change"
-                            src={prevpage}
-                            alt="previous page"
-                          />
-                        )}
-
-                        {nextLink && (
-                          <img
-                            onClick={loadNewData}
-                            className="page_change"
-                            src={nextpage}
-                            alt="next page"
-                          />
-                        )}
                       </div>
                     </div>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+                  ))}
+                  {counsellorData.length === 0 && !isLoading && (
+                    <>
+                      <div className="text-center">
+                        <img src={noData} className="noData" alt="noData" />
+                      </div>
+                      <div className="empt">
+                        You do not have any booked session
+                      </div>
+                    </>
+                  )}
+                  <div className="next_page">
+                    {counsellorData.length !== 0 && (
+                      <div className="textight">
+                        <Link
+                          className="viewall viewbook"
+                          to="/counsellorbookings"
+                        >
+                          View all Booked Sessions
+                        </Link>
+                      </div>
+                    )}
+                    <div>
+                      {prevLink && (
+                        <img
+                          onClick={loadPrevData}
+                          className="page_change"
+                          src={prevpage}
+                          alt="previous page"
+                        />
+                      )}
+
+                      {nextLink && (
+                        <img
+                          onClick={loadNewData}
+                          className="page_change"
+                          src={nextpage}
+                          alt="next page"
+                        />
+                      )}
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
       <Modal
         show={state.isOpen}
         size={"lg"}
@@ -526,6 +520,7 @@ const CounsellorBookedSessions = (props: any) => {
               View users result <i className="fa fa-arrow-right"></i>
             </a>
           </span>
+          <form>
             <label>issues raised by user</label>
             <textarea
               className="issues-textbox-1 form-control"
@@ -537,6 +532,7 @@ const CounsellorBookedSessions = (props: any) => {
               cols={80}
               rows={3}
             />
+          </form>
           <form>
             <label>Take down notes during sessions</label>
             <textarea
@@ -747,4 +743,4 @@ const CounsellorBookedSessions = (props: any) => {
     </>
   );
 };
-export default CounsellorBookedSessions;
+export default CounsellorBookedSessionsComponent;

@@ -24,7 +24,7 @@ const newNavbar = withRouter((props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if(window.location.pathname==="/counsellordates"){
-      return
+      return;
     }
     if (token) {
       setShowNav({ ...state, userLoggedIn: true });
@@ -205,7 +205,7 @@ const newNavbar = withRouter((props: any) => {
                     <>
                       <div className="listwraperMob">
                         <Link to="/signin">
-                          <div className="navmobbtn">Login</div>
+                          <div className="navmobbtn">Sign In</div>
                         </Link>
                       </div>
                       <div className="listwraperMob">
@@ -274,7 +274,7 @@ const newNavbar = withRouter((props: any) => {
             </div>
             <div className="nav_titlenew">
               <span className={props.home ? "title hhome" : "title"}>
-                <Link to="/redesign">Home</Link>
+                <Link to="/">Home</Link>
               </span>
               <span className={props.about ? "title hhome" : "title"}>
                 <Link to="/aboutus">About Us</Link>
