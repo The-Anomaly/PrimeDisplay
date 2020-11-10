@@ -83,6 +83,8 @@ import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page"
 import Privacy from "./Components/Home/Legal_policy_page/privacy_policy";
 import Terms from "./Components/Home/Legal_policy_page/terms&conditions";
 import Monthly_plan from "./Components/Home/Redesigned_Payment_Page/Monthly_payment_plan";
+import Signup from "./Components/Home/Redesigned_signup_page/signup";
+import Signin from "./Components/Home/Redesigned_signup_page/signin";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
@@ -121,6 +123,10 @@ class App extends Component {
                 path="/progressive_clarity_experience"
                 component={Monthly_plan}
               />
+              <Route exact path="/terms&conditions" component={Terms}/>
+              <Route exact path="/progressive_clarity_experience" component={Monthly_plan}/>
+              <Route exact path="/signup" component={Signup}/>
+              <Route exact path="/signin" component={Signin}/>
               []
               <Route exact path="/" component={RedesignedHome} />
               <Route exact path="/about" component={About} />
@@ -240,7 +246,7 @@ class App extends Component {
               />
               <Route exact path="/paymentplan" component={SelectPaymentPlan} />
               <Route exact path="/signup" component={SignUp} />
-              <Route exact path="/signin" component={SignIn} />
+              <Route exact path="/signin" component={Signin} />
               <Route
                 exact
                 path="/counsellor/signin"

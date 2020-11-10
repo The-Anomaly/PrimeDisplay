@@ -3867,6 +3867,7 @@ textarea.form-control.jobr {
   margin-top: 2rem;
   width: 97%;
   font-weight: 600;
+  flex-wrap: wrap;
 }
 .kalx {
   width: 180px;
@@ -3908,13 +3909,26 @@ textarea.form-control.jobr {
   font-size: 90%;
   margin: auto;
 }
-.fooass{
+.fooass {
   text-align: center;
   cursor: pointer;
 }
-.fooass23{
+.fooass23 {
   text-align: center;
 }
-.sdsaa{
+.sdsaa {
   padding-top: 3rem;
+}
+.finda {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #001833;
+}
+.weww{
+  font-size: 16px;
+}
+.brfcase{
+  width: 20px;
+  object-fit: contain;
 }

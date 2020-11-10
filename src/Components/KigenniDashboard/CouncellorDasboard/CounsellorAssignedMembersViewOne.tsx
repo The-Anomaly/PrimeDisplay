@@ -18,6 +18,7 @@ import { API } from "../../../config";
 import CounsellorBookedSessionsComponent from "./CouncellorBookedSessionsComponent";
 import brfcase from "../../../assets/brfcase.png";
 import { Form } from "react-bootstrap";
+import completedTask from "../../../assets/completed-task.png";
 
 const CounsellorAssignedMembersViewOne = (props: any) => {
   const [state, setState] = useState<any>({
@@ -238,6 +239,19 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
                           >
                             View more details
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pink23">
+                      <div className="case23">
+                        <img src={completedTask} className="brfcase" alt="brfcase" />
+                        <span className="weww">Task</span>{" "}
+                        <span className="finda">
+                          Find the list of all the taks assigned to this client
+                        </span>
+                      </div>
+                      <div>
+                        <div className="msix">
                         </div>
                       </div>
                     </div>

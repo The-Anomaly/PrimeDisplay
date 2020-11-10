@@ -205,7 +205,7 @@ const newNavbar = withRouter((props: any) => {
                     <>
                       <div className="listwraperMob">
                         <Link to="/signin">
-                          <div className="navmobbtn">Login</div>
+                          <div className="navmobbtn">Sign In</div>
                         </Link>
                       </div>
                       <div className="listwraperMob">
