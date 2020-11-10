@@ -228,7 +228,7 @@ class NewDashboard extends React.Component {
                     <div className="">
                       <Link to="/counsellordates">
                         <Button className="retaketest">
-                          Call a counsellor
+                          Talk to a counsellor
                         </Button>
                       </Link>
                       {showfullresult && (

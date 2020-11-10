@@ -2103,7 +2103,7 @@ button {
     border-radius: 100px;
     position: absolute;
     margin-left: 18.5rem;
-    margin-top: 0.3rem;
+    margin-top: 0.35rem;
   }
   .footer_socials {
     width: 350px;
@@ -2140,7 +2140,6 @@ button {
   }
   .footer_btn {
     margin-left: 9.7rem;
-    margin-top: 0.35rem;
   }
   .footer_socials {
     width: 90%;
@@ -2522,6 +2521,9 @@ button {
 }
 .newfaqrow {
   padding-top: 10rem;
+}
+.newfaqwrapper {
+  padding-bottom: 3rem;
 }
 
 @media(max-width: 767px) {
