@@ -85,6 +85,8 @@ import Terms from "./Components/Home/Legal_policy_page/terms&conditions";
 import Monthly_plan from "./Components/Home/Redesigned_Payment_Page/Monthly_payment_plan";
 import Signup from "./Components/Home/Redesigned_signup_page/signup";
 import Signin from "./Components/Home/Redesigned_signup_page/signin";
+import Email_confirm_page from "./Components/Home/Redesigned_confirmation_page/email_confirmation";
+import Acc_confirm_page from "./Components/Home/Redesigned_confirmation_page/account_confimatn";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import NewDashboardAllMessages from './Components/KigenniDashboard/NewDashboardAllMessages';
@@ -117,6 +119,8 @@ class App extends Component {
               <Route exact path="/progressive_clarity_experience" component={Monthly_plan}/>
               <Route exact path="/newsignup" component={Signup}/>
               <Route exact path="/newsignin" component={Signin}/>
+              <Route exact path="/confirm_email" component={Email_confirm_page}/>
+              <Route exact path="/account_confirmation" component={Acc_confirm_page}/>
               []
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
