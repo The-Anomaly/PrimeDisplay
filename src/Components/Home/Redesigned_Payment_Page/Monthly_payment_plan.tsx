@@ -45,6 +45,7 @@ const Monthly_plan = ()=>{
                                    </div>
                                    <ul className="card-list">
                                        <li><img src={mark} className="card-image" />Career fitness score</li>
+                                       <li><div className="card-list-box"><div><img src={mark} className="card-image"/></div> unlimited chat with a counsellor</div></li>
                                        <li><img src={mark} className="card-image"/>Career personality type</li>
                                        <li><img src={mark} className="card-image"/>Strenght & Weakness Report</li>
                                        <li><img src={mark} className="card-image"/>Competence analysis Report</li>
@@ -74,6 +75,7 @@ const Monthly_plan = ()=>{
                                        <li><div className="card-list-box"><div><img src={mark_blue} className="card-image"/></div>40 minutes career-planning session with a clarity counsellor</div></li>
                                        <li><div className="card-list-box"><div><img src={mark_blue} className="card-image"/></div>Weekly Personalized Counsellors Recommendation on suitable personal & career activities</div></li>
                                        <li><div className="card-list-box"><div><img src={mark_blue} className="card-image"/></div>Personal to-dos & reminder setting</div> </li>
+                                       <li><div className="card-list-box"><div><img src={mark_blue} className="card-image"/></div> unlimited chat with a counsellor</div> </li>
                                    </ul>
                                    <span className="card_btn card_btn--pce2 btn-blue">Upgrade to Direction Plan</span>
                                </Card.Body>
@@ -92,6 +94,7 @@ const Monthly_plan = ()=>{
                                    <ul className="card-list">
                                        <li><img src={mark_green} className="card-image" />Everything under <span className="blue">DIRECTION</span></li>
                                        <li><div className="card-list-box"><div><img src={mark_green} className="card-image"/></div>Unlimited Chat access withcoaches & counsellors and get feedback on your to-dos goals and issues discussed</div></li>
+                                       
                                    </ul>
                                    <span className="card_btn btn-green card_btn--pce3 card_btn--animated">Upgrade to Accountability</span>
                                </Card.Body>
