@@ -2136,10 +2136,14 @@ button {
 
 @media (max-width: 400px) {
   .footer_mail {
-    width: 270px;
+    width: 260px;
   }
   .footer_btn {
-    margin-left: 10.3rem;
+    margin-left: 9.7rem;
+    margin-top: 0.35rem;
+  }
+  .footer_socials {
+    width: 90%;
   }
 }
 
@@ -2420,7 +2424,6 @@ button {
     padding-top: 1rem;
   }
   .aboutfirsttxt {
-    font-size: 12px;
     margin-bottom: 2rem;
     margin-right: 5%;
   }
@@ -2502,9 +2505,27 @@ button {
   width: 15px;
   margin-left: 15px;
 }
+.space {
+  margin-right: 1rem;
+}
 
 @media (max-width: 800px) {
   .newhamburger {
     background: transparent !important;
+  }
+}
+
+/*Faq*/
+.newfaq {
+  font-family: 'Brfirma-Bold';
+  color: #23304c;
+}
+.newfaqrow {
+  padding-top: 10rem;
+}
+
+@media(max-width: 767px) {
+  .newfaqrow {
+    padding-top: 4rem;
   }
 }

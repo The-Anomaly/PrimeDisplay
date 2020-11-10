@@ -169,7 +169,7 @@ const newNavbar = withRouter((props: any) => {
                 >
                   <span
                     className={
-                      showNav ? "tymes animated lightSpeedIn" : "tymes"
+                      showNav ? "tymes animated lightSpeedIn space" : "tymes"
                     }
                     onClick={() =>
                       setShowNav({ ...state, showNav: !showNav ? true : false })
@@ -285,8 +285,8 @@ const newNavbar = withRouter((props: any) => {
               <span className={props.contact ? "title hhome" : "title"}>
                 <Link to="/contact">Contact Us</Link>
               </span>
-              <span className={props.ask ? "title hhome" : "title"}>
-                <Link to="/about">FAQ</Link>
+              <span className={props.faq ? "title hhome" : "title"}>
+                <Link to="/faq">FAQ</Link>
               </span>
               {/* <span className="title">
               <Link to="/clarityforteams">SERVICES</Link>
