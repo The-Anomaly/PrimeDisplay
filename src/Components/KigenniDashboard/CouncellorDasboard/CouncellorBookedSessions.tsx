@@ -526,7 +526,6 @@ const CounsellorBookedSessions = (props: any) => {
               View users result <i className="fa fa-arrow-right"></i>
             </a>
           </span>
-          <form>
             <label>issues raised by user</label>
             <textarea
               className="issues-textbox-1 form-control"
@@ -538,7 +537,6 @@ const CounsellorBookedSessions = (props: any) => {
               cols={80}
               rows={3}
             />
-          </form>
           <form>
             <label>Take down notes during sessions</label>
             <textarea

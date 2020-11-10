@@ -51,17 +51,11 @@ const Monthly_plan = (props: any) => {
             );
           }
           if (response.paymentStatus === "PAID") {
-            return setTimeout(
-              (window.location.pathname = "/thirdpary/fullresult"),
-              1000
-            );
+            return //do something
           }
           if (response.paymentStatus === "PENDING") {
             notify("Payment Pending");
-            return setTimeout(
-              (window.location.pathname = "/thirdparty/pending"),
-              9000
-            );
+            //do something
           }
         },
         onClose: function (data) {
