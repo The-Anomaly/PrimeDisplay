@@ -195,7 +195,7 @@ const RedesignedHome: React.FC = () => {
           </div>
           <div>
             <div className="fourthsec">
-              <div className="fourthsubsec">
+              <div className="fourthsubsec hov1">
                 <img className="border1" src={border5} />
                 <img className="rightborder" src={smborder} />
                 <img src={trust1} className="trustimg" />
@@ -209,7 +209,7 @@ const RedesignedHome: React.FC = () => {
                   of roles you should work in.
                 </div>
               </div>
-              <div className="fourthsubsec">
+              <div className="fourthsubsec hov2">
                 <img className="border2" src={border2} />
                 <img className="leftborder leftborder1" src={smborder} />
                 <img src={trust2} className="trustimg" />
@@ -224,7 +224,7 @@ const RedesignedHome: React.FC = () => {
               </div>
             </div>
             <div className="fourthsec">
-              <div className="fourthsubsec">
+              <div className="fourthsubsec hov3">
               <img className="border3" src={border3} />
               <img className="rightborder rightborder2" src={smborder} />
                 <img src={trust3} className="trustimg" />
@@ -237,7 +237,7 @@ const RedesignedHome: React.FC = () => {
                   achieve this.
                 </div>
               </div>
-              <div className="fourthsubsec">
+              <div className="fourthsubsec hov4">
               <img className="border4" src={border4} />
               <img className="leftborder leftborder2" src={smborder} />
                 <img src={trust4} className="trustimg trustimgin" />

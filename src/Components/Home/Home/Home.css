@@ -2531,3 +2531,30 @@ button {
     padding-top: 4rem;
   }
 }
+
+/*Hover Effects*/
+.trustimg:hover {
+  width: 65px;
+  height: 65px;
+}
+.fourthsubhead:hover {
+  font-size: 16px;
+}
+.fourthsubtext:hover {
+  font-size: 14px;
+}
+
+/* .hov1:hover .trustimg {
+  width: 65px;
+  height: 65px;
+}
+.hov1:hover .fourthsubhead {
+  font-size: 16px;
+}
+.hov1:hover .fourthsubtext {
+  font-size: 14px;
+} */
+/* .border4:hover {
+  height: 266px;
+  margin-left: -10rem;
+} */

@@ -116,6 +116,7 @@ class App extends Component {
         <div>
           <BrowserRouter>
             <Switch>
+            <Route exact path="/oldhome" component={Home} />
               <Route exact path="/contact" component={Contactpage} />
               <Route exact path="/payment" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
