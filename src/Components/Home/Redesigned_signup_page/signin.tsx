@@ -1,12 +1,45 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import Navbar from "../HomeComponents/newnavbar";
 import "./signup.css";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form } from "react-bootstrap";
+import axios from 'axios';
+import { API } from '../../../config';
 
 
 
 const Signin = ()=>{
+  const [ state, setState ] = useState({
+    email: '',
+    password: '',
+    errorMessage: '',
+    successMessage: '',
+    isLoading: false
+  });
+  const {email, password, errorMessage, successMessage, isLoading} = state
+  const sendFormData = () => {
+    setState({
+    ...state,
+    isLoading: true
+    });
+    const data ={
+    email,
+    password
+    };
+   axios.post(`${API}/accounts/login`, data )
+   .then((response) => {
+     if (response.status === 200){
+         
+      setState ({
+       ...state,
+       successMessage: response.data[0].message,
+       isLoading: false 
+     });
+    }
+   })
+}
+
+
     return(
         <div>
              <Navbar />
