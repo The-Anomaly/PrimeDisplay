@@ -23,6 +23,7 @@ import book from "../../../assets/book.svg";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import expand from "../../../assets/minimize-2.png";
+import isopen from "../../../assets/outarrow.png";
 const moment = require("moment");
 
 const CounsellorOverview = (props: any) => {
@@ -42,6 +43,7 @@ const CounsellorOverview = (props: any) => {
     sessionId: "",
     recommendations: [],
     nextSessionMessage: "",
+    accordionisopen:false,
     taskTitle: "",
     session_email: "",
     taskDuration: "",
@@ -67,6 +69,7 @@ const CounsellorOverview = (props: any) => {
     session_notes,
     session_about,
     name,
+    accordionisopen,
     nextSessionMessage,
     sessionId,
     session_email,
@@ -269,6 +272,13 @@ const CounsellorOverview = (props: any) => {
         });
     }
   };
+  const toggleWhenOpen =()=>{
+    setFormState({
+      ...state,
+      accordionisopen:state.accordionisopen?false:true
+    })
+  }
+
   const notify = (message: string) => toast(message, { containerId: "B" });
   console.log(task_type);
   return (
@@ -470,6 +480,7 @@ const CounsellorOverview = (props: any) => {
                 <Accordion.Toggle
                   as={Card.Header}
                   className="hpadd"
+                  onClick={toggleWhenOpen}
                   eventKey="5"
                 >
                   <p className="to-do-header councld councld1as">
@@ -478,9 +489,15 @@ const CounsellorOverview = (props: any) => {
                   </p>
                 </Accordion.Toggle>
                 <Accordion.Toggle as={Card.Header} eventKey="5">
-                  <span className="tododw">
-                    <img src={expand} className="expand11" alt="expand" />
-                  </span>
+                {
+                      state.accordionisopen ? (
+                        <img src={expand}  onClick={toggleWhenOpen} className="expand11" alt="expand" />
+                      )
+                      :
+                      (
+                        <img src={isopen}  onClick={toggleWhenOpen} className="expand11" alt="expanded"/>
+                      )
+                    }
                 </Accordion.Toggle>
               </div>
               <Accordion.Collapse eventKey="5">
