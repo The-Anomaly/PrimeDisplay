@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import Navbar from "../HomeComponents/newnavbar";
 import "./email_confirmation.css";
 
 
 const Email_confirm_page = () => {
+  const [state, setState] = useState({
+    client: ''
+  })
+  useEffect(()=>{
+    const user :any= localStorage.getItem("userEmail") 
+    const userEmail = JSON?.parse(user)
+    console.log(userEmail)
+    setState({
+      ...state,
+      client:userEmail
+    })
+  });
   return (
     <div>
       <Navbar />
@@ -14,8 +26,8 @@ const Email_confirm_page = () => {
             <Col md={12}>
               <p className="cnfim-heading">Confirm your Email</p>
               <p className="cnfim-messg">
-                A code has been sent to [{" "}
-                <span className="cnfirmspan">~userEmail </span>], please enter
+                A code has been sent to 
+                <span className="cnfirmspan"> {state.client}</span>, please enter
                 code below <br /> to confirm your Account
               </p>
             </Col>

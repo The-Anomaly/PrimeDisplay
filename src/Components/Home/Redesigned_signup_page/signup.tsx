@@ -1,14 +1,14 @@
 import React,{ useState } from "react";
 import Navbar from "../HomeComponents/newnavbar";
 import "./signup.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import axios from 'axios';
 import { API } from '../../../config';
 import Alert from "react-bootstrap/Alert";
 
 
-const Signup = () => {
+const Signup = withRouter((props: any) => {
   const  [ state, setFormState ] =useState({
     firstname:'',
     lastname: '',
@@ -23,7 +23,7 @@ const Signup = () => {
   })
   const {firstname, email, password, howYouHeardAboutUs, referralCode,lastname,successMessage,errorMessage} = state
 
-  const onSubmit=(props:any)=>{
+  const onSubmit=()=>{
       setFormState({...state, isLoading: true })
     const data= {
       first_name: firstname,
@@ -37,6 +37,10 @@ const Signup = () => {
     axios.post(`${API}/accounts/signup/`, data)
     .then( ( response ) => {
       if (response.status === 200){
+        setTimeout(()=>{
+          props?.history?.push("/confirm_email")
+          console.log(props)
+        },5000)
          setFormState({
           ...state,
           errorMessage: "",
@@ -48,9 +52,7 @@ const Signup = () => {
           "userEmail",
           JSON.stringify(email)
         );
-        setTimeout(()=>{
-          props.history.push("/confirm_email")
-        },5000)
+      
       }
     })
     .catch( (error) => {
@@ -245,5 +247,5 @@ const Signup = () => {
       </div>
     </div>
   );
-};
+});
 export default Signup;
