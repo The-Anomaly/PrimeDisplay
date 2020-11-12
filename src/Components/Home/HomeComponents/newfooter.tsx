@@ -22,10 +22,10 @@ const NewFooter: React.FC = (props) => {
             <div className="footer_btn">SIGN UP</div>
           </div>
           <div className="footer_socials">
-            <Link to="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="_blank"><img className="footer_social_1 ssmedia" src={facebook} alt="facebook" /></Link>
-            <Link to="" target="_blank"><img className="footer_social_2 ssmedia" src={twitter} alt="twitter" /></Link>
-            <Link to="http://instagram.com/getclarity_" target="_blank"><img className="footer_social_3 ssmedia" src={instagram} alt="instagram" /></Link>
-            <Link to="" target="_blank"><img className="footer_social_4 ssmedia" src={linkedin} alt="linkedin" /></Link>
+            <a href="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="_blank"><img className="footer_social_1 ssmedia" src={facebook} alt="facebook" /></a>
+            <a href="" target="_blank"><img className="footer_social_2 ssmedia unclick" src={twitter} alt="twitter" /></a>
+            <a href="http://instagram.com/getclarity_" target="_blank"><img className="footer_social_3 ssmedia" src={instagram} alt="instagram" /></a>
+            <a href="https://ng.linkedin.com/company/yudimy" target="_blank"><img className="footer_social_4 ssmedia" src={linkedin} alt="linkedin" /></a>
           </div>
           <div className="ftrnav">
               <Link to="/" ><span>HOME</span></Link>
