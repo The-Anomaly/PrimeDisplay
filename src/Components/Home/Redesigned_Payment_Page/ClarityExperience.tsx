@@ -171,8 +171,8 @@ const Payment = (props: any) => {
                     : "plan-cards one-off"
                 }
               >
-                <Card.Body>
-                  <div onClick={OneOff}>
+                <Card.Body onClick={OneOff}>
+                  <div>
                     <h6>One off Clarity Experience</h6>
                   </div>
                 </Card.Body>
@@ -199,8 +199,8 @@ const Payment = (props: any) => {
                     : "plan-cards pce"
                 }
               >
-                <Card.Body>
-                  <div onClick={Progressive}>
+                <Card.Body onClick={Progressive}>
+                  <div>
                     <h6>Progressive Clarity Experience</h6>
                   </div>
                 </Card.Body>

@@ -2531,10 +2531,24 @@ button {
   .newfaqrow {
     padding-top: 4rem;
   }
+  .addpadding {
+    padding-top: 0rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .unclick {
   cursor: not-allowed;
+}
+.addpadding {
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
+@media(max-width: 767px) {
+  .addpadding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }
 
 
