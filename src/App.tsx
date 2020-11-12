@@ -131,12 +131,10 @@ class App extends Component {
               <Route exact path="/signup" component={Signup}/>
               <Route exact path="/signin" component={Signin}/>
               <Route exact path="/" component={RedesignedHome} />
-              {/* <Route exact path="/newsignup" component={Signup}/>
-              <Route exact path="/newsignin" component={Signin}/> */}
-              <Route exact path="/confirm_email" component={Email_confirm_page}/>
-              <Route exact path="/account_confirmation" component={Acc_confirm_page}/>
               []
               {/* <Route exact path="/" component={Home} /> */}
+              <Route exact path="/confirm_email" component={Email_confirm_page}/>
+              <Route exact path="/account_confirmation" component={Acc_confirm_page}/>
               <Route exact path="/about" component={About} />
               <Route exact path="/aboutus" component={NewAbout} />
               <Route exact path="/faq" component={Faq} />
@@ -259,6 +257,11 @@ class App extends Component {
                 exact
                 path="/counsellor/signin"
                 component={CounsellorsSignIn}
+              />
+              <Route
+                exact
+                path="/old/signup"
+                component={SignUp}
               />
               <Route
                 exact

@@ -172,6 +172,56 @@ const CounsellorAssignedMembers = (props: any) => {
         });
       });
   };
+  const startChat = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const user1: any = localStorage.getItem("user");
+    const User = JSON.parse(user1);
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(User);
+          console.log(res);
+          window.location.assign(
+            `/usermessagehistory/${User[0].email}/${res.data.chatId}`
+          );
+          if (res.status === 200) {
+            return setState({
+              ...state,
+              errorMessage: "",
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error?.response?.status === 400) {
+          setState({
+            ...state,
+            errorMessage: error.response.data.message,
+          });
+        }
+        console.log(error.response);
+        if (error && error.response && error.response.data) {
+          return setState({
+            ...state,
+            errorMessage: error?.response?.data?.message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
   const {
     nextLink,
     isLoading,
@@ -214,8 +264,8 @@ const CounsellorAssignedMembers = (props: any) => {
                           className="msgs teammembr booked bookedover signed"
                           key={i}
                         >
-                          <Link to={`/counsellorassignedmembers/${data?.id}`}>
-                            <div className="fromerit summary">
+                          <div className="fromerit summary">
+                            <Link to={`/counsellorassignedmembers/${data?.id}`}>
                               <div className="mone">
                                 <img
                                   className="user_image"
@@ -223,6 +273,8 @@ const CounsellorAssignedMembers = (props: any) => {
                                   alt="user image"
                                 />
                               </div>
+                            </Link>
+                            <Link to={`/counsellorassignedmembers/${data?.id}`}>
                               <div className="mtwo">
                                 <div>
                                   <div className="lowerr nulower counlowerr mhead">
@@ -236,26 +288,29 @@ const CounsellorAssignedMembers = (props: any) => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="mthree">
-                                <div className="lowerr nulower counlowerr mhead">
-                                  Member type
-                                </div>
-                                <div className="clarity12b">Clarity</div>
+                            </Link>
+                            <div className="mthree">
+                              <div className="lowerr nulower counlowerr mhead">
+                                Member type
                               </div>
-                              {data.status && (
-                                <div className="msix">
-                                  <div className="counview mbtn">View More</div>
-                                </div>
-                              )}
-                              {!data.status && (
-                                <div className="msix">
-                                  <div className="counview mbtn mbtnblu">
-                                    Send Message
-                                  </div>
-                                </div>
-                              )}
+                              <div className="clarity12b">Clarity</div>
                             </div>
-                          </Link>
+                            {data.status && (
+                              <div className="msix">
+                                <div className="counview mbtn">View More</div>
+                              </div>
+                            )}
+                            {!data.status && (
+                              <div className="msix">
+                                <div
+                                  onClick={startChat}
+                                  className="counview mbtn mbtnblu wd120"
+                                >
+                                  Send Message
+                                </div>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       ))}
                     {counsellorData.length === 0 && !isLoading && (

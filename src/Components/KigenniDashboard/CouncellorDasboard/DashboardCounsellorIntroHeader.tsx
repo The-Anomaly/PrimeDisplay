@@ -12,6 +12,7 @@ import DashboardNav from "../DashboardNavBar";
 import { API } from "../../../config";
 import StarRatingComponent from "react-star-rating-component";
 import search from "../../../assets/search.png";
+import money1 from "../../../assets/money1.png";
 
 class DashboardCounsellorIntroHeader extends React.Component<any, any> {
   constructor(props: any) {
@@ -112,6 +113,15 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
                 type="text"
                 className="searchinput form-control"
               />
+            </div>
+          )}
+          {this?.props?.referalAmount && (
+            <div className="ffrr1 ffas">
+              <div className="text-center">
+                <img src={money1} className="money1" alt="search" />
+              </div>
+              <div className="Earnings11as">Total Earnings </div>
+              <div className="Earnings11a">₦12,000</div>
             </div>
           )}
         </div>

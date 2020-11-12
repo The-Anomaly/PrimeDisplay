@@ -384,14 +384,14 @@ const TodoList = (props: any) => {
                             {data.status !== "pending" ? (
                               <div
                                 className="savebtn todo_button"
-                                onClick={() => OpenIscompleteModal(data.id)}
+                                onClick={() => openViewMoreModal(data.id)}
                               >
                                 View More
                               </div>
                             ) : (
                               <div
                                 className="savebtn todo_button"
-                                onClick={() => openViewMoreModal(data.id)}
+                                onClick={() => OpenIscompleteModal(data.id)}
                               >
                                 Complete Task
                               </div>
@@ -489,13 +489,13 @@ const TodoList = (props: any) => {
             />
           </div>
           <div className="modal_det">
-            <div className="titlee">Task Duration</div>
+            <div className="titlee">Task Duration (days)</div>
             <textarea
               className="note_det"
               placeholder="Enter number of days"
               name="add_note"
               disabled={true}
-              value={getTaskdetails()?.notes}
+              value={getTaskdetails()?.duration}
             />
           </div>
 
@@ -571,7 +571,7 @@ const TodoList = (props: any) => {
             />
           </div>
           <div className="modal_det">
-            <div className="titlee">Reminder Frequency</div>
+            <div className="titlee">Reminder Frequency(days)</div>
             <input
               type={"number"}
               className="note_det create_det "
@@ -630,7 +630,7 @@ const TodoList = (props: any) => {
             <div className="date_section">
               <div className="titlee">Date Created</div>
               <input
-                className="date_info"
+                className="date_info date_infoq"
                 type="date"
                 disabled={true}
                 value={getTaskdetails()?.date_created}
@@ -640,7 +640,7 @@ const TodoList = (props: any) => {
             <div className="date_section sec1">
               <div className="titlee">Date Completed</div>
               <input
-                className="date_info"
+                className="date_info date_infoq"
                 type="date"
                 disabled={true}
                 value={getTaskdetails()?.date_completed}
@@ -648,10 +648,10 @@ const TodoList = (props: any) => {
               />
             </div>
           </div>
-          <div className="modal_det">
+          {/* <div className="modal_det">
             <div className="titlee">Counselor's Input</div>
             <textarea className="task_det" disabled={true}></textarea>
-          </div>
+          </div> */}
         </Modal.Body>
       </Modal>
       <ToastContainer

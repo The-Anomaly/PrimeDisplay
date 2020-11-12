@@ -3824,3 +3824,6 @@ label {
     padding-bottom: 1rem;
   }
 }
+.textboxnonimg{
+  background-image: none;
+}
