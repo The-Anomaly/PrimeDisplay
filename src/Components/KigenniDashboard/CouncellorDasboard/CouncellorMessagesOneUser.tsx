@@ -58,7 +58,7 @@ class CounsellorMessageOneUser extends React.Component {
   };
   initialiseChat(id) {
     this.waitForSocketConnection(() => {
-      WebSocketInstance.fetchMessages(id);
+      // WebSocketInstance.fetchMessages(id);
     });
     WebSocketInstance.connect(id);
   }
