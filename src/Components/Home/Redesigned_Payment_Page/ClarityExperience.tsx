@@ -250,11 +250,11 @@ const Payment = (props: any) => {
                       </li>
                     </ul>
                     {withoutlogin ? (
-                      <span
+                      <Link to="/signin"><span
                         className="card_btn btn-yellow"
                       >
                         Get Started
-                      </span>
+                      </span></Link>
                     ) : (
                       <span
                         className="card_btn btn-yellow"
@@ -324,7 +324,7 @@ const Payment = (props: any) => {
                       </li>
                     </ul>
                     {withoutlogin ? (
-                      <span className="card_btn btn-blue">Get Started</span>
+                      <Link to="/signin"><span className="card_btn btn-blue">Get Started</span></Link>
                     ) : (
                       <span className="card_btn btn-blue">
                         Upgrade to Insight
@@ -364,9 +364,9 @@ const Payment = (props: any) => {
                       </li>
                     </ul>
                     {withoutlogin ? (
-                      <span className="card_btn btn-green card_btn--animated">
+                      <Link to="/signin"><span className="card_btn btn-green card_btn--animated">
                         Get Started
-                      </span>
+                      </span></Link>
                     ) : (
                       <span className="card_btn btn-green card_btn--animated">
                         Upgrade to Diamond
@@ -452,11 +452,11 @@ const Payment = (props: any) => {
                         Weekly Tailored job alerts
                       </li>
                     </ul>
-                    {withoutlogin ? (<span
+                    {withoutlogin ? (<Link to="/signin"><span
                       className="card_btn card_btn--pce1 btn-yellow"
                     >
                       Get Started
-                    </span>) 
+                    </span></Link>) 
                     :
                     (<span
                       className="card_btn card_btn--pce1 btn-yellow"
@@ -514,9 +514,9 @@ const Payment = (props: any) => {
                         </div>{" "}
                       </li>
                     </ul>
-                    {withoutlogin ? <span className="card_btn card_btn--pce2 btn-blue">
+                    {withoutlogin ? <Link to="/signin"><span className="card_btn card_btn--pce2 btn-blue">
                       Get Started
-                    </span> :
+                    </span></Link> :
                     <span className="card_btn card_btn--pce2 btn-blue">
                       Upgrade to Direction Plan
                     </span>}
@@ -553,9 +553,9 @@ const Payment = (props: any) => {
                         </div>
                       </li>
                     </ul>
-                    {withoutlogin? <span className="card_btn btn-green card_btn--pce3 card_btn--animated">
+                    {withoutlogin? <Link to="/signin"><span className="card_btn btn-green card_btn--pce3 card_btn--animated">
                       Get Started
-                    </span> :
+                    </span></Link> :
                     <span className="card_btn btn-green card_btn--pce3 card_btn--animated">
                       Upgrade to Accountability
                     </span>}
