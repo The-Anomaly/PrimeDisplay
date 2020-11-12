@@ -18,7 +18,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import preloader from "../../../assets/preloader2.gif";
 import StarRatingComponent from "react-star-rating-component";
-import { Modal } from "react-bootstrap";
+import { Modal, Form } from "react-bootstrap";
 import book from "../../../assets/book.svg";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
@@ -31,6 +31,8 @@ const CounsellorOverview = (props: any) => {
     user: "",
     chart: "",
     counsellorData: [],
+    task_type: [],
+    nature_of_task: "",
     successMsg: false,
     isLoading: false,
     count: "",
@@ -55,6 +57,8 @@ const CounsellorOverview = (props: any) => {
     chart,
     counsellorData,
     user_issues,
+    task_type,
+    nature_of_task,
     taskTitle,
     taskDuration,
     recommendations,
@@ -84,10 +88,16 @@ const CounsellorOverview = (props: any) => {
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/next-due-date`, {
         headers: { Authorization: `Token ${token}` },
       }),
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/counsellor/recommendation-groups/`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
     ])
       .then(
-        Axios.spread((res, res1, res2) => {
-          console.log(res);
+        Axios.spread((res, res1, res2, res3) => {
+          console.log(res3);
           if (res.status === 200) {
             setFormState({
               ...state,
@@ -101,6 +111,7 @@ const CounsellorOverview = (props: any) => {
               prevLink: res1.data.previous,
               total_pages: res1.data.total_pages,
               nextSessionMessage: res2.data.message,
+              task_type:[...res3.data]
             });
           }
         })
@@ -209,6 +220,7 @@ const CounsellorOverview = (props: any) => {
         rating: rate1,
         say_something: session_about,
         id: sessionId,
+        group:nature_of_task
       };
       console.log(data);
       Axios.post<any, AxiosResponse<any>>(
@@ -258,7 +270,7 @@ const CounsellorOverview = (props: any) => {
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(counsellorData);
+  console.log(task_type);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -315,7 +327,7 @@ const CounsellorOverview = (props: any) => {
                       </div>
                     </div>
                     <div className="yudd1">{nextSessionMessage}</div>
-                    {counsellorData.splice(0, 2).map((data, i) => (
+                    {counsellorData.slice(0, 2).map((data, i) => (
                       <div className="msgs teammembr booked bookedover" key={i}>
                         <div className="fromerit summary">
                           <div className="cone">
@@ -367,7 +379,6 @@ const CounsellorOverview = (props: any) => {
                               {!data.status ? "Pending" : "Completed"}
                             </span>
                           </div>
-
                           <div className="cseven">
                             <div
                               className="counview"
@@ -453,71 +464,96 @@ const CounsellorOverview = (props: any) => {
             /> 
             */}
           </form>
-          <Accordion defaultActiveKey="" className="councld1">
-            <div className="councld11">
-              <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
-                <p className="to-do-header councld">
-                  {" "}
-                  <span>Add Task</span>
-                </p>
-              </Accordion.Toggle>
-              <Accordion.Toggle as={Card.Header} eventKey="5">
-                <span className="tododw">
-                  <img src={expand} className="expand11" alt="expand" />
-                </span>
-              </Accordion.Toggle>
-            </div>
-            <Accordion.Collapse eventKey="5">
-              <Card.Body>
-                <form className="to-do-form">
-                  <Row className="taskrow">
-                    <Col md={6}>
-                      <label className="taskcl">Task Title</label>
-                      <input
-                        type="text"
-                        placeholder="enter a title"
-                        name="taskTitle"
-                        value={taskTitle}
-                        onChange={inputChangeHandler}
-                        className="form-control todo-input"
-                        size={25}
-                      />
-                    </Col>
-                    <Col md={6}>
-                      <label className="taskcl">
-                        How long should this take ?
-                        <span className="dayss">(Days)</span>
-                      </label>
-                      <input
-                        type="number"
-                        placeholder="Enter the number of days"
-                        className="form-control todo-input"
-                        name="taskDuration"
-                        value={taskDuration}
-                        onChange={inputChangeHandler}
-                        size={25}
-                      />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <label className="taskcl">Task Objective</label>
-                      <textarea
-                        placeholder="Describe the nature of the task"
-                        cols={67}
-                        rows={3}
-                        className="form-control text-decription"
-                        name="taskDescription"
-                        value={taskDescription}
-                        onChange={inputChangeHandler}
-                      />
-                    </Col>
-                  </Row>
-                </form>
-                <div className="addmore" onClick={add_new_task}>
-                  <p className="hjhh">Save &#43;</p>
-                </div>
-                {/* <div className="recommendationlist">
+          {!completedStatus && (
+            <Accordion defaultActiveKey="" className="councld1">
+              <div className="councld11">
+                <Accordion.Toggle
+                  as={Card.Header}
+                  className="hpadd"
+                  eventKey="5"
+                >
+                  <p className="to-do-header councld councld1as">
+                    {" "}
+                    <span>Add Task</span>
+                  </p>
+                </Accordion.Toggle>
+                <Accordion.Toggle as={Card.Header} eventKey="5">
+                  <span className="tododw">
+                    <img src={expand} className="expand11" alt="expand" />
+                  </span>
+                </Accordion.Toggle>
+              </div>
+              <Accordion.Collapse eventKey="5">
+                <Card.Body>
+                  <form className="to-do-form">
+                    <Row className="taskrow">
+                      <Col md={6}>
+                        <label className="taskcl">Task Title</label>
+                        <input
+                          type="text"
+                          placeholder="enter a title"
+                          name="taskTitle"
+                          value={taskTitle}
+                          onChange={inputChangeHandler}
+                          className="form-control todo-input"
+                          size={25}
+                        />
+                      </Col>
+                      <Col md={6}>
+                        <label className="taskcl">
+                          How long should this take ?
+                          <span className="dayss">(Days)</span>
+                        </label>
+                        <input
+                          type="number"
+                          placeholder="Enter the number of days"
+                          className="form-control todo-input"
+                          name="taskDuration"
+                          value={taskDuration}
+                          onChange={inputChangeHandler}
+                          size={25}
+                        />
+                      </Col>
+                    </Row>
+                    <Row className="spacevet">
+                      <Col md={12}>
+                        <div className="taskcl">Nature of Task </div>
+                        <Form.Control
+                          as="select"
+                          className="fmc todo-input"
+                          name="nature_of_task"
+                          value={nature_of_task}
+                          onChange={inputChangeHandler}
+                          placeholder="Select a tag to describe the task type"
+                        >
+                          <option></option>
+                          {task_type.map((data, i) => (
+                            <option className="uii11" value={data.request_name} key={i}>
+                              {data.display_name}
+                            </option>
+                          ))}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <label className="taskcl">Task Objective</label>
+                        <textarea
+                          placeholder="Describe the nature of the task"
+                          cols={67}
+                          rows={3}
+                          className="form-control text-decription"
+                          name="taskDescription"
+                          value={taskDescription}
+                          onChange={inputChangeHandler}
+                        />
+                      </Col>
+                    </Row>
+                  </form>
+                  <div className="addmore" onClick={add_new_task}>
+                    <p className="hjhh">Save &#43;</p>
+                  </div>
+                  {/* <div className="recommendationlist">
                   {recommendations.map((data, i) => (
                     <div className="cveducation" key={i}>
                       <span>
@@ -539,9 +575,10 @@ const CounsellorOverview = (props: any) => {
                     </div>
                   ))}
                 </div> */}
-              </Card.Body>
-            </Accordion.Collapse>
-          </Accordion>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Accordion>
+          )}
           {recommendations.map((data, i) => (
             <Accordion defaultActiveKey="" className="councld1">
               <button onClick={() => {}}>Edit</button>
@@ -602,6 +639,30 @@ const CounsellorOverview = (props: any) => {
                             onChange={inputChangeHandler}
                             size={25}
                           />
+                        </Col>
+                      </Row>
+                      <Row className="spacevet">
+                        <Col md={12}>
+                          <div className="taskcl">Nature of Task </div>
+                          <Form.Control
+                            as="select"
+                            className="fmc todo-input"
+                            name="nature_of_task"
+                            value={nature_of_task}
+                            onChange={inputChangeHandler}
+                            placeholder="Select a tag to describe the task type"
+                          >
+                            <option></option>
+                            {task_type.map((data, i) => (
+                              <option
+                                className="uii11"
+                                value={data.request_name}
+                                key={i}
+                              >
+                                {data.display_name}
+                              </option>
+                            ))}
+                          </Form.Control>
                         </Col>
                       </Row>
                       <Row>

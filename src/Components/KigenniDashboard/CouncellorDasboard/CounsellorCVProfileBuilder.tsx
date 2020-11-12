@@ -6,11 +6,9 @@ import "../kegennidashboard.css";
 import avatar from "../../../assets/avatar.svg";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
-import imgCart from "../../../assets/clarity.png";
 import Button from "react-bootstrap/Button";
 import writeicon from "../../../assets/writeicon.png";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../../../Components/Home/Home/animate.css";
@@ -18,13 +16,11 @@ import { Link } from "react-router-dom";
 import editicon from "../../../assets/editicon.svg";
 import building from "../../../assets/building.svg";
 import plus from "../../../assets/plus.svg";
-import x from "../../../assets/x.svg";
 import book from "../../../assets/book.svg";
 import dropdown from "../../../assets/dropdown.svg";
 import CounsellorsDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import SideBarCounsellorDashboard from "./SideBarCounsellorDashboard";
 import CounsellorDashboardNav from "./CounsellorDashboardNav";
-import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
 import DashboardInfoArea from '../DashboardInfoArea';
 const moment = require("moment");
 
@@ -139,8 +135,6 @@ class CounsellorCVProfileBuilder extends React.Component {
         certificate_name,
         institution,
         valid_from,
-        valid_till,
-        does_not_expire,
       },
     ] = certificationz;
     if (certificate_name === "" || institution === "" || valid_from === "") {
@@ -170,7 +164,7 @@ class CounsellorCVProfileBuilder extends React.Component {
         ref_email: this.state.referenceemail,
       },
     ];
-    const [{ name, phone, relationship, title, ref_email }] = References;
+    const [{ name, phone, title, ref_email }] = References;
     if (name === "" || phone === "" || title === "" || ref_email === "") {
       return this.notify("Please enter all reference information");
     }
@@ -196,9 +190,6 @@ class CounsellorCVProfileBuilder extends React.Component {
       references,
       education,
       instagram,
-      startDate,
-      endDate,
-      userHasAddedExperience,
     } = this.state;
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
@@ -218,7 +209,7 @@ class CounsellorCVProfileBuilder extends React.Component {
         headers: { Authorization: `Token ${token}` },
       }
     )
-      .then((res) => {
+      .then(() => {
         this.notify("Successful");
       })
       .catch((err) => {
@@ -262,7 +253,6 @@ class CounsellorCVProfileBuilder extends React.Component {
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
-    const data = {};
     Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profile`, {
       headers: { Authorization: `Token ${token}` },
     })
@@ -308,24 +298,24 @@ class CounsellorCVProfileBuilder extends React.Component {
       showWarning: true,
     });
   };
-  onchangeCurrentWork = (e: any) => {
+  onchangeCurrentWork = () => {
     this.setState({
       mycurrentwork: this.state.mycurrentwork ? false : true,
     });
   };
-  onchangeCurrentStudy = (e: any) => {
+  onchangeCurrentStudy = () => {
     this.setState({
       education_doesnot_expire: this.state.education_doesnot_expire
         ? false
         : true,
     });
   };
-  onchange = (e: any) => {
+  onchange = () => {
     this.setState({
       mycurrentwork: this.state.mycurrentwork ? false : true,
     });
   };
-  onchange1 = (e: any) => {
+  onchange1 = () => {
     this.setState({
       expirationStatus: this.state.expirationStatus ? false : true,
     });
@@ -360,7 +350,6 @@ class CounsellorCVProfileBuilder extends React.Component {
   };
   deleteSkill = (id): void => {
     const Skills = this.state.skills;
-    const foundIndex = Skills.indexOf(Skills[id]);
     Skills.splice(id, 1);
     this.setState({
       skills: Skills,
@@ -378,42 +367,16 @@ class CounsellorCVProfileBuilder extends React.Component {
   };
   render() {
     const {
-      fullname,
       education,
-      isLoading,
-      referencename,
       certifications,
-      certificateInstitution,
-      jobdescription,
-      organizationname,
-      referencetitle,
-      referencephone,
-      referenceemail,
       experiences,
-      referencerelationship,
-      organizationposition,
-      certificateName,
-      valid_from,
-      valid_till,
       about,
-      skill,
       skills,
       references,
-      mycurrentwork,
-      startDate,
-      endDate,
-      institutionname,
-      degreeObtained,
-      institutionLocation,
-      expirationStatus,
       linkedin,
       twitter,
       instagram,
       facebook,
-      education_valid_from,
-      education_valid_till,
-      education_doesnot_expire,
-      width,
       user,
     } = this.state;
     return (
@@ -497,7 +460,7 @@ class CounsellorCVProfileBuilder extends React.Component {
                             </div>
                           </div>
                           <Row className="cvexperience">
-                            {experiences.map((data, i) => (
+                            {experiences.map((data) => (
                               <Row className="roww">
                                 <Col md={1} sm={1} className="buildingbg">
                                   <img
@@ -637,7 +600,7 @@ class CounsellorCVProfileBuilder extends React.Component {
                             </div>
                           </div>
                           <Row className="cvexperience">
-                            {certifications.map((data, i) => (
+                            {certifications.map((data) => (
                               <Row className="roww">
                                 <Col md={1} sm={1} className="buildingbg">
                                   <img

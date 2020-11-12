@@ -3510,6 +3510,7 @@ textarea.form-control.jobr {
 .mbtnblu {
   background: #3965ff;
   border: 1px solid #3965ff;
+  min-width: 125px;
 }
 .mone {
   flex: 10%;
@@ -3812,6 +3813,7 @@ textarea.form-control.jobr {
 }
 .taskcl {
   color: #434866;
+  font-size: 13px !important;
 }
 .taskrow {
   padding-bottom: 0.5rem;
@@ -3925,13 +3927,39 @@ textarea.form-control.jobr {
   line-height: 18px;
   color: #001833;
 }
-.weww{
+.weww {
   font-size: 16px;
 }
-.brfcase{
+.brfcase {
   width: 20px;
   object-fit: contain;
 }
-.todo1a{
-  
+.wd120 {
+  width: 155px;
+}
+.spacevet {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.councld1as {
+  background: inherit !important;
+}
+.Earnings11as {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: 1px;
+  color: #1bb978;
+}
+.Earnings11a {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 27px;
+  letter-spacing: 1px;
+  color: #1bb978;
+  text-align: center;
+}
+
+.ffas{
+  padding: .5rem 1rem;
 }

@@ -225,7 +225,10 @@ const Referrals = (props: any) => {
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
-                <DashboardCounsellorIntroHeader welcomeText="Find below all the list of successful members referred" />
+                <DashboardCounsellorIntroHeader
+                  welcomeText="Find below all the list of successful members referred"
+                  referalAmount={true}
+                />
                 <div>
                   <span className="ref_btn" onClick={ModalOpen}>
                     Get referral link{" "}
