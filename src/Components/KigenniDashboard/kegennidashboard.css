@@ -1333,6 +1333,9 @@ abbr[title] {
   font-size: 12px;
   line-height: 4.4;
 }
+.navft {
+  font-size: 11.2px !important;
+}
 
 .avar {
   width: 80px;
@@ -3807,4 +3810,17 @@ label {
 }
 .cchatht {
   height: auto;
+}
+
+.datesedit {
+  margin-top: 0 !important;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
+
+@media(max-width: 779px) {
+  .datesedit {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+  }
 }

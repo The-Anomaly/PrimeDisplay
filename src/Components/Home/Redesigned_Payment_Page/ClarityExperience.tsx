@@ -5,8 +5,6 @@ import mark from "../../../assets/mark-icn.png";
 import mark_blue from "../../../assets/blue-mark.png";
 import mark_green from "../../../assets/green-mark.png";
 import "./payment.css";
-import Navbar from "../HomeComponents/newnavbar";
-import Footer from "../HomeComponents/newfooter";
 import { API } from "../../../config";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -78,9 +76,13 @@ const Payment = (props: any) => {
           }
           if (response.paymentStatus === "PAID") {
             return setInterval(
-              (window.location.pathname = "/thirdpary/fullresult"),
+              (this.props.history.location.pathname),
               1000
             );
+            // return setInterval(
+            //   (window.location.pathname = "/thirdpary/fullresult"),
+            //   1000
+            // );
           }
           if (response.paymentStatus === "PENDING") {
             notify("Payment Pending");
@@ -326,7 +328,7 @@ const Payment = (props: any) => {
                     {withoutlogin ? (
                       <Link to="/signin"><span className="card_btn btn-blue">Get Started</span></Link>
                     ) : (
-                      <span className="card_btn btn-blue">
+                      <span className="card_btn btn-blue" onClick={() => requestForPayref("One-off Insight Plan", 3500)}>
                         Upgrade to Insight
                       </span>
                     )}
@@ -368,7 +370,7 @@ const Payment = (props: any) => {
                         Get Started
                       </span></Link>
                     ) : (
-                      <span className="card_btn btn-green card_btn--animated">
+                      <span className="card_btn btn-green card_btn--animated" onClick={() => requestForPayref("One-off Direction Plan", 10000)}>
                         Upgrade to Diamond
                       </span>
                     )}
@@ -460,7 +462,7 @@ const Payment = (props: any) => {
                     :
                     (<span
                       className="card_btn card_btn--pce1 btn-yellow"
-                      onClick={() => requestForPayref("Growth Plan", 3500)}
+                      onClick={() => requestForPayref("Progressive Insight Plan", 3500)}
                     >
                       Subscribe
                     </span>)}
@@ -517,7 +519,7 @@ const Payment = (props: any) => {
                     {withoutlogin ? <Link to="/signin"><span className="card_btn card_btn--pce2 btn-blue">
                       Get Started
                     </span></Link> :
-                    <span className="card_btn card_btn--pce2 btn-blue">
+                    <span className="card_btn card_btn--pce2 btn-blue" onClick={() => requestForPayref("Progressive Direction Plan", 6000)}>
                       Upgrade to Direction Plan
                     </span>}
                   </Card.Body>
@@ -556,7 +558,7 @@ const Payment = (props: any) => {
                     {withoutlogin? <Link to="/signin"><span className="card_btn btn-green card_btn--pce3 card_btn--animated">
                       Get Started
                     </span></Link> :
-                    <span className="card_btn btn-green card_btn--pce3 card_btn--animated">
+                    <span className="card_btn btn-green card_btn--pce3 card_btn--animated" onClick={() => requestForPayref("Progressive Accountability Plan", 10000)}>
                       Upgrade to Accountability
                     </span>}
                   </Card.Body>

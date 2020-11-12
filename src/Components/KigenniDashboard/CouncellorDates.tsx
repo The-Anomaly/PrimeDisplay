@@ -6,8 +6,8 @@ import Alert from "react-bootstrap/Alert";
 import "./kegennidashboard.css";
 import axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
-import Navbar from "../Home/HomeComponents/navbar";
-import Footer from "../Home/HomeComponents/footer";
+import Navbar from "../Home/HomeComponents/newnavbar";
+import Footer from "../Home/HomeComponents/newfooter";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import write from "../../assets/write.png";
@@ -94,6 +94,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       });
   };
+
   handleChatCheck = () => {
     console.log("checking payment status")
     this.setState({ isLoading: true });
@@ -106,6 +107,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
+        console.log(response)
         if (response?.data[0]?.direction_plan === true) {
           return this.sendMessageToCounselor();
           // return window.location.assign("/counsellordates");
@@ -114,7 +116,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           return window.location.assign("/counsellorfee");
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.error("Payment Status Error")
+      });
   };
   onChange = (date) => {
     this.getAvailableTime(date.toString());
@@ -180,7 +184,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       <>
         <Navbar />
         <Container fluid={true}>
-          <Row className="kli6 bcbv">
+          <Row className="kli6 bcbv datesedit">
             <Col md={12} className="scheduleheader">
               Schedule a meeting
             </Col>
@@ -193,7 +197,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                 maxDate={new Date(endDate)}
               />
             </Col>
-            <Col md={2} className="availabledatewrapper">
+            <Col md={3} className="availabledatewrapper">
               <div>
                 {calenderTime &&
                   calenderTime.map((data, i) => (

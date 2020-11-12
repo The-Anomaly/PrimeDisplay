@@ -68,7 +68,7 @@ const SideBarNewDashboard = (props: any) => {
             <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
           </Link>
         </div>{" "}
-        <div className={hidemobile ? "navitemnone" : "navitem1"}>
+        <div className={hidemobile ? "navitemnone" : "navitem1 navft"}>
           <div className={props.overview ? "activegb" : "gbn"}>
             <Link to="/overview">
               <img

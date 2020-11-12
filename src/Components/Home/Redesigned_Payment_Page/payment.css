@@ -23,6 +23,7 @@
 .plan-cards{
     padding: 34px 0px 9px 0px;
     font-family: 'brfirma-bold';
+    cursor: pointer;
 }
 .plan-card-arr{
     position: relative;
