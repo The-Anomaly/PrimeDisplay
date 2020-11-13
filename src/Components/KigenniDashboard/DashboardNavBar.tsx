@@ -61,10 +61,11 @@ const DashboardNav = (props: any) => {
     })
       .then((response) => {
         if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          // response?.data[0]?.free_plan ||
-          response?.data[0]?.insight_plan === true
+          response?.data[0]?.["One-off Insight Plan"] ||
+          response?.data[0]?.["One-off Direction Plan"] ||
+          response?.data[0]?.["Progressive Insight Plan"] ||
+          response?.data[0]?.["Progressive Direction Plan"] ||
+          response?.data[0]?.["Progressive Accountability Plan"] === true
         ) {
           return window.location.assign("/thirdpary/fullresult");
         }
@@ -167,7 +168,7 @@ const DashboardNav = (props: any) => {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="3">
                     <Card.Body>
-                      <Link to="/councellordates">
+                      <Link to="/counsellordates">
                         <div className="task112">Book a private session</div>
                       </Link>
                       <Link to="/allusermessages">

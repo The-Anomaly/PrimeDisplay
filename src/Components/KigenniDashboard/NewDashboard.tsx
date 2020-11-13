@@ -118,9 +118,11 @@ class NewDashboard extends React.Component {
     })
       .then((response) => {
         if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
+          response?.data[0]?.["One-off Insight Plan"] ||
+          response?.data[0]?.["One-off Direction Plan"] ||
+          response?.data[0]?.["Progressive Insight Plan"] ||
+          response?.data[0]?.["Progressive Direction Plan"] ||
+          response?.data[0]?.["Progressive Accountability Plan"] === true
         ) {
           this.setState({
             showfullresult: true,
@@ -141,9 +143,11 @@ class NewDashboard extends React.Component {
     })
       .then((response) => {
         if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
+          response?.data[0]?.["One-off Insight Plan"] ||
+          response?.data[0]?.["One-off Direction Plan"] ||
+          response?.data[0]?.["Progressive Insight Plan"] ||
+          response?.data[0]?.["Progressive Direction Plan"] ||
+          response?.data[0]?.["Progressive Accountability Plan"] === true
         ) {
           this.setState({
             showfullresult: true,
@@ -246,7 +250,7 @@ class NewDashboard extends React.Component {
                       <div className="notpaid1">
                         <img src={caution} className="caution" alt="caution" />
                         <div className="notpaidtext">
-                          Opps!!! Seems you need to upgrade your plan to have
+                          Oops!!! Seems you need to upgrade your plan to have
                           indepth details
                         </div>
                       </div>

@@ -239,6 +239,26 @@ const SignIn: React.FunctionComponent = (props: any) => {
           );
           getCurrentAssessmentPosition(response.data[0]?.token);
           getUserInfo(response.data[0]?.token);
+
+          const availableToken = localStorage.getItem("userToken");
+          const token = availableToken
+            ? JSON.parse(availableToken)
+            : window.location.assign("/signin");
+          axios
+            .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+              headers: { Authorization: `Token ${token}` },
+            })
+            .then((response1) => {
+              console.log(response1);
+              console.log(response1?.data[0]);
+              for (const property in response1?.data[0]) {
+                localStorage.setItem("planName", property);
+                console.log(localStorage.getItem("planName"));
+              }
+            })
+            .catch((error) => {
+              console.error("Payment Status Error");
+            });
         })
         .catch((error) => {
           setFormState({
@@ -282,7 +302,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-              <img className="signup_icon" src={lock} alt="last name" />
+                <img className="signup_icon" src={lock} alt="last name" />
                 <Form.Control
                   type="password"
                   name="password"

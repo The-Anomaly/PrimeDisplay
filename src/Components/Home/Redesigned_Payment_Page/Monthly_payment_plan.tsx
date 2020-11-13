@@ -39,7 +39,7 @@ const Monthly_plan = (props: any) => {
         apiKey: "MK_PROD_NNSGXTY6LF",
         contractCode: "722431733218",
         paymentDescription: selectedplan,
-        isTestMode: false,
+        isTestMode: true,
         redirect: false,
         onComplete: function (response) {
           if (response.paymentStatus === "OVERPAID") {

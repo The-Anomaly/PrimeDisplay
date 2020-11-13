@@ -96,7 +96,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   };
 
   handleChatCheck = () => {
-    console.log("checking payment status")
+    console.log("checking payment status");
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -107,17 +107,26 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response)
-        if (response?.data[0]?.direction_plan === true) {
+        console.log(response);
+        // console.log(response?.data[0]);
+        // for(const property in response?.data[0]){
+        //   localStorage.setItem("planName", property)
+        //     console.log(localStorage.getItem("planName"));
+        // }
+        if (
+          response?.data[0]?.["One-off Direction Plan"] ||
+          response?.data[0]?.["Progressive Direction Plan"] ||
+          response?.data[0]?.["Progressive Accountability Plan"]
+        ) {
           return this.sendMessageToCounselor();
-          // return window.location.assign("/counsellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/counsellorfee");
+          //console.log("Payment Summary Check");
+        } else {
+          //console.log("No payment")
+          return window.location.assign("/paymentsummary");
         }
       })
       .catch((error) => {
-        console.error("Payment Status Error")
+        console.error("Payment Status Error");
       });
   };
   onChange = (date) => {
@@ -168,7 +177,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   notify = (message: string) => {
     toast(message, { containerId: "B" });
   };
-   
+
   render() {
     const {
       fullname,

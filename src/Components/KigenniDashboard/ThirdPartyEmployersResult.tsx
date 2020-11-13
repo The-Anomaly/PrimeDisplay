@@ -203,27 +203,28 @@ class ThirdPartyEmployersResult extends React.Component<React.Props<any>> {
         });
       });
   };
-  handleChatCheck = () => {
-    this.setState({ isLoading: true });
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    axios
-      .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-        headers: { Authorization: `Token ${token}` },
-      })
-      .then((response) => {
-        if (response?.data[0]?.direction_plan === true) {
-          return window.location.assign("/counsellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/counsellorfee");
-        }
-      })
-      .catch((error) => {
-      });
-  };
+  // handleChatCheck = () => {
+  //   this.setState({ isLoading: true });
+  //   const availableToken = localStorage.getItem("userToken");
+  //   const token = availableToken
+  //     ? JSON.parse(availableToken)
+  //     : window.location.assign("/signin");
+  //   axios
+  //     .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+  //       headers: { Authorization: `Token ${token}` },
+  //     })
+  //     .then((response) => {
+  //       return window.location.assign("/counsellordates");
+  //       // if (response?.data[0]?.direction_plan === true) {
+  //       //   return window.location.assign("/counsellordates");
+  //       // }
+  //       // if (response?.data[0]?.direction_plan === false) {
+  //       //   return window.location.assign("/counsellorfee");
+  //       // }
+  //     })
+  //     .catch((error) => {
+  //     });
+  // };
   moveTo = (str) => {
     const offsetTop: any = document?.getElementById(str)?.offsetTop;
     window.scrollTo({

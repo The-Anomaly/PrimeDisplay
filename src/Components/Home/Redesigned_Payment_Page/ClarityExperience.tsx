@@ -59,15 +59,18 @@ const Payment = (props: any) => {
         customerFullName: user[0]?.first_name + "  " + user[0]?.last_name,
         customerEmail: "monnify@monnify.com",
         customerMobileNumber: "",
-        apiKey: "MK_PROD_NNSGXTY6LF",
-        contractCode: "722431733218",
+        // apiKey: "MK_PROD_NNSGXTY6LF",
+        // contractCode: "722431733218",
+        contractCode: "4978848198",
+        apiKey: "MK_TEST_WQZNXHV9FY",
+        // secretKey: "MR4K3WHE7BDLZFTR3Z4VUJ4H4HD88S22",
         paymentDescription: selectedplan,
         isTestMode: false,
         redirect: false,
         onComplete: function (response) {
           if (response.paymentStatus === "OVERPAID") {
             notify(
-              "You current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
+              "Your current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
             return setInterval(
               (window.location.pathname = "/thirdparty/overpaid"),

@@ -477,11 +477,6 @@ class App extends Component {
               <Route exact path="/meetings" component={CouncellorBookings} />
               <Route
                 exact
-                path="/councellordates"
-                component={CouncellorDates}
-              />
-              <Route
-                exact
                 path="/counsellormeetings"
                 component={CounsellorScheduledMeetings}
               />

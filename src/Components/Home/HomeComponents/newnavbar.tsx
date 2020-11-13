@@ -23,7 +23,11 @@ const newNavbar = withRouter((props: any) => {
     window.scrollTo(-0, -0);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
-    if(window.location.pathname==="/counsellordates"){
+    if (
+      window.location.pathname === "/counsellordates" ||
+      window.location.pathname === "/thirdparty/pending" ||
+      window.location.pathname === "/thirdparty/overpaid"
+    ) {
       return;
     }
     if (token) {
@@ -31,17 +35,18 @@ const newNavbar = withRouter((props: any) => {
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
-      Axios.get(`${API}/progress`, {
-        headers: { Authorization: `Token ${token}` },
+    Axios.get(`${API}/progress`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200 && response.data[0].next === "home") {
+          return props.history.push(`/free/dashboard`);
+        }
       })
-        .then((response) => {
-          if (response.status === 200 && response.data[0].next === "home") {
-            return props.history.push(`/free/dashboard`);
-          }
-        })
-        .catch((error) => {
-         console.log(error) 
-        });
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
   const setRedirect = () => {
     setShowNav({
@@ -199,7 +204,9 @@ const newNavbar = withRouter((props: any) => {
                   <div className="listwraperMob">
                     <Link to="/faq">Faq</Link>
                   </div>
-                  <div className="listwraperMob"><Link to="/privacy_policy">Privacy Policy</Link></div>
+                  <div className="listwraperMob">
+                    <Link to="/privacy_policy">Privacy Policy</Link>
+                  </div>
                   {/* {!userLoggedIn && (
                     <>
                       <div className="listwraperMob">
@@ -257,50 +264,63 @@ const newNavbar = withRouter((props: any) => {
             </div>
           </div>
         </div>
-        <Row md={12} className={
-              navbar ? "nav-wrapper redoNav nav_margin privacynav" : "nav-wrapper redoNav nav_margin"
-            }>
-            <div className="nav_titlenew">
-              <div className="logo_clarity logo_clarity_new">
-                <Link to="/">
-                  <img
-                    src={navbar ? demoLogoLight : demoLogo}
-                    alt="clarity_logo"
-                    className="logologo"
-                  />
-                </Link>
-              </div>
+        <Row
+          md={12}
+          className={
+            navbar
+              ? "nav-wrapper redoNav nav_margin privacynav"
+              : "nav-wrapper redoNav nav_margin"
+          }
+        >
+          <div className="nav_titlenew">
+            <div className="logo_clarity logo_clarity_new">
+              <Link to="/">
+                <img
+                  src={navbar ? demoLogoLight : demoLogo}
+                  alt="clarity_logo"
+                  className="logologo"
+                />
+              </Link>
             </div>
-            <div className="nav_titlenew">
-              <span className={props.home ? "title hhome" : "title"}>
-                <Link to="/">Home</Link>
-              </span>
-              <span className={props.about ? "title hhome" : "title"}>
-                <Link to="/aboutus">About Us</Link>
-              </span>
-              <span className={props.payments ? "title hhome" : "title"}>
-                <Link to="/payment">Payments</Link>
-              </span>
-              <span className={props.contact ? "title hhome" : "title"}>
-                <Link to="/contact">Contact Us</Link>
-              </span>
-              <span className={props.faq ? "title hhome" : "title"}>
-                <Link to="/faq">FAQ</Link>
-              </span>
-              {/* <span className="title">
+          </div>
+          <div className="nav_titlenew">
+            <span className={props.home ? "title hhome" : "title"}>
+              <Link to="/">Home</Link>
+            </span>
+            <span className={props.about ? "title hhome" : "title"}>
+              <Link to="/aboutus">About Us</Link>
+            </span>
+            <span className={props.payments ? "title hhome" : "title"}>
+              <Link to="/payment">Payments</Link>
+            </span>
+            <span className={props.contact ? "title hhome" : "title"}>
+              <Link to="/contact">Contact Us</Link>
+            </span>
+            <span className={props.faq ? "title hhome" : "title"}>
+              <Link to="/faq">FAQ</Link>
+            </span>
+            {/* <span className="title">
               <Link to="/clarityforteams">SERVICES</Link>
             </span> */}
-              {/* {!userLoggedIn ? (
+            {/* {!userLoggedIn ? (
                 <NavIsLoggedOut />
               ) : (
                 <NavIsLoggedIn Logout={logout} />
               )} */}
+            {userLoggedIn ? (
               <div className="title1 shiftlefff newshft">
                 <Link to="/signin">
                   <button className="title_t signupbtn newlogin">Login</button>
                 </Link>
               </div>
-            </div>
+            ) : (
+              <div className="title1 shiftlefff newshft">
+                <button className="title_t signupbtn newlogin" onClick={logout}>
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         </Row>
       </div>
     </div>
