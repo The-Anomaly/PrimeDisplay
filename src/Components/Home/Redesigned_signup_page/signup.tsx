@@ -60,7 +60,7 @@ const Signup = withRouter((props: any) => {
       if (error){
         return setFormState({
               ...state,
-            errorMessage: error?.response?.data?.message,
+            errorMessage: error?.response?.data[0].message,
             isLoading: false,
             error: true
          })
