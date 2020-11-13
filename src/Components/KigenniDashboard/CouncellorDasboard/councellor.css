@@ -3512,10 +3512,7 @@ textarea.form-control.jobr {
   border: 1px solid #3965ff;
   min-width: 125px;
 }
-.mone {
-  flex: 10%;
-  text-align: center;
-}
+
 .mtwo {
   flex: 20%;
   padding-right: 1.5rem;
@@ -4079,4 +4076,24 @@ textarea.form-control.jobr {
 
 .ffas{
   padding: .5rem 1rem;
+}
+.mtwo div {
+  flex: 10%;
+  text-align: center;
+  width: 180px;
+}
+@media(min-width:768px){
+  .mthree{
+    display: flex;
+    justify-content: flex-end !important
+  }
+  .mmbr{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+  .msix{
+    display: flex;
+    justify-content: flex-end;
+  }
 }

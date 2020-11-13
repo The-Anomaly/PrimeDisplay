@@ -156,7 +156,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
       error: false,
       successMsg: false,
     });
-  };
+  };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
   const changeActionOnFormData = (e: any) => {
     setFormState({
       ...state,

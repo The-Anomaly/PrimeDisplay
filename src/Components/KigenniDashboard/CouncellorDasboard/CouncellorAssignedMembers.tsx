@@ -252,7 +252,7 @@ const CounsellorAssignedMembers = (props: any) => {
                           <div>Name</div>
                         </div>
                         <div className="mthree">
-                          <div> Member Type</div>
+                          <div className="mmbr"> Member Type</div>
                         </div>
                         <div className="msix"> </div>
                       </div>

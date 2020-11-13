@@ -683,6 +683,7 @@ const CounsellorBookedSessions = (props: any) => {
                 <Accordion.Toggle
                   as={Card.Header}
                   className="hpadd"
+                  onClick={toggleWhenOpen}
                   eventKey="5"
                 >
                   <p className="to-do-header councld">
@@ -691,12 +692,16 @@ const CounsellorBookedSessions = (props: any) => {
                   </p>
                 </Accordion.Toggle>
                 <Accordion.Toggle as={Card.Header} eventKey="5">
-                  <span className="tododw">
-                    <img
-                      src={expand}
-                      className="expand11 movelft22"
-                      alt="expand"
-                    />
+                <span className="tododw">
+                    {
+                      state.accordionisopen ? (
+                        <img src={expand}  onClick={toggleWhenOpen} className="expand11" alt="expand" />
+                      )
+                      :
+                      (
+                        <img src={isopen}  onClick={toggleWhenOpen} className="expand11" alt="expanded"/>
+                      )
+                    }
                   </span>
                   <span className="andtimes" onClick={() => deleteEntry(i)}>
                     &times;
