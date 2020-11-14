@@ -3,15 +3,10 @@ import Navbar from "../HomeComponents/newnavbar";
 import "./signup.css";
 import { Link, withRouter } from "react-router-dom";
 import { Container, Row, Col, Form, Alert } from "react-bootstrap";
-<<<<<<< HEAD
 import axios from "axios";
 import { API } from "../../../config";
 import eye from "../../../assets/eye.png";
 import eye12 from "../../../assets/eye-off.png";
-=======
-import axios, { AxiosResponse } from 'axios';
-import { API } from '../../../config';
->>>>>>> remotes/origin/sub
 
 const Signin = withRouter((props: any) => {
   const [state, setState] = useState({
