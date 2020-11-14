@@ -17,8 +17,9 @@ const newNavbar = withRouter((props: any) => {
     showNav: false,
     userLoggedIn: false,
     redirect: false,
+    userType: false,
   });
-  const { showNav, userLoggedIn, redirect } = state;
+  const { showNav, userLoggedIn, redirect, userType } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
     const availableToken = localStorage.getItem("userToken");
@@ -35,15 +36,29 @@ const newNavbar = withRouter((props: any) => {
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
-    Axios.get(`${API}/progress`, {
+    Axios.
+    all([
+      Axios.get(`${API}/progress`, {
       headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
+    }),
+    Axios
+    .get(`${API}/currentuser`, {
+      headers: { Authorization: `Token ${token}` },
+    })])
+      .then(Axios.spread((response, response1) => {
         console.log(response);
+        console.log(response1)
+        console.log(response1?.data[0]?.is_counsellor);
+        if(response1?.data[0]?.is_counsellor === "true" || window.location.pathname === "/counsellor/signin" || window.location.pathname === "/counsellor/signup"){
+          setShowNav({
+            ...state,
+            userType: true,
+          })
+        }
         if (response.status === 200 && response.data[0].next === "home") {
           return props.history.push(`/free/dashboard`);
         }
-      })
+      }))
       .catch((error) => {
         console.log(error);
       });
@@ -307,13 +322,31 @@ const newNavbar = withRouter((props: any) => {
               ) : (
                 <NavIsLoggedIn Logout={logout} />
               )} */}
-            {userLoggedIn ? (
-              <div className="title1 shiftlefff newshft">
+
+            {/* {userLoggedIn ? (
+              {userType === true? (<div className="title1 shiftlefff newshft">
                 <Link to="/signin">
                   <button className="title_t signupbtn newlogin">Login</button>
                 </Link>
-              </div>
+              </div>):(
+                <Link to="/counsellorsignin">
+                <button className="title_t signupbtn newlogin">Login</button>
+              </Link>
+              )}
             ) : (
+              <div className="title1 shiftlefff newshft">
+                <button className="title_t signupbtn newlogin" onClick={logout}>
+                  Logout
+                </button>
+              </div>
+            )} */}
+
+            {!userLoggedIn ? (
+              <div className="title1 shiftlefff newshft">
+                <Link to={!userType? "/signin" : "/counsellor/signin"}>
+                  <button className="title_t signupbtn newlogin">Login</button>
+                </Link>
+              </div>) : (
               <div className="title1 shiftlefff newshft">
                 <button className="title_t signupbtn newlogin" onClick={logout}>
                   Logout

@@ -93,11 +93,7 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         if (
-          response?.data[0]?.["One-off Insight Plan"] ||
-          response?.data[0]?.["One-off Direction Plan"] ||
-          response?.data[0]?.["Progressive Insight Plan"] ||
-          response?.data[0]?.["Progressive Direction Plan"] ||
-          response?.data[0]?.["Progressive Accountability Plan"] === true
+          response?.data[0]?.view_result === true
         ) {
           return window.location.assign("/thirdpary/fullresult");
         }

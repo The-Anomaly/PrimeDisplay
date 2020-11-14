@@ -6,7 +6,7 @@ import mark_blue from "../../../assets/blue-mark.png";
 import mark_green from "../../../assets/green-mark.png";
 import "./payment.css";
 import { API } from "../../../config";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -78,6 +78,29 @@ const Payment = (props: any) => {
             );
           }
           if (response.paymentStatus === "PAID") {
+            const availableToken = localStorage.getItem("userToken");
+            const token = availableToken
+              ? JSON.parse(availableToken)
+              : window.location.assign("/signin");
+            axios
+              .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+                headers: { Authorization: `Token ${token}` },
+              })
+              .then((response) => {
+                console.log(response);
+                console.log(response?.data[0]);
+                localStorage.setItem(
+                  "accessFeature",
+                  JSON.stringify(response?.data[0])
+                );
+                const stringFeature = localStorage.getItem("accessFeature")
+                const featureToCheck = stringFeature
+                  ? JSON.parse(stringFeature)
+                  : "";
+              })
+              .catch((error) => {
+                console.error("Payment Status Error");
+              });
             return setInterval(
               (this.props.history.location.pathname),
               1000

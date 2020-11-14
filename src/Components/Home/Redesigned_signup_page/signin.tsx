@@ -3,7 +3,7 @@ import Navbar from "../HomeComponents/newnavbar";
 import "./signup.css";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Alert } from "react-bootstrap";
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { API } from '../../../config';
 
 
@@ -29,14 +29,33 @@ const Signin = ()=>{
     };
    axios.post(`${API}/accounts/login`, data )
    .then((response) => {
+     console.log(response)
      if (response.status === 200){
-         
       setState ({
        ...state,
        successMessage: response.data[0].message,
        isLoading: false 
      });
     }
+    const availableToken = localStorage.getItem("userToken");
+          const token = availableToken
+            ? JSON.parse(availableToken)
+            : window.location.assign("/signin");
+          axios
+            .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+              headers: { Authorization: `Token ${token}` },
+            })
+            .then((response1) => {
+              console.log(response1);
+              console.log(response1?.data[0]);
+              for (const property in response1?.data[0]) {
+                localStorage.setItem("accessFeature", property);
+              }
+              console.log(localStorage.getItem("accessFeature"));
+            })
+            .catch((error) => {
+              console.error("Payment Status Error");
+            });
    })
    .catch((error)=>{
      console.log(error.response)

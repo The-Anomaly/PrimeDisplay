@@ -27,6 +27,7 @@ import { API } from "../../config";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import union from "../../assets/Union.png";
+import { toast } from "react-toastify";
 
 const SideBarNewDashboard = (props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
@@ -42,20 +43,44 @@ const SideBarNewDashboard = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        if (
-          response?.data[0]?.["One-off Insight Plan"] ||
-          response?.data[0]?.["One-off Direction Plan"] ||
-          response?.data[0]?.["Progressive Insight Plan"] ||
-          response?.data[0]?.["Progressive Direction Plan"] ||
-          response?.data[0]?.["Progressive Accountability Plan"] === true
-        ) {
+        if (response?.data[0]?.view_result === true) {
           return window.location.assign("/thirdpary/fullresult");
         }
-        return window.location.assign("/paymentsummary");
+        return window.location.assign("/dashboardsubsriptionplan");
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
+  const checkIfUserHasAccessToOpportunityRecommender = () => {
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature
+      ? JSON.parse(stringFeature)
+      : "";
+
+    if (featureToCheck["job_recommendation"] === true) {
+      console.log("Job opportunities successful");
+      window.location.assign("/jobopportunities");
+    } else {
+      notify("Update your subscription to access this feature");
+      console.log("Can't access job opportunities");
+      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+    }
+  };
+  const checkIfUserHasAccessToAskACounselor = () => {
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature
+      ? JSON.parse(stringFeature)
+      : "";
+
+    if (featureToCheck["ask_counsellor"] === true) {
+      console.log("Ask a counselor successful");
+      window.location.assign("/allusermessages");
+    } else {
+      notify("Update your subscription to access this feature");
+      console.log("Can't access ask a counselor");
+      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+    }
+  };
+  const notify = (message: string) => toast(message, { containerId: "B" });
   const logOut = () => {
     localStorage.clear();
     window.location.assign("/");
@@ -119,9 +144,7 @@ const SideBarNewDashboard = (props: any) => {
                   <Link to="/counsellordates" target="_blank">
                     <div className="task112">Book a private session</div>
                   </Link>
-                  <Link to="/allusermessages">
-                    <div className="task112">Ask a Counselor</div>
-                  </Link>
+                    <div className="task112" onClick={checkIfUserHasAccessToAskACounselor}>Ask a Counselor</div>
                 </Card.Body>
               </Accordion.Collapse>
             </Accordion>
@@ -162,20 +185,19 @@ const SideBarNewDashboard = (props: any) => {
               </Accordion.Collapse>
             </Accordion>
           </div>
-          <div className={props.jobrec ? "activegb" : "gbn"}>
+          <div
+            className={props.jobrec ? "activegb" : "gbn"}
+            onClick={checkIfUserHasAccessToOpportunityRecommender}
+          >
             {" "}
-            <Link to="/jobopportunities">
-              <img
-                src={
-                  props.jobrec
-                    ? jobrecommedationactive
-                    : jobrecommedationinactive
-                }
-                className="sideimage"
-                alt="sideimage"
-              />
-              Opportunity Recommended
-            </Link>
+            <img
+              src={
+                props.jobrec ? jobrecommedationactive : jobrecommedationinactive
+              }
+              className="sideimage"
+              alt="sideimage"
+            />
+            Opportunity Recommended
           </div>
           <div className={props.builder ? "activegb" : "gbn"}>
             {" "}

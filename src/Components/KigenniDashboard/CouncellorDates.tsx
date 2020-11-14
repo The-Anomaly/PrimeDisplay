@@ -108,20 +108,12 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         console.log(response);
-        // console.log(response?.data[0]);
-        // for(const property in response?.data[0]){
-        //   localStorage.setItem("planName", property)
-        //     console.log(localStorage.getItem("planName"));
-        // }
-        if (
-          response?.data[0]?.["One-off Direction Plan"] ||
-          response?.data[0]?.["Progressive Direction Plan"] ||
-          response?.data[0]?.["Progressive Accountability Plan"]
-        ) {
+        console.log(localStorage.getItem("accessFeature"));
+        if (response?.data[0]?.book_session === false) {
+          console.log("Payment Summary Check");
           return this.sendMessageToCounselor();
-          //console.log("Payment Summary Check");
         } else {
-          //console.log("No payment")
+          console.log("No payment")
           return window.location.assign("/paymentsummary");
         }
       })

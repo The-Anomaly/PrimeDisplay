@@ -156,6 +156,19 @@ class NewDashboardJobOpportunities extends React.Component {
           isLoading: false,
         });
       });
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
+    if (featureToCheck["job_recommendation"] === true) {
+      console.log("Job opportunities successful");
+      window.location.assign("/jobopportunities");
+    } else {
+      //notify("Update your subscription to access this feature");
+      console.log("Can't access job opportunities");
+      return setInterval(
+        (window.location.pathname = "/dashboardsubsriptionplan"),
+        2000
+      );
+    }
   }
   checkIfUserHasMadePaymentForFullResult = (token: string) => {};
   CloseWarning = () => {
@@ -358,7 +371,11 @@ class NewDashboardJobOpportunities extends React.Component {
                             <option value="Job Searching" key={""} id="">
                               Job Searching
                             </option>
-                            <option value="Employed-Multiple Jobs" key={""} id="">
+                            <option
+                              value="Employed-Multiple Jobs"
+                              key={""}
+                              id=""
+                            >
                               Employed-Multiple Jobs
                             </option>
                           </Form.Control>

@@ -118,11 +118,7 @@ class NewDashboard extends React.Component {
     })
       .then((response) => {
         if (
-          response?.data[0]?.["One-off Insight Plan"] ||
-          response?.data[0]?.["One-off Direction Plan"] ||
-          response?.data[0]?.["Progressive Insight Plan"] ||
-          response?.data[0]?.["Progressive Direction Plan"] ||
-          response?.data[0]?.["Progressive Accountability Plan"] === true
+          response?.data[0]?.view_result === true
         ) {
           this.setState({
             showfullresult: true,
@@ -143,11 +139,7 @@ class NewDashboard extends React.Component {
     })
       .then((response) => {
         if (
-          response?.data[0]?.["One-off Insight Plan"] ||
-          response?.data[0]?.["One-off Direction Plan"] ||
-          response?.data[0]?.["Progressive Insight Plan"] ||
-          response?.data[0]?.["Progressive Direction Plan"] ||
-          response?.data[0]?.["Progressive Accountability Plan"] === true
+          response?.data[0]?.view_result === true
         ) {
           this.setState({
             showfullresult: true,
