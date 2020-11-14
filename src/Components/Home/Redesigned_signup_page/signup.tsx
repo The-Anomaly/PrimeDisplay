@@ -9,7 +9,7 @@ import Alert from "react-bootstrap/Alert";
 
 
 const Signup = withRouter((props: any) => {
-  const  [ state, setFormState ] =useState({
+  const  [ state, setFormState ] = useState({
     firstname:'',
     lastname: '',
     email: '',
@@ -34,9 +34,15 @@ const Signup = withRouter((props: any) => {
       referral_code: referralCode
     }
     console.log(data);
+    //posting data to the api
     axios.post(`${API}/accounts/signup/`, data)
     .then( ( response ) => {
+      console.log(response)
       if (response.status === 200){
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(response?.data?.token)
+        );
         setTimeout(()=>{
           props?.history?.push("/confirm_email")
           console.log(props)
@@ -73,7 +79,7 @@ const Signup = withRouter((props: any) => {
     });
   });
  };
-
+//activating input actions
   const onChangeHandler =(e) =>{
     setFormState({
       ...state,
@@ -88,7 +94,46 @@ const Signup = withRouter((props: any) => {
       howYouHeardAboutUs: e.target.value,
     });
   };
+//form validation
+const validateForm = (e) => {
+  e.preventDefault();
+  if (firstname == "") {
+    return setFormState({
+      ...state,
+      errorMessage: "Please enter your first name",
+    });
+  }
+  if (lastname == "") {
+    return setFormState({
+      ...state,
+      errorMessage: "Please enter your lastname",
+    });
+  }
 
+  if (email == "") {
+    return setFormState({
+      ...state,
+      errorMessage: "Please enter your email",
+    });
+  }
+
+  if (howYouHeardAboutUs == "") {
+    return setFormState({
+      ...state,
+      errorMessage: "Please empty field",
+    });
+  }
+
+  if (password == "") {
+    return setFormState({
+      ...state,
+      errorMessage: "Please enter your password",
+    });
+  }
+  if (password && email && firstname && lastname &&howYouHeardAboutUs) {
+    onSubmit();
+  }
+};
 
 
   return (
@@ -111,7 +156,7 @@ const Signup = withRouter((props: any) => {
               </p>
             </Col>
             <Col md={7}>
-              <Form className="rdsignupform">
+              <Form className="rdsignupform" onSubmit={validateForm}>
                 <div className="rdsignupfrmdv">
                   <h4 className="sgnfrmhder">Sign Up</h4>
                   <div>
@@ -131,59 +176,63 @@ const Signup = withRouter((props: any) => {
                 )}
                 <Row>
                   <Col md={6}>
+                   <Form.Group > 
                   <label>
                   <span className="rdfrmlbl"> First Name</span>
-                  <input
+                  <Form.Control
                     type="text"
                     name="firstname"
+                    className=" rdsignupinput"
                     onChange={onChangeHandler}
                     value={firstname}
                     placeholder="Enter your first name"
-                    size={75}
-                    className="form-control rdsignupinput"
+                    
                   />
                 </label>  
+                </Form.Group> 
                   </Col>
                   <Col md={6}>
+                   <Form.Group> 
                     <label>
                   <span className="rdfrmlbl"> Last Name</span>
-                  <input
+                  <Form.Control
                     type="text"
                     name="lastname"
                     onChange={onChangeHandler}
                     value={lastname}
                     placeholder="Enter your Last name"
-                    size={75}
-                    className="form-control rdsignupinput"
+                    className="rdsignupinput"
                   />
                 </label> 
+                </Form.Group>
                   </Col>
                 </Row>
-               
+               <Form.Group>
                 <label>
                   <span className="rdfrmlbl"> Email Address </span>
-                  <input
+                  <Form.Control
                     type="text"
                     name="email"
                     value={email}
                     onChange={onChangeHandler}
                     placeholder="Enter your Email Address"
-                    size={30}
-                    className="form-control rdsignupinput"
+                    className=" rdsignupinput"
                   />
                 </label>
+                </Form.Group>
+                <Form.Group>
                 <label>
                   <span className="rdfrmlbl">Password</span>
-                  <input
+                  <Form.Control
                     type="password"
                     name="password"
                     value={password}
                     onChange={onChangeHandler}
                     placeholder="Enter your Password"
-                    size={75}
-                    className="form-control rdsignupinput passwd-image"
+                    className=" rdsignupinput passwd-image"
                   />
                 </label>
+                </Form.Group>
                 <p className="redsgnfrmpar">
                   Your password must be at least 6 characters long and must
                   contain letters, numbers and special characters. Cannot
@@ -192,6 +241,7 @@ const Signup = withRouter((props: any) => {
                 <Row>
                   <Col md={6}>
                     {" "}
+                    <Form.Group>
                     <span className="rdfrmlblslt">How you heard about us</span>
                     <select onChange={formActionHandler} className="rdseltinpt form-control" required>
                       <option 
@@ -219,23 +269,26 @@ const Signup = withRouter((props: any) => {
                         Friend
                       </option>
                     </select>
+                    </Form.Group> 
                   </Col>
                   <Col md={6}>
+                    <Form.Group>
                     <span className="rdfrmlbl rdfrmlblrf"> Referral code </span>
                     <input
                       type="text"
-                      size={25}
                       name="referralCode"
                       className="rdfrmtinptt"
                       value={referralCode}
+                      size={25}
                       onChange={onChangeHandler}
-                      placeholder="Enter referral code (optional)"
+                      placeholder="form-control Enter referral code (optional)"
                     />
+                    </Form.Group> 
                   </Col>
                 </Row>
                
                 <div className="rdsgnupfrmbtndv">
-                  <span onClick={onSubmit} className="rdsgnfrmbtn rdsgnup-animated">Sign Up</span>
+                  <span onClick={onSubmit}  className="rdsgnfrmbtn rdsgnup-animated">Sign Up</span>
                 </div>
                 <p className="rdsgnalready">
                   Already Registered? <Link to="/newsignin">Sign In</Link>

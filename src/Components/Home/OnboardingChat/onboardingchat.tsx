@@ -1,8 +1,8 @@
 import * as React from "react";
-import Navbar from "../HomeComponents/navbar";
+import Navbar from "../HomeComponents/newnavbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Footer from "../HomeComponents/footer";
+import Footer from "../HomeComponents/newfooter";
 import Col from "react-bootstrap/Col";
 import search from "../../../assets/search.png";
 import "./onboardingchat.css";
