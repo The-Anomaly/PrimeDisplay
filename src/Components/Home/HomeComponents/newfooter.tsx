@@ -19,6 +19,13 @@ const NewFooter: React.FC = (props) => {
 
   const {usermail} = state;
 
+  const handleChange = (e) => {
+    setState({
+      ...state,
+      usermail: e.target.value,
+    });
+  };
+
   const newsletterSignUp = () => {
     const data = {
       email: usermail,
@@ -40,7 +47,7 @@ const NewFooter: React.FC = (props) => {
           <div className="footer_stay">STAY CONNECTED</div>
           <div className="footer_signup">signup to get news and tips from ur experts</div>
           <div className="footer_maill">
-            <input className="footer_mail" type="email" placeholder="Email Address" name="email" value={usermail}/>
+            <input className="footer_mail" type="email" placeholder="Email Address" name="email" value={usermail} onChange={handleChange}/>
             <div className="footer_btn" onClick={newsletterSignUp}>SIGN UP</div>
           </div>
           <div className="footer_socials">
