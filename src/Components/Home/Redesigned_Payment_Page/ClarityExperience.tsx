@@ -407,7 +407,7 @@ const Payment = (props: any) => {
                           requestForPayref("One-off Direction Plan", 10000)
                         }
                       >
-                        Upgrade to Diamond
+                        Upgrade to Direction
                       </span>
                     )}
                   </Card.Body>
@@ -583,7 +583,7 @@ const Payment = (props: any) => {
                           requestForPayref("Progressive Direction Plan", 6000)
                         }
                       >
-                        Upgrade to Direction Plan
+                        Upgrade to Direction
                       </span>
                     )}
                   </Card.Body>
