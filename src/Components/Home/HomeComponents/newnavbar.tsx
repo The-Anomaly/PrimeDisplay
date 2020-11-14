@@ -1,5 +1,5 @@
 import * as React from "react";
-import demoLogo from "../../../assets/claritydemo.png";
+import demoLogo from "../../../assets/newclaritylogo.svg";
 import SideNav from "react-simple-sidenav";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import "../Home/animate.css";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
 import { Row } from "react-bootstrap";
-import demoLogoLight from "../../../assets/demologolight.png";
+import demoLogoLight from "../../../assets/newclaritylogo2.svg";
 
 const newNavbar = withRouter((props: any) => {
   const [navbar, setNavbar] = React.useState(false);

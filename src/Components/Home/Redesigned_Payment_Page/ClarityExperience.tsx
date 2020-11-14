@@ -68,7 +68,7 @@ const Payment = (props: any) => {
         isTestMode: false,
         redirect: false,
         onComplete: function (response) {
-          if (response.paymentStatus === "OVERPAID") {
+          if (response.payment_status === "OVERPAID") {
             notify(
               "Your current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
@@ -77,7 +77,7 @@ const Payment = (props: any) => {
               3000
             );
           }
-          if (response.paymentStatus === "PAID") {
+          if (response.payment_status === "PAID") {
             const availableToken = localStorage.getItem("userToken");
             const token = availableToken ? JSON.parse(availableToken) : "";
             axios
@@ -100,13 +100,13 @@ const Payment = (props: any) => {
                 console.error("Payment Status Error");
               });
             console.log("Payment Successful");
-            return setInterval(this.props.history.location.pathname, 1000);
+            //return setInterval(this.props.history.location.pathname, 1000);
             // return setInterval(
             //   (window.location.pathname = "/thirdpary/fullresult"),
             //   1000
             // );
           }
-          if (response.paymentStatus === "PENDING") {
+          if (response.payment_status === "PENDING") {
             notify("Payment Pending");
             return setInterval(
               (window.location.pathname = "/thirdparty/pending"),
