@@ -79,9 +79,7 @@ const Payment = (props: any) => {
           }
           if (response.paymentStatus === "PAID") {
             const availableToken = localStorage.getItem("userToken");
-            const token = availableToken
-              ? JSON.parse(availableToken)
-              : "";
+            const token = availableToken ? JSON.parse(availableToken) : "";
             axios
               .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
                 headers: { Authorization: `Token ${token}` },
@@ -93,7 +91,7 @@ const Payment = (props: any) => {
                   "accessFeature",
                   JSON.stringify(response?.data[0])
                 );
-                const stringFeature = localStorage.getItem("accessFeature")
+                const stringFeature = localStorage.getItem("accessFeature");
                 const featureToCheck = stringFeature
                   ? JSON.parse(stringFeature)
                   : "";
@@ -101,16 +99,12 @@ const Payment = (props: any) => {
               .catch((error) => {
                 console.error("Payment Status Error");
               });
-              console.log("Payment Successful")
-            // return setInterval(
-            //   (this.props.history.location.pathname),
-            //   1000
-            // );
+            console.log("Payment Successful");
+            return setInterval(this.props.history.location.pathname, 1000);
             // return setInterval(
             //   (window.location.pathname = "/thirdpary/fullresult"),
             //   1000
             // );
-            
           }
           if (response.paymentStatus === "PENDING") {
             notify("Payment Pending");
@@ -125,7 +119,7 @@ const Payment = (props: any) => {
           //   (window.location.pathname = "/thirdpary/dashboard"),
           //   9000
           // );
-          console.log("On close function")
+          console.log("On close function");
         },
       });
     } catch (error) {}
@@ -262,8 +256,8 @@ const Payment = (props: any) => {
                     <div className="card-div">
                       <h6>Free</h6>
                       <p>
-                        pilnar pivinar tempus o tempor impermjidiet mattis
-                        acumsan nulia vel
+                        Get the first hand Clarity experience for no charge at
+                        all. Take action to your career bliss
                       </p>
                     </div>
                     <ul className="card-list">
@@ -273,7 +267,7 @@ const Payment = (props: any) => {
                       </li>
                       <li>
                         <img src={mark} className="card-image" />
-                        Career personality type
+                        Career personality types
                       </li>
                       <li>
                         <img src={mark} className="card-image" />
@@ -281,11 +275,9 @@ const Payment = (props: any) => {
                       </li>
                     </ul>
                     {withoutlogin ? (
-                      <Link to="/signin"><span
-                        className="card_btn btn-yellow"
-                      >
-                        Get Started
-                      </span></Link>
+                      <Link to="/signin">
+                        <span className="card_btn btn-yellow">Get Started</span>
+                      </Link>
                     ) : (
                       <span
                         className="card_btn btn-yellow"
@@ -308,8 +300,8 @@ const Payment = (props: any) => {
                     <div className="card-div ">
                       <h6 className="blue">Insight Plan</h6>
                       <p>
-                        Quis cras adipiscing vestibulum ut praesent lorem
-                        aliquam dictum habitant.
+                        Get an edge - The insight plan gives you an edge over
+                        your peers. Be the YOU, you've always wanted.
                       </p>
                     </div>
                     <ul className="card-list">
@@ -319,7 +311,7 @@ const Payment = (props: any) => {
                       </li>
                       <li>
                         <img src={mark_blue} className="card-image" />
-                        Strenght & Weaknes Report
+                        Strength & Weakness Report
                       </li>
                       <li>
                         <img src={mark_blue} className="card-image" />
@@ -335,7 +327,7 @@ const Payment = (props: any) => {
                       </li>
                       <li>
                         <img src={mark_blue} className="card-image" />
-                        Report on best roles to apply{" "}
+                        Report on best roles to apply for{" "}
                       </li>
                       <li>
                         <div className="card-list-box">
@@ -355,9 +347,16 @@ const Payment = (props: any) => {
                       </li>
                     </ul>
                     {withoutlogin ? (
-                      <Link to="/signin"><span className="card_btn btn-blue">Get Started</span></Link>
+                      <Link to="/signin">
+                        <span className="card_btn btn-blue">Get Started</span>
+                      </Link>
                     ) : (
-                      <span className="card_btn btn-blue" onClick={() => requestForPayref("One-off Insight Plan", 3500)}>
+                      <span
+                        className="card_btn btn-blue"
+                        onClick={() =>
+                          requestForPayref("One-off Insight Plan", 3500)
+                        }
+                      >
                         Upgrade to Insight
                       </span>
                     )}
@@ -375,8 +374,9 @@ const Payment = (props: any) => {
                     <div className="card-div">
                       <h6 className="green">Direction Plan</h6>
                       <p>
-                        pilnar pivinar tempus o tempor impermjidiet mattis
-                        acumsan nulia vel
+                        Hand in Hand Guidance - Get perspective on your reports.
+                        Get assigned to your personal career coach, It only gets
+                        better
                       </p>
                     </div>
                     <ul className="card-list">
@@ -395,11 +395,18 @@ const Payment = (props: any) => {
                       </li>
                     </ul>
                     {withoutlogin ? (
-                      <Link to="/signin"><span className="card_btn btn-green card_btn--animated">
-                        Get Started
-                      </span></Link>
+                      <Link to="/signin">
+                        <span className="card_btn btn-green card_btn--animated">
+                          Get Started
+                        </span>
+                      </Link>
                     ) : (
-                      <span className="card_btn btn-green card_btn--animated" onClick={() => requestForPayref("One-off Direction Plan", 10000)}>
+                      <span
+                        className="card_btn btn-green card_btn--animated"
+                        onClick={() =>
+                          requestForPayref("One-off Direction Plan", 10000)
+                        }
+                      >
                         Upgrade to Diamond
                       </span>
                     )}
@@ -420,8 +427,8 @@ const Payment = (props: any) => {
                     <div className="card-div">
                       <h6>Insight Plan</h6>
                       <p>
-                        Etiam pulvinar tempus a tempor, impermjdiet mattis
-                        accumsan nulla vel.
+                        Get the first hand Clarity experience for no charge at
+                        all. Take action to your career bliss
                       </p>
                     </div>
                     <ul className="card-list">
@@ -446,19 +453,19 @@ const Payment = (props: any) => {
                           <div>
                             <img src={mark} className="card-image" />
                           </div>
-                          Most suitablecareer business expression
+                          Most suitable career business expression
                         </div>
                       </li>
                       <li>
                         <img src={mark} className="card-image" />
-                        Report on best roles to aply
+                        Report on best roles to apply for
                       </li>
                       <li>
                         <div className="card-list-box">
                           <div>
                             <img src={mark} className="card-image" />
                           </div>
-                          Career drivers abd how to leverage them
+                          Career drivers and how to leverage them
                         </div>
                       </li>
                       <li>
@@ -474,27 +481,36 @@ const Payment = (props: any) => {
                           <div>
                             <img src={mark} className="card-image" />
                           </div>
-                          Weekly curated recommended courses to take to
-                          strengthen your skill
+                          Recommended courses curated weekly to strenthen your
+                          skill
                         </div>
                       </li>
                       <li className="cdlisadjmarg">
                         <img src={mark} className="card-image" />
                         Weekly Tailored job alerts
                       </li>
+                      <li className="cdlisadjmarg">
+                        <img src={mark} className="card-image" />
+                        Unlimited Chat access with coaches & counsellors and get
+                        feedback on your to-dos goals and issues discussed
+                      </li>
                     </ul>
-                    {withoutlogin ? (<Link to="/signin"><span
-                      className="card_btn card_btn--pce1 btn-yellow"
-                    >
-                      Get Started
-                    </span></Link>) 
-                    :
-                    (<span
-                      className="card_btn card_btn--pce1 btn-yellow"
-                      onClick={() => requestForPayref("Progressive Insight Plan", 3500)}
-                    >
-                      Subscribe
-                    </span>)}
+                    {withoutlogin ? (
+                      <Link to="/signin">
+                        <span className="card_btn card_btn--pce1 btn-yellow">
+                          Get Started
+                        </span>
+                      </Link>
+                    ) : (
+                      <span
+                        className="card_btn card_btn--pce1 btn-yellow"
+                        onClick={() =>
+                          requestForPayref("Progressive Insight Plan", 3500)
+                        }
+                      >
+                        Subscribe
+                      </span>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>
@@ -509,8 +525,8 @@ const Payment = (props: any) => {
                     <div className="card-div ">
                       <h6 className="blue">Direction Plan</h6>
                       <p>
-                        Quis cras adipiscing vestibulum ut praesent lorem
-                        aliquam dictum habitant.
+                        Get an edge - The insight plan gives you an edge over
+                        your peers. Be the YOU, you always wanted
                       </p>
                     </div>
                     <ul className="card-list">
@@ -524,7 +540,7 @@ const Payment = (props: any) => {
                             <img src={mark_blue} className="card-image" />
                           </div>
                           40 minutes career-planning session with a clarity
-                          counsellor
+                          counselor
                         </div>
                       </li>
                       <li>
@@ -541,16 +557,35 @@ const Payment = (props: any) => {
                           <div>
                             <img src={mark_blue} className="card-image" />
                           </div>
+                          Weekly Personalized Counse- llors Recommendation on
+                          suitable personal & career activities
+                        </div>{" "}
+                      </li>
+                      <li>
+                        <div className="card-list-box">
+                          <div>
+                            <img src={mark_blue} className="card-image" />
+                          </div>
                           Personal to-dos & reminder setting
                         </div>{" "}
                       </li>
                     </ul>
-                    {withoutlogin ? <Link to="/signin"><span className="card_btn card_btn--pce2 btn-blue">
-                      Get Started
-                    </span></Link> :
-                    <span className="card_btn card_btn--pce2 btn-blue" onClick={() => requestForPayref("Progressive Direction Plan", 6000)}>
-                      Upgrade to Direction Plan
-                    </span>}
+                    {withoutlogin ? (
+                      <Link to="/signin">
+                        <span className="card_btn card_btn--pce2 btn-blue">
+                          Get Started
+                        </span>
+                      </Link>
+                    ) : (
+                      <span
+                        className="card_btn card_btn--pce2 btn-blue"
+                        onClick={() =>
+                          requestForPayref("Progressive Direction Plan", 6000)
+                        }
+                      >
+                        Upgrade to Direction Plan
+                      </span>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>
@@ -565,8 +600,9 @@ const Payment = (props: any) => {
                     <div className="card-div">
                       <h6 className="green">Accountability Plan</h6>
                       <p>
-                        Eleifend pharetra, et a, maecenas imperdiet nulla lorem
-                        aliquam dictum habitant.
+                        Hand in Hand Guidance - Get perspective on your reports.
+                        Get assigned to your personal career coach, It only gets
+                        better
                       </p>
                     </div>
                     <ul className="card-list">
@@ -579,17 +615,30 @@ const Payment = (props: any) => {
                           <div>
                             <img src={mark_green} className="card-image" />
                           </div>
-                          Unlimited Chat access withcoaches & counsellors and
-                          get feedback on your to-dos goals and issues discussed
+                          40 minutes career-planning session with a clarity
+                          counselor X2
                         </div>
                       </li>
                     </ul>
-                    {withoutlogin? <Link to="/signin"><span className="card_btn btn-green card_btn--pce3 card_btn--animated">
-                      Get Started
-                    </span></Link> :
-                    <span className="card_btn btn-green card_btn--pce3 card_btn--animated" onClick={() => requestForPayref("Progressive Accountability Plan", 10000)}>
-                      Upgrade to Accountability
-                    </span>}
+                    {withoutlogin ? (
+                      <Link to="/signin">
+                        <span className="card_btn btn-green card_btn--pce3 card_btn--animated">
+                          Get Started
+                        </span>
+                      </Link>
+                    ) : (
+                      <span
+                        className="card_btn btn-green card_btn--pce3 card_btn--animated"
+                        onClick={() =>
+                          requestForPayref(
+                            "Progressive Accountability Plan",
+                            10000
+                          )
+                        }
+                      >
+                        Upgrade to Accountability
+                      </span>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>
@@ -603,8 +652,8 @@ const Payment = (props: any) => {
                 </Card.Header>
                 <Card.Body>
                   <p className="sub-p">
-                    Give a gift of success. Choose from among the three
-                    different plans
+                    Give a gift of success. Choose one of the three different
+                    plans
                   </p>
                   <span className="card_btn btn-red card_btn--animated">
                     Give a Clarity Subscription
