@@ -1,96 +1,117 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../HomeComponents/newnavbar";
 import "./signup.css";
 import { Link, withRouter } from "react-router-dom";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import axios from 'axios';
-import { API } from '../../../config';
+import axios from "axios";
+import { API } from "../../../config";
 import Alert from "react-bootstrap/Alert";
-
+import eye from "../../../assets/eye.png";
+import eyeclosed from "../../../assets/eye.png";
+import { useEffect } from "react";
 
 const Signup = withRouter((props: any) => {
-  const  [ state, setFormState ] =useState({
-    firstname:'',
-    lastname: '',
-    email: '',
-    password: '',
-    howYouHeardAboutUs: '',
-    referralCode: '',
-    successMessage: '',
-    errorMessage: '',
+  const [state, setFormState] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    howYouHeardAboutUs: "",
+    referralCode: "",
+    successMessage: "",
+    errorMessage: "",
+    passwordIsOpen: false,
     error: false,
-    isLoading: false
-  })
-  const {firstname, email, password, howYouHeardAboutUs, referralCode,lastname,successMessage,errorMessage} = state
+    isLoading: false,
+  });
+  const {
+    firstname,
+    email,
+    passwordIsOpen,
+    password,
+    howYouHeardAboutUs,
+    referralCode,
+    lastname,
+    successMessage,
+    errorMessage,
+  } = state;
 
-  const onSubmit=()=>{
-      setFormState({...state, isLoading: true })
-    const data= {
+  const onSubmit = () => {
+    setFormState({ ...state, isLoading: true });
+    const data = {
       first_name: firstname,
       last_name: lastname,
       email: email,
       password: password,
       info: howYouHeardAboutUs,
-      referral_code: referralCode
-    }
+      referral_code: referralCode,
+    };
     console.log(data);
-    axios.post(`${API}/accounts/signup/`, data)
-    .then( ( response ) => {
-      if (response.status === 200){
-        setTimeout(()=>{
-          props?.history?.push("/confirm_email")
-          console.log(props)
-        },5000)
-         setFormState({
-          ...state,
-          errorMessage: "",
-          successMessage: response.data.message, //question
-          isLoading:false,
-          error: true
-        });
-        localStorage.setItem(
-          "userEmail",
-          JSON.stringify(email)
-        );
-      
-      }
-    })
-    .catch( (error) => {
-      console.log(error.response);
-      if (error){
-        return setFormState({
-              ...state,
+    axios
+      .post(`${API}/accounts/signup/`, data)
+      .then((response) => {
+        if (response.status === 200) {
+          setTimeout(() => {
+            props?.history?.push("/confirm_email");
+            console.log(props);
+          }, 5000);
+          setFormState({
+            ...state,
+            errorMessage: "",
+            successMessage: response.data.message, //question
+            isLoading: false,
+            error: true,
+          });
+          localStorage.setItem("userEmail", JSON.stringify(email));
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 500) {
+          return setFormState({
+            ...state,
+            errorMessage: "Internal Server Error",
+            isLoading: false,
+            error: true,
+          });
+        }
+        console.log(error.response);
+        if (error) {
+          return setFormState({
+            ...state,
             errorMessage: error?.response?.data[0].message,
             isLoading: false,
-            error: true
-         })
-    }
-    setFormState({
-      ...state,
-      errorMessage: "signup failed",
-      isLoading: false,
-      error: true
-    });
-  });
- };
+            error: true,
+          });
+        }
+        setFormState({
+          ...state,
+          errorMessage: "signup failed",
+          isLoading: false,
+          error: true,
+        });
+      });
+  };
 
-  const onChangeHandler =(e) =>{
+  const onChangeHandler = (e) => {
     setFormState({
       ...state,
       [e.target.name]: e.target.value,
-      errorMessage:"",
-      successMessage:""
-    })
+      errorMessage: "",
+      successMessage: "",
+    });
   };
- const formActionHandler = (e) => {
+  const formActionHandler = (e) => {
     setFormState({
       ...state,
       howYouHeardAboutUs: e.target.value,
     });
   };
-
-
-
+  const hidePassword=()=>{
+    setFormState({
+      ...state,
+      passwordIsOpen:state.passwordIsOpen?false:true
+    })
+  }
   return (
     <div>
       <Navbar />
@@ -120,46 +141,46 @@ const Signup = withRouter((props: any) => {
                   </div>
                 </div>
                 {successMessage && (
-                <Alert key={2} variant="success" className=" alertzuccess" >
-                   {successMessage}
-                </Alert>
+                  <Alert key={2} variant="success" className=" alertzuccess">
+                    {successMessage}
+                  </Alert>
                 )}
                 {errorMessage && (
-                <Alert key={2} variant="danger" className="alertzuccess" >
-                   {errorMessage}
-                </Alert>
+                  <Alert key={2} variant="danger" className="alertzuccess">
+                    {errorMessage}
+                  </Alert>
                 )}
                 <Row>
                   <Col md={6}>
-                  <label>
-                  <span className="rdfrmlbl"> First Name</span>
-                  <input
-                    type="text"
-                    name="firstname"
-                    onChange={onChangeHandler}
-                    value={firstname}
-                    placeholder="Enter your first name"
-                    size={75}
-                    className="form-control rdsignupinput"
-                  />
-                </label>  
+                    <label>
+                      <span className="rdfrmlbl"> First Name</span>
+                      <input
+                        type="text"
+                        name="firstname"
+                        onChange={onChangeHandler}
+                        value={firstname}
+                        placeholder="Enter your first name"
+                        size={75}
+                        className="form-control rdsignupinput"
+                      />
+                    </label>
                   </Col>
                   <Col md={6}>
                     <label>
-                  <span className="rdfrmlbl"> Last Name</span>
-                  <input
-                    type="text"
-                    name="lastname"
-                    onChange={onChangeHandler}
-                    value={lastname}
-                    placeholder="Enter your Last name"
-                    size={75}
-                    className="form-control rdsignupinput"
-                  />
-                </label> 
+                      <span className="rdfrmlbl"> Last Name</span>
+                      <input
+                        type="text"
+                        name="lastname"
+                        onChange={onChangeHandler}
+                        value={lastname}
+                        placeholder="Enter your Last name"
+                        size={75}
+                        className="form-control rdsignupinput"
+                      />
+                    </label>
                   </Col>
                 </Row>
-               
+
                 <label>
                   <span className="rdfrmlbl"> Email Address </span>
                   <input
@@ -175,15 +196,18 @@ const Signup = withRouter((props: any) => {
                 <label>
                   <span className="rdfrmlbl">Password</span>
                   <input
-                    type="password"
+                    type={passwordIsOpen ? "password" : "text"}
                     name="password"
                     value={password}
                     onChange={onChangeHandler}
                     placeholder="Enter your Password"
                     size={75}
-                    className="form-control rdsignupinput passwd-image"
+                    className="form-control rdsignupinput"
                   />
                 </label>
+                <div className="text-right">
+                  <img src={eye} className="hideeye" onClick={hidePassword} alt="hideeye" />
+                </div>
                 <p className="redsgnfrmpar">
                   Your password must be at least 6 characters long and must
                   contain letters, numbers and special characters. Cannot
@@ -193,8 +217,12 @@ const Signup = withRouter((props: any) => {
                   <Col md={6}>
                     {" "}
                     <span className="rdfrmlblslt">How you heard about us</span>
-                    <select onChange={formActionHandler} className="rdseltinpt form-control" required>
-                      <option 
+                    <select
+                      onChange={formActionHandler}
+                      className="rdseltinpt form-control"
+                      required
+                    >
+                      <option
                         value=""
                         className="rdsltopt"
                         disabled
@@ -233,9 +261,13 @@ const Signup = withRouter((props: any) => {
                     />
                   </Col>
                 </Row>
-               
                 <div className="rdsgnupfrmbtndv">
-                  <span onClick={onSubmit} className="rdsgnfrmbtn rdsgnup-animated">Sign Up</span>
+                  <span
+                    onClick={onSubmit}
+                    className="rdsgnfrmbtn rdsgnup-animated"
+                  >
+                    Sign Up
+                  </span>
                 </div>
                 <p className="rdsgnalready">
                   Already Registered? <Link to="/signin">Sign In</Link>

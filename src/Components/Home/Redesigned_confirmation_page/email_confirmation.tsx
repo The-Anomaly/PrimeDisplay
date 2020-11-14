@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Alert } from "react-bootstrap";
 import Navbar from "../HomeComponents/newnavbar";
 import "./email_confirmation.css";
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 import axios,{ AxiosResponse } from 'axios';
 import {API} from '../../../config';
 
@@ -10,13 +10,14 @@ import {API} from '../../../config';
 const Email_confirm_page = withRouter ((props: any ) => {
   const [state, setState] = useState({
     client: '',
+    email: '',
     confirmEmail: '',
     isLoading: false,
     successMessage: '',
     errorMessage: '',
     error: false 
   })
-  const {client, confirmEmail,isLoading,successMessage,errorMessage}= state
+  const {client,email, confirmEmail,isLoading,successMessage,errorMessage}= state
  
   useEffect(()=>{
     const user :any= localStorage.getItem("userEmail") 
@@ -27,6 +28,34 @@ const Email_confirm_page = withRouter ((props: any ) => {
       client:userEmail
     })
   },[]);
+  //resend code function
+   const resendCode =()=>{
+     setState({
+       ...state,
+       isLoading:true
+     })
+     const data ={
+       email,
+     };
+     axios.post(`${API}/accounts/resend-code/`,data)
+     .then((response)=>{
+       if (response.status === 200) {
+         return setState({
+            ...state,
+            successMessage: response.data.message,
+            isLoading: false,
+         })
+       }
+     })
+     .catch((error)=>{
+       console.log(error.response)
+       setState({
+         ...state,
+         errorMessage: error?.response?.data[0].message
+       })
+     })
+   }
+
   const onSubmit=()=>{
     setState( {...state, isLoading:true} )
     const data={
@@ -40,7 +69,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
 
       if (response.status === 200){
         setTimeout(()=>{
-          props?.history?.push("/newsignin")
+          props?.history?.push("/clientchat")
           console.log(props)
         },4000)
           setState({
@@ -114,7 +143,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
                 </Row>
               </Form>
               <div className="cnfrmdiv">
-                <p>Didn’t Recieve any mail? <span className="rsendmail">Resend!</span></p>
+                <p>Didn’t Recieve any mail? <span className="rsendmail" onClick={resendCode}>Resend!</span></p>
               </div>
             </Col>
           </Row>
