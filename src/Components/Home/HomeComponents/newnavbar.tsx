@@ -36,29 +36,15 @@ const newNavbar = withRouter((props: any) => {
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
-    Axios.
-    all([
-      Axios.get(`${API}/progress`, {
+    Axios.get(`${API}/progress`, {
       headers: { Authorization: `Token ${token}` },
-    }),
-    Axios
-    .get(`${API}/currentuser`, {
-      headers: { Authorization: `Token ${token}` },
-    })])
-      .then(Axios.spread((response, response1) => {
+    })
+      .then((response) => {
         console.log(response);
-        console.log(response1)
-        console.log(response1?.data[0]?.is_counsellor);
-        if(response1?.data[0]?.is_counsellor === "true" || window.location.pathname === "/counsellor/signin" || window.location.pathname === "/counsellor/signup"){
-          setShowNav({
-            ...state,
-            userType: true,
-          })
-        }
         if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/free/dashboard`);
+          //return props.history.push(`/free/dashboard`);
         }
-      }))
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -314,44 +300,26 @@ const newNavbar = withRouter((props: any) => {
             <span className={props.faq ? "title hhome" : "title"}>
               <Link to="/faq">FAQ</Link>
             </span>
-            {/* <span className="title">
-              <Link to="/clarityforteams">SERVICES</Link>
-            </span> */}
+            
             {/* {!userLoggedIn ? (
                 <NavIsLoggedOut />
               ) : (
                 <NavIsLoggedIn Logout={logout} />
               )} */}
 
-            {/* {userLoggedIn ? (
-              {userType === true? (<div className="title1 shiftlefff newshft">
-                <Link to="/signin">
-                  <button className="title_t signupbtn newlogin">Login</button>
-                </Link>
-              </div>):(
-                <Link to="/counsellorsignin">
-                <button className="title_t signupbtn newlogin">Login</button>
-              </Link>
-              )}
+
+            {userLoggedIn ? (
+              <div className="title1 shiftlefff newshft">
+              <button className="title_t signupbtn newlogin" onClick={logout}>
+                Logout
+              </button>
+            </div>
             ) : (
               <div className="title1 shiftlefff newshft">
-                <button className="title_t signupbtn newlogin" onClick={logout}>
-                  Logout
-                </button>
-              </div>
-            )} */}
-
-            {!userLoggedIn ? (
-              <div className="title1 shiftlefff newshft">
-                <Link to={!userType? "/signin" : "/counsellor/signin"}>
-                  <button className="title_t signupbtn newlogin">Login</button>
-                </Link>
-              </div>) : (
-              <div className="title1 shiftlefff newshft">
-                <button className="title_t signupbtn newlogin" onClick={logout}>
-                  Logout
-                </button>
-              </div>
+              <Link to="/signin">
+                <button className="title_t signupbtn newlogin">Login</button>
+              </Link>
+            </div>
             )}
           </div>
         </Row>

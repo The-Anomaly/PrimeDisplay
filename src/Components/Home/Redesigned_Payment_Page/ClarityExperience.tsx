@@ -81,7 +81,7 @@ const Payment = (props: any) => {
             const availableToken = localStorage.getItem("userToken");
             const token = availableToken
               ? JSON.parse(availableToken)
-              : window.location.assign("/signin");
+              : "";
             axios
               .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
                 headers: { Authorization: `Token ${token}` },
@@ -101,14 +101,16 @@ const Payment = (props: any) => {
               .catch((error) => {
                 console.error("Payment Status Error");
               });
-            return setInterval(
-              (this.props.history.location.pathname),
-              1000
-            );
+              console.log("Payment Successful")
+            // return setInterval(
+            //   (this.props.history.location.pathname),
+            //   1000
+            // );
             // return setInterval(
             //   (window.location.pathname = "/thirdpary/fullresult"),
             //   1000
             // );
+            
           }
           if (response.paymentStatus === "PENDING") {
             notify("Payment Pending");
@@ -119,10 +121,11 @@ const Payment = (props: any) => {
           }
         },
         onClose: function (data) {
-          return setInterval(
-            (window.location.pathname = "/thirdpary/dashboard"),
-            9000
-          );
+          // return setInterval(
+          //   (window.location.pathname = "/thirdpary/dashboard"),
+          //   9000
+          // );
+          console.log("On close function")
         },
       });
     } catch (error) {}

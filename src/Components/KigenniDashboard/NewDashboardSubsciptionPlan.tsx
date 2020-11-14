@@ -29,6 +29,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
     showWarning: false,
     plan: "",
     width: 100,
+    expiration: "",
   };
   componentDidMount() {
     this.setState({ isLoading: true });
@@ -43,6 +44,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
         console.log(response)
         this.setState({
           plan: response.data.plan,
+          expiration: response.data.expires,
         });
       })
       .catch((error) => {
@@ -65,7 +67,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
   };
 
   render() {
-    const { fullname, message, isLoading, width, plan } = this.state;
+    const { fullname, message, isLoading, width, plan, expiration } = this.state;
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -104,7 +106,8 @@ class NewDashboardSubsriptionPlan extends React.Component {
                                 : "Growth Plan"} */}
                                 {plan}
                             </b>
-                            , This subscription will expire in 23 days
+                            {/* , This subscription will expire in 23 days */}
+                            . {expiration}
                           </div>
                         </div>
                         <Col md={12} className="youwss">
