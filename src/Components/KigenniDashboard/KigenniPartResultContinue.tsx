@@ -221,9 +221,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         if (
-          !response?.data[0]?.direction_plan &&
-          !response?.data[0]?.growth_plan &&
-          !response?.data[0]?.insight_plan
+          !response?.data[0]?.view_result
         ) {
           return window.location.assign("/thirdpary/dashboard");
         }
@@ -231,27 +229,27 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
       .catch((error) => {
       });
   };
-  handleChatCheck = () => {
-    this.setState({ isLoading: true });
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    axios
-      .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-        headers: { Authorization: `Token ${token}` },
-      })
-      .then((response) => {
-        if (response?.data[0]?.direction_plan === true) {
-          return window.location.assign("/counsellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/counsellorfee");
-        }
-      })
-      .catch((error) => {
-      });
-  };
+  // handleChatCheck = () => {
+  //   this.setState({ isLoading: true });
+  //   const availableToken = localStorage.getItem("userToken");
+  //   const token = availableToken
+  //     ? JSON.parse(availableToken)
+  //     : window.location.assign("/signin");
+  //   axios
+  //     .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+  //       headers: { Authorization: `Token ${token}` },
+  //     })
+  //     .then((response) => {
+  //       if (response?.data[0]?.direction_plan === true) {
+  //         return window.location.assign("/counsellordates");
+  //       }
+  //       if (response?.data[0]?.direction_plan === false) {
+  //         return window.location.assign("/counsellorfee");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //     });
+  // };
   moveTo = (str) => {
     const offsetTop: any = document?.getElementById(str)?.offsetTop;
     window.scrollTo({
@@ -860,9 +858,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 <img src={additionalinformation} alt="additionalinformation" />
               </div>
               <div className="check11">
-                <Button className="retaketest" onClick={this.handleChatCheck}>
+                <Link to="/counsellordates"><Button className="retaketest">
                   Speak with a counsellor
-                </Button>
+                </Button></Link>
                 <Button className="retaketest2" onClick={this.openWarning}>
                   Retake Assessment
                 </Button>

@@ -23,6 +23,7 @@
 .plan-cards{
     padding: 34px 0px 9px 0px;
     font-family: 'brfirma-bold';
+    cursor: pointer;
 }
 .plan-card-arr{
     position: relative;
@@ -215,4 +216,28 @@
 }
 .cdlisadjmarg{
     margin-bottom: 28px !important;
+}
+.progressivelgt {
+    background: #ffffff;
+}
+.bnotch {
+    color: #3965ff;
+    top: -39px;
+}
+.bborder {
+    border-bottom: 1px solid #3965ff;
+    border-left: 1px solid #3965ff;
+    border-right: 1px solid #3965ff;
+}
+.gnotch {
+    color: #1bb978;
+    top: -39px;
+}
+.gborder {
+    border-bottom: 1px solid #1bb978;
+    border-left: 1px solid #1bb978;
+    border-right: 1px solid #1bb978;
+}
+.paymentdescrip {
+    padding-bottom: 0rem;
 }

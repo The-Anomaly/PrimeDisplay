@@ -83,26 +83,27 @@ class CounsellorRecommendation2 extends React.Component {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-  handleChatCheck = () => {
-    this.setState({ isLoading: true });
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (response?.data[0]?.direction_plan === true) {
-          return window.location.assign("/counsellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/counsellorfee");
-        }
-      })
-      .catch((error) => {
-      });
-  };
+  // handleChatCheck = () => {
+  //   this.setState({ isLoading: true });
+  //   const availableToken = localStorage.getItem("userToken");
+  //   const token = availableToken
+  //     ? JSON.parse(availableToken)
+  //     : window.location.assign("/signin");
+  //   Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+  //     headers: { Authorization: `Token ${token}` },
+  //   })
+  //     .then((response) => {
+  //       return window.location.assign("/counsellordates");
+  //       if (response?.data[0]?.direction_plan === true) {
+  //        return window.location.assign("/counsellordates");
+  //      }
+  //     if (response?.data[0]?.direction_plan === false) {
+  //        return window.location.assign("/counsellorfee");
+  //      }
+  //     })
+  //     .catch((error) => {
+  //     });
+  // };
   render() {
     const { fullname, message, isLoading, width, counsellor } = this.state;
     return (

@@ -116,6 +116,7 @@ class App extends Component {
         <div>
           <BrowserRouter>
             <Switch>
+            <Route exact path="/oldhome" component={Home} />
               <Route exact path="/contact" component={Contactpage} />
               <Route exact path="/payment" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
@@ -130,10 +131,10 @@ class App extends Component {
               <Route exact path="/signup" component={Signup}/>
               <Route exact path="/signin" component={Signin}/>
               <Route exact path="/" component={RedesignedHome} />
+              []
+              {/* <Route exact path="/" component={Home} /> */}
               <Route exact path="/confirm_email" component={Email_confirm_page}/>
               <Route exact path="/account_confirmation" component={Acc_confirm_page}/>
-
-              <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/aboutus" component={NewAbout} />
               <Route exact path="/faq" component={Faq} />
@@ -474,11 +475,6 @@ class App extends Component {
               <Route exact path="/completetask" component={CompleteTaskModal} />
               <Route exact path="/createtask" component={CreateTaskModal} />
               <Route exact path="/meetings" component={CouncellorBookings} />
-              <Route
-                exact
-                path="/councellordates"
-                component={CouncellorDates}
-              />
               <Route
                 exact
                 path="/counsellormeetings"

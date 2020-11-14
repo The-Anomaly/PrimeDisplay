@@ -1401,6 +1401,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .footer_socials {
   margin: 1.5rem 0;
@@ -1503,7 +1504,6 @@ button {
   margin: auto;
   background: #f8f8f8;
   padding-bottom: 6rem;
-  font-family: "Ubuntu";
 }
 .abtwithclarity {
   color: #001833;
@@ -2103,7 +2103,7 @@ button {
     border-radius: 100px;
     position: absolute;
     margin-left: 18.5rem;
-    margin-top: 0.3rem;
+    margin-top: 0.35rem;
   }
   .footer_socials {
     width: 350px;
@@ -2140,7 +2140,6 @@ button {
   }
   .footer_btn {
     margin-left: 9.7rem;
-    margin-top: 0.35rem;
   }
   .footer_socials {
     width: 90%;
@@ -2523,9 +2522,58 @@ button {
 .newfaqrow {
   padding-top: 10rem;
 }
+.newfaqwrapper {
+  padding-bottom: 3rem;
+}
 
 @media(max-width: 767px) {
   .newfaqrow {
     padding-top: 4rem;
   }
+  .addpadding {
+    padding-top: 0rem;
+    padding-bottom: 2rem;
+  }
 }
+
+.unclick {
+  cursor: not-allowed;
+}
+.addpadding {
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
+@media(max-width: 767px) {
+  .addpadding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+
+/*Hover Effects*/
+.trustimg:hover {
+  width: 65px;
+  height: 65px;
+}
+.fourthsubhead:hover {
+  font-size: 16px;
+}
+.fourthsubtext:hover {
+  font-size: 14px;
+}
+
+/* .hov1:hover .trustimg {
+  width: 65px;
+  height: 65px;
+}
+.hov1:hover .fourthsubhead {
+  font-size: 16px;
+}
+.hov1:hover .fourthsubtext {
+  font-size: 14px;
+} */
+/* .border4:hover {
+  height: 266px;
+  margin-left: -10rem;
+} */

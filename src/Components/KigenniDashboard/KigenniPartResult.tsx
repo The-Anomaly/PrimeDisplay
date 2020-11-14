@@ -93,15 +93,12 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
+          response?.data[0]?.view_result === true
         ) {
           return window.location.assign("/thirdpary/fullresult");
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   capitalize = (s) => {
     if (typeof s !== "string") return "";
@@ -124,27 +121,30 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
         }
       });
   };
-  handleChatCheck = () => {
-    this.setState({ isLoading: true });
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    axios
-      .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-        headers: { Authorization: `Token ${token}` },
-      })
-      .then((response) => {
-        if (response?.data[0]?.direction_plan === true) {
-          return window.location.assign("/counsellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/counsellorfee");
-        }
-      })
-      .catch((error) => {
-      });
-  };
+  // handleChatCheck = () => {
+  //   this.setState({ isLoading: true });
+  //   const availableToken = localStorage.getItem("userToken");
+  //   const token = availableToken
+  //     ? JSON.parse(availableToken)
+  //     : window.location.assign("/signin");
+  //   axios
+  //     .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+  //       headers: { Authorization: `Token ${token}` },
+  //     })
+  //     .then((response) => {
+  //       return window.location.assign("/counsellordates");
+  //       // if (
+  //       //   response?.data[0]?.["One-off Direction Plan"] ||
+  //       //   response?.data[0]?.["Progressive Direction Plan"] ||
+  //       //   response?.data[0]?.["Progressive Accountability Plan"]
+  //       // ) {
+  //       //   return window.location.assign("/counsellordates");
+  //       // } else {
+  //       //   return window.location.assign("/counsellorfee");
+  //       // }
+  //     })
+  //     .catch((error) => {});
+  // };
   CloseWarning = () => {
     this.setState({
       showWarning: false,

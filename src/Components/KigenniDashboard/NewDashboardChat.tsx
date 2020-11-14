@@ -111,7 +111,7 @@ class NewDashboardChat extends React.Component {
               <DashboardLargeScreenNav title="Chat with a counsellor" />
               <Row>
                 <Col md={12} className="kisls">
-                  <div className="kdashheader npps nprr">
+                  <div className="kdashheader npps nprr cchatht">
                     <DashboardUsernameheader
                       welcomeText={
                         " Need some clarification about your Career Insights? leave a message for your counsellor"
@@ -157,9 +157,10 @@ class NewDashboardChat extends React.Component {
                       ))}
                       <div className="messagewrp1">
                         <div>
-                          <textarea
-                            className="form-control sendtcont"
+                          <input
+                            className="form-control sendtcont chatht"
                             placeholder="Enter text"
+                            type="text"
                             name="message"
                             value={message}
                             onChange={this.onchange}

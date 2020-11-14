@@ -34,7 +34,7 @@ const Faq: React.FunctionComponent = (props) => {
             <img src={RightTopImage} className="homebanner0" alt="homebanner" />
           </Col>
         </Row>
-        <Row className="faq-item-wrapper">
+        <Row className="faq-item-wrapper newfaqwrapper">
           <Col
             xs={12}
             md={{ span: 9, offset: 1 }}

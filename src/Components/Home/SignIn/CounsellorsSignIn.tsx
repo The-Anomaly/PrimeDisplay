@@ -1,11 +1,11 @@
 import * as React from "react";
-import Navbar from "../HomeComponents/navbar";
+import Navbar from "../HomeComponents/newnavbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-import Footer from "../HomeComponents/footer";
+import Footer from "../HomeComponents/newfooter";
 import Col from "react-bootstrap/Col";
 import "../SignUp/signup.css";
 import "./SignIn.css";
@@ -189,7 +189,8 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
       })
       .then((response) => {
         if (response.status === 200) {
-          localStorage.setItem("user", JSON.stringify(response?.data));
+          console.log("Counselor sign in successful");
+          console.log(response);
           props.history.push("/counselloroverview");
         }
       })
@@ -259,7 +260,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <Container fluid={true}>
         <Row className="kli">
           <Col md={5} className="mo">

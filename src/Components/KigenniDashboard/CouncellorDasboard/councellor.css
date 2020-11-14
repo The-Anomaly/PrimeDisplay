@@ -3871,10 +3871,127 @@ textarea.form-control.jobr {
 .kalx {
   width: 180px;
 }
+.taskrow {
+  padding-bottom: 0.5rem;
+}
+.dscvv1 {
+  margin-left: 0.2rem;
+}
+.topp2 {
+  width: 100% !important;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+}
+.topp21 {
+  padding: 1rem;
+  border-top: 1px solid #e2e0e0;
+  width: 97%;
+}
+.sdxm {
+  padding-left: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+}
+.undng {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 37px;
+  letter-spacing: 1px;
+  color: #001833;
+}
+
+.textight {
+  text-align: right;
+  border: none;
+  width: 100%;
+}
+.weww {
+  font-size: 19px;
+  line-height: 37px;
+  letter-spacing: 1px;
+  color: #001833;
+  margin-left: 1rem;
+}
+.pink23 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffefef;
+  box-shadow: 4px 12px 16px rgba(137, 137, 137, 0.16);
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  width: 97%;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+.kalx {
+  width: 180px;
+}
 .careerpref {
   text-align: center;
   font-weight: 600;
   padding-bottom: 1.5rem;
+}
+.gha {
+  font-size: 11px;
+  position: relative;
+  top: 1.1rem;
+  left: 5px;
+  background: white;
+  padding: 0.6rem;
+  padding-bottom: 0.15rem;
+  padding-left: 0.2rem;
+  border-radius: 8px;
+  display: inline-block;
+  color: #23304c;
+}
+.userfield {
+  padding: 1rem;
+}
+.userfield1 {
+  margin-bottom: 1.5rem !important;
+}
+.counview1 {
+  color: #fff;
+  background: #9c1258;
+  border-radius: 5px;
+  border: 1px solid #9c1258;
+  width: 290px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  text-align: center;
+  font-size: 90%;
+  margin: auto;
+}
+.fooass {
+  text-align: center;
+  cursor: pointer;
+}
+.fooass23 {
+  text-align: center;
+}
+.sdsaa {
+  padding-top: 3rem;
+}
+.finda {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #001833;
+}
+.weww{
+  font-size: 16px;
+}
+.brfcase{
+  width: 20px;
+  object-fit: contain;
+}
+.todo1a{
+  
 }
 .gha {
   font-size: 11px;

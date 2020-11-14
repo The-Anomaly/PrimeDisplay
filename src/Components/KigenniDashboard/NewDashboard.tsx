@@ -118,9 +118,7 @@ class NewDashboard extends React.Component {
     })
       .then((response) => {
         if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
+          response?.data[0]?.view_result === true
         ) {
           this.setState({
             showfullresult: true,
@@ -141,9 +139,7 @@ class NewDashboard extends React.Component {
     })
       .then((response) => {
         if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
+          response?.data[0]?.view_result === true
         ) {
           this.setState({
             showfullresult: true,
@@ -246,7 +242,7 @@ class NewDashboard extends React.Component {
                       <div className="notpaid1">
                         <img src={caution} className="caution" alt="caution" />
                         <div className="notpaidtext">
-                          Opps!!! Seems you need to upgrade your plan to have
+                          Oops!!! Seems you need to upgrade your plan to have
                           indepth details
                         </div>
                       </div>

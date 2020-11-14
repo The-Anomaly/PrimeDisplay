@@ -104,10 +104,10 @@ const RedesignedHome: React.FC = () => {
           </Col>
           <Col md={1} className="socials">
             <img src={downarrow} className="socials1" alt="arrow" />
-            <Link to="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="_blank"><img src={facebook} className="socials1 ssmedia" alt="facebook" /></Link>
-            <Link to="" target="_blank" ><img src={twitter} className="socials1 ssmedia" alt="twitter" /></Link>
-            <Link to="http://instagram.com/getclarity_" target="_blank"><img src={insta} className="socials1 ssmedia" alt="instagram" /></Link>
-            <Link to="" target="_blank"><img src={linkedin} className="socials1 ssmedia" alt="linkedin" /></Link>
+            <a href="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="_blank"><img src={facebook} className="socials1 ssmedia" alt="facebook" /></a>
+            <a href="/" target="_blank" ><img src={twitter} className="socials1 ssmedia unclick" alt="twitter" /></a>
+            <a href="http://instagram.com/getclarity_" target="_blank"><img src={insta} className="socials1 ssmedia" alt="instagram" /></a>
+            <a href="https://ng.linkedin.com/company/yudimy" target="_blank"><img src={linkedin} className="socials1 ssmedia" alt="linkedin" /></a>
           </Col>
         </Row>
         <Row md={12} className="newsecondrow">
@@ -195,7 +195,7 @@ const RedesignedHome: React.FC = () => {
           </div>
           <div>
             <div className="fourthsec">
-              <div className="fourthsubsec">
+              <div className="fourthsubsec hov1">
                 <img className="border1" src={border5} />
                 <img className="rightborder" src={smborder} />
                 <img src={trust1} className="trustimg" />
@@ -209,7 +209,7 @@ const RedesignedHome: React.FC = () => {
                   of roles you should work in.
                 </div>
               </div>
-              <div className="fourthsubsec">
+              <div className="fourthsubsec hov2">
                 <img className="border2" src={border2} />
                 <img className="leftborder leftborder1" src={smborder} />
                 <img src={trust2} className="trustimg" />
@@ -224,7 +224,7 @@ const RedesignedHome: React.FC = () => {
               </div>
             </div>
             <div className="fourthsec">
-              <div className="fourthsubsec">
+              <div className="fourthsubsec hov3">
               <img className="border3" src={border3} />
               <img className="rightborder rightborder2" src={smborder} />
                 <img src={trust3} className="trustimg" />
@@ -237,7 +237,7 @@ const RedesignedHome: React.FC = () => {
                   achieve this.
                 </div>
               </div>
-              <div className="fourthsubsec">
+              <div className="fourthsubsec hov4">
               <img className="border4" src={border4} />
               <img className="leftborder leftborder2" src={smborder} />
                 <img src={trust4} className="trustimg trustimgin" />
