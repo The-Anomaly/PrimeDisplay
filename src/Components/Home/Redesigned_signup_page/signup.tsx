@@ -7,6 +7,7 @@ import axios from "axios";
 import { API } from "../../../config";
 import Alert from "react-bootstrap/Alert";
 import eye from "../../../assets/eye.png";
+import eyeclosed from "../../../assets/eye.png";
 import { useEffect } from "react";
 
 const Signup = withRouter((props: any) => {
@@ -260,7 +261,6 @@ const Signup = withRouter((props: any) => {
                     />
                   </Col>
                 </Row>
-
                 <div className="rdsgnupfrmbtndv">
                   <span
                     onClick={onSubmit}

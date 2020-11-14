@@ -232,6 +232,11 @@ const Signin = withRouter((props: any) => {
                     onChange={onChangeHandler}
                     placeholder="Enter your Password"
                     size={75}
+                    onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      validateForm(e);
+                    }
+                  }}
                     className="form-control rdsignupinput"
                   />
                 </label>
