@@ -39,9 +39,10 @@ const Signup = withRouter((props: any) => {
     .then( ( response ) => {
       console.log(response)
       if (response.status === 200){
-        localStorage.setItem(
-          "userToken",
-          JSON.stringify(response?.data?.token)
+       
+         localStorage.setItem(
+          "userEmail",
+          JSON.stringify(email)
         );
         setTimeout(()=>{
           props?.history?.push("/confirm_email")
@@ -50,14 +51,11 @@ const Signup = withRouter((props: any) => {
          setFormState({
           ...state,
           errorMessage: "",
-          successMessage: response.data.message, //question
+          successMessage: response.data.message, 
           isLoading:false,
           error: true
         });
-        localStorage.setItem(
-          "userEmail",
-          JSON.stringify(email)
-        );
+       
       
       }
     })

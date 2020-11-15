@@ -84,3 +84,6 @@
 .rsendmail{
     cursor: pointer;
 }
+.alertzuccess{
+    left:initial !important;
+}
