@@ -1,5 +1,5 @@
 import * as React from "react";
-import demoLogo from "../../../assets/newclaritylogo.svg";
+import demoLogo from "../../../assets/claritydemo.png";
 import SideNav from "react-simple-sidenav";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import "../Home/animate.css";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
 import { Row } from "react-bootstrap";
-import demoLogoLight from "../../../assets/newclaritylogo2.svg";
+import demoLogoLight from "../../../assets/demologolight.png";
 
 const newNavbar = withRouter((props: any) => {
   const [navbar, setNavbar] = React.useState(false);
@@ -190,38 +190,68 @@ const newNavbar = withRouter((props: any) => {
                     showNav ? "listwraper animated fadeInLeft" : "listwraper"
                   }
                 >
-                  <div className="listwraperMob">
-                    <Link to="/redesign">Home</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/aboutus">About</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/payment">Payments</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/contact">Contact Us</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/faq">Faq</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/privacy_policy">Privacy Policy</Link>
-                  </div>
-                  {/* {!userLoggedIn && (
-                    <>
-                      <div className="listwraperMob">
-                        <Link to="/signin">
-                          <div className="navmobbtn">Sign In</div>
-                        </Link>
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/redesign">Home</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/aboutus">About</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/payment">Payments</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/contact">Contact Us</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/counsellor/signup">For Counselors</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/faq">Faq</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/privacy_policy">Privacy Policy</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/signin">
+                        <div className="navmobbtn">Login</div>
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className="listwraperMob">
+                      <div className="navmobbtn" onClick={logout}>
+                        Logout
                       </div>
-                      <div className="listwraperMob">
-                        <Link to="/signup">
-                          <div className="navmobbtn">Sign Up</div>
-                        </Link>
-                      </div>
-                    </>
-                  )} */}
+                    </div>
+                  )}
                   {/* {userLoggedIn && (
                     <>
                       <div className="listwraperMob">
@@ -285,41 +315,66 @@ const newNavbar = withRouter((props: any) => {
             </div>
           </div>
           <div className="nav_titlenew">
-            <span className={props.home ? "title hhome" : "title"}>
-              <Link to="/">Home</Link>
-            </span>
-            <span className={props.about ? "title hhome" : "title"}>
-              <Link to="/aboutus">About Us</Link>
-            </span>
-            <span className={props.payments ? "title hhome" : "title"}>
-              <Link to="/payment">Payments</Link>
-            </span>
-            <span className={props.contact ? "title hhome" : "title"}>
-              <Link to="/contact">Contact Us</Link>
-            </span>
-            <span className={props.faq ? "title hhome" : "title"}>
-              <Link to="/faq">FAQ</Link>
-            </span>
-            
+            {!userLoggedIn ? (
+              <span className={props.home ? "title hhome" : "title"}>
+                <Link to="/">Home</Link>
+              </span>
+            ) : (
+              " "
+            )}
+            {!userLoggedIn ? (
+              <span className={props.about ? "title hhome" : "title"}>
+                <Link to="/aboutus">About Us</Link>
+              </span>
+            ) : (
+              " "
+            )}
+            {!userLoggedIn ? (
+              <span className={props.payments ? "title hhome" : "title"}>
+                <Link to="/payment">Payments</Link>
+              </span>
+            ) : (
+              " "
+            )}
+            {!userLoggedIn ? (
+              <span className={props.contact ? "title hhome" : "title"}>
+                <Link to="/contact">Contact Us</Link>
+              </span>
+            ) : (
+              " "
+            )}
+            {!userLoggedIn ? (
+              <span className={props.counselor ? "title hhome" : "title"}>
+                <Link to="/counsellor/signup">For Counselors</Link>
+              </span>
+            ) : (
+              ""
+            )}
+            {!userLoggedIn ? (
+              <span className={props.faq ? "title hhome" : "title"}>
+                <Link to="/faq">FAQ</Link>
+              </span>
+            ) : (
+              ""
+            )}
             {/* {!userLoggedIn ? (
                 <NavIsLoggedOut />
               ) : (
                 <NavIsLoggedIn Logout={logout} />
               )} */}
 
-
             {userLoggedIn ? (
               <div className="title1 shiftlefff newshft">
-              <button className="title_t signupbtn newlogin" onClick={logout}>
-                Logout
-              </button>
-            </div>
+                <button className="title_t signupbtn newlogin" onClick={logout}>
+                  Logout
+                </button>
+              </div>
             ) : (
               <div className="title1 shiftlefff newshft">
-              <Link to="/signin">
-                <button className="title_t signupbtn newlogin">Login</button>
-              </Link>
-            </div>
+                <Link to="/signin">
+                  <button className="title_t signupbtn newlogin">Login</button>
+                </Link>
+              </div>
             )}
           </div>
         </Row>
