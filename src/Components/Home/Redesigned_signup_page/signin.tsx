@@ -259,12 +259,12 @@ const Signin = withRouter((props: any) => {
                 </div>
                 <div className="rdsigninp">
                   <p>
-                    <Link to="/signin">Forgot your password?</Link>
+                    <Link to="/password_recovery">Forgot your password?</Link>
                   </p>
                 </div>
                 <div className="rdsgnupfrmbtndv">
                   <span
-                    onSubmit={validateForm}
+                    onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                     {isLoading ? "Processing" : "Log In"}

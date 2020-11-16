@@ -38,9 +38,11 @@ class CounsellorsRecommendation extends React.Component {
     ratingInfo: {},
     setReminderModal: false,
     setRatingModal: true,
+    last_session_id: "",
     showWarning: false,
     width: 100,
     rate: "",
+    canrate: false,
     reason: "",
   };
   props: any;
@@ -70,6 +72,7 @@ class CounsellorsRecommendation extends React.Component {
       })
       .catch((err) => {
         if (err) {
+          this.notify("Error occured failed to send");
         }
       });
   };
@@ -96,6 +99,8 @@ class CounsellorsRecommendation extends React.Component {
           this.setState({
             counsellor: response.data,
             ratingInfo: response1.data,
+            canrate: response1.data.unrated,
+            last_session_id: response1?.data?.session_id,
           });
         })
       )
@@ -202,15 +207,24 @@ class CounsellorsRecommendation extends React.Component {
       : this.props.history.push("/signin");
     const data = {
       rating: this.state.rate,
+      text: this.state.reason,
     };
-    Axios.post(`${API}/counsellor/rating`, data, {
+    Axios.post(`${API}/counsellor/rating/${this.state.last_session_id}`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
         console.log(response);
+        this.notify("Thank you for the rating");
+        setTimeout(() => {
+          this.closeRateSession();
+        }, 3000);
       })
       .catch((err) => {
+        this.notify("An error occured please try again");
         console.log(err);
+        setTimeout(() => {
+          this.closeRateSession();
+        }, 3000);
       });
   };
   render() {
@@ -223,6 +237,7 @@ class CounsellorsRecommendation extends React.Component {
       setReminderModal,
       setRatingModal,
       rate,
+      canrate,
       reason,
       counsellor,
     } = this.state;
@@ -251,11 +266,11 @@ class CounsellorsRecommendation extends React.Component {
                       }
                     />
                     <div className="">
-                      <Link to="/counsellordates"><Button
-                        className="retaketest"
-                      >
-                        Book a private session
-                      </Button></Link>
+                      <Link to="/counsellordates">
+                        <Button className="retaketest">
+                          Book a private session
+                        </Button>
+                      </Link>
                     </div>
                     <div>
                       <hr />
@@ -398,47 +413,53 @@ class CounsellorsRecommendation extends React.Component {
               </div>
             </Modal.Body>
           </Modal>
-          <Modal
-            show={setRatingModal}
-            className="modcomplete4 fixmodal"
-            centered={true}
-            onHide={this.closeRateSession}
-          >
-            <Modal.Title className="modal_title">
-              <div className="pleaseRate">Please rate your last session</div>
-            </Modal.Title>
-            <a className="close_view" onClick={this.closeRateSession}>
-              <img className="closeview" src={close} alt="close" />
-            </a>
-            <Modal.Body>
-              {" "}
-              <div className="ratingcont">
-                <StarRatingComponent
-                  name="rate"
-                  starCount={5}
-                  value={rate}
-                  onStarClick={this.onStarClick}
-                  emptyStarColor={"#444"}
-                />
-              </div>
-              <div className="modal_det">
-                <textarea
-                  className="task_det"
-                  placeholder="Why your rating"
-                  disabled={true}
-                  value={reason}
-                  name="reason"
-                  onChange={this.handleSubmitChange}
-                ></textarea>
-              </div>
-              <div className="btnhandle">
-                <div>
-                  <span className="notnow">Not now</span>
-                  <span className="rightnow">Submit</span>
+          {canrate && (
+            <Modal
+              show={setRatingModal}
+              className="modcomplete4 fixmodal"
+              centered={true}
+              onHide={this.closeRateSession}
+            >
+              <Modal.Title className="modal_title">
+                <div className="pleaseRate">Please rate your last session</div>
+              </Modal.Title>
+              <a className="close_view" onClick={this.closeRateSession}>
+                <img className="closeview" src={close} alt="close" />
+              </a>
+              <Modal.Body>
+                {" "}
+                <div className="ratingcont">
+                  <StarRatingComponent
+                    name="rate"
+                    starCount={5}
+                    value={rate}
+                    onStarClick={this.onStarClick}
+                    emptyStarColor={"#444"}
+                  />
                 </div>
-              </div>
-            </Modal.Body>
-          </Modal>
+                <div className="modal_det">
+                  <textarea
+                    className="task_det"
+                    placeholder="Why your rating"
+                    disabled={true}
+                    value={reason}
+                    name="reason"
+                    onChange={this.handleSubmitChange}
+                  ></textarea>
+                </div>
+                <div className="btnhandle">
+                  <div>
+                    <span className="notnow" onClick={this.closeRateSession}>
+                      Not now
+                    </span>
+                    <span className="rightnow" onClick={this.submitRating}>
+                      Submit
+                    </span>
+                  </div>
+                </div>
+              </Modal.Body>
+            </Modal>
+          )}
         </Container>
       </>
     );
