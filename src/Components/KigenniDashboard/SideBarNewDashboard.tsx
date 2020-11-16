@@ -1,6 +1,6 @@
 import * as React from "react";
 import Col from "react-bootstrap/Col";
-import imgCart from "../../assets/Claritylogo.png";
+import imgCart from "../../assets/newclaritylogoa.png";
 import logout from "../../assets/log-out.png";
 import Overview_inactive from "../../assets/Overview_inactive.png";
 import chatinactive from "../../assets/Chat with a counsellor_inactive.png";
@@ -46,7 +46,7 @@ const SideBarNewDashboard = (props: any) => {
         if (response?.data[0]?.view_result === true) {
           return window.location.assign("/thirdpary/fullresult");
         }
-        return window.location.assign("/dashboardsubsriptionplan");
+        return window.location.assign("/dashboardsubscriptionplan");
       })
       .catch((error) => {});
   };
@@ -61,7 +61,7 @@ const SideBarNewDashboard = (props: any) => {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
       return setInterval(
-        (window.location.pathname = "/dashboardsubsriptionplan"),
+        (window.location.pathname = "/dashboardsubscriptionplan"),
         2000
       );
     }
@@ -76,7 +76,7 @@ const SideBarNewDashboard = (props: any) => {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
       return setInterval(
-        (window.location.pathname = "/dashboardsubsriptionplan"),
+        (window.location.pathname = "/dashboardsubscriptionplan"),
         2000
       );
     }
@@ -92,10 +92,10 @@ const SideBarNewDashboard = (props: any) => {
         <div className="dlex">
           <Link to="/overview">
             {" "}
-            <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
+            <img src={imgCart} className="imgCart33 sidebarlogo" alt="imgCart" />
           </Link>
         </div>{" "}
-        <div className={hidemobile ? "navitemnone" : "navitem1 navft"}>
+        <div className={hidemobile ? "navitemnone" : "navitem1 navft side_navv"}>
           <Link to="/overview">
             <div className={props.overview ? "activegb" : "gbn"}>
               <img
@@ -228,7 +228,7 @@ const SideBarNewDashboard = (props: any) => {
               Settings
             </div>
           </Link>
-          <Link to="/dashboardsubsriptionplan">
+          <Link to="/dashboardsubscriptionplan">
             <div className={props.subscription ? "activegb" : "gbn"}>
               {" "}
               <img

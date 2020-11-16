@@ -2557,7 +2557,13 @@ button {
     padding-bottom: 2rem;
   }
 }
-
+.sidebarlogo {
+  width: 45px;
+    margin-top: 1rem !important;
+}
+.side_navv {
+  padding-top: 3rem !important;
+}
 
 /*Hover Effects*/
 .trustimg:hover {

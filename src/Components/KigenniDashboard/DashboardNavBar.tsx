@@ -1,7 +1,7 @@
 import * as React from "react";
 import SideNav from "react-simple-sidenav";
 import Row from "react-bootstrap/Row";
-import imgCart from "../../assets/Claritylogo.png";
+import imgCart from "../../assets/newclaritylogo2a.png";
 import Col from "react-bootstrap/Col";
 import activeinsight from "../../assets/insights_active.png";
 import Overview_inactive from "../../assets/Overview_inactive.png";
@@ -65,7 +65,7 @@ const DashboardNav = (props: any) => {
           return window.location.assign("/thirdpary/fullresult");
         }
         notify("Update your subscription to access this feature");
-        return window.location.assign("/dashboardsubsriptionplan");
+        return window.location.assign("/dashboardsubscriptionplan");
         // setTimeout(()=>{
         //   window.location.assign("/paymentsummary"),
         // }, 2000);
@@ -84,7 +84,7 @@ const DashboardNav = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
-      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+      return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   const checkIfUserHasAccessToAskACounselor = () => {
@@ -99,7 +99,7 @@ const DashboardNav = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+      return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
@@ -293,7 +293,7 @@ const DashboardNav = (props: any) => {
                   Counsellors Recommendation
                 </Link>
               </div> */}
-                <Link to="/dashboardsubsriptionplan">
+                <Link to="/dashboardsubscriptionplan">
               <div className={props.subscription ? "activegb" : "gbn"}>
                 {" "}
                   <img

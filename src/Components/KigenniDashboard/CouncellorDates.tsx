@@ -117,7 +117,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           // const userLocation = localStorage.getItem("currentLocation");
           // const prevLocation = userLocation ? JSON.parse(userLocation) : "";
           console.log("No payment");
-          return window.location.assign("/dashboardsubsriptionplan");
+          return window.location.assign("/dashboardsubscriptionplan");
         }
       })
       .catch((error) => {

@@ -331,7 +331,7 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/dashboardsubsriptionplan"
+                path="/dashboardsubscriptionplan"
                 component={NewDashboardSubsriptionPlan}
               />
               <Route

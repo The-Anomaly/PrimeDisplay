@@ -68,7 +68,7 @@ const Payment = (props: any) => {
         isTestMode: false,
         redirect: false,
         onComplete: function (response) {
-          if (response.payment_status === "OVERPAID") {
+          if (response.paymentStatus === "OVERPAID") {
             notify(
               "Your current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
@@ -77,19 +77,20 @@ const Payment = (props: any) => {
               3000
             );
           }
-          if (response.payment_status === "PAID") {
+          if (response.paymentStatus === "PAID") {
+            console.log("paid")
             const availableToken = localStorage.getItem("userToken");
             const token = availableToken ? JSON.parse(availableToken) : "";
             axios
               .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
                 headers: { Authorization: `Token ${token}` },
               })
-              .then((response) => {
-                console.log(response);
-                console.log(response?.data[0]);
+              .then((response1) => {
+                console.log(response1);
+                console.log(response1?.data[0]);
                 localStorage.setItem(
                   "accessFeature",
-                  JSON.stringify(response?.data[0])
+                  JSON.stringify(response1?.data[0])
                 );
                 console.log(localStorage.getItem("accessFeature"));
                 const stringFeature = localStorage.getItem("accessFeature");
@@ -102,7 +103,7 @@ const Payment = (props: any) => {
               });
             console.log("Payment Successful");
           }
-          if (response.payment_status === "PENDING") {
+          if (response.paymentStatus === "PENDING") {
             notify("Payment Pending");
             return setInterval(
               (window.location.pathname = "/thirdparty/pending"),
@@ -112,14 +113,8 @@ const Payment = (props: any) => {
         },
         onClose: function (data) {
           console.log("On close function");
-          // const userLocation = localStorage.getItem("currentLocation");
-          // const prevLocation = userLocation ? JSON.parse(userLocation) : "";
-          // return setInterval(
-          //   (window.location.pathname = `/${prevLocation}`),
-          //   9000
-          // );
           return setInterval(
-              (window.location.pathname = "/dashboardsubsriptionplan"),
+              (window.location.pathname = "/dashboardsubscriptionplan"),
               3000
             );
         },
