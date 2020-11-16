@@ -295,7 +295,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
   }, []);
   return (
     <>
-      <Navbar />
+      <Navbar counselor={true}/>
       <Container fluid={true}>
         <Row className="kli">
           <Col md={5} className="mo">

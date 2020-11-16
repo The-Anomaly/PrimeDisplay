@@ -237,7 +237,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
     <>
       <Navbar />
       <Container fluid={true}>
-        <Row className="kli">
+        <Row className="kli newkli">
           <Col md={5} className="mo">
             <img
               src={SignupImage}

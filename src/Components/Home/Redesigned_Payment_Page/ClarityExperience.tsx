@@ -100,6 +100,7 @@ const Payment = (props: any) => {
                 console.error("Payment Status Error");
               });
             console.log("Payment Successful");
+            //return window.history.back();
             //return setInterval(this.props.history.location.pathname, 1000);
             // return setInterval(
             //   (window.location.pathname = "/thirdpary/fullresult"),
@@ -108,10 +109,11 @@ const Payment = (props: any) => {
           }
           if (response.payment_status === "PENDING") {
             notify("Payment Pending");
-            return setInterval(
-              (window.location.pathname = "/thirdparty/pending"),
-              9000
-            );
+            return window.history.back();
+            // return setInterval(
+            //   (window.location.pathname = "/thirdparty/pending"),
+            //   9000
+            // );
           }
         },
         onClose: function (data) {

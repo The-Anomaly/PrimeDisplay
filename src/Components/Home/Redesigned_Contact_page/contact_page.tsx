@@ -71,12 +71,12 @@ const Contactpage = () => {
     <div>
     <Navbar contact={true} />
     <Container className="homecontainer" fluid={true}>
-      <div className="section-1">
-        <Container>
+      <div className="section-1 newsection-1">
+        
           <Row>
-            <Col md={12} className="contact_us_div">
-              <h2 className="heading_primary">Contact Us</h2>
-              <p>
+            <Col md={12} className="contact_us_div cntctdiv">
+              <h2 className="heading_primary pry_heading2">Contact Us</h2>
+              <p className="weare">
                 We are always excited to hear from you.<br/>Have questions
                 or enquiries, need to integrate clarity to your system or
                 organizations?<br/>Get in contact with our experts let us
@@ -84,7 +84,7 @@ const Contactpage = () => {
               </p>
             </Col>
           </Row>
-        </Container>
+        
       </div>
       <div className="section-2">
         <Container>

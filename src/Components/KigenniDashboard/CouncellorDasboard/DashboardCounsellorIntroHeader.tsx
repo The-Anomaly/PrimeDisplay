@@ -27,6 +27,7 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
       isLoading: false,
       width: 100,
       rate: 5,
+      amount: 0,
     };
   }
   onStarClick = (nextValue, prevValue, name) => {
@@ -41,16 +42,26 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profile`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profile`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/referral-link`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((response, response1) => {
         if (response.status === 200) {
           this.setState({
             ...response.data,
           });
         }
-      })
+        console.log(response1);
+        this.setState({
+          amount: response1?.data?.bonus,
+        })
+      }))
       .catch((error) => {
         if (error && error.response && error.response.data) {
           this.setState({
@@ -67,7 +78,7 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
 
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
-    const { first_name, last_name, rate } = this.state;
+    const { first_name, last_name, rate, amount } = this.state;
     console.log(this.props);
     return (
       <>
@@ -121,7 +132,7 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
                 <img src={money1} className="money1" alt="search" />
               </div>
               <div className="Earnings11as">Total Earnings </div>
-              <div className="Earnings11a">₦12,000</div>
+              <div className="Earnings11a">{amount}</div>
             </div>
           )}
         </div>
