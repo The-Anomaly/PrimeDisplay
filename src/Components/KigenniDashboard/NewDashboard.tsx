@@ -222,7 +222,7 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                     <div className="">
-                      <Link to="/counsellordates">
+                      <Link to="/counsellordates" target="blank">
                         <Button className="retaketest">
                           Book a private session
                         </Button>
