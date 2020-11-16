@@ -52,9 +52,7 @@ const SideBarNewDashboard = (props: any) => {
   };
   const checkIfUserHasAccessToOpportunityRecommender = () => {
     const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature
-      ? JSON.parse(stringFeature)
-      : "";
+    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
 
     if (featureToCheck["job_recommendation"] === true) {
       console.log("Job opportunities successful");
@@ -62,21 +60,25 @@ const SideBarNewDashboard = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
-      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+      return setInterval(
+        (window.location.pathname = "/dashboardsubsriptionplan"),
+        2000
+      );
     }
   };
   const checkIfUserHasAccessToAskACounselor = () => {
     const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature
-      ? JSON.parse(stringFeature)
-      : "";
+    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
     if (featureToCheck["ask_counsellor"] === true) {
       console.log("Ask a counselor successful");
       window.location.assign("/allusermessages");
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+      return setInterval(
+        (window.location.pathname = "/dashboardsubsriptionplan"),
+        2000
+      );
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
@@ -94,16 +96,16 @@ const SideBarNewDashboard = (props: any) => {
           </Link>
         </div>{" "}
         <div className={hidemobile ? "navitemnone" : "navitem1 navft"}>
-          <div className={props.overview ? "activegb" : "gbn"}>
-            <Link to="/overview">
+          <Link to="/overview">
+            <div className={props.overview ? "activegb" : "gbn"}>
               <img
                 src={props.overview ? overview : Overview_inactive}
                 className="sideimage"
                 alt="sideimage"
               />{" "}
               Overview
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div
             onClick={checkIfUserHasMadePaymentForFullResult}
             className={props.insight ? "activegb" : "gbn"}
@@ -143,14 +145,19 @@ const SideBarNewDashboard = (props: any) => {
                   <Link to="/counsellordates" target="_blank">
                     <div className="task112">Book a private session</div>
                   </Link>
-                    <div className="task112" onClick={checkIfUserHasAccessToAskACounselor}>Ask a Counselor</div>
+                  <div
+                    className="task112"
+                    onClick={checkIfUserHasAccessToAskACounselor}
+                  >
+                    Ask a Counselor
+                  </div>
                 </Card.Body>
               </Accordion.Collapse>
             </Accordion>
           </div>
-          <div className={props.councrec ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/counsellorsrecommendation">
+          <Link to="/counsellorsrecommendation">
+            <div className={props.councrec ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={
                   props.councrec ? recommedationactive : recommedationinactive
@@ -159,8 +166,8 @@ const SideBarNewDashboard = (props: any) => {
                 alt="sideimage"
               />
               Recommended Task
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div className={props.todo ? "activegb jusas" : "gbn jusas"}>
             {" "}
             <Accordion defaultActiveKey="">
@@ -198,32 +205,32 @@ const SideBarNewDashboard = (props: any) => {
             />
             Opportunity Recommended
           </div>
-          <div className={props.builder ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/profilebuilder">
+          <Link to="/profilebuilder">
+            <div className={props.builder ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={props.builder ? profilebuilder : profilebuilderinactive}
                 className="sideimage"
                 alt="sideimage"
               />
               Profile Builder
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div className="divide_thro"></div>
-          <div className={props.settings ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/dashboardsettings">
+          <Link to="/dashboardsettings">
+            <div className={props.settings ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={props.settings ? settingsactive : settingsinactive}
                 className="sideimage"
                 alt="sideimage"
               />
               Settings
-            </Link>
-          </div>
-          <div className={props.subscription ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/dashboardsubsriptionplan">
+            </div>
+          </Link>
+          <Link to="/dashboardsubsriptionplan">
+            <div className={props.subscription ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={
                   props.subscription ? subscriptionactive : subscriptioninactive
@@ -232,22 +239,22 @@ const SideBarNewDashboard = (props: any) => {
                 alt="sideimage"
               />
               Subscription
-            </Link>
-          </div>
-          <div className={props.support ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/dashboardsupport">
+            </div>
+          </Link>
+          <Link to="/dashboardsupport">
+            <div className={props.support ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={props.support ? support : supportinactive}
                 className="sideimage"
                 alt="sideimage"
               />
               Support
-            </Link>
-          </div>
-          <div className={"gbn"}>
+            </div>
+          </Link>
+          <div className={"gbn"} onClick={logOut}>
             {" "}
-            <span onClick={logOut}>
+            <span>
               <img src={logout} className="sideimage" alt="sideimage" />
               Logout
             </span>

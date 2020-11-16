@@ -97,7 +97,7 @@ const RedesignedHome: React.FC = () => {
             <div><div>We are like a map but for your career.</div>
             <div>Let's connect all the dots...</div>
 
-            <div className="hstarted">GET STARTED</div>
+            <Link to="/signup"><div className="hstarted">GET STARTED</div></Link>
             </div>
             
             
@@ -162,17 +162,17 @@ const RedesignedHome: React.FC = () => {
             <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
               <div className="thirdgthead">Start my personal Journey</div>
               <div className="thirdgttxt">Lets give you a perception to what your career should look like</div>
-              <div className="thirdgtbtn1">Sign Up</div>
+              <Link to="/signup"><div className="thirdgtbtn1">Sign Up</div></Link>
               </Card>
               <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
               <div className="thirdgthead">Gift a Friend</div>
               <div className="thirdgttxt">Give a gift of success. Choose from among the three different plans</div>
-              <div className="thirdgtbtn2">Get Started</div>
+              <Link to="/payment"><div className="thirdgtbtn2">Get Started</div></Link>
               </Card>
               <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
               <div className="thirdgthead">Use Clarity for my Team</div>
               <div className="thirdgttxt">Give a gift of success. Choose from among the three different plans</div>
-              <div className="thirdgtbtn3">Get Started</div>
+              <div className="thirdgtbtn3 unclick">Get Started</div>
               </Card>
           </Row>
         )}

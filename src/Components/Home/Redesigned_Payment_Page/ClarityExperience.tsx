@@ -109,7 +109,6 @@ const Payment = (props: any) => {
           }
           if (response.payment_status === "PENDING") {
             notify("Payment Pending");
-            return window.history.back();
             // return setInterval(
             //   (window.location.pathname = "/thirdparty/pending"),
             //   9000
@@ -117,11 +116,17 @@ const Payment = (props: any) => {
           }
         },
         onClose: function (data) {
+          console.log("On close function");
+          // const userLocation = localStorage.getItem("currentLocation");
+          // const prevLocation = userLocation ? JSON.parse(userLocation) : "";
           // return setInterval(
-          //   (window.location.pathname = "/thirdpary/dashboard"),
+          //   (window.location.pathname = `/${prevLocation}`),
           //   9000
           // );
-          console.log("On close function");
+          return setInterval(
+              (window.location.pathname = "/dashboardsubsriptionplan"),
+              9000
+            );
         },
       });
     } catch (error) {}

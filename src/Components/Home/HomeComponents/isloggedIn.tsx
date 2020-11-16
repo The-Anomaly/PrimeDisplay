@@ -15,7 +15,7 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
     showPreloader: false,
     isloading: false,
     IsUser: false,
-    userhasdashboard:false,
+    userhasdashboard: false,
   });
   useEffect(() => {
     const availableToken: any = localStorage.getItem("userToken");
@@ -109,24 +109,30 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
   };
   return (
     <React.Fragment>
-      <div className="title1">
-        <button onClick={props.Logout} className="title_ll">
-          Log out
+      <div className="title1 shiftlefff newshft">
+        <button className="title_t signupbtn newlogin" onClick={props.Logout}>
+          Logout
         </button>
       </div>
+
+      {/* <div className="title1">
+        <button onClick={props.Logout} className="title_ll">
+          Log out
+        </button> 
+      </div>*/}
       {/* <div className="title1">
         <button onClick={getCurrentAssessmentPosition} className="title_ll">
           Dashboard
         </button>
       </div> */}
-      <div className="title1">
+      {/* <div className="title1">
         <span
           className="useravatarwraper"
           onClick={getCurrentAssessmentPosition}
         >
           <img src={avatar} className="useravatar" alt="avatar" />
         </span>
-      </div>
+      </div> */}
       {state.isloading && (
         <div id="content">
           <Spinner variant={"info"} animation="grow" />

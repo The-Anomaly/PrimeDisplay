@@ -148,16 +148,16 @@ const DashboardNav = (props: any) => {
         items={[
           <div className={"siddlemobile"}>
             <div className={"navitem1"}>
-              <div className={props.overview ? "activegb" : "gbn"}>
                 <Link to="/overview">
+              <div className={props.overview ? "activegb" : "gbn"}>
                   <img
                     src={props.overview ? overview : Overview_inactive}
                     className="sideimage"
                     alt="sideimage"
                   />{" "}
                   Overview
-                </Link>
               </div>
+              </Link>
               <div
                 onClick={checkIfUserHasMadePaymentForFullResult}
                 className={props.insight ? "activegb" : "gbn"}
@@ -206,9 +206,9 @@ const DashboardNav = (props: any) => {
                   </Accordion.Collapse>
                 </Accordion>
               </div>
+                <Link to="/counsellorsrecommendation">
               <div className={props.councrec ? "activegb" : "gbn"}>
                 {" "}
-                <Link to="/counsellorsrecommendation">
                   <img
                     src={
                       props.councrec
@@ -219,8 +219,8 @@ const DashboardNav = (props: any) => {
                     alt="sideimage"
                   />
                   Recommended Task
-                </Link>
               </div>
+                </Link>
               <div className={props.todo ? "activegb" : "gbn"}>
                 {" "}
                 <Accordion defaultActiveKey="">
@@ -264,9 +264,9 @@ const DashboardNav = (props: any) => {
                 />
                 Opportunity Recommended
               </div>
+                <Link to="/profilebuilder">
               <div className={props.builder ? "activegb" : "gbn"}>
                 {" "}
-                <Link to="/profilebuilder">
                   <img
                     src={
                       props.builder ? profilebuilder : profilebuilderinactive
@@ -275,8 +275,8 @@ const DashboardNav = (props: any) => {
                     alt="sideimage"
                   />
                   Profile Builder
-                </Link>
               </div>
+                </Link>
               <div className="divide_thro"></div>
               {/* <div className={props.councrec ? "activegb" : "gbn"}>
                 {" "}
@@ -293,9 +293,9 @@ const DashboardNav = (props: any) => {
                   Counsellors Recommendation
                 </Link>
               </div> */}
+                <Link to="/dashboardsubsriptionplan">
               <div className={props.subscription ? "activegb" : "gbn"}>
                 {" "}
-                <Link to="/dashboardsubsriptionplan">
                   <img
                     src={
                       props.subscription
@@ -306,33 +306,33 @@ const DashboardNav = (props: any) => {
                     alt="sideimage"
                   />
                   Subscription
-                </Link>
               </div>
+                </Link>
+                <Link to="/dashboardsupport">
               <div className={props.support ? "activegb" : "gbn"}>
                 {" "}
-                <Link to="/dashboardsupport">
                   <img
                     src={props.support ? support : supportinactive}
                     className="sideimage"
                     alt="sideimage"
                   />
                   Support
-                </Link>
               </div>
+                </Link>
+                <Link to="/dashboardsettings">
               <div className={props.settings ? "activegb" : "gbn"}>
                 {" "}
-                <Link to="/dashboardsettings">
                   <img
                     src={props.settings ? settingsactive : settingsinactive}
                     className="sideimage"
                     alt="sideimage"
                   />
                   Settings
-                </Link>
               </div>
-              <div className={"gbn"}>
+                </Link>
+              <div className={"gbn"} onClick={logOut}>
                 {" "}
-                <span onClick={logOut}>
+                <span >
                   <img src={logout} className="sideimage" alt="sideimage" />
                   Logout
                 </span>

@@ -207,3 +207,21 @@
 .alertzuccess {
   left: initial !important;
 }
+.paddit {
+  padding-top: 9rem;
+}
+@media(max-width: 779px) {
+  .paddit{
+    padding-top: 5rem;
+  }
+  .rsignupdiv > p {
+    font-size: 15px;
+  }
+}
+
+@media(max-width: 600px) {
+  .rdsignupform {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}

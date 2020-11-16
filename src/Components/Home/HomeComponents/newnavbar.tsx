@@ -220,7 +220,7 @@ const newNavbar = withRouter((props: any) => {
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/counsellor/signup">For Counselors</Link>
+                      <Link to="/counsellor/signup">For Counsellors</Link>
                     </div>
                   ) : (
                     " "
@@ -345,7 +345,7 @@ const newNavbar = withRouter((props: any) => {
             )}
             {!userLoggedIn ? (
               <span className={props.counselor ? "title hhome" : "title"}>
-                <Link to="/counsellor/signup">For Counselors</Link>
+                <Link to="/counsellor/signup">For Counsellors</Link>
               </span>
             ) : (
               ""
@@ -357,13 +357,13 @@ const newNavbar = withRouter((props: any) => {
             ) : (
               ""
             )}
-            {/* {!userLoggedIn ? (
+            {!userLoggedIn ? (
                 <NavIsLoggedOut />
               ) : (
                 <NavIsLoggedIn Logout={logout} />
-              )} */}
+              )}
 
-            {userLoggedIn ? (
+            {/* {userLoggedIn ? (
               <div className="title1 shiftlefff newshft">
                 <button className="title_t signupbtn newlogin" onClick={logout}>
                   Logout
@@ -375,7 +375,7 @@ const newNavbar = withRouter((props: any) => {
                   <button className="title_t signupbtn newlogin">Login</button>
                 </Link>
               </div>
-            )}
+            )} */}
           </div>
         </Row>
       </div>
