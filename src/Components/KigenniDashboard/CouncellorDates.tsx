@@ -109,12 +109,12 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       .then((response) => {
         console.log(response);
         console.log(localStorage.getItem("accessFeature"));
-        if (response?.data[0]?.book_session === false) {
+        if (response?.data[0]?.book_session === true) {
           console.log("Payment Summary Check");
           return this.sendMessageToCounselor();
         } else {
           console.log("No payment")
-          return window.location.assign("/paymentsummary");
+          return window.location.assign("/dashboardsubsriptionplan");
         }
       })
       .catch((error) => {
