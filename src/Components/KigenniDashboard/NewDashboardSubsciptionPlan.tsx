@@ -104,7 +104,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                     <div>
                       <hr />
                     </div>
-                    {plan === undefined && (
+                    {plan && (
                       <>
                         <div>
                           <div className="activeplac actplan">Active plan</div>
