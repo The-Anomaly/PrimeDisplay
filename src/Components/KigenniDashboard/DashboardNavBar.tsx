@@ -109,7 +109,7 @@ const DashboardNav = (props: any) => {
         <div className="hnav">
           <Link to="/" className="ddaa">
             {" "}
-            <img src={imgCart} className="imgCart" alt="imgCart" />
+            <img src={imgCart} className="imgCart newcart" alt="imgCart" />
           </Link>
           <div className="hamburger" onClick={() => setShowNav(true)}>
             <div className="line2a"></div>
