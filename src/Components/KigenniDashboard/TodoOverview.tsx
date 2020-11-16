@@ -29,6 +29,7 @@ const TodoOverview = withRouter((props: any) => {
     alltask: [],
     successMsg: false,
     isLoading: false,
+    isloading:false
   });
   const [modalState, setModState] = useState<any>({
     selectedUserId: "",
@@ -96,7 +97,7 @@ const TodoOverview = withRouter((props: any) => {
     viewmoreisOpen,
     title,
     description,
-    add_note,
+    isloading,
     isOpen,
     id,
     CreateTaskModalisOpen,
@@ -148,6 +149,10 @@ const TodoOverview = withRouter((props: any) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
   const submitTaskIsCompleteForm = () => {
+    setFormState({
+      ...state,
+      isloading:true
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -167,6 +172,10 @@ const TodoOverview = withRouter((props: any) => {
           ...modalState,
           success: true,
         });
+        setFormState({
+          ...state,
+          isloading:false
+        })
         setTimeout(() => {
           window.location.reload();
         }, 2000);
@@ -175,6 +184,7 @@ const TodoOverview = withRouter((props: any) => {
         setFormState({
           ...state,
           errorMessage: "Server Error",
+          isloading:false
         });
       });
   };
@@ -383,7 +393,7 @@ const TodoOverview = withRouter((props: any) => {
               className="savebtn todo_button markit"
               onClick={submitTaskIsCompleteForm}
             >
-              Mark as Complete
+              {isloading?"Processing":"Mark as Complete"}
             </div>
           </div>
         </Modal.Body>

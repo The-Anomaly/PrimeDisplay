@@ -122,7 +122,7 @@ class NewDashboardChat extends React.Component {
                     </div>
                     <Col md={12} className="youwss">
                       {this.props.messages?.map((data, ind) => (
-                        <>
+                        <div key={ind} className="usermmsa">
                           {data.author === this.props.match.params.email && (
                             <div className="usersentwrap1" key={ind}>
                               <div className="youwrap">
@@ -153,7 +153,7 @@ class NewDashboardChat extends React.Component {
                               </div>
                             )}
                           </div>
-                        </>
+                        </div>
                       ))}
                       <div className="messagewrp1">
                         <div>
@@ -162,6 +162,11 @@ class NewDashboardChat extends React.Component {
                             placeholder="Enter text"
                             type="text"
                             name="message"
+                            onKeyPress={(e) => {
+                              if (e.key == "Enter") {
+                                this.sendMessageHandler(e);
+                              }
+                            }}
                             value={message}
                             onChange={this.onchange}
                           />

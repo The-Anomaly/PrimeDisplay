@@ -215,7 +215,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
   const errorGoogle = (error) => {
     setFormState({
       ...state,
-      errorMessage: "failed to login",
+      // errorMessage: "failed to login",
     });
   };
   const authenticate = (response) => {

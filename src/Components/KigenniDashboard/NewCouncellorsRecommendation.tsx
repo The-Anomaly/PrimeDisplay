@@ -22,6 +22,7 @@ import { Alert } from "react-bootstrap";
 import close from "../../assets/close.svg";
 import StarRatingComponent from "react-star-rating-component";
 import axios from "axios";
+import moment from "moment";
 
 class CounsellorsRecommendation extends React.Component {
   state: any = {
@@ -100,7 +101,8 @@ class CounsellorsRecommendation extends React.Component {
             counsellor: response.data,
             ratingInfo: response1.data,
             canrate: response1.data.unrated,
-            last_session_id: response1?.data?.session_id,
+            last_session_id: response1?.data?.sessionId,
+            isLoading:false
           });
         })
       )
@@ -144,10 +146,16 @@ class CounsellorsRecommendation extends React.Component {
             this.closeModal();
           }, 3000);
         }
+        this.setState({
+          isLoading:false
+        })
       })
       .catch((error) => {
         this.notify("Failed to process");
         setTimeout(() => {}, 2000);
+        this.setState({
+          isLoading:false
+        })  
       });
   };
   onchange = (e) => {
@@ -209,9 +217,13 @@ class CounsellorsRecommendation extends React.Component {
       rating: this.state.rate,
       text: this.state.reason,
     };
-    Axios.post(`${API}/counsellor/rating/${this.state.last_session_id}`, data, {
-      headers: { Authorization: `Token ${token}` },
-    })
+    Axios.post(
+      `${API}/dashboard/submit-rating/${this.state.last_session_id}`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
       .then((response) => {
         console.log(response);
         this.notify("Thank you for the rating");
@@ -227,6 +239,10 @@ class CounsellorsRecommendation extends React.Component {
         }, 3000);
       });
   };
+  formatTime = (date) => {
+    const dateTime = moment(date).format("Do MMM YYYY");
+    return dateTime;
+  };
   render() {
     console.log(this.state.ratingInfo);
     const {
@@ -239,6 +255,7 @@ class CounsellorsRecommendation extends React.Component {
       rate,
       canrate,
       reason,
+      isLoading,
       counsellor,
     } = this.state;
     return (
@@ -408,7 +425,7 @@ class CounsellorsRecommendation extends React.Component {
                   className="savebtn todo_button markit createit"
                   onClick={() => this.makeRecommendationToDo()}
                 >
-                  Save
+                 {isLoading?"Processing":"Save"} 
                 </div>
               </div>
             </Modal.Body>
@@ -421,7 +438,13 @@ class CounsellorsRecommendation extends React.Component {
               onHide={this.closeRateSession}
             >
               <Modal.Title className="modal_title">
-                <div className="pleaseRate">Please rate your last session</div>
+                <div className="pleaseRate">
+                  Please rate your last session with{" "}
+                  <div>
+                    {this.state.ratingInfo?.counsellor_name} on{" "}
+                    {this.formatTime(this.state.ratingInfo?.session_date)}
+                  </div>
+                </div>
               </Modal.Title>
               <a className="close_view" onClick={this.closeRateSession}>
                 <img className="closeview" src={close} alt="close" />
@@ -441,7 +464,6 @@ class CounsellorsRecommendation extends React.Component {
                   <textarea
                     className="task_det"
                     placeholder="Why your rating"
-                    disabled={true}
                     value={reason}
                     name="reason"
                     onChange={this.handleSubmitChange}
