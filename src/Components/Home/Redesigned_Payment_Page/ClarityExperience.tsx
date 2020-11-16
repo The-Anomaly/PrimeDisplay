@@ -91,6 +91,7 @@ const Payment = (props: any) => {
                   "accessFeature",
                   JSON.stringify(response?.data[0])
                 );
+                console.log(localStorage.getItem("accessFeature"));
                 const stringFeature = localStorage.getItem("accessFeature");
                 const featureToCheck = stringFeature
                   ? JSON.parse(stringFeature)
@@ -123,10 +124,10 @@ const Payment = (props: any) => {
           //   (window.location.pathname = `/${prevLocation}`),
           //   9000
           // );
-          return setInterval(
-              (window.location.pathname = "/dashboardsubsriptionplan"),
-              9000
-            );
+          // return setInterval(
+          //     (window.location.pathname = "/dashboardsubsriptionplan"),
+          //     9000
+          //   );
         },
       });
     } catch (error) {}

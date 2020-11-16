@@ -166,12 +166,12 @@ const RedesignedHome: React.FC = () => {
               </Card>
               <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
               <div className="thirdgthead">Gift a Friend</div>
-              <div className="thirdgttxt">Give a gift of success. Choose from among the three different plans</div>
+              <div className="thirdgttxt">Give a gift of success. Choose one of the three different plans</div>
               <Link to="/payment"><div className="thirdgtbtn2">Get Started</div></Link>
               </Card>
               <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
               <div className="thirdgthead">Use Clarity for my Team</div>
-              <div className="thirdgttxt">Give a gift of success. Choose from among the three different plans</div>
+              <div className="thirdgttxt">Lets get your team to their highest potential and get your ROI to the roof</div>
               <div className="thirdgtbtn3 unclick">Get Started</div>
               </Card>
           </Row>
