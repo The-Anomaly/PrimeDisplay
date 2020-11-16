@@ -70,7 +70,6 @@ const SideBarNewDashboard = (props: any) => {
     const featureToCheck = stringFeature
       ? JSON.parse(stringFeature)
       : "";
-
     if (featureToCheck["ask_counsellor"] === true) {
       console.log("Ask a counselor successful");
       window.location.assign("/allusermessages");

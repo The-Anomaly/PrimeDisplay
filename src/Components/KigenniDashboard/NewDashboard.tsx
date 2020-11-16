@@ -148,6 +148,21 @@ class NewDashboard extends React.Component {
       })
       .catch((error) => {});
   };
+  checkIfUserHasAccessToAskACounselor = () => {
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature
+      ? JSON.parse(stringFeature)
+      : "";
+
+    if (featureToCheck["ask_counsellor"] === true) {
+      console.log("Ask a counselor successful");
+      window.location.assign("/allusermessages");
+    } else {
+      //notify("Update your subscription to access this feature");
+      console.log("Can't access ask a counselor");
+      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+    }
+  };
   CloseWarning = () => {
     this.setState({
       showWarning: false,
@@ -222,11 +237,12 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                     <div className="">
-                      <Link to="/counsellordates">
-                        <Button className="retaketest">
-                          Book a private session
+                        <Button className="retaketest"
+                        onClick={() =>
+                          this.checkIfUserHasAccessToAskACounselor()
+                        }>
+                         Ask a counselor
                         </Button>
-                      </Link>
                       {showfullresult && (
                         <Button
                           className="retaketest2"
