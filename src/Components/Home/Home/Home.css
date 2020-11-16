@@ -2352,7 +2352,7 @@ button {
   .aboutfirsttxt {
     font-size: 14px;
     margin-bottom: 3rem;
-    margin-right: 20%;
+    margin-right: 25%;
   }
   .prodsec2 {
     padding-left: 1rem;
@@ -2364,6 +2364,9 @@ button {
   }
   .for1 {
     margin-left: 1rem;
+  }
+  .aboutfirstsec {
+    padding-left: 3.5rem;
   }
 }
 
@@ -2469,7 +2472,7 @@ button {
 @media (max-width: 1000px) {
   .redoNav {
     padding-left: 2.5rem;
-    padding-right: 2rem;
+    padding-right: 2.65rem;
   }
   .nav_titlenew {
     font-size: 13px;
@@ -2486,6 +2489,9 @@ button {
   div > .newshft {
     padding-left: 0;
   }
+  .logologo {
+    width: 40px;
+  }
 }
 
 .newflexsss {
@@ -2494,6 +2500,7 @@ button {
 }
 .mobilelogo {
   margin-left: 1rem;
+  width: 40px;
 }
 .newline {
   background: #ffffff;
