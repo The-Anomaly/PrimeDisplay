@@ -241,3 +241,15 @@
 .paymentdescrip {
     padding-bottom: 0rem;
 }
+.subpayment {
+    margin: auto;
+    margin-top: 3rem;
+    max-width: 300px;
+}
+.subpaymentcard {
+    box-shadow: 0 0.75rem 1.125rem rgba(0,0,0,0.125) !important;
+    border-color: #f7f7f7;
+}
+.actplan {
+    font-weight: 600;
+}

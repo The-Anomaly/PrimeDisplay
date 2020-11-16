@@ -19,6 +19,11 @@ import norecommendations from "../../assets/no recommendations.png";
 import DashboardNav from "./DashboardNavBar";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 import { Link } from "react-router-dom";
+import "../Home/Redesigned_Payment_Page/payment.css";
+import { Card } from "react-bootstrap";
+import mark from "../../assets/mark-icn.png";
+import mark_blue from "../../assets/blue-mark.png";
+import mark_green from "../../assets/green-mark.png";
 
 class NewDashboardSubsriptionPlan extends React.Component {
   state: any = {
@@ -41,14 +46,14 @@ class NewDashboardSubsriptionPlan extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response)
+        console.log(response);
         this.setState({
           plan: response.data.plan,
           expiration: response.data.expires,
         });
       })
       .catch((error) => {
-        console.error("Subscription error")
+        console.error("Subscription error");
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -67,7 +72,14 @@ class NewDashboardSubsriptionPlan extends React.Component {
   };
 
   render() {
-    const { fullname, message, isLoading, width, plan, expiration } = this.state;
+    const {
+      fullname,
+      message,
+      isLoading,
+      width,
+      plan,
+      expiration,
+    } = this.state;
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -92,401 +104,479 @@ class NewDashboardSubsriptionPlan extends React.Component {
                     <div>
                       <hr />
                     </div>
-                    {plan && (
+                    {plan === undefined && (
                       <>
                         <div>
-                          <div className="activeplac">Active plan</div>
+                          <div className="activeplac actplan">Active plan</div>
                           <div className="subtert">
-                            You are currently subscribed to the{" "}
-                            <b>
-                              {/* {plan === "insight_plan"
-                                ? "Insight Plan"
-                                : plan === "direction_plan"
-                                ? "Direction Plan"
-                                : "Growth Plan"} */}
-                                {plan}
-                            </b>
-                            {/* , This subscription will expire in 23 days */}
-                            . {expiration}
+                            You are currently subscribed to the <b>{plan}</b>.{" "}
+                            {expiration}
                           </div>
                         </div>
                         <Col md={12} className="youwss">
-                          {true && (
-                            <Row className="kli6 bcbv">
-                              <Col md={10}>
-                                <Row className="centerr">
-                                  {plan === "insight_plan" && (
-                                    <Col xs={10} md={4} className="centerr1">
-                                      <div className="planinsight">
-                                        Insight Plan
-                                      </div>
-                                      <div className="oneoff">
-                                        (One-off Plan)
-                                      </div>
-                                      <div className="percentoff">
-                                        Now <b>&nbsp; 65%&nbsp;</b> OFF!
+                          {plan === "One-off Insight Plan" && (
+                            <Col
+                              md={3}
+                              sm={6}
+                              className="margined_col subpayment"
+                            >
+                              <Card className=" shadow-sm bg-white payment-card subpaymentcard">
+                                <Card.Header className="payment-header">
+                                  <h4>
+                                    N3500 <span>/one-off</span>
+                                  </h4>
+                                </Card.Header>
+                                <Card.Body>
+                                  <div className="card-div ">
+                                    <h6 className="blue">Insight Plan</h6>
+                                    <p>
+                                      Get an edge - The insight plan gives you
+                                      an edge over your peers. Be the YOU,
+                                      you've always wanted.
+                                    </p>
+                                  </div>
+                                  <ul className="card-list">
+                                    <li>
+                                      <img
+                                        src={mark_blue}
+                                        className="card-image"
+                                      />
+                                      Everything under <span>FREE</span>
+                                    </li>
+                                    <li>
+                                      <img
+                                        src={mark_blue}
+                                        className="card-image"
+                                      />
+                                      Strength & Weakness Report
+                                    </li>
+                                    <li>
+                                      <img
+                                        src={mark_blue}
+                                        className="card-image"
+                                      />
+                                      Competence analysis Report{" "}
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark_blue}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        Most suitable career business expression
                                       </div>{" "}
-                                      <div className="duration"></div>
-                                      <div className="prems">
-                                        {" "}
-                                        An all-round competence audit report on
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
+                                    </li>
+                                    <li>
+                                      <img
+                                        src={mark_blue}
+                                        className="card-image"
+                                      />
+                                      Report on best roles to apply for{" "}
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
                                           <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
+                                            src={mark_blue}
+                                            className="card-image"
                                           />
-                                        </span>{" "}
-                                        The Most suitable career and business
-                                        industry match
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        The best job roles to work in
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Strong career competencies{" "}
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Average Career competencies
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Weak Career competencies
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Work style
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Top Career drivers’ & how to harness it
-                                      </div>
-                                      <div className="lmi1">
-                                        <div className="amut">&#8358;3,500</div>
-                                        <div className="amut1">
-                                          one time payment
                                         </div>
+                                        Career drivers and how to leverage them
                                       </div>
-                                      <div>
-                                        {/* <span className="amurt">&#8358;10,000</span>{" "} */}
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark_blue}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        Highlights on areas for career
+                                        optimization.
                                       </div>
-                                    </Col>
-                                  )}
-                                  {plan === "growth_plan" && (
-                                    <Col
-                                      xs={10}
-                                      md={4}
-                                      className="centerpurple"
-                                    >
-                                      <div className="planinsight">
-                                        Growth Plan
+                                    </li>
+                                  </ul>
+                                  {/* {withoutlogin ? (
+                                  <Link to="/signin">
+                                    <span className="card_btn btn-blue">Get Started</span>
+                                  </Link>
+                                ) : (
+                                  <span
+                                    className="card_btn btn-blue"
+                                    onClick={() =>
+                                      requestForPayref("One-off Insight Plan", 3500)
+                                    }
+                                  >
+                                    Upgrade to Insight
+                                  </span>
+                                )} */}
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                          )}
+                          {plan === "One-off Direction Plan" && (
+                            <Col
+                              md={3}
+                              sm={6}
+                              className="margined_col subpayment"
+                            >
+                              <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
+                                <Card.Header className="payment-header">
+                                  <h4>
+                                    N10000 <span>/one-off</span>
+                                  </h4>
+                                </Card.Header>
+                                <Card.Body>
+                                  <div className="card-div">
+                                    <h6 className="green">Direction Plan</h6>
+                                    <p>
+                                      Hand in Hand Guidance - Get perspective on
+                                      your reports. Get assigned to your
+                                      personal career coach, It only gets better
+                                    </p>
+                                  </div>
+                                  <ul className="card-list">
+                                    <li>
+                                      <img
+                                        src={mark_green}
+                                        className="card-image"
+                                      />
+                                      Everything under{" "}
+                                      <span className="blue">INSIGHT</span>
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark_green}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        40 minutes career-planning session with
+                                        a clarity counsellor
                                       </div>
-                                      <div className="oneoff">(Quaterly)</div>
-                                      <div className="percentoffpurple">
-                                        Now <b>&nbsp; 50%&nbsp;</b> OFF!
+                                    </li>
+                                  </ul>
+                                  {/* {withoutlogin ? (
+                                  <Link to="/signin">
+                                    <span className="card_btn btn-green card_btn--animated">
+                                      Get Started
+                                    </span>
+                                  </Link>
+                                ) : (
+                                  <span
+                                    className="card_btn btn-green card_btn--animated"
+                                    onClick={() =>
+                                      requestForPayref("One-off Direction Plan", 10000)
+                                    }
+                                  >
+                                    Upgrade to Direction
+                                  </span>
+                                )} */}
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                          )}
+                          {plan === "Progressive Insight Plan" && (
+                            <Col
+                              md={3}
+                              sm={6}
+                              className="margined_col subpayment"
+                            >
+                              <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
+                                <Card.Header className="payment-header">
+                                  <h4>
+                                    N3500 <span>/month</span>
+                                  </h4>
+                                </Card.Header>
+                                <Card.Body>
+                                  <div className="card-div">
+                                    <h6>Insight Plan</h6>
+                                    <p>
+                                      Get the first hand Clarity experience for
+                                      no charge at all. Take action to your
+                                      career bliss
+                                    </p>
+                                  </div>
+                                  <ul className="card-list">
+                                    <li>
+                                      <img src={mark} className="card-image" />
+                                      Career fitness score
+                                    </li>
+                                    <li>
+                                      <img src={mark} className="card-image" />
+                                      Career personality type
+                                    </li>
+                                    <li>
+                                      <img src={mark} className="card-image" />
+                                      Strenght & Weakness Report
+                                    </li>
+                                    <li>
+                                      <img src={mark} className="card-image" />
+                                      Competence analysis Report
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        Most suitable career business expression
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <img src={mark} className="card-image" />
+                                      Report on best roles to apply for
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        Career drivers and how to leverage them
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        Highlights on areas for career
+                                        optimization
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        Recommended courses curated weekly to
+                                        strenthen your skill
+                                      </div>
+                                    </li>
+                                    <li className="cdlisadjmarg">
+                                      <img src={mark} className="card-image" />
+                                      Weekly Tailored job alerts
+                                    </li>
+                                    <li className="cdlisadjmarg">
+                                      <img src={mark} className="card-image" />
+                                      Unlimited Chat access with coaches &
+                                      counsellors and get feedback on your
+                                      to-dos goals and issues discussed
+                                    </li>
+                                  </ul>
+                                  {/* {withoutlogin ? (
+                                  <Link to="/signin">
+                                    <span className="card_btn card_btn--pce1 btn-yellow">
+                                      Get Started
+                                    </span>
+                                  </Link>
+                                ) : (
+                                  <span
+                                    className="card_btn card_btn--pce1 btn-yellow"
+                                    onClick={() =>
+                                      requestForPayref("Progressive Insight Plan", 3500)
+                                    }
+                                  >
+                                    Subscribe
+                                  </span>
+                                )} */}
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                          )}
+                          {plan === "Progressive Direction Plan" && (
+                            <Col
+                              md={3}
+                              sm={6}
+                              className="margined_col subpayment"
+                            >
+                              <Card className=" shadow-sm bg-white payment-card subpaymentcard">
+                                <Card.Header className="payment-header">
+                                  <h4>
+                                    N6000 <span>/month</span>
+                                  </h4>
+                                </Card.Header>
+                                <Card.Body>
+                                  <div className="card-div ">
+                                    <h6 className="blue">Direction Plan</h6>
+                                    <p>
+                                      Get an edge - The insight plan gives you
+                                      an edge over your peers. Be the YOU, you
+                                      always wanted
+                                    </p>
+                                  </div>
+                                  <ul className="card-list">
+                                    <li>
+                                      <img
+                                        src={mark_blue}
+                                        className="card-image"
+                                      />
+                                      Everything under <span>INSIGHT</span>
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark_blue}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        40 minutes career-planning session with
+                                        a clarity counselor
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark_blue}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        Weekly Personalized Counsellors
+                                        Recommendation on suitable personal &
+                                        career activities
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
+                                          <img
+                                            src={mark_blue}
+                                            className="card-image"
+                                          />
+                                        </div>
+                                        Weekly Personalized Counse- llors
+                                        Recommendation on suitable personal &
+                                        career activities
                                       </div>{" "}
-                                      <div className="duration"></div>
-                                      <div className="prems">
-                                        {" "}
-                                        A comprehensive personality and
-                                        competence audit report and 4 personal
-                                        career readiness sessions with a career
-                                        counsellor to better understand to your
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
                                           <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
+                                            src={mark_blue}
+                                            className="card-image"
                                           />
-                                        </span>{" "}
-                                        The Most suitable career and business
-                                        industry match
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        The best job roles to work in
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Strong career competencies{" "}
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Average Career competencies
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Weak Career competencies
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Work style
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Top Career drivers’ & how to harness it
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        <div className="seadc">
-                                          40 minutes personal session with a
-                                          career counsellor to define clear
-                                          career road map, job search or
-                                          business strategy
                                         </div>
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Unlimited access to Counselling support
-                                        to ask career related questions and get
-                                        expert advice on demand (from CV to
-                                        interview preparation, LinkedIn
-                                        positioning, etc for your
-                                        career-industry track.
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Get curated job recommendations and
-                                        opportunities most suitable for you
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Top Career drivers’ & how to harness it
-                                      </div>
-                                      <div className="lmi1">
-                                        <div className="amut">
-                                          &#8358;50,000
-                                        </div>
-                                        <div className="amut1">
-                                          Quaterly Payment
-                                        </div>
-                                      </div>
-                                      <div>
-                                        {/* <span className="amurt">&#8358;10,000</span>{" "} */}
-                                      </div>
-                                    </Col>
-                                  )}
-                                  {plan == "direction_plan" && (
-                                    <Col xs={10} md={4} className="centerblue">
-                                      <div className="planinsight">
-                                        Direction Plan
-                                      </div>
-                                      <div className="oneoff">
-                                        (One-off Plan)
-                                      </div>
-                                      <div className="percentoffblue">
-                                        Now <b>&nbsp; 60%&nbsp;</b> OFF!
+                                        Personal to-dos & reminder setting
                                       </div>{" "}
-                                      <div className="duration"></div>
-                                      <div className="prems">
-                                        {" "}
-                                        An all-round personality and competence
-                                        audit report
-                                        <div>+ </div>
-                                        40 minutes private counselling session.
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
+                                    </li>
+                                  </ul>
+                                  {/* {withoutlogin ? (
+                                  <Link to="/signin">
+                                    <span className="card_btn card_btn--pce2 btn-blue">
+                                      Get Started
+                                    </span>
+                                  </Link>
+                                ) : (
+                                  <span
+                                    className="card_btn card_btn--pce2 btn-blue"
+                                    onClick={() =>
+                                      requestForPayref("Progressive Direction Plan", 6000)
+                                    }
+                                  >
+                                    Upgrade to Direction
+                                  </span>
+                                )} */}
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                          )}
+                          {plan === "Progressive Accountability Plan" && (
+                            <Col
+                              md={3}
+                              sm={8}
+                              className="margined_col subpayment"
+                            >
+                              <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
+                                <Card.Header className="payment-header">
+                                  <h4>
+                                    N10000 <span>/month</span>
+                                  </h4>
+                                </Card.Header>
+                                <Card.Body>
+                                  <div className="card-div">
+                                    <h6 className="green">
+                                      Accountability Plan
+                                    </h6>
+                                    <p>
+                                      Hand in Hand Guidance - Get perspective on
+                                      your reports. Get assigned to your
+                                      personal career coach, It only gets better
+                                    </p>
+                                  </div>
+                                  <ul className="card-list">
+                                    <li>
+                                      <img
+                                        src={mark_green}
+                                        className="card-image"
+                                      />
+                                      Everything under{" "}
+                                      <span className="blue">DIRECTION</span>
+                                    </li>
+                                    <li>
+                                      <div className="card-list-box">
+                                        <div>
                                           <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
+                                            src={mark_green}
+                                            className="card-image"
                                           />
-                                        </span>{" "}
-                                        The Most suitable career and business
-                                        industry match
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        The best job roles to work in
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Strong career competencies{" "}
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Average Career competencies
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Weak Career competencies
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Work style
-                                      </div>
-                                      <div className="comps2">
-                                        <span>
-                                          <img
-                                            src={checkcircle}
-                                            className="checkcircle"
-                                            alt="checkcircle"
-                                          />
-                                        </span>{" "}
-                                        Top Career drivers’ & how to harness it
-                                      </div>
-                                      <div className="lmi1">
-                                        <div className="amut">
-                                          &#8358;10,500
                                         </div>
-                                        <div className="amut1">
-                                          one time payment
-                                        </div>
+                                        40 minutes career-planning session with
+                                        a clarity counselor X2
                                       </div>
-                                      <div>
-                                        {/* <span className="amurt">&#8358;10,000</span>{" "} */}
-                                      </div>
-                                    </Col>
-                                  )}
-                                </Row>
-                              </Col>
-                            </Row>
+                                    </li>
+                                  </ul>
+                                  {/* {withoutlogin ? (
+                                  <Link to="/signin">
+                                    <span className="card_btn btn-green card_btn--pce3 card_btn--animated">
+                                      Get Started
+                                    </span>
+                                  </Link>
+                                ) : (
+                                  <span
+                                    className="card_btn btn-green card_btn--pce3 card_btn--animated"
+                                    onClick={() =>
+                                      requestForPayref(
+                                        "Progressive Accountability Plan",
+                                        10000
+                                      )
+                                    }
+                                  >
+                                    Upgrade to Accountability
+                                  </span>
+                                )} */}
+                                </Card.Body>
+                              </Card>
+                            </Col>
                           )}
                         </Col>
                       </>
                     )}
-                    {plan == undefined && (
+                    {plan === undefined && (
                       <div className="norec">
                         <img
                           src={noplan}
                           className="norecommendations"
                           alt="norecommendations"
                         />
-                        <div className="udont1">Opps!!!</div>
+                        <div className="udont1">Oops!!!</div>
                         <div className="udont">
                           You are not subscribed to any plan yet
                         </div>

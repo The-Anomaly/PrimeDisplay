@@ -101,19 +101,13 @@ const Payment = (props: any) => {
                 console.error("Payment Status Error");
               });
             console.log("Payment Successful");
-            //return window.history.back();
-            //return setInterval(this.props.history.location.pathname, 1000);
-            // return setInterval(
-            //   (window.location.pathname = "/thirdpary/fullresult"),
-            //   1000
-            // );
           }
           if (response.payment_status === "PENDING") {
             notify("Payment Pending");
-            // return setInterval(
-            //   (window.location.pathname = "/thirdparty/pending"),
-            //   9000
-            // );
+            return setInterval(
+              (window.location.pathname = "/thirdparty/pending"),
+              3000
+            );
           }
         },
         onClose: function (data) {
@@ -124,10 +118,10 @@ const Payment = (props: any) => {
           //   (window.location.pathname = `/${prevLocation}`),
           //   9000
           // );
-          // return setInterval(
-          //     (window.location.pathname = "/dashboardsubsriptionplan"),
-          //     9000
-          //   );
+          return setInterval(
+              (window.location.pathname = "/dashboardsubsriptionplan"),
+              3000
+            );
         },
       });
     } catch (error) {}
