@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import close from "../../assets/close.svg";
 import { useState } from "react";
 import noplan from "../../assets/noplan.png";
+import { toast, ToastContainer } from "react-toastify";
 const moment = require("moment");
 
 const TodoOverview = withRouter((props: any) => {
@@ -29,7 +30,7 @@ const TodoOverview = withRouter((props: any) => {
     alltask: [],
     successMsg: false,
     isLoading: false,
-    isloading:false
+    isloading: false,
   });
   const [modalState, setModState] = useState<any>({
     selectedUserId: "",
@@ -89,7 +90,7 @@ const TodoOverview = withRouter((props: any) => {
         });
       });
   }, []);
-   const notify = (message: string) => toast(message, { containerId: "B" });
+  const notify = (message: string) => toast(message, { containerId: "B" });
   const {
     task_title,
     task_description,
@@ -152,8 +153,8 @@ const TodoOverview = withRouter((props: any) => {
   const submitTaskIsCompleteForm = () => {
     setFormState({
       ...state,
-      isloading:true
-    })
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -169,15 +170,15 @@ const TodoOverview = withRouter((props: any) => {
       }
     )
       .then((res) => {
-        notify("Successful")
+        notify("Successful");
         setModState({
           ...modalState,
           success: true,
         });
         setFormState({
           ...state,
-          isloading:false
-        })
+          isloading: false,
+        });
         setTimeout(() => {
           window.location.reload();
         }, 2000);
@@ -186,7 +187,7 @@ const TodoOverview = withRouter((props: any) => {
         setFormState({
           ...state,
           errorMessage: "Server Error",
-          isloading:false
+          isloading: false,
         });
       });
   };
@@ -388,14 +389,13 @@ const TodoOverview = withRouter((props: any) => {
               value={getTaskdetails()?.notes}
             />
           </div>
-          <div className="request_input">
-          </div>
+          <div className="request_input"></div>
           <div className="mark_complete">
             <div
               className="savebtn todo_button markit"
               onClick={submitTaskIsCompleteForm}
             >
-              {isloading?"Processing":"Mark as Complete"}
+              {isloading ? "Processing" : "Mark as Complete"}
             </div>
           </div>
         </Modal.Body>
