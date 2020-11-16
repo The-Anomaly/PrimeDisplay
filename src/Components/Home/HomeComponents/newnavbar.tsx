@@ -1,5 +1,5 @@
 import * as React from "react";
-import demoLogo from "../../../assets/claritydemo.png";
+import demoLogo from "../../../assets/newclaritylogoa.png";
 import SideNav from "react-simple-sidenav";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import "../Home/animate.css";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
 import { Row } from "react-bootstrap";
-import demoLogoLight from "../../../assets/demologolight.png";
+import demoLogoLight from "../../../assets/newclaritylogo2a.png";
 
 const newNavbar = withRouter((props: any) => {
   const [navbar, setNavbar] = React.useState(false);
@@ -220,7 +220,7 @@ const newNavbar = withRouter((props: any) => {
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/counsellor/signup">For Counselors</Link>
+                      <Link to="/counsellor/signup">For Counsellors</Link>
                     </div>
                   ) : (
                     " "
@@ -304,7 +304,6 @@ const newNavbar = withRouter((props: any) => {
           }
         >
           <div className="nav_titlenew">
-            <div className="logo_clarity logo_clarity_new">
               <Link to="/">
                 <img
                   src={navbar ? demoLogoLight : demoLogo}
@@ -312,7 +311,6 @@ const newNavbar = withRouter((props: any) => {
                   className="logologo"
                 />
               </Link>
-            </div>
           </div>
           <div className="nav_titlenew">
             {!userLoggedIn ? (
@@ -345,7 +343,7 @@ const newNavbar = withRouter((props: any) => {
             )}
             {!userLoggedIn ? (
               <span className={props.counselor ? "title hhome" : "title"}>
-                <Link to="/counsellor/signup">For Counselors</Link>
+                <Link to="/counsellor/signup">For Counsellors</Link>
               </span>
             ) : (
               ""
@@ -357,13 +355,13 @@ const newNavbar = withRouter((props: any) => {
             ) : (
               ""
             )}
-            {/* {!userLoggedIn ? (
+            {!userLoggedIn ? (
                 <NavIsLoggedOut />
               ) : (
                 <NavIsLoggedIn Logout={logout} />
-              )} */}
+              )}
 
-            {userLoggedIn ? (
+            {/* {userLoggedIn ? (
               <div className="title1 shiftlefff newshft">
                 <button className="title_t signupbtn newlogin" onClick={logout}>
                   Logout
@@ -375,7 +373,7 @@ const newNavbar = withRouter((props: any) => {
                   <button className="title_t signupbtn newlogin">Login</button>
                 </Link>
               </div>
-            )}
+            )} */}
           </div>
         </Row>
       </div>

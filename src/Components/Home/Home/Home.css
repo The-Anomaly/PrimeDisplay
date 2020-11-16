@@ -538,6 +538,9 @@ button {
   .imgCart {
     min-width: 70px !important;
   }
+  .newcart {
+    min-width: 35px !important;
+  }
   .listwraperMob {
     font-size: 16px !important;
   }
@@ -855,9 +858,6 @@ button {
 .nav_margin {
   margin: 0;
 }
-.logo_clarity_new {
-  right: 3.2rem;
-}
 .redoNav {
   position: fixed;
   z-index: 99;
@@ -866,8 +866,9 @@ button {
   width: 100vw;
   padding-top: 1.4rem;
   padding-right: 4rem;
-  padding-left: 8rem;
+  padding-left: 4rem;
   padding-bottom: 1.4rem;
+  flex-wrap: nowrap;
 }
 .nav_titlenew {
   display: flex;
@@ -2354,7 +2355,7 @@ button {
   .aboutfirsttxt {
     font-size: 14px;
     margin-bottom: 3rem;
-    margin-right: 20%;
+    margin-right: 25%;
   }
   .prodsec2 {
     padding-left: 1rem;
@@ -2366,6 +2367,9 @@ button {
   }
   .for1 {
     margin-left: 1rem;
+  }
+  .aboutfirstsec {
+    padding-left: 3.5rem;
   }
 }
 
@@ -2470,11 +2474,14 @@ button {
 /*Navbar Responsiveness*/
 @media (max-width: 1000px) {
   .redoNav {
-    padding-left: 6rem;
-    padding-right: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.65rem;
   }
   .nav_titlenew {
     font-size: 13px;
+  }
+  div > .title1{
+    padding-left: 0;
   }
   .newlogin {
     font-size: 12px;
@@ -2482,11 +2489,11 @@ button {
     height: 30px;
     padding: 0.3rem 1rem;
   }
-  .logologo {
-    width: 100px;
-  }
   div > .newshft {
     padding-left: 0;
+  }
+  .logologo {
+    width: 40px;
   }
 }
 
@@ -2496,6 +2503,7 @@ button {
 }
 .mobilelogo {
   margin-left: 1rem;
+  width: 40px;
 }
 .newline {
   background: #ffffff;
@@ -2511,6 +2519,9 @@ button {
 @media (max-width: 800px) {
   .newhamburger {
     background: transparent !important;
+  }
+  .nav_titlenew {
+    font-size: 12px;
   }
 }
 
@@ -2549,7 +2560,13 @@ button {
     padding-bottom: 2rem;
   }
 }
-
+.sidebarlogo {
+  width: 45px;
+    margin-top: 1rem !important;
+}
+.side_navv {
+  padding-top: 3rem !important;
+}
 
 /*Hover Effects*/
 .trustimg:hover {

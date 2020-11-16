@@ -165,7 +165,7 @@ class NewDashboardJobOpportunities extends React.Component {
       //notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
       return setInterval(
-        (window.location.pathname = "/dashboardsubsriptionplan"),
+        (window.location.pathname = "/dashboardsubscriptionplan"),
         2000
       );
     }

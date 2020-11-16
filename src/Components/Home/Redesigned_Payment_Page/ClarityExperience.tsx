@@ -68,7 +68,7 @@ const Payment = (props: any) => {
         isTestMode: false,
         redirect: false,
         onComplete: function (response) {
-          if (response.payment_status === "OVERPAID") {
+          if (response.paymentStatus === "OVERPAID") {
             notify(
               "Your current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
@@ -77,20 +77,22 @@ const Payment = (props: any) => {
               3000
             );
           }
-          if (response.payment_status === "PAID") {
+          if (response.paymentStatus === "PAID") {
+            console.log("paid")
             const availableToken = localStorage.getItem("userToken");
             const token = availableToken ? JSON.parse(availableToken) : "";
             axios
               .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
                 headers: { Authorization: `Token ${token}` },
               })
-              .then((response) => {
-                console.log(response);
-                console.log(response?.data[0]);
+              .then((response1) => {
+                console.log(response1);
+                console.log(response1?.data[0]);
                 localStorage.setItem(
                   "accessFeature",
-                  JSON.stringify(response?.data[0])
+                  JSON.stringify(response1?.data[0])
                 );
+                console.log(localStorage.getItem("accessFeature"));
                 const stringFeature = localStorage.getItem("accessFeature");
                 const featureToCheck = stringFeature
                   ? JSON.parse(stringFeature)
@@ -100,28 +102,21 @@ const Payment = (props: any) => {
                 console.error("Payment Status Error");
               });
             console.log("Payment Successful");
-            //return window.history.back();
-            //return setInterval(this.props.history.location.pathname, 1000);
-            // return setInterval(
-            //   (window.location.pathname = "/thirdpary/fullresult"),
-            //   1000
-            // );
           }
-          if (response.payment_status === "PENDING") {
+          if (response.paymentStatus === "PENDING") {
             notify("Payment Pending");
-            return window.history.back();
-            // return setInterval(
-            //   (window.location.pathname = "/thirdparty/pending"),
-            //   9000
-            // );
+            return setInterval(
+              (window.location.pathname = "/thirdparty/pending"),
+              3000
+            );
           }
         },
         onClose: function (data) {
-          // return setInterval(
-          //   (window.location.pathname = "/thirdpary/dashboard"),
-          //   9000
-          // );
           console.log("On close function");
+          return setInterval(
+              (window.location.pathname = "/dashboardsubscriptionplan"),
+              3000
+            );
         },
       });
     } catch (error) {}

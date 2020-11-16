@@ -136,17 +136,16 @@ const Contactpage = () => {
                 <Col md={4} className="contact_icons">
                   <img src={locator} className="cnticns" />
                   <p>
-                    6386 spring St undefined Anchorage, Georgia 12473 united
-                    states
+                    3, Samuel Street, Ogudu, Lagos, Nigeria.
                   </p>
                 </Col>
                 <Col md={4} className="contact_icons">
                   <img src={seticon} className="cnticns" />
-                  <p>(843)555-0130</p>
+                  <a href="tel:+2348176100160"><p>+2348176100160</p></a>
                 </Col>
                 <Col md={4} className="contact_icons">
                   <img src={mail} className="cnticns" />
-                  <p>willie.jennings@example.com</p>
+                  <a href="mailto:Ask@yudimy.com"><p>Ask@yudimy.com</p></a>
                 </Col>
               </Row>
               <Row>

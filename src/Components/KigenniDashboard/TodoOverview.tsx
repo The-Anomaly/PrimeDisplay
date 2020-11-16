@@ -89,6 +89,7 @@ const TodoOverview = withRouter((props: any) => {
         });
       });
   }, []);
+   const notify = (message: string) => toast(message, { containerId: "B" });
   const {
     task_title,
     task_description,
@@ -168,6 +169,7 @@ const TodoOverview = withRouter((props: any) => {
       }
     )
       .then((res) => {
+        notify("Successful")
         setModState({
           ...modalState,
           success: true,

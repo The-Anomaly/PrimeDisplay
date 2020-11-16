@@ -113,8 +113,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           console.log("Payment Summary Check");
           return this.sendMessageToCounselor();
         } else {
-          console.log("No payment")
-          return window.location.assign("/dashboardsubsriptionplan");
+          // localStorage.setItem("currentLocation", window.location.pathname);
+          // const userLocation = localStorage.getItem("currentLocation");
+          // const prevLocation = userLocation ? JSON.parse(userLocation) : "";
+          console.log("No payment");
+          return window.location.assign("/dashboardsubscriptionplan");
         }
       })
       .catch((error) => {

@@ -138,7 +138,7 @@ class NewDashboard extends React.Component {
           });
           return window.location.assign("/thirdpary/fullresult");
         }
-        return window.location.assign("/paymentsummary");
+        return window.location.assign("/dashboardsubscriptionplan");
       })
       .catch((error) => {});
   };
@@ -174,7 +174,7 @@ class NewDashboard extends React.Component {
     } else {
       //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+      return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   CloseWarning = () => {

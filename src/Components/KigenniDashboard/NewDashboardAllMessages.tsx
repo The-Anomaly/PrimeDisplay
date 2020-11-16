@@ -37,7 +37,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
   //   } else {
   //     //notify("Update your subscription to access this feature");
   //     console.log("Can't access ask a counselor");
-  //     return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+  //     return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
   //   }
   // }
   React.useEffect(() => {
@@ -50,7 +50,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
       //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
       setInterval(
-        (window.location.pathname = "/dashboardsubsriptionplan"),
+        (window.location.pathname = "/dashboardsubscriptionplan"),
         1000
       );
     }

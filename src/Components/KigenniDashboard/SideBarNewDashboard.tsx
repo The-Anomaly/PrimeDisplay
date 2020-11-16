@@ -1,6 +1,6 @@
 import * as React from "react";
 import Col from "react-bootstrap/Col";
-import imgCart from "../../assets/Claritylogo.png";
+import imgCart from "../../assets/newclaritylogoa.png";
 import logout from "../../assets/log-out.png";
 import Overview_inactive from "../../assets/Overview_inactive.png";
 import chatinactive from "../../assets/Chat with a counsellor_inactive.png";
@@ -76,7 +76,7 @@ const SideBarNewDashboard = (props: any) => {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
       return setInterval(
-        (window.location.pathname = "/dashboardsubsriptionplan"),
+        (window.location.pathname = "/dashboardsubscriptionplan"),
         2000
       );
     }
@@ -91,7 +91,7 @@ const SideBarNewDashboard = (props: any) => {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
       return setInterval(
-        (window.location.pathname = "/dashboardsubsriptionplan"),
+        (window.location.pathname = "/dashboardsubscriptionplan"),
         2000
       );
     }
@@ -107,20 +107,20 @@ const SideBarNewDashboard = (props: any) => {
         <div className="dlex">
           <Link to="/overview">
             {" "}
-            <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
+            <img src={imgCart} className="imgCart33 sidebarlogo" alt="imgCart" />
           </Link>
         </div>{" "}
-        <div className={hidemobile ? "navitemnone" : "navitem1 navft"}>
-          <div className={props.overview ? "activegb" : "gbn"}>
-            <Link to="/overview">
+        <div className={hidemobile ? "navitemnone" : "navitem1 navft side_navv"}>
+          <Link to="/overview">
+            <div className={props.overview ? "activegb" : "gbn"}>
               <img
                 src={props.overview ? overview : Overview_inactive}
                 className="sideimage"
                 alt="sideimage"
               />{" "}
               Overview
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div
             onClick={checkIfUserHasMadePaymentForFullResult}
             className={props.insight ? "activegb" : "gbn"}
@@ -175,9 +175,9 @@ const SideBarNewDashboard = (props: any) => {
               </Accordion.Collapse>
             </Accordion>
           </div>
-          <div className={props.councrec ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/counsellorsrecommendation">
+          <Link to="/counsellorsrecommendation">
+            <div className={props.councrec ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={
                   props.councrec ? recommedationactive : recommedationinactive
@@ -186,8 +186,8 @@ const SideBarNewDashboard = (props: any) => {
                 alt="sideimage"
               />
               Recommended Task
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div className={props.todo ? "activegb jusas" : "gbn jusas"}>
             {" "}
             <Accordion defaultActiveKey="">
@@ -225,32 +225,32 @@ const SideBarNewDashboard = (props: any) => {
             />
             Opportunity Recommended
           </div>
-          <div className={props.builder ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/profilebuilder">
+          <Link to="/profilebuilder">
+            <div className={props.builder ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={props.builder ? profilebuilder : profilebuilderinactive}
                 className="sideimage"
                 alt="sideimage"
               />
               Profile Builder
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div className="divide_thro"></div>
-          <div className={props.settings ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/dashboardsettings">
+          <Link to="/dashboardsettings">
+            <div className={props.settings ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={props.settings ? settingsactive : settingsinactive}
                 className="sideimage"
                 alt="sideimage"
               />
               Settings
-            </Link>
-          </div>
-          <div className={props.subscription ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/dashboardsubsriptionplan">
+            </div>
+          </Link>
+          <Link to="/dashboardsubscriptionplan">
+            <div className={props.subscription ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={
                   props.subscription ? subscriptionactive : subscriptioninactive
@@ -259,22 +259,22 @@ const SideBarNewDashboard = (props: any) => {
                 alt="sideimage"
               />
               Subscription
-            </Link>
-          </div>
-          <div className={props.support ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/dashboardsupport">
+            </div>
+          </Link>
+          <Link to="/dashboardsupport">
+            <div className={props.support ? "activegb" : "gbn"}>
+              {" "}
               <img
                 src={props.support ? support : supportinactive}
                 className="sideimage"
                 alt="sideimage"
               />
               Support
-            </Link>
-          </div>
-          <div className={"gbn"}>
+            </div>
+          </Link>
+          <div className={"gbn"} onClick={logOut}>
             {" "}
-            <span onClick={logOut}>
+            <span>
               <img src={logout} className="sideimage" alt="sideimage" />
               Logout
             </span>
