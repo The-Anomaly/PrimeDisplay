@@ -855,9 +855,6 @@ button {
 .nav_margin {
   margin: 0;
 }
-.logo_clarity_new {
-  right: 3.2rem;
-}
 .redoNav {
   position: fixed;
   z-index: 99;
@@ -866,8 +863,9 @@ button {
   width: 100vw;
   padding-top: 1.4rem;
   padding-right: 4rem;
-  padding-left: 8rem;
+  padding-left: 4rem;
   padding-bottom: 1.4rem;
+  flex-wrap: nowrap;
 }
 .nav_titlenew {
   display: flex;
@@ -2470,20 +2468,20 @@ button {
 /*Navbar Responsiveness*/
 @media (max-width: 1000px) {
   .redoNav {
-    padding-left: 6rem;
+    padding-left: 2.5rem;
     padding-right: 2rem;
   }
   .nav_titlenew {
     font-size: 13px;
+  }
+  div > .title1{
+    padding-left: 0;
   }
   .newlogin {
     font-size: 12px;
     width: 80px;
     height: 30px;
     padding: 0.3rem 1rem;
-  }
-  .logologo {
-    width: 100px;
   }
   div > .newshft {
     padding-left: 0;
@@ -2511,6 +2509,9 @@ button {
 @media (max-width: 800px) {
   .newhamburger {
     background: transparent !important;
+  }
+  .nav_titlenew {
+    font-size: 12px;
   }
 }
 
