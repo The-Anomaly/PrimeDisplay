@@ -14,6 +14,7 @@ import moment from "moment";
 import noplan from "../../assets/noplan.png";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
+import newmessage from "../../assets/newmessage.png";
 
 const NewDashboardAllMessages = withRouter((props: any) => {
   const [state, setState] = React.useState<any>({
@@ -24,7 +25,35 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     isLoading: false,
   });
   const { errorMessage, user, userData, searchKey } = state;
+  // React.componentDidMount() {
+  //   const stringFeature = localStorage.getItem("accessFeature");
+  //   const featureToCheck = stringFeature
+  //     ? JSON.parse(stringFeature)
+  //     : "";
+
+  //   if (featureToCheck["ask_a_counselor"] === true) {
+  //     console.log("Ask a counselor successful");
+  //     window.location.assign("/allusermessages");
+  //   } else {
+  //     //notify("Update your subscription to access this feature");
+  //     console.log("Can't access ask a counselor");
+  //     return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+  //   }
+  // }
   React.useEffect(() => {
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
+    if (featureToCheck["ask_counsellor"] === true) {
+      console.log("Ask a counselor successful");
+      window.location.assign("/allusermessages");
+    } else {
+      //notify("Update your subscription to access this feature");
+      console.log("Can't access ask a counselor");
+      setInterval(
+        (window.location.pathname = "/dashboardsubsriptionplan"),
+        1000
+      );
+    }
     getMessages();
   }, []);
   const getMessages = () => {
@@ -53,7 +82,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
       .catch((error) => {
         console.log(error.response);
         if (error && error.response && error.response.data) {
-          setState({
+          return setState({
             ...state,
             errorMessage: error?.response?.data?.message,
             isLoading: false,
@@ -93,6 +122,58 @@ const NewDashboardAllMessages = withRouter((props: any) => {
             return setState({
               ...state,
               userData: [...res.data].reverse(),
+              errorMessage: "",
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error?.response?.status === 400) {
+          setState({
+            ...state,
+            errorMessage: error.response.data.message,
+            userData: [],
+          });
+        }
+        console.log(error.response);
+        if (error && error.response && error.response.data) {
+          return setState({
+            ...state,
+            errorMessage: error?.response?.data?.message,
+            isLoading: false,
+            userData: [],
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const startChat = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const user1: any = localStorage.getItem("user");
+    const User = JSON.parse(user1);
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(User);
+          console.log(res);
+          window.location.assign(
+            `/usermessagehistory/${User[0].email}/${res.data.chatId}`
+          );
+          if (res.status === 200) {
+            return setState({
+              ...state,
               errorMessage: "",
             });
           }
@@ -202,15 +283,27 @@ const NewDashboardAllMessages = withRouter((props: any) => {
                         <div className="udont">{errorMessage}</div>
                         <div
                           className="udont1 ntfnd"
-                          onClick={() => getMessages()}
+                          onClick={() => startChat()}
                         >
-                          View messages
+                          Leave a Message
                         </div>
                       </div>
                     )}
+                    {/* <div className="dsdcx"> */}
+                    <img
+                      src={newmessage}
+                      onClick={startChat}
+                      title="New Message"
+                      className="newmessage12"
+                      alt="newmessage"
+                    />{" "}
+                    {/* </div> */}
                   </Col>
                 </Row>
               </Col>
+            </Row>
+            <Row>
+              <Col></Col>
             </Row>
           </Col>
         </Row>

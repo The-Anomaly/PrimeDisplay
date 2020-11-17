@@ -3,8 +3,8 @@ import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Navbar from "../HomeComponents/navbar";
-import Footer from "../HomeComponents/footer";
+import Navbar from "../HomeComponents/newnavbar";
+import Footer from "../HomeComponents/newfooter";
 import RightTopImage from "../../../assets/2.png";
 import "./faqs.css";
 import Accordion from "react-bootstrap/Accordion";
@@ -14,14 +14,14 @@ const Faq: React.FunctionComponent = (props) => {
   let [activeKey, setActiveKey] = useState("");
   return (
     <>
-      <Navbar />
+      <Navbar faq={true} />
       <Container fluid={true}>
-        <Row className="firstrow possition">
+        <Row className="firstrow possition newfaqrow">
           <Col
             md={5}
             sm={{ span: 12, order: 12 }}
             xs={{ span: 12, order: 12 }}
-            className="firstrowtxt"
+            className="firstrowtxt newfaq"
           >
             <div>Frequently</div>
             <div className="askIn">Asked Questions</div>
@@ -34,7 +34,7 @@ const Faq: React.FunctionComponent = (props) => {
             <img src={RightTopImage} className="homebanner0" alt="homebanner" />
           </Col>
         </Row>
-        <Row className="faq-item-wrapper">
+        <Row className="faq-item-wrapper newfaqwrapper">
           <Col
             xs={12}
             md={{ span: 9, offset: 1 }}

@@ -78,11 +78,12 @@ const SignUp: React.FunctionComponent = (props: any) => {
     axios
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
       .then((response) => {
+        console.log(response)
         if (response.status === 200) {
           return setFormState({
             ...state,
             errorMessage: "",
-            successMsg: response.data[0].message,
+            successMsg: response.data.message,
             isLoading: false,
             error: true,
           });
@@ -90,11 +91,12 @@ const SignUp: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
-        if (error && error.response && error.response.data) {
+        console.log(error?.response);
+        console.log(error);
+        if (error) {
           return setFormState({
             ...state,
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data?.message,
             isLoading: false,
             error: true,
           });
@@ -216,7 +218,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
         console.log(error.response);
         setFormState({
           ...state,
-          errorMessage: "Failed to Sign Up",
+          errorMessage: error?.response?.data[0]?.message,
           isloading: false,
           error: false,
         });

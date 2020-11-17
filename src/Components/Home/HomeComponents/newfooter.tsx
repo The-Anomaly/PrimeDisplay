@@ -14,7 +14,7 @@ const NewFooter: React.FC = (props) => {
   return (
     <div>
       {/* footer starts here */}
-      <Row className="home_footer">
+      <Row md={12} className="home_footer">
           <div className="footer_stay">STAY CONNECTED</div>
           <div className="footer_signup">signup to get news and tips from ur experts</div>
           <div className="footer_maill">
@@ -22,23 +22,23 @@ const NewFooter: React.FC = (props) => {
             <div className="footer_btn">SIGN UP</div>
           </div>
           <div className="footer_socials">
-            <img className="footer_social_1" src={facebook} alt="facebook" />
-            <img className="footer_social_2" src={twitter} alt="twitter" />
-            <img className="footer_social_3" src={instagram} alt="instagram" />
-            <img className="footer_social_4" src={linkedin} alt="linkedin" />
+            <a href="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="_blank"><img className="footer_social_1 ssmedia" src={facebook} alt="facebook" /></a>
+            <a href="" target="_blank"><img className="footer_social_2 ssmedia unclick" src={twitter} alt="twitter" /></a>
+            <a href="http://instagram.com/getclarity_" target="_blank"><img className="footer_social_3 ssmedia" src={instagram} alt="instagram" /></a>
+            <a href="https://ng.linkedin.com/company/yudimy" target="_blank"><img className="footer_social_4 ssmedia" src={linkedin} alt="linkedin" /></a>
           </div>
           <div className="ftrnav">
-              <span>HOME</span>
-              <span>ABOUT US</span>
-              <span>CONTACT US</span>
-              <span>PAYMENT</span>
+              <Link to="/" ><span>HOME</span></Link>
+              <Link to="/aboutus"><span>ABOUT US</span></Link>
+              <Link to="/contact"><span>CONTACT US</span></Link>
+              <Link to="/payment" ><span>PAYMENT</span></Link>
           </div>
           <div className="ftrpolicy">
-              <span className="ftrterms">Terms of Service</span>
-              <span>Privacy Policy</span>
+          <Link to="/" ><span className="ftrterms">Terms of Service</span></Link>
+              <Link to="/privacy_policy" ><span>Privacy Policy</span></Link>
           </div>
           <hr className="ftrline" />
-          <div className="ftrcpy">Copyright 2020 Clarity by Yudimy. All rights reserved</div>
+          <div className="ftrcpy">Copyright 2020 Clarity by Yudimy. <span className="ftrrights">All rights reserved</span></div>
       </Row>
       {/* footer starts here */}
     </div>

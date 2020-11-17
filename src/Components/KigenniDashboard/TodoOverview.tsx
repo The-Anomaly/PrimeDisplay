@@ -170,7 +170,6 @@ const TodoOverview = withRouter((props: any) => {
         setTimeout(() => {
           window.location.reload();
         }, 2000);
-
       })
       .catch((err) => {
         setFormState({
@@ -179,6 +178,7 @@ const TodoOverview = withRouter((props: any) => {
         });
       });
   };
+  console.log(alltask);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -220,6 +220,7 @@ const TodoOverview = withRouter((props: any) => {
                         </div>
                       </div>
                     </div>
+
                     <div className="greenbgcont">
                       <img
                         src={greengood}
@@ -230,21 +231,23 @@ const TodoOverview = withRouter((props: any) => {
                       have super powers. Keep going Champ!!!
                     </div>
                     <div className="wrapline"></div>
-                    <div className="cww task_table newtt">
-                      <div className="cname tdw0 nuname">
-                        <div className="cww11 task_title">Task Title</div>
+                    {tasklist.length > 0 && (
+                      <div className="cww task_table newtt">
+                        <div className="cname tdw0 nuname">
+                          <div className="cww11 task_title">Task Title</div>
+                        </div>
+                        <div className="cdate cww11 tdw1 task_duration newdur">
+                          Duration
+                        </div>
+                        <div className="ctime cww11 tdw1 task_time nudate">
+                          Date Created
+                        </div>
+                        <div className="ctime cww11 tdw1 tdw1s task_status">
+                          Status
+                        </div>
+                        <div className="ctime "></div>
                       </div>
-                      <div className="cdate cww11 tdw1 task_duration newdur">
-                        Duration
-                      </div>
-                      <div className="ctime cww11 tdw1 task_time nudate">
-                        Date Created
-                      </div>
-                      <div className="ctime cww11 tdw1 tdw1s task_status">
-                        Status
-                      </div>
-                      <div className="ctime "></div>
-                    </div>
+                    )}
                     {tasklist.splice(0, 2).map((data, i) => (
                       <div className="wrapc2 tasklist listit">
                         <div className="cname tdw0 titl newtitl">
@@ -281,14 +284,15 @@ const TodoOverview = withRouter((props: any) => {
                         </div>
 
                         <div className="ctime todoo">
-                          {data.status !== "pending" ? (
+                          {data.status !== "pending" && (
                             <div
                               className="savebtn todo_button"
                               onClick={() => OpenIscompleteModal(data.id)}
                             >
                               View More
                             </div>
-                          ) : (
+                          )}
+                          {data.status !== "completed" && (
                             <div
                               className="savebtn todo_button"
                               onClick={() => OpenIscompleteModal(data.id)}
@@ -332,7 +336,7 @@ const TodoOverview = withRouter((props: any) => {
         <div className="text-center">{errorMessage}</div>
         {success && (
           <Alert variant={"info"} className="text-center">
-           Task completed
+            Task completed
           </Alert>
         )}
         <span className="close_view">
@@ -373,9 +377,6 @@ const TodoOverview = withRouter((props: any) => {
             />
           </div>
           <div className="request_input">
-            <a className="request" href="#">
-              Request Counselors Input
-            </a>
           </div>
           <div className="mark_complete">
             <div

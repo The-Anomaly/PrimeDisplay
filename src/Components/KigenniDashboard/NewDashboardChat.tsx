@@ -27,7 +27,7 @@ class NewDashboardChat extends React.Component {
   this: any;
   constructor(props) {
     super(props);
-    this.initialiseChat();
+    this.initialiseChat(props.match.params.chatID);
   }
   componentWillMount() {
     const availableToken = localStorage.getItem("userToken");
@@ -41,7 +41,9 @@ class NewDashboardChat extends React.Component {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          localStorage.setItem("user", JSON.stringify(response?.data));
+          this.setState({
+            userInfo: response.data[0].email,
+          });
         }
       })
       .catch((error) => {
@@ -51,11 +53,12 @@ class NewDashboardChat extends React.Component {
   formatTime = (date) => {
     return moment(date).fromNow();
   };
-  initialiseChat() {
+  initialiseChat(id) {
     this.waitForSocketConnection(() => {
-      WebSocketInstance.fetchMessages(this.props.match.params.chatID);
+      WebSocketInstance.fetchMessages(id);
+      console.log(id)
     });
-    WebSocketInstance.connect(this?.props?.match?.params?.chatID);
+    WebSocketInstance.connect(id);
   }
   waitForSocketConnection = (callback) => {
     const component = this;
@@ -84,19 +87,20 @@ class NewDashboardChat extends React.Component {
   sendMessageHandler = (e) => {
     e.preventDefault();
     const messageObject = {
-      from: this.state.userInfo?.email,
+      from: this.state.userInfo,
       content: this.state.message,
       chatId: this.props.match.params.chatID,
     };
     WebSocketInstance.newChatMessage(messageObject);
+    WebSocketInstance.fetchMessages(this.props.match.params.chatID)
     this.setState({
       message: "",
     });
   };
 
   render() {
-    console.log(this.props.messages);
     const { isLoading, user, message }: any = this.state;
+    console.log(this.props.messages)
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -107,7 +111,7 @@ class NewDashboardChat extends React.Component {
               <DashboardLargeScreenNav title="Chat with a counsellor" />
               <Row>
                 <Col md={12} className="kisls">
-                  <div className="kdashheader npps">
+                  <div className="kdashheader npps nprr cchatht">
                     <DashboardUsernameheader
                       welcomeText={
                         " Need some clarification about your Career Insights? leave a message for your counsellor"
@@ -119,7 +123,7 @@ class NewDashboardChat extends React.Component {
                     <Col md={12} className="youwss">
                       {this.props.messages?.map((data, ind) => (
                         <>
-                          {data.author !== this.props.match.params.email && (
+                          {data.author === this.props.match.params.email && (
                             <div className="usersentwrap1" key={ind}>
                               <div className="youwrap">
                                 <span className="you11">You</span>
@@ -133,7 +137,7 @@ class NewDashboardChat extends React.Component {
                             </div>
                           )}
                           <div className="hihh">
-                            {data.author === this.props.match.params.email && (
+                            {data.author !== this.props.match.params.email && (
                               <div className="couselorsentwrap2">
                                 <div className="youwraprev">
                                   <span className="youdate">
@@ -151,21 +155,24 @@ class NewDashboardChat extends React.Component {
                           </div>
                         </>
                       ))}
-                      <div>
-                        <textarea
-                          className="form-control sendtcont"
-                          placeholder="Enter text"
-                          name="message"
-                          value={message}
-                          onChange={this.onchange}
-                        />
-                      </div>
-                      <div className="texsss1">
-                        <div
-                          className="sendmeess col-md-11"
-                          onClick={this.sendMessageHandler}
-                        >
-                          Send Message
+                      <div className="messagewrp1">
+                        <div>
+                          <input
+                            className="form-control sendtcont chatht"
+                            placeholder="Enter text"
+                            type="text"
+                            name="message"
+                            value={message}
+                            onChange={this.onchange}
+                          />
+                        </div>
+                        <div className="texsss1">
+                          <div
+                            className="sendmeess col-md-11"
+                            onClick={this.sendMessageHandler}
+                          >
+                            Send Message
+                          </div>
                         </div>
                       </div>
                     </Col>

@@ -15,44 +15,35 @@ const Navbar = withRouter((props: any) => {
     userLoggedIn: false,
     redirect: false,
   });
-  const { showNav, userLoggedIn, redirect } = state;
+  const { showNav, userLoggedIn } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
+    if (window.location.pathname === "/counsellordates") {
+      return;
+    }
     if (token) {
       setShowNav({ ...state, userLoggedIn: true });
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
-      Axios.get(`${API}/progress`, {
-        headers: { Authorization: `Token ${token}` },
+    Axios.get(`${API}/progress`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        if (response.status === 200 && response.data[0].next === "home") {
+          return props.history.push(`/free/dashboard`);
+        }
       })
-        .then((response) => {
-          if (response.status === 200 && response.data[0].next === "home") {
-            return props.history.push(`/free/dashboard`);
-          }
-        })
-        .catch((error) => {
-          
-        });
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
-  const setRedirect = () => {
-    setShowNav({
-      ...state,
-      redirect: true,
-    });
-  };
-  const renderRedirect = () => {
-    if (redirect) {
-      return <Redirect to="/" />;
-    }
-  };
 
   const logout = () => {
     localStorage.clear();
-    setRedirect();
-    window.location.assign("/")
+    window.location.assign("/");
   };
   const getCurrentAssessmentPosition = (): void => {
     const availableToken = localStorage.getItem("userToken");
@@ -116,7 +107,6 @@ const Navbar = withRouter((props: any) => {
   };
   return (
     <div>
-      {renderRedirect()}
       {/* mobile ends */}
       <div className="Navsection ">
         <div className="top-layer">
@@ -203,12 +193,12 @@ const Navbar = withRouter((props: any) => {
                         </div>
                       </div>
                       <div className="listwraperMob">
-                        <div
+                        {/* <div
                           className="navmobbtn"
                           onClick={getCurrentAssessmentPosition}
                         >
                           Dashboard
-                        </div>
+                        </div> */}
                       </div>
                     </>
                   )}

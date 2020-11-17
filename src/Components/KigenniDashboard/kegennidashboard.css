@@ -1201,6 +1201,9 @@ abbr[title] {
   .centerr1 {
     margin-bottom: 2rem;
   }
+  .messagewrp1 {
+    width: 100%;
+  }
 }
 .coonfused {
   font-size: 26px;
@@ -1216,7 +1219,7 @@ abbr[title] {
   margin-right: 1rem;
   border: 1px solid #9c1258;
   border-color: #9c1258 !important;
-  width: 168px;
+  width: 190px !important;
   min-width: 159px;
 }
 .retaketest2:hover {
@@ -1329,6 +1332,9 @@ abbr[title] {
   padding-left: 0.1rem;
   font-size: 12px;
   line-height: 4.4;
+}
+.navft {
+  font-size: 11.2px !important;
 }
 
 .avar {
@@ -1497,13 +1503,7 @@ textarea.form-control.jobr {
 textarea.form-control.jobr {
   border: 0.1px solid inherit !important;
 }
-.gbn {
-  color: #a5a5a5;
-  line-height: 41px;
-  padding-left: 1rem;
-  cursor: pointer;
-  margin-top: 1px;
-}
+
 .gbn > a {
   cursor: pointer;
 }
@@ -1890,6 +1890,10 @@ textarea.form-control.jobr {
 }
 .norec {
   text-align: center;
+}
+.dsdcx {
+  min-height: 350px;
+  width: 90%;
 }
 .norecommendations {
   width: 32%;
@@ -3088,6 +3092,7 @@ textarea.form-control.jobr {
 .hpadd {
   padding-left: 0px;
   display: inline;
+  color: #a5a5a5;
 }
 
 .task112 {
@@ -3236,6 +3241,7 @@ textarea.form-control.jobr {
 .modcomplete .modal-dialog {
   width: 45%;
 }
+
 textarea,
 .task_det:focus {
   border: #0084f4 !important;
@@ -3561,7 +3567,7 @@ input,
   }
 }
 .notpaidfix {
-  margin-top: .2rem !important;
+  margin-top: 0.2rem !important;
 }
 .notfilled {
   color: red;
@@ -3626,11 +3632,11 @@ label {
 input:focus {
   border: none;
 }
-.dkcxx{
+.dkcxx {
   display: flex;
 }
-.dscvv1{
-  padding-left: 1rem;  
+.dscvv1 {
+  padding-left: 1rem;
 }
 .todo-input::placeholder {
   font-size: 12px;
@@ -3734,9 +3740,90 @@ label {
 .precision1 {
   width: 110px !important;
 }
-.jusas{
-  margin-top: .4rem !important;
+.jusas {
+  margin-top: 0.4rem !important;
 }
-.couselorsentwrap2{
+.couselorsentwrap2 {
   padding-bottom: 1rem;
+}
+.skd11 {
+  margin-top: 1.8rem;
+}
+.gbn {
+  color: #a5a5a5 !important;
+  line-height: 41px;
+  padding-left: 1rem;
+  cursor: pointer;
+  margin-top: 1px;
+}
+.modcomplete1 .modal-dialog {
+  width: 34% !important;
+  min-width: 270px;
+}
+.datelenght {
+  width: 180px;
+  font-size: 14px;
+}
+.centrmargin {
+  margin: auto;
+}
+.newmessage12 {
+  position: absolute;
+  bottom: 0px;
+  right: 2rem;
+  width: 50px;
+  cursor: pointer;
+}
+
+.youwss div .sendtcont {
+  font-size: 14px;
+}
+.messagewrp1 {
+  position: fixed;
+  width: 80%;
+  background: #fff;
+  z-index: 2;
+  top: 74vh;
+  height: 184px;
+}
+@media (max-width: 600px) {
+  .messagewrp1 {
+    width: 93%;
+    background: white;
+  }
+  .nprr{
+    max-height: initial;
+    height: 50vh;
+    overflow: scroll;
+  }
+}
+@media(min-width:600px){
+  .nprr{
+    max-height: initial;
+    height: 60vh;
+    overflow-y: scroll;
+  }
+}
+
+.chatht {
+  height: 60px;
+}
+.cchatht {
+  height: auto;
+}
+
+.datesedit {
+  margin-top: 0 !important;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
+
+@media(max-width: 779px) {
+  .datesedit {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+  }
+}
+.textboxnonimg{
+  background-image: none;
 }

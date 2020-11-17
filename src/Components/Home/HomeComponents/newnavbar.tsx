@@ -12,21 +12,56 @@ import { Row } from "react-bootstrap";
 import demoLogoLight from "../../../assets/demologolight.png";
 
 const newNavbar = withRouter((props: any) => {
+  const [navbar, setNavbar] = React.useState(false);
   const [state, setShowNav] = React.useState({
     showNav: false,
     userLoggedIn: false,
     redirect: false,
+    userType: false,
   });
-  const { showNav, userLoggedIn, redirect } = state;
+  const { showNav, userLoggedIn, redirect, userType } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
+    if (
+      window.location.pathname === "/counsellordates" ||
+      window.location.pathname === "/thirdparty/pending" ||
+      window.location.pathname === "/thirdparty/overpaid"
+    ) {
+      return;
+    }
     if (token) {
       setShowNav({ ...state, userLoggedIn: true });
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
+    Axios.
+    all([
+      Axios.get(`${API}/progress`, {
+      headers: { Authorization: `Token ${token}` },
+    }),
+    Axios
+    .get(`${API}/currentuser`, {
+      headers: { Authorization: `Token ${token}` },
+    })])
+      .then(Axios.spread((response, response1) => {
+        console.log(response);
+        console.log(response1)
+        console.log(response1?.data[0]?.is_counsellor);
+        if(response1?.data[0]?.is_counsellor === "true" || window.location.pathname === "/counsellor/signin" || window.location.pathname === "/counsellor/signup"){
+          setShowNav({
+            ...state,
+            userType: true,
+          })
+        }
+        if (response.status === 200 && response.data[0].next === "home") {
+          return props.history.push(`/free/dashboard`);
+        }
+      }))
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
   const setRedirect = () => {
     setShowNav({
@@ -44,6 +79,16 @@ const newNavbar = withRouter((props: any) => {
     localStorage.clear();
     setRedirect();
   };
+
+  const handleScroll = () => {
+    if (window.scrollY > 750) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+  window.addEventListener("scroll", handleScroll);
+
   const getCurrentAssessmentPosition = (): void => {
     const availableToken = localStorage.getItem("userToken");
     const token: string = availableToken
@@ -113,12 +158,13 @@ const newNavbar = withRouter((props: any) => {
           {/* mobile */}
           <div className="lakk">
             <SideNav
+              openFromRight={true}
               style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
               navStyle={{ width: "70%", background: "#131313" }}
               showNav={showNav}
               onHideNav={() => setShowNav({ ...state, showNav: true })}
               titleStyle={{
-                backgroundColor: "#9c1258",
+                backgroundColor: "#23304c",
                 color: "#444444",
                 paddingLeft: 10,
                 paddingBottom: 0,
@@ -134,7 +180,7 @@ const newNavbar = withRouter((props: any) => {
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
-                    background: "#9c1258",
+                    background: "#23304c",
                     padding: "0px 4px 1px 8px",
                     color: "white",
                     fontSize: "4rem",
@@ -142,7 +188,7 @@ const newNavbar = withRouter((props: any) => {
                 >
                   <span
                     className={
-                      showNav ? "tymes animated lightSpeedIn" : "tymes"
+                      showNav ? "tymes animated lightSpeedIn space" : "tymes"
                     }
                     onClick={() =>
                       setShowNav({ ...state, showNav: !showNav ? true : false })
@@ -159,19 +205,24 @@ const newNavbar = withRouter((props: any) => {
                   }
                 >
                   <div className="listwraperMob">
-                    <Link to="/">Home</Link>
+                    <Link to="/redesign">Home</Link>
                   </div>
                   <div className="listwraperMob">
-                    <Link to="/about">About</Link>
+                    <Link to="/aboutus">About</Link>
                   </div>
                   <div className="listwraperMob">
-                    <Link to="/clarityforteams">Services</Link>
+                    <Link to="/payment">Payments</Link>
+                  </div>
+                  <div className="listwraperMob">
+                    <Link to="/contact">Contact Us</Link>
                   </div>
                   <div className="listwraperMob">
                     <Link to="/faq">Faq</Link>
                   </div>
-                  <div className="listwraperMob">Privacy Policy</div>
-                  {!userLoggedIn && (
+                  <div className="listwraperMob">
+                    <Link to="/privacy_policy">Privacy Policy</Link>
+                  </div>
+                  {/* {!userLoggedIn && (
                     <>
                       <div className="listwraperMob">
                         <Link to="/signin">
@@ -184,8 +235,8 @@ const newNavbar = withRouter((props: any) => {
                         </Link>
                       </div>
                     </>
-                  )}
-                  {userLoggedIn && (
+                  )} */}
+                  {/* {userLoggedIn && (
                     <>
                       <div className="listwraperMob">
                         <div className="navmobbtn" onClick={logout}>
@@ -201,71 +252,108 @@ const newNavbar = withRouter((props: any) => {
                         </div>
                       </div>
                     </>
-                  )}
+                  )} */}
                 </div>,
               ]}
             />
-            <div className="flexsss">
+            <div className="flexsss newflexsss">
               <Link to="/">
                 <img
                   src={demoLogo}
-                  className="clarity_logo"
+                  className="clarity_logo mobilelogo"
                   alt="clarity_logo"
                 />
               </Link>
               <div className="hamburgerwrap">
                 <div
-                  className="hamburger"
+                  className="hamburger newhamburger"
                   onClick={() =>
                     setShowNav({ ...state, showNav: !showNav ? true : false })
                   }
                 >
-                  <div className="line1"></div>
-                  <div className="line2"></div>
-                  <div className="line2"></div>
+                  <div className="line1 newline"></div>
+                  <div className="line2 newline"></div>
+                  <div className="line2 newline shrtline"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Row md={12}>
-        <div className={
-          props.mode === "light" ? "nav-wrapper redoNav privacynav": "nav-wrapper redoNav"
-          }>
+        <Row
+          md={12}
+          className={
+            navbar
+              ? "nav-wrapper redoNav nav_margin privacynav"
+              : "nav-wrapper redoNav nav_margin"
+          }
+        >
           <div className="nav_titlenew">
-            <div className="logo_clarity">
+            <div className="logo_clarity logo_clarity_new">
               <Link to="/">
-                {
-                  props.mode === "light" ? <img src={demoLogoLight} alt="clarity_logo" /> : <img src={demoLogo} alt="clarity_logo" />}
+                <img
+                  src={navbar ? demoLogoLight : demoLogo}
+                  alt="clarity_logo"
+                  className="logologo"
+                />
               </Link>
             </div>
           </div>
-          <div className="nav_titlenew navtext">
-            <span className="title hhome">
+          <div className="nav_titlenew">
+            <span className={props.home ? "title hhome" : "title"}>
               <Link to="/">Home</Link>
             </span>
-            <span className="title">
-              <Link to="/about">About Us</Link>
+            <span className={props.about ? "title hhome" : "title"}>
+              <Link to="/aboutus">About Us</Link>
             </span>
-            <span className="title">
-              <Link to="/about">Payments</Link>
+            <span className={props.payments ? "title hhome" : "title"}>
+              <Link to="/payment">Payments</Link>
             </span>
-            <span className="title">
-              <Link to="/about">Contact Us</Link>
+            <span className={props.contact ? "title hhome" : "title"}>
+              <Link to="/contact">Contact Us</Link>
             </span>
-            <span className="title">
-              <Link to="/about">FAQ</Link>
+            <span className={props.faq ? "title hhome" : "title"}>
+              <Link to="/faq">FAQ</Link>
             </span>
             {/* <span className="title">
               <Link to="/clarityforteams">SERVICES</Link>
             </span> */}
-            {!userLoggedIn ? (
-              <NavIsLoggedOut />
+            {/* {!userLoggedIn ? (
+                <NavIsLoggedOut />
+              ) : (
+                <NavIsLoggedIn Logout={logout} />
+              )} */}
+
+            {/* {userLoggedIn ? (
+              {userType === true? (<div className="title1 shiftlefff newshft">
+                <Link to="/signin">
+                  <button className="title_t signupbtn newlogin">Login</button>
+                </Link>
+              </div>):(
+                <Link to="/counsellorsignin">
+                <button className="title_t signupbtn newlogin">Login</button>
+              </Link>
+              )}
             ) : (
-              <NavIsLoggedIn Logout={logout} />
+              <div className="title1 shiftlefff newshft">
+                <button className="title_t signupbtn newlogin" onClick={logout}>
+                  Logout
+                </button>
+              </div>
+            )} */}
+
+            {!userLoggedIn ? (
+              <div className="title1 shiftlefff newshft">
+                <Link to={!userType? "/signin" : "/counsellor/signin"}>
+                  <button className="title_t signupbtn newlogin">Login</button>
+                </Link>
+              </div>) : (
+              <div className="title1 shiftlefff newshft">
+                <button className="title_t signupbtn newlogin" onClick={logout}>
+                  Logout
+                </button>
+              </div>
             )}
           </div>
-        </div>
         </Row>
       </div>
     </div>

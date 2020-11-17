@@ -19,6 +19,8 @@ import PaidOverviewCard from "./overviewcardspaid";
 import { Link } from "react-router-dom";
 import HorizontalBar from "./HorizontalBar";
 
+
+
 interface State {
   fullname: string;
   careerbussines: any;
@@ -116,9 +118,7 @@ class NewDashboard extends React.Component {
     })
       .then((response) => {
         if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
+          response?.data[0]?.view_result === true
         ) {
           this.setState({
             showfullresult: true,
@@ -127,8 +127,7 @@ class NewDashboard extends React.Component {
         }
         return window.location.assign("/paymentsummary");
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   checkIfUserHasMadePayment = () => {
     const availableToken: string | null = localStorage.getItem("userToken");
@@ -140,17 +139,14 @@ class NewDashboard extends React.Component {
     })
       .then((response) => {
         if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          response?.data[0]?.insight_plan === true
+          response?.data[0]?.view_result === true
         ) {
           this.setState({
             showfullresult: true,
           });
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   CloseWarning = () => {
     this.setState({
@@ -160,26 +156,6 @@ class NewDashboard extends React.Component {
   capitalize = (s) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
-  };
-  handleChatCheck = () => {
-    this.setState({ isLoading: true });
-    const availableToken = localStorage.getItem("userToken");
-    const token = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (response?.data[0]?.direction_plan === true) {
-          return window.location.assign("/counsellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/counsellorfee");
-        }
-      })
-      .catch((error) => {
-      });
   };
   openWarning = () => {
     this.setState({
@@ -246,27 +222,27 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                     <div className="">
-                      <Button
-                        className="retaketest"
-                        onClick={this.handleChatCheck}
-                      >
-                        Call a counsellor
-                      </Button>
-                      <Button
-                        className="retaketest2"
-                        onClick={this.openWarning}
-                      >
-                        Retake Assessment
-                      </Button>
+                      <Link to="/counsellordates">
+                        <Button className="retaketest">
+                          Book a private session
+                        </Button>
+                      </Link>
+                      {showfullresult && (
+                        <Button
+                          className="retaketest2"
+                          onClick={this.openWarning}
+                        >
+                          Retake Assessment
+                        </Button>
+                      )}
                     </div>
                   </div>
-
                   {!showfullresult && (
                     <div className="notpaid hh">
                       <div className="notpaid1">
                         <img src={caution} className="caution" alt="caution" />
                         <div className="notpaidtext">
-                          Opps!!! Seems you need to upgrade your plan to have
+                          Oops!!! Seems you need to upgrade your plan to have
                           indepth details
                         </div>
                       </div>

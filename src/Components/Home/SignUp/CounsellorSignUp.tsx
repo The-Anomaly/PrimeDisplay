@@ -1,10 +1,10 @@
 import * as React from "react";
-import Navbar from "../HomeComponents/navbar";
+import Navbar from "../HomeComponents/newnavbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Footer from "../HomeComponents/footer";
+import Footer from "../HomeComponents/newfooter";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import "./signup.css";

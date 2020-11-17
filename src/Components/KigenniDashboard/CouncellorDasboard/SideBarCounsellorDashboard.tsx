@@ -92,6 +92,19 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               Recommended Task
             </Link>
           </div>
+          <div className={props.builder ? "activegb" : "gbn"}>
+            {" "}
+            <Link to="/counsellorprofilebuilder">
+              <img
+                src={
+                  props.builder ? recommedationactive : recommedationinactive
+                }
+                className="sideimage"
+                alt="sideimage"
+              />
+              Profile Builder
+            </Link>
+          </div>
           <div className={props.assignedmemb ? "activegb" : "gbn"}>
             {" "}
             <Link to="/counsellorassignedmembers">

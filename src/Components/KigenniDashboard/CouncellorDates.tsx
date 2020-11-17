@@ -6,8 +6,8 @@ import Alert from "react-bootstrap/Alert";
 import "./kegennidashboard.css";
 import axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
-import Navbar from "../Home/HomeComponents/navbar";
-import Footer from "../Home/HomeComponents/footer";
+import Navbar from "../Home/HomeComponents/newnavbar";
+import Footer from "../Home/HomeComponents/newfooter";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import write from "../../assets/write.png";
@@ -94,6 +94,33 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       });
   };
+
+  handleChatCheck = () => {
+    console.log("checking payment status");
+    this.setState({ isLoading: true });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    axios
+      .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+        console.log(localStorage.getItem("accessFeature"));
+        if (response?.data[0]?.book_session === false) {
+          console.log("Payment Summary Check");
+          return this.sendMessageToCounselor();
+        } else {
+          console.log("No payment")
+          return window.location.assign("/paymentsummary");
+        }
+      })
+      .catch((error) => {
+        console.error("Payment Status Error");
+      });
+  };
   onChange = (date) => {
     this.getAvailableTime(date.toString());
     this.setState({
@@ -126,6 +153,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
+        this.notify("Failed to Send");
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -141,6 +169,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   notify = (message: string) => {
     toast(message, { containerId: "B" });
   };
+
   render() {
     const {
       fullname,
@@ -156,7 +185,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       <>
         <Navbar />
         <Container fluid={true}>
-          <Row className="kli6 bcbv">
+          <Row className="kli6 bcbv datesedit">
             <Col md={12} className="scheduleheader">
               Schedule a meeting
             </Col>
@@ -169,16 +198,17 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                 maxDate={new Date(endDate)}
               />
             </Col>
-            <Col md={2} className="availabledatewrapper">
+            <Col md={3} className="availabledatewrapper">
               <div>
                 {calenderTime &&
-                  calenderTime.map((data) => (
+                  calenderTime.map((data, i) => (
                     <div
                       className={
                         data.status === "available"
                           ? "activeDate"
                           : "availabledate"
                       }
+                      key={i}
                     >
                       <input
                         type="radio"
@@ -188,7 +218,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                         onChange={this.selectedTimeHandler}
                       />
                       {"  "}
-                      <div>{data.time}</div>
+                      <div className="datelenght">{data.time}</div>
                     </div>
                   ))}
               </div>
@@ -220,11 +250,8 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                     placeholder="Phone number"
                   />
                 </Col>
-                <Col md={7} className="text-right jcenter">
-                  <div
-                    className="booksession"
-                    onClick={this.sendMessageToCounselor}
-                  >
+                <Col md={7} className="text-right skd11">
+                  <div className="booksession" onClick={this.handleChatCheck}>
                     Book Session <span className="text-white">&#8594;</span>
                   </div>
                 </Col>

@@ -1,0 +1,35 @@
+.policy_page{
+    background-color: #23304c;
+    clip-path: polygon(0 0, 100% 0, 100% 54%, 0 100%);
+    padding-bottom: 49px;
+}
+.privacy-title{
+    padding: 82px 0px 76px 0px;
+}
+ h2{
+    color: #fff;
+    font-weight: 100;
+}
+.centralized-content{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -75px;
+}
+.policy-card{
+    box-shadow: -2px 6px 21px -4px rgba(0,0,0,.2);
+}
+.policy-content{
+    position: relative;
+}
+.card-header{
+    text-align: center;
+    /* color: #23304c; */
+    padding-top: 41px;
+    /* font-size: 19px; */
+    font-weight: 400;
+    padding-bottom: 25px;
+}
+.card-body{
+    word-spacing: normal;
+}

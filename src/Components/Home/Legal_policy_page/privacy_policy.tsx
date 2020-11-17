@@ -1,13 +1,11 @@
 import React from "react";
 import { Container, Col, Card } from "react-bootstrap";
 import "./privacy_policy.css";
-import Navbar from "../HomeComponents/newnavbar";
 import Footer from "../HomeComponents/newfooter";
 
 const Privacy = () => {
   return (
     <div>
-      <Navbar />
       <div className="policy_page">
         <Container>
           <div className="privacy-title">

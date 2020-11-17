@@ -19,7 +19,6 @@ import norecommendations from "../../assets/no recommendations.png";
 import DashboardNav from "./DashboardNavBar";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 import { Link } from "react-router-dom";
-import PaymentSummary from "./paymentsummary";
 import CouncellorPaymentSummary from "./counsellorpaymentsummary";
 
 class NewDashboardCounsellorSubscription extends React.Component {

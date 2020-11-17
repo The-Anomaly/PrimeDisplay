@@ -40,11 +40,13 @@ class NewDashboardSubsriptionPlan extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
+        console.log(response)
         this.setState({
           plan: response.data.plan,
         });
       })
       .catch((error) => {
+        console.error("Subscription error")
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
@@ -93,13 +95,14 @@ class NewDashboardSubsriptionPlan extends React.Component {
                         <div>
                           <div className="activeplac">Active plan</div>
                           <div className="subtert">
-                            You are currently subscribed to{" "}
+                            You are currently subscribed to the{" "}
                             <b>
-                              {plan === "insight_plan"
+                              {/* {plan === "insight_plan"
                                 ? "Insight Plan"
                                 : plan === "direction_plan"
                                 ? "Direction Plan"
-                                : "Growth Plan"}
+                                : "Growth Plan"} */}
+                                {plan}
                             </b>
                             , This subscription will expire in 23 days
                           </div>

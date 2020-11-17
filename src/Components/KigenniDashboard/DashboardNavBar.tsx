@@ -29,6 +29,7 @@ import { API } from "../../config";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import union from "../../assets/Union.png";
+import { toast } from "react-toastify";
 
 const DashboardNav = (props: any) => {
   const [user, setNewState] = React.useState("");
@@ -60,18 +61,48 @@ const DashboardNav = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        if (
-          response?.data[0]?.direction_plan ||
-          response?.data[0]?.growth_plan ||
-          // response?.data[0]?.free_plan ||
-          response?.data[0]?.insight_plan === true
-        ) {
+        if (response?.data[0]?.view_result === true) {
           return window.location.assign("/thirdpary/fullresult");
         }
-        return window.location.assign("/paymentsummary");
+        notify("Update your subscription to access this feature");
+        return window.location.assign("/dashboardsubsriptionplan");
+        // setTimeout(()=>{
+        //   window.location.assign("/paymentsummary"),
+        // }, 2000);
       })
       .catch((error) => {});
   };
+  const checkIfUserHasAccessToOpportunityRecommender = () => {
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature
+      ? JSON.parse(stringFeature)
+      : "";
+
+    if (featureToCheck["job_recommendation"] === true) {
+      console.log("Job opportunities successful");
+      window.location.assign("/jobopportunities");
+    } else {
+      notify("Update your subscription to access this feature");
+      console.log("Can't access job opportunities");
+      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+    }
+  };
+  const checkIfUserHasAccessToAskACounselor = () => {
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature
+      ? JSON.parse(stringFeature)
+      : "";
+
+    if (featureToCheck["ask_counsellor"] === true) {
+      console.log("Ask a counselor successful");
+      window.location.assign("/allusermessages");
+    } else {
+      notify("Update your subscription to access this feature");
+      console.log("Can't access ask a counselor");
+      return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+    }
+  };
+  const notify = (message: string) => toast(message, { containerId: "B" });
   return (
     <div>
       <Row>
@@ -139,7 +170,7 @@ const DashboardNav = (props: any) => {
                 />
                 Career Insight
               </div>
-              <div className={props.chat ? "activegb" : "gbn"}>
+              {/* <div className={props.chat ? "activegb" : "gbn"}>
                 {" "}
                 <Link to="/allusermessages">
                   <img
@@ -147,7 +178,47 @@ const DashboardNav = (props: any) => {
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Chat with a Counsellor
+                  Talk to a Counsellor
+                </Link>
+              </div> */}
+              <div className={props.chat ? "activegb" : "gbn"}>
+                {" "}
+                <Accordion defaultActiveKey="">
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    className="hpadd"
+                    eventKey="3"
+                  >
+                    <img
+                      src={props.chat ? chatactive : chatinactive}
+                      className="sideimage"
+                      alt="sideimage"
+                    />
+                    Talk to a Counselor
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="3">
+                    <Card.Body>
+                      <Link to="/counsellordates">
+                        <div className="task112">Book a private session</div>
+                      </Link>
+                        <div className="task112" onClick={checkIfUserHasAccessToAskACounselor}>Ask a Counselor</div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Accordion>
+              </div>
+              <div className={props.councrec ? "activegb" : "gbn"}>
+                {" "}
+                <Link to="/counsellorsrecommendation">
+                  <img
+                    src={
+                      props.councrec
+                        ? recommedationactive
+                        : recommedationinactive
+                    }
+                    className="sideimage"
+                    alt="sideimage"
+                  />
+                  Recommended Task
                 </Link>
               </div>
               <div className={props.todo ? "activegb" : "gbn"}>
@@ -177,35 +248,21 @@ const DashboardNav = (props: any) => {
                   </Accordion.Collapse>
                 </Accordion>
               </div>
-              <div className={props.councrec ? "activegb" : "gbn"}>
+              <div
+                className={props.jobrec ? "activegb" : "gbn"}
+                onClick={checkIfUserHasAccessToOpportunityRecommender}
+              >
                 {" "}
-                <Link to="/counsellorsrecommendation">
-                  <img
-                    src={
-                      props.councrec
-                        ? recommedationactive
-                        : recommedationinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Counsellors Recommendation
-                </Link>
-              </div>
-              <div className={props.jobrec ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/jobopportunities">
-                  <img
-                    src={
-                      props.jobrec
-                        ? jobrecommedationactive
-                        : jobrecommedationinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Job Recommendation
-                </Link>
+                <img
+                  src={
+                    props.jobrec
+                      ? jobrecommedationactive
+                      : jobrecommedationinactive
+                  }
+                  className="sideimage"
+                  alt="sideimage"
+                />
+                Opportunity Recommended
               </div>
               <div className={props.builder ? "activegb" : "gbn"}>
                 {" "}

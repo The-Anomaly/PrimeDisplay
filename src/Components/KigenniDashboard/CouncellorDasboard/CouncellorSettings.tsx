@@ -89,7 +89,7 @@ class CounsellorSettings extends React.Component {
     data.append("job_description", job_description);
     data.append("website_link", website_link);
     Axios.post<any, AxiosResponse<any>>(
-      `${API}/counsellors/settings`,
+      `${API}/counsellors/settings/`,
       data,
       {
         headers: { Authorization: `Token ${token}` },

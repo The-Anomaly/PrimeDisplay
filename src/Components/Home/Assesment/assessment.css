@@ -430,7 +430,7 @@
     align-self: center;
 }
 .assessrating{
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     min-width: 120px;
     display: flex;
     align-items: center;
@@ -627,4 +627,10 @@ a:hover{
   .assessmod {
     margin-left: 0% !important;
   }
+}
+span .checkmark1{
+  margin-bottom: .5rem;
+}
+.assessquestionwrap .assessrating .dv-star-rating label{
+  font-size: 1em;
 }

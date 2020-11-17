@@ -225,7 +225,10 @@ const Referrals = (props: any) => {
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
-                <DashboardCounsellorIntroHeader welcomeText="Find below all the list of successful members referred" />
+                <DashboardCounsellorIntroHeader
+                  welcomeText="Find below all the list of successful members referred"
+                  referalAmount={true}
+                />
                 <div>
                   <span className="ref_btn" onClick={ModalOpen}>
                     Get referral link{" "}
@@ -233,22 +236,25 @@ const Referrals = (props: any) => {
                 </div>
                 <Row className="signedfjss">
                   <Col md={12}>
-                    <div className="teammembr teamheading counheading mheadd">
-                      <div className="mone"> </div>
-                      <div className="mtwo">
-                        <div>Name</div>
+                    {counsellorData.length > 0 && (
+                      <div className="teammembr teamheading counheading mheadd">
+                        <div className="mone"> </div>
+                        <div className="mtwo">
+                          <div>Name</div>
+                        </div>
+                        <div className="mthree">
+                          <div>Personality Type</div>
+                        </div>
+                        <div className="mfour">
+                          <div>Availability</div>
+                        </div>
+                        <div className="mfive">
+                          <div>Status</div>
+                        </div>
+                        <div className="msix"> </div>
                       </div>
-                      <div className="mthree">
-                        <div>Personality Type</div>
-                      </div>
-                      <div className="mfour">
-                        <div>Availability</div>
-                      </div>
-                      <div className="mfive">
-                        <div>Status</div>
-                      </div>
-                      <div className="msix"> </div>
-                    </div>
+                    )}
+
                     {counsellorData &&
                       counsellorData.length > 0 &&
                       counsellorData.map((data, i) => (
@@ -310,11 +316,18 @@ const Referrals = (props: any) => {
                                 {!data.status ? "Pending" : "Completed"}
                               </span>
                             </div>
-                            {data.status && (
-                              <div className="msix">
-                                <div className="counview mbtn">View Result</div>
-                              </div>
-                            )}
+                            <a
+                              href={`/counsellor/result/${data?.email}`}
+                              target="blank"
+                            >
+                              {data.status && (
+                                <div className="msix">
+                                  <div className="counview mbtn">
+                                    View Result
+                                  </div>
+                                </div>
+                              )}
+                            </a>
                             {!data.status && (
                               <div className="msix">
                                 <div className="counview mbtn mbtnblu">
@@ -336,10 +349,12 @@ const Referrals = (props: any) => {
                       </>
                     )}
                     <div className="next_page">
-                      <div>
-                        Displaying <span className="page_num">{count}</span> out
-                        of <span className="page_num">{total_pages}</span>
-                      </div>
+                      {counsellorData.length > 0 && (
+                        <div>
+                          Displaying <span className="page_num">{count}</span>{" "}
+                          out of <span className="page_num">{total_pages}</span>
+                        </div>
+                      )}
                       <div>
                         {prevLink && (
                           <img
@@ -393,7 +408,9 @@ const Referrals = (props: any) => {
                     </span>
                   </div>
                   <div className="last_ref_modal_btn">
-                    <span className="ref_btn done" onClick={ModalClose}>Done</span>
+                    <span className="ref_btn done" onClick={ModalClose}>
+                      Done
+                    </span>
                   </div>
                 </Container>
               </Modal>

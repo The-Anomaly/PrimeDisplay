@@ -69,7 +69,7 @@ const Contactpage = () => {
 
   return (
     <div>
-    <Navbar />
+    <Navbar contact={true} />
     <Container className="homecontainer" fluid={true}>
       <div className="section-1">
         <Container>

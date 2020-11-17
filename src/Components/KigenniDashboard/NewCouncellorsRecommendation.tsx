@@ -18,17 +18,45 @@ import alertTriangle from "../../assets/alert-triangle.png";
 import alertTrianglegray from "../../assets/alertTrianglegray.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Alert } from "react-bootstrap";
+import close from "../../assets/close.svg";
+import StarRatingComponent from "react-star-rating-component";
+import axios from "axios";
 
 class CounsellorsRecommendation extends React.Component {
   state: any = {
     fullname: "",
     message: "",
     counsellor: "",
+    id: "",
     successMsg: false,
+    startDate: null,
+    endDate: null,
+    frequency: 1,
+    success: "",
     isLoading: false,
+    ratingInfo: {},
+    setReminderModal: false,
+    setRatingModal: true,
     showWarning: false,
     width: 100,
+    rate: "",
+    reason: "",
   };
+  props: any;
+  closeModal = () => {
+    this.setState({
+      setReminderModal: false,
+    });
+  };
+  openModal = (id) => {
+    console.log(id);
+    this.setState({
+      setReminderModal: true,
+      id,
+    });
+  };
+
   submitForm = (e) => {
     e.preventDefault();
     const availableToken = localStorage.getItem("userToken");
@@ -52,17 +80,25 @@ class CounsellorsRecommendation extends React.Component {
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(
-      `${API}/dashboard/counsellorrecommendation`,
-      {
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/dashboard/counsellorrecommendation`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
+      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/check-rating/`, {
         headers: { Authorization: `Token ${token}` },
-      }
-    )
-      .then((response) => {
-        this.setState({
-          counsellor: response.data,
-        });
-      })
+      }),
+    ])
+      .then(
+        axios.spread((response, response1) => {
+          this.setState({
+            counsellor: response.data,
+            ratingInfo: response1.data,
+          });
+        })
+      )
       .catch((error) => {
         if (error && error.response && error.response.data) {
           this.setState({
@@ -76,27 +112,37 @@ class CounsellorsRecommendation extends React.Component {
         });
       });
   }
-  makeRecommendationToDo = (id) => {
+  makeRecommendationToDo = () => {
+    console.log(this.state.id);
     this.setState({ isLoading: true });
+    const { startDate, frequency } = this.state;
+    if (startDate === "" || frequency === "" || startDate === "") {
+      return this.notify("Please fill all");
+    }
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
     const data = {
-      id,
+      id: this.state.id,
+      start_date: this.state.startDate,
+      reminder_frequency: this.state.frequency,
     };
     Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/make-todo`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
         if (response?.data) {
-          this.notify("Successfull created task")
-          setTimeout(()=>{
-            this.componentDidMount()
-          },3000)
+          this.notify("Successfull created task");
+          setTimeout(() => {
+            this.componentDidMount();
+            this.closeModal();
+          }, 3000);
         }
       })
       .catch((error) => {
+        this.notify("Failed to process");
+        setTimeout(() => {}, 2000);
       });
   };
   onchange = (e) => {
@@ -108,29 +154,78 @@ class CounsellorsRecommendation extends React.Component {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-  handleChatCheck = () => {
-    this.setState({ isLoading: true });
+  // handleChatCheck = () => {
+  //   this.setState({ isLoading: true });
+  //   const availableToken = localStorage.getItem("userToken");
+  //   const token = availableToken
+  //     ? JSON.parse(availableToken)
+  //     : window.location.assign("/signin");
+  //   Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+  //     headers: { Authorization: `Token ${token}` },
+  //   })
+  //     .then((response) => {
+  //       return window.location.assign("/counsellordates");
+  //       // if (response?.data[0]?.direction_plan === true) {
+  //       //   return window.location.assign("/counsellordates");
+  //       // }
+  //       // if (response?.data[0]?.direction_plan === false) {
+  //       //   return window.location.assign("/counsellorfee");
+  //       // }
+  //     })
+  //     .catch((error) => {});
+  // };
+  notify = (message: string) => toast(message, { containerId: "B" });
+  onStarClick = (nextValue, prevValue, name) => {
+    this.setState({
+      [name]: nextValue.toString(),
+    });
+  };
+  handleSubmitChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+  closeRateSession = () => {
+    this.setState({
+      setRatingModal: false,
+    });
+  };
+  openRateSession = () => {
+    this.setState({
+      setRatingModal: true,
+    });
+  };
+  submitRating = () => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      : this.props.history.push("/signin");
+    const data = {
+      rating: this.state.rate,
+    };
+    Axios.post(`${API}/counsellor/rating`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        if (response?.data[0]?.direction_plan === true) {
-          return window.location.assign("/counsellordates");
-        }
-        if (response?.data[0]?.direction_plan === false) {
-          return window.location.assign("/counsellorfee");
-        }
+        console.log(response);
       })
-      .catch((error) => {
+      .catch((err) => {
+        console.log(err);
       });
   };
-  notify = (message: string) => toast(message, { containerId: "B" });
   render() {
-    const { fullname, message, isLoading, width, counsellor } = this.state;
+    console.log(this.state.ratingInfo);
+    const {
+      fullname,
+      startDate,
+      success,
+      frequency,
+      setReminderModal,
+      setRatingModal,
+      rate,
+      reason,
+      counsellor,
+    } = this.state;
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -156,12 +251,11 @@ class CounsellorsRecommendation extends React.Component {
                       }
                     />
                     <div className="">
-                      <Button
+                      <Link to="/counsellordates"><Button
                         className="retaketest"
-                        onClick={this.handleChatCheck}
                       >
-                        Speak with a counsellor
-                      </Button>
+                        Book a private session
+                      </Button></Link>
                     </div>
                     <div>
                       <hr />
@@ -194,15 +288,16 @@ class CounsellorsRecommendation extends React.Component {
                                       Convert this recommendation to a task
                                     </div>
                                   </div>
-                                  <div className="upss smtd smtdis">
-                                    <a>
-                                    Set Reminder{" "}
-                                    </a>
+                                  <div
+                                    className="upss smtd smtdis"
+                                    onClick={() => this.openModal(data.id)}
+                                  >
+                                    <a>Set Reminder </a>
                                   </div>
                                 </div>
                               </Col>
                             )}
-                            {data.todo  === false && (
+                            {data.todo === false && (
                               <Col md={12} className="zeropad">
                                 <div className="notpaid notppd notpaidfix">
                                   <div className="notpaid1">
@@ -215,10 +310,11 @@ class CounsellorsRecommendation extends React.Component {
                                       Convert this recommendation to a task
                                     </div>
                                   </div>
-                                  <div className="retaketest upss smtd">
-                                    <div onClick={()=>this.makeRecommendationToDo(data.id)}>
-                                      Set Reminder{" "}
-                                    </div>
+                                  <div
+                                    className="retaketest upss smtd"
+                                    onClick={() => this.openModal(data.id)}
+                                  >
+                                    <div>Set Reminder </div>
                                   </div>
                                 </div>
                               </Col>
@@ -252,6 +348,97 @@ class CounsellorsRecommendation extends React.Component {
             hideProgressBar={true}
             position={toast.POSITION.TOP_CENTER}
           />
+          <Modal
+            show={setReminderModal}
+            centered={true}
+            onHide={this.closeModal}
+            className="modcomplete1 fixmodal"
+          >
+            <Modal.Title className="modal_title create_title">
+              Set Reminder
+            </Modal.Title>
+            {success && (
+              <Alert variant={"info"} className="text-center">
+                Successfull
+              </Alert>
+            )}
+            <a className="close_view" onClick={this.closeModal}>
+              <img className="closeview" src={close} alt="close" />
+            </a>
+            <Modal.Body className="create_body">
+              <div className="modal_det">
+                <div className="titlee">Start Date</div>
+                <input
+                  className="note_det create_det "
+                  type="date"
+                  placeholder="Select a preferred start date for your task"
+                  value={startDate}
+                  name={"startDate"}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="modal_det">
+                <div className="titlee">Reminder Frequency</div>
+                <input
+                  className="note_det create_det "
+                  type="number"
+                  placeholder="Enter Duration "
+                  value={frequency}
+                  name={"frequency"}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="mark_complete">
+                <div
+                  className="savebtn todo_button markit createit"
+                  onClick={() => this.makeRecommendationToDo()}
+                >
+                  Save
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
+          <Modal
+            show={setRatingModal}
+            className="modcomplete4 fixmodal"
+            centered={true}
+            onHide={this.closeRateSession}
+          >
+            <Modal.Title className="modal_title">
+              <div className="pleaseRate">Please rate your last session</div>
+            </Modal.Title>
+            <a className="close_view" onClick={this.closeRateSession}>
+              <img className="closeview" src={close} alt="close" />
+            </a>
+            <Modal.Body>
+              {" "}
+              <div className="ratingcont">
+                <StarRatingComponent
+                  name="rate"
+                  starCount={5}
+                  value={rate}
+                  onStarClick={this.onStarClick}
+                  emptyStarColor={"#444"}
+                />
+              </div>
+              <div className="modal_det">
+                <textarea
+                  className="task_det"
+                  placeholder="Why your rating"
+                  disabled={true}
+                  value={reason}
+                  name="reason"
+                  onChange={this.handleSubmitChange}
+                ></textarea>
+              </div>
+              <div className="btnhandle">
+                <div>
+                  <span className="notnow">Not now</span>
+                  <span className="rightnow">Submit</span>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
         </Container>
       </>
     );
