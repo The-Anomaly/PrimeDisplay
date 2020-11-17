@@ -111,10 +111,10 @@ const DashboardNav = (props: any) => {
             {" "}
             <img src={imgCart} className="imgCart newcart" alt="imgCart" />
           </Link>
-          <div className="hamburger" onClick={() => setShowNav(true)}>
+          <div className="hamburger hamdash" onClick={() => setShowNav(true)}>
             <div className="line2a"></div>
             <div className="line2a"></div>
-            <div className="line2a"></div>
+            <div className="line2a newlinedash"></div>
           </div>
         </div>
       </Row>

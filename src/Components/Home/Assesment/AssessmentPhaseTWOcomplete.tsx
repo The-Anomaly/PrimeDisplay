@@ -33,7 +33,7 @@ const AssessmentSecondPhaseComplete = () => {
     <div>
       <Navbar />
       <Container fluid={true}>
-        <Row className="firstrowcf cftcontent">
+        <Row className='firstrowcf cftcontent assesspadd'>
           <AssessmentFirstSection
             progressBar={20}
             phase="Phase 2"

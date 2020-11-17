@@ -114,7 +114,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                           </div>
                         </div>
                         <Col md={12} className="youwss">
-                          {plan === "One-off Insight Plan" && (
+                          {plan === "One-Off Insight Plan" && (
                             <Col
                               md={3}
                               sm={6}

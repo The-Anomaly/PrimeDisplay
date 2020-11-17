@@ -71,7 +71,7 @@ const SideBarNewDashboard = (props: any) => {
 
     if (featureToCheck["job_recommendation"] === true) {
       console.log("Job opportunities successful");
-      window.location.assign("/jobopportunities");
+      return window.location.assign("/jobopportunities");
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");

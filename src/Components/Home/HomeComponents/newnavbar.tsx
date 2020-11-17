@@ -18,10 +18,25 @@ const newNavbar = withRouter((props: any) => {
     userLoggedIn: false,
     redirect: false,
     userType: false,
+    darknav: false,
   });
-  const { showNav, userLoggedIn, redirect, userType } = state;
+  const { showNav, userLoggedIn, redirect, userType, darknav } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
+    if (
+      window.location.pathname === "/" ||
+      window.location.pathname === "/aboutus" ||
+      window.location.pathname === "/payment" ||
+      window.location.pathname === "/contact" ||
+      window.location.pathname === "/faq" ||
+      window.location.pathname === "//counsellor/signup" ||
+      window.location.pathname === "//counsellor/signin"
+    ) {
+      setShowNav({
+        ...state,
+        darknav: true,
+      });
+    }
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (
@@ -50,6 +65,7 @@ const newNavbar = withRouter((props: any) => {
         console.log(error);
       });
   }, []);
+
   const setRedirect = () => {
     setShowNav({
       ...state,
@@ -147,19 +163,20 @@ const newNavbar = withRouter((props: any) => {
             <SideNav
               openFromRight={true}
               style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
-              navStyle={{ width: "70%", background: "#131313" }}
+              navStyle={{ width: "70%", background: darknav ? "#131313" : "white" }}
               showNav={showNav}
               onHideNav={() => setShowNav({ ...state, showNav: true })}
               titleStyle={{
-                backgroundColor: "#23304c",
+                backgroundColor: darknav ? "#23304c" : "white",
                 color: "#444444",
                 paddingLeft: 10,
                 paddingBottom: 0,
                 paddingTop: 0,
                 fontSize: 17,
                 textAlign: "left",
+                height: 73,
               }}
-              itemStyle={{ backgroundColor: "#131313", paddingLeft: 25 }}
+              itemStyle={{ backgroundColor: darknav ? "#131313" : "white", paddingLeft: 25 }}
               itemHoverStyle={{ backgroundColor: "inherit" }}
               title={[
                 <div
@@ -167,9 +184,9 @@ const newNavbar = withRouter((props: any) => {
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
-                    background: "#23304c",
+                    background: darknav ? "#23304c" : "white",
                     padding: "0px 4px 1px 8px",
-                    color: "white",
+                    color: darknav ? "white" : "#9c1258",
                     fontSize: "4rem",
                   }}
                 >
@@ -193,7 +210,7 @@ const newNavbar = withRouter((props: any) => {
                 >
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/redesign">Home</Link>
+                      <Link to="/">Home</Link>
                     </div>
                   ) : (
                     " "
@@ -228,7 +245,7 @@ const newNavbar = withRouter((props: any) => {
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/faq">Faq</Link>
+                      <Link to="/faq">FAQ</Link>
                     </div>
                   ) : (
                     " "
@@ -248,7 +265,7 @@ const newNavbar = withRouter((props: any) => {
                     </div>
                   ) : (
                     <div className="listwraperMob">
-                      <div className="navmobbtn" onClick={logout}>
+                      <div className={darknav ? "navmobbtn" : "navmobbtn inapplogout"} onClick={logout}>
                         Logout
                       </div>
                     </div>
@@ -273,10 +290,10 @@ const newNavbar = withRouter((props: any) => {
                 </div>,
               ]}
             />
-            <div className="flexsss newflexsss">
+            <div className={darknav ? "flexsss newflexsss" : "flexsss newflexsss whitenav"}>
               <Link to="/">
                 <img
-                  src={demoLogo}
+                  src={darknav ? demoLogo : demoLogoLight}
                   className="clarity_logo mobilelogo"
                   alt="clarity_logo"
                 />
@@ -288,9 +305,9 @@ const newNavbar = withRouter((props: any) => {
                     setShowNav({ ...state, showNav: !showNav ? true : false })
                   }
                 >
-                  <div className="line1 newline"></div>
-                  <div className="line2 newline"></div>
-                  <div className="line2 newline shrtline"></div>
+                  <div className={darknav ? "line1 newline" : "line1 newline darkline"}></div>
+                  <div className={darknav ? "line2 newline" : "line2 newline darkline"}></div>
+                  <div className={darknav ? "line2 newline shrtline" : "line2 newline shrtline darkline"}></div>
                 </div>
               </div>
             </div>
@@ -303,11 +320,38 @@ const newNavbar = withRouter((props: any) => {
               ? "nav-wrapper redoNav nav_margin privacynav"
               : "nav-wrapper redoNav nav_margin"
           }
+          
+          // className={
+          //   navbar
+          //     ? "nav-wrapper redoNav nav_margin privacynav"
+          //     :  darknav
+          //     ? "nav-wrapper redoNav nav_margin"
+          //     : "nav-wrapper redoNav nav_margin privacynav"
+          // }
+
+          // className={
+          //   !navbar && darknav
+          //     ? "nav-wrapper redoNav nav_margin"
+          //     : !navbar && !darknav
+          //     ? "nav-wrapper redoNav nav_margin privacynav"
+          //     : navbar && darknav
+          //     ? "nav-wrapper redoNav nav_margin privacynav"
+          //     : navbar && !darknav
+          //     ? "nav-wrapper redoNav nav_margin privacynav"
+          //     : "nav-wrapper redoNav nav_margin"
+          // }
         >
           <div className="nav_titlenew">
             <Link to="/">
               <img
                 src={navbar ? demoLogoLight : demoLogo}
+                // src={
+                //   navbar || !darknav
+                //     ? demoLogoLight
+                //     : darknav
+                //     ? demoLogo
+                //     : demoLogo
+                // }
                 alt="clarity_logo"
                 className="logologo"
               />

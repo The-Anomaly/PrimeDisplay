@@ -429,7 +429,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 </div>
               </div>
               <hr />
-              <div>
+              {/* <div>
                 <div className="tipswrapper">
                   <div>
                     <div className="stbly1">
@@ -449,7 +449,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   </div>
                 </div>
               </div>
-              <hr />
+              <hr /> */}
               <div className="resultsec3" id="personality">
                 <div className="reskwrap">
                   <div className="csfitscore1 juki  reskheader">

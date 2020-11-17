@@ -292,7 +292,7 @@ const Signin = withRouter((props: any) => {
                     onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                    {isLoading ? "Processing" : "Log In"}
+                    {isLoading ? "Processing..." : "Log In"}
                   </span>
                 </div>
                 <p className="rdsgnalready">

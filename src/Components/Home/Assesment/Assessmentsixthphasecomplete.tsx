@@ -4,8 +4,8 @@ import "./assessment.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Footer from "../HomeComponents/footer";
-import Navbar from "../HomeComponents/navbar";
+import Footer from "../HomeComponents/newfooter";
+import Navbar from "../HomeComponents/newnavbar";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import offcharts from "../../../assets/offcharts.png";
@@ -34,7 +34,7 @@ const AssessmentSixthPhaseComplete = () => {
     <div>
       <Navbar />
       <Container fluid={true}>
-        <Row className="firstrowcf cftcontent">
+        <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
             progressBar={70}
             phase="Phase 6"
