@@ -119,7 +119,7 @@ class CounsellorMessageOneUser extends React.Component {
                   <div className="kdashheader npps"></div>
                   <DashboardCounsellorIntroHeader
                     searcharea={false}
-                    welcomeText="This is a private chat with (Username)"
+                    welcomeText=""
                   />
                   <Row>
                     <Col md={12} className="kisls kislsoo kil123">
@@ -154,7 +154,8 @@ class CounsellorMessageOneUser extends React.Component {
                                         {this.formatTime(data.timestamp)}
                                       </span>
                                       <span className="you11b">
-                                      Counsellor {data.username}
+                                        You
+                                      {/* Counsellor {data.username} */}
                                       </span>
                                     </div>
 

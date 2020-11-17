@@ -25,6 +25,7 @@ const newNavbar = withRouter((props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (
+      window.location.pathname === "/assessmentphasesevencomplete" ||
       window.location.pathname === "/counsellordates" ||
       window.location.pathname === "/thirdparty/pending" ||
       window.location.pathname === "/thirdparty/overpaid"
@@ -304,13 +305,13 @@ const newNavbar = withRouter((props: any) => {
           }
         >
           <div className="nav_titlenew">
-              <Link to="/">
-                <img
-                  src={navbar ? demoLogoLight : demoLogo}
-                  alt="clarity_logo"
-                  className="logologo"
-                />
-              </Link>
+            <Link to="/">
+              <img
+                src={navbar ? demoLogoLight : demoLogo}
+                alt="clarity_logo"
+                className="logologo"
+              />
+            </Link>
           </div>
           <div className="nav_titlenew">
             {!userLoggedIn ? (
@@ -356,10 +357,10 @@ const newNavbar = withRouter((props: any) => {
               ""
             )}
             {!userLoggedIn ? (
-                <NavIsLoggedOut />
-              ) : (
-                <NavIsLoggedIn Logout={logout} />
-              )}
+              <NavIsLoggedOut />
+            ) : (
+              <NavIsLoggedIn Logout={logout} />
+            )}
 
             {/* {userLoggedIn ? (
               <div className="title1 shiftlefff newshft">

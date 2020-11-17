@@ -174,7 +174,7 @@ class NewDashboard extends React.Component {
     } else {
       //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
+      return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   CloseWarning = () => {

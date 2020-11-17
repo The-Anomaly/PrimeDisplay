@@ -11,6 +11,8 @@ import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSe
 import nextis5 from "../../../assets/nextis5.png";
 import { Link } from "react-router-dom";
 import "../Forms/recruitmentform.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type User = string | null;
 
@@ -22,10 +24,11 @@ const AssessmentThirdPhaseComplete = (props: any) => {
     const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
     setName(currentUser[0].first_name);
   }, []);
-  const logout = () => {
-    localStorage.clear();
-    window.location.assign("/");
+  const saveProgress = () => {
+    notify("Successfully saved progress");
   };
+  const notify = (message: string) => toast(message, { containerId: "B" });
+
   return (
     <div>
       <Navbar />
@@ -56,7 +59,7 @@ const AssessmentThirdPhaseComplete = (props: any) => {
                         Continue Assessment
                       </button>
                     </Link>{" "}
-                    <button onClick={logout} className="awesomebtnsubmit">
+                    <button onClick={saveProgress} className="awesomebtnsubmit">
                       Save Progress
                     </button>
                   </div>
@@ -67,6 +70,13 @@ const AssessmentThirdPhaseComplete = (props: any) => {
         </Row>
         <Footer />
       </Container>
+      <ToastContainer
+        enableMultiContainer
+        containerId={"B"}
+        toastClassName="bg-info text-white"
+        hideProgressBar={true}
+        position={toast.POSITION.TOP_CENTER}
+      />
     </div>
   );
 };

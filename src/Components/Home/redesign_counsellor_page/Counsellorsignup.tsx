@@ -7,10 +7,10 @@ import axios from "axios";
 import { API } from "../../../config";
 import Alert from "react-bootstrap/Alert";
 import eye from "../../../assets/eye.png";
-import eyeclosed from "../../../assets/eye.png";
+import eyeclosed from "../../../assets/eye-off.png";
 import { useEffect } from "react";
 
-const Signup = withRouter((props: any) => {
+const counsellorSignup = withRouter((props: any) => {
   const [state, setFormState] = useState({
     firstname: "",
     lastname: "",
@@ -32,6 +32,7 @@ const Signup = withRouter((props: any) => {
     howYouHeardAboutUs,
     referralCode,
     lastname,
+    isLoading,
     successMessage,
     errorMessage,
   } = state;
@@ -48,9 +49,14 @@ const Signup = withRouter((props: any) => {
     };
     console.log(data);
     //posting data to the api
-    axios.post(`${API}/accounts/signup/`, data)
+    axios.post(`${API}/accounts/counsellor-signup/`, data)
     .then( ( response ) => {
       console.log(response)
+      setFormState({
+          ...state,
+          successMessage: response.data[0].message,
+          isLoading: false,
+      })
       if (response.status === 200){
        
          localStorage.setItem(
@@ -74,7 +80,7 @@ const Signup = withRouter((props: any) => {
     })
     .catch( (error) => {
       console.log(error.response);
-      if (error){
+      if (error && error.response && error.response.data){
         return setFormState({
               ...state,
             errorMessage: error?.response?.data[0].message,
@@ -90,7 +96,38 @@ const Signup = withRouter((props: any) => {
         });
       });
   };
+  const validateForm = (e) => { 
+    e.preventDefault();
+    if (firstname == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your first name",
+      });
+    }
+    if (lastname == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your lastname",
+      });
+    }
 
+    if (email == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your email",
+      });
+    }
+
+    if (password == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your password",
+      });
+    }
+    if (password && email) {
+      onSubmit();
+    }
+  };
   const onChangeHandler = (e) => {
     setFormState({
       ...state,
@@ -114,7 +151,7 @@ const Signup = withRouter((props: any) => {
   return (
     <div>
       <Navbar />
-      <div className="rdsignup-section paddit">
+      <div className="rdsignup-section">
         <Container>
           <Row className="rsignuprow">
             <Col md={12} className="rsignupdiv">
@@ -131,12 +168,12 @@ const Signup = withRouter((props: any) => {
               </p>
             </Col>
             <Col md={7}>
-              <Form className="rdsignupform">
+              <Form className="rdsignupform" onSubmit={validateForm}>
                 <div className="rdsignupfrmdv">
                   <h4 className="sgnfrmhder">Sign Up</h4>
                   <div>
                     <div className="sgnupfrmline"></div>
-                    <span className="sgnupdescr">(to get Clarity)</span>
+                    <span className="sgnupdescr">(Become a Clarity Counsellor)</span>
                   </div>
                 </div>
                 {successMessage && (
@@ -205,7 +242,7 @@ const Signup = withRouter((props: any) => {
                   />
                 </label>
                 <div className="text-right">
-                  <img src={eye} className="hideeye" onClick={hidePassword} alt="hideeye" />
+                  <img src={eyeclosed} className="hideeye" onClick={hidePassword} alt="hideeye" />
                 </div>
                 <p className="redsgnfrmpar">
                   Your password must be at least 6 characters long and must
@@ -265,11 +302,11 @@ const Signup = withRouter((props: any) => {
                     onClick={onSubmit}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                    Sign Up
+                    {!isLoading ? "Sign Up" : "Signing Up"}
                   </span>
                 </div>
                 <p className="rdsgnalready">
-                  Already Registered? <Link to="/signin">Sign In</Link>
+                  Already Registered? <Link to="/counsellorsignin">Sign In</Link>
                 </p>
               </Form>
             </Col>
@@ -279,4 +316,4 @@ const Signup = withRouter((props: any) => {
     </div>
   );
 });
-export default Signup;
+export default counsellorSignup;

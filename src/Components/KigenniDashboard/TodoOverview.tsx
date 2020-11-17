@@ -20,6 +20,8 @@ import close from "../../assets/close.svg";
 import { useState } from "react";
 import noplan from "../../assets/noplan.png";
 import { toast, ToastContainer } from "react-toastify";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 const moment = require("moment");
 
 const TodoOverview = withRouter((props: any) => {
@@ -207,7 +209,7 @@ const TodoOverview = withRouter((props: any) => {
                 <Row>
                   <Col md={12}>
                     <div className="wwrap">
-                      <div className="fourinfo">
+                      <div className="fourinfo hidinsmall">
                         <div className="firstoffour">
                           <div className="fouri1"></div>
                           <div className="fouri1a">
@@ -233,7 +235,79 @@ const TodoOverview = withRouter((props: any) => {
                         </div>
                       </div>
                     </div>
-
+                    <div className="mobilefour">
+                      <Carousel
+                        additionalTransfrom={0}
+                        arrows={false}
+                        autoPlay={true}
+                        autoPlaySpeed={7000}
+                        centerMode={false}
+                        containerClass="container-with-dots"
+                        dotListClass=""
+                        draggable
+                        focusOnSelect={false}
+                        infinite={true}
+                        itemClass=""
+                        keyBoardControl
+                        minimumTouchDrag={80}
+                        renderDotsOutside={false}
+                        responsive={{
+                          desktop: {
+                            breakpoint: {
+                              max: 3000,
+                              min: 1024,
+                            },
+                            items: 1,
+                            paritialVisibilityGutter: 40,
+                          },
+                          mobile: {
+                            breakpoint: {
+                              max: 710,
+                              min: 0,
+                            },
+                            items: 1,
+                            paritialVisibilityGutter: 30,
+                          },
+                          tablet: {
+                            breakpoint: {
+                              max: 1024,
+                              min: 710,
+                            },
+                            items: 2,
+                            paritialVisibilityGutter: 30,
+                          },
+                        }}
+                        showDots={false}
+                        sliderClass=""
+                        slidesToSlide={1}
+                        swipeable
+                        className="center-changed"
+                      >
+                        <div className="firstoffour mobileviewtodo">
+                          <div className="fouri1"></div>
+                          <div className="fouri1a">
+                            <div className="mmber">Total Tasks </div>
+                            <div className="mmber1">{user?.total_tasks}</div>
+                          </div>
+                        </div>
+                        <div className="firstoffour mobileviewtodo">
+                          <div className="fouri1"></div>
+                          <div className="fouri1a">
+                            <div className="mmber">Task Completed</div>
+                            <div className="mmber1">
+                              {user?.completed_tasks}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="firstoffour mobileviewtodo">
+                          <div className="fouri1"></div>
+                          <div className="fouri1a">
+                            <div className="mmber">Task Pending</div>
+                            <div className="mmber1">{user?.pending_tasks}</div>
+                          </div>
+                        </div>
+                      </Carousel>
+                    </div>
                     <div className="greenbgcont">
                       <img
                         src={greengood}

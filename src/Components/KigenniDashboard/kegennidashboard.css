@@ -3232,7 +3232,7 @@ textarea.form-control.jobr {
   font-size: 13px;
   display: flex;
   justify-content: space-between;
-  width: 97%;
+  width: 95%;
   padding: 0.5rem 1rem 1rem 1.8rem;
 }
 .page_num {
@@ -3401,13 +3401,18 @@ input,
     margin-right: 8%;
   }
 }
-
+.mobilefour{
+  display: none;
+}
 @media (max-width: 670px) {
   .todoo {
     margin-right: 0rem;
   }
   .tasklist {
     padding-left: 1rem;
+  }
+  .mobilefour{
+    display: block;
   }
 }
 
@@ -3830,6 +3835,9 @@ label {
   .datesedit {
     padding-top: 3rem;
     padding-bottom: 1rem;
+  }
+  .hidinsmall{
+    display: none !important;
   }
 }
 .textboxnonimg {

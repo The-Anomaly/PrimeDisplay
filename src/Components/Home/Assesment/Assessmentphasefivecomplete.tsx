@@ -10,6 +10,9 @@ import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import offcharts from "../../../assets/offcharts.png";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 // team
 type User = string | null;
@@ -19,13 +22,14 @@ const AssessmentFifthPhaseComplete = () => {
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
-    const currentUser = user ?JSON.parse(user):[{first_name:""}];
+    const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
     setName(currentUser[0].first_name);
   }, []);
-  const logout = () => {
-    localStorage.clear();
-    window.location.assign("/");
+  const saveProgress = () => {
+    notify("Successfully saved progress");
   };
+  const notify = (message: string) => toast(message, { containerId: "B" });
+
   return (
     <div>
       <Navbar />
@@ -50,18 +54,18 @@ const AssessmentFifthPhaseComplete = () => {
                     Keep going champ! You are doing great.
                   </div>
                   <div className="awesome1">
-                  There’s something fascinating about you and we can’t wait for you to see it.
+                    There’s something fascinating about you and we can’t wait
+                    for you to see it.
                   </div>
                   <div className="awesome2">
                     <Link to="/assessmentphasesix">
                       <button className="awesomebtn">
                         Continue Assessment
                       </button>
-                    </Link>
-                      {" "}
-                      <button onClick={logout} className="awesomebtnsubmit">
-                        Save Progress
-                      </button>
+                    </Link>{" "}
+                    <button onClick={saveProgress} className="awesomebtnsubmit">
+                      Save Progress
+                    </button>
                   </div>
                 </div>
               </Col>
@@ -70,6 +74,13 @@ const AssessmentFifthPhaseComplete = () => {
         </Row>
         <Footer />
       </Container>
+      <ToastContainer
+        enableMultiContainer
+        containerId={"B"}
+        toastClassName="bg-info text-white"
+        hideProgressBar={true}
+        position={toast.POSITION.TOP_CENTER}
+      />
     </div>
   );
 };

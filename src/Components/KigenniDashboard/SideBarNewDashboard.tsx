@@ -75,7 +75,7 @@ const SideBarNewDashboard = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
-      return setInterval(
+      return setTimeout(
         (window.location.pathname = "/dashboardsubscriptionplan"),
         2000
       );
@@ -90,7 +90,7 @@ const SideBarNewDashboard = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setInterval(
+      return setTimeout(
         (window.location.pathname = "/dashboardsubscriptionplan"),
         2000
       );

@@ -10,6 +10,9 @@ import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import offcharts from "../../../assets/offcharts.png";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+  
 
 // team
 type User = string | null;
@@ -22,10 +25,11 @@ const AssessmentSixthPhaseComplete = () => {
     const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
     setName(currentUser[0].first_name);
   }, []);
-  const logout = () => {
-    localStorage.clear();
-    window.location.assign("/");
+  const saveProgress = () => {
+    notify("Successfully saved progress");
   };
+  const notify = (message: string) => toast(message, { containerId: "B" });
+
   return (
     <div>
       <Navbar />
@@ -56,7 +60,7 @@ const AssessmentSixthPhaseComplete = () => {
                         Continue Assessment
                       </button>
                     </Link>{" "}
-                    <button className="awesomebtnsubmit" onClick={logout}>
+                    <button className="awesomebtnsubmit" onClick={saveProgress}>
                       Save Progress
                     </button>
                   </div>
@@ -67,6 +71,13 @@ const AssessmentSixthPhaseComplete = () => {
         </Row>
         <Footer />
       </Container>
+      <ToastContainer
+        enableMultiContainer
+        containerId={"B"}
+        toastClassName="bg-info text-white"
+        hideProgressBar={true}
+        position={toast.POSITION.TOP_CENTER}
+      />
     </div>
   );
 };

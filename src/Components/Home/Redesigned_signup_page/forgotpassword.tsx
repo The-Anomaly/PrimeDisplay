@@ -20,14 +20,12 @@ const ForgotPasswordNew = withRouter((props: any) => {
   });
   const {
     email,
-    password,
-    passwordIsOpen,
-    error,
     errorMessage,
     successMessage,
     isLoading,
   } = state;
   const sendFormData = () => {
+    console.log("we are here")
     setState({ ...state, isLoading: true });
     const data = {
       email,
@@ -149,7 +147,7 @@ const ForgotPasswordNew = withRouter((props: any) => {
                 </label>
                 <div className="rdsgnupfrmbtndv">
                   <span
-                    onSubmit={validateForm}
+                    onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                     {isLoading ? "Processing" : "Submit"}
