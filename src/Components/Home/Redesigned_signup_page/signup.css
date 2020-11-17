@@ -8,6 +8,12 @@
 }
 .rsignupdiv {
   text-align: center;
+  margin-top: 116px;
+}
+@media (max-width:760px){
+  .rsignupdiv{
+    margin-top: 53px;
+  }
 }
 .t_plinkspn {
   color: #3965ff;
@@ -20,7 +26,6 @@
   padding: 40px 45px 23px 45px;
   background-color: #fff;
   color: #23304c;
-  margin-top: 3rem;
 }
 .rdsignupfrmdv {
   text-align: center;

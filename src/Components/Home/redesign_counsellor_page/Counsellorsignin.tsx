@@ -6,16 +6,16 @@ import { Container, Row, Col, Form, Alert } from "react-bootstrap";
 import axios from "axios";
 import { API } from "../../../config";
 import eye from "../../../assets/eye.png";
-import eyeclose from "../../../assets/eye-off.png";
+import eye12 from "../../../assets/eye-off.png";
 
-const Signin = withRouter((props: any) => {
+const counsellorSignin = withRouter((props: any) => {
   const [state, setState] = useState({
     email: "",
     password: "",
     errorMessage: "",
     successMessage: "",
     isLoading: false,
-    passwordIsOpen: true,
+    passwordIsOpen: false,
     error: false,
   });
   const {
@@ -37,7 +37,7 @@ const Signin = withRouter((props: any) => {
       password,
     };
     axios
-      .post(`${API}/accounts/login`, data)
+      .post(`${API}/accounts/counsellor-login`, data)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
@@ -190,7 +190,7 @@ const Signin = withRouter((props: any) => {
                   <h4 className="sgnfrmhder">Log In</h4>
                   <div>
                     <div className="sgnupfrmline"></div>
-                    <span className="sgnupdescr">(Welcome back)</span>
+                    <span className="sgnupdescr">(Welcome back Counsellor)</span>
                   </div>
                 </div>
                 {successMessage && (
@@ -250,7 +250,7 @@ const Signin = withRouter((props: any) => {
                     />
                   ) : (
                     <img
-                      src={eyeclose}
+                      src={eye}
                       className="hideeye"
                       onClick={hidePassword}
                       alt="hideeye"
@@ -271,7 +271,7 @@ const Signin = withRouter((props: any) => {
                   </span>
                 </div>
                 <p className="rdsgnalready">
-                  Don't have an account? <Link to="/signup">Sign Up</Link>
+                  Don't have an account? <Link to="/counsellorsignup">Sign Up</Link>
                 </p>
               </Form>
             </Col>
@@ -282,4 +282,4 @@ const Signin = withRouter((props: any) => {
   );
 });
 
-export default Signin;
+export default counsellorSignin;

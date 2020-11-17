@@ -1,6 +1,6 @@
 .cnfirmemail_sectn{
     background-color: #23304c;
-    height: 95vh;
+    height: 100vh;
 }
 .cnfim-heading{
     text-align: center;
@@ -9,6 +9,12 @@
     font-size: 20px;
     letter-spacing: 1px;
     margin-bottom: 20px;
+    margin-top: 130px;
+}
+@media (max-width: 760px){
+    .cnfim-heading{
+        margin-top: 80px;
+    }
 }
 .cnfim-messg{
     text-align: center;
