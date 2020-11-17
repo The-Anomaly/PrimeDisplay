@@ -6,7 +6,7 @@ import { Container, Row, Col, Form, Alert } from "react-bootstrap";
 import axios from "axios";
 import { API } from "../../../config";
 import eye from "../../../assets/eye.png";
-import eye12 from "../../../assets/eye-off.png";
+import eyeclose from "../../../assets/eye-off.png";
 
 const counsellorSignin = withRouter((props: any) => {
   const [state, setState] = useState({
@@ -50,7 +50,7 @@ const counsellorSignin = withRouter((props: any) => {
         }
         setState({
           ...state,
-          isLoading: false,
+          isLoading: true,
         });
       })
       .catch((error) => {
@@ -60,7 +60,7 @@ const counsellorSignin = withRouter((props: any) => {
             ...state,
             errorMessage: error?.response?.data[0].message,
             isLoading: false,
-            error: true,
+            error: false,
           });
         }
       });
@@ -250,7 +250,7 @@ const counsellorSignin = withRouter((props: any) => {
                     />
                   ) : (
                     <img
-                      src={eye}
+                      src={eyeclose}
                       className="hideeye"
                       onClick={hidePassword}
                       alt="hideeye"
@@ -265,9 +265,10 @@ const counsellorSignin = withRouter((props: any) => {
                 <div className="rdsgnupfrmbtndv">
                   <span
                     onSubmit={validateForm}
+                    onClick={sendFormData}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                    {isLoading ? "Processing" : "Log In"}
+                    {!isLoading ? "Log In" : "Loging In"}
                   </span>
                 </div>
                 <p className="rdsgnalready">
