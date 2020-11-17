@@ -63,8 +63,8 @@ const NewFooter: React.FC = (props) => {
               <Link to="/payment" ><span>PAYMENT</span></Link>
           </div>
           <div className="ftrpolicy">
-          <Link to="/" ><span className="ftrterms">Terms of Service</span></Link>
-              <Link to="/privacy_policy" ><span>Privacy Policy</span></Link>
+          <Link to="/terms&conditions" target="_blank"><span className="ftrterms">Terms of Service</span></Link>
+              <Link to="/privacy_policy" target="_blank"><span>Privacy Policy</span></Link>
           </div>
           <hr className="ftrline" />
           <div className="ftrcpy">Copyright 2020 Clarity by Yudimy. <span className="ftrrights">All rights reserved</span></div>

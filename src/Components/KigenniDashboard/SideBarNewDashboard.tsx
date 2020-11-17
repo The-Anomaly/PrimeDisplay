@@ -56,14 +56,13 @@ const SideBarNewDashboard = (props: any) => {
 
     if (featureToCheck["job_recommendation"] === true) {
       console.log("Job opportunities successful");
-      window.location.assign("/jobopportunities");
+      return window.location.assign("/jobopportunities");
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
-      return setInterval(
-        (window.location.pathname = "/dashboardsubscriptionplan"),
-        2000
-      );
+      return setTimeout(() => {
+        window.location.pathname = "/dashboardsubscriptionplan"
+      }, 2000);
     }
   };
   const checkIfUserHasAccessToAskACounselor = () => {
@@ -75,10 +74,9 @@ const SideBarNewDashboard = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setInterval(
-        (window.location.pathname = "/dashboardsubscriptionplan"),
-        2000
-      );
+      return setTimeout(() => {
+        window.location.pathname = "/dashboardsubscriptionplan"
+      }, 2000);
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });

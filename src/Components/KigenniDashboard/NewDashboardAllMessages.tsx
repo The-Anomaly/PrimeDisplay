@@ -43,10 +43,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
   React.useEffect(() => {
     const stringFeature = localStorage.getItem("accessFeature");
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    if (featureToCheck["ask_counsellor"] === true) {
-      console.log("Ask a counselor successful");
-      window.location.assign("/allusermessages");
-    } else {
+    if (featureToCheck["ask_counsellor"] === false) {
       //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
       setInterval(
