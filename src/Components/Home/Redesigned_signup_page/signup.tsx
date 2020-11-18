@@ -106,6 +106,38 @@ const Signup = withRouter((props: any) => {
       howYouHeardAboutUs: e.target.value,
     });
   };
+  const validateForm = (e) => { 
+    e.preventDefault();
+    if (firstname == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your first name",
+      });
+    }
+    if (lastname == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your lastname",
+      });
+    }
+
+    if (email == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your email",
+      });
+    }
+
+    if (password == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter your password",
+      });
+    }
+    if (password && email) {
+      onSubmit();
+    }
+  };
   const hidePassword=()=>{
     setFormState({
       ...state,
@@ -132,7 +164,7 @@ const Signup = withRouter((props: any) => {
               </p>
             </Col>
             <Col md={7}>
-              <Form className="rdsignupform">
+              <Form className="rdsignupform" onSubmit={validateForm}>
                 <div className="rdsignupfrmdv">
                   <h4 className="sgnfrmhder">Sign Up</h4>
                   <div>
@@ -276,12 +308,13 @@ const Signup = withRouter((props: any) => {
                   </Col>
                 </Row>
                 <div className="rdsgnupfrmbtndv">
-                  <span
+                  <button
+                    type="submit"
                     onClick={onSubmit}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                       {!isLoading ? "Sign Up" : "Processing..."}
-                  </span>
+                  </button>
                 </div>
                 <p className="rdsgnalready">
                   Already Registered? <Link to="/signin">Sign In</Link>

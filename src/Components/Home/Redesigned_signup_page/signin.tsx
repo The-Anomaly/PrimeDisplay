@@ -263,13 +263,13 @@ const Signin = withRouter((props: any) => {
                   </p>
                 </div>
                 <div className="rdsgnupfrmbtndv">
-                  <span
-                    onSubmit={validateForm}
+                  <button
+                    type="submit"
                     onClick={sendFormData}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                     {!isLoading ? "Log In" : "Processing..."}
-                  </span>
+                  </button>
                 </div>
                 <p className="rdsgnalready">
                   Don't have an account? <Link to="/signup">Sign Up</Link>

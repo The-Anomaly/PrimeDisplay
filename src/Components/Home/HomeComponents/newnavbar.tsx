@@ -344,7 +344,7 @@ const newNavbar = withRouter((props: any) => {
             {!userLoggedIn ? (
               <div className="title1 shiftlefff newshft">
                 <Link to={!userType? "/signin" : "/counsellor/signin"}>
-                  <button className="title_t signupbtn newlogin">Login</button>
+                  <button className="title_t signupbtn newlogin">Log In</button>
                 </Link>
               </div>) : (
               <div className="title1 shiftlefff newshft">

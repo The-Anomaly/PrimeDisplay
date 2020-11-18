@@ -402,13 +402,13 @@ const counsellorSignup = withRouter((props: any) => {
                     />
                   </Col> */}
                 <div className="rdsgnupfrmbtndv">
-                  <span
+                  <button
+                  type="submit"
                     onClick={onSubmit}
-                    onSubmit={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                     {!isLoading ? "Sign Up" : "Processing..."}
-                  </span>
+                  </button>
                 </div>
                 <p className="rdsgnalready">
                   Already Registered? <Link to="/counsellor/signin">Sign In</Link>

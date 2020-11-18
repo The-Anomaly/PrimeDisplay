@@ -241,3 +241,15 @@
 .paymentdescrip {
     padding-bottom: 0rem;
 }
+.centered_payment-adjmt{
+    display: none;
+}
+ @media (max-width: 760px){
+     .pceadjmt{
+        display: none;
+    } 
+    .centered_payment-adjmt{
+        display: block;
+        justify-content: center;
+    }
+} 
