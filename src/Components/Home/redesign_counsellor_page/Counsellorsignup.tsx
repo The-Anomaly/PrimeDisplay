@@ -356,8 +356,6 @@ const counsellorSignup = withRouter((props: any) => {
                   contain letters, numbers and special characters. Cannot
                   contain whitespace.
                 </p>
-                <Row>
-                  <Col md={6}>
                     {" "}
                     <span className="rdfrmlblslt">How you heard about us</span>
                     <select
@@ -390,8 +388,8 @@ const counsellorSignup = withRouter((props: any) => {
                         Friend
                       </option>
                     </select>
-                  </Col>
-                  <Col md={6}>
+                  
+                  {/* <Col md={6}>
                     <span className="rdfrmlbl rdfrmlblrf"> Referral code </span>
                     <input
                       type="text"
@@ -402,19 +400,18 @@ const counsellorSignup = withRouter((props: any) => {
                       onChange={onChangeHandler}
                       placeholder="Enter referral code (optional)"
                     />
-                  </Col>
-                </Row>
+                  </Col> */}
                 <div className="rdsgnupfrmbtndv">
                   <span
                     onClick={onSubmit}
                     onSubmit={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                    {!isLoading ? "Sign Up" : "Signing Up"}
+                    {!isLoading ? "Sign Up" : "Processing..."}
                   </span>
                 </div>
                 <p className="rdsgnalready">
-                  Already Registered? <Link to="/counsellorsignin">Sign In</Link>
+                  Already Registered? <Link to="/counsellor/signin">Sign In</Link>
                 </p>
               </Form>
             </Col>

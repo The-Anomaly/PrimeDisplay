@@ -15,7 +15,7 @@ const counsellorSignin = withRouter((props: any) => {
     errorMessage: "",
     successMessage: "",
     isLoading: false,
-    passwordIsOpen: false,
+    passwordIsOpen: true,
     error: false,
   });
   const {
@@ -268,11 +268,11 @@ const counsellorSignin = withRouter((props: any) => {
                     onClick={sendFormData}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                    {!isLoading ? "Log In" : "Loging In"}
+                    {!isLoading ? "Log In" : "Processing..."}
                   </span>
                 </div>
                 <p className="rdsgnalready">
-                  Don't have an account? <Link to="/counsellorsignup">Sign Up</Link>
+                  Don't have an account? <Link to="/counsellor/signup">Sign Up</Link>
                 </p>
               </Form>
             </Col>

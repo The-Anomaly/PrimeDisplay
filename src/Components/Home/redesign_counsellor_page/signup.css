@@ -89,9 +89,14 @@
     appearance: none;
     background-image: url(../../../assets/dwn-arrw.png);
     background-repeat: no-repeat;
-    background-position-x: 212px;
+    background-position-x: 499px;
     background-position-y: 23px;
     text-overflow: ellipsis;
+  }
+  @media (max-width:1024px){
+    .rdseltinpt{
+      background-position: 214px;
+    }
   }
   .passwd-image {
     background-image: url(../../../assets/eye.png);

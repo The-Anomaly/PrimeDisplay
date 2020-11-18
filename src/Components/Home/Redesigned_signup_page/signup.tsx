@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../HomeComponents/newnavbar";
 import "./signup.css";
 import { Link, withRouter } from "react-router-dom";
@@ -7,8 +7,8 @@ import axios from "axios";
 import { API } from "../../../config";
 import Alert from "react-bootstrap/Alert";
 import eye from "../../../assets/eye.png";
-import eyeclosed from "../../../assets/eye.png";
-import { useEffect } from "react";
+import eyeclose from "../../../assets/eye-off.png";
+
 
 const Signup = withRouter((props: any) => {
   const [state, setFormState] = useState({
@@ -20,7 +20,7 @@ const Signup = withRouter((props: any) => {
     referralCode: "",
     successMessage: "",
     errorMessage: "",
-    passwordIsOpen: false,
+    passwordIsOpen: true,
     error: false,
     isLoading: false,
   });
@@ -29,6 +29,7 @@ const Signup = withRouter((props: any) => {
     email,
     passwordIsOpen,
     password,
+    isLoading,
     howYouHeardAboutUs,
     referralCode,
     lastname,
@@ -205,7 +206,21 @@ const Signup = withRouter((props: any) => {
                   />
                 </label>
                 <div className="text-right">
-                  <img src={eye} className="hideeye" onClick={hidePassword} alt="hideeye" />
+                  {passwordIsOpen ? (
+                    <img
+                      src={eye}
+                      className="hideeye"
+                      onClick={hidePassword}
+                      alt="hideeye"
+                    />
+                  ) : (
+                    <img
+                      src={eyeclose}
+                      className="hideeye"
+                      onClick={hidePassword}
+                      alt="hideeye"
+                    />
+                  )}
                 </div>
                 <p className="redsgnfrmpar">
                   Your password must be at least 6 characters long and must
@@ -265,7 +280,7 @@ const Signup = withRouter((props: any) => {
                     onClick={onSubmit}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                    Sign Up
+                      {!isLoading ? "Sign Up" : "Processing..."}
                   </span>
                 </div>
                 <p className="rdsgnalready">

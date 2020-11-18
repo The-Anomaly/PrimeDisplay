@@ -4,11 +4,12 @@ import locator from "../../../assets/locator.png";
 import seticon from "../../../assets/seticon.png";
 import Alert from "react-bootstrap/Alert";
 import mail from "../../../assets/mail_icon.png";
-import map from "../../../assets/map.png";
+import map from "../../../assets/yudimy-map.png";
 import "./contact_page.css";
 import Navbar from "../HomeComponents/newnavbar";
 import Footer from "../HomeComponents/newfooter";
 import Think from "../HomeComponents/ThinkThisIsYou";
+import { Link } from "react-router-dom";
 import { API } from "../../../config";
 import axios from 'axios';
 
@@ -161,9 +162,9 @@ const Contactpage = () => {
           <Row>
             <Col md={12}>
               <div className="contact_social">
-                <span className="social_icn twitter"></span>
-                <span className="social_icn facebook"></span>
-                <span className="social_icn linkedin"></span>
+             <Link to="/https://twitter.com/askyudimy?s=08"><span className="social_icn twitter"></span></Link>
+             <Link to="/https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr"><span className="social_icn facebook"></span></Link>
+             <Link to="/https://ng.linkedin.com/company/yudimy"><span className="social_icn linkedin"></span></Link>
               </div>
             </Col>
           </Row>
