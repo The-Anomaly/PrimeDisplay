@@ -31,6 +31,7 @@ interface State {
   successMsg: boolean;
   errorMessage: string;
   isLoading: boolean;
+  isLoading_1:boolean;
   showWarning: boolean;
   width: number;
   onlyfree: boolean;
@@ -46,6 +47,7 @@ class NewDashboard extends React.Component {
     strongcompetencechartdata: [],
     errorMessage: "",
     successMsg: false,
+    isLoading_1:false,
     isLoading: false,
     showWarning: false,
     onlyfree: false,
@@ -54,6 +56,9 @@ class NewDashboard extends React.Component {
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
+    this.setState({
+      isLoading_1:true
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {};
@@ -62,14 +67,22 @@ class NewDashboard extends React.Component {
     })
       .then((res) => {
         window.location.assign("/assessmentphaseone");
+        this.setState({
+          isLoading_1:false
+        })
       })
       .catch((err) => {
         if (err) {
+          this.setState({
+            isLoading_1:false
+          })
         }
       });
   };
   componentDidMount() {
-    this.setState({ isLoading: true });
+    this.setState({ 
+      isLoading: true
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -146,7 +159,8 @@ class NewDashboard extends React.Component {
           });
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+      });
   };
   checkIfUserHasAccessToAskACounselor = () => {
     const stringFeature = localStorage.getItem("accessFeature");
@@ -160,7 +174,7 @@ class NewDashboard extends React.Component {
     } else {
       //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
+      return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   CloseWarning = () => {
@@ -197,6 +211,7 @@ class NewDashboard extends React.Component {
       strongcompetencechartdata,
       isLoading,
       width,
+      isLoading_1,
       showfullresult,
     } = this.state;
     return (
@@ -241,7 +256,7 @@ class NewDashboard extends React.Component {
                         onClick={() =>
                           this.checkIfUserHasAccessToAskACounselor()
                         }>
-                         Ask a counselor
+                         {isLoading_1 ? "Processing":"Ask a counselor"}
                         </Button>
                       {showfullresult && (
                         <Button

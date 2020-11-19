@@ -87,6 +87,8 @@ import Signup from "./Components/Home/Redesigned_signup_page/signup";
 import Signin from "./Components/Home/Redesigned_signup_page/signin";
 import Email_confirm_page from "./Components/Home/Redesigned_confirmation_page/email_confirmation";
 import Acc_confirm_page from "./Components/Home/Redesigned_confirmation_page/account_confimatn";
+import counsellorSignup from "./Components/Home/redesign_counsellor_page/Counsellorsignup";
+import counsellorSignin from "./Components/Home/redesign_counsellor_page/Counsellorsignin";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
@@ -95,6 +97,7 @@ import { NewAbout } from "./Components/Home/About/NewAbout";
 import CounsellorCVProfileBuilder from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorCVProfileBuilder";
 import CousellorProfileBuilderEdit from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorProfileBuilder";
 import CounsellorAssignedMembersViewOne from './Components/KigenniDashboard/CouncellorDasboard/CounsellorAssignedMembersViewOne';
+import ForgotPasswordNew from './Components/Home/Redesigned_signup_page/forgotpassword';
 
 class App extends Component {
   constructor(props) {
@@ -131,6 +134,8 @@ class App extends Component {
               <Route exact path="/signup" component={Signup}/>
               <Route exact path="/signin" component={Signin}/>
               <Route exact path="/" component={RedesignedHome} />
+              <Route exact path="/counsellorsignup" component={counsellorSignup}/>
+              <Route exact path="/counsellorsignin" component={counsellorSignin}/>
               []
               {/* <Route exact path="/" component={Home} /> */}
               <Route exact path="/confirm_email" component={Email_confirm_page}/>
@@ -215,6 +220,12 @@ class App extends Component {
                 path="/assessmentphasethree"
                 component={AssessmentThirdPhase}
               />
+              <Route
+                exact
+                path="/password_recovery"
+                component={ForgotPasswordNew}
+              />
+
               <Route
                 exact
                 path="/assessmentphasecomplete"

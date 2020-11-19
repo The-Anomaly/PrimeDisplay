@@ -84,7 +84,7 @@ const DashboardNav = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
-      return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
+      return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   const checkIfUserHasAccessToAskACounselor = () => {
@@ -99,7 +99,7 @@ const DashboardNav = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
+      return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });

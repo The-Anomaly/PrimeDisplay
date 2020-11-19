@@ -46,7 +46,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     if (featureToCheck["ask_counsellor"] === false) {
       //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      setInterval(
+      setTimeout(
         (window.location.pathname = "/dashboardsubscriptionplan"),
         1000
       );

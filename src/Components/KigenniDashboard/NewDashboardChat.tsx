@@ -56,7 +56,7 @@ class NewDashboardChat extends React.Component {
   initialiseChat(id) {
     this.waitForSocketConnection(() => {
       WebSocketInstance.fetchMessages(id);
-      console.log(id)
+      console.log(id);
     });
     WebSocketInstance.connect(id);
   }
@@ -92,7 +92,7 @@ class NewDashboardChat extends React.Component {
       chatId: this.props.match.params.chatID,
     };
     WebSocketInstance.newChatMessage(messageObject);
-    WebSocketInstance.fetchMessages(this.props.match.params.chatID)
+    WebSocketInstance.fetchMessages(this.props.match.params.chatID);
     this.setState({
       message: "",
     });
@@ -100,7 +100,7 @@ class NewDashboardChat extends React.Component {
 
   render() {
     const { isLoading, user, message }: any = this.state;
-    console.log(this.props.messages)
+    console.log(this.props.messages);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -121,40 +121,43 @@ class NewDashboardChat extends React.Component {
                       <hr />
                     </div>
                     <Col md={12} className="youwss">
-                      {this.props.messages?.map((data, ind) => (
-                        <>
-                          {data.author === this.props.match.params.email && (
-                            <div className="usersentwrap1" key={ind}>
-                              <div className="youwrap">
-                                <span className="you11">You</span>
-                                <span className="youdate">
-                                  {this.formatTime(data.timestamp)}
-                                </span>
-                              </div>
-                              <div className="councellors_response">
-                                {data.content}
-                              </div>
-                            </div>
-                          )}
-                          <div className="hihh">
+                      <div className="usermmsa1">
+                        {this.props.messages?.map((data, ind) => (
+                          <div key={ind} className="usermmsa">
                             {data.author !== this.props.match.params.email && (
-                              <div className="couselorsentwrap2">
-                                <div className="youwraprev">
+                              <div className="usersentwrap1" key={ind}>
+                                <div className="youwrap">
+                                  <span className="you11">
+                                    Counsellor {data.username}
+                                  </span>
                                   <span className="youdate">
                                     {this.formatTime(data.timestamp)}
                                   </span>
-                                  <span className="you11b">
-                                    Counsellor {data.counsellor}
-                                  </span>
                                 </div>
-                                <div className="councellors_response1">
+                                <div className="councellors_response">
                                   {data.content}
                                 </div>
                               </div>
                             )}
+                            <div className="hihh">
+                              {data.author ===
+                                this.props.match.params.email && (
+                                <div className="couselorsentwrap2">
+                                  <div className="youwraprev">
+                                    <span className="youdate">
+                                      {this.formatTime(data.timestamp)}
+                                    </span>
+                                    <span className="you11b">You</span>
+                                  </div>
+                                  <div className="councellors_response1">
+                                    {data.content}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        </>
-                      ))}
+                        ))}
+                      </div>
                       <div className="messagewrp1">
                         <div>
                           <input
@@ -162,6 +165,11 @@ class NewDashboardChat extends React.Component {
                             placeholder="Enter text"
                             type="text"
                             name="message"
+                            onKeyPress={(e) => {
+                              if (e.key == "Enter") {
+                                this.sendMessageHandler(e);
+                              }
+                            }}
                             value={message}
                             onChange={this.onchange}
                           />

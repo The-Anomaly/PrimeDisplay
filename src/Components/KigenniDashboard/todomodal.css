@@ -126,6 +126,16 @@
   .date_section {
     width: 47%;
   }
+  .hidinsmall{
+    display: none !important;
+  }
+  .mobileviewtodo{
+    margin: auto;
+    width: 300px !important;
+    max-width: 324px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
 }
 
 @media (max-width: 600px) {

@@ -91,20 +91,20 @@ export default function CouncellorPaymentSummary(props: any) {
             notify(
               "You current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
-            return setInterval(
+            return setTimeout(
               (window.location.pathname = "/thirdparty/overpaid"),
               3000
             );
           }
           if (response.paymentStatus === "PAID") {
-            return setInterval(
+            return setTimeout(
               (window.location.pathname = "/thirdpary/fullresult"),
               9000
             );
           }
           if (response.paymentStatus == "PENDING") {
             notify("Payment Pending");
-            return setInterval((window.location.pathname = "/"), 9000);
+            return setTimeout((window.location.pathname = "/"), 9000);
           }
         },
         onClose: function (data) {

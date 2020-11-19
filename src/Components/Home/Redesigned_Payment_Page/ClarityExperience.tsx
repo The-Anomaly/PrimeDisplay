@@ -72,7 +72,7 @@ const Payment = (props: any) => {
             notify(
               "Your current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
-            return setInterval(
+            return setTimeout(
               (window.location.pathname = "/thirdparty/overpaid"),
               3000
             );
@@ -105,7 +105,7 @@ const Payment = (props: any) => {
           }
           if (response.paymentStatus === "PENDING") {
             notify("Payment Pending");
-            return setInterval(
+            return setTimeout(
               (window.location.pathname = "/thirdparty/pending"),
               3000
             );
@@ -113,7 +113,7 @@ const Payment = (props: any) => {
         },
         onClose: function (data) {
           console.log("On close function");
-          return setInterval(
+          return setTimeout(
               (window.location.pathname = "/dashboardsubscriptionplan"),
               3000
             );

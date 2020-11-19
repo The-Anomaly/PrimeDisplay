@@ -2,12 +2,19 @@
   background-color: #23304c;
   color: #fff;
   padding-bottom: 100px;
+  min-height: 100vh;
 }
 .rsignuprow {
   justify-content: center;
 }
 .rsignupdiv {
   text-align: center;
+  margin-top: 116px;
+}
+@media (max-width:760px){
+  .rsignupdiv{
+    margin-top: 53px;
+  }
 }
 .t_plinkspn {
   color: #3965ff;
@@ -20,7 +27,6 @@
   padding: 40px 45px 23px 45px;
   background-color: #fff;
   color: #23304c;
-  margin-top: 3rem;
 }
 .rdsignupfrmdv {
   text-align: center;
@@ -208,7 +214,7 @@
   left: initial !important;
 }
 .paddit {
-  padding-top: 9rem;
+  /* padding-top: 9rem; */
 }
 @media(max-width: 779px) {
   .paddit{

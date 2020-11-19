@@ -28,13 +28,19 @@ import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import union from "../../assets/Union.png";
 import { toast } from "react-toastify";
+import { Spinner } from "react-bootstrap";
 
 const SideBarNewDashboard = (props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
+  const [state, setState] = React.useState({ isloading: false });
   const changeHideStatus = () => {
     sethidemobile(hidemobile ? false : true);
   };
   const checkIfUserHasMadePaymentForFullResult = () => {
+    setState({
+      ...state,
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -46,9 +52,18 @@ const SideBarNewDashboard = (props: any) => {
         if (response?.data[0]?.view_result === true) {
           return window.location.assign("/thirdpary/fullresult");
         }
-        return window.location.assign("/dashboardsubscriptionplan");
+        setState({
+          ...state,
+          isloading: false,
+        });
+        return window.location.assign("/dashboardsubsriptionplan");
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setState({
+          ...state,
+          isloading: false,
+        });
+      });
   };
   const checkIfUserHasAccessToOpportunityRecommender = () => {
     const stringFeature = localStorage.getItem("accessFeature");
@@ -60,9 +75,10 @@ const SideBarNewDashboard = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
-      return setTimeout(() => {
-        window.location.pathname = "/dashboardsubscriptionplan"
-      }, 2000);
+      return setTimeout(
+        (window.location.pathname = "/dashboardsubscriptionplan"),
+        2000
+      );
     }
   };
   const checkIfUserHasAccessToAskACounselor = () => {
@@ -74,9 +90,10 @@ const SideBarNewDashboard = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setTimeout(() => {
-        window.location.pathname = "/dashboardsubscriptionplan"
-      }, 2000);
+      return setTimeout(
+        (window.location.pathname = "/dashboardsubscriptionplan"),
+        2000
+      );
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
@@ -115,6 +132,11 @@ const SideBarNewDashboard = (props: any) => {
               alt="sideimage"
             />
             Career Insight
+            {state.isloading ? (
+              <Spinner variant={"info"} animation="grow" />
+            ) : (
+              ""
+            )}
           </div>
           {/* <div className={props.chat ? "activegb" : "gbn"}>
             {" "}

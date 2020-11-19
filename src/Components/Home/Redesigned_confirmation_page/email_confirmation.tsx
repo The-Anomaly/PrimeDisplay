@@ -40,6 +40,10 @@ const Email_confirm_page = withRouter ((props: any ) => {
      axios.post(`${API}/accounts/resend-code/`,data)
      .then((response)=>{
        if (response.status === 200) {
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(response?.data?.token)
+        );
          return setState({
             ...state,
             successMessage: response.data.message,
@@ -51,7 +55,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
        console.log(error.response)
        setState({
          ...state,
-         errorMessage: error?.response?.data[0].message
+         errorMessage: error?.response?.data.message
        })
      })
    }
@@ -69,7 +73,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
 
       if (response.status === 200){
         setTimeout(()=>{
-          props?.history?.push("/clientchat")
+          props?.history?.push("/clientchat2")
           console.log(props)
         },4000)
           setState({
@@ -111,12 +115,12 @@ const Email_confirm_page = withRouter ((props: any ) => {
                 <span className="cnfirmspan"> {state.client}</span>, please enter
                 code below <br /> to confirm your Account
               {successMessage && (
-                <Alert key={1} variant="success" >
+                <Alert key={1} variant="success" className="alertzuccess">
                     {successMessage}
                 </Alert>
               )}
               {errorMessage && (
-                <Alert key={2} variant="danger">
+                <Alert key={2} variant="danger" className="alertzuccess">
                     {errorMessage}
                 </Alert>
               )}

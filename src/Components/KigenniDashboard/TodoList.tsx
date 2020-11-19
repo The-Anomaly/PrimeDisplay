@@ -24,6 +24,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ViewMoreModal from "./ViewMoreModal";
 import noplan from "../../assets/noplan.png";
+import { Spinner } from "react-bootstrap";
 const moment = require("moment");
 
 const TodoList = (props: any) => {
@@ -38,6 +39,7 @@ const TodoList = (props: any) => {
     showratemodal: true,
     count: "",
     success: "",
+    isloading:false,
     total_pages: "",
   });
   const [modalState, setModState] = useState<any>({
@@ -55,7 +57,7 @@ const TodoList = (props: any) => {
     viewmoreisOpen: false,
     CreateTaskModalisOpen: false,
   });
-  const { errorMessage, tasklist, nextLink, prevLink, reason, success } = state;
+  const { errorMessage, tasklist, nextLink, prevLink, reason,isloading, success } = state;
   const {
     task_title,
     task_description,
@@ -228,6 +230,10 @@ const TodoList = (props: any) => {
       });
   }, []);
   const LoadOldData = () => {
+    setFormState({
+      ...state,
+      isloading:true
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -242,9 +248,14 @@ const TodoList = (props: any) => {
           count: res.data.count,
           nextLink: res.data.next,
           prevLink: res.data.previous,
+          isloading:false
         });
       })
       .catch((err) => {
+        setFormState({
+          ...state,
+          isloading:false
+        })
         if (err?.status === 401) {
           props.history.push("/signin");
         }
@@ -255,19 +266,29 @@ const TodoList = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
+      setFormState({
+        ...state,
+        isloading:true
+      })
     Axios.get<any, AxiosResponse<any>>(`${nextLink}`, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        
         setFormState({
           ...state,
           tasklist: [...res.data.results],
           count: res.data.count,
           nextLink: res.data.next,
           prevLink: res.data.previous,
+          isloading:false
         });
       })
       .catch((err) => {
+        setFormState({
+          ...state,
+          isloading:false
+        })
         if (err?.status === 401) {
           props.history.push("/signin");
         }
@@ -368,7 +389,6 @@ const TodoList = (props: any) => {
                               {formatTime(data?.date_created)}
                             </div>
                           </div>
-
                           <div className="cstatus2 stat">
                             <span
                               className={
@@ -436,6 +456,9 @@ const TodoList = (props: any) => {
                             onClick={LoadNewData}
                             alt="next page"
                           />
+                        )}
+                        {isloading && (
+                          <Spinner variant={"info"} animation="grow" />
                         )}
                       </div>
                     </div>

@@ -58,7 +58,7 @@ class CounsellorMessageOneUser extends React.Component {
   };
   initialiseChat(id) {
     this.waitForSocketConnection(() => {
-      // WebSocketInstance.fetchMessages(id);
+      WebSocketInstance.fetchMessages(id);
     });
     WebSocketInstance.connect(id);
   }
@@ -119,7 +119,7 @@ class CounsellorMessageOneUser extends React.Component {
                   <div className="kdashheader npps"></div>
                   <DashboardCounsellorIntroHeader
                     searcharea={false}
-                    welcomeText="This is a private chat with (Username)"
+                    welcomeText=""
                   />
                   <Row>
                     <Col md={12} className="kisls kislsoo kil123">
@@ -127,13 +127,13 @@ class CounsellorMessageOneUser extends React.Component {
                         <div></div>
                         <Col md={12} className="youwss">
                           {this.props.messages.map((data, i) => (
-                            <div key={i}>
-                              {data.author !==
+                            <div key={i} className="usermmsa">
+                              {data.author ==
                                 this.props.match.params.email && (
                                 <div className="usersentwrap1">
                                   <div className="youwrap">
                                     <span className="you11">
-                                      Counsellor {data.author}
+                                    {data.username}
                                     </span>
                                     <span className="youdate">
                                       {this.formatTime(data.timestamp)}
@@ -146,7 +146,7 @@ class CounsellorMessageOneUser extends React.Component {
                               )}
 
                               <div className="hihh">
-                                {data.author ===
+                                {data.author !==
                                   this.props.match.params.email && (
                                   <div className="couselorsentwrap2">
                                     <div className="youwraprev">
@@ -154,7 +154,8 @@ class CounsellorMessageOneUser extends React.Component {
                                         {this.formatTime(data.timestamp)}
                                       </span>
                                       <span className="you11b">
-                                        {data.author}
+                                        You
+                                      {/* Counsellor {data.username} */}
                                       </span>
                                     </div>
 
@@ -182,6 +183,11 @@ class CounsellorMessageOneUser extends React.Component {
                                 placeholder="Enter text"
                                 name="message"
                                 value={message}
+                                onKeyPress={(e) => {
+                                  if (e.key == "Enter") {
+                                    this.sendMessageHandler(e);
+                                  }
+                                }}
                                 onChange={this.onchange}
                               />
                             </div>

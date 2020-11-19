@@ -40,6 +40,7 @@ const newNavbar = withRouter((props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (
+      window.location.pathname === "/assessmentphasesevencomplete" ||
       window.location.pathname === "/counsellordates" ||
       window.location.pathname === "/thirdparty/pending" ||
       window.location.pathname === "/thirdparty/overpaid"
