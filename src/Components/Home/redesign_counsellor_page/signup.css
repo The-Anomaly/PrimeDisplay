@@ -85,13 +85,14 @@
   .rdseltinpt {
     width: 100%;
     height: 50px;
+    padding-left: 24px;
     border: 1px solid #9999;
-    appearance: none;
-    background-image: url(../../../assets/dwn-arrw.png);
-    background-repeat: no-repeat;
-    background-position-x: 212px;
-    background-position-y: 23px;
-    text-overflow: ellipsis;
+  }
+
+  .drparr{
+    position: relative;
+    right: 1rem;
+    top: -34px;
   }
   .passwd-image {
     background-image: url(../../../assets/eye.png);
@@ -109,7 +110,7 @@
   }
   .redsgnfrmpar {
     font-size: 8px;
-    text-align: center;
+    text-align: initial;
     margin-bottom: 0px;
     margin: 0px;
     position: relative;
@@ -164,6 +165,7 @@
     background-color: #9c1258;
     color: #fff;
     width: 100%;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
     padding: 13px 23px;

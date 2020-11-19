@@ -6,7 +6,7 @@ import { Container, Row, Col, Form, Alert } from "react-bootstrap";
 import axios from "axios";
 import { API } from "../../../config";
 import eye from "../../../assets/eye.png";
-import eye12 from "../../../assets/eye-off.png";
+import eyeclose from "../../../assets/eye-off.png";
 
 const counsellorSignin = withRouter((props: any) => {
   const [state, setState] = useState({
@@ -15,7 +15,7 @@ const counsellorSignin = withRouter((props: any) => {
     errorMessage: "",
     successMessage: "",
     isLoading: false,
-    passwordIsOpen: false,
+    passwordIsOpen: true,
     error: false,
   });
   const {
@@ -50,7 +50,7 @@ const counsellorSignin = withRouter((props: any) => {
         }
         setState({
           ...state,
-          isLoading: false,
+          isLoading: true,
         });
       })
       .catch((error) => {
@@ -60,7 +60,7 @@ const counsellorSignin = withRouter((props: any) => {
             ...state,
             errorMessage: error?.response?.data[0].message,
             isLoading: false,
-            error: true,
+            error: false,
           });
         }
       });
@@ -250,7 +250,7 @@ const counsellorSignin = withRouter((props: any) => {
                     />
                   ) : (
                     <img
-                      src={eye}
+                      src={eyeclose}
                       className="hideeye"
                       onClick={hidePassword}
                       alt="hideeye"
@@ -263,15 +263,16 @@ const counsellorSignin = withRouter((props: any) => {
                   </p>
                 </div>
                 <div className="rdsgnupfrmbtndv">
-                  <span
-                    onSubmit={validateForm}
+                <button
+                    type="submit"
+                    onClick={sendFormData}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                    {isLoading ? "Processing" : "Log In"}
-                  </span>
+                    {!isLoading ? "Log In" : "Processing..."}
+                  </button>
                 </div>
                 <p className="rdsgnalready">
-                  Don't have an account? <Link to="/counsellorsignup">Sign Up</Link>
+                  Don't have an account? <Link to="/counsellor/signup">Sign Up</Link>
                 </p>
               </Form>
             </Col>

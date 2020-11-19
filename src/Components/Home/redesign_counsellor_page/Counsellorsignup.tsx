@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../HomeComponents/newnavbar";
 import "./signup.css";
 import { Link, withRouter } from "react-router-dom";
@@ -7,8 +7,8 @@ import axios from "axios";
 import { API } from "../../../config";
 import Alert from "react-bootstrap/Alert";
 import eye from "../../../assets/eye.png";
-import eyeclosed from "../../../assets/eye-off.png";
-import { useEffect } from "react";
+import eyeclose from "../../../assets/eye-off.png";
+import drpdwnarr from "../../../assets/dwn-arrw.png";
 
 const counsellorSignup = withRouter((props: any) => {
   const [state, setFormState] = useState({
@@ -20,7 +20,7 @@ const counsellorSignup = withRouter((props: any) => {
     referralCode: "",
     successMessage: "",
     errorMessage: "",
-    passwordIsOpen: false,
+    passwordIsOpen: true,
     error: false,
     isLoading: false,
   });
@@ -45,7 +45,6 @@ const counsellorSignup = withRouter((props: any) => {
       email: email,
       password: password,
       info: howYouHeardAboutUs,
-      referral_code: referralCode,
     };
     console.log(data);
     //posting data to the api
@@ -60,11 +59,11 @@ const counsellorSignup = withRouter((props: any) => {
       if (response.status === 200){
        
          localStorage.setItem(
-          "userEmail",
-          JSON.stringify(email)
+          "userToken",
+          JSON.stringify(response.data[0].token)
         );
         setTimeout(()=>{
-          props?.history?.push("/confirm_email")
+          props?.history?.push("/counselloroverview")
           console.log(props)
         },5000)
          setFormState({
@@ -124,7 +123,7 @@ const counsellorSignup = withRouter((props: any) => {
         errorMessage: "Please enter your password",
       });
     }
-    if (password && email) {
+    if (password && email ) {
       onSubmit();
     }
   };
@@ -148,6 +147,100 @@ const counsellorSignup = withRouter((props: any) => {
       passwordIsOpen:state.passwordIsOpen?false:true
     })
   }
+  const responseGoogle = (response) => {
+    const data = {
+      name: response.profileObj.name,
+      email: response.profileObj.email,
+      user_id: response.googleId,
+      imageUrl: response.profileObj.imageUrl,
+      provider: "Google",
+    };
+    axios
+      .post(`${API}/accounts/socialauth/`, data)
+      .then((response) => {
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(response?.data[0]?.token)
+        );
+        getCurrentAssessmentPosition(response.data[0]?.token);
+        getUserInfo(response.data[0]?.token);
+      })
+      .catch((error) => {
+        setFormState({
+          ...state,
+          errorMessage: "failed to login",
+        });
+      });
+  };
+  const getUserInfo = (token: string): any => {
+    axios
+      .get(`${API}/currentuser`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.setItem("user", JSON.stringify(response?.data));
+        }
+      })
+      .catch((error) => {});
+  };
+  const errorGoogle = (response) => {
+    setFormState({
+      ...state,
+      errorMessage: "failed to login",
+    });
+  };
+  const getCurrentAssessmentPosition = (token: string): void => {
+    axios
+      .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
+      .then((response) => {
+        if (
+          (response.status === 200 &&
+            response.data[0].next === "phase_four_sports") ||
+          response.data[0].next === "phase_four_business" ||
+          response.data[0].next === "phase_four_stem"
+        ) {
+          return props.history.push(`/assessmentphasefour1`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_one") {
+          return props.history.push(`/assessmentphaseone`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_two") {
+          return props.history.push(`/assessmentphasetwo`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "phase_three"
+        ) {
+          return props.history.push(`/assessmentphasethree`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_five") {
+          return props.history.push(`/assessmentphasefive`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_six") {
+          return props.history.push(`/assessmentphasesix`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "phase_seven"
+        ) {
+          return props.history.push(`/assessmentphaseseven`);
+        }
+        if (response.status === 200 && response.data[0].next === "home") {
+          return props.history.push(`/dashboard/personality`);
+        }
+      })
+      .catch((error) => {
+        setFormState({
+          ...state,
+          errorMessage: error?.response?.data?.detail,
+        });
+      });
+  };
+  useEffect(() => {
+    window.scrollTo(-0, -0);
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -242,15 +335,27 @@ const counsellorSignup = withRouter((props: any) => {
                   />
                 </label>
                 <div className="text-right">
-                  <img src={eyeclosed} className="hideeye" onClick={hidePassword} alt="hideeye" />
-                </div>
+                  {passwordIsOpen ? (
+                    <img
+                      src={eye}
+                      className="hideeye"
+                      onClick={hidePassword}
+                      alt="hideeye"
+                    />
+                  ) : (
+                    <img
+                      src={eyeclose}
+                      className="hideeye"
+                      onClick={hidePassword}
+                      alt="hideeye"
+                    />
+                  )}
+                </div>   
                 <p className="redsgnfrmpar">
                   Your password must be at least 6 characters long and must
                   contain letters, numbers and special characters. Cannot
                   contain whitespace.
                 </p>
-                <Row>
-                  <Col md={6}>
                     {" "}
                     <span className="rdfrmlblslt">How you heard about us</span>
                     <select
@@ -283,30 +388,21 @@ const counsellorSignup = withRouter((props: any) => {
                         Friend
                       </option>
                     </select>
-                  </Col>
-                  <Col md={6}>
-                    <span className="rdfrmlbl rdfrmlblrf"> Referral code </span>
-                    <input
-                      type="text"
-                      size={25}
-                      name="referralCode"
-                      className="rdfrmtinptt"
-                      value={referralCode}
-                      onChange={onChangeHandler}
-                      placeholder="Enter referral code (optional)"
-                    />
-                  </Col>
-                </Row>
+                    <div className="text-right">
+                      <img src={drpdwnarr} className="drparr" />
+                    </div>
+                 
                 <div className="rdsgnupfrmbtndv">
-                  <span
+                  <button
+                  type="submit"
                     onClick={onSubmit}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                    {!isLoading ? "Sign Up" : "Signing Up"}
-                  </span>
+                    {!isLoading ? "Sign Up" : "Processing..."}
+                  </button>
                 </div>
                 <p className="rdsgnalready">
-                  Already Registered? <Link to="/counsellorsignin">Sign In</Link>
+                  Already Registered? <Link to="/counsellor/signin">Sign In</Link>
                 </p>
               </Form>
             </Col>

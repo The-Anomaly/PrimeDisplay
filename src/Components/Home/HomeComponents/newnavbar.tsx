@@ -414,8 +414,16 @@ const newNavbar = withRouter((props: any) => {
               </div>
             ) : (
               <div className="title1 shiftlefff newshft">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                <Link to={!userType? "/signin" : "/counsellor/signin"}>
+                  <button className="title_t signupbtn newlogin">Log In</button>
+=======
+>>>>>>> remotes/origin/signup_page_alex
                 <Link to="/signin">
                   <button className="title_t signupbtn newlogin">Login</button>
+>>>>>>> master
                 </Link>
               </div>
             )} */}
