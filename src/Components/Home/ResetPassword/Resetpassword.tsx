@@ -96,10 +96,10 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
   const validateForm = (e) => {
     e.preventDefault();
     setFormState({ ...state, isLoading: true });
-    if (password.length < 7) {
+    if (password.length < 6) {
       return setFormState({
         ...state,
-        errorMessage: "Password must be more than 6 digits",
+        errorMessage: "Password must be at least 6 characters long",
         isLoading: false,
       });
     }

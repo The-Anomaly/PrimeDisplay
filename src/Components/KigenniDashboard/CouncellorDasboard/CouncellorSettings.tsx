@@ -27,7 +27,7 @@ class CounsellorSettings extends React.Component {
     successMsg: false,
     isLoading: false,
     showWarning: false,
-    image: "",
+    image: null,
     width: 100,
     fillStatus: true,
   };
@@ -177,7 +177,7 @@ class CounsellorSettings extends React.Component {
                           {" "}
                           <div className="smalls">
                             <img
-                              src={image !== "" ? image : avatar}
+                              src={image !== null ? image : avatar}
                               className="avatar avar"
                               alt="avatar"
                             />

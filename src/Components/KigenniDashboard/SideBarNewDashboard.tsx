@@ -35,20 +35,6 @@ const SideBarNewDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
   const [state, setState] = React.useState({ isloading: false });
   useEffect(() => {
-
-    const availableUser: any = localStorage.getItem("user");
-    console.log(availableUser)
-    if (availableUser === null) {
-      console.log(availableUser)
-      return props.history.push("/counsellor/signin");
-    }
-    if (availableUser) {
-      console.log("undefined")
-      const user =
-        JSON.parse(availableUser)?.is_counsellor == true
-          ? clearStorageAndTakeUserToCounsellorSignUp()
-          : "";
-    }
   }, []);
   const clearStorageAndTakeUserToCounsellorSignUp = () => {
     localStorage.clear();

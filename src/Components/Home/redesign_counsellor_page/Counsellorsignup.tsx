@@ -97,6 +97,13 @@ const counsellorSignup = withRouter((props: any) => {
   };
   const validateForm = (e) => { 
     e.preventDefault();
+    if (password.length < 6) {
+      return setFormState({
+        ...state,
+        errorMessage: "Password must be at least 6 characters long",
+        isLoading: false,
+      });
+    }
     if (firstname == "" && lastname=="" && email=="" && password == ""){
       return setFormState({
         ...state,
