@@ -227,8 +227,8 @@ const TodoOverview = withRouter((props: any) => {
                         className="greengood"
                         alt="goodimage"
                       />
-                      It Takes alot of Hero to even start a task, But seems you
-                      have super powers. Keep going Champ!!!
+                      It takes a hero to even start a task, but it seems
+                      like you have super powers. Keep going Champ!!!
                     </div>
                     <div className="wrapline"></div>
                     {tasklist.length > 0 && (

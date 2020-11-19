@@ -315,9 +315,9 @@ const newNavbar = withRouter((props: any) => {
         <Row
           md={12}
           className={
-            navbar
-              ? "nav-wrapper redoNav nav_margin privacynav"
-              : "nav-wrapper redoNav nav_margin"
+            !navbar || !darknav
+              ? "nav-wrapper redoNav nav_margin"
+              : "nav-wrapper redoNav nav_margin privacynav"
           }
           
           // className={
