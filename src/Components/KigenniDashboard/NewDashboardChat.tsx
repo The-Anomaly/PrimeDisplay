@@ -92,7 +92,7 @@ class NewDashboardChat extends React.Component {
       chatId: this.props.match.params.chatID,
     };
     WebSocketInstance.newChatMessage(messageObject);
-    WebSocketInstance.fetchMessages(this.props.match.params.chatID);
+    // WebSocketInstance.fetchMessages(this.props.match.params.chatID);
     this.setState({
       message: "",
     });

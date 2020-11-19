@@ -2499,10 +2499,19 @@ textarea.form-control.jobr {
 
 .searchinput {
   padding-left: 1.9rem;
-  color: #ced4da !important;
+  color: #717172 !important;
 }
 .searchinput::placeholder {
-  color: #ced4da;
+  color: #717172;
+}
+.ffrr1 input{
+  border: 1px solid #b6b5b5 !important;
+  outline: none;
+  color: #717172 !important;
+}
+
+.ffrr1 input{
+  outline: none;
 }
 .useri1222 {
   background: #fefefe;

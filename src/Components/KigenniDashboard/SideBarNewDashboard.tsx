@@ -21,7 +21,7 @@ import support from "../../assets/Support_active.png";
 import supportinactive from "../../assets/Support_inactive.png";
 import overview from "../../assets/overview.png";
 import "../Home/Home/Home.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from 'react-router-dom';
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
 import Card from "react-bootstrap/Card";
@@ -29,10 +29,31 @@ import Accordion from "react-bootstrap/Accordion";
 import union from "../../assets/Union.png";
 import { toast } from "react-toastify";
 import { Spinner } from "react-bootstrap";
+import { useEffect } from "react";
 
-const SideBarNewDashboard = (props: any) => {
+const SideBarNewDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
   const [state, setState] = React.useState({ isloading: false });
+  useEffect(() => {
+
+    const availableUser: any = localStorage.getItem("user");
+    console.log(availableUser)
+    if (availableUser === null) {
+      console.log(availableUser)
+      return props.history.push("/counsellor/signin");
+    }
+    if (availableUser) {
+      console.log("undefined")
+      const user =
+        JSON.parse(availableUser)?.is_counsellor == true
+          ? clearStorageAndTakeUserToCounsellorSignUp()
+          : "";
+    }
+  }, []);
+  const clearStorageAndTakeUserToCounsellorSignUp = () => {
+    localStorage.clear();
+    props.history.push("/counsellor/signin");
+  };
   const changeHideStatus = () => {
     sethidemobile(hidemobile ? false : true);
   };
@@ -107,10 +128,16 @@ const SideBarNewDashboard = (props: any) => {
         <div className="dlex">
           <Link to="/overview">
             {" "}
-            <img src={imgCart} className="imgCart33 sidebarlogo" alt="imgCart" />
+            <img
+              src={imgCart}
+              className="imgCart33 sidebarlogo"
+              alt="imgCart"
+            />
           </Link>
         </div>{" "}
-        <div className={hidemobile ? "navitemnone" : "navitem1 navft side_navv"}>
+        <div
+          className={hidemobile ? "navitemnone" : "navitem1 navft side_navv"}
+        >
           <Link to="/overview">
             <div className={props.overview ? "activegb" : "gbn"}>
               <img
@@ -283,5 +310,5 @@ const SideBarNewDashboard = (props: any) => {
       </Col>
     </>
   );
-};
+});
 export default SideBarNewDashboard;

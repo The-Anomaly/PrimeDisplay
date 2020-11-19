@@ -40,10 +40,6 @@ const Email_confirm_page = withRouter ((props: any ) => {
      axios.post(`${API}/accounts/resend-code/`,data)
      .then((response)=>{
        if (response.status === 200) {
-        localStorage.setItem(
-          "userToken",
-          JSON.stringify(response?.data?.token)
-        );
          return setState({
             ...state,
             successMessage: response.data.message,
@@ -72,8 +68,12 @@ const Email_confirm_page = withRouter ((props: any ) => {
       console.log(response)
 
       if (response.status === 200){
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(response?.data?.token)
+        );
         setTimeout(()=>{
-          props?.history?.push("/clientchat2")
+          props?.history?.push("/clientchat")
           console.log(props)
         },4000)
           setState({

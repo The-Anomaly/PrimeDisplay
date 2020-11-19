@@ -226,10 +226,14 @@ class CounsellorCVProfileBuilder extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        if(res.data.new_user){
+         return this.notify("Please fill your profile")
+        }
+        console.log(res)
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
-          experiences: [...res.data.user_experiences],
+          experiences: [...res?.data?.user_experiences],
           certifications: [...res.data.certification],
           education: [...res.data.education],
           references: [...res.data.user_refernce],
@@ -241,6 +245,7 @@ class CounsellorCVProfileBuilder extends React.Component {
         });
       })
       .catch((err) => {
+        console.log(err)
         if (err) {
           this.notify("Failed to fetch data");
         }

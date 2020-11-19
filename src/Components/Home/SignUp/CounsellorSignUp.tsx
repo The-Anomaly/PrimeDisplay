@@ -161,7 +161,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
       .catch((error) => {
         setFormState({
           ...state,
-          errorMessage: "failed to login",
+          // errorMessage: "failed to login",
         });
       });
   };
@@ -180,7 +180,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
   const errorGoogle = (response) => {
     setFormState({
       ...state,
-      errorMessage: "failed to login",
+      // errorMessage: "failed to login",
     });
   };
   const getCurrentAssessmentPosition = (token: string): void => {

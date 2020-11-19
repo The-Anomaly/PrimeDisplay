@@ -1,9 +1,9 @@
 .chatwrapper {
   box-shadow: 0 8px 50px 0 rgba(0, 0, 0, 0.05);
+  margin-top: 10%;
 }
 .chatouter {
   margin-bottom: 4rem;
-  margin-top: 7%;
   margin-left: 5%;
   background-color: #fbfbfb;
   margin-right: 5%;

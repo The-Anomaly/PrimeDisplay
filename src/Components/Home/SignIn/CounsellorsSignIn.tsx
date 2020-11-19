@@ -224,7 +224,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
   const errorGoogle = (error) => {
     setFormState({
       ...state,
-      errorMessage: "Google login failed",
+      // errorMessage: "Google login failed",
     });
   };
   const authenticate = (response) => {

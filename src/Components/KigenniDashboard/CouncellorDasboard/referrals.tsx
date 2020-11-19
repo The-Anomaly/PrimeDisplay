@@ -52,9 +52,17 @@ const Referrals = (props: any) => {
         Axios.spread((res, res1) => {
           console.log(res);
           console.log(res1);
-          if (res.status === 200) {
+          if (res1.status === 200) {
             setState({
               ...state,
+              referalInfo: res1.data.url,
+              isLoading: false,
+            });
+          }
+          if (res.status === 200 && res1.status === 200) {
+            setState({
+              ...state,
+              referalInfo: res1.data.url,
               user: [...res.data.results],
               counsellorData: [...res.data.results].reverse(),
               count: res.data.page,
@@ -62,12 +70,12 @@ const Referrals = (props: any) => {
               prevLink: res.data.previous,
               total_pages: res.data.total_pages,
               isLoading: false,
-              referalInfo: res1.data.url,
             });
           }
         })
       )
       .catch((error) => {
+        console.log(error.response)
         if (error && error.response && error.response.data) {
           setState({
             ...state,
