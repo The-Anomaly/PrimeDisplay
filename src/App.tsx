@@ -89,6 +89,7 @@ import Email_confirm_page from "./Components/Home/Redesigned_confirmation_page/e
 import Acc_confirm_page from "./Components/Home/Redesigned_confirmation_page/account_confimatn";
 import counsellorSignup from "./Components/Home/redesign_counsellor_page/Counsellorsignup";
 import counsellorSignin from "./Components/Home/redesign_counsellor_page/Counsellorsignin";
+import ForgotPasswordCounselor from "./Components/Home/redesign_counsellor_page/forgotpassword_counselor";
 import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
@@ -136,6 +137,7 @@ class App extends Component {
               <Route exact path="/" component={RedesignedHome} />
               <Route exact path="/counsellor/signup" component={counsellorSignup}/>
               <Route exact path="/counsellor/signin" component={counsellorSignin}/>
+              <Route exact path="/counsellor/signin/forgotpassword" component={ForgotPasswordCounselor}/>
               []
               {/* <Route exact path="/" component={Home} /> */}
               <Route exact path="/confirm_email" component={Email_confirm_page}/>

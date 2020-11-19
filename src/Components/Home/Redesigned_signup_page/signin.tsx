@@ -80,7 +80,7 @@ const Signin = withRouter((props: any) => {
       })
       .catch((error) => {
         console.log(error);
-        if (error) {
+        if (error && error.response && error.response.data) {
           return setState({
             ...state,
             errorMessage: error?.response?.data[0].message,
@@ -88,6 +88,12 @@ const Signin = withRouter((props: any) => {
             error: true,
           });
         }
+        setState({
+          ...state,
+          errorMessage: "Login failed, check your internet connection",
+          isLoading: false,
+          error: true,
+        });
       });
   };
   const onChangeHandler = (e) => {
@@ -175,6 +181,12 @@ const Signin = withRouter((props: any) => {
   };
   const validateForm = (e) => {
     e.preventDefault();
+    if (email=="" && password == ""){
+      return setState({
+        ...state,
+        errorMessage: "please enter your details"
+      })
+    }
     if (email === "") {
       return setState({
         ...state,
@@ -290,7 +302,7 @@ const Signin = withRouter((props: any) => {
                 <div className="rdsgnupfrmbtndv">
                   <button
                     type="submit"
-                    onClick={sendFormData}
+                    onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                     {!isLoading ? "Login" : "Processing..."}

@@ -55,7 +55,8 @@ const counsellorSignin = withRouter((props: any) => {
       })
       .catch((error) => {
         console.log(error);
-        if (error) {
+       
+        if (error && error.response && error.response.data) {
           return setState({
             ...state,
             errorMessage: error?.response?.data[0].message,
@@ -63,6 +64,12 @@ const counsellorSignin = withRouter((props: any) => {
             error: false,
           });
         }
+        setState({
+          ...state,
+          errorMessage: "Login failed, check your internet connection",
+          isLoading: false,
+          error: true,
+        });
       });
   };
   const onChangeHandler = (e) => {
@@ -150,6 +157,12 @@ const counsellorSignin = withRouter((props: any) => {
   };
   const validateForm = (e) => {
     e.preventDefault();
+    if (email=="" && password == ""){
+      return setState({
+        ...state,
+        errorMessage: "please enter your details"
+      })
+    }
     if (email === "") {
       return setState({
         ...state,
@@ -161,7 +174,8 @@ const counsellorSignin = withRouter((props: any) => {
         ...state,
         errorMessage: "Please enter your password",
       });
-    } else {
+    } 
+    else {
       sendFormData();
     }
   };
@@ -259,13 +273,13 @@ const counsellorSignin = withRouter((props: any) => {
                 </div>
                 <div className="rdsigninp">
                   <p>
-                    <Link to="/signin">Forgot your password?</Link>
+                    <Link to="/counsellor/signin/forgotpassword">Forgot your password?</Link>
                   </p>
                 </div>
                 <div className="rdsgnupfrmbtndv">
                 <button
                     type="submit"
-                    onClick={sendFormData}
+                    onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                     {!isLoading ? "Log In" : "Processing..."}
