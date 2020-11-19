@@ -30,6 +30,7 @@ class NewDashboardChat extends React.Component {
     this.initialiseChat(props.match.params.chatID);
   }
   componentWillMount() {
+    var objDiv: any = document.getElementById("your_div");
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -121,7 +122,7 @@ class NewDashboardChat extends React.Component {
                       <hr />
                     </div>
                     <Col md={12} className="youwss">
-                      <div className="usermmsa1">
+                      <div className="usermmsa1" id="your_div">
                         {this.props.messages?.map((data, ind) => (
                           <div key={ind} className="usermmsa">
                             {data.author !== this.props.match.params.email && (

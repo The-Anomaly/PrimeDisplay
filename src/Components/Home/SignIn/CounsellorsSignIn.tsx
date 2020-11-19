@@ -117,64 +117,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
       sendFormData();
     }
   };
-  const getCurrentAssessmentPosition = (token: string): void => {
-    axios
-      .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
-      .then((response) => {
-        if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_nature") ||
-          response.data[0].next === "phase_four_health" ||
-          response.data[0].next === "phase_four_building" ||
-          response.data[0].next === "phase_four_creative"
-        ) {
-          return props.history.push(`/assessmentphasefour`);
-        }
-        if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_sports") ||
-          response.data[0].next === "phase_four_business" ||
-          response.data[0].next === "phase_four_stem" ||
-          response.data[0].next === "phase_four_humanitarian"
-        ) {
-          return props.history.push(`/assessmentphasefour1`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessmentphaseone`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "onboarding_chat"
-        ) {
-          return props.history.push(`/clientchat`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_two") {
-          return props.history.push(`/assessmentphasetwo`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_three"
-        ) {
-          return props.history.push(`/assessmentphasethree`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_five") {
-          return props.history.push(`/assessmentphasefive`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_six") {
-          return props.history.push(`/assessmentphasesix`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_seven"
-        ) {
-          return props.history.push(`/assessmentphaseseven`);
-        }
-        if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/free/dashboard`);
-        }
-      })
-      .catch((error) => {});
-  };
+  
   const changeActionOnFormData = (e: any) => {
     setFormState({
       ...state,
@@ -211,7 +154,6 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
           "userToken",
           JSON.stringify(response?.data[0]?.token)
         );
-        getCurrentAssessmentPosition(response.data[0]?.token);
         getUserInfo(response.data[0]?.token);
       })
       .catch((error) => {
@@ -246,7 +188,6 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
             "userToken",
             JSON.stringify(response?.data[0]?.token)
           );
-          getCurrentAssessmentPosition(response.data[0]?.token);
           getUserInfo(response.data[0]?.token);
         })
         .catch((error) => {
