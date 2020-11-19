@@ -3230,7 +3230,7 @@ textarea.form-control.jobr {
 .todo_button {
   border-radius: 5px;
   font-size: 12px;
-  padding: 0.35rem 1.5rem;
+  padding: 0.35rem 0.5rem !important;
   width: fit-content;
   height: fit-content;
   font-weight: 600;
@@ -3276,9 +3276,6 @@ input,
 @media (max-width: 1200px) {
   .task_time {
     margin-right: 0.5rem;
-  }
-  .todo_button {
-    padding: 0.35rem 0.5rem;
   }
   .yellowgood {
     margin-left: 0rem;
@@ -3860,4 +3857,10 @@ label {
 }
 .usermmsa1{
   margin-bottom: 9rem;
+}
+
+@media(max-width: 500px) {
+  .newliee {
+    flex-direction: column;
+  }
 }

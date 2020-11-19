@@ -138,7 +138,6 @@ class App extends Component {
               <Route exact path="/counsellor/signup" component={counsellorSignup}/>
               <Route exact path="/counsellor/signin" component={counsellorSignin}/>
               <Route exact path="/counsellor/signin/forgotpassword" component={ForgotPasswordCounselor}/>
-              []
               {/* <Route exact path="/" component={Home} /> */}
               <Route exact path="/confirm_email" component={Email_confirm_page}/>
               <Route exact path="/account_confirmation" component={Acc_confirm_page}/>
@@ -268,7 +267,7 @@ class App extends Component {
               <Route exact path="/signin" component={Signin} />
               <Route
                 exact
-                path="/counsellor/signin"
+                path="/old/counsellor/signin"
                 component={CounsellorsSignIn}
               />
               <Route
@@ -283,7 +282,7 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/counsellor/signup"
+                path="/old/counsellor/signup"
                 component={CounsellorSignUp}
               />
               <Route exact path="/forgotpassword" component={ForgotPassword} />

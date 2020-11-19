@@ -350,7 +350,7 @@ const TodoList = (props: any) => {
                         className="yellowgood"
                         alt="goodimage"
                       />
-                      It takes alot of heroes to even start a task, but it seems
+                      It takes a hero to even start a task, but it seems
                       like you have super powers. Keep going Champ!!!
                     </div>
                     {tasklist.length > 0 && (
@@ -403,14 +403,14 @@ const TodoList = (props: any) => {
                           <div className="ctime todoo">
                             {data.status !== "pending" ? (
                               <div
-                                className="savebtn todo_button"
+                                className="savebtn todo_button sizedtodobtn"
                                 onClick={() => openViewMoreModal(data.id)}
                               >
                                 View More
                               </div>
                             ) : (
                               <div
-                                className="savebtn todo_button"
+                                className="savebtn todo_button sizedtodobtn"
                                 onClick={() => OpenIscompleteModal(data.id)}
                               >
                                 Complete Task

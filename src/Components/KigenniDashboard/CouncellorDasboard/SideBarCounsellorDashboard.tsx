@@ -1,6 +1,6 @@
 import * as React from "react";
 import Col from "react-bootstrap/Col";
-import imgCart from "../../../assets/Claritylogo.png";
+import imgCart from "../../../assets/newclaritylogoa.png";
 import logout from "../../../assets/log-out.png";
 import Overview_inactive from "../../../assets/Overview_inactive.png";
 import chatinactive from "../../../assets/Chat with a counsellor_inactive.png";
@@ -42,10 +42,10 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
       <Col md={2} className={hidemobile ? "siddle siddlenone" : "siddle"}>
         <div className="dlex">
           <Link to="/counselloroverview">
-            <img src={imgCart} className="imgCart imgCart33" alt="imgCart" />
+            <img src={imgCart} className="imgCart33 sidebarlogo" alt="imgCart" />
           </Link>
         </div>{" "}
-        <div className={hidemobile ? "navitemnone" : "navitem1"}>
+        <div className={hidemobile ? "navitemnone" : "navitem1 newitem"}>
           <div className={props.ov ? "activegb" : "gbn"}>
             <Link to="/counselloroverview">
               <img

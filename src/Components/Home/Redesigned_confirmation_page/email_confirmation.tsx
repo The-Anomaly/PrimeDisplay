@@ -21,7 +21,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
  
   useEffect(()=>{
     const user :any= localStorage.getItem("userEmail") 
-    const userEmail = JSON?.parse(user)
+    const userEmail = JSON.parse(user)
     console.log(userEmail)
     setState({
       ...state,
@@ -102,6 +102,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
       confirmEmail: e.target.value
     })
   }
+  console.log(client)
   return(
     <div>
       <Navbar />
