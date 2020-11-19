@@ -65,7 +65,7 @@ const DashboardInfoArea = () => {
   }, []);
   return (
     <>
-      <div className="liee">
+      <div className="liee newliee">
         <div className="duis">
           {" "}
           {(

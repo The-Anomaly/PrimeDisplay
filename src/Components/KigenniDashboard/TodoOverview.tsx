@@ -373,15 +373,15 @@ const TodoOverview = withRouter((props: any) => {
                         <div className="ctime todoo">
                           {data.status !== "pending" && (
                             <div
-                              className="savebtn todo_button"
-                              onClick={() => OpenIscompleteModal(data.id)}
+                              className="savebtn todo_button sizedtodobtn"
+                              onClick={() => openViewMoreModal(data.id)}
                             >
                               View More
                             </div>
                           )}
                           {data.status !== "completed" && (
                             <div
-                              className="savebtn todo_button"
+                              className="savebtn todo_button sizedtodobtn"
                               onClick={() => OpenIscompleteModal(data.id)}
                             >
                               Complete Task

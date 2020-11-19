@@ -403,14 +403,14 @@ const TodoList = (props: any) => {
                           <div className="ctime todoo">
                             {data.status !== "pending" ? (
                               <div
-                                className="savebtn todo_button"
+                                className="savebtn todo_button sizedtodobtn"
                                 onClick={() => openViewMoreModal(data.id)}
                               >
                                 View More
                               </div>
                             ) : (
                               <div
-                                className="savebtn todo_button"
+                                className="savebtn todo_button sizedtodobtn"
                                 onClick={() => OpenIscompleteModal(data.id)}
                               >
                                 Complete Task
