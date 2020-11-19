@@ -1367,7 +1367,7 @@ class CousellorProfileBuilderEdit extends React.Component {
                   <Row>
                     <Col md={12} className="printcv">
                       <div className="savebtn" onClick={this.submitForm}>
-                        Submit
+                      Save
                       </div>
                       <Link to="/profilebuilder">
                         {" "}

@@ -113,6 +113,7 @@ class CounsellorSettings extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+    
   };
   fileInput: HTMLInputElement | null | undefined;
   componentDidMount() {

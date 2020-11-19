@@ -12,6 +12,7 @@ import { API } from "../../../config";
 import prevpage from "../../../assets/prevpage.svg";
 import nextpage from "../../../assets/nextpage.svg";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
+import { Spinner } from "react-bootstrap";
 
 const CouncellorRecommendationsToAll = (props: any) => {
   const [state, setFormState] = React.useState<any>({
@@ -19,6 +20,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
     user: [],
     counsellorData: [],
     isLoading: false,
+    isloading: false,
     prevLink: "",
     nextLink: "",
     count: "",
@@ -27,13 +29,17 @@ const CouncellorRecommendationsToAll = (props: any) => {
   const {
     errorMessage,
     user,
-    counsellorData,
+    isloading,
     prevLink,
     nextLink,
     count,
     total_pages,
   } = state;
   React.useEffect(() => {
+    setFormState({
+      ...state,
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -64,6 +70,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
               nextLink: res.data.next,
               prevLink: res.data.previous,
               total_pages: res.data.total_pages,
+              isloading: false,
             });
           }
         })
@@ -74,6 +81,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
             ...state,
             errorMessage: error.response.data[0].message,
             isLoading: false,
+            isloading: false,
           });
         }
         setFormState({
@@ -202,6 +210,11 @@ const CouncellorRecommendationsToAll = (props: any) => {
                 />
                 <Row>
                   <Col md={12} className="mssaag">
+                    {isloading && (
+                      <div className="text-center">
+                        <Spinner animation="grow" variant="info" />
+                      </div>
+                    )}
                     {user?.map((data, i) => (
                       <div className="useri1222 ui1222 ">
                         <div className="sjsso">

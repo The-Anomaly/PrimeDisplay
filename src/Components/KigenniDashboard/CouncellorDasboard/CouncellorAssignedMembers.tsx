@@ -16,6 +16,7 @@ import Axios, { AxiosResponse } from "axios";
 import noData from "../../../assets/no recommendations.png";
 import { API } from "../../../config";
 import { Link } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
 const CounsellorAssignedMembers = (props: any) => {
   const [state, setState] = useState<any>({
@@ -172,7 +173,7 @@ const CounsellorAssignedMembers = (props: any) => {
         });
       });
   };
-  const startChat = () => {
+  const startChat = (user_email) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -181,7 +182,7 @@ const CounsellorAssignedMembers = (props: any) => {
     const User = JSON.parse(user1);
     const data = {};
     Axios.all([
-      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat`, {
+      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat/?user_email=${user_email}`, {
         headers: { Authorization: `Token ${token}` },
       }),
     ])
@@ -190,7 +191,7 @@ const CounsellorAssignedMembers = (props: any) => {
           console.log(User);
           console.log(res);
           window.location.assign(
-            `/usermessagehistory/${User[0].email}/${res.data.chatId}`
+            `/counsellormessagehistory/${user_email}/${res.data.chatId}`
           );
           if (res.status === 200) {
             return setState({
@@ -257,6 +258,11 @@ const CounsellorAssignedMembers = (props: any) => {
                         <div className="msix"> </div>
                       </div>
                     )}
+                    {isLoading && (
+                      <div className="text-center">
+                        <Spinner animation="grow" variant="info" />
+                      </div>
+                    )}
                     {counsellorData &&
                       counsellorData.length > 0 &&
                       counsellorData.map((data, i) => (
@@ -265,7 +271,7 @@ const CounsellorAssignedMembers = (props: any) => {
                           key={i}
                         >
                           <div className="fromerit summary">
-                            <Link to={`/counsellorassignedmembers/${data?.id}`}>
+                            <Link to={`/counsellorassignedmembers/${data?.email}`}>
                               <div className="mone">
                                 <img
                                   className="user_image"
@@ -303,7 +309,7 @@ const CounsellorAssignedMembers = (props: any) => {
                             {!data.status && (
                               <div className="msix">
                                 <div
-                                  onClick={startChat}
+                                  onClick={()=>startChat(data.email)}
                                   className="counview mbtn mbtnblu wd120"
                                 >
                                   Send Message

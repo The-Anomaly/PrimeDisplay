@@ -234,6 +234,9 @@ class CVProfileBuilder extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        if(res?.data?.new_user){
+          return
+        }
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
@@ -249,6 +252,7 @@ class CVProfileBuilder extends React.Component {
         });
       })
       .catch((err) => {
+        console.log(err)
         if (err) {
           this.notify("Failed to fetch data");
         }

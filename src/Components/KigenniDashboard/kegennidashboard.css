@@ -3116,6 +3116,7 @@ textarea.form-control.jobr {
 /*All Tasks Page Styling*/
 .firstqq {
   padding-top: 2rem;
+  padding-right: 2rem;
 }
 .begin {
   display: flex;
@@ -3473,6 +3474,7 @@ input,
   .create_task {
     width: 150px;
     text-align: center;
+    margin-right: 1rem;
   }
   .begin {
     flex-wrap: wrap;

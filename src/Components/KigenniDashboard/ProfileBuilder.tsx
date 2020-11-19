@@ -268,6 +268,9 @@ class ProfileBuilder extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        if(res?.data?.new_user){
+          return
+        }
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
@@ -283,6 +286,7 @@ class ProfileBuilder extends React.Component {
         });
       })
       .then((resp) => {
+        console.log(resp)
         //remove the # on the prefix of the url string and move the page to that postion on the page
         let resultareawithtitle: string = window.location.hash;
         resultareawithtitle = resultareawithtitle.substring(1);
@@ -1365,7 +1369,7 @@ class ProfileBuilder extends React.Component {
                   <Row>
                     <Col md={12} className="printcv">
                       <div className="savebtn" onClick={this.submitForm}>
-                        Submit
+                        Save
                       </div>
                       <Link to="/profilebuilder">
                         {" "}

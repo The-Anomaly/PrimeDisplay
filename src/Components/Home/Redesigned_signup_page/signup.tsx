@@ -10,7 +10,6 @@ import eye from "../../../assets/eye.png";
 import eyeclose from "../../../assets/eye-off.png";
 import drpdwnarr from "../../../assets/dwn-arrw.png";
 
-
 const Signup = withRouter((props: any) => {
   const [state, setFormState] = useState({
     firstname: "",
@@ -50,35 +49,30 @@ const Signup = withRouter((props: any) => {
     };
     console.log(data);
     //posting data to the api
-    axios.post(`${API}/accounts/signup/`, data)
-    .then( ( response ) => {
-      console.log(response)
-      if (response.status === 200){
-       
-         localStorage.setItem(
-          "userEmail",
-          JSON.stringify(email)
-        );
-        setTimeout(()=>{
-          props?.history?.push("/confirm_email")
-          console.log(props)
-        },5000)
-         setFormState({
-          ...state,
-          errorMessage: "",
-          successMessage: response.data.message, 
-          isLoading:false,
-          error: true
-        });
-       
-      
-      }
-    })
-    .catch( (error) => {
-      console.log(error.response);
-      if (error && error.response && error.response.data){
-        return setFormState({
-              ...state,
+    axios
+      .post(`${API}/accounts/signup/`, data)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          localStorage.setItem("userEmail", JSON.stringify(email));
+          setTimeout(() => {
+            props?.history?.push("/confirm_email");
+            console.log(props);
+          }, 5000);
+          setFormState({
+            ...state,
+            errorMessage: "",
+            successMessage: response.data.message,
+            isLoading: false,
+            error: true,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+        if (error && error.response && error.response.data) {
+          return setFormState({
+            ...state,
             errorMessage: error?.response?.data[0].message,
             isLoading: false,
             error: true,
@@ -92,7 +86,16 @@ const Signup = withRouter((props: any) => {
         });
       });
   };
-
+  useEffect(() => {
+    const query = new URLSearchParams(props.location.search);
+    const referralKey = query.get("referral");
+    if(referralKey){
+      setFormState({
+        ...state,
+        referralCode:referralKey
+      })
+    }
+  }, []);
   const onChangeHandler = (e) => {
     setFormState({
       ...state,
@@ -107,13 +110,20 @@ const Signup = withRouter((props: any) => {
       howYouHeardAboutUs: e.target.value,
     });
   };
-  const validateForm = (e) => { 
+  const validateForm = (e) => {
     e.preventDefault();
-    if (firstname == "" && lastname=="" && email=="" && password == ""){
+    if (password.length < 6) {
       return setFormState({
         ...state,
-        errorMessage: "please enter your details"
-      })
+        errorMessage: "Password must be at least 6 characters long",
+        isLoading: false,
+      });
+    }
+    if (firstname == "" && lastname == "" && email == "" && password == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "please enter your details",
+      });
     }
     if (firstname == "") {
       return setFormState({
@@ -145,17 +155,16 @@ const Signup = withRouter((props: any) => {
         ...state,
         errorMessage: "Please enter your password",
       });
-    }
-    else {
+    } else {
       onSubmit();
     }
   };
-  const hidePassword=()=>{
+  const hidePassword = () => {
     setFormState({
       ...state,
-      passwordIsOpen:state.passwordIsOpen?false:true
-    })
-  }
+      passwordIsOpen: state.passwordIsOpen ? false : true,
+    });
+  };
   return (
     <div>
       <Navbar />
@@ -274,7 +283,9 @@ const Signup = withRouter((props: any) => {
                 <Row>
                   <Col md={6}>
                     {" "}
-                    <span className="rdfrmlblslt rdfrmlblsltt">How you heard about us</span>
+                    <span className="rdfrmlblslt rdfrmlblsltt">
+                      How you heard about us
+                    </span>
                     <select
                       onChange={formActionHandler}
                       className="rdseltinpt form-control"
@@ -328,7 +339,7 @@ const Signup = withRouter((props: any) => {
                     onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
-                      {!isLoading ? "Sign Up" : "Processing..."}
+                    {!isLoading ? "Sign Up" : "Processing..."}
                   </button>
                 </div>
                 <p className="rdsgnalready">

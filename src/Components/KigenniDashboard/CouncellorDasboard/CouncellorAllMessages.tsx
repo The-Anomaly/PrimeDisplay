@@ -14,6 +14,7 @@ import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import search from "../../../assets/search.png";
 import moment from "moment";
 import noplan from "../../../assets/noplan.png";
+import { Spinner } from "react-bootstrap";
 
 const CounsellorAllMessages = withRouter((props: any) => {
   const [state, setState] = React.useState<any>({
@@ -22,12 +23,17 @@ const CounsellorAllMessages = withRouter((props: any) => {
     counsellorData: [],
     searchKey: "",
     isLoading: false,
+    isloading: false,
   });
-  const { errorMessage, user, counsellorData, searchKey } = state;
+  const { errorMessage, isloading, counsellorData, searchKey } = state;
   React.useEffect(() => {
     getMessages();
   }, []);
   const getMessages = () => {
+    setState({
+      ...state,
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -46,6 +52,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
               ...state,
               counsellorData: [...res.data].reverse(),
               errorMessage: "",
+              isloading: false,
             });
           }
         })
@@ -57,6 +64,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
             ...state,
             errorMessage: error?.response?.data?.message,
             isLoading: false,
+            isloading: false,
           });
         }
         setState({
@@ -93,7 +101,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
             return setState({
               ...state,
               counsellorData: [...res.data].reverse(),
-              errorMessage:""
+              errorMessage: "",
             });
           }
         })
@@ -159,6 +167,11 @@ const CounsellorAllMessages = withRouter((props: any) => {
                 </div>
                 <Row>
                   <Col md={12} className="mssaag sasag">
+                    {isloading && (
+                      <div className="text-center">
+                        <Spinner animation="grow" variant="info" />
+                      </div>
+                    )}
                     {!errorMessage &&
                       counsellorData?.map((data, i) => (
                         <Link
@@ -191,7 +204,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
                             </div>
                           </div>
                         </Link>
-                      ))} 
+                      ))}
                     {counsellorData.length === 0 && errorMessage && (
                       <div className="norec">
                         <img

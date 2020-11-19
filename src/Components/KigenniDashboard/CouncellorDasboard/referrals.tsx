@@ -30,6 +30,7 @@ const Referrals = (props: any) => {
     referalInfo: "",
     hascopiedLink: false,
     isLoading: false,
+    isloading: false,
   });
   React.useEffect(() => {
     setState({
@@ -75,7 +76,7 @@ const Referrals = (props: any) => {
         })
       )
       .catch((error) => {
-        console.log(error.response)
+        console.log(error.response);
         if (error && error.response && error.response.data) {
           setState({
             ...state,
@@ -211,6 +212,56 @@ const Referrals = (props: any) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
+  const startChat = (email) => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const user1: any = localStorage.getItem("user");
+    const User = JSON.parse(user1);
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(User);
+          console.log(res);
+          window.location.assign(
+            `/counsellormessagehistory/${email}/${res.data.chatId}`
+          );
+          if (res.status === 200) {
+            return setState({
+              ...state,
+              errorMessage: "",
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error?.response?.status === 400) {
+          setState({
+            ...state,
+            errorMessage: error.response.data.message,
+          });
+        }
+        console.log(error.response);
+        if (error && error.response && error.response.data) {
+          return setState({
+            ...state,
+            errorMessage: error?.response?.data?.message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
   const {
     counsellorData,
     isLoading,
@@ -339,7 +390,10 @@ const Referrals = (props: any) => {
                             </a>
                             {!data.status && (
                               <div className="msix">
-                                <div className="counview mbtn mbtnblu">
+                                <div
+                                  className="counview mbtn mbtnblu"
+                                  onClick={() => startChat(data?.email)}
+                                >
                                   Send Message
                                 </div>
                               </div>
@@ -400,12 +454,14 @@ const Referrals = (props: any) => {
                     <h5>Get Link</h5>
                   </div>
                   <div className="modal_input">
-                    <input
-                      type="text"
-                      size={30}
-                      value={referalInfo}
-                      className=" form-control ref_input"
-                    />
+                    <a href={referalInfo} target="blank">
+                      <input
+                        type="text"
+                        size={30}
+                        value={referalInfo}
+                        className=" form-control ref_input"
+                      />
+                    </a>
                     <span
                       className="ref-modal-btn"
                       onClick={() => {
