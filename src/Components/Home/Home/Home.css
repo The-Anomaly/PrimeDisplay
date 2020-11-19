@@ -2646,6 +2646,10 @@ button {
   color: #9c1258;
 }
 
+/*Counselor Dashboard Changes*/
+.newitem {
+  font-size: 11px !important;
+}
 /*Hover Effects*/
 .trustimg:hover {
   width: 65px;
