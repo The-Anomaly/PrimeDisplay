@@ -18,9 +18,9 @@ const newNavbar = withRouter((props: any) => {
     userLoggedIn: false,
     redirect: false,
     userType: false,
-    darknav: false,
   });
-  const { showNav, userLoggedIn, redirect, userType, darknav } = state;
+  const [darknav, setDarkNav] = React.useState(false);
+  const { showNav, userLoggedIn, redirect, userType } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
     if (
@@ -32,11 +32,9 @@ const newNavbar = withRouter((props: any) => {
       window.location.pathname === "//counsellor/signup" ||
       window.location.pathname === "//counsellor/signin"
     ) {
-      setShowNav({
-        ...state,
-        darknav: true,
-      });
+      setDarkNav(true)
     }
+    console.log(darknav)
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (
@@ -152,6 +150,7 @@ const newNavbar = withRouter((props: any) => {
   const uniqueKeygen = (): number => {
     return Math.floor(Math.random() * 100);
   };
+  console.log(darknav)
   return (
     <div>
       {renderRedirect()}
@@ -316,42 +315,17 @@ const newNavbar = withRouter((props: any) => {
         <Row
           md={12}
           className={
-            !navbar || !darknav
+            navbar
+              ? "nav-wrapper redoNav nav_margin privacynav"
+              :  darknav
               ? "nav-wrapper redoNav nav_margin"
               : "nav-wrapper redoNav nav_margin privacynav"
           }
-          
-          // className={
-          //   navbar
-          //     ? "nav-wrapper redoNav nav_margin privacynav"
-          //     :  darknav
-          //     ? "nav-wrapper redoNav nav_margin"
-          //     : "nav-wrapper redoNav nav_margin privacynav"
-          // }
-
-          // className={
-          //   !navbar && darknav
-          //     ? "nav-wrapper redoNav nav_margin"
-          //     : !navbar && !darknav
-          //     ? "nav-wrapper redoNav nav_margin privacynav"
-          //     : navbar && darknav
-          //     ? "nav-wrapper redoNav nav_margin privacynav"
-          //     : navbar && !darknav
-          //     ? "nav-wrapper redoNav nav_margin privacynav"
-          //     : "nav-wrapper redoNav nav_margin"
-          // }
         >
           <div className="nav_titlenew">
             <Link to="/">
               <img
-                src={navbar ? demoLogoLight : demoLogo}
-                // src={
-                //   navbar || !darknav
-                //     ? demoLogoLight
-                //     : darknav
-                //     ? demoLogo
-                //     : demoLogo
-                // }
+                src={navbar ? demoLogoLight : darknav ? demoLogo : demoLogoLight}
                 alt="clarity_logo"
                 className="logologo"
               />

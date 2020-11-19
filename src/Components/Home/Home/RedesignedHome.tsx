@@ -214,10 +214,10 @@ const RedesignedHome: React.FC = (props: any) => {
                     alt="facebook"
                   />
                 </a>
-                <a href="/" target="_blank">
+                <a href="https://twitter.com/askyudimy?s=08" target="_blank">
                   <img
                     src={twitter}
-                    className="socials1 ssmedia unclick"
+                    className="socials1 ssmedia"
                     alt="twitter"
                   />
                 </a>
