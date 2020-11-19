@@ -76,7 +76,7 @@ const Signup = withRouter((props: any) => {
     })
     .catch( (error) => {
       console.log(error.response);
-      if (error){
+      if (error && error.response && error.response.data){
         return setFormState({
               ...state,
             errorMessage: error?.response?.data[0].message,
@@ -86,7 +86,7 @@ const Signup = withRouter((props: any) => {
         }
         setFormState({
           ...state,
-          errorMessage: "signup failed",
+          errorMessage: "signup failed, check your internet connection",
           isLoading: false,
           error: true,
         });
@@ -109,6 +109,12 @@ const Signup = withRouter((props: any) => {
   };
   const validateForm = (e) => { 
     e.preventDefault();
+    if (firstname == "" && lastname=="" && email=="" && password == ""){
+      return setFormState({
+        ...state,
+        errorMessage: "please enter your details"
+      })
+    }
     if (firstname == "") {
       return setFormState({
         ...state,
@@ -121,7 +127,12 @@ const Signup = withRouter((props: any) => {
         errorMessage: "Please enter your lastname",
       });
     }
-
+    if (howYouHeardAboutUs == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter you heard about us",
+      });
+    }
     if (email == "") {
       return setFormState({
         ...state,
@@ -135,7 +146,7 @@ const Signup = withRouter((props: any) => {
         errorMessage: "Please enter your password",
       });
     }
-    if (password && email && lastname && firstname ) {
+    else {
       onSubmit();
     }
   };
@@ -314,7 +325,7 @@ const Signup = withRouter((props: any) => {
                 <div className="rdsgnupfrmbtndv">
                   <button
                     type="submit"
-                    onClick={onSubmit}
+                    onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                       {!isLoading ? "Sign Up" : "Processing..."}

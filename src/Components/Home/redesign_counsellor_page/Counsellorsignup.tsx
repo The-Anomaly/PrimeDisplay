@@ -89,7 +89,7 @@ const counsellorSignup = withRouter((props: any) => {
         }
         setFormState({
           ...state,
-          errorMessage: "signup failed",
+          errorMessage: "signup failed, check your internet connection",
           isLoading: false,
           error: true,
         });
@@ -97,6 +97,12 @@ const counsellorSignup = withRouter((props: any) => {
   };
   const validateForm = (e) => { 
     e.preventDefault();
+    if (firstname == "" && lastname=="" && email=="" && password == ""){
+      return setFormState({
+        ...state,
+        errorMessage: "please enter your details"
+      })
+    }
     if (firstname == "") {
       return setFormState({
         ...state,
@@ -116,6 +122,13 @@ const counsellorSignup = withRouter((props: any) => {
         errorMessage: "Please enter your email",
       });
     }
+    
+    if (howYouHeardAboutUs == "") {
+      return setFormState({
+        ...state,
+        errorMessage: "Please enter you heard about us",
+      });
+    }
 
     if (password == "") {
       return setFormState({
@@ -123,7 +136,7 @@ const counsellorSignup = withRouter((props: any) => {
         errorMessage: "Please enter your password",
       });
     }
-    if (password && email ) {
+    if (password && email && firstname && lastname && howYouHeardAboutUs) {
       onSubmit();
     }
   };
@@ -384,7 +397,7 @@ const counsellorSignup = withRouter((props: any) => {
                       <option value="Referral Link" className="rdsltopt">
                         Referral link
                       </option>
-                      <option value="4" className="rdsltopt">
+                      <option value="Friend" className="rdsltopt">
                         Friend
                       </option>
                     </select>
@@ -395,7 +408,7 @@ const counsellorSignup = withRouter((props: any) => {
                 <div className="rdsgnupfrmbtndv">
                   <button
                   type="submit"
-                    onClick={onSubmit}
+                    onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"
                   >
                     {!isLoading ? "Sign Up" : "Processing..."}

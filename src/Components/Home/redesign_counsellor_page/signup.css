@@ -209,7 +209,7 @@
     flex-direction: row-reverse;
     color: #3965ff;
     font-size: 13px;
-    margin-top: 9px;
+    margin-top: -14px;
   }
   .alertzuccess {
     left: initial !important;

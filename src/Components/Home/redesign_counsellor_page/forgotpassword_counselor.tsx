@@ -8,7 +8,7 @@ import { API } from "../../../config";
 import eye from "../../../assets/eye.png";
 import eye12 from "../../../assets/eye-off.png";
 
-const ForgotPasswordNew = withRouter((props: any) => {
+const ForgotPasswordCounselor= withRouter((props: any) => {
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -62,7 +62,7 @@ const ForgotPasswordNew = withRouter((props: any) => {
         }
         setState({
           ...state,
-          errorMessage: "Sending Failed,check your internet connection",
+          errorMessage: "Sending Failed",
           isLoading: false,
         });
       });
@@ -112,7 +112,7 @@ const ForgotPasswordNew = withRouter((props: any) => {
                   <h4 className="sgnfrmhder">Password Recovery</h4>
                   <div>
                     <div className="sgnupfrmline"></div>
-                    <span className="sgnupdescr">Please enter your registered email</span>
+                    <span className="sgnupdescr">Please enter your registered email Counsellor</span>
                   </div>
                 </div>
                 {successMessage && (
@@ -154,7 +154,7 @@ const ForgotPasswordNew = withRouter((props: any) => {
                   </span>
                 </div>
                 <p className="rdsgnalready">
-                  Don't have an account? <Link to="/signup">Sign Up</Link>
+                  Don't have an account? <Link to="/counsellor/signup">Sign Up</Link>
                 </p>
               </Form>
             </Col>
@@ -165,4 +165,4 @@ const ForgotPasswordNew = withRouter((props: any) => {
   );
 });
 
-export default ForgotPasswordNew;
+export default ForgotPasswordCounselor;
