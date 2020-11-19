@@ -209,3 +209,10 @@
   padding-bottom: 0px !important;
   margin-bottom: 0.5rem;
 }
+
+@media(min-width: 768px) {
+  .newkli {
+    margin-top: 0 !important;
+    padding-top: 10rem !important;
+  }
+}

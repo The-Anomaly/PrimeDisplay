@@ -10,9 +10,14 @@ export function NavIsLoggedOut(props: IAppProps) {
         {/* <Link to="/signup">
           <button className="title_t signupbtn">Sign Up</button>
         </Link> */}
-        <Link to="/signin">
+        {/* <Link to="/signin">
           <button className="title_t signupbtn">LOGIN</button>
-        </Link>
+        </Link> */}
+        <div className="title1 shiftlefff newshft">
+          <Link to="/signin">
+            <button className="title_t signupbtn newlogin">Login</button>
+          </Link>
+        </div>
       </div>
     </React.Fragment>
   );

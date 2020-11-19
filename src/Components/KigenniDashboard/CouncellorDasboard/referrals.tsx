@@ -51,6 +51,7 @@ const Referrals = (props: any) => {
       .then(
         Axios.spread((res, res1) => {
           console.log(res);
+          console.log(res1);
           if (res.status === 200) {
             setState({
               ...state,

@@ -2,6 +2,7 @@
   background-color: #23304c;
   color: #fff;
   padding-bottom: 100px;
+  min-height: 100vh;
 }
 .rsignuprow {
   justify-content: center;
@@ -20,6 +21,11 @@
 }
 .rsignupdiv > p {
   font-size: 18px;
+}
+.drparr{
+  position: relative;
+  right: 1rem;
+  top: -34px;
 }
 .rdsignupform {
   border-radius: 8px;
@@ -87,11 +93,6 @@
   height: 50px;
   border: 1px solid #9999;
   appearance: none;
-  background-image: url(../../../assets/dwn-arrw.png);
-  background-repeat: no-repeat;
-  background-position-x: 212px;
-  background-position-y: 23px;
-  text-overflow: ellipsis;
 }
 .passwd-image {
   background-image: url(../../../assets/eye.png);
@@ -109,7 +110,7 @@
 }
 .redsgnfrmpar {
   font-size: 8px;
-  text-align: center;
+  text-align: initial;
   margin-bottom: 0px;
   margin: 0px;
   position: relative;
@@ -212,4 +213,20 @@
 }
 .alertzuccess {
   left: initial !important;
+}
+
+@media(max-width: 779px) {
+  .paddit{
+    padding-top: 5rem;
+  }
+  .rsignupdiv > p {
+    font-size: 15px;
+  }
+}
+
+@media(max-width: 600px) {
+  .rdsignupform {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }

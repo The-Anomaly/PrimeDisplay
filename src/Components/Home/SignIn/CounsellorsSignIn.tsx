@@ -224,7 +224,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
   const errorGoogle = (error) => {
     setFormState({
       ...state,
-      errorMessage: "failed to login",
+      errorMessage: "Google login failed",
     });
   };
   const authenticate = (response) => {
@@ -262,7 +262,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
     <>
       <Navbar/>
       <Container fluid={true}>
-        <Row className="kli">
+        <Row className="kli newkli">
           <Col md={5} className="mo">
             <img
               src={signinwelcome}

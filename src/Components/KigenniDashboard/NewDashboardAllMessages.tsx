@@ -37,20 +37,17 @@ const NewDashboardAllMessages = withRouter((props: any) => {
   //   } else {
   //     //notify("Update your subscription to access this feature");
   //     console.log("Can't access ask a counselor");
-  //     return setInterval((window.location.pathname = "/dashboardsubsriptionplan"), 2000);
+  //     return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
   //   }
   // }
   React.useEffect(() => {
     const stringFeature = localStorage.getItem("accessFeature");
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    if (featureToCheck["ask_counsellor"] === true) {
-      console.log("Ask a counselor successful");
-      window.location.assign("/allusermessages");
-    } else {
+    if (featureToCheck["ask_counsellor"] === false) {
       //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      setInterval(
-        (window.location.pathname = "/dashboardsubsriptionplan"),
+      setTimeout(
+        (window.location.pathname = "/dashboardsubscriptionplan"),
         1000
       );
     }

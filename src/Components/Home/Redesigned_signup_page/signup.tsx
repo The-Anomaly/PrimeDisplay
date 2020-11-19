@@ -8,6 +8,7 @@ import { API } from "../../../config";
 import Alert from "react-bootstrap/Alert";
 import eye from "../../../assets/eye.png";
 import eyeclose from "../../../assets/eye-off.png";
+import drpdwnarr from "../../../assets/dwn-arrw.png";
 
 
 const Signup = withRouter((props: any) => {
@@ -134,7 +135,7 @@ const Signup = withRouter((props: any) => {
         errorMessage: "Please enter your password",
       });
     }
-    if (password && email) {
+    if (password && email && lastname && firstname ) {
       onSubmit();
     }
   };
@@ -147,7 +148,7 @@ const Signup = withRouter((props: any) => {
   return (
     <div>
       <Navbar />
-      <div className="rdsignup-section">
+      <div className="rdsignup-section paddit">
         <Container>
           <Row className="rsignuprow">
             <Col md={12} className="rsignupdiv">
@@ -262,7 +263,7 @@ const Signup = withRouter((props: any) => {
                 <Row>
                   <Col md={6}>
                     {" "}
-                    <span className="rdfrmlblslt">How you heard about us</span>
+                    <span className="rdfrmlblslt rdfrmlblsltt">How you heard about us</span>
                     <select
                       onChange={formActionHandler}
                       className="rdseltinpt form-control"
@@ -293,6 +294,9 @@ const Signup = withRouter((props: any) => {
                         Friend
                       </option>
                     </select>
+                    <div className="text-right">
+                      <img src={drpdwnarr} className="drparr" />
+                    </div>
                   </Col>
                   <Col md={6}>
                     <span className="rdfrmlbl rdfrmlblrf"> Referral code </span>

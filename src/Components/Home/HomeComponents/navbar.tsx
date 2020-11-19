@@ -20,7 +20,10 @@ const Navbar = withRouter((props: any) => {
     window.scrollTo(-0, -0);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
-    if (window.location.pathname === "/counsellordates") {
+    if (
+      window.location.pathname === "/counsellordates" ||
+      window.location.pathname === "/assessmentphasesevencomplete"
+    ) {
       return;
     }
     if (token) {

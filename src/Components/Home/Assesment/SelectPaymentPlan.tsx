@@ -10,6 +10,7 @@ import "../ClarityForTeams/clarityforteams.css";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
+
 declare global {
   interface Window {
     MonnifySDK:any;

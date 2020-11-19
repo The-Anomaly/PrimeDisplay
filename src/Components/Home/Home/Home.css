@@ -538,6 +538,9 @@ button {
   .imgCart {
     min-width: 70px !important;
   }
+  .newcart {
+    min-width: 35px !important;
+  }
   .listwraperMob {
     font-size: 16px !important;
   }
@@ -855,9 +858,6 @@ button {
 .nav_margin {
   margin: 0;
 }
-.logo_clarity_new {
-  right: 3.2rem;
-}
 .redoNav {
   position: fixed;
   z-index: 99;
@@ -866,8 +866,9 @@ button {
   width: 100vw;
   padding-top: 1.4rem;
   padding-right: 4rem;
-  padding-left: 8rem;
+  padding-left: 4rem;
   padding-bottom: 1.4rem;
+  flex-wrap: nowrap;
 }
 .nav_titlenew {
   display: flex;
@@ -1088,6 +1089,7 @@ button {
   color: #18214d;
   font-size: 18px;
   letter-spacing: 0.5px;
+  margin: auto;
   width: 200px;
   margin-bottom: 0.8rem;
 }
@@ -1739,6 +1741,20 @@ button {
   .fourthposit {
     margin-top: 0rem;
   }
+  .thirdgetstarted {
+    flex-direction: column;
+  }
+  .thirdgetstartedcard {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 4rem;
+  }
+  .gtclose {
+    position: absolute;
+    margin-top: -34rem;
+    margin-left: 90%;
+    width: 25px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1987,6 +2003,13 @@ button {
     right: 1.5rem;
     top: 12.5rem;
   }
+  .thirdgetstarted {
+    padding: 5rem 0 0rem 0;
+  }
+  .gtclose {
+    margin-top: -32rem;
+    width: 20px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -2040,6 +2063,38 @@ button {
     right: 1rem;
     top: 11rem;
   }
+  .thirdgetstartedcard {
+    width: 80%;
+    margin-bottom: 4rem;
+    padding: 8%;
+    text-align: center;
+  }
+  .thirdgthead {
+    font-size: 17px;
+  }
+  .gtclose {
+    margin-top: -31rem;
+    width: 18px;
+    margin-left: 87%;
+  }
+  .newsecondrow {
+    padding: 1rem;
+  }
+  .crazycircle1 .lcircle1, .crazycircle1 .lcircle2, .crazycircle2 .smcircle1 {
+    width: 75%;
+  }
+  .crazycircle3 .larrow6 {
+    margin-right: 40%;
+  }
+  .crazycircle4 .smarrow5 {
+    margin-left: 7%;
+  }
+  .crazycircle4 .smcircle2 {
+    width: 68%;
+  }
+  .crazycircle3 .lcircle5, .crazycircle3 .lcircle4 {
+    width: 95%;
+  }
 }
 
 /*Footer Responsiveness*/
@@ -2053,6 +2108,7 @@ button {
   .footer_mail {
     height: 45px;
     width: 280px;
+    outline: none;
   }
   .footer_btn {
     height: 45px;
@@ -2078,6 +2134,7 @@ button {
   }
   .ftrpolicy {
     font-size: 13px;
+    margin-left: -1rem;
   }
   .ftrterms::after {
     height: 24px;
@@ -2354,7 +2411,7 @@ button {
   .aboutfirsttxt {
     font-size: 14px;
     margin-bottom: 3rem;
-    margin-right: 20%;
+    margin-right: 25%;
   }
   .prodsec2 {
     padding-left: 1rem;
@@ -2366,6 +2423,9 @@ button {
   }
   .for1 {
     margin-left: 1rem;
+  }
+  .aboutfirstsec {
+    padding-left: 3.5rem;
   }
 }
 
@@ -2470,11 +2530,14 @@ button {
 /*Navbar Responsiveness*/
 @media (max-width: 1000px) {
   .redoNav {
-    padding-left: 6rem;
-    padding-right: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.65rem;
   }
   .nav_titlenew {
     font-size: 13px;
+  }
+  div > .title1{
+    padding-left: 0;
   }
   .newlogin {
     font-size: 12px;
@@ -2482,11 +2545,11 @@ button {
     height: 30px;
     padding: 0.3rem 1rem;
   }
-  .logologo {
-    width: 100px;
-  }
   div > .newshft {
     padding-left: 0;
+  }
+  .logologo {
+    width: 40px;
   }
 }
 
@@ -2496,6 +2559,7 @@ button {
 }
 .mobilelogo {
   margin-left: 1rem;
+  width: 40px;
 }
 .newline {
   background: #ffffff;
@@ -2511,6 +2575,9 @@ button {
 @media (max-width: 800px) {
   .newhamburger {
     background: transparent !important;
+  }
+  .nav_titlenew {
+    font-size: 12px;
   }
 }
 
@@ -2549,7 +2616,35 @@ button {
     padding-bottom: 2rem;
   }
 }
-
+.sidebarlogo {
+  width: 45px;
+    margin-top: 1rem !important;
+}
+.side_navv {
+  padding-top: 3rem !important;
+}
+.newlinedash {
+  width: 14px !important;
+  margin-left: 14px;
+}
+.hamdash {
+  background: transparent !important;
+}
+.whitenav {
+  background: #ffffff;
+}
+.darkline {
+  background: #9c1258;
+}
+.inapplogout {
+  background: #9c1258;
+  color: #ffffff;
+  font-weight: 800;
+}
+.inapplogout:hover {
+  background: #ffffff;
+  color: #9c1258;
+}
 
 /*Hover Effects*/
 .trustimg:hover {

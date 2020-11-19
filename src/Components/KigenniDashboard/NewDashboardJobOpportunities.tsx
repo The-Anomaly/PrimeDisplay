@@ -130,6 +130,15 @@ class NewDashboardJobOpportunities extends React.Component {
     });
   };
   componentDidMount() {
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
+    if (featureToCheck["job_recommendation"] === false) {
+      console.log("Can't access job opportunities");
+      return setTimeout(() => {
+        window.location.pathname = "/dashboardsubscriptionplan"
+      }, 2000);
+    }
+    
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -156,19 +165,6 @@ class NewDashboardJobOpportunities extends React.Component {
           isLoading: false,
         });
       });
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    if (featureToCheck["job_recommendation"] === true) {
-      console.log("Job opportunities successful");
-      window.location.assign("/jobopportunities");
-    } else {
-      //notify("Update your subscription to access this feature");
-      console.log("Can't access job opportunities");
-      return setInterval(
-        (window.location.pathname = "/dashboardsubsriptionplan"),
-        2000
-      );
-    }
   }
   checkIfUserHasMadePaymentForFullResult = (token: string) => {};
   CloseWarning = () => {

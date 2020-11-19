@@ -31,6 +31,7 @@ interface State {
   successMsg: boolean;
   errorMessage: string;
   isLoading: boolean;
+  isLoading_1:boolean;
   showWarning: boolean;
   width: number;
   onlyfree: boolean;
@@ -46,6 +47,7 @@ class NewDashboard extends React.Component {
     strongcompetencechartdata: [],
     errorMessage: "",
     successMsg: false,
+    isLoading_1:false,
     isLoading: false,
     showWarning: false,
     onlyfree: false,
@@ -54,6 +56,9 @@ class NewDashboard extends React.Component {
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
+    this.setState({
+      isLoading_1:true
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {};
@@ -62,14 +67,22 @@ class NewDashboard extends React.Component {
     })
       .then((res) => {
         window.location.assign("/assessmentphaseone");
+        this.setState({
+          isLoading_1:false
+        })
       })
       .catch((err) => {
         if (err) {
+          this.setState({
+            isLoading_1:false
+          })
         }
       });
   };
   componentDidMount() {
-    this.setState({ isLoading: true });
+    this.setState({ 
+      isLoading: true
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -125,7 +138,7 @@ class NewDashboard extends React.Component {
           });
           return window.location.assign("/thirdpary/fullresult");
         }
-        return window.location.assign("/paymentsummary");
+        return window.location.assign("/dashboardsubscriptionplan");
       })
       .catch((error) => {});
   };
@@ -146,7 +159,23 @@ class NewDashboard extends React.Component {
           });
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+      });
+  };
+  checkIfUserHasAccessToAskACounselor = () => {
+    const stringFeature = localStorage.getItem("accessFeature");
+    const featureToCheck = stringFeature
+      ? JSON.parse(stringFeature)
+      : "";
+
+    if (featureToCheck["ask_counsellor"] === true) {
+      console.log("Ask a counselor successful");
+      window.location.assign("/allusermessages");
+    } else {
+      //notify("Update your subscription to access this feature");
+      console.log("Can't access ask a counselor");
+      return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
+    }
   };
   CloseWarning = () => {
     this.setState({
@@ -182,6 +211,7 @@ class NewDashboard extends React.Component {
       strongcompetencechartdata,
       isLoading,
       width,
+      isLoading_1,
       showfullresult,
     } = this.state;
     return (
@@ -222,11 +252,12 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                     <div className="">
-                      <Link to="/counsellordates">
-                        <Button className="retaketest">
-                          Book a private session
+                        <Button className="retaketest"
+                        onClick={() =>
+                          this.checkIfUserHasAccessToAskACounselor()
+                        }>
+                         {isLoading_1 ? "Processing":"Ask a counselor"}
                         </Button>
-                      </Link>
                       {showfullresult && (
                         <Button
                           className="retaketest2"

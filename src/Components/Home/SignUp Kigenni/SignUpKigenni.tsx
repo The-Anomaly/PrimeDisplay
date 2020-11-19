@@ -37,7 +37,7 @@ const SignUpKigenni:React.FunctionComponent = (props:any) => {
           successMsg:true,
           isLoading:false
         });
-        setInterval(
+        setTimeout(
           props.history.push("/signin"),
       5000);
       } 

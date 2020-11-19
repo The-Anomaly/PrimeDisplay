@@ -97,6 +97,7 @@ import { NewAbout } from "./Components/Home/About/NewAbout";
 import CounsellorCVProfileBuilder from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorCVProfileBuilder";
 import CousellorProfileBuilderEdit from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorProfileBuilder";
 import CounsellorAssignedMembersViewOne from './Components/KigenniDashboard/CouncellorDasboard/CounsellorAssignedMembersViewOne';
+import ForgotPasswordNew from './Components/Home/Redesigned_signup_page/forgotpassword';
 
 class App extends Component {
   constructor(props) {
@@ -221,6 +222,12 @@ class App extends Component {
               />
               <Route
                 exact
+                path="/password_recovery"
+                component={ForgotPasswordNew}
+              />
+
+              <Route
+                exact
                 path="/assessmentphasecomplete"
                 component={AssessmentFirstPhaseComplete}
               />
@@ -335,7 +342,7 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/dashboardsubsriptionplan"
+                path="/dashboardsubscriptionplan"
                 component={NewDashboardSubsriptionPlan}
               />
               <Route

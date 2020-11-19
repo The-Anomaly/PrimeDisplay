@@ -1,5 +1,5 @@
 import * as React from "react";
-import demoLogo from "../../../assets/claritydemo.png";
+import demoLogo from "../../../assets/newclaritylogoa.png";
 import SideNav from "react-simple-sidenav";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import "../Home/animate.css";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { API } from "../../../config";
 import { Row } from "react-bootstrap";
-import demoLogoLight from "../../../assets/demologolight.png";
+import demoLogoLight from "../../../assets/newclaritylogo2a.png";
 
 const newNavbar = withRouter((props: any) => {
   const [navbar, setNavbar] = React.useState(false);
@@ -18,13 +18,29 @@ const newNavbar = withRouter((props: any) => {
     userLoggedIn: false,
     redirect: false,
     userType: false,
+    darknav: false,
   });
-  const { showNav, userLoggedIn, redirect, userType } = state;
+  const { showNav, userLoggedIn, redirect, userType, darknav } = state;
   useEffect(() => {
     window.scrollTo(-0, -0);
+    if (
+      window.location.pathname === "/" ||
+      window.location.pathname === "/aboutus" ||
+      window.location.pathname === "/payment" ||
+      window.location.pathname === "/contact" ||
+      window.location.pathname === "/faq" ||
+      window.location.pathname === "//counsellor/signup" ||
+      window.location.pathname === "//counsellor/signin"
+    ) {
+      setShowNav({
+        ...state,
+        darknav: true,
+      });
+    }
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (
+      window.location.pathname === "/assessmentphasesevencomplete" ||
       window.location.pathname === "/counsellordates" ||
       window.location.pathname === "/thirdparty/pending" ||
       window.location.pathname === "/thirdparty/overpaid"
@@ -36,33 +52,20 @@ const newNavbar = withRouter((props: any) => {
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
-    Axios.
-    all([
-      Axios.get(`${API}/progress`, {
+    Axios.get(`${API}/progress`, {
       headers: { Authorization: `Token ${token}` },
-    }),
-    Axios
-    .get(`${API}/currentuser`, {
-      headers: { Authorization: `Token ${token}` },
-    })])
-      .then(Axios.spread((response, response1) => {
+    })
+      .then((response) => {
         console.log(response);
-        console.log(response1)
-        console.log(response1?.data[0]?.is_counsellor);
-        if(response1?.data[0]?.is_counsellor === "true" || window.location.pathname === "/counsellor/signin" || window.location.pathname === "/counsellor/signup"){
-          setShowNav({
-            ...state,
-            userType: true,
-          })
-        }
         if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/free/dashboard`);
+          //return props.history.push(`/free/dashboard`);
         }
-      }))
+      })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
   const setRedirect = () => {
     setShowNav({
       ...state,
@@ -160,19 +163,20 @@ const newNavbar = withRouter((props: any) => {
             <SideNav
               openFromRight={true}
               style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
-              navStyle={{ width: "70%", background: "#131313" }}
+              navStyle={{ width: "70%", background: darknav ? "#131313" : "white" }}
               showNav={showNav}
               onHideNav={() => setShowNav({ ...state, showNav: true })}
               titleStyle={{
-                backgroundColor: "#23304c",
+                backgroundColor: darknav ? "#23304c" : "white",
                 color: "#444444",
                 paddingLeft: 10,
                 paddingBottom: 0,
                 paddingTop: 0,
                 fontSize: 17,
                 textAlign: "left",
+                height: 73,
               }}
-              itemStyle={{ backgroundColor: "#131313", paddingLeft: 25 }}
+              itemStyle={{ backgroundColor: darknav ? "#131313" : "white", paddingLeft: 25 }}
               itemHoverStyle={{ backgroundColor: "inherit" }}
               title={[
                 <div
@@ -180,9 +184,9 @@ const newNavbar = withRouter((props: any) => {
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
-                    background: "#23304c",
+                    background: darknav ? "#23304c" : "white",
                     padding: "0px 4px 1px 8px",
-                    color: "white",
+                    color: darknav ? "white" : "#9c1258",
                     fontSize: "4rem",
                   }}
                 >
@@ -204,38 +208,68 @@ const newNavbar = withRouter((props: any) => {
                     showNav ? "listwraper animated fadeInLeft" : "listwraper"
                   }
                 >
-                  <div className="listwraperMob">
-                    <Link to="/redesign">Home</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/aboutus">About</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/payment">Payments</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/contact">Contact Us</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/faq">Faq</Link>
-                  </div>
-                  <div className="listwraperMob">
-                    <Link to="/privacy_policy">Privacy Policy</Link>
-                  </div>
-                  {/* {!userLoggedIn && (
-                    <>
-                      <div className="listwraperMob">
-                        <Link to="/signin">
-                          <div className="navmobbtn">Sign In</div>
-                        </Link>
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/">Home</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/aboutus">About</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/payment">Payments</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/contact">Contact Us</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/counsellor/signup">For Counsellors</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/faq">FAQ</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/privacy_policy">Privacy Policy</Link>
+                    </div>
+                  ) : (
+                    " "
+                  )}
+                  {!userLoggedIn ? (
+                    <div className="listwraperMob">
+                      <Link to="/signin">
+                        <div className="navmobbtn">Login</div>
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className="listwraperMob">
+                      <div className={darknav ? "navmobbtn" : "navmobbtn inapplogout"} onClick={logout}>
+                        Logout
                       </div>
-                      <div className="listwraperMob">
-                        <Link to="/signup">
-                          <div className="navmobbtn">Sign Up</div>
-                        </Link>
-                      </div>
-                    </>
-                  )} */}
+                    </div>
+                  )}
                   {/* {userLoggedIn && (
                     <>
                       <div className="listwraperMob">
@@ -256,10 +290,10 @@ const newNavbar = withRouter((props: any) => {
                 </div>,
               ]}
             />
-            <div className="flexsss newflexsss">
+            <div className={darknav ? "flexsss newflexsss" : "flexsss newflexsss whitenav"}>
               <Link to="/">
                 <img
-                  src={demoLogo}
+                  src={darknav ? demoLogo : demoLogoLight}
                   className="clarity_logo mobilelogo"
                   alt="clarity_logo"
                 />
@@ -271,9 +305,9 @@ const newNavbar = withRouter((props: any) => {
                     setShowNav({ ...state, showNav: !showNav ? true : false })
                   }
                 >
-                  <div className="line1 newline"></div>
-                  <div className="line2 newline"></div>
-                  <div className="line2 newline shrtline"></div>
+                  <div className={darknav ? "line1 newline" : "line1 newline darkline"}></div>
+                  <div className={darknav ? "line2 newline" : "line2 newline darkline"}></div>
+                  <div className={darknav ? "line2 newline shrtline" : "line2 newline shrtline darkline"}></div>
                 </div>
               </div>
             </div>
@@ -286,73 +320,110 @@ const newNavbar = withRouter((props: any) => {
               ? "nav-wrapper redoNav nav_margin privacynav"
               : "nav-wrapper redoNav nav_margin"
           }
+          
+          // className={
+          //   navbar
+          //     ? "nav-wrapper redoNav nav_margin privacynav"
+          //     :  darknav
+          //     ? "nav-wrapper redoNav nav_margin"
+          //     : "nav-wrapper redoNav nav_margin privacynav"
+          // }
+
+          // className={
+          //   !navbar && darknav
+          //     ? "nav-wrapper redoNav nav_margin"
+          //     : !navbar && !darknav
+          //     ? "nav-wrapper redoNav nav_margin privacynav"
+          //     : navbar && darknav
+          //     ? "nav-wrapper redoNav nav_margin privacynav"
+          //     : navbar && !darknav
+          //     ? "nav-wrapper redoNav nav_margin privacynav"
+          //     : "nav-wrapper redoNav nav_margin"
+          // }
         >
           <div className="nav_titlenew">
-            <div className="logo_clarity logo_clarity_new">
-              <Link to="/">
-                <img
-                  src={navbar ? demoLogoLight : demoLogo}
-                  alt="clarity_logo"
-                  className="logologo"
-                />
-              </Link>
-            </div>
+            <Link to="/">
+              <img
+                src={navbar ? demoLogoLight : demoLogo}
+                // src={
+                //   navbar || !darknav
+                //     ? demoLogoLight
+                //     : darknav
+                //     ? demoLogo
+                //     : demoLogo
+                // }
+                alt="clarity_logo"
+                className="logologo"
+              />
+            </Link>
           </div>
           <div className="nav_titlenew">
-            <span className={props.home ? "title hhome" : "title"}>
-              <Link to="/">Home</Link>
-            </span>
-            <span className={props.about ? "title hhome" : "title"}>
-              <Link to="/aboutus">About Us</Link>
-            </span>
-            <span className={props.payments ? "title hhome" : "title"}>
-              <Link to="/payment">Payments</Link>
-            </span>
-            <span className={props.contact ? "title hhome" : "title"}>
-              <Link to="/contact">Contact Us</Link>
-            </span>
-            <span className={props.faq ? "title hhome" : "title"}>
-              <Link to="/faq">FAQ</Link>
-            </span>
-            {/* <span className="title">
-              <Link to="/clarityforteams">SERVICES</Link>
-            </span> */}
-            {/* {!userLoggedIn ? (
-                <NavIsLoggedOut />
-              ) : (
-                <NavIsLoggedIn Logout={logout} />
-              )} */}
+            {!userLoggedIn ? (
+              <span className={props.home ? "title hhome" : "title"}>
+                <Link to="/">Home</Link>
+              </span>
+            ) : (
+              " "
+            )}
+            {!userLoggedIn ? (
+              <span className={props.about ? "title hhome" : "title"}>
+                <Link to="/aboutus">About Us</Link>
+              </span>
+            ) : (
+              " "
+            )}
+            {!userLoggedIn ? (
+              <span className={props.payments ? "title hhome" : "title"}>
+                <Link to="/payment">Payments</Link>
+              </span>
+            ) : (
+              " "
+            )}
+            {!userLoggedIn ? (
+              <span className={props.contact ? "title hhome" : "title"}>
+                <Link to="/contact">Contact Us</Link>
+              </span>
+            ) : (
+              " "
+            )}
+            {!userLoggedIn ? (
+              <span className={props.counselor ? "title hhome" : "title"}>
+                <Link to="/counsellor/signup">For Counsellors</Link>
+              </span>
+            ) : (
+              ""
+            )}
+            {!userLoggedIn ? (
+              <span className={props.faq ? "title hhome" : "title"}>
+                <Link to="/faq">FAQ</Link>
+              </span>
+            ) : (
+              ""
+            )}
+            {!userLoggedIn ? (
+              <NavIsLoggedOut />
+            ) : (
+              <NavIsLoggedIn Logout={logout} />
+            )}
 
             {/* {userLoggedIn ? (
-              {userType === true? (<div className="title1 shiftlefff newshft">
-                <Link to="/signin">
-                  <button className="title_t signupbtn newlogin">Login</button>
-                </Link>
-              </div>):(
-                <Link to="/counsellorsignin">
-                <button className="title_t signupbtn newlogin">Login</button>
-              </Link>
-              )}
+              <div className="title1 shiftlefff newshft">
+                <button className="title_t signupbtn newlogin" onClick={logout}>
+                  Logout
+                </button>
+              </div>
             ) : (
               <div className="title1 shiftlefff newshft">
-                <button className="title_t signupbtn newlogin" onClick={logout}>
-                  Logout
-                </button>
-              </div>
-            )} */}
-
-            {!userLoggedIn ? (
-              <div className="title1 shiftlefff newshft">
+<<<<<<< HEAD
                 <Link to={!userType? "/signin" : "/counsellor/signin"}>
                   <button className="title_t signupbtn newlogin">Log In</button>
+=======
+                <Link to="/signin">
+                  <button className="title_t signupbtn newlogin">Login</button>
+>>>>>>> master
                 </Link>
-              </div>) : (
-              <div className="title1 shiftlefff newshft">
-                <button className="title_t signupbtn newlogin" onClick={logout}>
-                  Logout
-                </button>
               </div>
-            )}
+            )} */}
           </div>
         </Row>
       </div>

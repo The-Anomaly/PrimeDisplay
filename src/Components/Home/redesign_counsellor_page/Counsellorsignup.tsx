@@ -8,7 +8,7 @@ import { API } from "../../../config";
 import Alert from "react-bootstrap/Alert";
 import eye from "../../../assets/eye.png";
 import eyeclose from "../../../assets/eye-off.png";
-
+import drpdwnarr from "../../../assets/dwn-arrw.png";
 
 const counsellorSignup = withRouter((props: any) => {
   const [state, setFormState] = useState({
@@ -123,7 +123,7 @@ const counsellorSignup = withRouter((props: any) => {
         errorMessage: "Please enter your password",
       });
     }
-    if (password && email) {
+    if (password && email ) {
       onSubmit();
     }
   };
@@ -388,19 +388,10 @@ const counsellorSignup = withRouter((props: any) => {
                         Friend
                       </option>
                     </select>
-                  
-                  {/* <Col md={6}>
-                    <span className="rdfrmlbl rdfrmlblrf"> Referral code </span>
-                    <input
-                      type="text"
-                      size={25}
-                      name="referralCode"
-                      className="rdfrmtinptt"
-                      value={referralCode}
-                      onChange={onChangeHandler}
-                      placeholder="Enter referral code (optional)"
-                    />
-                  </Col> */}
+                    <div className="text-right">
+                      <img src={drpdwnarr} className="drparr" />
+                    </div>
+                 
                 <div className="rdsgnupfrmbtndv">
                   <button
                   type="submit"

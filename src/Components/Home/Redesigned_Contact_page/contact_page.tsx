@@ -72,12 +72,12 @@ const Contactpage = () => {
     <div>
     <Navbar contact={true} />
     <Container className="homecontainer" fluid={true}>
-      <div className="section-1">
-        <Container>
+      <div className="section-1 newsection-1">
+        
           <Row>
-            <Col md={12} className="contact_us_div">
-              <h2 className="heading_primary">Contact Us</h2>
-              <p>
+            <Col md={12} className="contact_us_div cntctdiv">
+              <h2 className="heading_primary pry_heading2">Contact Us</h2>
+              <p className="weare">
                 We are always excited to hear from you.<br/>Have questions
                 or enquiries, need to integrate clarity to your system or
                 organizations?<br/>Get in contact with our experts let us
@@ -85,7 +85,7 @@ const Contactpage = () => {
               </p>
             </Col>
           </Row>
-        </Container>
+        
       </div>
       <div className="section-2">
         <Container>
@@ -137,17 +137,16 @@ const Contactpage = () => {
                 <Col md={4} className="contact_icons">
                   <img src={locator} className="cnticns" />
                   <p>
-                    6386 spring St undefined Anchorage, Georgia 12473 united
-                    states
+                    3, Samuel Street, Ogudu, Lagos, Nigeria.
                   </p>
                 </Col>
                 <Col md={4} className="contact_icons">
                   <img src={seticon} className="cnticns" />
-                  <p>(843)555-0130</p>
+                  <a href="tel:+2348176100160"><p>+2348176100160</p></a>
                 </Col>
                 <Col md={4} className="contact_icons">
                   <img src={mail} className="cnticns" />
-                  <p>willie.jennings@example.com</p>
+                  <a href="mailto:Ask@yudimy.com"><p>Ask@yudimy.com</p></a>
                 </Col>
               </Row>
               <Row>

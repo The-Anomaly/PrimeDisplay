@@ -634,3 +634,22 @@ span .checkmark1{
 .assessquestionwrap .assessrating .dv-star-rating label{
   font-size: 1em;
 }
+.assesspadd {
+  margin-top: 0;
+  padding-top: 9rem;
+}
+@media(max-width: 779px) {
+  .assesspadd {
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+}
+.nxtbtn:hover, .awesomebtn:hover {
+  color: #9c1258;
+  background: #ffffff;
+  border: 1px solid #9c1258;
+}
+.awesomebtnsubmit:hover {
+  color: #ffffff;
+  background: #9c1258;
+}
