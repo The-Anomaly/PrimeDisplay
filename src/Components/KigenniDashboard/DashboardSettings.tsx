@@ -24,8 +24,10 @@ class NewDashboardSettings extends React.Component {
     website_link: "",
     successMsg: false,
     isLoading: false,
+    isloading: false,
     showWarning: false,
     image: null,
+    imageName:"",
     width: 100,
     fillStatus: true,
   };
@@ -61,9 +63,13 @@ class NewDashboardSettings extends React.Component {
   handleImageChange = (e) => {
     this.setState({
       image: e.target.files[0],
+      imageName:e.target.files
     });
   };
   submitForm = (e) => {
+    this.setState({
+      isloading: true,
+    });
     e.preventDefault();
     const {
       first_name,
@@ -90,13 +96,18 @@ class NewDashboardSettings extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        //this.notify("Successful");
+        this.setState({
+          isLoading: false,
+        });
         setTimeout(() => {
           this.notify("Successful");
           window.location.reload();
         }, 2000);
       })
       .catch((err) => {
+        this.setState({
+          isLoading: false,
+        });
         this.notify("failed");
         if (err) {
         }
@@ -119,7 +130,7 @@ class NewDashboardSettings extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response)
+        console.log(response);
         if (response.status === 200) {
           this.setState({
             ...response.data,
@@ -152,9 +163,10 @@ class NewDashboardSettings extends React.Component {
       last_name,
       job_description,
       website_link,
-      fillStatus,
+      isloading,
+      isLoading,
     } = this.state;
-
+    console.log(this.state.image);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -173,7 +185,7 @@ class NewDashboardSettings extends React.Component {
                           <img
                             src={image !== null ? image : avatar}
                             className="avatar avar"
-                            alt="avatar"
+                            alt=""
                           />
                         </div>
                         <div>
@@ -181,7 +193,9 @@ class NewDashboardSettings extends React.Component {
                             type="file"
                             onChange={this.handleImageChange}
                             style={{ display: "none" }}
-                            ref={(fileInput) => (this.fileInput = fileInput)}
+                            ref={(fileInput) => 
+                              (this.fileInput = fileInput)
+                            }
                           />
                           <div
                             className="filechan"
@@ -192,6 +206,7 @@ class NewDashboardSettings extends React.Component {
                           <span className="infoforimage">
                             Image should be 80 &times; 80 pixels
                           </span>
+                          <span className="gray-text">{this.state?.image?.name}</span>
                         </div>
                       </div>
                     </div>
@@ -203,7 +218,8 @@ class NewDashboardSettings extends React.Component {
                         <Col md={6}>
                           <div className="whatdoudo">
                             First Name
-                            {this.state.fillStatus === false && first_name === "" ? (
+                            {this.state.fillStatus === false &&
+                            first_name === "" ? (
                               <span className="notfilled"> *</span>
                             ) : (
                               ""
@@ -219,8 +235,9 @@ class NewDashboardSettings extends React.Component {
                         </Col>
                         <Col md={6}>
                           <div className="whatdoudo">
-                            Last Name 
-                            {this.state.fillStatus === false && last_name === "" ? (
+                            Last Name
+                            {this.state.fillStatus === false &&
+                            last_name === "" ? (
                               <span className="notfilled"> *</span>
                             ) : (
                               ""
@@ -238,8 +255,9 @@ class NewDashboardSettings extends React.Component {
                       <Row className="rowla">
                         <Col md={6}>
                           <div className="whatdoudo">
-                            Address 
-                            {this.state.fillStatus === false && address === "" ? (
+                            Address
+                            {this.state.fillStatus === false &&
+                            address === "" ? (
                               <span className="notfilled"> *</span>
                             ) : (
                               ""
@@ -257,7 +275,7 @@ class NewDashboardSettings extends React.Component {
                       <Row className="rowla">
                         <Col md={6}>
                           <div className="whatdoudo">
-                            Email 
+                            Email
                             {this.state.fillStatus === false && email === "" ? (
                               <span className="notfilled"> *</span>
                             ) : (
@@ -274,7 +292,7 @@ class NewDashboardSettings extends React.Component {
                         </Col>
                         <Col md={6}>
                           <div className="whatdoudo">
-                            Phone Number 
+                            Phone Number
                             {this.state.fillStatus === false && phone === "" ? (
                               <span className="notfilled"> *</span>
                             ) : (
@@ -293,8 +311,9 @@ class NewDashboardSettings extends React.Component {
                       <Row className="rowla">
                         <Col md={6}>
                           <div className="whatdoudo">
-                            Occupation 
-                            {this.state.fillStatus === false && job_description === "" ? (
+                            Occupation
+                            {this.state.fillStatus === false &&
+                            job_description === "" ? (
                               <span className="notfilled"> *</span>
                             ) : (
                               ""
@@ -326,7 +345,7 @@ class NewDashboardSettings extends React.Component {
                       className="kskthin col-md-11"
                       onClick={this.validateForm}
                     >
-                      Submit
+                      {isloading ? "Submitting" : "Submit"}
                     </div>
                   </div>
                 </Col>

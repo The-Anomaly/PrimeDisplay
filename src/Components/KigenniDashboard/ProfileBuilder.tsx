@@ -41,6 +41,7 @@ class ProfileBuilder extends React.Component {
     valid_from: "",
     valid_till: "",
     organizationname: "",
+    isloading:false,
     referencename: "",
     referenceid: "",
     referenceemail: "",
@@ -218,6 +219,9 @@ class ProfileBuilder extends React.Component {
     });
   };
   submitForm = (e) => {
+    this.setState({
+      isloading:true
+    })
     e.preventDefault();
     const {
       certifications,
@@ -253,12 +257,18 @@ class ProfileBuilder extends React.Component {
       }
     )
       .then((res) => {
-        this.notify("Successful");
+        this.setState({
+          isloading:false
+        })
+        // this.notify("Successful");
       })
       .catch((err) => {
         if (err) {
-          this.notify("Failed to send");
+          // this.notify("Failed to send"); 
         }
+        this.setState({
+          isloading:false
+        })
       });
   };
   componentDidMount() {
@@ -413,7 +423,7 @@ class ProfileBuilder extends React.Component {
   };
   render() {
     const {
-      fullname,
+      isloading,
       education,
       isLoading,
       referencename,
@@ -1369,7 +1379,7 @@ class ProfileBuilder extends React.Component {
                   <Row>
                     <Col md={12} className="printcv">
                       <div className="savebtn" onClick={this.submitForm}>
-                        Save
+                       {isloading?"Saving":"Save"}
                       </div>
                       <Link to="/profilebuilder">
                         {" "}

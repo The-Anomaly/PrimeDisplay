@@ -19,10 +19,18 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CounsellorSupport = (props: any) => {
-  const [state, setState] = useState<any>({ complain: "", issue_category: "" });
-  const { complain, issue_category } = state;
+  const [state, setState] = useState<any>({
+    complain: "",
+    issue_category: "",
+    isloading: false,
+  });
+  const { complain, issue_category,isloading } = state;
   const submitForm = (e) => {
     e.preventDefault();
+    setState({
+      ...state,
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
@@ -33,9 +41,17 @@ const CounsellorSupport = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        setState({
+          ...state,
+          isloading: false,
+        });
         notify("Successful");
       })
       .catch((err) => {
+        setState({
+          ...state,
+          isloading: false,
+        });
         if (err) {
           notify("Failed to send");
         }
@@ -112,7 +128,7 @@ const CounsellorSupport = (props: any) => {
                         className="retaketest subsupport"
                         onClick={submitForm}
                       >
-                        Submit
+                        {isloading ? "Submitting" : "Submit"}
                       </Button>
                     </Col>
                   </Row>

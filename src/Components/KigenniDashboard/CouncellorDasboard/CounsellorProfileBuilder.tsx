@@ -220,6 +220,9 @@ class CousellorProfileBuilderEdit extends React.Component {
     });
   };
   submitForm = (e) => {
+    this.setState({
+      isloading:true
+    })
     e.preventDefault();
     const {
       certifications,
@@ -255,15 +258,22 @@ class CousellorProfileBuilderEdit extends React.Component {
       }
     )
       .then((res) => {
+        this.setState({
+          isloading:false
+        })
         this.notify("Successful");
       })
       .catch((err) => {
+        this.setState({
+          isloading:false
+        })
         if (err) {
           this.notify("Failed to send");
         }
       });
   };
   componentDidMount() {
+    this.setState({isloading:true})
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profilebuilder`, {
@@ -282,6 +292,7 @@ class CousellorProfileBuilderEdit extends React.Component {
           linkedin: res.data.user_social.linkedin,
           instagram: res.data.user_social.instagram,
           twitter: res.data.user_social.twitter,
+          isloading:false
         });
       })
       .then((resp) => {
@@ -291,6 +302,7 @@ class CousellorProfileBuilderEdit extends React.Component {
         this.moveTo(resultareawithtitle);
       })
       .catch((err) => {
+        this.setState({isloading:false})
         if (err) {
           this.notify("Failed to fetch data");
         }
@@ -411,7 +423,7 @@ class CousellorProfileBuilderEdit extends React.Component {
   };
   render() {
     const {
-      fullname,
+      isloading,
       education,
       isLoading,
       referencename,
@@ -1367,7 +1379,7 @@ class CousellorProfileBuilderEdit extends React.Component {
                   <Row>
                     <Col md={12} className="printcv">
                       <div className="savebtn" onClick={this.submitForm}>
-                      Save
+                      {isloading?"Saving":"Save"}
                       </div>
                       <Link to="/profilebuilder">
                         {" "}

@@ -3866,3 +3866,13 @@ label {
     flex-direction: column;
   }
 }
+.sddx12{
+  overflow-y: hidden;
+  margin-bottom: 3rem;
+}
+.gray-text{
+  font-size: 12px;
+  display: contents;
+  display: block;
+  margin-top: .4rem;
+}

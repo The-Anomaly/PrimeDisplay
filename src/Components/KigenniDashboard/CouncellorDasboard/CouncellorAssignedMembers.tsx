@@ -280,7 +280,7 @@ const CounsellorAssignedMembers = (props: any) => {
                                 />
                               </div>
                             </Link>
-                            <Link to={`/counsellorassignedmembers/${data?.id}`}>
+                            <Link to={`/counsellorassignedmembers/${data?.email}`}>
                               <div className="mtwo">
                                 <div>
                                   <div className="lowerr nulower counlowerr mhead">
