@@ -264,3 +264,18 @@
 .sizedtodobtn {
   width: 115px;
 }
+.noplancreate {
+  background: #9c1258;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 0.7rem 1rem;
+    width: 150px;
+    margin: auto;
+    border-radius: 5px;
+    font-family: 'Brfirma-Bold';
+    letter-spacing: 0.3px;
+    cursor: pointer;
+}
+.newnorec {
+  margin-top: 3rem;
+}

@@ -276,12 +276,11 @@ const Payment = (props: any) => {
                         <span className="card_btn btn-yellow">Get Started</span>
                       </Link>
                     ) : (
-                      <span
+                      <Link to="/dashboardsubscriptionplan"><span
                         className="card_btn btn-yellow"
-                        onClick={() => requestForPayref("Growth Plan", 3000)}
                       >
                         Subscribe
-                      </span>
+                      </span></Link>
                     )}
                   </Card.Body>
                 </Card>
