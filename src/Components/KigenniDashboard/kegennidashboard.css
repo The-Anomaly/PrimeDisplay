@@ -1569,7 +1569,7 @@ textarea.form-control.jobr {
   text-align: right;
   font-weight: 400;
   display: inline;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 2.8rem;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -1733,7 +1733,6 @@ textarea.form-control.jobr {
 }
 .savebtn {
   color: #fff;
-  background: #9c1258;
   border-radius: 8px;
   border: 1px solid #9c1258;
   padding: 0.4rem 0.9rem;

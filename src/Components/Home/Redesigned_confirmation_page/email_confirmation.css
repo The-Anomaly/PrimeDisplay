@@ -90,6 +90,11 @@
 .rsendmail{
     cursor: pointer;
 }
-.alertzuccess{
+.alertzuccessec{
     left:initial !important;
+    width: 64%;
+    margin: auto;
+}
+.ecpspn{
+    margin-right: 3px;
 }

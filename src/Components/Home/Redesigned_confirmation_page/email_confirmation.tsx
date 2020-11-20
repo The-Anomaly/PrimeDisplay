@@ -21,7 +21,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
  
   useEffect(()=>{
     const user :any= localStorage.getItem("userEmail") 
-    const userEmail = JSON?.parse(user)
+    const userEmail = JSON.parse(user)
     console.log(userEmail)
     setState({
       ...state,
@@ -85,7 +85,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
     })
     .catch((error)=>{
       console.log(error.response)
-      if(error){
+      if(error && error.response && error.response.data){
         return setState({
           ...state,
           errorMessage: error?.response?.data?.message,
@@ -93,8 +93,25 @@ const Email_confirm_page = withRouter ((props: any ) => {
           error:true
         })
       }
+      return setState({
+        ...state,
+        errorMessage: "failed to send, please check your internet connection" 
+      })
     })
   
+  }
+
+  const validateForm=(e)=>{
+    e.preventDefault();
+    if (confirmEmail==""){
+      return setState({
+        ...state,
+        errorMessage: "please enter your code"
+      })
+    }
+   else{
+     onSubmit()
+   }
   }
   const onChangeHandler=(e)=>{
     setState({
@@ -113,14 +130,14 @@ const Email_confirm_page = withRouter ((props: any ) => {
               <p className="cnfim-messg">
                 A code has been sent to 
                 <span className="cnfirmspan"> {state.client}</span>, please enter
-                code below <br /> to confirm your Account
+                code below to confirm your Account
               {successMessage && (
-                <Alert key={1} variant="success" className="alertzuccess">
+                <Alert key={1} variant="success" className="alertzuccessec">
                     {successMessage}
                 </Alert>
               )}
               {errorMessage && (
-                <Alert key={2} variant="danger" className="alertzuccess">
+                <Alert key={2} variant="danger" className="alertzuccessec">
                     {errorMessage}
                 </Alert>
               )}
@@ -129,7 +146,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
           </Row>
           <Row className="cnfrmmailrow2">
             <Col md={7}>
-              <Form className="cnfirmmailform">
+              <Form className="cnfirmmailform" onSubmit={validateForm}>
                 <Row>
                   <Col md={8}>
                     <input
@@ -141,13 +158,13 @@ const Email_confirm_page = withRouter ((props: any ) => {
                       placeholder="Please enter the code you received"
                     />
                   </Col>
-                  <Col md={4} className="confirmtn-btn" onClick={onSubmit}>
+                  <Col md={4} className="confirmtn-btn" onClick={validateForm}>
                     Confirm Account
                   </Col>
                 </Row>
               </Form>
               <div className="cnfrmdiv">
-                <p>Didn’t Recieve any mail? <span className="rsendmail" onClick={resendCode}>Resend!</span></p>
+                <p className="rsendmail" onClick={resendCode}>Didn’t Recieve any mail? Resend!</p>
               </div>
             </Col>
           </Row>

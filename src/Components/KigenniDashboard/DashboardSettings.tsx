@@ -325,7 +325,7 @@ class NewDashboardSettings extends React.Component {
                       className="kskthin col-md-11"
                       onClick={this.validateForm}
                     >
-                      Submit
+                      Save
                     </div>
                   </div>
                 </Col>
