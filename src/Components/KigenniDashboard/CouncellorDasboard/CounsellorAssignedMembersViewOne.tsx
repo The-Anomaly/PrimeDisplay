@@ -39,6 +39,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     industry_interest: "",
     present_pills: "",
     opportunities: "",
+    userProfile:[]
   });
   React.useEffect(() => {
     setState({
@@ -53,15 +54,23 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-members`, {
         headers: { Authorization: `Token ${token}` },
       }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-member/profile/${props.match.params.id}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-member/career-preferences?email=${props.match.params.id}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
     ])
       .then(
-        Axios.spread((res) => {
-          console.log(res);
+        Axios.spread((res,res1,res2) => {
+          console.log(res1);
+          console.log(res2);
           if (res.status === 200) {
             setState({
               ...state,
               user: [...res.data.results],
               counsellorData: [...res.data.results].reverse(),
+              userProfile:[],
               count: res.data.page,
               nextLink: res.data.next,
               prevLink: res.data.previous,

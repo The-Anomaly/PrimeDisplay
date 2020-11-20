@@ -40,38 +40,47 @@ const counsellorSignin = withRouter((props: any) => {
       .post(`${API}/accounts/counsellor-login`, data)
       .then((response) => {
         console.log(response);
-        if (response.status === 200) {
-          localStorage.setItem(
-            "userToken",
-            JSON.stringify(response?.data?.token)
-          );
-          getUserInfo(response.data.token);
-          getCurrentAssessmentPosition(response.data.token);
-        }
+        getUserInfo(response.data.token);
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(response?.data?.token)
+        );
         setState({
           ...state,
-          isLoading: true,
+          isLoading: false,
         });
       })
       .catch((error) => {
-        console.log(error);
-       
+        console.log(error.response);
+        if (error && error?.response?.status == 500) {
+          return setState({
+            ...state,
+            errorMessage: "Failed to login, internal server error.",
+            isLoading: false,
+          });
+        }
         if (error && error.response && error.response.data) {
           return setState({
             ...state,
-            errorMessage: error?.response?.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
-            error: false,
+          });
+        }
+        if (error && error?.response?.status === 404) {
+          return setState({
+            ...state,
+            errorMessage: error?.response?.data.error,
+            isLoading: false,
           });
         }
         setState({
           ...state,
-          errorMessage: "Login failed, check your internet connection",
+          errorMessage: "Failed to Login",
           isLoading: false,
-          error: true,
         });
       });
   };
+
   const onChangeHandler = (e) => {
     setState({
       ...state,
@@ -79,70 +88,14 @@ const counsellorSignin = withRouter((props: any) => {
       errorMessage: "",
     });
   };
+
   const hidePassword = () => {
     setState({
       ...state,
       passwordIsOpen: state.passwordIsOpen ? false : true,
     });
   };
-  const getCurrentAssessmentPosition = (token: string): void => {
-    axios
-      .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
-      .then((response) => {
-        if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_nature") ||
-          response.data[0].next === "phase_four_health" ||
-          response.data[0].next === "phase_four_building" ||
-          response.data[0].next === "phase_four_creative"
-        ) {
-          return props.history.push(`/assessmentphasefour`);
-        }
-        if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_sports") ||
-          response.data[0].next === "phase_four_business" ||
-          response.data[0].next === "phase_four_stem" ||
-          response.data[0].next === "phase_four_humanitarian"
-        ) {
-          return props.history.push(`/assessmentphasefour1`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessmentphaseone`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "onboarding_chat"
-        ) {
-          return props.history.push(`/clientchat`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_two") {
-          return props.history.push(`/assessmentphasetwo`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_three"
-        ) {
-          return props.history.push(`/assessmentphasethree`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_five") {
-          return props.history.push(`/assessmentphasefive`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_six") {
-          return props.history.push(`/assessmentphasesix`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_seven"
-        ) {
-          return props.history.push(`/assessmentphaseseven`);
-        }
-        if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/free/dashboard`);
-        }
-      })
-      .catch((error) => {});
-  };
+
   const getUserInfo = (token: string): any => {
     axios
       .get(`${API}/currentuser`, {
@@ -151,17 +104,18 @@ const counsellorSignin = withRouter((props: any) => {
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("user", JSON.stringify(response?.data));
+          props.history.push("/counselloroverview");
         }
       })
       .catch((error) => {});
   };
   const validateForm = (e) => {
     e.preventDefault();
-    if (email=="" && password == ""){
+    if (email == "" && password == "") {
       return setState({
         ...state,
-        errorMessage: "please enter your details"
-      })
+        errorMessage: "please enter your details",
+      });
     }
     if (email === "") {
       return setState({
@@ -174,8 +128,7 @@ const counsellorSignin = withRouter((props: any) => {
         ...state,
         errorMessage: "Please enter your password",
       });
-    } 
-    else {
+    } else {
       sendFormData();
     }
   };
@@ -204,7 +157,9 @@ const counsellorSignin = withRouter((props: any) => {
                   <h4 className="sgnfrmhder">Log In</h4>
                   <div>
                     <div className="sgnupfrmline"></div>
-                    <span className="sgnupdescr">(Welcome back Counsellor)</span>
+                    <span className="sgnupdescr">
+                      (Welcome back Counsellor)
+                    </span>
                   </div>
                 </div>
                 {successMessage && (
@@ -247,10 +202,10 @@ const counsellorSignin = withRouter((props: any) => {
                     placeholder="Enter your Password"
                     size={75}
                     onKeyPress={(e) => {
-                    if (e.key === "Enter") {
-                      validateForm(e);
-                    }
-                  }}
+                      if (e.key === "Enter") {
+                        validateForm(e);
+                      }
+                    }}
                     className="form-control rdsignupinput"
                   />
                 </label>
@@ -273,11 +228,13 @@ const counsellorSignin = withRouter((props: any) => {
                 </div>
                 <div className="rdsigninp">
                   <p>
-                    <Link to="/counsellor/signin/forgotpassword">Forgot your password?</Link>
+                    <Link to="/counsellor/signin/forgotpassword">
+                      Forgot your password?
+                    </Link>
                   </p>
                 </div>
                 <div className="rdsgnupfrmbtndv">
-                <button
+                  <button
                     type="submit"
                     onClick={validateForm}
                     className="rdsgnfrmbtn rdsgnup-animated"

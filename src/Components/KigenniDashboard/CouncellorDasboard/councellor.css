@@ -3402,7 +3402,7 @@ textarea.form-control.jobr {
   .booked {
     padding: 1rem;
     max-width: 100%;
-    margin-right: 2rem;
+    margin-right: 1rem;
     margin-left: 0;
   }
   .cone {
@@ -4096,4 +4096,7 @@ textarea.form-control.jobr {
     display: flex;
     justify-content: flex-end;
   }
+}
+.ref_input{
+  cursor: pointer;
 }

@@ -1,10 +1,10 @@
 import * as React from "react";
-import Navbar from "../HomeComponents/newnavbar";
+import Navbar from "../HomeComponents/navbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Footer from "../HomeComponents/newfooter";
+import Footer from "../HomeComponents/footer";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import "./signup.css";
@@ -161,7 +161,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
       .catch((error) => {
         setFormState({
           ...state,
-          errorMessage: "failed to login",
+          // errorMessage: "failed to login",
         });
       });
   };
@@ -180,7 +180,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
   const errorGoogle = (response) => {
     setFormState({
       ...state,
-      errorMessage: "failed to login",
+      // errorMessage: "failed to login",
     });
   };
   const getCurrentAssessmentPosition = (token: string): void => {

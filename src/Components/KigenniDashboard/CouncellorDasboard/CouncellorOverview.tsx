@@ -100,7 +100,7 @@ const CounsellorOverview = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1, res2, res3) => {
-          console.log(res3);
+          console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,

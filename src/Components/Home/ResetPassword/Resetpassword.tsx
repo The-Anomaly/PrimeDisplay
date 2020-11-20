@@ -1,5 +1,5 @@
 import * as React from "react";
-import Navbar from "../HomeComponents/navbar";
+import Navbar from "../HomeComponents/newnavbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
@@ -26,6 +26,7 @@ interface State {
   message: string;
   password: string;
   confirmpassword: string;
+  successMessage: boolean;
 }
 const ResetPassword: React.FunctionComponent = (props: any) => {
   const [state, setFormState] = React.useState<State>({
@@ -35,6 +36,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
     message: "",
     password: "",
     confirmpassword: "",
+    successMessage: false,
   });
   const {
     email,
@@ -43,6 +45,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
     message,
     password,
     confirmpassword,
+    successMessage,
   } = state;
   const sendFormData = () => {
     const token = props.match.params.token;
@@ -50,7 +53,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
     setFormState({ ...state, isLoading: true });
     const data = {
       password,
-      confirm_password:confirmpassword,
+      confirm_password: confirmpassword,
     };
     axios
       .post<any, AxiosResponse<any>>(
@@ -93,24 +96,30 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
   const validateForm = (e) => {
     e.preventDefault();
     setFormState({ ...state, isLoading: true });
-      if (password.trim() === "" && confirmpassword.trim() === "") {
-        return setFormState({
-          ...state,
-          errorMessage: "please fill the empty feild(s)",
-          isLoading: false,
-        });
-      }
-      if (confirmpassword !== password) {
-        return  setFormState({ 
-          ...state,
-          errorMessage:"Password must be the same",
-          isLoading: false
-        });
-      }
-      else{
-        sendFormData()
-      }
-   }
+    if (password.length < 6) {
+      return setFormState({
+        ...state,
+        errorMessage: "Password must be at least 6 characters long",
+        isLoading: false,
+      });
+    }
+    if (password.trim() === "" && confirmpassword.trim() === "") {
+      return setFormState({
+        ...state,
+        errorMessage: "please fill the empty feild(s)",
+        isLoading: false,
+      });
+    }
+    if (confirmpassword !== password) {
+      return setFormState({
+        ...state,
+        errorMessage: "Password must be the same",
+        isLoading: false,
+      });
+    } else {
+      sendFormData();
+    }
+  };
   const getCurrentAssessmentPosition = (token: string): void => {
     axios
       .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
@@ -151,8 +160,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
           return props.history.push(`/dashboard/personality`);
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   const changeActionOnFormData = (e: any) => {
     setFormState({
@@ -172,8 +180,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
           localStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   const responseGoogle = (response) => {
     const data = {
@@ -211,92 +218,83 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
   }, []);
   return (
     <>
-      <Navbar />
-      <Container fluid={true}>
-        <Row className="kli">
-          <Col md={5} className="mo">
-            <img
-              src={signinwelcome}
-              className="signupimg img-fluid"
-              alt="SignupImage"
-            />
-          </Col>
-          <Col md={5}>
-            <div className="signwa ilaks">Reset Password</div>
-            {errorMessage && (
-              <Alert key={2} variant="danger">
-                {errorMessage}
-              </Alert>
-            )}
-            {message ? (
-              <Alert key={3} variant="info">
-                <div> {message}</div>
-              </Alert>
-            ) : (
-              ""
-            )}
-            <Form onSubmit={validateForm}>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Control
-                  type="password"
-                  name="password"
-                  className="field1"
-                  value={password}
-                  onChange={changeActionOnFormData}
-                  placeholder="Password"
-                />
-                <br />
-                <Form.Control
-                  type="password"
-                  name="confirmpassword"
-                  className="field1"
-                  value={confirmpassword}
-                  onChange={changeActionOnFormData}
-                  placeholder="Confirm Password"
-                />
-              </Form.Group>
-              <Button variant="primary" className="subbtn" type="submit">
-                {!isLoading ? "Submit" : "Submitting"}
-              </Button>
-              <div className="alreadyhave">
-                <Link to="/signin">
-                  <span className="logn"> Sign In</span>
-                </Link>
-              </div>
-              <h6 className="text-divider">
-                <span className="divider-text">or connect using</span>
-                <div className="centeredline"></div>
-              </h6>
-              <div className="socialwrapper">
-                {/* <div className="socialIcons1">
-                  <img src={fb} alt="fb" />
-                </div> */}
-                <GoogleLogin
-                  clientId="53707797583-8rbiv5j6gdac35ik840rtcc65pklp9e9.apps.googleusercontent.com"
-                  render={(renderProps) => (
-                    <div className="socialIcons2">
-                      <img
-                        src={google}
-                        className="gooogg"
-                        onClick={renderProps.onClick}
-                        alt="fb"
-                      />
+      <div>
+        <Navbar />
+        <div className="rdsignup-section">
+          <Container>
+            <Row className="rsignuprow">
+              <Col md={12} className="rsignupdiv">
+              </Col>
+              <Col md={7}>
+                <Form className="rdsignupform" onSubmit={validateForm}>
+                  <div className="rdsignupfrmdv">
+                    <h4 className="sgnfrmhder">Password Reset</h4>
+                    <div>
+                      <div className="sgnupfrmline"></div>
+                      <span className="sgnupdescr">
+                        Please enter your new password
+                      </span>
                     </div>
+                  </div>
+                  {successMessage && (
+                    <Alert
+                      key={2}
+                      variant="success"
+                      className=" alertzuccess text-center"
+                    >
+                      {successMessage}
+                    </Alert>
                   )}
-                  buttonText="Login"
-                  onSuccess={responseGoogle}
-                  onFailure={errorGoogle}
-                  cookiePolicy={"single_host_origin"}
-                />
-                {/* <div className="socialIcons3">
-                  <img src={linkedin} alt="fb" />
-                </div> */}
-              </div>
-            </Form>
-          </Col>
-        </Row>
-        <Footer />
-      </Container>
+                  {errorMessage && (
+                    <Alert
+                      key={2}
+                      variant="danger"
+                      className="alertzuccess text-center"
+                    >
+                      {errorMessage}
+                    </Alert>
+                  )}
+                  <label>
+                    <span className="rdfrmlbl"> New Password </span>
+                    <input
+                      type="password"
+                      name="password"
+                      value={password}
+                      onChange={changeActionOnFormData}
+                      placeholder="Enter Password"
+                      size={30}
+                      className="form-control rdsignupinput"
+                    />
+                  </label>
+                  <label>
+                    <span className="rdfrmlbl"> Confirm Password </span>
+                    <input
+                      type="password"
+                      name="confirmpassword"
+                      value={confirmpassword}
+                      onChange={changeActionOnFormData}
+                      placeholder="Confirm Password"
+                      size={30}
+                      className="form-control rdsignupinput"
+                    />
+                  </label>
+                  <div className="rdsgnupfrmbtndv">
+                    <span
+                      onClick={validateForm}
+                      className="rdsgnfrmbtn rdsgnup-animated"
+                    >
+                      {isLoading ? "Processing" : "Submit"}
+                    </span>
+                  </div>
+                  <p className="rdsgnalready">
+                    Don't have an account? <Link to="/signup">Sign Up</Link>
+                  </p>
+                </Form>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </div>{" "}
     </>
   );
 };

@@ -52,7 +52,7 @@ const NewFooter: React.FC = (props) => {
           </div>
           <div className="footer_socials">
             <a href="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="_blank"><img className="footer_social_1 ssmedia" src={facebook} alt="facebook" /></a>
-            <a href="" target="_blank"><img className="footer_social_2 ssmedia unclick" src={twitter} alt="twitter" /></a>
+            <a href="https://twitter.com/askyudimy?s=08" target="_blank"><img className="footer_social_2 ssmedia" src={twitter} alt="twitter" /></a>
             <a href="http://instagram.com/getclarity_" target="_blank"><img className="footer_social_3 ssmedia" src={instagram} alt="instagram" /></a>
             <a href="https://ng.linkedin.com/company/yudimy" target="_blank"><img className="footer_social_4 ssmedia" src={linkedin} alt="linkedin" /></a>
           </div>

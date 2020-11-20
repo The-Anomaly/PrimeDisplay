@@ -214,6 +214,9 @@
 .alertzuccess {
   left: initial !important;
 }
+.paddit {
+  /* padding-top: 9rem; */
+}
 
 @media(max-width: 779px) {
   .paddit{

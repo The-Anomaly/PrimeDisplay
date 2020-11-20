@@ -1,7 +1,7 @@
 import * as React from "react";
 import SideNav from "react-simple-sidenav";
 import Row from "react-bootstrap/Row";
-import imgCart from "../../../assets/Claritylogo.png";
+import imgCart from "../../../assets/newclaritylogo2a.png";
 import Col from "react-bootstrap/Col";
 import activeinsight from "../../../assets/insights_active.png";
 import Overview_inactive from "../../../assets/Overview_inactive.png";
@@ -58,10 +58,10 @@ const CounsellorsDashboardMobileNav = (props: any) => {
       <Row>
         <div className="hnav">
           <img src={imgCart} className="imgCart" alt="imgCart" />
-          <div className="hamburger" onClick={() => setShowNav(true)}>
+          <div className="hamburger hamdash" onClick={() => setShowNav(true)}>
             <div className="line2a"></div>
             <div className="line2a"></div>
-            <div className="line2a"></div>
+            <div className="line2a newlinedash"></div>
           </div>
         </div>
       </Row>

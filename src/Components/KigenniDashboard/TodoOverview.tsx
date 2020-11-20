@@ -314,8 +314,8 @@ const TodoOverview = withRouter((props: any) => {
                         className="greengood"
                         alt="goodimage"
                       />
-                      It Takes alot of Hero to even start a task, But seems you
-                      have super powers. Keep going Champ!!!
+                      It takes a hero to even start a task, but it seems
+                      like you have super powers. Keep going Champ!!!
                     </div>
                     <div className="wrapline"></div>
                     {tasklist.length > 0 && (
@@ -373,15 +373,15 @@ const TodoOverview = withRouter((props: any) => {
                         <div className="ctime todoo">
                           {data.status !== "pending" && (
                             <div
-                              className="savebtn todo_button"
-                              onClick={() => OpenIscompleteModal(data.id)}
+                              className="savebtn todo_button sizedtodobtn"
+                              onClick={() => openViewMoreModal(data.id)}
                             >
                               View More
                             </div>
                           )}
                           {data.status !== "completed" && (
                             <div
-                              className="savebtn todo_button"
+                              className="savebtn todo_button sizedtodobtn"
                               onClick={() => OpenIscompleteModal(data.id)}
                             >
                               Complete Task

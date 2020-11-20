@@ -1569,7 +1569,7 @@ textarea.form-control.jobr {
   text-align: right;
   font-weight: 400;
   display: inline;
-  padding: 0.4rem 2.8rem;
+  padding: 0.4rem 3.8rem;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -2498,10 +2498,19 @@ textarea.form-control.jobr {
 
 .searchinput {
   padding-left: 1.9rem;
-  color: #ced4da !important;
+  color: #717172 !important;
 }
 .searchinput::placeholder {
-  color: #ced4da;
+  color: #717172;
+}
+.ffrr1 input{
+  border: 1px solid #b6b5b5 !important;
+  outline: none;
+  color: #717172 !important;
+}
+
+.ffrr1 input{
+  outline: none;
 }
 .useri1222 {
   background: #fefefe;
@@ -3106,6 +3115,7 @@ textarea.form-control.jobr {
 /*All Tasks Page Styling*/
 .firstqq {
   padding-top: 2rem;
+  padding-right: 2rem;
 }
 .begin {
   display: flex;
@@ -3220,7 +3230,7 @@ textarea.form-control.jobr {
 .todo_button {
   border-radius: 5px;
   font-size: 12px;
-  padding: 0.35rem 1.5rem;
+  padding: 0.35rem 0.5rem !important;
   width: fit-content;
   height: fit-content;
   font-weight: 600;
@@ -3266,9 +3276,6 @@ input,
 @media (max-width: 1200px) {
   .task_time {
     margin-right: 0.5rem;
-  }
-  .todo_button {
-    padding: 0.35rem 0.5rem;
   }
   .yellowgood {
     margin-left: 0rem;
@@ -3466,6 +3473,7 @@ input,
   .create_task {
     width: 150px;
     text-align: center;
+    margin-right: 1rem;
   }
   .begin {
     flex-wrap: wrap;
@@ -3850,4 +3858,10 @@ label {
 }
 .usermmsa1{
   margin-bottom: 9rem;
+}
+
+@media(max-width: 500px) {
+  .newliee {
+    flex-direction: column;
+  }
 }

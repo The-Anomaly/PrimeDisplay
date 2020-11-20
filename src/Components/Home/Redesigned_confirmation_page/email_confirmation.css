@@ -20,7 +20,13 @@
     text-align: center;
     color: #fff;
     font-size: 15px;
+    width: 53%;
     margin-bottom: 26px;
+}
+@media (max-width: 760px){
+    .cnfim-messg{
+        width: 100%;
+    }
 }
 .cnfirmspan{
     color: #3965ff;
@@ -97,4 +103,8 @@
 }
 .ecpspn{
     margin-right: 3px;
+}
+.ecnfirmdivtg{
+    display: flex;
+    justify-content: center;
 }

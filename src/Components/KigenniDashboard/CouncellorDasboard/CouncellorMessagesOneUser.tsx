@@ -32,6 +32,11 @@ class CounsellorMessageOneUser extends React.Component {
     super(props);
     this.initialiseChat(props.match.params.chatID);
   }
+   moveTo = (str) => {
+    const offsetTop: any = document.getElementById(str);
+    console.log(offsetTop.scrollHeight)
+    offsetTop.scrollTo(0,offsetTop.scrollHeight)
+  };
   componentWillMount() {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -47,6 +52,7 @@ class CounsellorMessageOneUser extends React.Component {
           this.setState({
             userInfo: response.data[0],
           });
+          this.moveTo("targetdiv")
         }
       })
       .catch((error) => {
@@ -125,7 +131,7 @@ class CounsellorMessageOneUser extends React.Component {
                     <Col md={12} className="kisls kislsoo kil123">
                       <div className="kdashheader npps nprr">
                         <div></div>
-                        <Col md={12} className="youwss">
+                        <Col md={12} className="youwss" id="targetdiv">
                           {this.props.messages.map((data, i) => (
                             <div key={i} className="usermmsa">
                               {data.author ==

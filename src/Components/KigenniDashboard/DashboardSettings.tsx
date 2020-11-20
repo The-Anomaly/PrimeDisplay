@@ -25,7 +25,7 @@ class NewDashboardSettings extends React.Component {
     successMsg: false,
     isLoading: false,
     showWarning: false,
-    image: "",
+    image: null,
     width: 100,
     fillStatus: true,
   };
@@ -119,6 +119,7 @@ class NewDashboardSettings extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
+        console.log(response)
         if (response.status === 200) {
           this.setState({
             ...response.data,
@@ -170,7 +171,7 @@ class NewDashboardSettings extends React.Component {
                         {" "}
                         <div className="smalls">
                           <img
-                            src={image !== "" ? image : avatar}
+                            src={image !== null ? image : avatar}
                             className="avatar avar"
                             alt="avatar"
                           />

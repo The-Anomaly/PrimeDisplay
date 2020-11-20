@@ -40,10 +40,6 @@ const Email_confirm_page = withRouter ((props: any ) => {
      axios.post(`${API}/accounts/resend-code/`,data)
      .then((response)=>{
        if (response.status === 200) {
-        localStorage.setItem(
-          "userToken",
-          JSON.stringify(response?.data?.token)
-        );
          return setState({
             ...state,
             successMessage: response.data.message,
@@ -72,8 +68,12 @@ const Email_confirm_page = withRouter ((props: any ) => {
       console.log(response)
 
       if (response.status === 200){
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify(response?.data?.token)
+        );
         setTimeout(()=>{
-          props?.history?.push("/clientchat2")
+          props?.history?.push("/clientchat")
           console.log(props)
         },4000)
           setState({
@@ -119,6 +119,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
       confirmEmail: e.target.value
     })
   }
+  console.log(client)
   return(
     <div>
       <Navbar />
@@ -127,6 +128,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
           <Row>
             <Col md={12}>
               <p className="cnfim-heading">Confirm your Email</p>
+              <div className="ecnfirmdivtg">
               <p className="cnfim-messg">
                 A code has been sent to 
                 <span className="cnfirmspan"> {state.client}</span>, please enter
@@ -142,6 +144,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
                 </Alert>
               )}
               </p>
+              </div> 
             </Col>
           </Row>
           <Row className="cnfrmmailrow2">

@@ -1,11 +1,11 @@
 import * as React from "react";
-import Navbar from "../HomeComponents/newnavbar";
+import Navbar from "../HomeComponents/navbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-import Footer from "../HomeComponents/newfooter";
+import Footer from "../HomeComponents/footer";
 import Col from "react-bootstrap/Col";
 import "../SignUp/signup.css";
 import "./SignIn.css";
@@ -117,64 +117,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
       sendFormData();
     }
   };
-  const getCurrentAssessmentPosition = (token: string): void => {
-    axios
-      .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
-      .then((response) => {
-        if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_nature") ||
-          response.data[0].next === "phase_four_health" ||
-          response.data[0].next === "phase_four_building" ||
-          response.data[0].next === "phase_four_creative"
-        ) {
-          return props.history.push(`/assessmentphasefour`);
-        }
-        if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_four_sports") ||
-          response.data[0].next === "phase_four_business" ||
-          response.data[0].next === "phase_four_stem" ||
-          response.data[0].next === "phase_four_humanitarian"
-        ) {
-          return props.history.push(`/assessmentphasefour1`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessmentphaseone`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "onboarding_chat"
-        ) {
-          return props.history.push(`/clientchat`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_two") {
-          return props.history.push(`/assessmentphasetwo`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_three"
-        ) {
-          return props.history.push(`/assessmentphasethree`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_five") {
-          return props.history.push(`/assessmentphasefive`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_six") {
-          return props.history.push(`/assessmentphasesix`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_seven"
-        ) {
-          return props.history.push(`/assessmentphaseseven`);
-        }
-        if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/free/dashboard`);
-        }
-      })
-      .catch((error) => {});
-  };
+  
   const changeActionOnFormData = (e: any) => {
     setFormState({
       ...state,
@@ -211,7 +154,6 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
           "userToken",
           JSON.stringify(response?.data[0]?.token)
         );
-        getCurrentAssessmentPosition(response.data[0]?.token);
         getUserInfo(response.data[0]?.token);
       })
       .catch((error) => {
@@ -224,7 +166,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
   const errorGoogle = (error) => {
     setFormState({
       ...state,
-      errorMessage: "Google login failed",
+      // errorMessage: "Google login failed",
     });
   };
   const authenticate = (response) => {
@@ -246,7 +188,6 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
             "userToken",
             JSON.stringify(response?.data[0]?.token)
           );
-          getCurrentAssessmentPosition(response.data[0]?.token);
           getUserInfo(response.data[0]?.token);
         })
         .catch((error) => {
