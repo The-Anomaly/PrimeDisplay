@@ -56,6 +56,9 @@ class NewDashboardSupport extends React.Component {
           isloading:false
         })
         this.notify("Successful");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err) => {
         this.setState({

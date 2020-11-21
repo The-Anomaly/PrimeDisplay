@@ -264,3 +264,120 @@
 .sizedtodobtn {
   width: 115px;
 }
+.noplancreate {
+  background: #9c1258;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 0.7rem 1rem;
+    width: 150px;
+    margin: auto;
+    border-radius: 5px;
+    font-family: 'Brfirma-Bold';
+    letter-spacing: 0.3px;
+    cursor: pointer;
+}
+.newnorec {
+  margin-top: 3rem;
+}
+
+/*Task Overview redesign*/
+.cardsec1txt {
+  font-size: 11px;
+  margin-right: 0;
+  margin-left: auto;
+  font-weight: 600;
+  padding: 0.1rem 1rem;
+  width: 100px;
+}
+@media(max-width: 800px) {
+  .newprm {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  .newseccards {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 400px;
+    margin: 2rem auto;
+    padding-top: 0;
+    padding-bottom: 2rem;
+  }
+  .cardsec1 {
+    order: 1;
+    flex: 100%;
+  }
+  .todominittl {
+    font-weight: 600;
+  }
+  .tododurr {
+    justify-content: flex-start;
+  }
+  .tododate {
+    text-align: right;
+  }
+  .tododate1 {
+    justify-content: flex-end;
+  }
+  .cardsec2 {
+    order: 2;
+    flex: 100%;
+    max-width: 100%;
+  }
+  .cardsec3 {
+    order: 3;
+    flex: 50%;
+    max-width: 50%;
+    margin: 0;
+  }
+  .cardsec3::after {
+    content: "";
+    width: 34px;
+    border: 1px solid #666666;
+    position: absolute;
+    transform: rotate(90deg);
+    margin-top: -1.5rem;
+    margin-left: 9.5rem;
+  }
+  .cardsec4 {
+    order: 4;
+    flex: 50%;
+    max-width: 50%;
+    margin: 0;
+  }
+  .cardsec5 {
+    order: 5;
+    flex: 100%;
+    max-width: 100%;
+    padding-top: 0;
+  }
+  .newgrnbg {
+    font-size: 14px;
+    margin-top: 1rem;
+  }
+}
+@media(max-width: 500px) {
+  .newseccards {
+    width: 300px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+  }
+  .cardsec3::after {
+    margin-left: 7rem;
+  }
+  .cardsec5 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .todominittl {
+    font-size: 12px;
+  }
+  .txtfont {
+    font-size: 13px;
+  }
+  .newgrnbg {
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
