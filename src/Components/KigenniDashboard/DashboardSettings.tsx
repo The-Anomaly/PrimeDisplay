@@ -347,7 +347,7 @@ class NewDashboardSettings extends React.Component {
                     >
                       {isloading ? "Submitting" : "Submit"}
                     </div>
-                  </div>
+                  </div> 
                 </Col>
                 <ToastContainer
                   enableMultiContainer
