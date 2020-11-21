@@ -335,4 +335,20 @@
     font-weight: 600;
     letter-spacing: 0.3px;
     font-family: 'Brfirma-Regular';
+    cursor: pointer;
+}
+@media(max-width: 800px) {
+    .giftselectttl {
+        left: -7.5rem;
+    }
+}
+@media(max-width: 450px) {
+    .giftselectttl {
+        left: -5.5rem;
+    }
+}
+@media(max-width: 400px) {
+    .giftselectttl {
+        left: 0;
+    }
 }
