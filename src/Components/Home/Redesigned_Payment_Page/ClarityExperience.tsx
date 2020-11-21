@@ -19,21 +19,35 @@ const Payment = (props: any) => {
     isLoading: false,
     plan: true,
     withoutlogin: false,
+    selectedSubscription: "",
   });
   const [modState, setModalState] = React.useState<any>({
-    giftASub: true,
+    giftASub: false,
+    giftASub2: false,
   });
-  const {giftASub} = modState;
+  const {giftASub, giftASub2} = modState;
   const openGiftASubscriptionModal = () => {
     setModalState({
       ...modState,
       giftASub: true,
     })
   }
+  const openGiftASubscriptionModal2 = () => {
+    setModalState({
+      ...modState,
+      giftASub2: true,
+    })
+  }
   const closeGiftASubscriptionModal = () => {
     setModalState({
       ...modState,
       giftASub: false,
+    })
+  }
+  const closeGiftASubscriptionModal2 = () => {
+    setModalState({
+      ...modState,
+      giftASub2: false,
     })
   }
   const OneOff = () => {
@@ -52,7 +66,7 @@ const Payment = (props: any) => {
     window.scrollTo(-0, -0);
   };
 
-  const { plan, withoutlogin } = state;
+  const { plan, withoutlogin, selectedSubscription } = state;
 
   React.useEffect(() => {
     if (window.location.pathname === "/payment") {
@@ -62,6 +76,42 @@ const Payment = (props: any) => {
       });
     }
   }, []);
+
+  const onChangeHandler = (e) => {
+    setFormState({
+      ...state,
+      [e.target.name]: e.target.value,
+      errorMessage: "",
+    });
+  };
+
+  const formActionHandler = (e) => {
+    setFormState({
+      ...state,
+      selectedSubscription: e.target.value,
+    });
+  };
+
+  const giftSubscriptionPayment = () => {
+    if(selectedSubscription === "One-off Insight Plan") {
+      return requestForPayref("One-off Insight Plan", 3500);
+    }
+    else if (selectedSubscription === "One-off Direction Plan") {
+      return requestForPayref("One-off Direction Plan", 10000);
+    }
+    else if (selectedSubscription === "Progressive Insight Plan") {
+      return requestForPayref("Progressive Insight Plan", 3500);
+    }
+    else if (selectedSubscription === "Progressive Directive Plan") {
+      return requestForPayref("Progressive Direction Plan", 6000);
+    }
+    else if (selectedSubscription === "Progressive Accountability Plan") {
+      return requestForPayref("Progressive Accountability Plan", 10000);
+    }
+    else {
+      notify("Select a plan!");
+    }
+  }
 
   const payWithMonnify = (reference, selectedplan: string, cost) => {
     const availableUser = localStorage.getItem("user");
@@ -445,7 +495,7 @@ const Payment = (props: any) => {
                {withoutlogin? <Link to="/signin"><span className="card_btn btn-red card_btn--animated">
                     Give a Clarity Subscription
                   </span></Link>:
-                  <span className="card_btn btn-red card_btn--animated">
+                  <span className="card_btn btn-red card_btn--animated" onClick={openGiftASubscriptionModal}>
                     Give a Clarity Subscription
                     </span>}  
                 </Card.Body>
@@ -759,7 +809,7 @@ const Payment = (props: any) => {
                {withoutlogin? <Link to="/signin"><span className="card_btn btn-red card_btn--animated">
                     Give a Clarity Subscription
                   </span></Link>:
-                  <span className="card_btn btn-red card_btn--animated">
+                  <span className="card_btn btn-red card_btn--animated" onClick={openGiftASubscriptionModal2}>
                     Give a Clarity Subscription
                     </span>}  
                 </Card.Body>
@@ -778,6 +828,7 @@ const Payment = (props: any) => {
         />
       </div>
     </div>
+    {/* One-off Gift Modal */}
     <Modal
       centered={true}
       show={giftASub}
@@ -794,10 +845,40 @@ const Payment = (props: any) => {
       <Modal.Body className="rmpadding">
         <label htmlFor="plans">
           <span className="giftselectttl">Select Subscription plan</span>
-          <select id="plans" name="selected plan" className="giftselect" required>
+          <select onChange={formActionHandler} id="plans" name="selected plan" className="giftselect" required>
             <option className="giftdisabled" selected disabled hidden>Please select a plan you want to gift</option>
             <option className="giftoptions" value="One-off Insight Plan">One-off Insight Plan</option>
             <option className="giftoptions" value="One-off Direction Plan">One-off Direction Plan</option>
+            </select>
+        </label>
+        <label>
+          <span className="giftselectttl">Beneficiary Email Address</span>
+          <input className="rdsignupinput form-control giftmail" name="email" type="email" placeholder="Please enter email of the beneficiary" onChange={onChangeHandler} />
+        </label>
+        <div className="subscripbtn" onClick={giftSubscriptionPayment}>
+          Proceed to Payment
+        </div>
+      </Modal.Body>
+    </Modal>
+    {/* Progressive Gift Modal */}
+    <Modal
+      centered={true}
+      show={giftASub2}
+      onHide={closeGiftASubscriptionModal2}
+      className="giftsubscrip"
+        >
+      <Modal.Title className="gifttitle">
+        Gift a Subscription
+      </Modal.Title>
+      <div>
+        <div className="giftline"></div>
+        <span className="giftsubtext">Give a gift of success. Choose one of our awesome plans</span>
+      </div>
+      <Modal.Body className="rmpadding">
+        <label htmlFor="plans">
+          <span className="giftselectttl">Select Subscription plan</span>
+          <select onChange={formActionHandler} id="plans" name="selected plan" className="giftselect" required>
+            <option className="giftdisabled" selected disabled hidden>Please select a plan you want to gift</option>
             <option className="giftoptions" value="Progressive Insight Plan">Progressive Insight Plan</option>
             <option className="giftoptions" value="Progressive Direction Plan">Progressive Direction Plan</option>
             <option className="giftoptions" value="Progressive Accountability Plan">Progressive Accountability Plan</option>
@@ -805,13 +886,14 @@ const Payment = (props: any) => {
         </label>
         <label>
           <span className="giftselectttl">Beneficiary Email Address</span>
-          <input className="rdsignupinput form-control" type="email" placeholder="Please enter email of the beneficiary" />
+          <input className="rdsignupinput form-control giftmail" name="email" type="email" placeholder="Please enter email of the beneficiary" onChange={onChangeHandler} />
         </label>
-        <div className="subscripbtn">
+        <div className="subscripbtn" onClick={giftSubscriptionPayment}>
           Proceed to Payment
         </div>
       </Modal.Body>
     </Modal>
+    
     </>
   );
 };
