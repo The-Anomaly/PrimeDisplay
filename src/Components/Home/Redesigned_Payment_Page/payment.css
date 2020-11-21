@@ -352,3 +352,42 @@
         left: 0;
     }
 }
+
+/*Payment Redesign*/
+.payplndsply{
+    display: none;
+}
+
+@media (max-width:779px){
+    .payplndsply{
+        display: block;
+    }
+    .pceplndsply{
+        display: none;
+    }
+    .oneoffdsply{
+        display: none;
+    }
+    .mobilecards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .addmargin {
+        margin-top: 3rem;
+    }
+}
+
+@media(max-width: 779px) and (min-width: 768px) {
+    .cardmini {
+        min-width: 50%;
+        margin-bottom: 3rem;
+    }
+    .oneoffmini {
+        margin-bottom: 0;
+    }
+    .progmargin {
+        margin: auto;
+        min-width: 50%;
+        margin-top: 3rem;
+    }
+}

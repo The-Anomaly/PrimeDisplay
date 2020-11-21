@@ -29,6 +29,7 @@ class CounsellorSettings extends React.Component {
     showWarning: false,
     image: null,
     width: 100,
+    isloading:true,
     fillStatus: true,
   };
   validateForm = (e) => {
@@ -66,6 +67,9 @@ class CounsellorSettings extends React.Component {
     });
   };
   submitForm = (e) => {
+    this.setState({
+      isloading:true
+    })
     e.preventDefault();
     const {
       first_name,
@@ -157,7 +161,7 @@ class CounsellorSettings extends React.Component {
       last_name,
       job_description,
       website_link,
-      fillStatus,
+      isloading,
     } = this.state;
     return (
       <>
@@ -199,6 +203,7 @@ class CounsellorSettings extends React.Component {
                             <span className="infoforimage">
                               Image should be 80 &times; 80 pixels
                             </span>
+                            <span className="gray-text">{this.state?.image?.name}</span>
                           </div>
                         </div>
                       </div>
@@ -340,7 +345,7 @@ class CounsellorSettings extends React.Component {
                       className="kskthin col-md-11 retaketest subsupport"
                       onClick={this.validateForm}
                     >
-                      Save Profile
+                      { isloading?"Saving":" Save Profile"}
                     </div>
                   </div>
                 </Col>

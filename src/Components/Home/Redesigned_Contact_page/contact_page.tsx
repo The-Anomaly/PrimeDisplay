@@ -9,7 +9,6 @@ import "./contact_page.css";
 import Navbar from "../HomeComponents/newnavbar";
 import Footer from "../HomeComponents/newfooter";
 import Think from "../HomeComponents/ThinkThisIsYou";
-import { Link } from "react-router-dom";
 import { API } from "../../../config";
 import axios from 'axios';
 
@@ -161,9 +160,9 @@ const Contactpage = () => {
           <Row>
             <Col md={12}>
               <div className="contact_social">
-             <Link to="/https://twitter.com/askyudimy?s=08"><span className="social_icn twitter"></span></Link>
-             <Link to="/https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr"><span className="social_icn facebook"></span></Link>
-             <Link to="/https://ng.linkedin.com/company/yudimy"><span className="social_icn linkedin"></span></Link>
+             <a href="https://twitter.com/askyudimy?s=08" target="blank"><span className="social_icn twitter"></span></a>
+             <a href="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="blank"><span className="social_icn facebook"></span></a>
+             <a href="https://ng.linkedin.com/company/yudimy" target="blank"><span className="social_icn linkedin"></span></a>
               </div>
             </Col>
           </Row>
