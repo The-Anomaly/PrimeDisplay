@@ -26,6 +26,7 @@ const Payment = (props: any) => {
       ...state,
       plan: true,
     });
+    window.scrollTo(-0, -0);
   };
 
   const Progressive = () => {
@@ -33,6 +34,7 @@ const Payment = (props: any) => {
       ...state,
       plan: false,
     });
+    window.scrollTo(-0, -0);
   };
 
   const { plan, withoutlogin } = state;
@@ -186,7 +188,7 @@ const Payment = (props: any) => {
          
             <div>
               <Row className="payment-plans">
-               <Col md={5} className="margined_col">
+               <Col md={5} className="margined_col cardmini oneoffmini">
              
               <Card
                 className={
@@ -244,8 +246,8 @@ const Payment = (props: any) => {
             )}
           </Col>
              </Row>
-           {plan === true && <div> <Row className="centered_payment">
-              <Col md={3} sm={6} className="margined_col">
+           {plan === true && <div> <Row className="centered_payment mobilecards">
+              <Col md={3} sm={8} className="margined_col cardmini">
                 <Card className="h-300 shadow-sm bg-white payment-card">
                   <Card.Header className="payment-header">
                     <h4>
@@ -289,7 +291,7 @@ const Payment = (props: any) => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={3} sm={6} className="margined_col">
+              <Col md={3} sm={8} className="margined_col cardmini">
                 <Card className=" shadow-sm bg-white payment-card">
                   <Card.Header className="payment-header">
                     <h4>
@@ -363,7 +365,7 @@ const Payment = (props: any) => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={3} sm={6} className="margined_col">
+              <Col md={3} sm={8} className="margined_col cardmini">
                 <Card className="h-300 shadow-sm bg-white payment-card">
                   <Card.Header className="payment-header">
                     <h4>
@@ -415,7 +417,7 @@ const Payment = (props: any) => {
               </Col>
             </Row>
             <Row className="centered_payment">
-            <Col md={3} sm={6} className="margined_col">
+            <Col md={3} sm={8} className="margined_col cardmini">
               <Card className="subcription-card">
                 <Card.Header className="subscription-header">
                   <h6 className="red">Gift a Subscription</h6>
@@ -439,10 +441,69 @@ const Payment = (props: any) => {
             </div>
          
             <div>
-
-          {plan === false && <div><Row className="centered_payment">
+            <Row className="payment-plans payplndsply">
+               <Col md={5} className="margined_col oneoffdsply cardmini">
+             
+              <Card
+                className={
+                  plan === true && !withoutlogin
+                    ? "plan-cards one-off gborder"
+                    : "plan-cards one-off"
+                }
+              >
+                <Card.Body onClick={OneOff}>
+                  <div>
+                    <h6>One off Clarity Experience</h6>
+                  </div>
+                </Card.Body>
+              </Card>
+              {plan === true ? (
+                <div
+                  className={
+                    plan === true && !withoutlogin
+                      ? "plan-card-arr gnotch"
+                      : "plan-card-arr"
+                  }
+                >
+                  <i className="fas fa-caret-down"></i>
+                </div>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col md={5} className="addmargin progmargin">
+            <Card
+              className={
+                plan === false && !withoutlogin
+                  ? "plan-cards pce bborder"
+                  : "plan-cards pce"
+              }
+            >
+              <Card.Body onClick={Progressive}>
+                <div>
+                  <h6>Progressive Clarity Experience</h6>
+                </div>
+              </Card.Body>
+            </Card>
+            {plan === false ? (
+                <div
+                  className={
+                    plan === true && !withoutlogin
+                      ? "plan-card-arr bnotch"
+                      : "plan-card-arr"
+                  }
+                >
+                  <i className="fas fa-caret-down"></i>
+                </div>
+              ) : (
+                ""
+              )}
+          </Col>
+             </Row>
             
-            <Col md={3} sm={6} className="margined_col">
+          {plan === false && <div><Row className="centered_payment mobilecards">
+            
+            <Col md={3} sm={8} className="margined_col cardmini">
               <Card className="h-300 shadow-sm bg-white payment-card">
                 <Card.Header className="payment-header">
                   <h4>
@@ -540,7 +601,7 @@ const Payment = (props: any) => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={3} sm={6} className="margined_col">
+            <Col md={3} sm={8} className="margined_col cardmini">
               <Card className=" shadow-sm bg-white payment-card">
                 <Card.Header className="payment-header">
                   <h4>
@@ -615,7 +676,7 @@ const Payment = (props: any) => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={3} sm={8} className="margined_col">
+            <Col md={3} sm={8} className="margined_col cardmini">
               <Card className="h-300 shadow-sm bg-white payment-card">
                 <Card.Header className="payment-header">
                   <h4>
@@ -670,7 +731,7 @@ const Payment = (props: any) => {
             </Col>
           </Row>
           <Row className="centered_payment">
-            <Col md={3} sm={6} className="margined_col">
+            <Col md={3} sm={8} className="margined_col cardmini">
               <Card className="subcription-card">
                 <Card.Header className="subscription-header">
                   <h6 className="red">Gift a Subscription</h6>
@@ -690,54 +751,7 @@ const Payment = (props: any) => {
               </Card>
             </Col>
           </Row></div>}
-          <Row className="payment-plans payplndsply">
-               <Col md={5} className="margined_col oneoffdsply">
-             
-              <Card
-                className={
-                  plan === true && !withoutlogin
-                    ? "plan-cards one-off gborder"
-                    : "plan-cards one-off"
-                }
-              >
-                <Card.Body onClick={OneOff}>
-                  <div>
-                    <h6>One off Clarity Experience</h6>
-                  </div>
-                </Card.Body>
-              </Card>
-              {plan === true ? (
-                <div
-                  className={
-                    plan === true && !withoutlogin
-                      ? "plan-card-arr gnotch"
-                      : "plan-card-arr"
-                  }
-                >
-                  <i className="fas fa-caret-down"></i>
-                </div>
-              ) : (
-                ""
-              )}
-            </Col>
-            <Col md={5}>
-            <Card
-              className={
-                plan === false && !withoutlogin
-                  ? "plan-cards pce bborder"
-                  : "plan-cards pce"
-              }
-            >
-              <Card.Body onClick={Progressive}>
-                <div>
-                  <h6>Progressive Clarity Experience</h6>
-                </div>
-              </Card.Body>
-            </Card>
-  
-          </Col>
-             </Row>
-            </div>
+          </div>
         
         </Container>
         <ToastContainer
