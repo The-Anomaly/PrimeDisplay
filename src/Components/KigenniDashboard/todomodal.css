@@ -281,6 +281,14 @@
 }
 
 /*Task Overview redesign*/
+.cardsec1txt {
+  font-size: 11px;
+  margin-right: 0;
+  margin-left: auto;
+  font-weight: 600;
+  padding: 0.1rem 1rem;
+  width: 100px;
+}
 @media(max-width: 800px) {
   .newprm {
     max-width: 100%;
@@ -297,14 +305,6 @@
   .cardsec1 {
     order: 1;
     flex: 100%;
-  }
-  .cardsec1txt {
-    font-size: 11px;
-    margin-right: 0;
-    margin-left: auto;
-    font-weight: 600;
-    padding: 0.1rem 1rem;
-    width: 100px;
   }
   .todominittl {
     font-weight: 600;

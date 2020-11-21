@@ -318,7 +318,7 @@ const TodoList = (props: any) => {
         <DashboardNav todo={true} />
         <Row>
           <SideBarNewDashboard todo={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm">
             <DashboardLargeScreenNav title="All Tasks" />
             <Row>
               <Col md={12} className="firstqq">
@@ -347,7 +347,7 @@ const TodoList = (props: any) => {
                     <div className="yellowbg">
                       <img
                         src={yellowthumb}
-                        className="yellowgood"
+                        className="yellowgood newgrnbg"
                         alt="goodimage"
                       />
                       It takes a hero to even start a task, but it seems
@@ -363,44 +363,44 @@ const TodoList = (props: any) => {
                     )}
                     {tasklist.length !== 0 &&
                       tasklist.map((data, i) => (
-                        <div className="wrapc2 tasklist" key={i}>
-                          <div className="titl">
-                            <span className="task_title lowerr">
+                        <div className="wrapc2 tasklist newseccards" key={i}>
+                          <div className="titl cardsec2">
+                            <span className="task_title lowerr todominittl">
                               Task Title
                             </span>
-                            <div className="cname todo_name">{data?.title}</div>
+                            <div className="cname todo_name txtfont">{data?.title}</div>
                           </div>
 
-                          <div className="weeks">
-                            <span className="task_duration lowerr">
+                          <div className="weeks cardsec3">
+                            <span className="task_duration lowerr todominittl">
                               Duration
                             </span>
-                            <div className="cdate todo_date">
+                            <div className="cdate todo_date tododurr txtfont">
                               {data?.duration}
                               {data.duration === 1 ? " day" : " days"}
                             </div>
                           </div>
 
-                          <div className="durr">
-                            <span className="task_time lowerr">
+                          <div className="durr cardsec4">
+                            <span className="task_time lowerr todominittl tododate">
                               Date Created
                             </span>
-                            <div className="ctime todo_time">
+                            <div className="ctime todo_time txtfont">
                               {formatTime(data?.date_created)}
                             </div>
                           </div>
-                          <div className="cstatus2 stat">
+                          <div className="cstatus2 stat cardsec1">
                             <span
                               className={
                                 data.status === "pending"
-                                  ? "cstatus todo_status pending"
-                                  : "cstatus todo_status"
+                                  ? "cstatus todo_status pending cardsec1txt"
+                                  : "cstatus todo_status cardsec1txt"
                               }
                             >
                               {capitalizeFirstLetter(data.status)}
                             </span>
                           </div>
-                          <div className="ctime todoo">
+                          <div className="ctime todoo cardsec5">
                             {data.status !== "pending" ? (
                               <div
                                 className="savebtn todo_button sizedtodobtn"
