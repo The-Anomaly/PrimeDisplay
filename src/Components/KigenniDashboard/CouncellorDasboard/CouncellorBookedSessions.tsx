@@ -429,16 +429,16 @@ const CounsellorBookedSessions = (props: any) => {
                       </div>
                     )}
                     {counsellorData.map((data, i) => (
-                      <div className="msgs teammembr booked bookedover" key={i}>
+                      <div className="msgs teammembr booked bookedover sessioncard" key={i}>
                         <div className="fromerit summary">
-                          <div className="cone">
+                          <div className="cone sesscard1">
                             <img
                               className="user_image"
                               src={userimg1}
                               alt="user image"
                             />
                           </div>
-                          <div className="ctwo">
+                          <div className="ctwo sesscard2">
                             <div>
                               <div className="lowerr nulower counlowerr">
                                 Name
@@ -447,41 +447,36 @@ const CounsellorBookedSessions = (props: any) => {
                               <div className="userrdet2 memb">{data.email}</div>
                             </div>
                           </div>
-                          <div className="cthree">
+                          <div className="cthree sesscard3">
                             <div className="lowerr nulower counlowerr">
                               Date
                             </div>
                             <div>{formatTime(data.date)}</div>
                           </div>
-                          <div className="cfour">
+                          <div className="cfour sesscard4">
                             <div className="lowerr nulower counlowerr">
                               Time
                             </div>
                             <div className="">{data.time}</div>
                           </div>
-                          <div className="cfive">
-                            <div className="lowerr nulower counlowerr">
-                              Member Type
-                            </div>
-                            <div className="clarity12b">{data.member_type}</div>
+                          <div className="cfive sesscard5">
+                            <div className="clarity12b sesstype">{data.member_type}</div>
                           </div>
 
-                          <div className="csix">
-                            <div className="lowerr nulower sess counstat counlowerr">
-                              Status
-                            </div>
+                          <div className="csix sesscard6">
+                            
                             <span
                               className={
-                                !data.status ? "pend pltd" : "complt pltd"
+                                !data.status ? "pend pltd sessstat" : "complt pltd sessstat"
                               }
                             >
                               {!data.status ? "Pending" : "Completed"}
                             </span>
                           </div>
 
-                          <div className="cseven">
+                          <div className="cseven sesscard7">
                             <div
-                              className="counview"
+                              className="counview sessbtn"
                               onClick={() => openModal(data.id)}
                             >
                               View
