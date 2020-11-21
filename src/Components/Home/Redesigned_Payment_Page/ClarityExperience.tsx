@@ -114,7 +114,7 @@ const Payment = (props: any) => {
     const availableUser = localStorage.getItem("user");
     var user = availableUser
       ? JSON.parse(availableUser)
-      : props.history.push("/signin");
+      : window.location.assign("/signin");
     try {
       window.MonnifySDK.initialize({
         amount: cost,
@@ -142,6 +142,14 @@ const Payment = (props: any) => {
             );
           }
           if (response.paymentStatus === "PAID") {
+            if(selectedSubscription !== "") {
+              console.log("Gift subscription successful!");
+              notify("Gift subscription successful!");
+              return setTimeout(
+                (window.location.pathname = "/dashboardsubscriptionplan"),
+                3000
+              );
+            }
             console.log("paid");
             const availableToken = localStorage.getItem("userToken");
             const token = availableToken ? JSON.parse(availableToken) : "";
@@ -199,7 +207,7 @@ const Payment = (props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : props.history.push("/signin");
+      : window.location.assign("/signin");
     axios
       .get(`${API}/monnifypaymentreference`, {
         headers: { Authorization: `Token ${token}` },
@@ -237,9 +245,9 @@ const Payment = (props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : props.history.push("/signin");
+      : window.location.assign("/signin");
     axios
-      .get(`${API}/monnifypaymentreference?email=${giftmail}`, {
+      .get(`${API}/gift-monnifypaymentreference/?email=${giftmail}`, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {

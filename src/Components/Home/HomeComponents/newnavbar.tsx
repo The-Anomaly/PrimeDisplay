@@ -39,6 +39,13 @@ const newNavbar = withRouter((props: any) => {
     console.log(darknav)
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
+    if(window.location.pathname === "/counsellordates") {
+      if (token) {
+        setShowNav({ ...state, userLoggedIn: true });
+      } else {
+        setShowNav({ ...state, userLoggedIn: false });
+      }
+    }
     if (
       window.location.pathname === "/assessmentphasesevencomplete" ||
       window.location.pathname === "/counsellordates" ||
