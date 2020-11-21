@@ -250,7 +250,7 @@ const TodoOverview = withRouter((props: any) => {
         <DashboardNav todo={true} />
         <Row>
           <SideBarNewDashboard todo={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm">
             <DashboardLargeScreenNav title="Todo Overview" />
             <Row>
               <Col md={12} className="firstqq">
@@ -358,7 +358,7 @@ const TodoOverview = withRouter((props: any) => {
                         </div>
                       </Carousel>
                     </div>
-                    <div className="greenbgcont">
+                    <div className="greenbgcont newgrnbg">
                       <img
                         src={greengood}
                         className="greengood"
@@ -386,41 +386,41 @@ const TodoOverview = withRouter((props: any) => {
                       </div>
                     )}
                     {tasklist.splice(0, 2).map((data, i) => (
-                      <div className="wrapc2 tasklist listit">
-                        <div className="cname tdw0 titl newtitl">
-                          <span className="task_title lowerr">Task Title</span>
-                          <div className="eplimit cname todo_name">
+                      <div className="wrapc2 tasklist listit newseccards">
+                        <div className="cname tdw0 titl newtitl cardsec2">
+                          <span className="task_title lowerr todominittl">Task Title</span>
+                          <div className="eplimit cname todo_name txtfont">
                             {data?.title}
                           </div>
                         </div>
 
-                        <div className="weeks">
-                          <span className="task_duration lowerr">Duration</span>
-                          <div className="cdate tdw1 todo_date">
+                        <div className="weeks cardsec3">
+                          <span className="task_duration lowerr todominittl">Duration</span>
+                          <div className="cdate tdw1 todo_date tododurr txtfont">
                             {data?.duration}
                           </div>
                         </div>
 
-                        <div className="durr">
-                          <span className="task_time lowerr">Date Created</span>
-                          <div className="ctime tdw1 todo_time">
+                        <div className="durr cardsec4">
+                          <span className="task_time lowerr todominittl tododate">Date Created</span>
+                          <div className="ctime tdw1 todo_time tododate1 txtfont">
                             {formatTime(data?.date_created)}
                           </div>
                         </div>
 
-                        <div className="cstatus2 tdw1 stat">
+                        <div className="cstatus2 tdw1 stat cardsec1">
                           <span
                             className={
                               data.status === "pending"
-                                ? "cstatus todo_status pending"
-                                : "cstatus todo_status"
+                                ? "cstatus todo_status pending cardsec1txt"
+                                : "cstatus todo_status cardsec1txt"
                             }
                           >
                             {capitalizeFirstLetter(data.status)}
                           </span>
                         </div>
 
-                        <div className="ctime todoo">
+                        <div className="ctime todoo cardsec5">
                           {data.status !== "pending" && (
                             <div
                               className="savebtn todo_button sizedtodobtn"
