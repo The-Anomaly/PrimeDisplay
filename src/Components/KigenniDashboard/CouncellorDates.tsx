@@ -26,7 +26,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     endDate: "",
     time: "",
   };
+  
   componentWillMount() {
+    window.scrollTo(-0, -0);
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
