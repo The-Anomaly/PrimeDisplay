@@ -27,6 +27,7 @@ import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import isopen from "../../../assets/outarrow.png";
+import "./councellor.css"
 const moment = require("moment");
 
 const CounsellorBookedSessions = (props: any) => {
@@ -389,7 +390,7 @@ const CounsellorBookedSessions = (props: any) => {
         <CounsellorDashboardMobileNav bookedsession={true} />
         <Row>
           <SideBarCounsellorDashboard bookedsession={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Booked Sessions" />
             <Row className="wrapc222">
               <Col md={12} className="firstqq">
