@@ -321,3 +321,18 @@
     white-space: nowrap;
     overflow: hidden;
 }
+.rmpadding {
+    padding-top: 0 !important;
+}
+.subscripbtn {
+    background: #EB5757;
+    color: #ffffff;
+    margin: 3rem auto;
+    padding: 0.7rem 0;
+    width: 225px;
+    font-size: 11px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-family: 'Brfirma-Regular';
+}

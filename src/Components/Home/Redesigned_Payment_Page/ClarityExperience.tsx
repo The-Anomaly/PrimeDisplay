@@ -700,7 +700,7 @@ const Payment = (props: any) => {
         <div className="giftline"></div>
         <span className="giftsubtext">Give a gift of success. Choose one of our awesome plans</span>
       </div>
-      <Modal.Body>
+      <Modal.Body className="rmpadding">
         <label htmlFor="plans">
           <span className="giftselectttl">Select Subscription plan</span>
           <select id="plans" name="selected plan" className="giftselect" required>
@@ -712,6 +712,13 @@ const Payment = (props: any) => {
             <option className="giftoptions" value="Progressive Accountability Plan">Progressive Accountability Plan</option>
           </select>
         </label>
+        <label>
+          <span className="giftselectttl">Beneficiary Email Address</span>
+          <input className="rdsignupinput form-control" type="email" placeholder="Please enter email of the beneficiary" />
+        </label>
+        <div className="subscripbtn">
+          Proceed to Payment
+        </div>
       </Modal.Body>
     </Modal>
     </>
