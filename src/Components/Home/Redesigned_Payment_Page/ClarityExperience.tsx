@@ -145,10 +145,10 @@ const Payment = (props: any) => {
             if(selectedSubscription !== "") {
               console.log("Gift subscription successful!");
               notify("Gift subscription successful!");
-              return setTimeout(
-                (window.location.pathname = "/dashboardsubscriptionplan"),
-                3000
-              );
+               // return setTimeout(
+              //   (window.location.pathname = "/dashboardsubscriptionplan"),
+              //   3000
+              // );
             }
             console.log("paid");
             const availableToken = localStorage.getItem("userToken");
@@ -185,10 +185,10 @@ const Payment = (props: any) => {
         },
         onClose: function (data) {
           console.log("On close function");
-          return setTimeout(
-            (window.location.pathname = "/dashboardsubscriptionplan"),
-            3000
-          );
+          // return setTimeout(
+          //   (window.location.pathname = "/dashboardsubscriptionplan"),
+          //   3000
+          // );
         },
       });
     } catch (error) {}
@@ -196,7 +196,7 @@ const Payment = (props: any) => {
   const notify = (message: string) => {
     toast(message, { containerId: "B" });
     setTimeout(() => {
-      props.history.push("");
+      window.location.assign("");
     }, 3000);
   };
   const requestForPayref = (selectedplan, cost) => {
