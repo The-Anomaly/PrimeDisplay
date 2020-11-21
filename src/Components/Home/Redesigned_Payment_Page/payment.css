@@ -264,3 +264,18 @@
         justify-content: center;
     }
 } 
+.payplndsply{
+    display: none;
+}
+
+@media (max-width:779px){
+    .payplndsply{
+        display: block;
+    }
+    .pceplndsply{
+        display: none;
+    }
+    .oneoffdsply{
+        display: none;
+    }
+}
