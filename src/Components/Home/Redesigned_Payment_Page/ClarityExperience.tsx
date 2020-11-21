@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import mark from "../../../assets/mark-icn.png";
 import mark_blue from "../../../assets/blue-mark.png";
@@ -20,7 +20,22 @@ const Payment = (props: any) => {
     plan: true,
     withoutlogin: false,
   });
-
+  const [modState, setModalState] = React.useState<any>({
+    giftASub: true,
+  });
+  const {giftASub} = modState;
+  const openGiftASubscriptionModal = () => {
+    setModalState({
+      ...modState,
+      giftASub: true,
+    })
+  }
+  const closeGiftASubscriptionModal = () => {
+    setModalState({
+      ...modState,
+      giftASub: false,
+    })
+  }
   const OneOff = () => {
     setFormState({
       ...state,
@@ -164,6 +179,7 @@ const Payment = (props: any) => {
       });
   };
   return (
+    <>
     <div>
       <div
         className={
@@ -671,6 +687,34 @@ const Payment = (props: any) => {
         />
       </div>
     </div>
+    <Modal
+      centered={true}
+      show={giftASub}
+      onHide={closeGiftASubscriptionModal}
+      className="giftsubscrip"
+        >
+      <Modal.Title className="gifttitle">
+        Gift a Subscription
+      </Modal.Title>
+      <div>
+        <div className="giftline"></div>
+        <span className="giftsubtext">Give a gift of success. Choose one of our awesome plans</span>
+      </div>
+      <Modal.Body>
+        <label htmlFor="plans">
+          <span className="giftselectttl">Select Subscription plan</span>
+          <select id="plans" name="selected plan" className="giftselect" required>
+            <option className="giftdisabled" selected disabled hidden>Please select a plan you want to gift</option>
+            <option className="giftoptions" value="One-off Insight Plan">One-off Insight Plan</option>
+            <option className="giftoptions" value="One-off Direction Plan">One-off Direction Plan</option>
+            <option className="giftoptions" value="Progressive Insight Plan">Progressive Insight Plan</option>
+            <option className="giftoptions" value="Progressive Direction Plan">Progressive Direction Plan</option>
+            <option className="giftoptions" value="Progressive Accountability Plan">Progressive Accountability Plan</option>
+          </select>
+        </label>
+      </Modal.Body>
+    </Modal>
+    </>
   );
 };
 export default Payment;
