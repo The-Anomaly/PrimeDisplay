@@ -346,7 +346,6 @@ class NewDashboardSettings extends React.Component {
                       onClick={this.validateForm}
                     >
                       {isloading ? "Submitting" : "Submit"}
-                      Save
                     </div>
                   </div>
                 </Col>
