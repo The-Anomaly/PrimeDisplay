@@ -182,8 +182,12 @@ const Payment = (props: any) => {
           >
             <h3>We have curated payments plans with you in mind</h3>
           </div>
-          <Row className="payment-plans">
-            <Col md={5} className="margined_col">
+
+         
+            <div>
+              <Row className="payment-plans">
+               <Col md={5} className="margined_col">
+             
               <Card
                 className={
                   plan === true && !withoutlogin
@@ -211,37 +215,36 @@ const Payment = (props: any) => {
                 ""
               )}
             </Col>
-            <Col md={5}>
-              <Card
+            <Col md={5} className="pceplndsply">
+            <Card
+              className={
+                plan === false && !withoutlogin
+                  ? "plan-cards pce bborder"
+                  : "plan-cards pce"
+              }
+            >
+              <Card.Body onClick={Progressive}>
+                <div>
+                  <h6>Progressive Clarity Experience</h6>
+                </div>
+              </Card.Body>
+            </Card>
+            {plan === false ? (
+              <div
                 className={
                   plan === false && !withoutlogin
-                    ? "plan-cards pce bborder"
-                    : "plan-cards pce"
+                    ? "plan-card-arr bnotch"
+                    : "plan-card-arr"
                 }
               >
-                <Card.Body onClick={Progressive}>
-                  <div>
-                    <h6>Progressive Clarity Experience</h6>
-                  </div>
-                </Card.Body>
-              </Card>
-              {plan === false ? (
-                <div
-                  className={
-                    plan === false && !withoutlogin
-                      ? "plan-card-arr bnotch"
-                      : "plan-card-arr"
-                  }
-                >
-                  <i className="fas fa-caret-down"></i>
-                </div>
-              ) : (
-                ""
-              )}
-            </Col>
-          </Row>
-          {plan === true ? (
-            <Row className="centered_payment">
+                <i className="fas fa-caret-down"></i>
+              </div>
+            ) : (
+              ""
+            )}
+          </Col>
+             </Row>
+           {plan === true && <div> <Row className="centered_payment">
               <Col md={3} sm={6} className="margined_col">
                 <Card className="h-300 shadow-sm bg-white payment-card">
                   <Card.Header className="payment-header">
@@ -411,236 +414,261 @@ const Payment = (props: any) => {
                 </Card>
               </Col>
             </Row>
-          ) : (
             <Row className="centered_payment">
-              <Col md={3} sm={6} className="margined_col">
-                <Card className="h-300 shadow-sm bg-white payment-card">
-                  <Card.Header className="payment-header">
-                    <h4>
-                      N3500 <span>/month</span>
-                    </h4>
-                  </Card.Header>
-                  <Card.Body>
-                    <div className="card-div">
-                      <h6>Insight Plan</h6>
-                      <p>
-                        Get the first hand Clarity experience for no charge at
-                        all. Take action to your career bliss
-                      </p>
-                    </div>
-                    <ul className="card-list">
-                      <li>
-                        <img src={mark} className="card-image" />
-                        Career fitness score
-                      </li>
-                      <li>
-                        <img src={mark} className="card-image" />
-                        Career personality type
-                      </li>
-                      <li>
-                        <img src={mark} className="card-image" />
-                        Strenght & Weakness Report
-                      </li>
-                      <li>
-                        <img src={mark} className="card-image" />
-                        Competence analysis Report
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark} className="card-image" />
-                          </div>
-                          Most suitable career business expression
+            <Col md={3} sm={6} className="margined_col">
+              <Card className="subcription-card">
+                <Card.Header className="subscription-header">
+                  <h6 className="red">Gift a Subscription</h6>
+                </Card.Header>
+                <Card.Body>
+                  <p className="sub-p">
+                    Give a gift of success. Choose one of the three different
+                    plans
+                  </p>
+               {withoutlogin? <Link to="/signin"><span className="card_btn btn-red card_btn--animated">
+                    Give a Clarity Subscription
+                  </span></Link>:
+                  <span className="card_btn btn-red card_btn--animated">
+                    Give a Clarity Subscription
+                    </span>}  
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row></div>}
+            
+            </div>
+         
+            <div>
+
+          {plan === false && <div><Row className="centered_payment">
+            
+            <Col md={3} sm={6} className="margined_col">
+              <Card className="h-300 shadow-sm bg-white payment-card">
+                <Card.Header className="payment-header">
+                  <h4>
+                    N3500 <span>/month</span>
+                  </h4>
+                </Card.Header>
+                <Card.Body>
+                  <div className="card-div">
+                    <h6>Insight Plan</h6>
+                    <p>
+                      Get the first hand Clarity experience for no charge at
+                      all. Take action to your career bliss
+                    </p>
+                  </div>
+                  <ul className="card-list">
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Career fitness score
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Career personality type
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Strenght & Weakness Report
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Competence analysis Report
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark} className="card-image" />
                         </div>
-                      </li>
-                      <li>
-                        <img src={mark} className="card-image" />
-                        Report on best roles to apply for
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark} className="card-image" />
-                          </div>
-                          Career drivers and how to leverage them
+                        Most suitable career business expression
+                      </div>
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Report on best roles to apply for
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark} className="card-image" />
                         </div>
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark} className="card-image" />
-                          </div>
-                          Highlights on areas for career optimization
+                        Career drivers and how to leverage them
+                      </div>
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark} className="card-image" />
                         </div>
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark} className="card-image" />
-                          </div>
-                          Recommended courses curated weekly to strenthen your
-                          skill
+                        Highlights on areas for career optimization
+                      </div>
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark} className="card-image" />
                         </div>
-                      </li>
-                      <li className="cdlisadjmarg">
-                        <img src={mark} className="card-image" />
-                        Weekly Tailored job alerts
-                      </li>
-                      <li className="cdlisadjmarg">
-                        <img src={mark} className="card-image" />
-                        Unlimited Chat access with coaches & counsellors and get
-                        feedback on your to-dos goals and issues discussed
-                      </li>
-                    </ul>
-                    {withoutlogin ? (
-                      <Link to="/signin">
-                        <span className="card_btn card_btn--pce1 btn-yellow">
-                          Get Started
-                        </span>
-                      </Link>
-                    ) : (
-                      <span
-                        className="card_btn card_btn--pce1 btn-yellow"
-                        onClick={() =>
-                          requestForPayref("Progressive Insight Plan", 3500)
-                        }
-                      >
-                        Subscribe
+                        Recommended courses curated weekly to strenthen your
+                        skill
+                      </div>
+                    </li>
+                    <li className="cdlisadjmarg">
+                      <img src={mark} className="card-image" />
+                      Weekly Tailored job alerts
+                    </li>
+                    <li className="cdlisadjmarg">
+                      <img src={mark} className="card-image" />
+                      Unlimited Chat access with coaches & counsellors and get
+                      feedback on your to-dos goals and issues discussed
+                    </li>
+                  </ul>
+                  {withoutlogin ? (
+                    <Link to="/signin">
+                      <span className="card_btn card_btn--pce1 btn-yellow">
+                        Get Started
                       </span>
-                    )}
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} sm={6} className="margined_col">
-                <Card className=" shadow-sm bg-white payment-card">
-                  <Card.Header className="payment-header">
-                    <h4>
-                      N6000 <span>/month</span>
-                    </h4>
-                  </Card.Header>
-                  <Card.Body>
-                    <div className="card-div ">
-                      <h6 className="blue">Direction Plan</h6>
-                      <p>
-                        Get an edge - The insight plan gives you an edge over
-                        your peers. Be the YOU, you always wanted
-                      </p>
-                    </div>
-                    <ul className="card-list">
-                      <li>
-                        <img src={mark_blue} className="card-image" />
-                        Everything under <span>INSIGHT</span>
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark_blue} className="card-image" />
-                          </div>
-                          40 minutes career-planning session with a clarity
-                          counselor
+                    </Link>
+                  ) : (
+                    <span
+                      className="card_btn card_btn--pce1 btn-yellow"
+                      onClick={() =>
+                        requestForPayref("Progressive Insight Plan", 3500)
+                      }
+                    >
+                      Subscribe
+                    </span>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={3} sm={6} className="margined_col">
+              <Card className=" shadow-sm bg-white payment-card">
+                <Card.Header className="payment-header">
+                  <h4>
+                    N6000 <span>/month</span>
+                  </h4>
+                </Card.Header>
+                <Card.Body>
+                  <div className="card-div ">
+                    <h6 className="blue">Direction Plan</h6>
+                    <p>
+                      Get an edge - The insight plan gives you an edge over
+                      your peers. Be the YOU, you always wanted
+                    </p>
+                  </div>
+                  <ul className="card-list">
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Everything under <span>INSIGHT</span>
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark_blue} className="card-image" />
                         </div>
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark_blue} className="card-image" />
-                          </div>
-                          Weekly Personalized Counsellors Recommendation on
-                          suitable personal & career activities
+                        40 minutes career-planning session with a clarity
+                        counselor
+                      </div>
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark_blue} className="card-image" />
                         </div>
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark_blue} className="card-image" />
-                          </div>
-                          Weekly Personalized Counse- llors Recommendation on
-                          suitable personal & career activities
-                        </div>{" "}
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark_blue} className="card-image" />
-                          </div>
-                          Personal to-dos & reminder setting
-                        </div>{" "}
-                      </li>
-                    </ul>
-                    {withoutlogin ? (
-                      <Link to="/signin">
-                        <span className="card_btn card_btn--pce2 btn-blue">
-                          Get Started
-                        </span>
-                      </Link>
-                    ) : (
-                      <span
-                        className="card_btn card_btn--pce2 btn-blue"
-                        onClick={() =>
-                          requestForPayref("Progressive Direction Plan", 6000)
-                        }
-                      >
-                        Upgrade to Direction
+                        Weekly Personalized Counsellors Recommendation on
+                        suitable personal & career activities
+                      </div>
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark_blue} className="card-image" />
+                        </div>
+                        Weekly Personalized Counse- llors Recommendation on
+                        suitable personal & career activities
+                      </div>{" "}
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark_blue} className="card-image" />
+                        </div>
+                        Personal to-dos & reminder setting
+                      </div>{" "}
+                    </li>
+                  </ul>
+                  {withoutlogin ? (
+                    <Link to="/signin">
+                      <span className="card_btn card_btn--pce2 btn-blue">
+                        Get Started
                       </span>
-                    )}
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} sm={8} className="margined_col">
-                <Card className="h-300 shadow-sm bg-white payment-card">
-                  <Card.Header className="payment-header">
-                    <h4>
-                      N10000 <span>/month</span>
-                    </h4>
-                  </Card.Header>
-                  <Card.Body>
-                    <div className="card-div">
-                      <h6 className="green">Accountability Plan</h6>
-                      <p>
-                        Hand in Hand Guidance - Get perspective on your reports.
-                        Get assigned to your personal career coach, It only gets
-                        better
-                      </p>
-                    </div>
-                    <ul className="card-list">
-                      <li>
-                        <img src={mark_green} className="card-image" />
-                        Everything under <span className="blue">DIRECTION</span>
-                      </li>
-                      <li>
-                        <div className="card-list-box">
-                          <div>
-                            <img src={mark_green} className="card-image" />
-                          </div>
-                          40 minutes career-planning session with a clarity
-                          counselor X2
+                    </Link>
+                  ) : (
+                    <span
+                      className="card_btn card_btn--pce2 btn-blue"
+                      onClick={() =>
+                        requestForPayref("Progressive Direction Plan", 6000)
+                      }
+                    >
+                      Upgrade to Direction
+                    </span>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={3} sm={8} className="margined_col">
+              <Card className="h-300 shadow-sm bg-white payment-card">
+                <Card.Header className="payment-header">
+                  <h4>
+                    N10000 <span>/month</span>
+                  </h4>
+                </Card.Header>
+                <Card.Body>
+                  <div className="card-div">
+                    <h6 className="green">Accountability Plan</h6>
+                    <p>
+                      Hand in Hand Guidance - Get perspective on your reports.
+                      Get assigned to your personal career coach, It only gets
+                      better
+                    </p>
+                  </div>
+                  <ul className="card-list">
+                    <li>
+                      <img src={mark_green} className="card-image" />
+                      Everything under <span className="blue">DIRECTION</span>
+                    </li>
+                    <li>
+                      <div className="card-list-box">
+                        <div>
+                          <img src={mark_green} className="card-image" />
                         </div>
-                      </li>
-                    </ul>
-                    {withoutlogin ? (
-                      <Link to="/signin">
-                        <span className="card_btn btn-green card_btn--pce3 card_btn--animated">
-                          Get Started
-                        </span>
-                      </Link>
-                    ) : (
-                      <span
-                        className="card_btn btn-green card_btn--pce3 card_btn--animated"
-                        onClick={() =>
-                          requestForPayref(
-                            "Progressive Accountability Plan",
-                            10000
-                          )
-                        }
-                      >
-                        Upgrade to Accountability
+                        40 minutes career-planning session with a clarity
+                        counselor X2
+                      </div>
+                    </li>
+                  </ul>
+                  {withoutlogin ? (
+                    <Link to="/signin">
+                      <span className="card_btn btn-green card_btn--pce3 card_btn--animated">
+                        Get Started
                       </span>
-                    )}
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          )}
+                    </Link>
+                  ) : (
+                    <span
+                      className="card_btn btn-green card_btn--pce3 card_btn--animated"
+                      onClick={() =>
+                        requestForPayref(
+                          "Progressive Accountability Plan",
+                          10000
+                        )
+                      }
+                    >
+                      Upgrade to Accountability
+                    </span>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
           <Row className="centered_payment">
             <Col md={3} sm={6} className="margined_col">
               <Card className="subcription-card">
@@ -661,7 +689,56 @@ const Payment = (props: any) => {
                 </Card.Body>
               </Card>
             </Col>
-          </Row>
+          </Row></div>}
+          <Row className="payment-plans payplndsply">
+               <Col md={5} className="margined_col oneoffdsply">
+             
+              <Card
+                className={
+                  plan === true && !withoutlogin
+                    ? "plan-cards one-off gborder"
+                    : "plan-cards one-off"
+                }
+              >
+                <Card.Body onClick={OneOff}>
+                  <div>
+                    <h6>One off Clarity Experience</h6>
+                  </div>
+                </Card.Body>
+              </Card>
+              {plan === true ? (
+                <div
+                  className={
+                    plan === true && !withoutlogin
+                      ? "plan-card-arr gnotch"
+                      : "plan-card-arr"
+                  }
+                >
+                  <i className="fas fa-caret-down"></i>
+                </div>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col md={5}>
+            <Card
+              className={
+                plan === false && !withoutlogin
+                  ? "plan-cards pce bborder"
+                  : "plan-cards pce"
+              }
+            >
+              <Card.Body onClick={Progressive}>
+                <div>
+                  <h6>Progressive Clarity Experience</h6>
+                </div>
+              </Card.Body>
+            </Card>
+  
+          </Col>
+             </Row>
+            </div>
+        
         </Container>
         <ToastContainer
           enableMultiContainer

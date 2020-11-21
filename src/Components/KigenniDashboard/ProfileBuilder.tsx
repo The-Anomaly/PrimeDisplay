@@ -1368,13 +1368,13 @@ class ProfileBuilder extends React.Component {
                   </Row>
                   <Row>
                     <Col md={12} className="printcv">
-                      <div className="savebtn" onClick={this.submitForm}>
-                        Save
-                      </div>
-                      <Link to="/profilebuilder">
+                    <Link to="/profilebuilder">
                         {" "}
                         <div className="print">Preview</div>
                       </Link>
+                      <div className="savebtn" onClick={this.submitForm}>
+                        Save
+                      </div>
                     </Col>
                   </Row>
                 </Col>

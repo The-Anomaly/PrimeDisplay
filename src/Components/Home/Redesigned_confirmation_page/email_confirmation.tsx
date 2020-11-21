@@ -131,7 +131,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
               <div className="ecnfirmdivtg">
               <p className="cnfim-messg">
                 A code has been sent to 
-                <span className="cnfirmspan"> {state.client}</span>, please enter
+                <span className="cnfirmspan">  {state.client}</span>, please enter
                 code below to confirm your Account
               {successMessage && (
                 <Alert key={1} variant="success" className="alertzuccessec">
