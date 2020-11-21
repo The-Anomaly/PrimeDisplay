@@ -343,7 +343,7 @@ const Signup = withRouter((props: any) => {
                   </button>
                 </div>
                 <p className="rdsgnalready">
-                  Already Registered? <Link to="/signin">Sign In</Link>
+                <Link to="/signin">  Already Registered? Sign In</Link>
                 </p>
               </Form>
             </Col>

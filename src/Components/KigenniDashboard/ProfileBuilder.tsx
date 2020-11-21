@@ -1385,6 +1385,9 @@ class ProfileBuilder extends React.Component {
                         {" "}
                         <div className="print">Preview</div>
                       </Link>
+                      <div className="savebtn" onClick={this.submitForm}>
+                        Save
+                      </div>
                     </Col>
                   </Row>
                 </Col>

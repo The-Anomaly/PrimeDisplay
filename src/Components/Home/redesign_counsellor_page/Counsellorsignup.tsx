@@ -422,7 +422,7 @@ const counsellorSignup = withRouter((props: any) => {
                   </button>
                 </div>
                 <p className="rdsgnalready">
-                  Already Registered? <Link to="/counsellor/signin">Sign In</Link>
+                <Link to="/counsellor/signin"> Already Registered? Sign In</Link>
                 </p>
               </Form>
             </Col>
