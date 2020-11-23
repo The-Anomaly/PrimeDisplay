@@ -1177,15 +1177,19 @@ button {
 }
 .fourthsubhead {
   font-family: "Brfirma-Bold";
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.3px;
+  position: relative;
+  z-index: 10;
 }
 .fourthsubtext {
   color: #666666;
   font-family: "BRFirma-Regular";
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.3px;
   margin-top: 0.7rem;
+  position: relative;
+  z-index: 10;
 }
 .homelaptop {
   position: absolute;
@@ -1197,6 +1201,7 @@ button {
   z-index: 10;
   width: 100%;
   top: 12.5rem;
+  left: -1rem;
 }
 .laptop {
   width: 49%;
@@ -1204,12 +1209,13 @@ button {
 .fourthposit {
   margin: auto;
   margin-bottom: 3rem;
-  margin-top: -3rem;
+  margin-top: -2.4rem;
 }
 .trustimg {
   text-align: center;
   margin-bottom: 0.5rem;
   position: relative;
+  z-index: 10;
 }
 .trustimgin {
   background: #17ddea;
@@ -1239,17 +1245,21 @@ button {
   position: absolute;
   margin-top: 2rem;
   height: 224px;
-  margin-left: -7rem;
+  width: 355px;
+  margin-left: -8.4rem;
 }
 .border5 {
   position: absolute;
-  margin-top: 2.3rem;
+  margin-top: 1.8rem;
   margin-left: 4rem;
   width: 280px;
 }
 .leftborder,
 .rightborder {
   display: none;
+}
+.frheight {
+  height: 133px;
 }
 /*Hear From Clients*/
 .homemap {
@@ -1279,6 +1289,11 @@ button {
   width: 300px;
   line-height: 25px;
   letter-spacing: 0.3px;
+}
+.mapname {
+  margin-top: 0.5rem;
+  font-family: 'Brfirma-Bold';
+  letter-spacing: 0.5px;
 }
 .clientimg {
   height: 84px;
@@ -1693,6 +1708,9 @@ button {
   .mobilebg {
     display: block;
     width: 80%;
+  }
+  .frheight {
+    height: auto;
   }
 }
 
@@ -2657,29 +2675,28 @@ button {
 .newitem {
   font-size: 11px !important;
 }
+
 /*Hover Effects*/
-/* .trustimg:hover {
-  width: 65px;
-  height: 65px;
+.trustimg:hover {
+  width: 62px;
+  height: 62px;
 }
 .fourthsubhead:hover {
-  font-size: 16px;
+  font-size: 15px;
 }
 .fourthsubtext:hover {
-  font-size: 14px;
-} */
+  font-size: 13px;
+}
 
-/* .hov1:hover .trustimg {
-  width: 65px;
-  height: 65px;
+@media(max-width: 800px) {
+  .trustimg:hover {
+    width: 52px;
+    height: 52px;
+  }
+  .fourthsubhead:hover {
+    font-size: 13.5px;
+  }
+  .fourthsubtext:hover {
+    font-size: 12.1px;
+  }
 }
-.hov1:hover .fourthsubhead {
-  font-size: 16px;
-}
-.hov1:hover .fourthsubtext {
-  font-size: 14px;
-} */
-/* .border4:hover {
-  height: 266px;
-  margin-left: -10rem;
-} */

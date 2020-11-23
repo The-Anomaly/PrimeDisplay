@@ -381,7 +381,7 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img className="rightborder rightborder2" src={smborder} />
                     <img src={trust3} className="trustimg" />
                     <div className="fourthsubhead">TO DO’s</div>
-                    <div className="fourthsubtext">
+                    <div className="fourthsubtext frheight">
                       Knowing what step to take next is one thing but getting
                       there is another! With Yudimy's Clarity you can
                       immediately convert the recommendations frommyour
