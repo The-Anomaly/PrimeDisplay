@@ -78,7 +78,7 @@ const Contactpage = () => {
               <h2 className="heading_primary pry_heading2">Contact Us</h2>
               <p className="weare">
                 We are always excited to hear from you.<br/>Have questions
-                or enquiries, need to integrate clarity to your system or
+                or inquiries? Need to integrate Clarity to your system or
                 organizations?<br/>Get in contact with our experts let us
                 set things in motion.
               </p>

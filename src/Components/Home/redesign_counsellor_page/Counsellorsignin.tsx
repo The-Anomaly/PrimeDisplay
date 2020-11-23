@@ -142,12 +142,12 @@ const counsellorSignin = withRouter((props: any) => {
               <p>
                 Registering to this website, you accept our
                 <span className="t_plinkspn">
-                  <Link to="/terms&conditions"> Terms of Use </Link>{" "}
+                  <Link to="/terms&conditions" target="_blank"> Terms of Use </Link>{" "}
                 </span>{" "}
                 and our
                 <span className="t_plinkspn">
                   {" "}
-                  <Link to="/privacy_policy">Privacy Policy</Link>{" "}
+                  <Link to="/privacy_policy" target="_blank">Privacy Policy</Link>{" "}
                 </span>
               </p>
             </Col>

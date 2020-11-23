@@ -279,8 +279,8 @@ const RedesignedHome: React.FC = (props: any) => {
                 <div className="newthirdrowtext">
                   Clarity by Yudimy is a career mapping platform that helps you
                   discover and define a clear road map with practical and
-                  actionable steps to get to your destination of meaningful and
-                  organized work-life.
+                  actionable steps to get to you to your destination of a
+                  meaningful and organized work-life.
                 </div>
                 <div className="newthirdrowbtn" onClick={GetStarted}>
                   GET STARTED
@@ -365,11 +365,13 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img src={trust2} className="trustimg" />
                     <div className="fourthsubhead">Talk to a Counselor</div>
                     <div className="fourthsubtext">
-                      Your career trajectory is a sum total of all the choices
-                      you made that got you here. However, an important step for
-                      making effective decisions going forward is is connecting
-                      the dots, speaking with a clarity counsellor helps you do
-                      just this with specific recommendations on how.{" "}
+                      Your career trajectory is the sum of all the choices you
+                      have made so far. However, an important step when making
+                      future decisions is to connect the dots between where your
+                      passion and talent lies and which career will enable you
+                      to best express them. Speaking with a Clarity counsellor
+                      will help you achieve this with specific recommendations
+                      on how.
                     </div>
                   </div>
                 </div>
@@ -379,12 +381,13 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img className="rightborder rightborder2" src={smborder} />
                     <img src={trust3} className="trustimg" />
                     <div className="fourthsubhead">TO DO’s</div>
-                    <div className="fourthsubtext">
-                      Knowing the next step to take is one, getting there is
-                      another thing. With Yudimy’s Clarity you can immediately
-                      convert the recommendations from your counselling session
-                      to actionable task with frequent reminders and
-                      acccountability to help you achieve this.
+                    <div className="fourthsubtext frheight">
+                      Knowing what step to take next is one thing but getting
+                      there is another! With Yudimy's Clarity you can
+                      immediately convert the recommendations frommyour
+                      counselling session into actionable tasks and set up
+                      frequent reminders to keep you accountable and help you
+                      achieve them.
                     </div>
                   </div>
                   <div className="fourthsubsec hov4">
@@ -393,11 +396,10 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img src={trust4} className="trustimg trustimgin" />
                     <div className="fourthsubhead">Growth Challenge</div>
                     <div className="fourthsubtext">
-                      Beautiful things happen when preparation meets opportunity
-                      and our growth challenge feature keeps you accountable to
-                      growth, with the assistance of career-talent managers you
-                      have access to a career development road map that increase
-                      your appeal.
+                      When preparation meets opportunity, the result is success.
+                      Clarity's growth challenge feature is supported by our
+                      career talent managers who keep you accountable to your
+                      career development goals thereby increasing your appeal.
                     </div>
                   </div>
                 </div>
@@ -409,9 +411,9 @@ const RedesignedHome: React.FC = (props: any) => {
                   </div>
                   <div className="fourthsubtext">
                     As your career-talent managers committed to your success we
-                    work with you to articule your unique value propostion,
-                    profile and brand. Also, because we know understand you, we
-                    curate the best opportunities and send them to you.
+                    work with you to articulate your unique value proposition,
+                    profile and brand. Also, because we now understand you, we
+                    curate and connect you to the best opportunities.
                   </div>
                 </div>
               </div>

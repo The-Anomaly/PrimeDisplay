@@ -9,6 +9,7 @@ import { API } from "../../../config";
 import axios, { AxiosResponse } from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../Home/Home.css"
 
 const Payment = (props: any) => {
   const [state, setFormState] = React.useState<any>({
@@ -52,6 +53,12 @@ const Payment = (props: any) => {
     });
   };
   const OneOff = () => {
+    // if(plan === true) {
+    //   return setFormState({
+    //     ...state,
+    //     plan: false,
+    //   });
+    // }
     setFormState({
       ...state,
       plan: true,
@@ -60,6 +67,12 @@ const Payment = (props: any) => {
   };
 
   const Progressive = () => {
+    // if(plan === false) {
+    //   return setFormState({
+    //     ...state,
+    //     plan: true,
+    //   });
+    // }
     setFormState({
       ...state,
       plan: false,
@@ -133,6 +146,10 @@ const Payment = (props: any) => {
         redirect: false,
         onComplete: function (response) {
           if (response.paymentStatus === "OVERPAID") {
+            if(selectedSubscription !== "") {
+              console.log("Gift subscription successful!");
+              notify("Gift subscription overpaid!");
+            }
             notify(
               "Your current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
@@ -145,10 +162,10 @@ const Payment = (props: any) => {
             if(selectedSubscription !== "") {
               console.log("Gift subscription successful!");
               notify("Gift subscription successful!");
-              return setTimeout(
-                (window.location.pathname = "/dashboardsubscriptionplan"),
-                3000
-              );
+               // return setTimeout(
+              //   (window.location.pathname = "/dashboardsubscriptionplan"),
+              //   3000
+              // );
             }
             console.log("paid");
             const availableToken = localStorage.getItem("userToken");
@@ -176,6 +193,10 @@ const Payment = (props: any) => {
             console.log("Payment Successful");
           }
           if (response.paymentStatus === "PENDING") {
+            if(selectedSubscription !== "") {
+              console.log("Gift subscription unsuccessful!");
+              notify("Gift subscription pending!");
+            }
             notify("Payment Pending");
             return setTimeout(
               (window.location.pathname = "/thirdparty/pending"),
@@ -196,7 +217,7 @@ const Payment = (props: any) => {
   const notify = (message: string) => {
     toast(message, { containerId: "B" });
     setTimeout(() => {
-      props.history.push("");
+      window.location.assign("");
     }, 3000);
   };
   const requestForPayref = (selectedplan, cost) => {
@@ -280,11 +301,10 @@ const Payment = (props: any) => {
         <div
           className={
             props.mode === "dark"
-              ? "payment-section"
+              ? "payment-section pymntpadding"
               : "payment-section progressivelgt"
           }
         >
-          <Container>
             <div
               className={
                 !withoutlogin
@@ -293,10 +313,11 @@ const Payment = (props: any) => {
               }
             >
               <h3>We have curated payments plans with you in mind</h3>
+            <div className="fourthline pymntline"> </div>
             </div>
             <div>
               <Row className="payment-plans">
-                <Col md={5} className="margined_col cardmini oneoffmini">
+                <Col md={5} className="margined_col oneoffmini">
                   <Card
                     className={
                       plan === true && !withoutlogin
@@ -369,7 +390,7 @@ const Payment = (props: any) => {
                             <h6>Free</h6>
                             <p>
                               Get the first hand Clarity experience for no
-                              charge at all. Take action to your career bliss
+                              charge at all. Take action to experience career bliss.
                             </p>
                           </div>
                           <ul className="card-list">
@@ -489,9 +510,9 @@ const Payment = (props: any) => {
                           <div className="card-div">
                             <h6 className="green">Direction Plan</h6>
                             <p>
-                              Hand in Hand Guidance - Get perspective on your
+                              Hand in Hand Guidance: Get perspective on your
                               reports. Get assigned to your personal career
-                              coach, It only gets better
+                              coach. It only gets better.
                             </p>
                           </div>
                           <ul className="card-list">
@@ -509,7 +530,7 @@ const Payment = (props: any) => {
                                   />
                                 </div>
                                 40 minutes career-planning session with a
-                                clarity counsellor
+                                Clarity counsellor
                               </div>
                             </li>
                           </ul>
@@ -644,7 +665,7 @@ const Payment = (props: any) => {
                             <h6>Insight Plan</h6>
                             <p>
                               Get the first hand Clarity experience for no
-                              charge at all. Take action to your career bliss
+                              charge at all. Take action to experience career bliss
                             </p>
                           </div>
                           <ul className="card-list">
@@ -760,7 +781,7 @@ const Payment = (props: any) => {
                                   <img src={mark_blue} className="card-image" />
                                 </div>
                                 40 minutes career-planning session with a
-                                clarity counselor
+                                Clarity counselor
                               </div>
                             </li>
                             <li>
@@ -843,7 +864,7 @@ const Payment = (props: any) => {
                                   />
                                 </div>
                                 40 minutes career-planning session with a
-                                clarity counselor X2
+                                Clarity counselor X2
                               </div>
                             </li>
                           </ul>
@@ -902,7 +923,6 @@ const Payment = (props: any) => {
                 </div>
               )}
             </div>
-          </Container>
           <ToastContainer
             enableMultiContainer
             containerId={"B"}

@@ -82,7 +82,6 @@ import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page"
 import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
 import Privacy from "./Components/Home/Legal_policy_page/privacy_policy";
 import Terms from "./Components/Home/Legal_policy_page/terms&conditions";
-import Monthly_plan from "./Components/Home/Redesigned_Payment_Page/Monthly_payment_plan";
 import Signup from "./Components/Home/Redesigned_signup_page/signup";
 import Signin from "./Components/Home/Redesigned_signup_page/signin";
 import Email_confirm_page from "./Components/Home/Redesigned_confirmation_page/email_confirmation";
@@ -126,17 +125,7 @@ class App extends Component {
               <Route exact path="/payment" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
               <Route exact path="/terms&conditions" component={Terms} />
-              <Route
-                exact
-                path="/progressive_clarity_experience"
-                component={Monthly_plan}
-              />
               <Route exact path="/terms&conditions" component={Terms} />
-              <Route
-                exact
-                path="/progressive_clarity_experience"
-                component={Monthly_plan}
-              />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/signin" component={Signin} />
               <Route exact path="/" component={RedesignedHome} />

@@ -1,7 +1,9 @@
 .policy_page{
     background-color: #23304c;
-    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 51%, 0 100%);
     padding-bottom: 49px;
+    padding-top: 4rem;
+    padding-left: 5%;
 }
 .privacy-title{
     padding: 82px 0px 76px 0px;
@@ -49,4 +51,10 @@
     .policy_card-body{
         padding: 0px 25px 114px 25px;
     }
+}
+.privacylogo {
+    position: absolute;
+    top: 2rem;
+    z-index: 5;
+    left: 5%;
 }
