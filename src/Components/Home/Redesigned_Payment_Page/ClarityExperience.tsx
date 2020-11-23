@@ -377,7 +377,7 @@ const Payment = (props: any) => {
                             <h6>Free</h6>
                             <p>
                               Get the first hand Clarity experience for no
-                              charge at all. Take action to your career bliss
+                              charge at all. Take action to experience career bliss.
                             </p>
                           </div>
                           <ul className="card-list">
@@ -652,7 +652,7 @@ const Payment = (props: any) => {
                             <h6>Insight Plan</h6>
                             <p>
                               Get the first hand Clarity experience for no
-                              charge at all. Take action to your career bliss
+                              charge at all. Take action to experience career bliss
                             </p>
                           </div>
                           <ul className="card-list">
