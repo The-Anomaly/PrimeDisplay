@@ -13,6 +13,11 @@ import "react-calendar/dist/Calendar.css";
 import write from "../../assets/write.png";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import Modal from "react-bootstrap/Modal";
+import close from "../../assets/close.svg";
+import checkede from "../../assets/checkede.png";
+import moment from "moment";
+import { Link } from "react-router-dom";
 
 class CouncellorDates extends React.Component<React.Props<any>> {
   state: any = {
@@ -25,8 +30,10 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     startDate: "",
     endDate: "",
     time: "",
+    isOpen: false,
+    Canbooksession: false,
   };
-  
+
   componentWillMount() {
     window.scrollTo(-0, -0);
     this.setState({ isLoading: true });
@@ -46,9 +53,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       })
       .catch((error) => {
-        if (error && error.response && error.response.data) {
+        if (error && error.response && error.response) {
           this.setState({
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
           });
         }
@@ -68,6 +75,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       time: e.target.value,
     });
   };
+  closeModal = () => {
+    this.setState({
+      isOpen: false,
+    });
+  };
   getAvailableTime = (date) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -84,9 +96,10 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       })
       .catch((error) => {
+        console.log(error);
         if (error && error.response && error.response.data) {
           this.setState({
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
           });
         }
@@ -96,7 +109,10 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       });
   };
-
+  formatTime = (date) => {
+    const dateTime = moment(date).format("MMM YYYY");
+    return dateTime;
+  };
   handleChatCheck = () => {
     console.log("checking payment status");
     this.setState({ isLoading: true });
@@ -150,20 +166,19 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         if (response.status === 200) {
-          this.notify("Message Sent");
-          setTimeout(() => {
-            const self: any = this;
-            self.props.history.push("/overview");
-          }, 3000);
+          this.setState({
+            isOpen: true,
+          });
         }
       })
       .catch((error) => {
-        this.notify("Failed to Send");
-        if (error && error.response && error.response.data) {
+        console.log(error.response);
+        if (error && error?.response && error?.response?.data) {
           this.setState({
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data?.message,
             isLoading: false,
           });
+          this.notify(`Failed to process  ${error?.response?.data?.message}`);
         }
         this.setState({
           errorMessage: "failed",
@@ -180,7 +195,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       fullname,
       phone,
       careerbussines,
-      availabledate,
+      isOpen,
       feedbackText,
       startDate,
       endDate,
@@ -198,6 +213,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
               <Calendar
                 onChange={this.onChange}
                 value={this.state.date}
+                name="date"
                 allowPartialRange={true}
                 minDate={new Date(startDate)}
                 maxDate={new Date(endDate)}
@@ -271,7 +287,39 @@ class CouncellorDates extends React.Component<React.Props<any>> {
             </Col>
           </Row>
         </Container>
-        <Footer />
+        <Modal
+          show={isOpen}
+          className="modcomplete modsuccess"
+          centered={true}
+          onHide={this.closeModal}
+        >
+          <span className="close_view" onClick={this.closeModal}>
+            <img
+              className="closeview slsbtn"
+              src={close}
+              onClick={this.closeModal}
+              alt="close"
+            />
+          </span>
+          <Modal.Body>
+            <div className="modal_det"></div>
+            <div className="text-center">
+              <img src={checkede} className="checkedes" alt="success" />
+            </div>
+            <div className="successfullybooked">
+              You successfully booked a session with a counselllor on{" "}
+              <b>{this.formatTime(this.state.date)}</b> by{" "}
+              <b>{this.state.time}</b>
+            </div>
+            <div className="btncenter">
+              <button className="btncenter12">
+                {" "}
+                <Link to="/overview">Continue</Link>
+              </button>
+            </div>
+          </Modal.Body>
+        </Modal>
+        {/* <Footer /> */}
       </>
     );
   }
