@@ -53,6 +53,12 @@ const Payment = (props: any) => {
     });
   };
   const OneOff = () => {
+    // if(plan === true) {
+    //   return setFormState({
+    //     ...state,
+    //     plan: false,
+    //   });
+    // }
     setFormState({
       ...state,
       plan: true,
@@ -61,6 +67,12 @@ const Payment = (props: any) => {
   };
 
   const Progressive = () => {
+    // if(plan === false) {
+    //   return setFormState({
+    //     ...state,
+    //     plan: true,
+    //   });
+    // }
     setFormState({
       ...state,
       plan: false,
@@ -305,7 +317,7 @@ const Payment = (props: any) => {
             </div>
             <div>
               <Row className="payment-plans">
-                <Col md={5} className="margined_col cardmini oneoffmini">
+                <Col md={5} className="margined_col oneoffmini">
                   <Card
                     className={
                       plan === true && !withoutlogin
