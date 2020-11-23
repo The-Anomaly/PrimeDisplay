@@ -49,10 +49,10 @@ const Privacy = () => {
                     or "Our" in this Agreement) refers to Yudimy Services Ltd, 3
                     Samuel Street, Ogudu, Lagos.
                     <br />
-                    -Website is referred to Yudimy.com or clarity.yudimy.com.
+                    -Website is referred to Yudimy.com or Clarity.yudimy.com.
                     <br />
                     -Service is referred to the website/app i.e
-                    clarity.yudimy.com.
+                    Clarity.yudimy.com.
                     <br />
                     -Service Provider means any natural or legal person who
                     processes the data on behalf of Yudimy. It refers to

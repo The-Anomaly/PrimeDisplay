@@ -517,7 +517,7 @@ const Payment = (props: any) => {
                                   />
                                 </div>
                                 40 minutes career-planning session with a
-                                clarity counsellor
+                                Clarity counsellor
                               </div>
                             </li>
                           </ul>
@@ -768,7 +768,7 @@ const Payment = (props: any) => {
                                   <img src={mark_blue} className="card-image" />
                                 </div>
                                 40 minutes career-planning session with a
-                                clarity counselor
+                                Clarity counselor
                               </div>
                             </li>
                             <li>
@@ -851,7 +851,7 @@ const Payment = (props: any) => {
                                   />
                                 </div>
                                 40 minutes career-planning session with a
-                                clarity counselor X2
+                                Clarity counselor X2
                               </div>
                             </li>
                           </ul>

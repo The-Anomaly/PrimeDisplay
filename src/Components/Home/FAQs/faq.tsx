@@ -86,7 +86,7 @@ const Faq: React.FunctionComponent = (props) => {
                       We totally understand, but we also know $11-$20 dollars is
                       not a lot of money if you are ready to take your work-life
                       up the notch all through the year. You can however, start
-                      getting the free clarity report on your strengths and
+                      getting the free Clarity report on your strengths and
                       weaknesses.
                     </p>
                   </Card.Body>
@@ -118,7 +118,7 @@ const Faq: React.FunctionComponent = (props) => {
                         navigate through the challenges of your career and
                         personal struggles, as much as we are focused on helping
                         you build a fulfilling career we also realize that other
-                        aspects of your life matter too. Hence, clarity
+                        aspects of your life matter too. Hence, Clarity
                         counsellors and psychologists are equipped to help you
                         tackle various issues that come along your way as you
                         work on maximizing your potential.
@@ -193,7 +193,7 @@ const Faq: React.FunctionComponent = (props) => {
                       appropriate quarters. We ensure conversations are private,
                       providing a safe space to rant, learn and take progressive
                       action. We are emphatic and yet intentional about your
-                      personal development so every effort on clarity is
+                      personal development so every effort on Clarity is
                       propelled to move you forward.
                     </p>
                   </Card.Body>

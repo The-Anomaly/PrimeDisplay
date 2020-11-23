@@ -41,7 +41,7 @@ export const NewAbout = () => {
         </Row>
         <Row className="abtwithclarityrow">
           <div className="abtwithclarity">
-            With clarity all year long
+            With Clarity all year long
             <br />
             Professionals can
           </div>

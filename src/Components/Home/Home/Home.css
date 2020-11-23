@@ -2292,6 +2292,8 @@ button {
   }
   .mapname {
     margin-top: 2rem;
+    font-family: 'Brfirma-Bold';
+    letter-spacing: 1px;
   }
   .clientimg {
     width: 80px;
