@@ -28,15 +28,17 @@ class CounsellorMessageOneUser extends React.Component {
   };
   props: any;
   this: any;
+  messagesEnd: any;
   constructor(props) {
     super(props);
     this.initialiseChat(props.match.params.chatID);
   }
-   moveTo = (str) => {
+  moveTo = (str) => {
     const offsetTop: any = document.getElementById(str);
-    console.log(offsetTop.scrollHeight)
-    offsetTop.scrollTo(0,offsetTop.scrollHeight)
+    console.log(offsetTop.scrollHeight);
+    offsetTop.scrollTo(0, offsetTop.scrollHeight);
   };
+
   componentWillMount() {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -52,13 +54,22 @@ class CounsellorMessageOneUser extends React.Component {
           this.setState({
             userInfo: response.data[0],
           });
-          this.moveTo("targetdiv")
         }
       })
       .catch((error) => {
         console.log(error);
       });
   }
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+  componentDidUpdate(newProps) {
+    this.scrollToBottom();
+  }
+  scrollToBottom = () => {
+    console.log(this.messagesEnd);
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  };
   formatTime = (date) => {
     return moment(date).fromNow();
   };
@@ -131,15 +142,17 @@ class CounsellorMessageOneUser extends React.Component {
                     <Col md={12} className="kisls kislsoo kil123">
                       <div className="kdashheader npps nprr">
                         <div></div>
-                        <Col md={12} className="youwss" id="targetdiv">
+                        <Col
+                          md={12}
+                          className="youwss"
+                        >
                           {this.props.messages.map((data, i) => (
                             <div key={i} className="usermmsa">
-                              {data.author ==
-                                this.props.match.params.email && (
+                              {data.author == this.props.match.params.email && (
                                 <div className="usersentwrap1">
                                   <div className="youwrap">
                                     <span className="you11">
-                                    {data.username}
+                                      {data.username}
                                     </span>
                                     <span className="youdate">
                                       {this.formatTime(data.timestamp)}
@@ -161,7 +174,7 @@ class CounsellorMessageOneUser extends React.Component {
                                       </span>
                                       <span className="you11b">
                                         You
-                                      {/* Counsellor {data.username} */}
+                                        {/* Counsellor {data.username} */}
                                       </span>
                                     </div>
 
@@ -173,6 +186,12 @@ class CounsellorMessageOneUser extends React.Component {
                               </div>
                             </div>
                           ))}
+                          <div
+                            style={{ float: "left", clear: "both" }}
+                            ref={(el) => {
+                              this.messagesEnd = el;
+                            }}
+                          ></div>
                           {this.props.messages.length === 0 && (
                             <div className="nomesgcoun">
                               <img

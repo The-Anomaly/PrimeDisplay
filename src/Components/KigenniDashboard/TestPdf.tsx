@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
-import Navbar from "../Home/HomeComponents/navbar";
+import Navbar from "../Home/HomeComponents/newnavbar";
 import Footer from "../Home/HomeComponents/footer";
 import Pdf from "react-to-pdf";
 import "./pdf.css";
@@ -35,6 +35,7 @@ const TestPdf = () => {
     last_name: "",
     first_name: "",
     errorMessage: "",
+    job_description:"",
     email: "",
     address: "",
     phone: "",
@@ -53,7 +54,7 @@ const TestPdf = () => {
     twitter,
     last_name,
     first_name,
-    errorMessage,
+    job_description,
     email,
     address,
     phone,
@@ -73,6 +74,8 @@ const TestPdf = () => {
       ])
       .then(
         axios.spread((res, res1) => {
+          console.log(res)
+          console.log(res1)
           setState({
             ...state,
             skills: [...res.data.skills],
@@ -120,7 +123,7 @@ const TestPdf = () => {
             <div className="mainwrap" ref={ref}>
               <div className="wrapper">
                 <div className="dsnwrap">
-                  <div className="bluebg1">Product Designer</div>
+                  <div className="bluebg1">{job_description}</div>
                   <div className="careernm">{first_name + " " + last_name}</div>
                 </div>
               </div>

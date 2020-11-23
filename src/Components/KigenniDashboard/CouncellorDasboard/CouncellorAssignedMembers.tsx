@@ -182,9 +182,12 @@ const CounsellorAssignedMembers = (props: any) => {
     const User = JSON.parse(user1);
     const data = {};
     Axios.all([
-      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat/?user_email=${user_email}`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/start-chat/?user_email=${user_email}`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
     ])
       .then(
         Axios.spread((res) => {
@@ -271,7 +274,9 @@ const CounsellorAssignedMembers = (props: any) => {
                           key={i}
                         >
                           <div className="fromerit summary">
-                            <Link to={`/counsellorassignedmembers/${data?.email}`}>
+                            <Link
+                              to={`/counsellorassignedmembers/${data?.email}`}
+                            >
                               <div className="mone">
                                 <img
                                   className="user_image"
@@ -280,7 +285,9 @@ const CounsellorAssignedMembers = (props: any) => {
                                 />
                               </div>
                             </Link>
-                            <Link to={`/counsellorassignedmembers/${data?.email}`}>
+                            <Link
+                              to={`/counsellorassignedmembers/${data?.email}`}
+                            >
                               <div className="mtwo">
                                 <div>
                                   <div className="lowerr nulower counlowerr mhead">
@@ -301,15 +308,19 @@ const CounsellorAssignedMembers = (props: any) => {
                               </div>
                               <div className="clarity12b">Clarity</div>
                             </div>
-                            {data.status && (
+                            {true && (
                               <div className="msix">
-                                <div className="counview mbtn">View More</div>
+                                <Link
+                                  to={`/counsellorassignedmembers/${data?.email}`}
+                                >
+                                  <div className="counview mbtn">View More</div>
+                                </Link>
                               </div>
                             )}
-                            {!data.status && (
+                            {false && (
                               <div className="msix">
                                 <div
-                                  onClick={()=>startChat(data.email)}
+                                  onClick={() => startChat(data.email)}
                                   className="counview mbtn mbtnblu wd120"
                                 >
                                   Send Message

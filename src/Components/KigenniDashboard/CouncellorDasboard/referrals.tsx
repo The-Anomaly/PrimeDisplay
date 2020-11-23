@@ -15,6 +15,7 @@ import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import Axios, { AxiosResponse } from "axios";
 import noData from "../../../assets/no recommendations.png";
 import { API } from "../../../config";
+import { Link } from "react-router-dom";
 
 const Referrals = (props: any) => {
   const [state, setState] = useState<any>({
@@ -302,16 +303,15 @@ const Referrals = (props: any) => {
                         <div className="mtwo">
                           <div>Name</div>
                         </div>
-                        <div className="mthree">
+                        {/* <div className="mthree">
                           <div>Personality Type</div>
-                        </div>
-                        <div className="mfour">
+                        </div> */}
+                        {/* <div className="mfour">
                           <div>Availability</div>
-                        </div>
+                        </div> */}
                         <div className="mfive">
-                          <div>Status</div>
+                          <div className="mddrrt">Status</div>
                         </div>
-                        <div className="msix"> </div>
                       </div>
                     )}
 
@@ -343,12 +343,12 @@ const Referrals = (props: any) => {
                                 </div>
                               </div>
                             </div>
-                            <div className="mthree">
+                            {/* <div className="mthree">
                               <div className="lowerr nulower counlowerr mhead">
                                 Personality Type
                               </div>
                               <div>{data?.personality_type}</div>
-                            </div>
+                            </div> */}
 
                             <div className="mfour">
                               <div className="lowerr nulower counlowerr mhead">
@@ -388,7 +388,16 @@ const Referrals = (props: any) => {
                                 </div>
                               )}
                             </a>
-                            {!data.status && (
+                            <div className="msix">
+                              <div className="counview mbtn mbtnblu">
+                                <Link
+                                  to={`/counsellorassignedmembers/${data?.email}`}
+                                >
+                                  view more
+                                </Link>
+                              </div>
+                            </div>
+                            {/* {!data.status && (
                               <div className="msix">
                                 <div
                                   className="counview mbtn mbtnblu"
@@ -397,7 +406,7 @@ const Referrals = (props: any) => {
                                   Send Message
                                 </div>
                               </div>
-                            )}
+                            )} */}
                           </div>
                         </div>
                       ))}

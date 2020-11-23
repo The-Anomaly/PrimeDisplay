@@ -830,6 +830,9 @@ a:hover {
   .modal-sm {
     max-width: 429px;
   }
+  .mddrrt{
+    margin-left: 4rem !important;
+  }
 }
 
 textarea.form-control {
