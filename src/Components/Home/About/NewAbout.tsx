@@ -117,10 +117,10 @@ export const NewAbout = () => {
               <div>
                 <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Clear life direction</span></div>
                 <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Organized work-life</span></div>
-                <div className="indilist"><img className="prodgreentick" src={greentick} /><span>More productivity</span></div>
-                <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Progressive Growth</span></div>
+                <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Better productivity</span></div>
+                <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Progressive growth</span></div>
                 <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Valuable you </span></div>
-                <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Lesser anxiety</span></div>
+                <div className="indilist"><img className="prodgreentick" src={greentick} /><span>Less anxiety</span></div>
               </div>
             </div>
             <div className="prodsec2 prodsec3">
@@ -130,14 +130,14 @@ export const NewAbout = () => {
               <div>
                 <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>High performing teams </span></div>
                 <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>
-                  Intelligence on teams strengths and weaknesses for managers to
+                  Intelligence on teams' strengths and weaknesses for managers to
                   drive performance and effectiveness.</span>
                 </div>
                 <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>Less time micromanaging</span></div>
                 <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>Better employee engagement & Retention</span></div>
                 <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>Minimize workplace conflicts and problems</span></div>
-                <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>Workplace Planning </span></div>
-                <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>Effective Performance Management</span></div>
+                <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>Workplace planning </span></div>
+                <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>Effective performance management</span></div>
                 <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>Foster a better collaborative spirit</span></div>
               </div>
             </div>
