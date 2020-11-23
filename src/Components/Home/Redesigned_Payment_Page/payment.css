@@ -2,7 +2,7 @@
     text-align: center;
     padding: 30px 0px 100px 0px;
     background-color: #23304c;
-    background-size: cover;
+    background-size: contain;
     background-image: url(../../../assets/payment-img.png);
     background-repeat: no-repeat;
 }    
@@ -10,7 +10,7 @@
     justify-content: center;
 }
 .payment-decription{
-    padding-bottom: 76px;
+    padding-bottom: 4rem;
     color: #fff;
 }
 .payment-decription>h3{
@@ -393,4 +393,20 @@
 }
 .giftmail {
     font-size: 13px;
+}
+.pymntpadding {
+    padding-top: 10rem;
+}
+@media(max-width: 779px) {
+    .pymntpadding {
+        padding-top: 4rem;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .cardmini {
+        max-width: 300px;
+    }
+}
+.pymntline {
+    margin-top: 1.2rem;
 }

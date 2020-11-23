@@ -9,6 +9,7 @@ import { API } from "../../../config";
 import axios, { AxiosResponse } from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../Home/Home.css"
 
 const Payment = (props: any) => {
   const [state, setFormState] = React.useState<any>({
@@ -288,11 +289,10 @@ const Payment = (props: any) => {
         <div
           className={
             props.mode === "dark"
-              ? "payment-section"
+              ? "payment-section pymntpadding"
               : "payment-section progressivelgt"
           }
         >
-          <Container>
             <div
               className={
                 !withoutlogin
@@ -301,6 +301,7 @@ const Payment = (props: any) => {
               }
             >
               <h3>We have curated payments plans with you in mind</h3>
+            <div className="fourthline pymntline"> </div>
             </div>
             <div>
               <Row className="payment-plans">
@@ -910,7 +911,6 @@ const Payment = (props: any) => {
                 </div>
               )}
             </div>
-          </Container>
           <ToastContainer
             enableMultiContainer
             containerId={"B"}
