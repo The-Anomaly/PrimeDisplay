@@ -2,7 +2,6 @@
     width: 700px;
     margin-top: 2rem;
     background: white;
-    /* margin: auto; */
     margin-left: 0px;
     margin-bottom: 2rem;
   }
@@ -20,8 +19,15 @@
     text-align: center;
     width: 100%;
   }
+  .wrapperdiv {
+    background: #071bb1;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
   .careernm {
-    font-family: Ubuntu;
     font-style: normal;
     font-size: 36px;
     line-height: 41px;
@@ -29,11 +35,14 @@
     color: #ffffff;
   }
   .dsnwrap {
-    width: 69%;
-    margin: auto;
     text-align: left;
-    position: relative;
-    left: 9rem;
+    width: 50%;
+    border-right: 1px solid white;
+    padding: 0rem 3rem;
+    padding-top: 7rem;
+  }
+  .contact22{
+    color: #fff;
   }
   .wrap2 {
     display: flex;
@@ -43,28 +52,37 @@
   }
   .contact22 {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 21px;
     letter-spacing: 0.3px;
     color: #000000;
-    font-family: "Ubuntu-Medium";
   }
   .contactw {
     padding-bottom: 1rem;
     display: flex;
     max-width: 360px;
-    width: 360px;
+    width: 50%;
     flex-direction: column;
-    justify-content: inherit;
+    margin-top: 3rem;
+    text-align: left;
+    padding: 1rem 2rem;
   }
   .mkbold {
     font-weight: 500;
   }
   .contactw2 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 200;
-    line-height: 26px;
+    line-height: 32px;
+    margin-top: .5rem;
+    color: rgba(255, 255, 255, 0.856);
   }
+  .shiftrght{
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+    padding-right: 3rem;
+  }
+
   .userimage {
     position: absolute;
     width: 147px;
@@ -171,7 +189,8 @@
     max-width: 300px;
   }
   .careernm {
-    max-width: 450px;
+    font-size: 36px;
+    line-height: 41px
   }
   .backgroundcv{
     background: #e5e5e5;
@@ -189,4 +208,21 @@
   .jcenter2{
     display: flex;
     justify-content: center;
+  }
+  .contact22lss{
+    color: #fff !important;
+    font-size: 18px;
+  }
+  .smry1{
+    padding-bottom: .5rem;
+  }
+  .sumrybody{
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.3px;
+    color: #000000;
+  }
+  .opdd{
+    margin-top: 3rem;
   }
