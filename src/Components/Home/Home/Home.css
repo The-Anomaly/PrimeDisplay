@@ -1225,8 +1225,8 @@ button {
 .border2 {
   position: absolute;
   margin-top: 2rem;
-  margin-left: -13rem;
-  height: 224px;
+  height: 260px;
+  margin-left: -17rem;
 }
 .border3 {
   position: absolute;
@@ -1667,9 +1667,9 @@ button {
   }
   .fourthsubsec {
     border: 1px dashed #666666;
-    border-radius: 130px;
-    padding: 1rem 3rem;
-    width: 350px;
+    border-radius: 45%;
+    padding: 2rem 3rem;
+    width: 355px;
   }
   .newfirstrow {
     background-image: url("../../../assets/mobilebackdrop.svg");
@@ -1727,7 +1727,7 @@ button {
     font-size: 13px;
   }
   .fourthsubsec {
-    width: 330px;
+    width: 335px;
   }
   .trustimg {
     width: 50px;
@@ -1909,6 +1909,8 @@ button {
   }
   .fourthsubsec {
     border: none;
+    width: 330px;
+    padding-bottom: 0;
   }
   .fourthsec {
     flex-direction: column;
@@ -1931,13 +1933,13 @@ button {
   }
   .leftborder1 {
     margin-top: 1.7rem;
-    height: 262px;
+    height: 298px;
   }
   .rightborder2 {
-    height: 265px;
+    height: 283px;
   }
   .leftborder2 {
-    height: 266px;
+    height: 249px;
   }
 }
 
@@ -2044,6 +2046,9 @@ button {
   }
   .rightborder {
     margin-left: 5.8rem;
+  }
+  .rightborder2 {
+    margin-left: 5rem;
   }
   .leftborder {
     margin-left: -1.6rem;
@@ -2651,7 +2656,7 @@ button {
   font-size: 11px !important;
 }
 /*Hover Effects*/
-.trustimg:hover {
+/* .trustimg:hover {
   width: 65px;
   height: 65px;
 }
@@ -2660,7 +2665,7 @@ button {
 }
 .fourthsubtext:hover {
   font-size: 14px;
-}
+} */
 
 /* .hov1:hover .trustimg {
   width: 65px;

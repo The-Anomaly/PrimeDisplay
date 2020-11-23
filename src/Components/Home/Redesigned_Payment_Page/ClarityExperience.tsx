@@ -133,6 +133,10 @@ const Payment = (props: any) => {
         redirect: false,
         onComplete: function (response) {
           if (response.paymentStatus === "OVERPAID") {
+            if(selectedSubscription !== "") {
+              console.log("Gift subscription successful!");
+              notify("Gift subscription overpaid!");
+            }
             notify(
               "Your current payment has exceeded the amount. The excess amount will be refunded within 24 hours"
             );
@@ -176,6 +180,10 @@ const Payment = (props: any) => {
             console.log("Payment Successful");
           }
           if (response.paymentStatus === "PENDING") {
+            if(selectedSubscription !== "") {
+              console.log("Gift subscription unsuccessful!");
+              notify("Gift subscription pending!");
+            }
             notify("Payment Pending");
             return setTimeout(
               (window.location.pathname = "/thirdparty/pending"),
@@ -185,10 +193,10 @@ const Payment = (props: any) => {
         },
         onClose: function (data) {
           console.log("On close function");
-          // return setTimeout(
-          //   (window.location.pathname = "/dashboardsubscriptionplan"),
-          //   3000
-          // );
+          return setTimeout(
+            (window.location.pathname = "/dashboardsubscriptionplan"),
+            3000
+          );
         },
       });
     } catch (error) {}
@@ -489,9 +497,9 @@ const Payment = (props: any) => {
                           <div className="card-div">
                             <h6 className="green">Direction Plan</h6>
                             <p>
-                              Hand in Hand Guidance - Get perspective on your
+                              Hand in Hand Guidance: Get perspective on your
                               reports. Get assigned to your personal career
-                              coach, It only gets better
+                              coach. It only gets better.
                             </p>
                           </div>
                           <ul className="card-list">
