@@ -864,10 +864,10 @@ button {
   background: #23304c;
   color: #ffffff;
   width: 100vw;
-  padding-top: 1.4rem;
+  padding-top: 1rem;
   padding-right: 4rem;
   padding-left: 4rem;
-  padding-bottom: 1.4rem;
+  padding-bottom: 1rem;
   flex-wrap: nowrap;
 }
 .nav_titlenew {
@@ -897,12 +897,18 @@ button {
 }
 .hometext {
   color: #ffffff;
-  margin-top: 15rem;
+  margin-top: 13rem;
   margin-bottom: 15rem;
   padding-left: 4%;
   padding-right: 5%;
   font-size: 45px;
   font-family: "Brfirma-Bold";
+}
+.smhometext {
+  font-size: 30px;
+  font-family: 'Brfirma-Regular';
+  font-weight: 500;
+  margin-top: 1rem;
 }
 .socials {
   display: flex;
@@ -1696,7 +1702,10 @@ button {
     padding-left: 0;
     padding-right: 0;
     font-size: 40px;
-    margin-top: 17rem;
+    margin-top: 15rem;
+  }
+  .smhometext {
+    font-size: 25px;
   }
   .jaiyeimg {
     display: block;
@@ -1789,6 +1798,9 @@ button {
     padding-right: 25%;
     margin-top: 13rem;
     font-size: 35px;
+  }
+  .smhometext {
+    font-size: 19px;
   }
   .home1 {
     order: 2;
@@ -2081,6 +2093,9 @@ button {
   .hometext {
     font-size: 30px;
     margin-top: 8rem;
+  }
+  .smhometext {
+    font-size: 18px;
   }
   .ellipse1 {
     width: 40px;

@@ -195,8 +195,8 @@ const RedesignedHome: React.FC = (props: any) => {
               <Col md={5} sm={11} className="hometext">
                 <div>
                   <div>We are like a map but for your career.</div>
-                  <div>Let's connect all the dots...</div>
-
+                  {/* <div>Let's connect all the dots...</div> */}
+                  <div className="smhometext">Discover your passion and talent, discover a more meaningful work life.</div>
                   <Link to="/signup">
                     <div className="hstarted">GET STARTED</div>
                   </Link>

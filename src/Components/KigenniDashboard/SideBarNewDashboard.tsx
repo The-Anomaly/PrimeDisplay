@@ -236,7 +236,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
               className="sideimage"
               alt="sideimage"
             />
-            Opportunity Recommended
+            Opportunity Recommender
           </div>
           <Link to="/profilebuilder">
             <div className={props.builder ? "activegb" : "gbn"}>

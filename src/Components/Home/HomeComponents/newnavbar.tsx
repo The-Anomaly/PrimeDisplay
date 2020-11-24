@@ -258,13 +258,13 @@ const newNavbar = withRouter((props: any) => {
                   ) : (
                     " "
                   )}
-                  {!userLoggedIn ? (
+                  {/* {!userLoggedIn ? (
                     <div className="listwraperMob">
                       <Link to="/privacy_policy">Privacy Policy</Link>
                     </div>
                   ) : (
                     " "
-                  )}
+                  )} */}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
                       <Link to="/signin">
