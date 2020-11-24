@@ -135,11 +135,11 @@ const counsellorSignin = withRouter((props: any) => {
   return (
     <div>
       <Navbar />
-      <div className="rdsignup-section">
+      <div className="rdsignup-section paddit">
         <Container>
           <Row className="rsignuprow">
             <Col md={12} className="rsignupdiv">
-              <p>
+              {/* <p>
                 Registering to this website, you accept our
                 <span className="t_plinkspn">
                   <Link to="/terms&conditions" target="_blank"> Terms of Use </Link>{" "}
@@ -149,7 +149,7 @@ const counsellorSignin = withRouter((props: any) => {
                   {" "}
                   <Link to="/privacy_policy" target="_blank">Privacy Policy</Link>{" "}
                 </span>
-              </p>
+              </p> */}
             </Col>
             <Col md={7}>
               <Form className="rdsignupform" onSubmit={validateForm}>

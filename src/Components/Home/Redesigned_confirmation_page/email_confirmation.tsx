@@ -35,7 +35,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
        isLoading:true
      })
      const data ={
-       client,
+       email: client,
      };
      console.log(data);
      axios.post(`${API}/accounts/resend-code/`,data)

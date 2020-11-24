@@ -13,7 +13,7 @@ import Modal from "react-bootstrap/esm/Modal";
 import { useState } from "react";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import Axios, { AxiosResponse } from "axios";
-import noData from "../../../assets/no recommendations.png";
+import noData from "../../../assets/noplan.png";
 import { API } from "../../../config";
 import { Link } from "react-router-dom";
 
@@ -281,7 +281,7 @@ const Referrals = (props: any) => {
         <CounsellorDashboardMobileNav counreferral={true} />
         <Row>
           <SideBarCounsellorDashboard counreferral={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm">
             <CounsellorDashboardNav title="Referrals" />
             <Row>
               <Col md={12} className="firstqq">
@@ -295,26 +295,9 @@ const Referrals = (props: any) => {
                     Get referral link{" "}
                   </span>
                 </div>
+                <hr />
                 <Row className="signedfjss">
                   <Col md={12}>
-                    {counsellorData.length > 0 && (
-                      <div className="teammembr teamheading counheading mheadd">
-                        <div className="mone"> </div>
-                        <div className="mtwo">
-                          <div>Name</div>
-                        </div>
-                        {/* <div className="mthree">
-                          <div>Personality Type</div>
-                        </div> */}
-                        {/* <div className="mfour">
-                          <div>Availability</div>
-                        </div> */}
-                        <div className="mfive">
-                          <div className="mddrrt">Status</div>
-                        </div>
-                      </div>
-                    )}
-
                     {counsellorData &&
                       counsellorData.length > 0 &&
                       counsellorData.map((data, i) => (
@@ -323,100 +306,38 @@ const Referrals = (props: any) => {
                           key={i}
                         >
                           <div className="fromerit summary">
-                            <div className="mone">
+                            <div className="refmarg">
                               <img
                                 className="user_image"
                                 src={userimg1}
                                 alt="user image"
                               />
                             </div>
-                            <div className="mtwo">
-                              <div>
-                                <div className="lowerr nulower counlowerr mhead">
-                                  Name
-                                </div>
-                                <div className="userrdet1 det1">
+                            <div className="refdeet">
+                                  <div className="userrdet1 det1">
                                   {data?.name}
-                                </div>
-                                <div className="userrdet2 memb">
-                                  {data?.email}
-                                </div>
-                              </div>
-                            </div>
-                            {/* <div className="mthree">
-                              <div className="lowerr nulower counlowerr mhead">
-                                Personality Type
-                              </div>
-                              <div>{data?.personality_type}</div>
-                            </div> */}
-
-                            <div className="mfour">
-                              <div className="lowerr nulower counlowerr mhead">
-                                Availability
-                              </div>
-                              {data.availability == "available" ? (
-                                <div className="avail">
-                                  {capitalize(data?.availability)}
-                                </div>
-                              ) : (
-                                <div className="notavail">
-                                  {capitalize(data?.availability)}
-                                </div>
-                              )}
-                            </div>
-                            <div className="mfive">
-                              <div className="lowerr nulower sess counstat counlowerr mhead">
-                                Status
-                              </div>
-                              <span
-                                className={
-                                  !data.status ? "pend pltd" : "complt pltd"
-                                }
-                              >
-                                {!data.status ? "Pending" : "Completed"}
-                              </span>
-                            </div>
-                            <a
-                              href={`/counsellor/result/${data?.email}`}
-                              target="blank"
-                            >
-                              {data.status && (
-                                <div className="msix">
-                                  <div className="counview mbtn">
-                                    View Result
                                   </div>
-                                </div>
-                              )}
-                            </a>
-                            <div className="msix">
-                              <div className="counview mbtn mbtnblu">
-                                <Link
-                                  to={`/counsellorassignedmembers/${data?.email}`}
-                                >
-                                  view more
-                                </Link>
+                                  <div className="userrdet2 memb">
+                                  {data?.email}
+                                  </div>
                               </div>
-                            </div>
-                            {/* {!data.status && (
-                              <div className="msix">
-                                <div
-                                  className="counview mbtn mbtnblu"
-                                  onClick={() => startChat(data?.email)}
-                                >
-                                  Send Message
-                                </div>
-                              </div>
-                            )} */}
                           </div>
                         </div>
                       ))}
+
                     {counsellorData.length === 0 && !isLoading && (
                       <>
                         <div className="text-center">
-                          <img src={noData} className="noData" alt="noData" />
+                          <img src={noData} className="noref" alt="noData" />
                         </div>
+                        <div className="norefoops">Oops!!!</div>
                         <div className="empt">
-                          You do not have any assigned members
+                          You currently do not have any referred users
+                        </div>
+                        <div className="text-center norefmarg">
+                          <span className="ref_btn" onClick={ModalOpen}>
+                            Get referral link{" "}
+                          </span>
                         </div>
                       </>
                     )}
