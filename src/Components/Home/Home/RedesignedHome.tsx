@@ -47,7 +47,7 @@ import smarrow1 from "../../../assets/smarrow1.svg";
 import smarrow2 from "../../../assets/smarrow2.svg";
 import smarrow4 from "../../../assets/smarrow4.svg";
 import smarrow5 from "../../../assets/smarrow5.svg";
-import smcircle1 from "../../../assets/smcircle1.svg";
+import smcircle1 from "../../../assets/circle3.svg";
 import smcircle2 from "../../../assets/smcircle2.svg";
 import smborder from "../../../assets/smborder.png";
 import jaiye from "../../../assets/jaiye.svg";
