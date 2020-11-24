@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
-import Navbar from "../Home/HomeComponents/navbar";
+import Navbar from "../Home/HomeComponents/newnavbar";
 import Footer from "../Home/HomeComponents/footer";
 import Pdf from "react-to-pdf";
 import "./pdf.css";
@@ -35,6 +35,7 @@ const TestPdf = () => {
     last_name: "",
     first_name: "",
     errorMessage: "",
+    job_description: "",
     email: "",
     address: "",
     phone: "",
@@ -53,7 +54,7 @@ const TestPdf = () => {
     twitter,
     last_name,
     first_name,
-    errorMessage,
+    job_description,
     email,
     address,
     phone,
@@ -73,6 +74,8 @@ const TestPdf = () => {
       ])
       .then(
         axios.spread((res, res1) => {
+          console.log(res);
+          console.log(res1);
           setState({
             ...state,
             skills: [...res.data.skills],
@@ -101,7 +104,7 @@ const TestPdf = () => {
     return dateTime;
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-  
+
   return (
     <div>
       <Navbar />
@@ -116,20 +119,15 @@ const TestPdf = () => {
               )}
             </Pdf>
           </Col>
-          <Col md={12} className="jcenter2">
+          <Col md={12} className="jcenter2 opdd">
             <div className="mainwrap" ref={ref}>
-              <div className="wrapper">
+              <div className="wrapperdiv">
                 <div className="dsnwrap">
-                  <div className="bluebg1">Product Designer</div>
+                  <div className="bluebg1">{job_description}</div>
                   <div className="careernm">{first_name + " " + last_name}</div>
                 </div>
-              </div>
-              <div className="wrap2">
-                <div className="userpic">
-                  <img src={userimg1} className="userimage" alt="profilepic" />
-                </div>
                 <div className="contactw">
-                  <div className="contact22">Contacts</div>
+                  <div className="contact22 contact22lss">Contacts</div>
                   <div className="contactw2">
                     <span className="mkbold">Phone:</span> {phone}
                   </div>
@@ -139,6 +137,17 @@ const TestPdf = () => {
                   <div className="contactw2">
                     <span className="mkbold"> Address:</span> {address}
                   </div>
+                </div>
+              </div>
+              <div className="wrap2">{/* Loop */}</div>
+              <div className="shiftrght">
+                <div className="smry1 contact22">Summary</div>
+                <div className="sumrybody">
+                  Risus, vel at pulvinar tempus, vel sem risus, aliquet nisi
+                  fringilla faucibus interdum commodo posuere ut nec sem congue
+                  enim ultricies molestie malesuada nullam feugiat feugiat in
+                  adipiscing nisl vel ut amet, eget lorem et a, faucibus mauris,
+                  tortor quam sit convallis aenean amet in sit sit mi dolor.
                 </div>
               </div>
               <div className="rapsecarea">
@@ -160,7 +169,8 @@ const TestPdf = () => {
                         <div className="box1txt">{x.certificate_name}</div>
                         <div className="certinst">{x.institution}</div>
                         <div className="skillstext">
-                          {formatTime(x.valid_from)} - {formatTime(x.valid_till)}
+                          {formatTime(x.valid_from)} -{" "}
+                          {formatTime(x.valid_till)}
                         </div>
                       </div>
                     ))}
@@ -170,16 +180,16 @@ const TestPdf = () => {
                   <div className="shortline"></div>
                   <div className="slss contact22">Work Experience</div>
                   {experiences.map((x, i) => (
-                  <div key={i}>
-                    <div className="box1">
-                    {/* <div className="box1txt">{x.organisation}</div> */}
-                      <div className="box1txt">{x.position}</div>
-                      <div className="date1">{formatTime(x.started_from)} - {formatTime(x.to)}</div>
-                    </div>
-                    <div className="temptext">
-                      {x.job_description}
-                    </div>
-                    {/* <div className="box3">
+                    <div key={i}>
+                      <div className="box1">
+                        {/* <div className="box1txt">{x.organisation}</div> */}
+                        <div className="box1txt">{x.position}</div>
+                        <div className="date1">
+                          {formatTime(x.started_from)} - {formatTime(x.to)}
+                        </div>
+                      </div>
+                      <div className="temptext">{x.job_description}</div>
+                      {/* <div className="box3">
                       <div className="box1txt">UI/UX Designer</div>
                       <div className="date1">June 2020 - July 2020</div>
                     </div>
@@ -191,41 +201,44 @@ const TestPdf = () => {
                       faucibus mauris, tortor quam sit convallis aenean amet in
                       sit sit mi dolor.
                     </div> */}
-                    <div className="shortline1"></div>
-                  </div>
+                      <div className="shortline1"></div>
+                    </div>
                   ))}
                   <div className="">
                     <div className="slss contact22">Education</div>
-                  {education.map((x, i) => (
-                    <div key={i}>
-                    <div className="box1">
-                      <div className="box1txt">{x.degree}</div>
-                      <div className="date1">{formatTime(x.start_date)} - {formatTime(x.end_date)}</div>
-                    </div>
-                    <div className="temptext">
-                      {x.institution + " " + x.location}
-                      University Of Lagos, Lagos state, Nigeria
-                    </div>
-                    <div className="shortline1"></div>
-                  </div>
-                  ))}
+                    {education.map((x, i) => (
+                      <div key={i}>
+                        <div className="box1">
+                          <div className="box1txt">{x.degree}</div>
+                          <div className="date1">
+                            {formatTime(x.start_date)} -{" "}
+                            {formatTime(x.end_date)}
+                          </div>
+                        </div>
+                        <div className="temptext">
+                          {x.institution + " " + x.location}
+                          University Of Lagos, Lagos state, Nigeria
+                        </div>
+                        <div className="shortline1"></div>
+                      </div>
+                    ))}
                   </div>
                   <div className="">
                     <div className="slss contact22">Reference</div>
                     {references.map((x, i) => (
-                    <div className="box1" key={i}>
-                      <div className="firstcol">
-                        <div className="namecv">{x.name}</div>
-                        <div className="minofwrks">{x.title}</div>
-                        <div className="minofwrks">{x.ref_email}</div>
-                        {/* <div className="minofwrks">Abuja, Nigeria</div> */}
-                      </div>
-                      {/* <div className="secolcv">
+                      <div className="box1" key={i}>
+                        <div className="firstcol">
+                          <div className="namecv">{x.name}</div>
+                          <div className="minofwrks">{x.title}</div>
+                          <div className="minofwrks">{x.ref_email}</div>
+                          {/* <div className="minofwrks">Abuja, Nigeria</div> */}
+                        </div>
+                        {/* <div className="secolcv">
                         <div className="namecv">Amaechi Rotimi</div>
                         <div className="minofwrks">Minister of Works</div>
                         <div className="minofwrks">Abuja, Nigeria</div>
                       </div> */}
-                    </div>
+                      </div>
                     ))}
                   </div>
                 </div>

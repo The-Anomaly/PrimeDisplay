@@ -25,6 +25,7 @@ class NewDashboardChat extends React.Component {
   };
   props: any;
   this: any;
+  messagesEnd: any;
   constructor(props) {
     super(props);
     this.initialiseChat(props.match.params.chatID);
@@ -46,6 +47,7 @@ class NewDashboardChat extends React.Component {
             userInfo: response.data[0].email,
           });
         }
+        this.scrollToBottom();
       })
       .catch((error) => {
         console.log(error);
@@ -61,6 +63,15 @@ class NewDashboardChat extends React.Component {
     });
     WebSocketInstance.connect(id);
   }
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+  componentDidUpdate(newProps) {
+    this.scrollToBottom();
+  }
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  };
   waitForSocketConnection = (callback) => {
     const component = this;
     setTimeout(function () {
@@ -158,6 +169,12 @@ class NewDashboardChat extends React.Component {
                             </div>
                           </div>
                         ))}
+                        <div
+                          style={{ float: "left", clear: "both" }}
+                          ref={(el) => {
+                            this.messagesEnd = el;
+                          }}
+                        ></div>
                       </div>
                       <div className="messagewrp1">
                         <div>
