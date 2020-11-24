@@ -83,7 +83,7 @@ const newNavbar = withRouter((props: any) => {
   };
   const renderRedirect = () => {
     if (redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/signin" />;
     }
   };
 

@@ -106,7 +106,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
   const notify = (message: string) => toast(message, { containerId: "B" });
   const logOut = () => {
     localStorage.clear();
-    window.location.assign("/");
+    window.location.assign("/signin");
   };
   return (
     <>
