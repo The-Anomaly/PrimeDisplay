@@ -35,8 +35,9 @@ const Email_confirm_page = withRouter ((props: any ) => {
        isLoading:true
      })
      const data ={
-       email,
+       client,
      };
+     console.log(data);
      axios.post(`${API}/accounts/resend-code/`,data)
      .then((response)=>{
        if (response.status === 200) {
@@ -167,7 +168,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
                 </Row>
               </Form>
               <div className="cnfrmdiv">
-                <p className="rsendmail" onClick={resendCode}>Didn’t Recieve any mail? Resend!</p>
+                <p className="rsendmail" onClick={resendCode}>Didn’t Receive any mail? Resend!</p>
               </div>
             </Col>
           </Row>

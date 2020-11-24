@@ -1,7 +1,7 @@
 .acctcnfm-section{
     background-color: #23304c;
     color: #fff;
-    height: 95vh;
+    height: 100vh;
 }
 .acccnfimdiv{
     text-align: center;
@@ -54,3 +54,12 @@
 .acccnf-btn:active {
     transform: translateY(-0.1rem);
   }
+.padditacct {
+    padding-top: 9rem;
+}
+
+@media(max-width: 779px) {
+    .padditacct {
+        padding-top: 4rem;
+    }
+}

@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Navbar from "../Home/HomeComponents/newnavbar";
-import Footer from "../Home/HomeComponents/footer";
+import Footer from "../Home/HomeComponents/newfooter";
 import Pdf from "react-to-pdf";
 import "./pdf.css";
 import { useEffect, useState } from "react";

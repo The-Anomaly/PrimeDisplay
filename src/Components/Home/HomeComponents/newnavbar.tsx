@@ -32,7 +32,9 @@ const newNavbar = withRouter((props: any) => {
       window.location.pathname === "/counsellor/signup" ||
       window.location.pathname === "/counsellor/signin" ||
       window.location.pathname === "/signin" ||
-      window.location.pathname === "/signup"
+      window.location.pathname === "/signup" ||
+      window.location.pathname === "/confirm_email" ||
+      window.location.pathname === "/account_confirmation"
     ) {
       setDarkNav(true)
     }

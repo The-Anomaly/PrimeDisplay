@@ -1318,7 +1318,7 @@ class ProfileBuilder extends React.Component {
                       </Col>
                     ))}
                   </Row>
-                  <hr />
+                  {/* <hr />
                   <Row className="rowla">
                     <Col md={12} id="socialmedia">
                       <div className="whatdoudo offpadd1">
@@ -1375,18 +1375,15 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Row>
                     <Col md={12} className="printcv">
-                      <div className="savebtn" onClick={this.submitForm}>
-                       {isloading?"Saving":"Save"}
-                      </div>
                       <Link to="/profilebuilder">
                         {" "}
                         <div className="print">Preview</div>
                       </Link>
                       <div className="savebtn" onClick={this.submitForm}>
-                        Save
+                       {isloading?"Saving":"Save"}
                       </div>
                     </Col>
                   </Row>
