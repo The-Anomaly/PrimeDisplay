@@ -63,7 +63,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
           ...state,
           isloading: false,
         });
-        return window.location.assign("/dashboardsubsriptionplan");
+        return window.location.assign("/dashboardsubscriptionplan");
       })
       .catch((error) => {
         setState({

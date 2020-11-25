@@ -313,7 +313,7 @@ const Payment = (props: any) => {
               }
             >
               <h3>We have curated payments plans with you in mind</h3>
-            <div className="fourthline pymntline"> </div>
+            {withoutlogin ? <div className="fourthline pymntline"> </div> : ""}
             </div>
             <div>
               <Row className="payment-plans">
