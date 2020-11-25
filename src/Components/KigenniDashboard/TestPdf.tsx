@@ -107,7 +107,7 @@ const TestPdf = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Container fluid={true}>
         <Row className="backgroundcv">
           <Col md={12} className="padpdf">
@@ -246,7 +246,7 @@ const TestPdf = () => {
             </div>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     </div>
   );
