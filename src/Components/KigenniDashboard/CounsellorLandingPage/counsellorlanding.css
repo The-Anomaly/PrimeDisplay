@@ -1,0 +1,37 @@
+.counsellorNav {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
+    width: 100vw;
+    padding-top: 1rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
+    padding-bottom: 1rem;
+    flex-wrap: nowrap;
+    position: fixed;
+    z-index: 99;
+    margin: 0;
+}
+.toindividual {
+    width: 140px;
+    background-color: #ffffff;
+    color: #001833;
+    border: 0.5px solid #ffffff;
+    padding: 0.7rem 1rem;
+    font-size: 14px;
+    height: 40px;
+}
+.toindividual:hover {
+    border: 0.5px solid #9c1258;
+}
+.smnav {
+    color: #9c1258 !important;
+    font-size: 20px;
+}
+
+@media(max-width: 779px) {
+    .counsellorNav {
+        display: none;
+    }
+}
