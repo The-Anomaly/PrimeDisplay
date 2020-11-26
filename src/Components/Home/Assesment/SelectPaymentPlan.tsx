@@ -36,14 +36,10 @@ export function SelectPaymentPlan(props: any) {
         customerFullName: "John Doe",
         customerEmail: "monnify@monnify.com",
         customerMobileNumber: "08121281921",
-        apiKey: "MK_TEST_WQZNXHV9FY",
-        contractCode: "4978848198",
+        apiKey: "MK_PROD_NNSGXTY6LF",
+        contractCode: "722431733218",
         paymentDescription: "Test Pay",
-        isTestMode: true,
-        metadata: {
-          name: "Damilare",
-          age: 45,
-        },
+        isTestMode: false,
         onComplete: function(response) {
           //Implement what happens when transaction is completed.
         },

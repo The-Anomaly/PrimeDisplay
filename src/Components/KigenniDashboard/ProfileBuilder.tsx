@@ -260,11 +260,11 @@ class ProfileBuilder extends React.Component {
         this.setState({
           isloading:false
         })
-        // this.notify("Successful");
+        this.notify("Successful");
       })
       .catch((err) => {
         if (err) {
-          // this.notify("Failed to send"); 
+          this.notify("Failed to send"); 
         }
         this.setState({
           isloading:false
@@ -1385,9 +1385,6 @@ class ProfileBuilder extends React.Component {
                         {" "}
                         <div className="print">Preview</div>
                       </Link>
-                      <div className="savebtn" onClick={this.submitForm}>
-                        Save
-                      </div>
                     </Col>
                   </Row>
                 </Col>

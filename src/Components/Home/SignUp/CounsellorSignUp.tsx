@@ -78,6 +78,7 @@ const CounsellorSignUp: React.FunctionComponent = (props: any) => {
         }, 2000);
       })
       .catch((error) => {
+        window.scrollTo(0,0)
         if (error && error.response && error.response.data) {
           return setFormState({
             ...state,
