@@ -85,7 +85,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
       console.log("Job opportunities successful");
       return window.location.assign("/jobopportunities");
     } else {
-      notify("Update your subscription to access this feature");
+      //notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
       // return setTimeout(
       //   (window.location.pathname = "/dashboardsubscriptionplan"),
@@ -101,7 +101,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
       console.log("Ask a counselor successful");
       window.location.assign("/allusermessages");
     } else {
-      notify("Update your subscription to access this feature");
+      //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
       // return setTimeout(
       //   (window.location.pathname = "/dashboardsubscriptionplan"),
