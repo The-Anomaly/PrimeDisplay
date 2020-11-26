@@ -2732,3 +2732,26 @@ button {
     padding-top: 73px;
   }
 }
+
+.planupgrade {
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.planupgradebtn {
+  font-size: 14px !important;
+  padding: 0.6rem 1.2rem !important;
+  transition: transform 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.planupgradebtn:hover {
+  color: #9c1258 !important;
+  background: #ffffff !important;
+  transform: scale(1.05);
+}
+.planupgradebtn1 {
+  transition: transform 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.planupgradebtn1:hover {
+  transform: scale(1.05);
+}

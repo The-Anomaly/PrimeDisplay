@@ -252,7 +252,7 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                     <div className="">
-                        <Button className="retaketest"
+                        <Button className="retaketest planupgradebtn"
                         onClick={() =>
                           this.checkIfUserHasAccessToAskACounselor()
                         }>
@@ -260,7 +260,7 @@ class NewDashboard extends React.Component {
                         </Button>
                       {showfullresult && (
                         <Button
-                          className="retaketest2"
+                          className="retaketest2 planupgradebtn"
                           onClick={this.openWarning}
                         >
                           Retake Assessment
@@ -273,11 +273,11 @@ class NewDashboard extends React.Component {
                       <div className="notpaid1">
                         <img src={caution} className="caution" alt="caution" />
                         <div className="notpaidtext">
-                          Oops!!! Seems you need to upgrade your plan to have
+                          Oops!!! You need to upgrade your plan to get
                           indepth details
                         </div>
                       </div>
-                      <div className="retaketest upss">
+                      <div className="retaketest upss planupgradebtn1">
                         <Link to="/paymentsummary">Upgrade your Plan</Link>
                       </div>
                     </div>
@@ -419,8 +419,11 @@ class NewDashboard extends React.Component {
                   Plan
                 </div>
                 <div className="text-center">
-                  <div className="retaketest upss1">
+                  {/* <div className="retaketest upss1">
                     <Link to="/paymentsummary">Upgrade your Plan</Link>
+                  </div> */}
+                  <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/dashboardsubscriptionplan">View your current plan</Link>
                   </div>
                 </div>
               </Modal.Body>

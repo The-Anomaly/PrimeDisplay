@@ -19,6 +19,7 @@ import checkede from "../../assets/checkede.png";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import "../Home/Home/Home.css"
+import failedNotice from "../../assets/failedNotice.png";
 
 class CouncellorDates extends React.Component<React.Props<any>> {
   state: any = {
@@ -33,8 +34,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     time: "",
     isOpen: false,
     Canbooksession: false,
+    upgradeState: false,
   };
-
+  
   componentWillMount() {
     window.scrollTo(-0, -0);
     this.setState({ isLoading: true });
@@ -66,6 +68,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       });
   }
+  closeUpgradeModal = () => {
+    this.setState({
+      upgradeState: false,
+    })
+  };
   onchange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -136,7 +143,10 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           // const userLocation = localStorage.getItem("currentLocation");
           // const prevLocation = userLocation ? JSON.parse(userLocation) : "";
           console.log("No payment");
-          return window.location.assign("/dashboardsubscriptionplan");
+          //return window.location.assign("/dashboardsubscriptionplan");
+          return this.setState({
+            upgradeState: true,
+          })
         }
       })
       .catch((error) => {
@@ -273,7 +283,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                   />
                 </Col>
                 <Col md={7} className="text-right skd11">
-                  <div className="booksession" onClick={this.handleChatCheck}>
+                  <div className="booksession planupgradebtn1" onClick={this.handleChatCheck}>
                     Book Session <span className="text-white">&#8594;</span>
                   </div>
                 </Col>
@@ -320,6 +330,35 @@ class CouncellorDates extends React.Component<React.Props<any>> {
             </div>
           </Modal.Body>
         </Modal>
+        <Modal
+              show={this.state.upgradeState}
+              centered={true}
+              onHide={this.closeUpgradeModal}
+            >
+              <Modal.Body>
+                <div className="text-center">
+                  {" "}
+                  <img
+                    src={failedNotice}
+                    className="failedNotice"
+                    alt="failedNotice"
+                  />{" "}
+                </div>
+                <div className="onhno"> Oh No! </div>
+                <div className="onhno">
+                  This package is not available on this plan <br/> Please Upgrade your
+                  Plan
+                </div>
+                <div className="text-center planupgrade">
+                  <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/dashboardsubscriptionplan">View your current plan</Link>
+                  </div>
+                  {/* <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/paymentsummary">Upgrade your plan</Link>
+                  </div> */}
+                </div>
+              </Modal.Body>
+            </Modal>
         {/* <Footer /> */}
       </>
     );

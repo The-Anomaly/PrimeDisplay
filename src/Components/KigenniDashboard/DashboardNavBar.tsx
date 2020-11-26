@@ -30,10 +30,16 @@ import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import union from "../../assets/Union.png";
 import { toast } from "react-toastify";
+import failedNotice from "../../assets/failedNotice.png";
+import { Modal } from "react-bootstrap";
 
 const DashboardNav = (props: any) => {
   const [user, setNewState] = React.useState("");
   const [showNav, setShowNav]: any = React.useState(false);
+  const [upgradeState, setUpgradeState] = React.useState(false);
+  const closeUpgradeModal = () => {
+    setUpgradeState(false);
+  };
   const logOutMobile = (e) => {
     e.preventDefault();
     const details: any = localStorage.getItem("userDetails");
@@ -65,7 +71,8 @@ const DashboardNav = (props: any) => {
           return window.location.assign("/thirdpary/fullresult");
         }
         notify("Update your subscription to access this feature");
-        return window.location.assign("/dashboardsubscriptionplan");
+        return setUpgradeState(true);
+        // return window.location.assign("/dashboardsubscriptionplan");
         // setTimeout(()=>{
         //   window.location.assign("/paymentsummary"),
         // }, 2000);
@@ -84,7 +91,8 @@ const DashboardNav = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
-      return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
+      return setUpgradeState(true);
+      //return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   const checkIfUserHasAccessToAskACounselor = () => {
@@ -99,11 +107,13 @@ const DashboardNav = (props: any) => {
     } else {
       notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
+      return setUpgradeState(true);
+      //return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
   return (
+    <>
     <div>
       <Row>
         <div className="hnav">
@@ -342,6 +352,34 @@ const DashboardNav = (props: any) => {
         ]}
       />
     </div>
+    <Modal show={upgradeState} centered={true} onHide={closeUpgradeModal}>
+        <Modal.Body>
+          <div className="text-center">
+            {" "}
+            <img
+              src={failedNotice}
+              className="failedNotice"
+              alt="failedNotice"
+            />{" "}
+          </div>
+          <div className="onhno"> Oh No! </div>
+          <div className="onhno">
+            This package is not available on this plan <br /> Please Upgrade
+            your Plan
+          </div>
+          <div className="text-center planupgrade">
+            <div className="retaketest upss1 planupgradebtn">
+              <Link to="/dashboardsubscriptionplan">
+                View your current plan
+              </Link>
+            </div>
+            {/* <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/paymentsummary">Upgrade your plan</Link>
+                  </div> */}
+          </div>
+        </Modal.Body>
+      </Modal>
+    </>
   );
 };
 export default DashboardNav;

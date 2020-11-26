@@ -95,9 +95,9 @@ class NewDashboardSubsriptionPlan extends React.Component {
                       welcomeText={"A review of your current subcription plans"}
                     />
                     <div className="">
-                      <Button className="retaketest">
+                      <Button className="retaketest planupgradebtn">
                         <Link to="/paymentsummary">
-                          Review your current plan
+                          Upgrade your subscription
                         </Link>
                       </Button>
                     </div>

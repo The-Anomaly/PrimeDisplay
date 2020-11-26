@@ -637,7 +637,7 @@ const Payment = (props: any) => {
                   {plan === false ? (
                     <div
                       className={
-                        plan === true && !withoutlogin
+                        plan === false && !withoutlogin
                           ? "plan-card-arr bnotch"
                           : "plan-card-arr"
                       }
