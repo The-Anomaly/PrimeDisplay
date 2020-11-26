@@ -297,7 +297,7 @@ const Payment = (props: any) => {
   };
   return (
     <>
-      <div>
+      <div className={withoutlogin ? "mobilepadding" : ""}>
         <div
           className={
             props.mode === "dark"

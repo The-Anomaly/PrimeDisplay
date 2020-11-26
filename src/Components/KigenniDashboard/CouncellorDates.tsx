@@ -18,6 +18,7 @@ import close from "../../assets/close.svg";
 import checkede from "../../assets/checkede.png";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import "../Home/Home/Home.css"
 
 class CouncellorDates extends React.Component<React.Props<any>> {
   state: any = {
@@ -204,7 +205,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     return (
       <>
         <Navbar />
-        <Container fluid={true}>
+        <Container fluid={true} className="mobilepadding">
           <Row className="kli6 bcbv datesedit">
             <Col md={12} className="scheduleheader">
               Schedule a meeting

@@ -5,6 +5,7 @@ import "./email_confirmation.css";
 import { withRouter, Link } from "react-router-dom"
 import axios,{ AxiosResponse } from 'axios';
 import {API} from '../../../config';
+import "../Redesigned_signup_page/signup.css"
 
 
 const Email_confirm_page = withRouter ((props: any ) => {
@@ -124,7 +125,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
   return(
     <div>
       <Navbar />
-      <div className="cnfirmemail_sectn">
+      <div className="cnfirmemail_sectn paddit">
         <Container>
           <Row>
             <Col md={12}>

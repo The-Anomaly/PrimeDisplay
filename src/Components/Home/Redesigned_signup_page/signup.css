@@ -220,7 +220,7 @@
 
 @media(max-width: 779px) {
   .paddit{
-    padding-top: 0;
+    padding-top: 80px;
   }
   .rsignupdiv > p {
     font-size: 15px !important;

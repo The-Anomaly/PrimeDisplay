@@ -143,11 +143,7 @@ const TestPdf = () => {
               <div className="shiftrght">
                 <div className="smry1 contact22">Summary</div>
                 <div className="sumrybody">
-                  Risus, vel at pulvinar tempus, vel sem risus, aliquet nisi
-                  fringilla faucibus interdum commodo posuere ut nec sem congue
-                  enim ultricies molestie malesuada nullam feugiat feugiat in
-                  adipiscing nisl vel ut amet, eget lorem et a, faucibus mauris,
-                  tortor quam sit convallis aenean amet in sit sit mi dolor.
+                  {about}
                 </div>
               </div>
               <div className="rapsecarea">

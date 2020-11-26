@@ -2603,6 +2603,9 @@ button {
 .newflexsss {
   background: #23304c;
   margin-right: -2px;
+  position: fixed;
+  width: 100vw;
+  z-index: 99;
 }
 .mobilelogo {
   margin-left: 1rem;
@@ -2720,5 +2723,12 @@ button {
   }
   .fourthsubtext:hover {
     font-size: 12.1px;
+  }
+}
+
+/*Fixed Mobile Nav*/
+@media(max-width: 779px) {
+  .mobilepadding {
+    padding-top: 73px;
   }
 }

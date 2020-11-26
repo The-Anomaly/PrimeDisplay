@@ -22,6 +22,10 @@ const counsellorNavbar = withRouter((props: any) => {
           <Link to="/forcounsellors">
             <img src={demoLogoLight} alt="clarity_logo" className="logologo" />
           </Link>
+          <div className="logotext">
+          <div>Clarity</div>
+          <div>For Counsellors</div>
+          </div>
         </div>
         <div className="nav_titlenew">
           <div className="title1 shiftlefff newshft">
@@ -111,14 +115,19 @@ const counsellorNavbar = withRouter((props: any) => {
                 </div>,
               ]}
             />
-            <div className={"flexsss newflexsss whitenav"}>
-              <Link to="/">
+            <div className="flexsss newflexsss whitenav mobilenavfixed">
+              <Link to="/" className="smlogotxt">
                 <img
                   src={demoLogoLight}
                   className="clarity_logo mobilelogo"
                   alt="clarity_logo"
                 />
+                <div className="logotext">
+                <div>Clarity</div>
+                <div>For Counsellors</div>
+          </div>
               </Link>
+              
               <div className="hamburgerwrap">
                 <div
                   className="hamburger newhamburger"

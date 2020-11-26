@@ -9,13 +9,14 @@ import RightTopImage from "../../../assets/2.png";
 import "./faqs.css";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
+import "../Home/Home.css"
 
 const Faq: React.FunctionComponent = (props) => {
   let [activeKey, setActiveKey] = useState("");
   return (
     <>
       <Navbar faq={true} />
-      <Container fluid={true}>
+      <Container fluid={true} className="mobilepadding">
         <Row className="firstrow possition newfaqrow">
           <Col
             md={5}
