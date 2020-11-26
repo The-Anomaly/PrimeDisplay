@@ -125,7 +125,7 @@ export const NewAbout = () => {
             </div>
             <div className="prodsec2 prodsec3">
               <div className="for1">
-                For <span className="prodindi">Teams<img className="indibox indibox1" src={box1} /></span>
+                For <span className="prodindi prodteam">Teams<img className="indibox indibox1" src={box1} /></span>
               </div>
               <div>
                 <div className="indilist"><img className="prodgreentick grntick" src={greentick} /><span>High performing teams </span></div>

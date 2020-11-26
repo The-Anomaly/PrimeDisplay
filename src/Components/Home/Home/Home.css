@@ -959,14 +959,30 @@ button {
   padding-left: 0;
   z-index: 1;
   position: relative;
+  background-image: url("../../../assets/Landingrectangle.png");
+  background-size: contain;
+  padding-right: 1.5rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  background-repeat: no-repeat;
+}
+.trustttl {
+  padding-top: 1px;
+}
+.clientttl {
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 .secondimg {
   position: absolute;
-  right: -46px;
+  /* right: -46px; */
+  left: -4px;
   top: -10px;
   z-index: -1;
   width: 150px;
   height: 68px;
+  display: none;
 }
 .crazycircle1 {
   display: flex;
@@ -1634,6 +1650,17 @@ button {
   letter-spacing: 0.5px;
   padding-left: 0.3rem;
   position: relative;
+  background-image: url("../../../assets/Landingrectangle.png");
+  background-size: contain;
+  padding-right: 1.5rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 2px;
+  background-repeat: no-repeat;
+}
+.prodteam {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .indibox {
   z-index: -1;
@@ -1641,6 +1668,7 @@ button {
   position: absolute;
   left: 0rem;
   top: -5px;
+  display: none;
 }
 .prodgreentick {
   margin-right: 3rem;
@@ -1733,7 +1761,7 @@ button {
     font-size: 30px;
   }
   .secondimg {
-    right: -60px;
+    /* right: -60px; */
     height: 55px;
     top: -7px;
   }
@@ -1819,7 +1847,7 @@ button {
     font-size: 28px;
   }
   .secondimg {
-    right: -48px;
+    /* right: -48px; */
     width: 130px;
   }
   .crazycircle1,
@@ -2012,7 +2040,7 @@ button {
   .secondimg {
     width: 105px;
     height: 45px;
-    right: -33px;
+    /* right: -33px; */
   }
   .fourthimg {
     width: 90px;
@@ -2064,7 +2092,7 @@ button {
   }
   .secondimg {
     width: 85px;
-    right: -14px;
+    /* right: -14px; */
   }
   .fourthttl {
     font-size: 20px;

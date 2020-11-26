@@ -50,7 +50,7 @@ const HearFromClients = () => {
       <Row md={12} className="homemap">
         <div className="secondtitle homemaptitle">
           Hear from Happy{" "}
-          <span className="secondtitle1">
+          <span className="secondtitle1 clientttl">
             Clients <img src={rect} className="secondimg homemapimg" />
           </span>
         </div>
