@@ -3860,6 +3860,7 @@ label {
   position: fixed;
   width: 300px;
   z-index: 2;
+  height: 100vh;
 }
 .usermmsa1 {
   margin-bottom: 9rem;

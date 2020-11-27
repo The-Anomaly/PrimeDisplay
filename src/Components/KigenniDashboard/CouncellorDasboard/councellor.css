@@ -3490,6 +3490,7 @@ textarea.form-control.jobr {
 .viewbook {
   float: right;
   margin-right: 3%;
+  transition: 0.3s;
 }
 .viewbook:hover {
   font-size: 15px;
@@ -4103,11 +4104,7 @@ textarea.form-control.jobr {
   cursor: pointer;
 }
 
-@media (max-width: 800px) {
-  .newprm1 {
-    max-width: 100%;
-    flex: 0 0 100%;
-  }
+@media (max-width: 905px) {
   .sessioncard {
     max-width: 400px;
     margin-left: auto;
@@ -4153,12 +4150,18 @@ textarea.form-control.jobr {
     border-radius: 5px;
   }
   .sessstat {
-    padding: 0.5rem 35%;
+    padding: 0.5rem 31%;
   }
   .sessbtn {
     width: 80%;
     margin: auto;
     margin-top: 1rem;
+  }
+}
+@media(max-width: 800px) {
+  .newprm1 {
+    max-width: 100%;
+    flex: 0 0 100%;
   }
 }
 @media (max-width: 400px) {
@@ -4185,5 +4188,13 @@ textarea.form-control.jobr {
   }
   .sessbtn {
     width: 100%;
+  }
+  .sessstat {
+    padding: 0.5rem 25%;
+  }
+}
+@media(min-width: 906px) and (max-width:1050px) {
+  .sesscard7 {
+    margin-left: 88%;
   }
 }

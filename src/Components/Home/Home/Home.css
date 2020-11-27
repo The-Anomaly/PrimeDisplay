@@ -961,18 +961,19 @@ button {
   position: relative;
   background-image: url("../../../assets/Landingrectangle.png");
   background-size: contain;
-  padding-right: 1.5rem;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 2px;
+  padding-bottom: 20px;
+  padding-top: 8px;
+  padding-right: 2.5rem;
+  padding-left: 5px;
   background-repeat: no-repeat;
+  display: inline-flex;
 }
 .trustttl {
-  padding-top: 1px;
+  padding-top: 5px;
 }
 .clientttl {
-  padding-top: 9px;
-  padding-bottom: 9px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 .secondimg {
   position: absolute;
@@ -1423,6 +1424,7 @@ button {
   padding-left: 2rem;
   font-size: 13.5px;
   letter-spacing: 0.6px;
+  outline: none;
 }
 .footer_mail::placeholder {
   font-size: 13px;
@@ -1653,14 +1655,15 @@ button {
   background-image: url("../../../assets/Landingrectangle.png");
   background-size: contain;
   padding-right: 1.5rem;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 2px;
+  padding-right: 2.5rem;
+  padding-top: 15px;
+  padding-bottom: 14px;
+  padding-left: 3px;
   background-repeat: no-repeat;
 }
 .prodteam {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .indibox {
   z-index: -1;
@@ -1845,6 +1848,16 @@ button {
 @media (max-width: 800px) {
   .secondtitle {
     font-size: 28px;
+  }
+  .secondtitle1 {
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-right: 1rem;
+  }
+  .trustttl {
+    padding-right: 1.5rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
   .secondimg {
     /* right: -48px; */
@@ -2398,7 +2411,7 @@ button {
     width: 320px;
   }
   .homemap {
-    padding: 3rem 1rem;
+    padding: 3rem 2rem;
   }
 }
 

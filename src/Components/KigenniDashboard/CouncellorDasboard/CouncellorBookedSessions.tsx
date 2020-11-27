@@ -392,7 +392,9 @@ const CounsellorBookedSessions = (props: any) => {
           <SideBarCounsellorDashboard bookedsession={true} />
           <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Booked Sessions" />
-            <Row className="wrapc222">
+            <Row 
+            // className="wrapc222"
+            >
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader welcomeText="Summary of all the booked sessions" />

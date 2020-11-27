@@ -263,7 +263,7 @@ class OnboardingChatPhase2 extends React.Component {
                 </div>
               </Col>
             </Row>
-            <Footer />
+            {/* <Footer /> */}
           </Container>
         </div>
       </>

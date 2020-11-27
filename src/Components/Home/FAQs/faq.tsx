@@ -13,6 +13,9 @@ import "../Home/Home.css"
 
 const Faq: React.FunctionComponent = (props) => {
   let [activeKey, setActiveKey] = useState("");
+  // const setKey = (e) => {
+  //   setActiveKey(e),
+  // }  
   return (
     <>
       <Navbar faq={true} />
@@ -43,9 +46,9 @@ const Faq: React.FunctionComponent = (props) => {
             className="faq-accordion"
           >
             <Accordion
-              activeKey={activeKey}
+              // activeKey={activeKey}
               defaultActiveKey=""
-              // onSelect={(e) => setActiveKey(e)}
+              // onSelect={(e: any) => console.log(toString(e))}
             >
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -106,7 +109,7 @@ const Faq: React.FunctionComponent = (props) => {
                 <Accordion.Collapse eventKey="3">
                   <Card.Body>
                     <p className="faq-answers">
-                      <div>
+                      <div className="faq-answers1">
                         Objectivity, personalized and unbiased advice. It is our
                         duty to get to know you, understand you and help make
                         the best and most informed decisions at every point in
@@ -114,7 +117,7 @@ const Faq: React.FunctionComponent = (props) => {
                         you are and what career paths are best for you to thrive
                         in.
                       </div>
-                      <div>
+                      <div className="faq-answers1">
                         Clarity is like a therapist in your pocket, helping you
                         navigate through the challenges of your career and
                         personal struggles, as much as we are focused on helping
@@ -180,7 +183,7 @@ const Faq: React.FunctionComponent = (props) => {
                 <Accordion.Toggle as={Card.Header} eventKey="7">
                   <div className="faq-side-header">
                     <div className="space111">
-                      <div>How Confidential are my conversations?</div>
+                      <div>How confidential are my conversations?</div>
                       <div className="plus_style">+</div>
                     </div>
                   </div>
