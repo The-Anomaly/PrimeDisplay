@@ -119,7 +119,7 @@ class NewDashboardChat extends React.Component {
           <DashboardNav chat={true} />
           <Row>
             <SideBarNewDashboard chat={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Chat with a counsellor" />
               <Row>
                 <Col md={12} className="kisls">
