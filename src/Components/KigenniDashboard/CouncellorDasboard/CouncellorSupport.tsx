@@ -46,6 +46,7 @@ const CounsellorSupport = (props: any) => {
           isloading: false,
         });
         notify("Successful");
+        window.location.reload();
       })
       .catch((err) => {
         setState({
@@ -70,7 +71,7 @@ const CounsellorSupport = (props: any) => {
         <CounsellorDashboardMobileNav counselorsupport={true} />
         <Row>
           <SideBarCounsellorDashboard counselorsupport={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Support" />
             <Row>
               <Col md={12} className="firstqq">

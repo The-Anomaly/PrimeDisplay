@@ -40,7 +40,7 @@ const newNavbar = withRouter((props: any) => {
     ) {
       setDarkNav(true)
     }
-    console.log(darknav)
+    // console.log(darknav)
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if(window.location.pathname === "/counsellordates") {
@@ -67,13 +67,13 @@ const newNavbar = withRouter((props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200 && response.data[0].next === "home") {
           //return props.history.push(`/free/dashboard`);
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }, []);
 

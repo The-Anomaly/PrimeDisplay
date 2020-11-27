@@ -4198,3 +4198,51 @@ textarea.form-control.jobr {
     margin-left: 88%;
   }
 }
+
+.redomemb1 {
+  flex: 15%;
+}
+.redomemb2 {
+  flex: 35%;
+}
+.redomemb3 {
+  flex: 25%;
+}
+.redomemb4 {
+  flex: 25%;
+}
+.redomemb2 div {
+  text-align: left !important;
+  width: auto;
+}
+
+@media(max-width: 950px) {
+  .redomembcard {
+    width: 400px;
+    margin: auto;
+    padding: 2rem;
+  }
+  .redomemb1 {
+    flex: 20%;
+  }
+  .redomemb2 {
+    flex: 70%;
+  }
+  .redomemb3 {
+    flex: 20%;
+    margin-top: 3rem;
+  }
+  .redomemb4 {
+    flex: 70%;
+    margin-top: 3rem;
+  }
+  .redomembbtn {
+    width: 100%;
+  }
+}
+
+@media(max-width: 400px) {
+  .redomembcard {
+    padding: 1rem;
+  }
+}

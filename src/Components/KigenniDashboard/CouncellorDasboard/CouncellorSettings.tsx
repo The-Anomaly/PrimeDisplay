@@ -29,7 +29,7 @@ class CounsellorSettings extends React.Component {
     showWarning: false,
     image: null,
     width: 100,
-    isloading:true,
+    isloading:false,
     fillStatus: true,
   };
   validateForm = (e) => {
@@ -169,7 +169,7 @@ class CounsellorSettings extends React.Component {
           <CounsellorDashboardMobileNav settings={true} />
           <Row>
             <SideBarCounsellorDashboard settings={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm1">
               <CounsellorDashboardNav title="Settings" />
               <Row className="wrapc222">
                 <Col md={12} className="firstqq">
@@ -345,7 +345,7 @@ class CounsellorSettings extends React.Component {
                       className="kskthin col-md-11 retaketest subsupport"
                       onClick={this.validateForm}
                     >
-                      { isloading?"Saving":" Save Profile"}
+                      { isloading? "Saving...":" Save Profile"}
                     </div>
                   </div>
                 </Col>

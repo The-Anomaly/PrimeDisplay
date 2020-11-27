@@ -274,7 +274,7 @@ class CounsellorsRecommendation extends React.Component {
           <DashboardNav councrec={true} />
           <Row>
             <SideBarNewDashboard councrec={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <div className="navdash">
                 <div className="overview ovf">Counsellors Recommendation</div>
                 <div className="prm111">

@@ -3926,12 +3926,22 @@ label {
 .refdeet {
   display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 40vw;
 }
-
+.refdeet1 {
+  width: 50%;
+}
+.refdeet1a {
+  padding-right: 1rem;
+}
+@media (max-width: 1000px) {
+  .refdeet {
+    width: 50vw;
+  }
+}
 @media(max-width: 800px) {
   .refdeet {
-    width: 280px;
+    width: 295px;
   }
 }
 @media(max-width: 500px) {

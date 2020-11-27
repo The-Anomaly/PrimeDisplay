@@ -43,7 +43,7 @@ const Referrals = (props: any) => {
       ? JSON.parse(availableToken)
       : props.history.push("/counsellor/signin");
     Axios.all([
-      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-members`, {
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/referred-members`, {
         headers: { Authorization: `Token ${token}` },
       }),
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/referral-link`, {
@@ -73,6 +73,7 @@ const Referrals = (props: any) => {
               total_pages: res.data.total_pages,
               isLoading: false,
             });
+            console.log(counsellorData)
           }
         })
       )
@@ -314,11 +315,11 @@ const Referrals = (props: any) => {
                               />
                             </div>
                             <div className="refdeet">
-                                  <div className="userrdet1 det1">
-                                  {data?.name}
+                                  <div className="userrdet1 det1 refdeet1 refdeet1a">
+                                  {data?.member?.name}
                                   </div>
-                                  <div className="userrdet2 memb">
-                                  {data?.email}
+                                  <div className="userrdet2 memb refdeet1">
+                                  {data?.member?.email}
                                   </div>
                               </div>
                           </div>

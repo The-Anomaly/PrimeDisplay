@@ -199,7 +199,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
         <CounsellorDashboardMobileNav councrec={true} />
         <Row>
           <SideBarCounsellorDashboard councrec={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Counsellors Recommendation" />
             <Row>
               <Col md={12} className="firstqq">

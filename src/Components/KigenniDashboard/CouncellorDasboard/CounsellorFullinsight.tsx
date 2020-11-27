@@ -67,7 +67,7 @@ class CounsellorsFullresult extends React.Component {
           <CounsellorsDashboardMobileNav insight={true} />
           <Row>
             <SideBarCounsellorDashboard insight={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <CounsellorDashboardNav title={"Full Insight"} />
               <Row>
                 <Col md={12} className="kislsree">

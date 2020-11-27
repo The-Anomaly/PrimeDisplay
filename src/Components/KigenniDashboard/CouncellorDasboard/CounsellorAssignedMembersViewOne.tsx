@@ -235,7 +235,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
         <CounsellorDashboardMobileNav assignedmemb={true} />
         <Row>
           <SideBarCounsellorDashboard assignedmemb={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm">
             <CounsellorDashboardNav title="Assigned Members List" />
             <Row>
               <Col md={12} className="firstqq">
