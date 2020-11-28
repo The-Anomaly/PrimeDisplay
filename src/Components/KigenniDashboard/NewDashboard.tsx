@@ -87,6 +87,7 @@ class NewDashboard extends React.Component {
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
+      this.getUserInfo(token)
     const data = {};
     Axios.get<any, AxiosResponse<any>>(`${API}/paiddashboard`, {
       headers: { Authorization: `Token ${token}` },
@@ -200,6 +201,20 @@ class NewDashboard extends React.Component {
     this.setState({
       onlyfree: true,
     });
+  };
+  getUserInfo = (token: string): any => {
+    Axios
+      .get(`${API}/currentuser`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.setItem("user", JSON.stringify(response?.data));
+        }
+      })
+      .catch((error) => {
+
+      });
   };
   render() {
     const {
