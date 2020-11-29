@@ -70,7 +70,7 @@ const Contactpage = () => {
   return (
     <div>
     <Navbar contact={true} />
-    <Container className="homecontainer" fluid={true}>
+    <Container className="homecontainer mobilepadding" fluid={true}>
       <div className="section-1 newsection-1">
         
           <Row>

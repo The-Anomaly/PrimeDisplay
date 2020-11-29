@@ -32,7 +32,11 @@ const newNavbar = withRouter((props: any) => {
       window.location.pathname === "/counsellor/signup" ||
       window.location.pathname === "/counsellor/signin" ||
       window.location.pathname === "/signin" ||
-      window.location.pathname === "/signup"
+      window.location.pathname === "/signup" ||
+      window.location.pathname === "/confirm_email" ||
+      window.location.pathname === "/account_confirmation" ||
+      window.location.pathname === "/password_recovery" ||
+      window.location.pathname === "/counsellor/signin/forgotpassword"
     ) {
       setDarkNav(true)
     }
@@ -81,7 +85,7 @@ const newNavbar = withRouter((props: any) => {
   };
   const renderRedirect = () => {
     if (redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/signin" />;
     }
   };
 
@@ -258,13 +262,13 @@ const newNavbar = withRouter((props: any) => {
                   ) : (
                     " "
                   )}
-                  {!userLoggedIn ? (
+                  {/* {!userLoggedIn ? (
                     <div className="listwraperMob">
                       <Link to="/privacy_policy">Privacy Policy</Link>
                     </div>
                   ) : (
                     " "
-                  )}
+                  )} */}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
                       <Link to="/signin">
@@ -388,28 +392,6 @@ const newNavbar = withRouter((props: any) => {
             ) : (
               <NavIsLoggedIn Logout={logout} />
             )}
-
-            {/* {userLoggedIn ? (
-              <div className="title1 shiftlefff newshft">
-                <button className="title_t signupbtn newlogin" onClick={logout}>
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <div className="title1 shiftlefff newshft">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-                <Link to={!userType? "/signin" : "/counsellor/signin"}>
-                  <button className="title_t signupbtn newlogin">Log In</button>
-=======
->>>>>>> remotes/origin/signup_page_alex
-                <Link to="/signin">
-                  <button className="title_t signupbtn newlogin">Login</button>
->>>>>>> master
-                </Link>
-              </div>
-            )} */}
           </div>
         </Row>
       </div>

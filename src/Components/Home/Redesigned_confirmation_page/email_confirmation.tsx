@@ -5,6 +5,7 @@ import "./email_confirmation.css";
 import { withRouter, Link } from "react-router-dom"
 import axios,{ AxiosResponse } from 'axios';
 import {API} from '../../../config';
+import "../Redesigned_signup_page/signup.css"
 
 
 const Email_confirm_page = withRouter ((props: any ) => {
@@ -35,8 +36,9 @@ const Email_confirm_page = withRouter ((props: any ) => {
        isLoading:true
      })
      const data ={
-       email,
+       email: client,
      };
+     console.log(data);
      axios.post(`${API}/accounts/resend-code/`,data)
      .then((response)=>{
        if (response.status === 200) {
@@ -123,7 +125,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
   return(
     <div>
       <Navbar />
-      <div className="cnfirmemail_sectn">
+      <div className="cnfirmemail_sectn paddit">
         <Container>
           <Row>
             <Col md={12}>
@@ -167,7 +169,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
                 </Row>
               </Form>
               <div className="cnfrmdiv">
-                <p className="rsendmail" onClick={resendCode}>Didn’t Recieve any mail? Resend!</p>
+                <p className="rsendmail" onClick={resendCode}>Didn’t Receive any mail? Resend!</p>
               </div>
             </Col>
           </Row>

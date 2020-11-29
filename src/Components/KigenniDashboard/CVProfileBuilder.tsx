@@ -720,7 +720,7 @@ class CVProfileBuilder extends React.Component {
                       ))}
                     </Col>
                   </Row>
-                  <Row className="rowla">
+                  {/* <Row className="rowla">
                     <Col md={12}>
                       <div className="whatdoudo offpadd1">
                         <div className="what12">
@@ -745,7 +745,7 @@ class CVProfileBuilder extends React.Component {
                         {twitter && <a className="social1">{twitter}</a>}
                       </Row>
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Row>
                     <Col md={12} className="printcv">
                       <Link to="/cvdashboard">

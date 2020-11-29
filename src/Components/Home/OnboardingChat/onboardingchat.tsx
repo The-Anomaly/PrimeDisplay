@@ -171,7 +171,7 @@ class OnboardingChat extends React.Component {
               </div>
             </Col>
           </Row>
-          <Footer />
+          {/* <Footer /> */}
         </Container>
       </>
     );

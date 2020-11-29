@@ -1,0 +1,233 @@
+.counsellorNav {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
+    width: 100vw;
+    padding-top: 1rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
+    padding-bottom: 1rem;
+    flex-wrap: nowrap;
+    position: fixed;
+    z-index: 99;
+    margin: 0;
+}
+.toindividual {
+    width: 140px;
+    background-color: #ffffff;
+    color: #001833;
+    border: 0.5px solid #ffffff;
+    padding: 0.7rem 1rem;
+    font-size: 14px;
+    height: 40px;
+}
+.toindividual:hover {
+    border: 0.5px solid #9c1258;
+}
+.smnav {
+    color: #9c1258 !important;
+    font-size: 20px;
+}
+.logotext {
+    font-family: 'Brfirma-Bold';
+    color: #001833;
+    font-size: 13px;
+    margin: auto 0.5rem;
+}
+.smlogotxt {
+    display: flex;
+}
+.mobilenavfixed {
+    position: fixed;
+    width: 100vw;
+    z-index: 99;
+}
+
+@media(max-width: 779px) {
+    .counsellorNav {
+        display: none;
+    }
+}
+
+.counsellorintro {
+    background: #E5E5E5;
+    display: flex;
+    padding: 12rem 4rem;
+    position: relative;
+}
+.Cintro {
+    padding: 6rem 0;
+}
+.Cintrotxt1 {
+    color: #001833;
+    font-size: 36px;
+    letter-spacing: 1px
+}
+.Cintrotxt1a {
+    font-family: 'Brfirma-Bold';
+}
+.Cintrotxt2 {
+    color: #001833;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 24px;
+    margin-top: 0.5rem;
+}
+.Cintrotxt3 {
+    letter-spacing: 0.3px;
+    font-size: 14px;
+    font-family: 'Brfirma-Bold';
+    line-height: 28px;
+    margin-top: 1rem;
+}
+.Cintrobtn {
+    color: #ffffff;
+    background: #9c1258;
+    text-align: center;
+    margin: 2rem 0;
+    width: 150px;
+    font-size: 12px;
+    font-family: 'Brfirma-Bold';
+    padding: 0.7rem;
+    border: 1px solid #9c1258;
+    border-radius: 6px;
+}
+.Cimg {
+    width: 100%;
+}
+.counsellorstat {
+    background: #ffffff;
+    margin: auto;
+    border-radius: 8px;
+    padding: 3.5rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: -5.2rem;
+    z-index: 5;
+    width: 90%;
+    box-shadow: 0 0.75rem 1.125rem rgba(0,0,0,0.125);
+    left: calc((100vw - 89%) / 2);
+}
+.stat1 {
+    justify-content: space-between;
+    display: flex;
+    width: 140px;
+}
+.statimg {
+    height: 55px;
+}
+.stattxt {
+    margin: auto 0;
+    font-size: 15px;
+}
+.stattxt1 {
+    font-family: 'Brfirma-Bold';
+}
+.stattxt2 {
+    color: #4F5665;
+    font-size: 13px;
+    margin-top: 0.2rem;
+}
+.statrsz {
+    width: 160px;
+}
+.ouroffer {
+    padding: 13rem 2rem;
+    position: relative;
+}
+.ouroffertxt1 {
+    font-family: 'Brfirma-Bold';
+    font-size: 36px;
+    line-height: 80px;
+    color: #001833;
+}
+.ouroffertxt2 {
+    color: #333333;
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 2rem;
+    letter-spacing: 0.2px;
+}
+.offerlistsec {
+    font-size: 15px;
+}
+.offerlist {
+    margin-bottom: 1.2rem;
+    display: flex;
+}
+.offerlisttick {
+    width: 24px;
+    height: 24px;
+    margin-right: 1.5rem;
+}
+.bonusoffer {
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    margin-top: 2.5rem;
+    font-size: 16px
+}
+.ourofferimg {
+    width: 100%;
+    margin-top: 15%;
+    margin-bottom: auto;
+}
+.offercard {
+    width: 70%;
+    margin-left: 13%;
+    padding: 2rem 4rem;
+    justify-content: space-between;
+    left: 2%;
+}
+.joinclarity {
+    margin: auto 0;
+}
+.joinclaritytxt1 {
+    font-size: 20px;
+    font-family: 'Brfirma-Bold';
+    letter-spacing: 0.2px;
+    line-height: 26px;
+}
+.joinclaritytxt2 {
+    font-size: 14px;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+.Csteps {
+    background: #E5E5E5;
+    padding: 11rem 4rem 8rem 4rem;
+    flex-direction: column;
+}
+.Cstepsheading {
+    margin: auto;
+    font-family: 'Brfirma-Bold';
+    font-size: 22px;
+    letter-spacing: 0.2px;
+}
+.threesteps {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 4rem;
+}
+.stepss {
+    width: 150px;
+}
+.stepstxt {
+    margin-top: 2rem;
+}
+.steptxt1 {
+    font-family: 'Brfirma-Bold';
+    font-size: 15px;
+    white-space: nowrap;
+}
+.steptxt2 {
+    font-size: 13px;
+    margin-top: 1rem;
+}
+.stepline {
+    height: max-content;
+    margin-top: 1.5rem;
+    width: 20%;
+}

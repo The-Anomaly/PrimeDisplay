@@ -152,7 +152,7 @@ const AssessmentFifthPhase = (props: any) => {
   return (
     <div>
       <Navbar />
-      <Container fluid={true}>
+      <Container fluid={true} >
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
             progressBar={60}

@@ -47,7 +47,7 @@ import smarrow1 from "../../../assets/smarrow1.svg";
 import smarrow2 from "../../../assets/smarrow2.svg";
 import smarrow4 from "../../../assets/smarrow4.svg";
 import smarrow5 from "../../../assets/smarrow5.svg";
-import smcircle1 from "../../../assets/smcircle1.svg";
+import smcircle1 from "../../../assets/circle3.svg";
 import smcircle2 from "../../../assets/smcircle2.svg";
 import smborder from "../../../assets/smborder.png";
 import jaiye from "../../../assets/jaiye.svg";
@@ -183,7 +183,7 @@ const RedesignedHome: React.FC = (props: any) => {
       )}
       {!isloading && (
         <>
-          <Container fluid={true}>
+          <Container fluid={true} className="mobilepadding">
             <Row md={12} className="newfirstrow">
               <img className="ellipse1" src={ellipse1} />
               <img className="ellipse2" src={ellipse2} />
@@ -195,8 +195,8 @@ const RedesignedHome: React.FC = (props: any) => {
               <Col md={5} sm={11} className="hometext">
                 <div>
                   <div>We are like a map but for your career.</div>
-                  <div>Let's connect all the dots...</div>
-
+                  {/* <div>Let's connect all the dots...</div> */}
+                  <div className="smhometext">Discover your passion and talent, discover a more meaningful work life.</div>
                   <Link to="/signup">
                     <div className="hstarted">GET STARTED</div>
                   </Link>

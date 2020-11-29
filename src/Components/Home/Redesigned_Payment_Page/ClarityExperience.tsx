@@ -136,10 +136,10 @@ const Payment = (props: any) => {
         customerFullName: user[0]?.first_name + "  " + user[0]?.last_name,
         customerEmail: user[0]?.email,
         customerMobileNumber: "",
-        // apiKey: "MK_PROD_NNSGXTY6LF",
-        // contractCode: "722431733218",
-        contractCode: "722431733218",
         apiKey: "MK_PROD_NNSGXTY6LF",
+        contractCode: "722431733218",
+        // contractCode: "4978848198",
+        // apiKey: "MK_TEST_WQZNXHV9FY",
         // secretKey: "MR4K3WHE7BDLZFTR3Z4VUJ4H4HD88S22",
         paymentDescription: selectedplan,
         isTestMode: false,
@@ -297,7 +297,7 @@ const Payment = (props: any) => {
   };
   return (
     <>
-      <div>
+      <div className={withoutlogin ? "mobilepadding" : ""}>
         <div
           className={
             props.mode === "dark"
@@ -313,7 +313,7 @@ const Payment = (props: any) => {
               }
             >
               <h3>We have curated payments plans with you in mind</h3>
-            <div className="fourthline pymntline"> </div>
+            {withoutlogin ? <div className="fourthline pymntline"> </div> : ""}
             </div>
             <div>
               <Row className="payment-plans">
@@ -637,7 +637,7 @@ const Payment = (props: any) => {
                   {plan === false ? (
                     <div
                       className={
-                        plan === true && !withoutlogin
+                        plan === false && !withoutlogin
                           ? "plan-card-arr bnotch"
                           : "plan-card-arr"
                       }

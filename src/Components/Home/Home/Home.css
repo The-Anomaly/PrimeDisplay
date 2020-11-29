@@ -864,10 +864,10 @@ button {
   background: #23304c;
   color: #ffffff;
   width: 100vw;
-  padding-top: 1.4rem;
+  padding-top: 1rem;
   padding-right: 4rem;
   padding-left: 4rem;
-  padding-bottom: 1.4rem;
+  padding-bottom: 1rem;
   flex-wrap: nowrap;
 }
 .nav_titlenew {
@@ -897,12 +897,18 @@ button {
 }
 .hometext {
   color: #ffffff;
-  margin-top: 15rem;
+  margin-top: 13rem;
   margin-bottom: 15rem;
   padding-left: 4%;
   padding-right: 5%;
   font-size: 45px;
   font-family: "Brfirma-Bold";
+}
+.smhometext {
+  font-size: 30px;
+  font-family: 'Brfirma-Regular';
+  font-weight: 500;
+  margin-top: 1rem;
 }
 .socials {
   display: flex;
@@ -1696,7 +1702,10 @@ button {
     padding-left: 0;
     padding-right: 0;
     font-size: 40px;
-    margin-top: 17rem;
+    margin-top: 15rem;
+  }
+  .smhometext {
+    font-size: 25px;
   }
   .jaiyeimg {
     display: block;
@@ -1789,6 +1798,9 @@ button {
     padding-right: 25%;
     margin-top: 13rem;
     font-size: 35px;
+  }
+  .smhometext {
+    font-size: 19px;
   }
   .home1 {
     order: 2;
@@ -1985,7 +1997,7 @@ button {
     position: absolute;
     right: 2rem;
     top: 13rem;
-    width: 50%;
+    width: 46%;
   }
 }
 
@@ -2018,8 +2030,7 @@ button {
     margin-bottom: 8rem;
   }
   .ellipse2 {
-    width: 65%;
-    height: 30rem;
+    width: 50%;
     right: 1.5rem;
     top: 12.5rem;
   }
@@ -2032,6 +2043,14 @@ button {
   }
 }
 
+@media (max-width: 550px) {
+  .newfirstrow {
+    background-image: url("../../../assets/mobilebg2.svg");
+  }
+  .ellipse1, .ellipse2 {
+    display: none;
+  }
+}
 @media (max-width: 400px) {
   .newthirdrow {
     padding: 3rem 2rem 4rem 2rem;
@@ -2074,6 +2093,9 @@ button {
   .hometext {
     font-size: 30px;
     margin-top: 8rem;
+  }
+  .smhometext {
+    font-size: 18px;
   }
   .ellipse1 {
     width: 40px;
@@ -2581,6 +2603,9 @@ button {
 .newflexsss {
   background: #23304c;
   margin-right: -2px;
+  position: fixed;
+  width: 100vw;
+  z-index: 99;
 }
 .mobilelogo {
   margin-left: 1rem;
@@ -2699,4 +2724,34 @@ button {
   .fourthsubtext:hover {
     font-size: 12.1px;
   }
+}
+
+/*Fixed Mobile Nav*/
+@media(max-width: 779px) {
+  .mobilepadding {
+    padding-top: 73px;
+  }
+}
+
+.planupgrade {
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.planupgradebtn {
+  font-size: 14px !important;
+  padding: 0.6rem 1.2rem !important;
+  transition: transform 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.planupgradebtn:hover {
+  color: #9c1258 !important;
+  background: #ffffff !important;
+  transform: scale(1.05);
+}
+.planupgradebtn1 {
+  transition: transform 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.planupgradebtn1:hover {
+  transform: scale(1.05);
 }

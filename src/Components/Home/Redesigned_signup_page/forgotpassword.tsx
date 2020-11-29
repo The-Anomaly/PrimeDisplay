@@ -7,6 +7,7 @@ import axios from "axios";
 import { API } from "../../../config";
 import eye from "../../../assets/eye.png";
 import eye12 from "../../../assets/eye-off.png";
+import "../../Home/Home/Home.css"
 
 const ForgotPasswordNew = withRouter((props: any) => {
   const [state, setState] = useState({
@@ -90,7 +91,7 @@ const ForgotPasswordNew = withRouter((props: any) => {
   return (
     <div>
       <Navbar />
-      <div className="rdsignup-section">
+      <div className="rdsignup-section paddit">
         <Container>
           <Row className="rsignuprow">
             <Col md={12} className="rsignupdiv">

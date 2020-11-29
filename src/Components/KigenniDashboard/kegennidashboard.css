@@ -3907,3 +3907,38 @@ label {
   position: relative;
   top: 1.5rem;
 }
+.mainwrap{
+  
+}
+
+.noref {
+  width: 50%;
+}
+.norefoops {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+.norefmarg {
+  margin-top: 1rem;
+}
+.refmarg {
+  margin-right: 5%;
+}
+.refdeet {
+  display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+@media(max-width: 800px) {
+  .refdeet {
+    width: 280px;
+  }
+}
+@media(max-width: 500px) {
+  .refdeet {
+    display: block;
+    width: auto;
+  }
+}

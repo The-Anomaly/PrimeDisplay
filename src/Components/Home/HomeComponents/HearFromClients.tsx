@@ -16,6 +16,35 @@ const HearFromClients = () => {
     setIndex(selectedIndex);
   };
 
+  // function animateValue(id, start, end, duration) {
+  //   let obj = document.getElementById(id);
+  //   console.log(obj)
+  //   let range = end - start;
+    
+  //   let minTimer = 50;
+  //   let stepTime = Math.abs(Math.floor(duration/range));
+    
+  //   stepTime = Math.max(stepTime, minTimer);
+    
+  //   let startTime = new Date().getTime();
+  //   let endTime = startTime + duration;
+  //   let timer;
+    
+  //   function run() {
+  //     let now = new Date().getTime();
+  //     let remaining = Math.max((endTime - now) / duration, 0);
+  //     let value = Math.round(end - (remaining * range));
+  //     obj.innerHTML = value.toString();
+  //     if (value === end) {
+  //       clearInterval(timer);
+  //     }
+  //   }
+  //   timer = setInterval(run, stepTime);
+  //   run();
+  // }
+  
+  // animateValue("numcount", 100, 3100, 2000);
+
   return (
     <>
       <Row md={12} className="homemap">
@@ -174,7 +203,7 @@ const HearFromClients = () => {
           </Carousel>
         </div>
         <hr className="homemapline"/>
-        <div className="homemapbtmtxt">Over 3100 persons have taken the Assessment</div>
+        <div className="homemapbtmtxt">Over <span id="numcount">3100</span> persons have taken the Assessment</div>
       </Row>
     </>
   );
