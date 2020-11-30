@@ -95,7 +95,7 @@ const newNavbar = withRouter((props: any) => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY > 750) {
+    if (window.scrollY > 100) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -163,7 +163,7 @@ const newNavbar = withRouter((props: any) => {
   const uniqueKeygen = (): number => {
     return Math.floor(Math.random() * 100);
   };
-  console.log(darknav)
+  //console.log(darknav)
   return (
     <div>
       {renderRedirect()}
@@ -175,11 +175,11 @@ const newNavbar = withRouter((props: any) => {
             <SideNav
               openFromRight={true}
               style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
-              navStyle={{ width: "70%", background: darknav ? "#131313" : "white" }}
+              navStyle={{ width: "70%", background:  navbar ? "white" : darknav ? "#131313" : "white" }}
               showNav={showNav}
               onHideNav={() => setShowNav({ ...state, showNav: true })}
               titleStyle={{
-                backgroundColor: darknav ? "#23304c" : "white",
+                backgroundColor: navbar ? "white" : darknav ? "#23304c" : "white",
                 color: "#444444",
                 paddingLeft: 10,
                 paddingBottom: 0,
@@ -188,7 +188,7 @@ const newNavbar = withRouter((props: any) => {
                 textAlign: "left",
                 height: 73,
               }}
-              itemStyle={{ backgroundColor: darknav ? "#131313" : "white", paddingLeft: 25 }}
+              itemStyle={{ backgroundColor: navbar ? "white" : darknav ? "#131313" : "white", paddingLeft: 25 }}
               itemHoverStyle={{ backgroundColor: "inherit" }}
               title={[
                 <div
@@ -196,7 +196,7 @@ const newNavbar = withRouter((props: any) => {
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
-                    background: darknav ? "#23304c" : "white",
+                    background: navbar ? "white" : darknav ? "#23304c" : "white",
                     padding: "0px 4px 1px 8px",
                     color: darknav ? "white" : "#9c1258",
                     fontSize: "4rem",
@@ -222,42 +222,42 @@ const newNavbar = withRouter((props: any) => {
                 >
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/">Home</Link>
+                      <Link to="/" className={navbar ? "lightnavlist" : ""}>Home</Link>
                     </div>
                   ) : (
                     " "
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/aboutus">About</Link>
+                      <Link to="/aboutus" className={navbar ? "lightnavlist" : ""}>About</Link>
                     </div>
                   ) : (
                     " "
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/payment">Payments</Link>
+                      <Link to="/payment" className={navbar ? "lightnavlist" : ""}>Payments</Link>
                     </div>
                   ) : (
                     " "
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/contact">Contact Us</Link>
+                      <Link to="/contact" className={navbar ? "lightnavlist" : ""}>Contact Us</Link>
                     </div>
                   ) : (
                     " "
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/counsellor/signup">For Counsellors</Link>
+                      <Link to="/counsellor/signup" className={navbar ? "lightnavlist" : ""}>For Counsellors</Link>
                     </div>
                   ) : (
                     " "
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/faq">FAQ</Link>
+                      <Link to="/faq" className={navbar ? "lightnavlist" : ""}>FAQ</Link>
                     </div>
                   ) : (
                     " "
@@ -271,13 +271,13 @@ const newNavbar = withRouter((props: any) => {
                   )} */}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/signin">
+                      <Link to="/signin" className={navbar ? "lightnavlist" : ""}>
                         <div className="navmobbtn">Login</div>
                       </Link>
                     </div>
                   ) : (
                     <div className="listwraperMob">
-                      <div className={darknav ? "navmobbtn" : "navmobbtn inapplogout"} onClick={logout}>
+                      <div className={navbar ? "navmobbtn inapplogout" : darknav ? "navmobbtn" : "navmobbtn inapplogout"} onClick={logout}>
                         Logout
                       </div>
                     </div>
@@ -302,10 +302,10 @@ const newNavbar = withRouter((props: any) => {
                 </div>,
               ]}
             />
-            <div className={darknav ? "flexsss newflexsss" : "flexsss newflexsss whitenav"}>
+            <div className={navbar ? "flexsss newflexsss whitenav" : darknav ? "flexsss newflexsss" : "flexsss newflexsss whitenav"}>
               <Link to="/">
                 <img
-                  src={darknav ? demoLogo : demoLogoLight}
+                  src={navbar ? demoLogoLight : darknav ? demoLogo : demoLogoLight}
                   className="clarity_logo mobilelogo"
                   alt="clarity_logo"
                 />
@@ -317,9 +317,9 @@ const newNavbar = withRouter((props: any) => {
                     setShowNav({ ...state, showNav: !showNav ? true : false })
                   }
                 >
-                  <div className={darknav ? "line1 newline" : "line1 newline darkline"}></div>
-                  <div className={darknav ? "line2 newline" : "line2 newline darkline"}></div>
-                  <div className={darknav ? "line2 newline shrtline" : "line2 newline shrtline darkline"}></div>
+                  <div className={navbar ? "line1 newline darkline" : darknav ? "line1 newline" : "line1 newline darkline"}></div>
+                  <div className={navbar ? "line2 newline darkline" : darknav ? "line2 newline" : "line2 newline darkline"}></div>
+                  <div className={navbar ? "line2 newline shrtline darkline" : darknav ? "line2 newline shrtline" : "line2 newline shrtline darkline"}></div>
                 </div>
               </div>
             </div>

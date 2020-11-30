@@ -869,6 +869,8 @@ button {
   padding-left: 4rem;
   padding-bottom: 1rem;
   flex-wrap: nowrap;
+  transition: 0.5s;
+  box-shadow: 0 4px 2px -2px rgba(35, 48, 76, 30%);
 }
 .nav_titlenew {
   display: flex;
@@ -2647,6 +2649,8 @@ button {
   position: fixed;
   width: 100vw;
   z-index: 99;
+  transition: 0.5s;
+  box-shadow: 0 4px 2px -2px rgba(35, 48, 76, 30%);
 }
 .mobilelogo {
   margin-left: 1rem;
@@ -2795,4 +2799,8 @@ button {
 }
 .planupgradebtn1:hover {
   transform: scale(1.05);
+}
+
+.lightnavlist {
+  color: #9c1258 !important;
 }
