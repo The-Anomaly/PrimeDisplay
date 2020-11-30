@@ -68,7 +68,7 @@ const AssessmentThirdPhaseComplete = (props: any) => {
             </Row>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
       <ToastContainer
         enableMultiContainer
