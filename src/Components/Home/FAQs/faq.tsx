@@ -19,7 +19,7 @@ const Faq: React.FunctionComponent = (props) => {
   return (
     <>
       <Navbar faq={true} />
-      <Container fluid={true} className="mobilepadding">
+      <Container fluid={true} className="mobilepaddingredo">
         <Row className="firstrow possition newfaqrow">
           <Col
             md={5}

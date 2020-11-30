@@ -183,7 +183,7 @@ const RedesignedHome: React.FC = (props: any) => {
       )}
       {!isloading && (
         <>
-          <Container fluid={true} className="mobilepadding">
+          <Container fluid={true} className="mobilepaddingredo">
             <Row md={12} className="newfirstrow">
               <img className="ellipse1" src={ellipse1} />
               <img className="ellipse2" src={ellipse2} />

@@ -2776,6 +2776,9 @@ button {
   .mobilepadding {
     padding-top: 73px;
   }
+  .mobilepaddingredo {
+    padding-top: 50px;
+  }
 }
 
 .planupgrade {
