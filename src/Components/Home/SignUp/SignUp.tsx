@@ -91,6 +91,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
         }
       })
       .catch((error) => {
+        window.scrollTo(0,0)
         console.log(error?.response);
         console.log(error);
         if (error) {

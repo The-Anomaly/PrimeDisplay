@@ -110,7 +110,7 @@ const TestPdf = () => {
       {/* <Navbar /> */}
       <Container fluid={true}>
         <Row className="backgroundcv">
-          <Col md={12} className="padpdf">
+          <Col md={12} className="padpdf opdd">
             <Pdf targetRef={ref} filename="resume.pdf" x={-0.5} scale={1.2}>
               {({ toPdf }) => (
                 <button onClick={toPdf} className="genpdf">
@@ -119,7 +119,7 @@ const TestPdf = () => {
               )}
             </Pdf>
           </Col>
-          <Col md={12} className="jcenter2 opdd">
+          <Col md={12} className="jcenter2">
             <div className="mainwrap" ref={ref}>
               <div className="wrapperdiv">
                 <div className="dsnwrap">
@@ -144,6 +144,11 @@ const TestPdf = () => {
                 <div className="smry1 contact22">Summary</div>
                 <div className="sumrybody">
                   {about}
+                  {/* Risus, vel at pulvinar tempus, vel sem risus, aliquet nisi
+                  fringilla faucibus interdum commodo posuere ut nec sem congue
+                  enim ultricies molestie malesuada nullam feugiat feugiat in
+                  adipiscing nisl vel ut amet, eget lorem et a, faucibus mauris,
+                  tortor quam sit convallis aenean amet in sit sit mi dolor. */}
                 </div>
               </div>
               <div className="rapsecarea">

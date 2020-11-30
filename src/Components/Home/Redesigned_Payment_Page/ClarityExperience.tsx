@@ -122,7 +122,7 @@ const Payment = (props: any) => {
         currency: "NGN",
         reference,
         customerFullName: user[0]?.first_name + "  " + user[0]?.last_name,
-        customerEmail: "monnify@monnify.com",
+        customerEmail: user[0]?.email,
         customerMobileNumber: "",
         apiKey: "MK_PROD_NNSGXTY6LF",
         contractCode: "722431733218",
@@ -178,7 +178,7 @@ const Payment = (props: any) => {
               .catch((error) => {
                 console.error("Payment Status Error");
               });
-            console.log("Payment Successful");
+            console.log("Payment Successfull");
           }
           if (response.paymentStatus === "PENDING") {
             if(selectedSubscription !== "") {

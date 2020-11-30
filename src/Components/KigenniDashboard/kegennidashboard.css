@@ -2928,6 +2928,9 @@ textarea.form-control.jobr {
     height: 70px;
     padding: 1.9% 2% 2% 1.6%;
   }
+  .navitem1 {
+    padding-top: 1rem !important;
+  }
 }
 
 @media (max-width: 1000px) {
