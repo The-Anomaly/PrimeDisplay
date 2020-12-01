@@ -129,7 +129,7 @@ class CounsellorMessageOneUser extends React.Component {
           <CounsellorDashboardMobileNav messages={true} />
           <Row>
             <SideBarCounsellorDashboard messages={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm1">
               <CounsellorDashboardNav title="Messages" />
               <Row>
                 <Col md={12} className="firstqq">

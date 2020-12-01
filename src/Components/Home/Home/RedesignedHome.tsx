@@ -183,7 +183,7 @@ const RedesignedHome: React.FC = (props: any) => {
       )}
       {!isloading && (
         <>
-          <Container fluid={true} className="mobilepadding">
+          <Container fluid={true} className="mobilepaddingredo">
             <Row md={12} className="newfirstrow">
               <img className="ellipse1" src={ellipse1} />
               <img className="ellipse2" src={ellipse2} />
@@ -327,7 +327,7 @@ const RedesignedHome: React.FC = (props: any) => {
             <Row md={12} className="newfourthrow">
               <div className="secondtitle fourthttl">
                 A navigator you can{" "}
-                <span className="secondtitle1">
+                <span className="secondtitle1 trustttl">
                   trust <img src={rect} className="secondimg fourthimg" />
                 </span>
               </div>

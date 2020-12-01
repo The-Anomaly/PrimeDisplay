@@ -189,7 +189,7 @@ const CounsellorScheduledMeetings = (props: any) => {
         <CounsellorDashboardMobileNav counmeeting={true} />
         <Row>
           <SideBarCounsellorDashboard counmeeting={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Scheduled Meetings" />
             <Row>
               <Col md={12} className="firstqq">

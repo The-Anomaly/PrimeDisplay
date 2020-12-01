@@ -346,7 +346,7 @@ class CounsellorViewUsersCVProfile extends React.Component {
           <CounsellorsDashboardMobileNav builder={true} />
           <Row>
             <SideBarCounsellorDashboard builder={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <CounsellorDashboardNav title="Assigned Users Professional Profile" />
               <Row>
                 <Col md={11} className="kisls">

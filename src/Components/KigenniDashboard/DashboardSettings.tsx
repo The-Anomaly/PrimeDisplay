@@ -173,7 +173,7 @@ class NewDashboardSettings extends React.Component {
           <DashboardNav settings={true} />
           <Row>
             <SideBarNewDashboard settings={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Settings" />
               <Row>
                 <Col md={11} className="kisls">

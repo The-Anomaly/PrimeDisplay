@@ -869,6 +869,8 @@ button {
   padding-left: 4rem;
   padding-bottom: 1rem;
   flex-wrap: nowrap;
+  transition: 0.5s;
+  box-shadow: 0 4px 2px -2px rgba(35, 48, 76, 30%);
 }
 .nav_titlenew {
   display: flex;
@@ -959,14 +961,31 @@ button {
   padding-left: 0;
   z-index: 1;
   position: relative;
+  background-image: url("../../../assets/Landingrectangle.png");
+  background-size: contain;
+  padding-bottom: 20px;
+  padding-top: 8px;
+  padding-right: 2.5rem;
+  padding-left: 5px;
+  background-repeat: no-repeat;
+  display: inline-flex;
+}
+.trustttl {
+  padding-top: 5px;
+}
+.clientttl {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 .secondimg {
   position: absolute;
-  right: -46px;
+  /* right: -46px; */
+  left: -4px;
   top: -10px;
   z-index: -1;
   width: 150px;
   height: 68px;
+  display: none;
 }
 .crazycircle1 {
   display: flex;
@@ -1407,6 +1426,7 @@ button {
   padding-left: 2rem;
   font-size: 13.5px;
   letter-spacing: 0.6px;
+  outline: none;
 }
 .footer_mail::placeholder {
   font-size: 13px;
@@ -1634,6 +1654,18 @@ button {
   letter-spacing: 0.5px;
   padding-left: 0.3rem;
   position: relative;
+  background-image: url("../../../assets/Landingrectangle.png");
+  background-size: contain;
+  padding-right: 1.5rem;
+  padding-right: 2.5rem;
+  padding-top: 15px;
+  padding-bottom: 14px;
+  padding-left: 3px;
+  background-repeat: no-repeat;
+}
+.prodteam {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .indibox {
   z-index: -1;
@@ -1641,6 +1673,7 @@ button {
   position: absolute;
   left: 0rem;
   top: -5px;
+  display: none;
 }
 .prodgreentick {
   margin-right: 3rem;
@@ -1733,7 +1766,7 @@ button {
     font-size: 30px;
   }
   .secondimg {
-    right: -60px;
+    /* right: -60px; */
     height: 55px;
     top: -7px;
   }
@@ -1818,8 +1851,18 @@ button {
   .secondtitle {
     font-size: 28px;
   }
+  .secondtitle1 {
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-right: 1rem;
+  }
+  .trustttl {
+    padding-right: 1.5rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
   .secondimg {
-    right: -48px;
+    /* right: -48px; */
     width: 130px;
   }
   .crazycircle1,
@@ -2012,7 +2055,7 @@ button {
   .secondimg {
     width: 105px;
     height: 45px;
-    right: -33px;
+    /* right: -33px; */
   }
   .fourthimg {
     width: 90px;
@@ -2064,7 +2107,7 @@ button {
   }
   .secondimg {
     width: 85px;
-    right: -14px;
+    /* right: -14px; */
   }
   .fourthttl {
     font-size: 20px;
@@ -2370,7 +2413,7 @@ button {
     width: 320px;
   }
   .homemap {
-    padding: 3rem 1rem;
+    padding: 3rem 2rem;
   }
 }
 
@@ -2606,6 +2649,8 @@ button {
   position: fixed;
   width: 100vw;
   z-index: 99;
+  transition: 0.5s;
+  box-shadow: 0 4px 2px -2px rgba(35, 48, 76, 30%);
 }
 .mobilelogo {
   margin-left: 1rem;
@@ -2731,6 +2776,9 @@ button {
   .mobilepadding {
     padding-top: 73px;
   }
+  .mobilepaddingredo {
+    padding-top: 50px;
+  }
 }
 
 .planupgrade {
@@ -2754,4 +2802,8 @@ button {
 }
 .planupgradebtn1:hover {
   transform: scale(1.05);
+}
+
+.lightnavlist {
+  color: #9c1258 !important;
 }

@@ -189,6 +189,7 @@ const CounsellorOverview = (props: any) => {
         title: taskTitle,
         description: taskDescription,
         duration: taskDuration,
+        group: nature_of_task,
       },
     ];
     if (taskTitle === "" || taskDescription === "" || taskDuration === "") {
@@ -215,6 +216,7 @@ const CounsellorOverview = (props: any) => {
           title: taskTitle,
           description: taskDescription,
           duration: taskDuration,
+          group: nature_of_task,
         },
       ];
       const data = {
@@ -222,8 +224,7 @@ const CounsellorOverview = (props: any) => {
         notes: session_notes,
         rating: rate1,
         say_something: session_about,
-        id: sessionId,
-        group:nature_of_task
+        id: sessionId
       };
       console.log(data);
       Axios.post<any, AxiosResponse<any>>(

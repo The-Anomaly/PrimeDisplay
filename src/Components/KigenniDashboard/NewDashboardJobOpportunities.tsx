@@ -242,7 +242,7 @@ class NewDashboardJobOpportunities extends React.Component {
           <DashboardNav jobrec={true} />
           <Row>
             <SideBarNewDashboard jobrec={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Job Notifications" />
               <Row>
                 <Col md={11} className="kisls">

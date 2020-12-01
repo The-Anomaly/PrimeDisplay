@@ -86,7 +86,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
           <DashboardNav subscription={true} />
           <Row>
             <SideBarNewDashboard subscription={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title={"Subscription"} />
               <Row>
                 <Col md={12} className="kisls">

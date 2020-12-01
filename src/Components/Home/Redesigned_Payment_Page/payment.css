@@ -354,20 +354,7 @@
 }
 
 /*Payment Redesign*/
-.payplndsply{
-    display: none;
-}
-
 @media (max-width:779px){
-    .payplndsply{
-        display: block;
-    }
-    .pceplndsply{
-        display: none;
-    }
-    .oneoffdsply{
-        display: none;
-    }
     .mobilecards {
         flex-direction: column;
         align-items: center;
@@ -377,20 +364,6 @@
     }
 }
 
-@media(max-width: 779px) and (min-width: 768px) {
-    .cardmini {
-        min-width: 50%;
-        margin-bottom: 3rem;
-    }
-    .oneoffmini {
-        margin-bottom: 0;
-    }
-    .progmargin {
-        margin: auto;
-        min-width: 50%;
-        margin-top: 3rem;
-    }
-}
 .giftmail {
     font-size: 13px;
 }
@@ -403,10 +376,40 @@
         padding-left: 10%;
         padding-right: 10%;
     }
-    .cardmini {
-        max-width: 300px;
+}
+@media(max-width: 400px) {
+    .pymntpadding {
+        padding-top: 4rem;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 }
 .pymntline {
     margin-top: 1.2rem;
+}
+
+.mobilepaymentview {
+    display: none;
+}
+
+@media(max-width: 779px) {
+    .mobilepaymentview {
+        display: block;
+    }
+    .webpaymentview {
+        display: none;
+    }
+    .payment-section {
+        background-image: none;
+    }
+    .mobilepaymentcard {
+        background: inherit;
+        border: none;
+    }
+    .cardmini {
+        max-width: 320px;
+        margin: auto;
+        margin-bottom: 2rem;
+        min-width: 50%;
+    }
 }

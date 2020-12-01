@@ -100,7 +100,7 @@ class NewDashboardSupport extends React.Component {
           <DashboardNav support={true}/>
           <Row>
             <SideBarNewDashboard support={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title={"Support"} />
               <Row>
                 <Col md={12} className="kisls">

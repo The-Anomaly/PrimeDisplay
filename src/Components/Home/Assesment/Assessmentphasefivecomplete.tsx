@@ -72,7 +72,7 @@ const AssessmentFifthPhaseComplete = () => {
             </Row>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
       <ToastContainer
         enableMultiContainer

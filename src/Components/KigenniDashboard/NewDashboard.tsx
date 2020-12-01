@@ -235,7 +235,7 @@ class NewDashboard extends React.Component {
           <DashboardNav overview={true} />
           <Row>
             <SideBarNewDashboard overview={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Overview" />
               <Row>
                 <Col md={12} className="kisls kisls22">
