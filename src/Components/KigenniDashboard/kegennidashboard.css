@@ -3472,6 +3472,9 @@ input,
     width: 100%;
     margin: auto;
   }
+  .cptext{
+    font-size: 13px !important;
+  }
 }
 
 @media (max-width: 545px) {
