@@ -220,11 +220,11 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        // if (
-        //   !response?.data[0]?.view_result
-        // ) {
-        //   return window.location.assign("/dashboardsubscriptionplan");
-        // }
+        if (
+          !response?.data[0]?.view_result
+        ) {
+          return window.location.assign("/dashboardsubscriptionplan");
+        }
       })
       .catch((error) => {
       });
