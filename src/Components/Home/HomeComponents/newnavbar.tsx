@@ -56,6 +56,11 @@ const newNavbar = withRouter((props: any) => {
       window.location.pathname === "/thirdparty/pending" ||
       window.location.pathname === "/thirdparty/overpaid"
     ) {
+      if (token) {
+        setShowNav({ ...state, userLoggedIn: true });
+      } else {
+        setShowNav({ ...state, userLoggedIn: false });
+      }
       return;
     }
     if (token) {

@@ -240,7 +240,7 @@ class NewDashboard extends React.Component {
               <Row>
                 <Col md={12} className="kisls kisls22">
                   <div className="kdashheader npps">
-                    <div className="fjss hd">
+                    <div className="fjss hd nujs">
                       <div>
                         {" "}
                         <span className="kdashheaderlight idds">
@@ -257,11 +257,14 @@ class NewDashboard extends React.Component {
                           </a> */}
                         </div>
                       </div>
-                      <div className="">
+                      <div className="mobprofile">
                         <div className="kprofile psdd">
                           Profile
-                          <div className="kprofile2 idds sowws psdd">
+                          {/* <div className="kprofile2 idds sowws psdd profiletxt">
                             {client.profile}
+                          </div> */}
+                          <div className="kprofile2 idds sowws psdd profiletxt">
+                            Entrepreneur (mid-level)
                           </div>
                         </div>
                       </div>
@@ -332,7 +335,7 @@ class NewDashboard extends React.Component {
                       <div className="careerpersonalityheader">
                         Career Personality type
                       </div>
-                      <div className="reskwrap">
+                      <div className="reskwrap newreskwrap">
                         <div className="csfitscore1 reskheader">
                           Your Career Personality type
                         </div>
@@ -354,9 +357,9 @@ class NewDashboard extends React.Component {
                           (data, index) => {
                             return (
                               <div className="">
-                                <div className="ttp">{data.name}</div>
+                                <div className="ttp newttp">{data.name}</div>
                                 <HorizontalBar value={data.value.value1} />
-                                <div className="btmwrap">
+                                <div className="btmwrap newbtmwrap">
                                   {" "}
                                   <div>{data.value.name1}</div>
                                   <div>{data.value.name2}</div>
@@ -368,8 +371,8 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                     <div className="resultsec3">
-                      <div className="reskwrap">
-                        <div className="career221">
+                      <div className="reskwrap newreskwrapa">
+                        <div className="career221 insighttxt">
                           {client?.career_personality_type?.full_body}
                         </div>
                       </div>

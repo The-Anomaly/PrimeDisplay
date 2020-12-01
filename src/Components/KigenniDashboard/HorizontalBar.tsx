@@ -17,10 +17,10 @@ const HorizontalBar = (props: chartProps) => {
       <div className="chartwar">
         <div
           className={
-            remainingVal > 50 ? "changeinnerflex areawrapper1" : "areawrapper1"
+            remainingVal > 50 ? "changeinnerflex areawrapper1 newareawrapper1" : "areawrapper1 newareawrapper1"
           }
         >
-          <div className="areawrappera" style={{ width: props.value + "%" }}>
+          <div className="areawrappera newareawrappera" style={{ width: props.value + "%" }}>
             {props.value + "%"}
           </div>
           <div className={

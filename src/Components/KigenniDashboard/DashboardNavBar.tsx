@@ -115,7 +115,7 @@ const DashboardNav = (props: any) => {
   return (
     <>
     <div>
-      <Row>
+      <Row className="fixeddashnav">
         <div className="hnav">
           <Link to="/" className="ddaa">
             {" "}
@@ -156,7 +156,7 @@ const DashboardNav = (props: any) => {
           textAlign: "left",
         }}
         items={[
-          <div className={"siddlemobile"}>
+          <div className={"siddlemobile newsiddle"}>
             <div className={"navitem1"}>
                 <Link to="/overview">
               <div className={props.overview ? "activegb" : "gbn"}>
