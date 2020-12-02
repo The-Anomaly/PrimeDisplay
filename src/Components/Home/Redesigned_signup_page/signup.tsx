@@ -70,10 +70,11 @@ const Signup = withRouter((props: any) => {
       })
       .catch((error) => {
         console.log(error.response);
+        window.scrollTo(-0,-0);
         if (error && error.response && error.response.data) {
           return setFormState({
             ...state,
-            errorMessage: error?.response?.data[0].message,
+            errorMessage: error?.response?.data.message,
             isLoading: false,
             error: true,
           });

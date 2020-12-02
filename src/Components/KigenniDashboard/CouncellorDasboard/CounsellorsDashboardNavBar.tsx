@@ -49,6 +49,10 @@ const CounsellorsDashboardMobileNav = (props: any) => {
       })
       .catch((err) => {});
   };
+  // React.useEffect(() => {
+  //   localStorage.clear();
+  //   window.location.assign("/counsellor/signin");
+  // })
   const logOut = () => {
     localStorage.clear();
     window.location.assign("/counsellor/signin");

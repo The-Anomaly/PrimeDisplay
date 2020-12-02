@@ -79,6 +79,7 @@ const counsellorSignup = withRouter((props: any) => {
     })
     .catch( (error) => {
       console.log(error.response);
+      window.scrollTo(-0,-0);
       if (error && error.response && error.response.data){
         return setFormState({
               ...state,

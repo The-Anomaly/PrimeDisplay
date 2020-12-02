@@ -52,6 +52,7 @@ const counsellorSignin = withRouter((props: any) => {
       })
       .catch((error) => {
         console.log(error.response);
+        window.scrollTo(-0,-0);
         if (error && error?.response?.status == 500) {
           return setState({
             ...state,
