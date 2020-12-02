@@ -471,7 +471,8 @@ const Payment = (props: any) => {
                 ""
               )}
             </Col>
-            <Col md={5} className="addmargin progmargin">
+            
+            <Col md={5} className="margined_col progmargin">
             <Card
               className={
                 plan === false && !withoutlogin
