@@ -231,3 +231,114 @@
     margin-top: 1.5rem;
     width: 20%;
 }
+
+@media(max-width: 1200px) {
+    .counsellorstat {
+        left: calc((100vw - 87%) / 2);
+    }
+    .counsellorNav {
+        padding: 1rem 3rem;
+    }
+}
+
+@media(max-width: 1000px) {
+    .offercard {
+        width: 80%;
+        margin-left: 8%;
+    }
+    .ourofferimg {
+        margin-top: 35%;
+    }
+    .Cintrotxt1, .ouroffertxt1 {
+        font-size: 32px;
+    }
+    .counsellorintro {
+        padding: 9rem 2.5rem;
+    }
+    .Cimg {
+        margin-top: 18%;
+    }
+    .counsellorNav {
+        padding: 1rem 2rem;
+    }
+    .ouroffertxt2, .offerlistsec {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 779px) {
+    .counsellorintro {
+        background-image: url("../../../assets/counsellorbg.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        flex-direction: column;
+        padding: 5rem 4rem;
+    }
+    .smintrosize {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .Cimgsec {
+        text-align: center;
+    }
+    .Cimg {
+        margin-top: 0;
+        width: 80%;
+        margin-bottom: 12rem;
+    }
+    .Cintro {
+        padding-bottom: 2rem;
+    }
+    .counsellorstat {
+        flex-direction: column;
+        align-items: center;
+        height: 450px;
+        width: 300px;
+        padding: 0;
+        left: calc((100vw - 300px)/2);
+        bottom: -15rem;
+    }
+    .ouroffer {
+        flex-direction: column;
+        padding: 17rem 3rem;
+        padding-bottom: 10rem;
+    }
+    .ouroffer1 {
+        order: 1;
+    }
+    .ouroffer2 {
+        order: 2;
+        text-align: center;
+    }
+    .ourofferimg {
+        width: 80%;
+        margin-top: 3rem;
+    }
+    .offercard {
+        width: 70%;
+        left: calc((100vw - 70%)/2);
+        margin-left: 2%;
+        height: auto;
+        padding: 2rem 1rem;
+        bottom: -7rem;
+        text-align: center;
+    }
+    .Cintrobtn {
+        margin-bottom: 0;
+    }
+    .threesteps {
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 520px;
+    }
+    .stepline {
+        display: none;
+    }
+    .stepstxt {
+        margin-top: 1rem;
+    }
+    .stepsimg {
+        width: 40px;
+    }
+}

@@ -19,7 +19,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
     <>
       <Navbar />
       <Row md={12} className="counsellorintro">
-        <Col md={6} className="Cintro">
+        <Col md={6} className="Cintro smintrosize">
           <div className="Cintrotxt1">
             Are you a <span className="Cintrotxt1a">Counsellor?</span>
           </div>
@@ -32,7 +32,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
           </div>
           <div className="Cintrobtn">GET STARTED</div>
         </Col>
-        <Col md={6}>
+        <Col md={6} className="smintrosize Cimgsec">
           <img className="Cimg" src={counsellorimg} alt="counsellor" />
         </Col>
         <div className="counsellorstat">
@@ -60,10 +60,10 @@ const CounsellorLandingPage: React.FC = (props: any) => {
         </div>
       </Row>
       <Row className="ouroffer">
-        <Col md={5}>
+        <Col md={5} className="ouroffer2 smintrosize">
           <img className="ourofferimg" src={ouroffer} alt="our offer" />
         </Col>
-        <Col md={7}>
+        <Col md={7} className="ouroffer1 smintrosize">
           <div className="ouroffertxt1">What we are offering</div>
           <div className="ouroffertxt2">
             With the human behaviour becoming complex, no two clients are the
@@ -139,7 +139,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
           <div className="Cstepsheading">3 easy steps to become a Clarity Counsellor</div>
           <div className="threesteps">
               <div className="stepss">
-                  <img src={step1} alt="step 1" />
+                  <img className="stepsimg" src={step1} alt="step 1" />
                   <div className="stepstxt">
                       <div className="steptxt1">Sign Up</div>
                       <div className="steptxt2">Cursus id magna ullamcorper interdum vitae nunc, volutpat.</div>
@@ -147,7 +147,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
               </div>
               <img className="stepline" src={stepline} />
               <div className="stepss">
-                  <img src={step2} alt="step 2" />
+                  <img className="stepsimg" src={step2} alt="step 2" />
                   <div className="stepstxt">
                       <div className="steptxt1">Get Confirmed</div>
                       <div className="steptxt2">Cursus id magna ullamcorper interdum vitae nunc, volutpat.</div>
@@ -155,7 +155,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
               </div>
               <img className="stepline" src={stepline} />
               <div className="stepss">
-                  <img src={step3} alt="step 3" />
+                  <img className="stepsimg" src={step3} alt="step 3" />
                   <div className="stepstxt">
                       <div className="steptxt1">Get Assigned Clients</div>
                       <div className="steptxt2">Cursus id magna ullamcorper interdum vitae nunc, volutpat.</div>
