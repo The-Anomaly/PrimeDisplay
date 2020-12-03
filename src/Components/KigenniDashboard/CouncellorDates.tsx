@@ -18,8 +18,11 @@ import close from "../../assets/close.svg";
 import checkede from "../../assets/checkede.png";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import "../Home/Home/Home.css"
+import "../Home/Home/Home.css";
 import failedNotice from "../../assets/failedNotice.png";
+import DashboardNav from "./DashboardNavBar";
+import SideBarNewDashboard from "./SideBarNewDashboard";
+import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 
 class CouncellorDates extends React.Component<React.Props<any>> {
   state: any = {
@@ -36,7 +39,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     Canbooksession: false,
     upgradeState: false,
   };
-  
+
   componentWillMount() {
     window.scrollTo(-0, -0);
     this.setState({ isLoading: true });
@@ -71,7 +74,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   closeUpgradeModal = () => {
     this.setState({
       upgradeState: false,
-    })
+    });
   };
   onchange = (e) => {
     this.setState({
@@ -146,7 +149,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           //return window.location.assign("/dashboardsubscriptionplan");
           return this.setState({
             upgradeState: true,
-          })
+          });
         }
       })
       .catch((error) => {
@@ -214,86 +217,97 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     } = this.state;
     return (
       <>
-        <Navbar />
-        <Container fluid={true} className="mobilepadding">
-          <Row className="kli6 bcbv datesedit">
-            <Col md={12} className="scheduleheader">
-              Schedule a meeting
-            </Col>
-            <Col md={6} className="calwrapper">
-              <Calendar
-                onChange={this.onChange}
-                value={this.state.date}
-                name="date"
-                allowPartialRange={true}
-                minDate={new Date(startDate)}
-                maxDate={new Date(endDate)}
-              />
-            </Col>
-            <Col md={3} className="availabledatewrapper">
-              <div>
-                {calenderTime &&
-                  calenderTime.map((data, i) => (
-                    <div
-                      className={
-                        data.status === "available"
-                          ? "activeDate"
-                          : "availabledate"
-                      }
-                      key={i}
-                    >
-                      <input
-                        type="radio"
-                        name="availabledate"
-                        value={data.time}
-                        disabled={data.status === "available" ? false : true}
-                        onChange={this.selectedTimeHandler}
-                      />
-                      {"  "}
-                      <div className="datelenght">{data.time}</div>
-                    </div>
-                  ))}
-              </div>
-            </Col>
-            <Col md={8} className="fw2">
-              <img src={write} alt="write" className="write" />
-              <textarea
-                className="form-control whatdou"
-                id=""
-                cols={30}
-                name="feedbackText"
-                onChange={this.onchange}
-                value={feedbackText}
-                placeholder="What would you like to speak about"
-                rows={10}
-              ></textarea>
-            </Col>
-            <Col md={8} className="fw2">
-              <Row className="shex">
-                <Col md={5}>
-                  <div className="enter11">Enter your phone number</div>
-                  <img src={write} alt="write" className="write" />
-                  <input
-                    className="form-control whatdou"
-                    id=""
-                    name="phone"
-                    onChange={this.onchange}
-                    value={phone}
-                    placeholder="Phone number"
+        <Container fluid={true} className="llln">
+          <DashboardNav />
+          <Row>
+            <SideBarNewDashboard />
+            <Col md={10} sm={12} className="prm mobilepadding">
+            <DashboardLargeScreenNav title="" />
+              <Row className="kli6 bcbv datesedit">
+                <Col md={12} className="scheduleheader">
+                  Schedule a meeting
+                </Col>
+                <Col md={6} className="calwrapper">
+                  <Calendar
+                    onChange={this.onChange}
+                    value={this.state.date}
+                    name="date"
+                    allowPartialRange={true}
+                    minDate={new Date(startDate)}
+                    maxDate={new Date(endDate)}
                   />
                 </Col>
-                <Col md={7} className="text-right skd11">
-                  <div className="booksession planupgradebtn1" onClick={this.handleChatCheck}>
-                    Book Session <span className="text-white">&#8594;</span>
+                <Col md={3} className="availabledatewrapper">
+                  <div>
+                    {calenderTime &&
+                      calenderTime.map((data, i) => (
+                        <div
+                          className={
+                            data.status === "available"
+                              ? "activeDate"
+                              : "availabledate"
+                          }
+                          key={i}
+                        >
+                          <input
+                            type="radio"
+                            name="availabledate"
+                            value={data.time}
+                            disabled={
+                              data.status === "available" ? false : true
+                            }
+                            onChange={this.selectedTimeHandler}
+                          />
+                          {"  "}
+                          <div className="datelenght">{data.time}</div>
+                        </div>
+                      ))}
                   </div>
                 </Col>
-                <ToastContainer
-                  enableMultiContainer
-                  containerId={"B"}
-                  toastClassName="bg-info text-white"
-                  hideProgressBar={true}
-                  position={toast.POSITION.TOP_CENTER}
-                />
+                <Col md={8} className="fw2">
+                  <img src={write} alt="write" className="write" />
+                  <textarea
+                    className="form-control whatdou"
+                    id=""
+                    cols={30}
+                    name="feedbackText"
+                    onChange={this.onchange}
+                    value={feedbackText}
+                    placeholder="What would you like to speak about"
+                    rows={10}
+                  ></textarea>
+                </Col>
+                <Col md={8} className="fw2">
+                  <Row className="shex">
+                    <Col md={5}>
+                      <div className="enter11">Enter your phone number</div>
+                      <img src={write} alt="write" className="write" />
+                      <input
+                        className="form-control whatdou"
+                        id=""
+                        name="phone"
+                        onChange={this.onchange}
+                        value={phone}
+                        placeholder="Phone number"
+                      />
+                    </Col>
+                    <Col md={7} className="text-right skd11">
+                      <div
+                        className="booksession planupgradebtn1"
+                        onClick={this.handleChatCheck}
+                      >
+                        Book Session <span className="text-white">&#8594;</span>
+                      </div>
+                    </Col>
+                    <ToastContainer
+                      enableMultiContainer
+                      containerId={"B"}
+                      toastClassName="bg-info text-white"
+                      hideProgressBar={true}
+                      position={toast.POSITION.TOP_CENTER}
+                    />
+                  </Row>
+                </Col>
               </Row>
             </Col>
           </Row>
@@ -331,34 +345,36 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           </Modal.Body>
         </Modal>
         <Modal
-              show={this.state.upgradeState}
-              centered={true}
-              onHide={this.closeUpgradeModal}
-            >
-              <Modal.Body>
-                <div className="text-center">
-                  {" "}
-                  <img
-                    src={failedNotice}
-                    className="failedNotice"
-                    alt="failedNotice"
-                  />{" "}
-                </div>
-                <div className="onhno"> Oh No! </div>
-                <div className="onhno">
-                  This package is not available on this plan <br/> Please Upgrade your
-                  Plan
-                </div>
-                <div className="text-center planupgrade">
-                  <div className="retaketest upss1 planupgradebtn">
-                    <Link to="/dashboardsubscriptionplan">View your current plan</Link>
-                  </div>
-                  {/* <div className="retaketest upss1 planupgradebtn">
+          show={this.state.upgradeState}
+          centered={true}
+          onHide={this.closeUpgradeModal}
+        >
+          <Modal.Body>
+            <div className="text-center">
+              {" "}
+              <img
+                src={failedNotice}
+                className="failedNotice"
+                alt="failedNotice"
+              />{" "}
+            </div>
+            <div className="onhno"> Oh No! </div>
+            <div className="onhno">
+              This package is not available on this plan <br /> Please Upgrade
+              your Plan
+            </div>
+            <div className="text-center planupgrade">
+              <div className="retaketest upss1 planupgradebtn">
+                <Link to="/dashboardsubscriptionplan">
+                  View your current plan
+                </Link>
+              </div>
+              {/* <div className="retaketest upss1 planupgradebtn">
                     <Link to="/paymentsummary">Upgrade your plan</Link>
                   </div> */}
-                </div>
-              </Modal.Body>
-            </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
         {/* <Footer /> */}
       </>
     );

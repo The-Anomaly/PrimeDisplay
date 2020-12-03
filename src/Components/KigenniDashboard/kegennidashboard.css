@@ -164,6 +164,16 @@
   .lkl {
     padding-left: 0rem;
   }
+  /* fixes the dashboard nav at the top but has bugs */
+  /* .navdash{
+    position: fixed;
+    width: 84%;
+    z-index: 2200;
+    background: #fff;
+  }
+  .kisls {
+    padding-top: 5rem;
+  } */
 }
 .csfitscore1 {
   font-weight: bold;
@@ -3523,6 +3533,9 @@ input,
   .modcomplete .modal-dialog {
     width: 100%;
     margin: auto;
+  }
+  .cptext{
+    font-size: 13px !important;
   }
 }
 
