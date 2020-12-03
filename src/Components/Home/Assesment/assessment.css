@@ -640,8 +640,7 @@ span .checkmark1{
 }
 @media(max-width: 779px) {
   .assesspadd {
-    margin-top: 2rem;
-    padding-top: 4rem;
+    padding-top: 7rem;
   }
 }
 .nxtbtn:hover, .awesomebtn:hover {

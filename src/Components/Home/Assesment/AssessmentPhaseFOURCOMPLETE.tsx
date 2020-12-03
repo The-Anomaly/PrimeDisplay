@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Footer from "../HomeComponents/footer";
-import Navbar from "../HomeComponents/navbar";
+import Navbar from "../HomeComponents/newnavbar";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import offcharts from "../../../assets/offcharts.png";
