@@ -293,6 +293,7 @@
   .newprm {
     max-width: 100%;
     flex: 0 0 100%;
+    padding-top: 68px;
   }
   .newseccards {
     padding-left: 2rem;

@@ -415,7 +415,7 @@ const Payment = (props: any) => {
                       <Card className=" shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N3500 <span>/one-off</span>
+                            N5000 <span>/one-off</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -478,7 +478,7 @@ const Payment = (props: any) => {
                             <span
                               className="card_btn btn-blue"
                               onClick={() =>
-                                requestForPayref("One-off Insight Plan", 3500)
+                                requestForPayref("One-off Insight Plan", 5000)
                               }
                             >
                               Upgrade to Insight
@@ -491,7 +491,7 @@ const Payment = (props: any) => {
                       <Card className="h-300 shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N10000 <span>/one-off</span>
+                            N12000 <span>/one-off</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -534,7 +534,7 @@ const Payment = (props: any) => {
                               onClick={() =>
                                 requestForPayref(
                                   "One-off Direction Plan",
-                                  10000
+                                  12000
                                 )
                               }
                             >
@@ -686,7 +686,7 @@ const Payment = (props: any) => {
                       <Card className=" shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N6000 <span>/month</span>
+                            N7000 <span>/month</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -750,7 +750,7 @@ const Payment = (props: any) => {
                               onClick={() =>
                                 requestForPayref(
                                   "Progressive Direction Plan",
-                                  6000
+                                  7000
                                 )
                               }
                             >
@@ -764,7 +764,7 @@ const Payment = (props: any) => {
                       <Card className="h-300 shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N10000 <span>/month</span>
+                            N10500 <span>/month</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -807,7 +807,7 @@ const Payment = (props: any) => {
                               onClick={() =>
                                 requestForPayref(
                                   "Progressive Accountability Plan",
-                                  10000
+                                  10500
                                 )
                               }
                             >
@@ -934,7 +934,7 @@ const Payment = (props: any) => {
                       <Card className=" shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N3500 <span>/one-off</span>
+                            N5000 <span>/one-off</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -997,7 +997,7 @@ const Payment = (props: any) => {
                             <span
                               className="card_btn btn-blue"
                               onClick={() =>
-                                requestForPayref("One-off Insight Plan", 3500)
+                                requestForPayref("One-off Insight Plan", 5000)
                               }
                             >
                               Upgrade to Insight
@@ -1010,7 +1010,7 @@ const Payment = (props: any) => {
                       <Card className="h-300 shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N10000 <span>/one-off</span>
+                            N12000 <span>/one-off</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -1053,7 +1053,7 @@ const Payment = (props: any) => {
                               onClick={() =>
                                 requestForPayref(
                                   "One-off Direction Plan",
-                                  10000
+                                  12000
                                 )
                               }
                             >
@@ -1205,7 +1205,7 @@ const Payment = (props: any) => {
                       <Card className=" shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N6000 <span>/month</span>
+                            N7000 <span>/month</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -1269,7 +1269,7 @@ const Payment = (props: any) => {
                               onClick={() =>
                                 requestForPayref(
                                   "Progressive Direction Plan",
-                                  6000
+                                  7000
                                 )
                               }
                             >
@@ -1283,7 +1283,7 @@ const Payment = (props: any) => {
                       <Card className="h-300 shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N10000 <span>/month</span>
+                            N10500 <span>/month</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -1326,7 +1326,7 @@ const Payment = (props: any) => {
                               onClick={() =>
                                 requestForPayref(
                                   "Progressive Accountability Plan",
-                                  10000
+                                  10500
                                 )
                               }
                             >

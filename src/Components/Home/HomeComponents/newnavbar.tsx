@@ -56,6 +56,11 @@ const newNavbar = withRouter((props: any) => {
       window.location.pathname === "/thirdparty/pending" ||
       window.location.pathname === "/thirdparty/overpaid"
     ) {
+      if (token) {
+        setShowNav({ ...state, userLoggedIn: true });
+      } else {
+        setShowNav({ ...state, userLoggedIn: false });
+      }
       return;
     }
     if (token) {
@@ -236,7 +241,7 @@ const newNavbar = withRouter((props: any) => {
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/payment" className={navbar ? "lightnavlist" : ""}>Payments</Link>
+                      <Link to="/payment" className={navbar ? "lightnavlist" : ""}>Pricing</Link>
                     </div>
                   ) : (
                     " "
@@ -361,7 +366,7 @@ const newNavbar = withRouter((props: any) => {
             )}
             {!userLoggedIn ? (
               <span className={props.payments ? "title hhome" : "title"}>
-                <Link to="/payment">Payments</Link>
+                <Link to="/payment">Pricing</Link>
               </span>
             ) : (
               " "

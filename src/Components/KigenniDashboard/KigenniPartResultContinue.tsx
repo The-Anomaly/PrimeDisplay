@@ -223,7 +223,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         if (
           !response?.data[0]?.view_result
         ) {
-          return window.location.assign("/thirdpary/dashboard");
+          return window.location.assign("/dashboardsubscriptionplan");
         }
       })
       .catch((error) => {
@@ -281,24 +281,26 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
             <Modal
               size={"sm"}
               show={show}
-              centered
+              centered={true}
               onHide={this.handleClose}
               animation={true}
+              className="fdback-modal"
             >
               <Modal.Header closeButton>
                 <Modal.Title>
                   {" "}
                   <div className="feedbackheader">
-                    Kindly give us a few minutes of your time
+                    Can you spare a few minutes?
                   </div>
                   {success && <Alert variant={"success"}>Message Sent</Alert>}
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
+                <div className="fdbck-ques1">
                 <div className="feedbackques">
                   1. How useful is the clarity report to you?{" "}
                 </div>
-                <div className="assessrating">
+                <div className="assessrating fdbck-rating">
                   <StarRatingComponent
                     name="rate1"
                     starCount={5}
@@ -307,11 +309,12 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     emptyStarColor={"#444"}
                   />
                 </div>
-                <div className="feedbackques">
+                </div>
+                <div className="feedbackques fdbck-ques">
                   2. Give a written review or feedback{" "}
                 </div>
                 <textarea
-                  className="form-control losj"
+                  className="form-control losj fdbck-questxtarea"
                   id=""
                   cols={30}
                   name="feedbacktext"
@@ -320,13 +323,13 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   placeholder="Review"
                   rows={10}
                 ></textarea>
-                <div className="feedbackques">
+                <div className="feedbackques fdbck-ques">
                   3. Does this help you figure out your next career step?{" "}
                 </div>
                 <Form.Group className="selectprof">
                   <Form.Control
                     as="select"
-                    className="selecss col-md-6 form-control"
+                    className="selecss col-md-6 form-control fdbck-select"
                     name="helpfulornot"
                     onChange={this.handleSelectChange}
                   >
@@ -339,9 +342,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     </option>
                   </Form.Control>
                 </Form.Group>
-                <div className="feedbackheader bvcc">
+                <div className="feedbackheader bvcc fdbck-ques fdback-linkgrp">
                   <div className="inlki">
-                    <img src={Review} alt="getlink" className="getlink" />
+                    <img src={Review} alt="getlink" className="getlink fdback-getlink" />
                   </div>
                   <div>
                     <div>Get link</div>
@@ -353,7 +356,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 <div className="flexsa">
                   <input
                     type="text"
-                    className="col-md-9 form-control oius"
+                    className="col-md-9 form-control oius fdbck-link"
                     value="https://clarity.yudimy.com"
                   />
                   <button
@@ -361,7 +364,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                       navigator.clipboard.writeText(this.state.clarityLink);
                       this.changeCopiedState();
                     }}
-                    className="copylink"
+                    className="copylink fdbck-link"
                   >
                     {this.state.hascopiedLink ? "Copied" : "Copy Link"}
                   </button>
@@ -370,7 +373,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               <Modal.Footer>
                 <Button
                   variant="primary"
-                  className="hgjs"
+                  className="hgjs fdbck-submit"
                   onClick={this.submitFeedback}
                 >
                   {isLoading1 ? "Submitting" : "Submit"} Feedback{" "}
@@ -397,7 +400,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 </div>
                 <div className="kprofilewrap">
                   <div className="kprofile">Profile</div>
-                  <div className="kprofile2">{client.profile}</div>
+                  <div className="kprofile2 profiletxt">{client.profile}</div>
                   {/* <div className="kprofile3">Growing Business</div> */}
                 </div>
               </div>
@@ -425,7 +428,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     {" "}
                     {client?.career_fitness?.heading}{" "}
                   </div>
-                  <div className="csbody">{client?.career_fitness?.body}</div>
+                  <div className="csbody newcsbody">{client?.career_fitness?.body}</div>
                 </div>
               </div>
               <hr />
@@ -455,7 +458,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   <div className="csfitscore1 juki  reskheader">
                     Career Personality type
                   </div>
-                  <div className="career221">
+                  <div className="career221 insighttxt">
                     {client?.career_personality_type?.short_description}
                   </div>
                 </div>
@@ -473,9 +476,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     (data, index) => {
                       return (
                         <div className="">
-                          <div className="ttp">{data.name}</div>
+                          <div className="ttp newttp">{data.name}</div>
                           <HorizontalBar value={data.value.value1} />
-                          <div className="btmwrap">
+                          <div className="btmwrap newbtmwrap">
                             <div>{data.value.name1}</div>
                             <div>{data.value.name2}</div>
                           </div>
@@ -485,8 +488,8 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   )}
                 </div>
                 <div className="resultsec3">
-                  <div className="reskwrap">
-                    <div className="career221">
+                  <div className="reskwrap newreskwrapa">
+                    <div className="career221 insighttxt">
                       {client?.career_personality_type?.full_body}
                     </div>
                   </div>
@@ -494,7 +497,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               </div>
               <div>
                 <div className="kz1" id="strength">
-                  <div className="contkflex">
+                  <div className="contkflex newcontkflex">
                     <div className="kz2">
                       <img src={vector1} className="kl3" alt="vector2" />
                       <div>Your Strengths</div>
@@ -502,14 +505,14 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     <div className="kz12">
                       <ul className="grapwrap">
                         {client?.strengths?.map((strength, index) => (
-                          <li className="grapssin career221" key={index}>
+                          <li className="grapssin career221 insighttxt" key={index}>
                             {strength}
                           </li>
                         ))}
                       </ul>
                     </div>
                   </div>
-                  <div className="contkflex">
+                  <div className="contkflex newcontkflex">
                     <div className="kz2a">
                       <img src={vector2} className="kl3" alt="vector2" />
                       <div id="weakness">Your Weaknesses</div>
@@ -517,7 +520,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     <div className="kz12">
                       <ul className="grapwrap">
                         {client?.weaknesses?.map((weakness, index) => (
-                          <li className="grapssin career221" key={index}>
+                          <li className="grapssin career221 insighttxt" key={index}>
                             {weakness}
                           </li>
                         ))}
@@ -561,9 +564,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               <div className="otherinfo">
                 {client?.strong_career_competences?.fields?.map(
                   (data, index) => (
-                    <div key={index}>
+                    <div key={index} className="otherinfosub">
                       <span className="ikls">{data.name} </span>
-                      <span className="career221">{data.value}</span>
+                      <span className="career221 insighttxt">{data.value}</span>
                       <br />
                     </div>
                   )
@@ -605,9 +608,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               <div className="otherinfo">
                 {client?.average_career_competences?.fields?.map(
                   (data, index) => (
-                    <div key={index}>
+                    <div key={index} className="otherinfosub">
                       <span className="ikls">{data.name} </span>
-                      <div className="career221">{data.value}</div>
+                      <div className="career221 insighttxt">{data.value}</div>
                       <br />
                     </div>
                   )
@@ -651,9 +654,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               </div>
               <div className="otherinfo">
                 {client?.weak_career_competences?.fields?.map((data, index) => (
-                  <div key={index}>
+                  <div key={index} className="otherinfosub">
                     <span className="ikls">{data.name} </span>
-                    <div className="career221">{data.value}</div>
+                    <div className="career221 insighttxt">{data.value}</div>
                     <br />
                   </div>
                 ))}
@@ -684,18 +687,18 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                         padding={0}
                       />
                     </div>
-                    <div className="csfitscore">
+                    <div className="csfitscore newcsfitscore">
                       <Row>
-                        <div className="csfitscore1">
+                        <div className="csfitscore1 csfitscorettl">
                           {this.capitalize(doc?.industry)}
                         </div>
                       </Row>
                       {doc?.fields?.map((item, index) => (
-                        <div className="csbody" key={index}>
+                        <div className="csbody newcsbody" key={index}>
                           <span className="competence1">
                             {this.capitalize(item.name)}
                           </span>
-                          :{this.capitalize(item.value)} <br />
+                            :{" "}{this.capitalize(item.value)} <br />
                         </div>
                       ))}
                     </div>
@@ -732,7 +735,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   <div>
                     <div className="stbly">
                       <div className="stbly1">{data.heading}</div>
-                      <div className="career221">{data.body}</div>
+                      <div className="career221 insighttxt">{data.body}</div>
                     </div>
                     <div className="tipswrapper">
                       <div>
@@ -768,7 +771,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 <div>
                   <div className="kz1">
                     {client?.work_style?.map((data, index) => (
-                      <div className="contkflex" key={index}>
+                      <div className="contkflex newcontkflex" key={index}>
                         <div className="kz2">
                           <img src={vector1} className="kl3" alt="vector2" />
                           <div>{data.name}</div>
@@ -776,7 +779,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                         <div className="kz12">
                           <ul className="grapwrap">
                             {data.value.map((dataindata, index) => (
-                              <li className="grapssin career221">
+                              <li className="grapssin career221 insighttxt">
                                 {dataindata}
                               </li>
                             ))}
@@ -816,9 +819,9 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 <hr />
                 <div className="otherinfo">
                   {client?.job_function_fit?.field?.map((dataindata, index) => (
-                    <div key={index}>
+                    <div key={index} className="otherinfosub">
                       <span className="ikls">{dataindata.name} </span>{" "}
-                      <div className="career221"> {dataindata.value}. </div>
+                      <div className="career221 insighttxt"> {dataindata.value}. </div>
                       <br />
                     </div>
                   ))}
@@ -830,11 +833,12 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 onClick={() => {
                   this.setState({ show: true });
                 }}
+                className="insightfeedback"
               >
-                Please give your feedback &#129321; &#128524;
+                Click here to give a feedback
               </div>
             </Col>
-            <Col md={10} className="fw2">
+            {/* <Col md={10} className="fw2">
               <img src={write} alt="write" className="write" />
               <textarea
                 className="form-control whatdou fba"
@@ -846,7 +850,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 placeholder="Counsellors recommendations"
                 rows={10}
               ></textarea>
-            </Col>
+            </Col> */}
             <Col md={12} className="jcenter1">
               <div className="coonfused">Still Confused ???</div>
               <div className="pool">

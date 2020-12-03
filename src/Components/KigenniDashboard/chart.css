@@ -41,3 +41,13 @@
 .changeinnerflex{
     flex-direction: row-reverse;
 }
+
+@media(max-width: 500px) {
+    .newareawrapper1 {
+        height: 32px;
+        font-size: 13px;
+    }
+    .newareawrappera {
+        font-size: 13px;
+    }
+}

@@ -2771,7 +2771,7 @@ button {
   }
 }
 
-/*Fixed Mobile Nav*/
+/*Fixed External Mobile Nav*/
 @media(max-width: 779px) {
   .mobilepadding {
     padding-top: 73px;
@@ -2806,4 +2806,21 @@ button {
 
 .lightnavlist {
   color: #9c1258 !important;
+}
+
+@media(max-width: 1200px) {
+  .trustimg, .fourthsubhead, .fourthsubtext {
+    z-index: 1;
+  }
+}
+
+/*Fixed Dashboard Mobile Nav*/
+.fixeddashnav {
+  position: fixed;
+    width: 100vw;
+    z-index: 100;
+    background: #ffffff;
+}
+.newsiddle {
+  padding-top: 4rem !important;
 }

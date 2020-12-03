@@ -164,6 +164,16 @@
   .lkl {
     padding-left: 0rem;
   }
+  /* fixes the dashboard nav at the top but has bugs */
+  /* .navdash{
+    position: fixed;
+    width: 84%;
+    z-index: 2200;
+    background: #fff;
+  }
+  .kisls {
+    padding-top: 5rem;
+  } */
 }
 .csfitscore1 {
   font-weight: bold;
@@ -401,6 +411,9 @@
   }
   .csfitscore {
     padding-left: 0rem;
+  }
+  .csfitscorettl {
+    padding-left: 1rem;
   }
   .mncb {
     width: 100%;
@@ -821,15 +834,64 @@ a:hover {
   border-top: none;
 }
 .feedbackheader {
-  font-size: 14px;
+  font-size: 15px;
+  font-family: 'Brfirma-Bold';
+}
+.fdbck-ques {
+  margin-top: 2rem;
+}
+.fdbck-ques1 {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: -0.5rem;
+}
+.fdbck-questxtarea {
+  padding: 10px 15px !important;
+}
+.fdbck-rating {
+  justify-content: center;
+  margin-top: -0.4rem;
+  min-width: 80px;
+}
+.fdbck-questxtarea::placeholder, .fdbck-select, .fdbck-link, .fdbck-link::placeholder {
+  font-size: 13px !important;
 }
 .modal-content {
   padding: 1rem;
+}
+.fdback-modal .modal-body {
+  padding-top: 1rem;
+}
+.fdback-modal .modal-content {
+  padding: 1.5rem 2.3rem;
+}
+.fdback-linkgrp {
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.fdback-getlink {
+  width: 32px;
+  margin-right: 0.5rem;
+  font-size: 13px;
+}
+.fdbck-submit {
+  height: 40px;
+  border: 1px solid #9c1258;
+}
+.fdbck-submit:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+  color: #9c1258;
+  background: #ffffff;
 }
 @media (min-width: 576px) {
   .modal-sm {
     max-width: 429px;
   }
+  .fdback-modal .modal-dialog {
+    max-width: 500px !important;
+  } 
   .mddrrt{
     margin-left: 4rem !important;
   }
@@ -3955,4 +4017,64 @@ label {
     display: block;
     width: auto;
   }
+}
+.insightfeedback {
+  color: blue;
+  text-decoration: underline;
+  transition: 0.2s;
+}
+.insightfeedback:hover {
+  transform: scale(1.03);
+}
+.insighttxt {
+  text-align: left !important;
+}
+@media(max-width: 550px) {
+  .profiletxt {
+    font-size: 24px !important;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    width: 100% !important;
+  }
+  .newbtmwrap {
+    margin-bottom: 1rem !important;
+    font-size: 13px !important;
+  }
+  .newttp {
+    font-size: 14px;
+  }
+  .newreskwrap {
+    padding-top: 0.5rem !important;
+  }
+  .newreskwrapa {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .newcsbody {
+    line-height: 28px;
+  }
+}
+
+@media(max-width: 400px) {
+  .nujs {
+    padding-bottom: 0.5rem !important;
+    padding-top: 0.5rem !important;
+  }
+  .mobprofile {
+    margin-top: 0.5rem;
+  }
+}
+
+@media(max-width: 1024px) {
+  .newcsfitscore {
+    padding-top: 1rem;
+  }
+}
+@media(max-width: 600px) {
+  .newcontkflex {
+    background: #f8f8f8;
+  }
+}
+.otherinfosub {
+  margin-bottom: 0.5rem;
 }

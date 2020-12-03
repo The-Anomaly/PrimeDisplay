@@ -217,11 +217,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     } = this.state;
     return (
       <>
-        <Container fluid={true} className="mobilepadding llln">
+        <Container fluid={true} className="llln">
           <DashboardNav />
           <Row>
             <SideBarNewDashboard />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm mobilepadding">
             <DashboardLargeScreenNav title="" />
               <Row className="kli6 bcbv datesedit">
                 <Col md={12} className="scheduleheader">
