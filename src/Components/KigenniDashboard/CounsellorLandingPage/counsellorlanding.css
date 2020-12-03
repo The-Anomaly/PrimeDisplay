@@ -231,6 +231,13 @@
     margin-top: 1.5rem;
     width: 20%;
 }
+.stepsconnect {
+    display: none;
+}
+.counsellorhome {
+    width: 80px;
+    font-family: 'Brfirma-Bold';
+}
 
 @media(max-width: 1200px) {
     .counsellorstat {
@@ -297,6 +304,7 @@
         padding: 0;
         left: calc((100vw - 300px)/2);
         bottom: -15rem;
+        margin-left: 2%;
     }
     .ouroffer {
         flex-direction: column;
@@ -331,6 +339,7 @@
         flex-direction: column;
         justify-content: space-between;
         height: 520px;
+        position: relative;
     }
     .stepline {
         display: none;
@@ -340,5 +349,80 @@
     }
     .stepsimg {
         width: 40px;
+        position: relative;
+        z-index: 2;
+    }
+    .stepsconnect {
+        display: inline;
+        position: absolute;
+        height: 375px;
+        top: 1.2rem;
+        z-index: 0;
+    }
+    .Cstepsheading {
+        font-size: 20px;
+        text-align: center;
+    }
+    .statrsz {
+        margin-left: 1rem;
+    }
+}
+
+@media(max-width: 600px) {
+    .joinclaritytxt1 {
+        font-size: 17px;
+        margin-bottom: 1rem;
+    }
+    .Cstepsheading {
+        font-size: 18px;
+    }
+    .Cintrotxt1, .ouroffertxt1 {
+        font-size: 30px;
+    }
+    .ouroffertxt2, .offerlistsec, .Cintrotxt2, .Cintrotxt3 {
+        font-size: 13px;
+    }
+    .steptxt1 {
+        font-size: 14px;
+    }
+    .steptxt2, .joinclaritytxt2 {
+        font-size: 12px;
+    }
+    .counsellorstat {
+        margin-left: 3%;
+    }
+    .offercard {
+        width: 80%;
+        left: calc((100vw - 80%)/2);
+        margin-left: 2.5%;
+        padding: 2rem 0.5rem;
+    }
+    .counsellorintro {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+@media(max-width: 400px) {
+    .joinclaritysubtxt {
+        display: inline;
+    }
+    .counsellorintro, .ouroffer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .ouroffertxt1 {
+        line-height: 40px;
+        margin-bottom: 1.5rem;
+        margin-top: 1rem;
+    }
+    .counsellorstat {
+        margin-left: 4%;
+    }
+    .Cintrotxt1, .ouroffertxt1 {
+        font-size: 24px;
+    }
+    .Cstepsheading {
+        font-size: 16px;
     }
 }

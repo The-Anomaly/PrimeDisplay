@@ -260,11 +260,8 @@ class NewDashboard extends React.Component {
                       <div className="mobprofile">
                         <div className="kprofile psdd">
                           Profile
-                          {/* <div className="kprofile2 idds sowws psdd profiletxt">
-                            {client.profile}
-                          </div> */}
                           <div className="kprofile2 idds sowws psdd profiletxt">
-                            Entrepreneur (mid-level)
+                            {client.profile}
                           </div>
                         </div>
                       </div>

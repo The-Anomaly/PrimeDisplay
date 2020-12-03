@@ -28,6 +28,11 @@ const counsellorNavbar = withRouter((props: any) => {
           </div>
         </div>
         <div className="nav_titlenew">
+        <div className="title1 shiftlefff newshft">
+            <Link to="/forcounsellors">
+              <div className="title_t toindividual counsellorhome">Home</div>
+            </Link>
+          </div>
           <div className="title1 shiftlefff newshft">
             <Link to="/">
               <div className="title_t toindividual">For Individuals</div>
@@ -35,7 +40,7 @@ const counsellorNavbar = withRouter((props: any) => {
           </div>
 
           <div className="title1 shiftlefff newshft">
-            <Link to="/counsellor/signin">
+            <Link to="/counsellor/signup">
               <button className="title_t signupbtn newlogin">Sign Up</button>
             </Link>
           </div>
@@ -93,11 +98,14 @@ const counsellorNavbar = withRouter((props: any) => {
                 >
                   
                     <div className="listwraperMob">
+                      <Link to="/forcounsellors" className="smnav">Home</Link>
+                    </div>
+                    <div className="listwraperMob">
                       <Link to="/" className="smnav">For Individuals</Link>
                     </div>
                   
                     <div className="listwraperMob">
-                      <Link to="/counsellor/signin" className="navmobbtn smnav">Sign Up</Link>
+                      <Link to="/counsellor/signup" className="navmobbtn smnav">Sign Up</Link>
                     </div>
                   {/* {!userLoggedIn ? (
                     <div className="listwraperMob">

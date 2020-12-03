@@ -199,7 +199,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         a. Overseeing business activities and people to achieve
-                        a common goal
+                        a common goal.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -216,7 +216,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         b. Employ, train and manage people who work for an
-                        organization
+                        organization.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -233,7 +233,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         c. Convince people to buy into an idea, service or
-                        product
+                        product.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -249,7 +249,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        d. Help people make smart decisions with money
+                        d. Help people make smart decisions with money.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -266,7 +266,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         e. Provide additional help for the smooth running of a
-                        business
+                        business.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -291,7 +291,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             f. Understand how the world and the universe around
-                            us works
+                            us works.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -308,7 +308,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             g. Use technology to make people’s lives and jobs
-                            easier
+                            easier.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -325,7 +325,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             h. Figure out how things work and find practical use
-                            for scientific discoveries
+                            for scientific discoveries.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -342,7 +342,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             i. Apply mathematical theories and techniques in
-                            solving real life problems
+                            solving real life problems.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -359,7 +359,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             j. Study people’s behavior and why they do the
-                            things they do
+                            things they do.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -386,7 +386,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             k. Share your opinion on a football match for others
-                            to watch
+                            to watch.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -403,7 +403,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             l. Create a platform where people can bet on their
-                            favorite players
+                            favorite players.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -420,7 +420,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             m. Create opportunities for people to have fun doing
-                            sports
+                            sports.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -437,7 +437,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             n. Take care of the health and well-being of
-                            athletes
+                            athletes.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -454,7 +454,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             o. Create innovative products and solutions that
-                            make athletes quicker and stronger
+                            make athletes quicker and stronger.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -470,7 +470,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            p. Play different sports professionally
+                            p. Play different sports professionally.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -487,7 +487,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
                             q. Be involved in the business of sports and
-                            recreation
+                            recreation.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -520,7 +520,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                     <div className="skip"></div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        r. Impart knowledge and guide people down the right path
+                        r. Impart knowledge and guide people down the right path.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -537,7 +537,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         s. Champion a cause that changes the lives of people
-                        positively
+                        positively.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -554,7 +554,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         t. Represent the public interest of a group of people,
-                        country or nation
+                        country or nation.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -570,7 +570,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        u. Advocate for people’s rights using the law
+                        u. Advocate for people’s rights using the law.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -587,7 +587,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         v. Provide physical, emotional and social support to
-                        help people live their best lives
+                        help people live their best lives.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent

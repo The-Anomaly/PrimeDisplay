@@ -13,6 +13,7 @@ import step1 from "../../../assets/step1.png";
 import step2 from "../../../assets/step2.png";
 import step3 from "../../../assets/step3.png";
 import stepline from "../../../assets/stepline.png";
+import stepsconnect from "../../../assets/stepsconnect.png";
 
 const CounsellorLandingPage: React.FC = (props: any) => {
   return (
@@ -126,7 +127,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
         <div className="counsellorstat offercard">
             <div className="joinclarity">
                 <div className="joinclaritytxt1">
-                Become a more productive Counsellor, <div>Coach or Trainer with Clarity</div>
+                Become a more productive Counsellor, <div className="joinclaritysubtxt">Coach or Trainer with Clarity</div>
                 </div>
                 <div className="joinclaritytxt2">
                 Join the Clarity Counsellors & Coaching Network
@@ -138,6 +139,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
       <Row className="Csteps">
           <div className="Cstepsheading">3 easy steps to become a Clarity Counsellor</div>
           <div className="threesteps">
+            <img className="stepsconnect" src={stepsconnect} />
               <div className="stepss">
                   <img className="stepsimg" src={step1} alt="step 1" />
                   <div className="stepstxt">
