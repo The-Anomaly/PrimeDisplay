@@ -12,6 +12,7 @@
     position: fixed;
     z-index: 99;
     margin: 0;
+    box-shadow: 0px 2px 6px rgba(24, 33, 77, 0.25);
 }
 .toindividual {
     width: 140px;
@@ -55,6 +56,7 @@
     display: flex;
     padding: 12rem 4rem;
     position: relative;
+    transition: 0.3s;
 }
 .Cintro {
     padding: 6rem 0;
@@ -92,6 +94,7 @@
     padding: 0.7rem;
     border: 1px solid #9c1258;
     border-radius: 6px;
+    cursor: pointer;
 }
 .Cimg {
     width: 100%;
@@ -136,6 +139,7 @@
 .ouroffer {
     padding: 13rem 2rem;
     position: relative;
+    transition: 0.3s;
 }
 .ouroffertxt1 {
     font-family: 'Brfirma-Bold';
@@ -174,10 +178,18 @@
     margin-bottom: auto;
 }
 .offercard {
+    background: #ffffff;
+    margin: auto;
+    border-radius: 8px;
     width: 70%;
     margin-left: 13%;
     padding: 2rem 4rem;
+    display: flex;
     justify-content: space-between;
+    position: absolute;
+    bottom: -5.2rem;
+    z-index: 5;
+    box-shadow: 0 0.75rem 1.125rem rgba(0,0,0,0.125);
     left: 2%;
 }
 .joinclarity {
@@ -198,6 +210,7 @@
     background: #E5E5E5;
     padding: 11rem 4rem 8rem 4rem;
     flex-direction: column;
+    transition: 0.3s;
 }
 .Cstepsheading {
     margin: auto;
@@ -330,6 +343,8 @@
         padding: 2rem 1rem;
         bottom: -7rem;
         text-align: center;
+        flex-direction: column;
+        align-items: center;
     }
     .Cintrobtn {
         margin-bottom: 0;
@@ -366,6 +381,14 @@
     .statrsz {
         margin-left: 1rem;
     }
+    .step2 {
+        width: 180px;
+        margin-top: 3.5rem;
+    }
+    .step3 {
+        width: 200px;
+        margin-top: 3rem;
+    }
 }
 
 @media(max-width: 600px) {
@@ -400,6 +423,9 @@
     .counsellorintro {
         padding-left: 3rem;
         padding-right: 3rem;
+    }
+    .mobilenavfixed {
+        padding: 0.5rem 0;
     }
 }
 

@@ -383,7 +383,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
                       <div className="cfour">
                         <div>Time</div>
                       </div>
-                      <div className="cfive">
+                      <div className="cfive cfivenew">
                         <div>Member Type</div>
                       </div>
                       <div className="csix">

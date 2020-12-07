@@ -4193,9 +4193,12 @@ textarea.form-control.jobr {
     padding: 0.5rem 25%;
   }
 }
-@media(min-width: 906px) and (max-width:1050px) {
+@media(min-width: 906px) and (max-width:1075px) {
   .sesscard7 {
     margin-left: 88%;
+  }
+  .cfivenew {
+    flex: 15%;
   }
 }
 

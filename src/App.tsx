@@ -123,7 +123,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/oldhome" component={Home} />
               <Route exact path="/contact" component={Contactpage} />
-              <Route exact path="/payment" component={Paymentpage} />
+              <Route exact path="/pricing" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
               <Route exact path="/terms&conditions" component={Terms} />
               <Route exact path="/terms&conditions" component={Terms} />
