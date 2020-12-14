@@ -7,7 +7,8 @@ import vector4 from "../../assets/Personality Types.png";
 import vector5 from "../../assets/Vector5.png";
 import vector6 from "../../assets/Vector6.png";
 import vector7 from "../../assets/Vector7.png";
-import { Link } from "react-router-dom";
+import vectora from "../../assets/strength.png";
+import vector1a from "../../assets/weakness.png";
 
 const FreeOverviewCard = (props: any) => {
   return (
@@ -33,7 +34,26 @@ const FreeOverviewCard = (props: any) => {
               </div>
             </div>
           </a>
-          <div className="kitemwrapper" onClick={props.OpenModal()}>
+          <a href="/overview/#strength">
+            <div className="kitemwrapper bgstrength">
+              <img src={vectora} alt="vector" />
+              <div className="v1strength">Strength</div>
+              <div className="cardttx">
+                Get in-depth description of specific strengths you have.
+              </div>
+            </div>
+          </a>
+          <a href="/overview/#weakness">
+            <div className="kitemwrapper bgweakness">
+              <img src={vector1a} alt="vector" />
+              <div className="v1strength">Weaknesses</div>
+              <div className="cardttx">
+                Our assessment identified specific habits you need curb in order
+                to have a productive career and work life.
+              </div>
+            </div>
+          </a>
+          {/* <div className="kitemwrapper" onClick={props.OpenModal()}>
             <img src={vector} alt="vector" />
             <div className="v1strength">Strength</div>
             <div className="cardttx">
@@ -47,7 +67,7 @@ const FreeOverviewCard = (props: any) => {
               Our assessment identified specific habits you need curb in order
               to have a productive career and work life.
             </div>
-          </div>
+          </div> */}
           <div className="kitemwrapper" onClick={props.OpenModal()}>
             <img src={vector2} alt="vector" />
             <div className="v1strength">Strong Career Competencies</div>

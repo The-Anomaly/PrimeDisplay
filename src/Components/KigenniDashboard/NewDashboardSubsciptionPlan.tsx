@@ -616,6 +616,10 @@ class NewDashboardSubsriptionPlan extends React.Component {
                               <img src={mark} className="card-image" />
                               Cv builder
                             </li>
+                            <li>
+                              <img src={mark} className="card-image" />
+                              Strength & Weakness Report
+                            </li>
                           </ul>
                             {/* <Link to="/dashboardsubscriptionplan">
                               <span className="card_btn btn-yellow">

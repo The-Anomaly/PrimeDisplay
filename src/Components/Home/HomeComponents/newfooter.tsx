@@ -60,7 +60,7 @@ const NewFooter: React.FC = (props) => {
               <Link to="/" ><span>HOME</span></Link>
               <Link to="/aboutus"><span>ABOUT US</span></Link>
               <Link to="/contact"><span>CONTACT US</span></Link>
-              <Link to="/payment" ><span>PAYMENT</span></Link>
+              <Link to="/payment" ><span>PRICING</span></Link>
           </div>
           <div className="ftrpolicy">
           <Link to="/terms&conditions" target="_blank"><span className="ftrterms">Terms of Service</span></Link>

@@ -285,7 +285,7 @@ const counsellorSignup = withRouter((props: any) => {
           <Link to="/forcounsellors"><div className="Csignupbtn">&#8592; Back To Home</div></Link>
         </Modal.Body>
       </Modal>
-      <div className="rdsignup-section paddit">
+      <div className="rdsignup-section counsellorsignup paddit">
         <Container>
           <Row className="rsignuprow">
             <Col md={12} className="rsignupdiv newrsignupdiv">

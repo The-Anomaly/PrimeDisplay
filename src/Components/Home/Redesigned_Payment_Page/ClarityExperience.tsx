@@ -394,6 +394,10 @@ const Payment = (props: any) => {
                               <img src={mark} className="card-image" />
                               Cv builder
                             </li>
+                            <li>
+                              <img src={mark} className="card-image" />
+                              Strength & Weakness Report
+                            </li>
                           </ul>
                           {withoutlogin ? (
                             <Link to="/signin">

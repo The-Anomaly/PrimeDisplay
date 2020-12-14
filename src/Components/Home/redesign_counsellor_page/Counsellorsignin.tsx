@@ -137,7 +137,7 @@ const counsellorSignin = withRouter((props: any) => {
   return (
     <div>
       <Navbar />
-      <div className="rdsignup-section paddit">
+      <div className="rdsignup-section counsellorsignup paddit">
         <Container>
           <Row className="rsignuprow">
             <Col md={12} className="rsignupdiv">

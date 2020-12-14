@@ -421,11 +421,6 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/counsellor/userinsight"
-                component={CounsellorViewUserResult}
-              />
-              <Route
-                exact
                 path="/counsellorsupport"
                 component={CounsellorSupport}
               />

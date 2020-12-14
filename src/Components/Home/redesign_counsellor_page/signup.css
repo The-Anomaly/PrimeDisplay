@@ -1,7 +1,9 @@
 .rdsignup-section {
-    background-color: #f9f9f9;
     color: #fff;
     padding-bottom: 100px;
+  }
+  .counsellorsignup {
+    background-color: #f9f9f9;
   }
   .rsignuprow {
     justify-content: center;

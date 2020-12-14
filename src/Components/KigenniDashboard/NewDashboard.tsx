@@ -18,7 +18,8 @@ import FreeOverviewCard from "./overviewcardsfree";
 import PaidOverviewCard from "./overviewcardspaid";
 import { Link } from "react-router-dom";
 import HorizontalBar from "./HorizontalBar";
-
+import vector1 from "../../assets/whiteicon1.png";
+import vector2 from "../../assets/whiteicon2.png";
 
 
 interface State {
@@ -298,7 +299,7 @@ class NewDashboard extends React.Component {
                     </div>
                   )}
                   <div className="resultsec2 lswid" id="seek">
-                    <div className="csfitscore2">Your Career Fitness Score</div>
+                    <div className="csfitscore2">Your Level of Career Clarity</div>
                     <div className="resultsec22">
                       <CirclePie
                         width={190}
@@ -316,7 +317,7 @@ class NewDashboard extends React.Component {
                     <div className="csfitscore" id="drivers">
                       <div className="divide"></div>{" "}
                       <div className="csfitscore1">
-                        Your Career Fitness Score
+                      Your Level of Career Clarity
                       </div>
                       <div className="vbnc1">
                         {" "}
@@ -375,6 +376,40 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                   </div>
+                  <div>
+                <div className="kz1" >
+                  <div className="contkflex newcontkflex" id="strength">
+                    <div className="kz2">
+                      <img src={vector1} className="kl3" alt="vector2" />
+                      <div>Your Strengths</div>
+                    </div>
+                    <div className="kz12">
+                      <ul className="grapwrap">
+                        {client?.strengths?.map((strength, index) => (
+                          <li className="grapssin career221 insighttxt" key={index}>
+                            {strength}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="contkflex newcontkflex" id="weakness">
+                    <div className="kz2a">
+                      <img src={vector2} className="kl3" alt="vector2" />
+                      <div>Your Weaknesses</div>
+                    </div>
+                    <div className="kz12">
+                      <ul className="grapwrap">
+                        {client?.weaknesses?.map((weakness, index) => (
+                          <li className="grapssin career221 insighttxt" key={index}>
+                            {weakness}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
                   {!showfullresult && (
                     <FreeOverviewCard
                       OpenModal={() => this.OpenNotPaidWarning}
@@ -387,7 +422,7 @@ class NewDashboard extends React.Component {
                       this.checkIfUserHasMadePaymentForFullResult()
                     }
                   >
-                    View Full Insight
+                    Know what to do next
                   </div>
                 </Col>
               </Row>

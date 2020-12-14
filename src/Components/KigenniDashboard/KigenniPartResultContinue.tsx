@@ -406,7 +406,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
               </div>
               <hr />
               <div className="resultsec2" id="seek">
-                <div className="csfitscore2">Your Career Fitness Score</div>
+                <div className="csfitscore2">Your Level of Career Clarity</div>
                 <div className="resultsec22">
                   <CirclePie
                     width={190}
@@ -423,7 +423,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   {/* <img src={firstChart} className="firstChart" alt="firstChart" /> */}
                 </div>
                 <div className="csfitscore">
-                  <div className="csfitscore1">Your Career Fitness Score</div>
+                  <div className="csfitscore1">Your Level of Career Clarity</div>
                   <div className="vbnc1">
                     {" "}
                     {client?.career_fitness?.heading}{" "}
@@ -432,7 +432,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 </div>
               </div>
               <hr />
-              {/* <div>
+              <div>
                 <div className="tipswrapper">
                   <div>
                     <div className="stbly1">
@@ -452,7 +452,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   </div>
                 </div>
               </div>
-              <hr /> */}
+              <hr />
               <div className="resultsec3" id="personality">
                 <div className="reskwrap">
                   <div className="csfitscore1 juki  reskheader">
