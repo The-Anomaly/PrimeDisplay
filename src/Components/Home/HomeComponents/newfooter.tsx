@@ -32,8 +32,8 @@ const NewFooter: React.FC = (props) => {
     };
     Axios.post(`${API}/newsletter/`, data)
     .then((response)=>{
-      console.log("Newsletter sign up successful")
-      console.log(response)}
+      // console.log("Newsletter sign up successful")
+      // console.log(response)}
     )
     .catch((error) => {
       console.error("Newsletter signup failed")

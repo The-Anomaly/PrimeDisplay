@@ -107,7 +107,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error?.response?.data[0]?.message,
@@ -125,7 +125,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     return dateTime;
   };
   handleChatCheck = () => {
-    console.log("checking payment status");
+    // console.log("checking payment status");
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -136,16 +136,16 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
-        console.log(localStorage.getItem("accessFeature"));
+        // console.log(response);
+        // console.log(localStorage.getItem("accessFeature"));
         if (response?.data[0]?.book_session === true) {
-          console.log("Payment Summary Check");
+          // console.log("Payment Summary Check");
           return this.sendMessageToCounselor();
         } else {
           // localStorage.setItem("currentLocation", window.location.pathname);
           // const userLocation = localStorage.getItem("currentLocation");
           // const prevLocation = userLocation ? JSON.parse(userLocation) : "";
-          console.log("No payment");
+          // console.log("No payment");
           //return window.location.assign("/dashboardsubscriptionplan");
           return this.setState({
             upgradeState: true,
@@ -153,7 +153,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.error("Payment Status Error");
+        // console.error("Payment Status Error");
       });
   };
   onChange = (date) => {

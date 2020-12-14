@@ -170,11 +170,11 @@ class NewDashboard extends React.Component {
       : "";
 
     if (featureToCheck["ask_counsellor"] === true) {
-      console.log("Ask a counselor successful");
+      // console.log("Ask a counselor successful");
       window.location.assign("/allusermessages");
     } else {
       //notify("Update your subscription to access this feature");
-      console.log("Can't access ask a counselor");
+      // console.log("Can't access ask a counselor");
       return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
     }
   };

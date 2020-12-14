@@ -47,7 +47,7 @@ const CounsellorScheduledMeetings = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -143,7 +143,7 @@ const CounsellorScheduledMeetings = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -182,7 +182,7 @@ const CounsellorScheduledMeetings = (props: any) => {
     count,
     total_pages,
   } = state;
-  console.log(counsellorData);
+  // console.log(counsellorData);
   return (
     <>
       <Container fluid={true} className="contann122">

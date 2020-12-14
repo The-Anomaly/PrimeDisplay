@@ -25,7 +25,7 @@ const ForgotPasswordCounselor= withRouter((props: any) => {
     isLoading,
   } = state;
   const sendFormData = () => {
-    console.log("we are here")
+    // console.log("we are here")
     setState({ ...state, isLoading: true });
     const data = {
       email,
@@ -38,7 +38,7 @@ const ForgotPasswordCounselor= withRouter((props: any) => {
         },
       })
       .then((response) => {
-        console.log(response)
+        // console.log(response)
         if (response.status === 200) {
          return setState({
             ...state,
@@ -52,7 +52,7 @@ const ForgotPasswordCounselor= withRouter((props: any) => {
         });
       })
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
         if (error && error.response && error.response.data) {
           setState({
             ...state,

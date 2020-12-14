@@ -86,7 +86,7 @@ const Payment = (props: any) => {
       errorMessage: "",
     });
   };
-  console.log(giftmail);
+  // console.log(giftmail);
 
   const formActionHandler = (e) => {
     setFormState({
@@ -135,7 +135,7 @@ const Payment = (props: any) => {
         onComplete: function (response) {
           if (response.paymentStatus === "OVERPAID") {
             if(selectedSubscription !== "") {
-              console.log("Gift subscription successful!");
+              // console.log("Gift subscription successful!");
               notify("Gift subscription overpaid!");
             }
             notify(
@@ -148,14 +148,14 @@ const Payment = (props: any) => {
           }
           if (response.paymentStatus === "PAID") {
             if(selectedSubscription !== "") {
-              console.log("Gift subscription successful!");
+              // console.log("Gift subscription successful!");
               notify("Gift subscription successful!");
                // return setTimeout(
               //   (window.location.pathname = "/dashboardsubscriptionplan"),
               //   3000
               // );
             }
-            console.log("paid");
+            // console.log("paid");
             const availableToken = localStorage.getItem("userToken");
             const token = availableToken ? JSON.parse(availableToken) : "";
             axios
@@ -163,26 +163,26 @@ const Payment = (props: any) => {
                 headers: { Authorization: `Token ${token}` },
               })
               .then((response1) => {
-                console.log(response1);
+                // console.log(response1);
                 console.log(response1?.data[0]);
                 localStorage.setItem(
                   "accessFeature",
                   JSON.stringify(response1?.data[0])
                 );
-                console.log(localStorage.getItem("accessFeature"));
+                // console.log(localStorage.getItem("accessFeature"));
                 const stringFeature = localStorage.getItem("accessFeature");
                 const featureToCheck = stringFeature
                   ? JSON.parse(stringFeature)
                   : "";
               })
               .catch((error) => {
-                console.error("Payment Status Error");
+                // console.error("Payment Status Error");
               });
-            console.log("Payment Successfull");
+            // console.log("Payment Successfull");
           }
           if (response.paymentStatus === "PENDING") {
             if(selectedSubscription !== "") {
-              console.log("Gift subscription unsuccessful!");
+              // console.log("Gift subscription unsuccessful!");
               notify("Gift subscription pending!");
             }
             notify("Payment Pending");
@@ -193,7 +193,7 @@ const Payment = (props: any) => {
           }
         },
         onClose: function (data) {
-          console.log("On close function");
+          // console.log("On close function");
           return setTimeout(
             (window.location.pathname = "/dashboardsubscriptionplan"),
             3000
@@ -222,7 +222,7 @@ const Payment = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setFormState({
           ...state,
           user: response?.data[0]?.payment_reference,
@@ -238,7 +238,7 @@ const Payment = (props: any) => {
 
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setFormState({
           ...state,
           isLoading: false,
@@ -260,7 +260,7 @@ const Payment = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setFormState({
           ...state,
           user: response?.data[0]?.payment_reference,
@@ -276,7 +276,7 @@ const Payment = (props: any) => {
 
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setFormState({
           ...state,
           isLoading: false,

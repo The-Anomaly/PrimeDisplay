@@ -229,7 +229,7 @@ class CounsellorCVProfileBuilder extends React.Component {
         if(res.data.new_user){
          return this.notify("Please fill your profile")
         }
-        console.log(res)
+        // console.log(res)
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
@@ -245,7 +245,7 @@ class CounsellorCVProfileBuilder extends React.Component {
         });
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
         if (err) {
           this.notify("Failed to fetch data");
         }

@@ -198,7 +198,7 @@ const TodoOverview = withRouter((props: any) => {
         }, 3000);
       })
       .catch((err) => {
-        console.log(err.response);
+        // console.log(err.response);
         notify("Failed to send");
       });
   };
@@ -222,7 +222,7 @@ const TodoOverview = withRouter((props: any) => {
       }
     )
       .then((res) => {
-        notify("Successful");
+        // notify("Successful");
         setModState({
           ...modalState,
           success: true,
@@ -243,7 +243,7 @@ const TodoOverview = withRouter((props: any) => {
         });
       });
   };
-  console.log(alltask);
+  // console.log(alltask);
   return (
     <>
       <Container fluid={true} className="contann122">

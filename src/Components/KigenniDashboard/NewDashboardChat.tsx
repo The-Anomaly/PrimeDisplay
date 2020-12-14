@@ -41,7 +41,7 @@ class NewDashboardChat extends React.Component {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           this.setState({
             userInfo: response.data[0].email,
@@ -50,7 +50,7 @@ class NewDashboardChat extends React.Component {
         this.scrollToBottom();
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }
   formatTime = (date) => {
@@ -59,7 +59,7 @@ class NewDashboardChat extends React.Component {
   initialiseChat(id) {
     this.waitForSocketConnection(() => {
       WebSocketInstance.fetchMessages(id);
-      console.log(id);
+      // console.log(id);
     });
     WebSocketInstance.connect(id);
   }
@@ -76,11 +76,11 @@ class NewDashboardChat extends React.Component {
     const component = this;
     setTimeout(function () {
       if (WebSocketInstance.state() === 1) {
-        console.log("conection is made!");
+        // console.log("conection is made!");
         callback();
         return;
       } else {
-        console.log("waiting for connection....");
+        // console.log("waiting for connection....");
         component.waitForSocketConnection(callback);
       }
     }, 100);
@@ -112,7 +112,7 @@ class NewDashboardChat extends React.Component {
 
   render() {
     const { isLoading, user, message }: any = this.state;
-    console.log(this.props.messages);
+    // console.log(this.props.messages);
     return (
       <>
         <Container fluid={true} className="contann122">

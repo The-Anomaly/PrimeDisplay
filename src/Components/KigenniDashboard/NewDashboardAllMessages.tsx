@@ -45,7 +45,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
     if (featureToCheck["ask_counsellor"] === false) {
       //notify("Update your subscription to access this feature");
-      console.log("Can't access ask a counselor");
+      // console.log("Can't access ask a counselor");
       setTimeout(
         (window.location.pathname = "/dashboardsubscriptionplan"),
         1000
@@ -66,7 +66,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -77,7 +77,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
         })
       )
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error.response && error.response.data) {
           return setState({
             ...state,
@@ -114,7 +114,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             return setState({
               ...state,
@@ -132,7 +132,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
             userData: [],
           });
         }
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error.response && error.response.data) {
           return setState({
             ...state,
@@ -163,8 +163,8 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(User);
-          console.log(res);
+          // console.log(User);
+          // console.log(res);
           window.location.assign(
             `/usermessagehistory/${User[0].email}/${res.data.chatId}`
           );
@@ -184,7 +184,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
             userData: [],
           });
         }
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error.response && error.response.data) {
           return setState({
             ...state,
@@ -200,7 +200,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
         });
       });
   };
-  console.log(userData);
+  // console.log(userData);
   const formatTime = (date) => {
     return moment(date).fromNow();
   };

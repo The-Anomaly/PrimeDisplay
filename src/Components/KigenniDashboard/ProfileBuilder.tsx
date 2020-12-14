@@ -296,7 +296,7 @@ class ProfileBuilder extends React.Component {
         });
       })
       .then((resp) => {
-        console.log(resp)
+        // console.log(resp)
         //remove the # on the prefix of the url string and move the page to that postion on the page
         let resultareawithtitle: string = window.location.hash;
         resultareawithtitle = resultareawithtitle.substring(1);

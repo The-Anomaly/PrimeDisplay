@@ -53,7 +53,7 @@ class CounsellorsRecommendation extends React.Component {
     });
   };
   openModal = (id) => {
-    console.log(id);
+    // console.log(id);
     this.setState({
       setReminderModal: true,
       id,
@@ -120,7 +120,7 @@ class CounsellorsRecommendation extends React.Component {
       });
   }
   makeRecommendationToDo = () => {
-    console.log(this.state.id);
+    // console.log(this.state.id);
     this.setState({ isLoading: true });
     const { startDate, frequency } = this.state;
     if (startDate === "" || frequency === "" || startDate === "") {
@@ -228,7 +228,7 @@ class CounsellorsRecommendation extends React.Component {
       }
     )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           isloading:false
         })
@@ -242,7 +242,7 @@ class CounsellorsRecommendation extends React.Component {
           isloading:false
         })
         this.notify("An error occured please try again");
-        console.log(err);
+        // console.log(err);
         setTimeout(() => {
           this.closeRateSession();
         }, 3000);
@@ -253,7 +253,7 @@ class CounsellorsRecommendation extends React.Component {
     return dateTime;
   };
   render() {
-    console.log(this.state.ratingInfo);
+    // console.log(this.state.ratingInfo);
     const {
       fullname,
       startDate,

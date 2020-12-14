@@ -46,11 +46,11 @@ const counsellorSignup = withRouter((props: any) => {
       password: password,
       info: howYouHeardAboutUs,
     };
-    console.log(data);
+    // console.log(data);
     //posting data to the api
     axios.post(`${API}/accounts/counsellor-signup/`, data)
     .then( ( response ) => {
-      console.log(response)
+      // console.log(response)
       setFormState({
           ...state,
           successMessage: response.data[0].message,
@@ -64,7 +64,7 @@ const counsellorSignup = withRouter((props: any) => {
         );
         setTimeout(()=>{
           props?.history?.push("/counselloroverview")
-          console.log(props)
+          // console.log(props)
         },5000)
          setFormState({
           ...state,
@@ -78,7 +78,7 @@ const counsellorSignup = withRouter((props: any) => {
       }
     })
     .catch( (error) => {
-      console.log(error.response);
+      // console.log(error.response);
       window.scrollTo(-0,-0);
       if (error && error.response && error.response.data){
         return setFormState({

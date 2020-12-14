@@ -252,7 +252,7 @@ class CVProfileBuilder extends React.Component {
         });
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
         if (err) {
           this.notify("Failed to fetch data");
         }

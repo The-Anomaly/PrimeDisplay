@@ -52,8 +52,8 @@ const Referrals = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res);
-          console.log(res1);
+          // console.log(res);
+          // console.log(res1);
           if (res1.status === 200) {
             setState({
               ...state,
@@ -73,12 +73,12 @@ const Referrals = (props: any) => {
               total_pages: res.data.total_pages,
               isLoading: false,
             });
-            console.log(counsellorData)
+            // console.log(counsellorData)
           }
         })
       )
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error.response && error.response.data) {
           setState({
             ...state,
@@ -179,7 +179,7 @@ const Referrals = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -229,8 +229,8 @@ const Referrals = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(User);
-          console.log(res);
+          // console.log(User);
+          // console.log(res);
           window.location.assign(
             `/counsellormessagehistory/${email}/${res.data.chatId}`
           );
@@ -249,7 +249,7 @@ const Referrals = (props: any) => {
             errorMessage: error.response.data.message,
           });
         }
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error.response && error.response.data) {
           return setState({
             ...state,
@@ -275,7 +275,7 @@ const Referrals = (props: any) => {
     clarityLink,
     hascopiedLink,
   } = state;
-  console.log(referalInfo);
+  // console.log(referalInfo);
   return (
     <>
       <Container fluid={true} className="contann122">

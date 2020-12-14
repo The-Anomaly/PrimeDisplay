@@ -100,7 +100,7 @@ const CounsellorOverview = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1, res2, res3) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,
@@ -135,10 +135,10 @@ const CounsellorOverview = (props: any) => {
       });
   }, []);
   const openModal = (id) => {
-    console.log(user);
-    console.log(id);
+    // console.log(user);
+    // console.log(id);
     user.forEach((data) => {
-      console.log(data);
+      // console.log(data);
       if (data.id === id) {
         setFormState({
           ...state,
@@ -210,7 +210,7 @@ const CounsellorOverview = (props: any) => {
       ? JSON.parse(availableToken)
       : props.history.push("/counsellor/signin");
     if (taskTitle !== "" || taskDescription !== "" || taskDuration !== "") {
-      console.log("here");
+      // console.log("here");
       const recommendation = [
         {
           title: taskTitle,
@@ -226,7 +226,7 @@ const CounsellorOverview = (props: any) => {
         say_something: session_about,
         id: sessionId
       };
-      console.log(data);
+      // console.log(data);
       Axios.post<any, AxiosResponse<any>>(
         `${API}/counsellor/complete-session`,
         data,
@@ -235,14 +235,14 @@ const CounsellorOverview = (props: any) => {
         }
       )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           notify("Successful");
           setTimeout(() => {
             window.location.reload();
           }, 2000);
         })
         .catch((err) => {
-          console.log(err.response);
+          // console.log(err.response);
         });
     }
     if (taskTitle === "" || taskDescription === "" || taskDuration === "") {
@@ -253,7 +253,7 @@ const CounsellorOverview = (props: any) => {
         say_something: session_about,
         id: sessionId,
       };
-      console.log(data);
+      // console.log(data);
       Axios.post<any, AxiosResponse<any>>(
         `${API}/counsellor/complete-session`,
         data,
@@ -262,14 +262,14 @@ const CounsellorOverview = (props: any) => {
         }
       )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           notify("Successful");
           setTimeout(() => {
             // window.location.reload();
           }, 2000);
         })
         .catch((err) => {
-          console.log(err.response);
+          // console.log(err.response);
         });
     }
   };
@@ -281,7 +281,7 @@ const CounsellorOverview = (props: any) => {
   }
 
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(task_type);
+  // console.log(task_type);
   return (
     <>
       <Container fluid={true} className="contann122">

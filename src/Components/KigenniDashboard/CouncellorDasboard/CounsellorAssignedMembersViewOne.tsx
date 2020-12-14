@@ -71,8 +71,8 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1, res2) => {
-          console.log(res1);
-          console.log(res2);
+          // console.log(res1);
+          // console.log(res2);
           if (res.status === 200) {
             setState({
               ...state,
@@ -170,7 +170,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -228,7 +228,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     total_pages,
     industry_interest,
   } = state;
-  console.log(counsellorData);
+  // console.log(counsellorData);
   return (
     <>
       <Container fluid={true} className="contann122">

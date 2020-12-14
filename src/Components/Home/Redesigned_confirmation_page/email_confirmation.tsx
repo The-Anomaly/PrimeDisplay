@@ -23,7 +23,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
   useEffect(()=>{
     const user :any= localStorage.getItem("userEmail") 
     const userEmail = JSON.parse(user)
-    console.log(userEmail)
+    // console.log(userEmail)
     setState({
       ...state,
       client:userEmail
@@ -38,7 +38,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
      const data ={
        email: client,
      };
-     console.log(data);
+    //  console.log(data);
      axios.post(`${API}/accounts/resend-code/`,data)
      .then((response)=>{
        if (response.status === 200) {
@@ -50,7 +50,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
        }
      })
      .catch((error)=>{
-       console.log(error.response)
+      //  console.log(error.response)
        setState({
          ...state,
          errorMessage: error?.response?.data.message
@@ -64,10 +64,10 @@ const Email_confirm_page = withRouter ((props: any ) => {
       email: client,
       code: confirmEmail
     }
-    console.log(data)
+    // console.log(data)
     axios.post<any, AxiosResponse<any>>(`${API}/accounts/confirm-code/`,data)
     .then(( response )=>{
-      console.log(response)
+      // console.log(response)
 
       if (response.status === 200){
         localStorage.setItem(
@@ -76,7 +76,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
         );
         setTimeout(()=>{
           props?.history?.push("/clientchat")
-          console.log(props)
+          // console.log(props)
         },4000)
           setState({
             ...state,
@@ -86,7 +86,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
       
     })
     .catch((error)=>{
-      console.log(error.response)
+      // console.log(error.response)
       if(error && error.response && error.response.data){
         return setState({
           ...state,
@@ -121,7 +121,7 @@ const Email_confirm_page = withRouter ((props: any ) => {
       confirmEmail: e.target.value
     })
   }
-  console.log(client)
+  // console.log(client)
   return(
     <div>
       <Navbar />

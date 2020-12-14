@@ -177,7 +177,7 @@ const TodoList = (props: any) => {
         }, 3000);
       })
       .catch((err) => {
-        console.log(err.response);
+        // console.log(err.response);
         notify("Failed to send");
       });
   };
@@ -198,7 +198,7 @@ const TodoList = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,

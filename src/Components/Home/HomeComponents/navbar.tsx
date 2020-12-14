@@ -40,7 +40,7 @@ const Navbar = withRouter((props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }, []);
 

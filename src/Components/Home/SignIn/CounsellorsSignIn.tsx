@@ -70,7 +70,7 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
 
         if (error && error?.response?.status == 500) {
           return setFormState({
@@ -132,8 +132,8 @@ const CounsellorsSignIn: React.FunctionComponent = (props: any) => {
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log("Counselor sign in successful");
-          console.log(response);
+          // console.log("Counselor sign in successful");
+          // console.log(response);
           props.history.push("/counselloroverview");
         }
       })

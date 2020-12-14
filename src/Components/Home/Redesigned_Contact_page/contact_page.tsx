@@ -29,7 +29,7 @@ const Contactpage = () => {
          email: email,
          message: message
        }
-       console.log(data);
+      //  console.log(data);
       
          axios.post(`${API}/send-contact-support/`,data)
          .then( response => {

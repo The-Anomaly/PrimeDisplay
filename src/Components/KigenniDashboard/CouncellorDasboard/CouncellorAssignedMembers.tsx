@@ -47,7 +47,7 @@ const CounsellorAssignedMembers = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -143,7 +143,7 @@ const CounsellorAssignedMembers = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -192,8 +192,8 @@ const CounsellorAssignedMembers = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(User);
-          console.log(res);
+          // console.log(User);
+          // console.log(res);
           window.location.assign(
             `/counsellormessagehistory/${user_email}/${res.data.chatId}`
           );
@@ -212,7 +212,7 @@ const CounsellorAssignedMembers = (props: any) => {
             errorMessage: error.response.data.message,
           });
         }
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error.response && error.response.data) {
           return setState({
             ...state,
@@ -235,7 +235,7 @@ const CounsellorAssignedMembers = (props: any) => {
     count,
     total_pages,
   } = state;
-  console.log(counsellorData);
+  // console.log(counsellorData);
   return (
     <>
       <Container fluid={true} className="contann122">

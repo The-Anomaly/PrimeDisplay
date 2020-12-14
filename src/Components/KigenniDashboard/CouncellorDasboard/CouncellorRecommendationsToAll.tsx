@@ -64,7 +64,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,
@@ -114,7 +114,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,
@@ -164,7 +164,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,
@@ -195,7 +195,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
       });
   };
 
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <Container fluid={true} className="contann122">

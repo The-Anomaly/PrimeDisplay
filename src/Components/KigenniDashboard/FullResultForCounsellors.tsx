@@ -189,7 +189,7 @@ class FullResultForCounsellors extends React.Component<React.Props<any>> {
       success,
       show,
     } = this.state;
-    console.log(this.props)
+    // console.log(this.props)
     const margin = { top: 20, right: 20, bottom: 30, left: 40 };
     return (
       <>
