@@ -13,11 +13,14 @@ import step1 from "../../../assets/step1.png";
 import step2 from "../../../assets/step2.png";
 import step3 from "../../../assets/step3.png";
 import stepline from "../../../assets/stepline.png";
+import stepsconnect from "../../../assets/stepsconnect.png";
+import { Link } from "react-router-dom";
 
 const CounsellorLandingPage: React.FC = (props: any) => {
+  window.scrollTo(-0,-0);
   return (
     <>
-      <Navbar />
+      <Navbar home={true} />
       <Row md={12} className="counsellorintro">
         <Col md={6} className="Cintro smintrosize">
           <div className="Cintrotxt1">
@@ -30,7 +33,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
           <div className="Cintrotxt3">
             Then Clarity for Counsellors is just for you.
           </div>
-          <div className="Cintrobtn">GET STARTED</div>
+          <Link to="/counsellor/signup"><div className="Cintrobtn">GET STARTED</div></Link>
         </Col>
         <Col md={6} className="smintrosize Cimgsec">
           <img className="Cimg" src={counsellorimg} alt="counsellor" />
@@ -123,42 +126,43 @@ const CounsellorLandingPage: React.FC = (props: any) => {
             </div>
           </div>
         </Col>
-        <div className="counsellorstat offercard">
+        <div className="offercard">
             <div className="joinclarity">
                 <div className="joinclaritytxt1">
-                Become a more productive Counsellor, <div>Coach or Trainer with Clarity</div>
+                Become a more productive Counsellor, <div className="joinclaritysubtxt">Coach or Trainer with Clarity</div>
                 </div>
                 <div className="joinclaritytxt2">
                 Join the Clarity Counsellors & Coaching Network
                 </div>
             </div>
-            <div className="Cintrobtn">GET STARTED</div>
+            <Link to="/counsellor/signup"><div className="Cintrobtn">GET STARTED</div></Link>
         </div>
       </Row>
       <Row className="Csteps">
           <div className="Cstepsheading">3 easy steps to become a Clarity Counsellor</div>
           <div className="threesteps">
+            <img className="stepsconnect" src={stepsconnect} />
               <div className="stepss">
                   <img className="stepsimg" src={step1} alt="step 1" />
                   <div className="stepstxt">
                       <div className="steptxt1">Sign Up</div>
-                      <div className="steptxt2">Cursus id magna ullamcorper interdum vitae nunc, volutpat.</div>
+                      <div className="steptxt2">Start by creating an account on Clarity.</div>
                   </div>
               </div>
               <img className="stepline" src={stepline} />
-              <div className="stepss">
+              <div className="stepss step2">
                   <img className="stepsimg" src={step2} alt="step 2" />
                   <div className="stepstxt">
                       <div className="steptxt1">Get Confirmed</div>
-                      <div className="steptxt2">Cursus id magna ullamcorper interdum vitae nunc, volutpat.</div>
+                      <div className="steptxt2">You will be contacted by yudimy and onboarded.</div>
                   </div>
               </div>
               <img className="stepline" src={stepline} />
-              <div className="stepss">
+              <div className="stepss step3">
                   <img className="stepsimg" src={step3} alt="step 3" />
                   <div className="stepstxt">
                       <div className="steptxt1">Get Assigned Clients</div>
-                      <div className="steptxt2">Cursus id magna ullamcorper interdum vitae nunc, volutpat.</div>
+                      <div className="steptxt2">Get assigned users and share your unique link with your personal clients.</div>
                   </div>
               </div>
           </div>

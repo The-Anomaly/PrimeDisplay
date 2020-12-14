@@ -123,7 +123,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/oldhome" component={Home} />
               <Route exact path="/contact" component={Contactpage} />
-              <Route exact path="/payment" component={Paymentpage} />
+              <Route exact path="/pricing" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
               <Route exact path="/terms&conditions" component={Terms} />
               <Route exact path="/terms&conditions" component={Terms} />
@@ -414,11 +414,6 @@ class App extends Component {
                 component={CounsellorAssignedMembersViewOne}
               />
               <Route exact path="/referrals" component={Referrals} />
-              <Route
-                exact
-                path="/counsellor/userinsight"
-                component={CounsellorViewUserResult}
-              />
               <Route
                 exact
                 path="/counsellor/userinsight"

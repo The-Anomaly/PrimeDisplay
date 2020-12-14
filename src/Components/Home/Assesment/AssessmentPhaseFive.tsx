@@ -628,8 +628,8 @@ const AssessmentFifthPhase = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  g.To be honest you are energized when you have real control
-                  over people and resources other than that, working is a waste
+                  g. You are energized when you have real control
+                  over people and resources; other than that, working is a waste
                   of time.
                 </div>
                 <div className="rsliderclass9">

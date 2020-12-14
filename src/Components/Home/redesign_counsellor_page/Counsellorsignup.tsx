@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../HomeComponents/newnavbar";
+import Navbar from "../../KigenniDashboard/CounsellorLandingPage/counsellornavbar";
 import "./signup.css";
 import { Link, withRouter } from "react-router-dom";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Modal } from "react-bootstrap";
 import axios from "axios";
 import { API } from "../../../config";
 import Alert from "react-bootstrap/Alert";
 import eye from "../../../assets/eye.png";
 import eyeclose from "../../../assets/eye-off.png";
 import drpdwnarr from "../../../assets/dwn-arrw.png";
+import modalimg from "../../../assets/ouroffer.svg"
 
 const counsellorSignup = withRouter((props: any) => {
   const [state, setFormState] = useState({
@@ -36,7 +37,10 @@ const counsellorSignup = withRouter((props: any) => {
     successMessage,
     errorMessage,
   } = state;
-
+  const [modState, setModState] = React.useState(false);
+  const closeSignUpModal =()=> {
+    setModState(false);
+  }
   const onSubmit = () => {
     setFormState({ ...state, isLoading: true });
     const data = {
@@ -66,6 +70,15 @@ const counsellorSignup = withRouter((props: any) => {
           props?.history?.push("/counselloroverview")
           // console.log(props)
         },5000)
+       console.log("counsellor signup complete")
+        //  localStorage.setItem(
+        //   "userToken",
+        //   JSON.stringify(response.data[0].token)
+        // );
+        // setTimeout(()=>{
+        //   props?.history?.push("/counselloroverview")
+        //   console.log(props)
+        // },5000)
          setFormState({
           ...state,
           errorMessage: "",
@@ -73,8 +86,7 @@ const counsellorSignup = withRouter((props: any) => {
           isLoading:false,
           error: true
         });
-       
-      
+        setModState(true);
       }
     })
     .catch( (error) => {
@@ -134,7 +146,7 @@ const counsellorSignup = withRouter((props: any) => {
     if (howYouHeardAboutUs == "") {
       return setFormState({
         ...state,
-        errorMessage: "Please enter you heard about us",
+        errorMessage: "Please enter how you heard about us",
       });
     }
 
@@ -265,10 +277,27 @@ const counsellorSignup = withRouter((props: any) => {
   return (
     <div>
       <Navbar />
-      <div className="rdsignup-section paddit">
+      <Modal
+      show = {modState}
+      centered = {true}
+      // onHide = {closeSignUpModal}
+      className = "Csignup"
+      >
+        <Modal.Body className="Csignupmodbody Csignuptxt1">
+          <img 
+          className="Csignupimg"
+          src={modalimg}
+          alt="sign up in progress"
+          />
+          <div className="Csignuptxt1">Thanks for signing up to be a Clarity counsellor!</div>
+          <div className="Csignuptxt2">You'll be contacted by our admin via mail within 7 working days.</div>
+          <Link to="/forcounsellors"><div className="Csignupbtn">&#8592; Back To Home</div></Link>
+        </Modal.Body>
+      </Modal>
+      <div className="rdsignup-section counsellorsignup paddit">
         <Container>
           <Row className="rsignuprow">
-            <Col md={12} className="rsignupdiv">
+            <Col md={12} className="rsignupdiv newrsignupdiv">
               <p>
                 Registering to this website, you accept our
                 <span className="t_plinkspn">

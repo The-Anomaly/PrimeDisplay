@@ -303,7 +303,7 @@ const AssessmentSecondPhase = (props: any) => {
                       name="question13"
                     />
                     <span className="checkmark1">B</span>
-                    Indifference, you followed the routine for your day
+                    Indifferent; you followed the routine for your day
                   </label>
                   <label className="checkcontainer1">
                     <input
@@ -314,7 +314,7 @@ const AssessmentSecondPhase = (props: any) => {
                     />
                     <span className="checkmark1">C</span>
                     Unsure and unclear you’re doing the right thing with your
-                    life.
+                    life
                   </label>
                   <label className="checkcontainer1">
                     <input
@@ -324,7 +324,7 @@ const AssessmentSecondPhase = (props: any) => {
                       name="question13"
                     />
                     <span className="checkmark1">D</span>
-                    Like you still have a lot to achieve
+                    Like you still have a lot to achieve career-wise
                   </label>
                 </div>
               </Col>

@@ -26,7 +26,7 @@ const newNavbar = withRouter((props: any) => {
     if (
       window.location.pathname === "/" ||
       window.location.pathname === "/aboutus" ||
-      window.location.pathname === "/payment" ||
+      window.location.pathname === "/pricing" ||
       window.location.pathname === "/contact" ||
       window.location.pathname === "/faq" ||
       window.location.pathname === "/counsellor/signup" ||
@@ -241,7 +241,7 @@ const newNavbar = withRouter((props: any) => {
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/payment" className={navbar ? "lightnavlist" : ""}>Pricing</Link>
+                      <Link to="/pricing" className={navbar ? "lightnavlist" : ""}>Pricing</Link>
                     </div>
                   ) : (
                     " "
@@ -255,7 +255,7 @@ const newNavbar = withRouter((props: any) => {
                   )}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
-                      <Link to="/counsellor/signup" className={navbar ? "lightnavlist" : ""}>For Counsellors</Link>
+                      <Link to="/forcounsellors" className={navbar ? "lightnavlist" : ""}>For Counsellors</Link>
                     </div>
                   ) : (
                     " "
@@ -366,7 +366,7 @@ const newNavbar = withRouter((props: any) => {
             )}
             {!userLoggedIn ? (
               <span className={props.payments ? "title hhome" : "title"}>
-                <Link to="/payment">Pricing</Link>
+                <Link to="/pricing">Pricing</Link>
               </span>
             ) : (
               " "
@@ -380,7 +380,7 @@ const newNavbar = withRouter((props: any) => {
             )}
             {!userLoggedIn ? (
               <span className={props.counselor ? "title hhome" : "title"}>
-                <Link to="/counsellor/signup">For Counsellors</Link>
+                <Link to="/forcounsellors">For Counsellors</Link>
               </span>
             ) : (
               ""

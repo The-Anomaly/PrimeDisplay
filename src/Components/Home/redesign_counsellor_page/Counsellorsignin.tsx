@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../HomeComponents/newnavbar";
+import Navbar from "../../KigenniDashboard/CounsellorLandingPage/counsellornavbar";
 import "./signup.css";
 import { Link, withRouter } from "react-router-dom";
 import { Container, Row, Col, Form, Alert } from "react-bootstrap";
@@ -133,10 +133,11 @@ const counsellorSignin = withRouter((props: any) => {
       sendFormData();
     }
   };
+  window.scrollTo(-0,-0);
   return (
     <div>
       <Navbar />
-      <div className="rdsignup-section paddit">
+      <div className="rdsignup-section counsellorsignup paddit">
         <Container>
           <Row className="rsignuprow">
             <Col md={12} className="rsignupdiv">

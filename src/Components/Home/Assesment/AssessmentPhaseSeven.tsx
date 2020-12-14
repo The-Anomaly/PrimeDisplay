@@ -303,7 +303,7 @@ const AssessmentSeventhPhase = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  c. It’s not easy for me to get people’s buy in on an idea/
+                  c. It’s not easy for me to get people’s buy-in on an idea/
                   concept
                 </div>
                 <div className="rsliderclass9 ">
@@ -687,7 +687,7 @@ const AssessmentSeventhPhase = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  h. Managing teams can be such headaches I’ll rather not be at
+                  h. Managing teams can be such headaches I’d rather not be at
                   the centre
                 </div>
                 <div className="rsliderclass9">
@@ -841,7 +841,7 @@ const AssessmentSeventhPhase = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  j. Actively developing the potential of colleague or employees
+                  j. You find interest in actively developing the potential of a colleague or employees
                   to improve their work and life productivity.
                 </div>
                 <div className="rsliderclass9 ">
@@ -995,8 +995,8 @@ const AssessmentSeventhPhase = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  l. Interpreting the growth trajectory of organization based of
-                  financial analysis
+                  l. Your approach to interpreting the growth trajectory of an organization is based on a
+                  financial analysis.
                 </div>
                 <div className="rsliderclass9 ">
                   <div className="agree">Agree</div>

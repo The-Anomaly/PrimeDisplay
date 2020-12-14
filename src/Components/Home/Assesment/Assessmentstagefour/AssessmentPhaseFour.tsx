@@ -186,7 +186,7 @@ const Assessmentfourthphase = (props: any) => {
                     </div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        a. Music, Dance, Drama, Oratory & Comedy
+                        a. Music, Dance, Drama, Oratory & Comedy.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -202,7 +202,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        b. Cartoon Creation, Games, Visuals
+                        b. Cartoon Creation, Games, Visuals.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -218,7 +218,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        c. Radio/TV Presenting, Writing, Blogging
+                        c. Radio/TV Presenting, Writing, Blogging.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -234,7 +234,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        d. Baking, Cooking, Event Planning, Travelling
+                        d. Baking, Cooking, Event Planning, Travelling.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -250,7 +250,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        e. Make-Up Application, Hair, Nails and Skin Care
+                        e. Make-Up Application, Hair, Nails and Skin Care.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -266,7 +266,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        f. Fashion and Accessory Design, Celebrity Styling
+                        f. Fashion and Accessory Design, Celebrity Styling.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -324,7 +324,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        i. Constructing or Designing Houses, Roads, Bridges
+                        i. Constructing or Designing Houses, Roads, Bridges.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -340,7 +340,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        j. Organizing and Regulating the way a space is used
+                        j. Organizing and Regulating the way a space is used.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -357,7 +357,7 @@ const Assessmentfourthphase = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         k. Make possible the selling/buying of land and property
-                        between people
+                        between people.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -374,7 +374,7 @@ const Assessmentfourthphase = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         l. Make easy the movement of people, goods and things
-                        from one point to another
+                        from one point to another.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -396,7 +396,7 @@ const Assessmentfourthphase = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         m. Process, produce and distribute agricultural (crops
-                        and animals) products to people
+                        and animals) products to people.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -413,7 +413,7 @@ const Assessmentfourthphase = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         n. Protect and preserve our natural environment so
-                        others can enjoy it
+                        others can enjoy it.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -430,7 +430,7 @@ const Assessmentfourthphase = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         o. Understand how the earth works so you can protect the
-                        environment and human health
+                        environment and human health.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -447,7 +447,7 @@ const Assessmentfourthphase = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         p. Use the sun, wind, charcoal, water or fossil fuel to
-                        generate power for electricity
+                        generate power for electricity.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -469,7 +469,7 @@ const Assessmentfourthphase = (props: any) => {
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
                         q. Identify and prevent a range of conditions and
-                        illnesses from occurring
+                        illnesses from occurring.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -485,7 +485,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        r. Work with people to maintain a healthy lifestyle
+                        r. Work with people to maintain a healthy lifestyle.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -501,7 +501,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        s. Diagnose and treat a variety of medical issues
+                        s. Diagnose and treat a variety of medical issues.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent

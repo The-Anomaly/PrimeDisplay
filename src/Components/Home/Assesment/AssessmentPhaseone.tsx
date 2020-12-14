@@ -115,9 +115,10 @@ const AssessmentFirstPhase = (props: any) => {
         </Modal.Header>
         <Modal.Body>
           A fulfilling life, career or business starts with intentional
-          self-awareness, evaluating where you are to determine the right
+          self-awareness, evaluating where you are, to determine the right
           direction forward. The objective of this assessment is to help you
-          kick-start this. Answer all questions relaxed and in honesty.
+          kick-start this process. Be relaxed and honest when answering all 
+          the questions, this will help you to gain maximum benefit.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" className="hgjs" onClick={handleClose}>
