@@ -396,7 +396,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
                 <div className="fooass">View Assessment Result</div>
               </Col>
               <Col md={6}>
-                <Link to={`/users_profile/${props.match.params.id}`}>
+                <Link to={`/users_profile/${props.match.params.id}`} target="_blank">
                   <div className="fooass counview1">
                     View Professional Profile
                   </div>
