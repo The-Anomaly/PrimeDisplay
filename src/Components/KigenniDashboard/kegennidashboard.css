@@ -4093,3 +4093,9 @@ label {
     box-shadow: 4px 2px 4px #e5e5e5
   }
 }
+@media(max-width: 700px) {
+  .userrslt {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

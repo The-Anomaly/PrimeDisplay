@@ -285,7 +285,7 @@ class FullResultForCounsellors extends React.Component<React.Props<any>> {
                 </div>
               </Modal.Body>
             </Modal>
-            <Col md={11} className="centrmargin">
+            <Col md={11} className="centrmargin userrslt">
               <div className="kdashheader">
                 <div className="bcash">
                   <Link to="/counselloroverview">&#x2190;Back</Link>
