@@ -130,7 +130,7 @@ class NewDashboardSettings extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           this.setState({
             ...response.data,
@@ -166,7 +166,7 @@ class NewDashboardSettings extends React.Component {
       isloading,
       isLoading,
     } = this.state;
-    console.log(this.state.image);
+    // console.log(this.state.image);
     return (
       <>
         <Container fluid={true} className="contann122">

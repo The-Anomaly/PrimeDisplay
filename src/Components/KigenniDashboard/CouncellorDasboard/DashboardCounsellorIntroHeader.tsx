@@ -57,7 +57,7 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
             ...response.data,
           });
         }
-        console.log(response1);
+        // console.log(response1);
         this.setState({
           amount: response1?.data?.bonus,
         })
@@ -79,7 +79,7 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
     const { first_name, last_name, rate, amount } = this.state;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <>
         <div className="fjss spis">

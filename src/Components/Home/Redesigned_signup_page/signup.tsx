@@ -47,7 +47,7 @@ const Signup = withRouter((props: any) => {
       info: howYouHeardAboutUs,
       referral_code: referralCode,
     };
-    console.log(data);
+    // console.log(data);
     //posting data to the api
     axios
       .post(`${API}/accounts/signup/`, data)
@@ -57,7 +57,7 @@ const Signup = withRouter((props: any) => {
           localStorage.setItem("userEmail", JSON.stringify(email));
           setTimeout(() => {
             props?.history?.push("/confirm_email");
-            console.log(props);
+            // console.log(props);
           }, 5000);
           setFormState({
             ...state,
@@ -69,7 +69,7 @@ const Signup = withRouter((props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         window.scrollTo(-0,-0);
         if (error && error.response && error.response.data) {
           return setFormState({

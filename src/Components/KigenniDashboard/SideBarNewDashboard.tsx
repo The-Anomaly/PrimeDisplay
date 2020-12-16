@@ -82,11 +82,11 @@ const SideBarNewDashboard = withRouter((props: any) => {
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
 
     if (featureToCheck["job_recommendation"] === true) {
-      console.log("Job opportunities successful");
+      // console.log("Job opportunities successful");
       return window.location.assign("/jobopportunities");
     } else {
       //notify("Update your subscription to access this feature");
-      console.log("Can't access job opportunities");
+      // console.log("Can't access job opportunities");
       // return setTimeout(
       //   (window.location.pathname = "/dashboardsubscriptionplan"),
       //   2000
@@ -98,11 +98,11 @@ const SideBarNewDashboard = withRouter((props: any) => {
     const stringFeature = localStorage.getItem("accessFeature");
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
     if (featureToCheck["ask_counsellor"] === true) {
-      console.log("Ask a counselor successful");
+      // console.log("Ask a counselor successful");
       window.location.assign("/allusermessages");
     } else {
       //notify("Update your subscription to access this feature");
-      console.log("Can't access ask a counselor");
+      // console.log("Can't access ask a counselor");
       // return setTimeout(
       //   (window.location.pathname = "/dashboardsubscriptionplan"),
       //   2000

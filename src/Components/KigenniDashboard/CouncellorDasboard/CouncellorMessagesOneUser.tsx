@@ -35,7 +35,7 @@ class CounsellorMessageOneUser extends React.Component {
   }
   moveTo = (str) => {
     const offsetTop: any = document.getElementById(str);
-    console.log(offsetTop.scrollHeight);
+    // console.log(offsetTop.scrollHeight);
     offsetTop.scrollTo(0, offsetTop.scrollHeight);
   };
 
@@ -49,7 +49,7 @@ class CounsellorMessageOneUser extends React.Component {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           this.setState({
             userInfo: response.data[0],
@@ -57,7 +57,7 @@ class CounsellorMessageOneUser extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }
   componentDidMount() {
@@ -67,7 +67,7 @@ class CounsellorMessageOneUser extends React.Component {
     this.scrollToBottom();
   }
   scrollToBottom = () => {
-    console.log(this.messagesEnd);
+    // console.log(this.messagesEnd);
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
   };
   formatTime = (date) => {
@@ -83,11 +83,11 @@ class CounsellorMessageOneUser extends React.Component {
     const component = this;
     setTimeout(function () {
       if (WebSocketInstance.state() === 1) {
-        console.log("conection is made!");
+        // console.log("conection is made!");
         callback();
         return;
       } else {
-        console.log("waiting for connection....");
+        // console.log("waiting for connection....");
         component.waitForSocketConnection(callback);
       }
     }, 100);

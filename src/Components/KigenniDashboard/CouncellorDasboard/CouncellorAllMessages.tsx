@@ -46,7 +46,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -58,7 +58,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
         })
       )
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error.response && error.response.data) {
           setState({
             ...state,
@@ -96,7 +96,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             return setState({
               ...state,
@@ -114,7 +114,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
             counsellorData: [],
           });
         }
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error.response && error.response.data) {
           return setState({
             ...state,
@@ -130,7 +130,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
         });
       });
   };
-  console.log(counsellorData);
+  // console.log(counsellorData);
   const formatTime = (date) => {
     return moment(date).fromNow();
   };

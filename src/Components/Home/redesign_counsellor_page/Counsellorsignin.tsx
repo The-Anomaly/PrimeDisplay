@@ -39,7 +39,7 @@ const counsellorSignin = withRouter((props: any) => {
     axios
       .post(`${API}/accounts/counsellor-login`, data)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         getUserInfo(response.data.token);
         localStorage.setItem(
           "userToken",
@@ -51,7 +51,7 @@ const counsellorSignin = withRouter((props: any) => {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         window.scrollTo(-0,-0);
         if (error && error?.response?.status == 500) {
           return setState({

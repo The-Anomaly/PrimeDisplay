@@ -55,11 +55,11 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     session_about: "",
   });
   const openModal = (id) => {
-    console.log(counsellorData);
+    // console.log(counsellorData);
     counsellorData.forEach((data) => {
-      console.log(data);
+      // console.log(data);
       if (data.id === id) {
-        console.log(data);
+        // console.log(data);
         setState({
           ...state,
           name: data.name,
@@ -122,7 +122,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -174,7 +174,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -225,7 +225,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -299,7 +299,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
       ? JSON.parse(availableToken)
       : props.history.push("/counsellor/signin");
     if (taskTitle !== "" || taskDescription !== "" || taskDuration !== "") {
-      console.log("here");
+      // console.log("here");
       const recommendation = [
         {
           title: taskTitle,
@@ -314,7 +314,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         say_something: session_about,
         id: sessionId,
       };
-      console.log(data);
+      // console.log(data);
       Axios.post<any, AxiosResponse<any>>(
         `${API}/counsellor/complete-session`,
         data,
@@ -323,14 +323,14 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         }
       )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           notify("Successful");
           setTimeout(() => {
             window.location.reload();
           }, 2000);
         })
         .catch((err) => {
-          console.log(err.response);
+          // console.log(err.response);
         });
     }
     if (taskTitle == "" || taskDescription == "" || taskDuration == "") {
@@ -341,7 +341,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         say_something: session_about,
         id: sessionId,
       };
-      console.log(data);
+      // console.log(data);
       Axios.post<any, AxiosResponse<any>>(
         `${API}/counsellor/complete-session`,
         data,
@@ -350,18 +350,18 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         }
       )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           notify("Successful");
           setTimeout(() => {
             // window.location.reload();
           }, 2000);
         })
         .catch((err) => {
-          console.log(err.response);
+          // console.log(err.response);
         });
     }
   };
-  console.log(session_email);
+  // console.log(session_email);
   return (
     <>
       <Row>

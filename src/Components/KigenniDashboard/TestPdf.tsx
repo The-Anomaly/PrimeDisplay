@@ -61,6 +61,8 @@ const TestPdf = () => {
   } = state;
   const ref: any = React.useRef();
   useEffect(() => {
+    const tag = document.getElementsByTagName("meta").namedItem("viewport")
+    // console.log(tag)
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     axios
@@ -74,8 +76,8 @@ const TestPdf = () => {
       ])
       .then(
         axios.spread((res, res1) => {
-          console.log(res);
-          console.log(res1);
+          // console.log(res);
+          // console.log(res1);
           setState({
             ...state,
             skills: [...res.data.skills],

@@ -48,7 +48,7 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setState({
           ...state,
           isloading: false,

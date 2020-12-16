@@ -46,7 +46,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           plan: response.data.plan,
           expiration: response.data.expires,

@@ -39,7 +39,7 @@ const Signin = withRouter((props: any) => {
     axios
       .post(`${API}/accounts/login`, data)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "userToken",
@@ -61,8 +61,8 @@ const Signin = withRouter((props: any) => {
               headers: { Authorization: `Token ${token}` },
             })
             .then((response1) => {
-              console.log(response1);
-              console.log(response1?.data[0]);
+              // console.log(response1);
+              // console.log(response1?.data[0]);
               localStorage.setItem(
                 "accessFeature",
                 JSON.stringify(response1?.data[0])
@@ -71,15 +71,15 @@ const Signin = withRouter((props: any) => {
               const featureToCheck = stringFeature
                 ? JSON.parse(stringFeature)
                 : "";
-              console.log(featureToCheck);
-              console.log(featureToCheck["view_result"]);
+              // console.log(featureToCheck);
+              // console.log(featureToCheck["view_result"]);
             })
             .catch((error) => {
               console.error("Payment Status Error");
             });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         window.scrollTo(-0,-0);
         if (error && error.response && error.response.data) {
           return setState({

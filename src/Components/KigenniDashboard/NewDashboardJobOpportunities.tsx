@@ -128,7 +128,7 @@ class NewDashboardJobOpportunities extends React.Component {
         this.setState({
           isloading: false,
         });
-        console.log(err.response)
+        // console.log(err.response)
         this.notify("failed" + err?.response?.data[0]?.message);
         if (err) {
         }
@@ -143,7 +143,7 @@ class NewDashboardJobOpportunities extends React.Component {
     const stringFeature = localStorage.getItem("accessFeature");
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
     if (featureToCheck["job_recommendation"] === false) {
-      console.log("Can't access job opportunities");
+      // console.log("Can't access job opportunities");
       return setTimeout(() => {
         window.location.pathname = "/dashboardsubscriptionplan";
       }, 2000);
@@ -215,7 +215,7 @@ class NewDashboardJobOpportunities extends React.Component {
             isLoading: false,
           });
         }
-        console.log(error)
+        // console.log(error)
         this.setState({
           errorMessage: "failed",
           isLoading: false,

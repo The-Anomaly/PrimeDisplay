@@ -50,17 +50,26 @@ const counsellorSignup = withRouter((props: any) => {
       password: password,
       info: howYouHeardAboutUs,
     };
-    console.log(data);
+    // console.log(data);
     //posting data to the api
     axios.post(`${API}/accounts/counsellor-signup/`, data)
     .then( ( response ) => {
-      console.log(response)
+      // console.log(response)
       setFormState({
           ...state,
           successMessage: response.data[0].message,
           isLoading: false,
       })
       if (response.status === 200){
+       
+         localStorage.setItem(
+          "userToken",
+          JSON.stringify(response.data[0].token)
+        );
+        setTimeout(()=>{
+          props?.history?.push("/counselloroverview")
+          // console.log(props)
+        },5000)
        console.log("counsellor signup complete")
         //  localStorage.setItem(
         //   "userToken",
@@ -81,7 +90,7 @@ const counsellorSignup = withRouter((props: any) => {
       }
     })
     .catch( (error) => {
-      console.log(error.response);
+      // console.log(error.response);
       window.scrollTo(-0,-0);
       if (error && error.response && error.response.data){
         return setFormState({
