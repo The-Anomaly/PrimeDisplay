@@ -343,11 +343,12 @@ class CounsellorViewUsersCVProfile extends React.Component {
     return (
       <>
         <Container fluid={true} className="contann122">
-          <CounsellorsDashboardMobileNav builder={true} />
+          {/* <CounsellorsDashboardMobileNav builder={true} /> */}
           <Row>
-            <SideBarCounsellorDashboard builder={true} />
-            <Col md={10} sm={12} className="prm newprm">
+            {/* <SideBarCounsellorDashboard builder={true} /> */}
+            <Col md={12} sm={12} className="prm">
               <CounsellorDashboardNav title="Assigned Users Professional Profile" />
+              <div className="userprofilettl">Assigned Users Professional Profile</div>
               <Row>
                 <Col md={11} className="kisls">
                   <div className="kdashheader uidd11">
