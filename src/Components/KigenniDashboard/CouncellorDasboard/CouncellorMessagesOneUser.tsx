@@ -121,7 +121,7 @@ class CounsellorMessageOneUser extends React.Component {
   };
 
   render() {
-    // console.log(this.props.messages);
+    //console.log(this.props.messages);
     const { user, message, isLoading }: any = this.state;
     return (
       <>

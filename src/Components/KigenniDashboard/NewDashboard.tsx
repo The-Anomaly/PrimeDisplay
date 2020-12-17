@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 import HorizontalBar from "./HorizontalBar";
 import vector1 from "../../assets/whiteicon1.png";
 import vector2 from "../../assets/whiteicon2.png";
-
+import notice from "../../assets/notice.png";
 
 interface State {
   fullname: string;
@@ -37,6 +37,7 @@ interface State {
   width: number;
   onlyfree: boolean;
   showfullresult: boolean;
+  client2: any;
 }
 class NewDashboard extends React.Component {
   state: State = {
@@ -54,6 +55,7 @@ class NewDashboard extends React.Component {
     onlyfree: false,
     width: 100,
     showfullresult: false,
+    client2: [],
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
@@ -90,11 +92,19 @@ class NewDashboard extends React.Component {
       : window.location.assign("/signin");
       this.getUserInfo(token)
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(`${API}/paiddashboard`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (response.status === 200) {
+    Axios
+    .all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/paiddashboard`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/freedashboard`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+    ])
+      .then(Axios.spread((response, response2) => {
+        // console.log(response);
+        // console.log(response2);
+        if (response.status === 200 && response2.status === 200) {
           this.setState({
             client: response.data[0],
             careerbussines: response?.data[0]?.career_business_expression[0],
@@ -103,13 +113,14 @@ class NewDashboard extends React.Component {
               response?.data[0]?.average_career_competences?.graph,
             strongcompetencechartdata:
               response?.data[0].strong_career_competences.graph,
-            fullname: response.data[0].full_name,
+            fullname: response2.data[0].full_name,
             successMsg: true,
             isLoading: false,
+            client2: response2.data[0],
           });
         }
         this.checkIfUserHasMadePayment();
-      })
+      }))
       .catch((error) => {
         if (error && error?.response && error?.response?.data) {
           this.setState({
@@ -229,6 +240,7 @@ class NewDashboard extends React.Component {
       width,
       isLoading_1,
       showfullresult,
+      client2,
     } = this.state;
     return (
       <>
@@ -310,7 +322,7 @@ class NewDashboard extends React.Component {
                         strokeColor={"#fff"}
                         railColor={"#17375c77"}
                         fillColor={"#001833"}
-                        percent={client?.career_fitness?.score}
+                        percent={client2?.career_fitness?.score}
                         padding={0}
                       />
                     </div>
@@ -321,13 +333,35 @@ class NewDashboard extends React.Component {
                       </div>
                       <div className="vbnc1">
                         {" "}
-                        {client?.career_fitness?.heading}{" "}
+                        {client2?.career_fitness?.heading}{" "}
                       </div>
                       <div className="csbody">
-                        {client?.career_fitness?.body}
+                        {client2?.career_fitness?.body}
                       </div>
                     </div>
                   </div>
+                  <hr className="lswid divider" />
+                  <div className="lswid">
+                <div className="tipswrapper">
+                  <div>
+                    <div className="stbly1">
+                      {client2?.career_fitness?.quick_fix?.heading}
+                    </div>
+                    {client2?.career_fitness?.quick_fix?.body?.map(
+                      (data, index) => (
+                        <div key={index} className="csbody liuii">
+                          {index + 1}.{"  "}
+                          {data}
+                        </div>
+                      )
+                    )}
+                  </div>
+                  <div className="notice">
+                    <img src={notice} className="noticee" alt="notice" />
+                  </div>
+                </div>
+              </div>
+              <hr className="lswid divider" />
                   <div className="reess" id="personality">
                     <div className="resultsec3">
                       <div className="careerpersonalityheader">
@@ -338,7 +372,7 @@ class NewDashboard extends React.Component {
                           Your Career Personality type
                         </div>
                         <div className="cptext">
-                          {client?.career_personality_type?.short_description}
+                          {client2?.career_personality_type?.short_description}
                         </div>
                       </div>
                     </div>
@@ -351,7 +385,7 @@ class NewDashboard extends React.Component {
                         />
                       </div>
                       <div className="resultt col-md-6">
-                        {client?.career_personality_type?.graph?.map(
+                        {client2?.career_personality_type?.graph?.map(
                           (data, index) => {
                             return (
                               <div className="">
@@ -371,7 +405,7 @@ class NewDashboard extends React.Component {
                     <div className="resultsec3">
                       <div className="reskwrap newreskwrapa">
                         <div className="career221 insighttxt">
-                          {client?.career_personality_type?.full_body}
+                          {client2?.career_personality_type?.full_body}
                         </div>
                       </div>
                     </div>
@@ -385,7 +419,7 @@ class NewDashboard extends React.Component {
                     </div>
                     <div className="kz12">
                       <ul className="grapwrap">
-                        {client?.strengths?.map((strength, index) => (
+                        {client2?.strengths?.map((strength, index) => (
                           <li className="grapssin career221 insighttxt" key={index}>
                             {strength}
                           </li>
@@ -400,7 +434,7 @@ class NewDashboard extends React.Component {
                     </div>
                     <div className="kz12">
                       <ul className="grapwrap">
-                        {client?.weaknesses?.map((weakness, index) => (
+                        {client2?.weaknesses?.map((weakness, index) => (
                           <li className="grapssin career221 insighttxt" key={index}>
                             {weakness}
                           </li>

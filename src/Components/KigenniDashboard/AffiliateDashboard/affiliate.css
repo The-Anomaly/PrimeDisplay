@@ -1,0 +1,125 @@
+.shifbb{
+    margin-bottom: 2rem;
+}
+.dxxa{
+    display: flex;
+    align-items: center;
+}
+.sassa{
+    position: relative;
+    left: 1rem;
+    bottom: .4rem;
+}
+.searchImage{
+    position: absolute;
+}
+.dshbdsearchbar{
+    padding-left: 2.9rem  !important;
+}
+.dshbdsearchbar::placeholder{
+    color: #BBBBBB;
+}
+.dshbdsearchbar{
+    height: 66px;
+    border-radius: 6px;
+    padding: 9px;
+    border: none;
+    outline: none;
+}
+.dshbdsearchbar:focus{
+    outline: none !important;
+    border: none !important;
+}
+
+.genbg{
+    background: #FCFCFC;
+}
+.currt{
+    background: linear-gradient(241.8deg, #9C1258 -24.42%, #18214D 171.01%);
+    height: 65px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.afcard{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background: #ffff;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(102, 102, 102, 0.1);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+}
+.textcaas{
+    text-align: center;
+}
+.abjon{
+    font-size: 18px;
+    line-height: 21px;
+    color: #333333;
+    background: #FFFFFF;
+    padding-top: .1rem;
+}
+.sepr3{
+    margin: 0rem 2rem;
+    margin-top: .5rem;
+    border: 1px solid #F9F9F9;
+    margin-bottom: .5rem;
+}
+.afflt{
+    font-size: 12px;
+    line-height: 14px;
+    color: #999999;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+.amnntt{
+    font-size: 30px;
+    line-height: 47px;
+    color: #27AE60;
+    font-weight: 700;
+    padding-bottom: 1rem;
+}
+.reflink2{
+    margin-left: 2rem;
+    text-align: left;
+    font-size: 12px;
+line-height: 16px;
+color: #666666;
+}
+.afflt1{
+    color: #666666;
+}
+.sette{
+    background: #FCFCFC;
+    border-radius: 8px;
+}
+.sette{
+    margin: auto;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 12px;
+    line-height: 14px;
+    color: #BBBBBB;
+    margin-top: 1rem;
+    padding:.2rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.clatxt{
+    display: inline;
+    /* min-inline-size: fit-content; */
+    padding-left: 1rem;
+}
+.clatxt2{
+    background: #CBE2FF;
+    border-radius: 0px 8px 8px 0px;
+    padding: .5rem;
+}
+.adadaa{
+    position: relative;
+    bottom: 2.5rem;
+}
+.firstAF{
+    padding-right: 3rem;
+}

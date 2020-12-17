@@ -52,7 +52,7 @@ const Signup = withRouter((props: any) => {
     axios
       .post(`${API}/accounts/signup/`, data)
       .then((response) => {
-        // console.log(response);
+        //console.log(response);
         if (response.status === 200) {
           localStorage.setItem("userEmail", JSON.stringify(email));
           setTimeout(() => {

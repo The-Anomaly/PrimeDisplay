@@ -70,7 +70,7 @@ const counsellorSignup = withRouter((props: any) => {
           props?.history?.push("/counselloroverview")
           // console.log(props)
         },5000)
-      //  console.log("counsellor signup complete")
+       //console.log("counsellor signup complete")
         //  localStorage.setItem(
         //   "userToken",
         //   JSON.stringify(response.data[0].token)

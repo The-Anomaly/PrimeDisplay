@@ -26,7 +26,7 @@ const counsellorNavbar = withRouter((props: any) => {
       const getUserToken = userTypeToken
       ? JSON.parse(userTypeToken)
       : "";
-      // console.log(getUserToken);
+      //console.log(getUserToken);
       if(getUser[0]?.is_counsellor && getUserToken) {
         window.location.assign("/counselloroverview");
       }
