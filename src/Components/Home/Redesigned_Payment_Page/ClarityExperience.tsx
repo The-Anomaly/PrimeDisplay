@@ -71,7 +71,7 @@ const Payment = (props: any) => {
   const { plan, withoutlogin, selectedSubscription, giftmail } = state;
 
   React.useEffect(() => {
-    if (window.location.pathname === "/payment") {
+    if (window.location.pathname === "/pricing") {
       setFormState({
         ...state,
         withoutlogin: true,
@@ -301,7 +301,7 @@ const Payment = (props: any) => {
               }
             >
               <h3>We have curated payments plans with you in mind</h3>
-            {withoutlogin ? <div className="fourthline pymntline"> </div> : ""}
+            {!withoutlogin ? "" : <div className="fourthline pymntline"> </div>}
             </div>
             <div className="webpaymentview">
               <Row className="payment-plans">
