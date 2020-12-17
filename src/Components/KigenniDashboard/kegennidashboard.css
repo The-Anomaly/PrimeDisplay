@@ -4101,5 +4101,39 @@ label {
 }
 
 .divider {
-    margin-left: 0;
+  margin-left: 0;
+}
+
+.blur {
+  width: 100%;
+  padding-left: 1rem;
+  margin-top: -1.5rem;
+}
+.unlock {
+  width: 40px;
+  position: absolute;
+  margin-left: calc(-50% - 20px);
+  margin-top: 4rem;
+  cursor: pointer;
+}
+.blursec {
+  position: relative;
+}
+@media(max-width: 600px) {
+  .blur {
+    padding-left: 0;
   }
+  .unlock {
+    /* width: 30px;
+    margin-left: calc(-50% - 15px); */
+    margin-top: 6rem;
+  }
+}
+
+@media(max-width: 400px) {
+  .unlock {
+    width: 30px;
+    margin-left: calc(-50% - 15px);
+    margin-top: 3rem;
+  }
+}
