@@ -186,7 +186,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         }
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         if (error && error?.response && error?.response?.data) {
           this.setState({
             errorMessage: error?.response?.data?.message,

@@ -164,7 +164,7 @@ const Payment = (props: any) => {
               })
               .then((response1) => {
                 // console.log(response1);
-                console.log(response1?.data[0]);
+                // console.log(response1?.data[0]);
                 localStorage.setItem(
                   "accessFeature",
                   JSON.stringify(response1?.data[0])
