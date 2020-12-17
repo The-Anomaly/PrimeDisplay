@@ -102,8 +102,8 @@ class NewDashboard extends React.Component {
       })
     ])
       .then(Axios.spread((response, response2) => {
-        console.log(response);
-        console.log(response2);
+        // console.log(response);
+        // console.log(response2);
         if (response.status === 200 && response2.status === 200) {
           this.setState({
             client: response.data[0],

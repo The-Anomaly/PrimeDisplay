@@ -104,7 +104,7 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
           ...state,
           isloading: false,
         });
-        console.log(error);
+        //console.log(error);
       });
   };
   return (
