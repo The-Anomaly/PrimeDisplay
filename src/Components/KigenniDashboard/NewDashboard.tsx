@@ -23,6 +23,9 @@ import vector2 from "../../assets/whiteicon2.png";
 import notice from "../../assets/notice.png";
 import unlock from "../../assets/Unlock.png";
 import blur from "../../assets/weakness_blur.png";
+import blur2 from "../../assets/fix_blur.png";
+import blur2a from "../../assets/fix_blur2.png";
+import unlock2 from "../../assets/unlock_white.png";
 
 interface State {
   fullname: string;
@@ -104,8 +107,8 @@ class NewDashboard extends React.Component {
     ])
       .then(
         Axios.spread((response, response2) => {
-          console.log(response);
-          console.log(response2);
+          // console.log(response);
+          // console.log(response2);
           if (response.status === 200 && response2.status === 200) {
             this.setState({
               client: response.data[0],
@@ -355,6 +358,23 @@ class NewDashboard extends React.Component {
                             </div>
                           )
                         )}
+                        <div className="blursec">
+                            <img
+                              className="blur2"
+                              src={blur2}
+                              alt="blurred image"
+                            />
+                            <img 
+                              className="blur2a" 
+                              src={blur2a}
+                              alt="blurred image"/>
+                            <img
+                              className="unlock unlock2"
+                              src={unlock2}
+                              alt="unlock"
+                              onClick={() => this.setState({ onlyfree: true })}
+                            />
+                          </div>
                       </div>
                       <div className="notice">
                         <img src={notice} className="noticee" alt="notice" />
