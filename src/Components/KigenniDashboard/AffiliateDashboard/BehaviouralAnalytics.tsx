@@ -7,6 +7,7 @@ import avatar from "../../../assets/avatar.svg";
 import caret from "../../../assets/caret_down.png";
 import eye from "../../../assets/eye.png";
 import balance from "../../../assets/balance.svg";
+import info from "../../../assets/info_circle.png";
 
 const BehaviouralAnalytics = () => {
   const [viewProfile, SetViewProfile] = React.useState(false);
@@ -137,42 +138,60 @@ const BehaviouralAnalytics = () => {
                 <Row className="BArow3">
                   {analytics === 1 ? (
                     <div className="BAanalyticsttl">
-                      <div className="BAAttl1">Personalities</div>
+                      <div className="BAAttl1">
+                        Personalities
+                        <img className="BAinfo" src={info} alt="info" />
+                      </div>
                       <button className="BAmorebtn">
                         Request more Insight
                       </button>
                     </div>
                   ) : analytics === 2 ? (
                     <div className="BAanalyticsttl">
-                      <div className="BAAttl1">Competencies</div>
+                      <div className="BAAttl1">
+                        Competencies
+                        <img className="BAinfo" src={info} alt="info" />
+                      </div>
                       <button className="BAmorebtn">
                         Request more Insight
                       </button>
                     </div>
                   ) : analytics === 3 ? (
                     <div className="BAanalyticsttl">
-                      <div className="BAAttl1">Work Style</div>
+                      <div className="BAAttl1">
+                        Work Style
+                        <img className="BAinfo" src={info} alt="info" />
+                      </div>
                       <button className="BAmorebtn">
                         Request more Insight
                       </button>
                     </div>
                   ) : analytics === 4 ? (
                     <div className="BAanalyticsttl">
-                      <div className="BAAttl1">Work Motivators</div>
+                      <div className="BAAttl1">
+                        Work Motivators
+                        <img className="BAinfo" src={info} alt="info" />
+                      </div>
                       <button className="BAmorebtn">
                         Request more Insight
                       </button>
                     </div>
                   ) : analytics === 5 ? (
                     <div className="BAanalyticsttl">
-                      <div className="BAAttl1">Work Functions</div>
+                      <div className="BAAttl1">
+                        Work Functions
+                        <img className="BAinfo" src={info} alt="info" />
+                      </div>
                       <button className="BAmorebtn">
                         Request more Insight
                       </button>
                     </div>
                   ) : analytics === 6 ? (
                     <div className="BAanalyticsttl">
-                      <div className="BAAttl1">Career Fitness</div>
+                      <div className="BAAttl1">
+                        Career Fitness
+                        <img className="BAinfo" src={info} alt="info" />
+                      </div>
                       <button className="BAmorebtn">
                         Request more Insight
                       </button>
