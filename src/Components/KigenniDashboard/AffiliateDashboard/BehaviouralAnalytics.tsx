@@ -6,6 +6,7 @@ import searchImage from "../../../assets/search11.png";
 import avatar from "../../../assets/avatar.svg";
 import caret from "../../../assets/caret_down.png";
 import eye from "../../../assets/eye.png";
+import balance from "../../../assets/balance.svg";
 
 const BehaviouralAnalytics = () => {
   const [viewProfile, SetViewProfile] = React.useState(false);
@@ -37,13 +38,13 @@ const BehaviouralAnalytics = () => {
                     <input
                       type="search"
                       placeholder="Search"
-                      className="dshbdsearchbar form-control"
+                      className="dshbdsearchbar form-control BAsearchbar"
                     />
                   </form>
                   <div className="BAprofile">
-                    <img src={avatar} alt="user avatar" />
+                    <img className="BAavatar" src={avatar} alt="user avatar" />
                     <img
-                      className="BAcaret"
+                      className={viewProfile ? "BAcaret BAcaret-up" : "BAcaret"}
                       src={caret}
                       alt="dropdown"
                       onClick={viewProfileButton}
@@ -61,7 +62,17 @@ const BehaviouralAnalytics = () => {
                 <Row className="BArow2">
                   <div className="BArow2txt1">Behavioural Analytics</div>
                 </Row>
-                <Row></Row>
+
+                {/*Please note! Analytics without subscription section*/}
+                {/* <Row>
+                  <img className="BAbalance" src={balance} />
+                  <div className="BAsubtxt">
+                    Volutpat purus orci ipsum quis faucibus sed elit elit
+                    gravida. Sodales facilisis sed nulla lobortis in convallis
+                    pellentesque urna faucibus.
+                  </div>
+                  <button className="BAsubbtn">Upgrade Subscription</button>
+                </Row> */}
               </Col>
             </Row>
           </Col>

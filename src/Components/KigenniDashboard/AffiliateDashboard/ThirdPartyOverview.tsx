@@ -101,7 +101,7 @@ const ThirdPartyOverview = (props: any) => {
                       <input
                         type="search"
                         placeholder="Search"
-                        className="dshbdsearchbar form-control"
+                        className="dshbdsearchbar form-control BAsearchbar"
                       />
                     </form>
                     <div className="username23">

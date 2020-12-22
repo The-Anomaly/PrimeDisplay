@@ -230,6 +230,10 @@
 .BAcaret {
   margin: 1rem;
   cursor: pointer;
+  transform: rotate(180deg);
+}
+.BAcaret-up {
+  transform: rotate(0deg)
 }
 .BArow2 {
   padding-top: 1.5rem;
@@ -256,4 +260,61 @@
 }
 .BAvpeye {
   margin-right: 0.8rem;
+}
+.BAbalance {
+  margin: 4rem auto 0rem auto;
+  width: 60%;
+}
+.BAsubtxt {
+  color: #666666;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+.BAsubbtn {
+  margin: 2rem auto 4rem;
+    background: #18214D;
+    border-radius: 6px;
+    border: 1px solid #18214D;
+    color: #ffffff;
+    font-size: 14px;
+    height: 45px;
+    width: 240px;
+    transition: 0.2s;
+}
+.BAsubbtn:hover {
+  transform: scale(1.05);
+}
+@media(max-width: 800px) {
+  .BAform {
+    width: 60%;
+  }
+  .BAavatar {
+    width: 40px;
+  }
+  .BAsearchbar {
+    height: 40px;
+  }
+  .BAviewprofile {
+    width: 160px;
+  }
+}
+@media(max-width: 600px) {
+  .BAbalance {
+    width: 70%;
+  }
+}
+@media(max-width: 400px) {
+  .BAbalance {
+    width: 80%;
+  }
+  .BArow1 {
+    padding: 1rem 2rem;
+  }
+  .BArow2txt1 {
+    font-size: 16px;
+  }
+  .BAviewprofile {
+    width: 140px;
+  }
 }
