@@ -42,7 +42,7 @@ const SideBarAffilliateDashboard = withRouter((props: any) => {
         </div>{" "}
         <div className={hidemobile ? "navitemnone" : "navitem1 newitem"}>
           <div className={props.ov ? "activegb shifbb" : "gbn shifbb"}>
-            <Link to="/organizations">
+            <Link to="/affiliates">
               <img
                 src={props.ov ? overview : Overview_inactive}
                 className="sideimage"

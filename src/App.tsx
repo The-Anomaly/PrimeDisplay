@@ -101,6 +101,8 @@ import ForgotPasswordNew from "./Components/Home/Redesigned_signup_page/forgotpa
 import CounsellorViewUsersCVProfile from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUsersCVProfileBuilder";
 import CounsellorLandingPage from "./Components/KigenniDashboard/CounsellorLandingPage/counsellorlandingpage";
 import ThirdPartyOverview from "./Components/KigenniDashboard/AffiliateDashboard/ThirdPartyOverview";
+import SigninAffiliates from "./Components/Home/Redesigned_signup_page/signinAffiliates";
+import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAffiliates";
 
 class App extends Component {
   constructor(props) {
@@ -242,7 +244,6 @@ class App extends Component {
                 path="/password_recovery"
                 component={ForgotPasswordNew}
               />
-
               <Route
                 exact
                 path="/assessmentphasecomplete"
@@ -500,9 +501,27 @@ class App extends Component {
                 path="/counsellormeetings"
                 component={CounsellorScheduledMeetings}
               />
-              <Route exact path="/forcounsellors" component={CounsellorLandingPage} />
+              <Route
+                exact
+                path="/affiliates/signin"
+                component={SigninAffiliates}
+              />
+              <Route
+                exact
+                path="/affiliates/signup"
+                component={AffiliatesSignup}
+              />
+              <Route
+                exact
+                path="/forcounsellors"
+                component={CounsellorLandingPage}
+              />
               {/* Affiliates Starts here */}
-              <Route exact path="/organizations" component={ThirdPartyOverview} />
+              <Route
+                exact
+                path="/affiliates"
+                component={ThirdPartyOverview}
+              />
             </Switch>
           </BrowserRouter>
         </div>
