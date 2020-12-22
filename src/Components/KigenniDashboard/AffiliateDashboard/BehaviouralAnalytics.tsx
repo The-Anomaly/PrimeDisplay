@@ -10,13 +10,32 @@ import balance from "../../../assets/balance.svg";
 
 const BehaviouralAnalytics = () => {
   const [viewProfile, SetViewProfile] = React.useState(false);
-
+  const [analytics, setAnalytics] = React.useState(1);
   const viewProfileButton = () => {
     if (viewProfile === false) {
       SetViewProfile(true);
     } else {
       SetViewProfile(false);
     }
+  };
+
+  const viewPersonaties = () => {
+    setAnalytics(1);
+  };
+  const viewCompetencies = () => {
+    setAnalytics(2);
+  };
+  const viewWorkStyle = () => {
+    setAnalytics(3);
+  };
+  const viewWorkMotivators = () => {
+    setAnalytics(4);
+  };
+  const viewWorkFunctions = () => {
+    setAnalytics(5);
+  };
+  const viewCareerFitness = () => {
+    setAnalytics(6);
   };
   return (
     <>
@@ -62,8 +81,109 @@ const BehaviouralAnalytics = () => {
                 <Row className="BArow2">
                   <div className="BArow2txt1">Behavioural Analytics</div>
                 </Row>
+                {/* Subscribed view begins*/}
+                <Row>
+                  <div className="BAsections">
+                    <div
+                      onClick={viewPersonaties}
+                      className={
+                        analytics === 1 ? "BAselect activeselect" : "BAselect"
+                      }
+                    >
+                      Personalities
+                    </div>
+                    <div
+                      onClick={viewCompetencies}
+                      className={
+                        analytics === 2 ? "BAselect activeselect" : "BAselect"
+                      }
+                    >
+                      Competencies
+                    </div>
+                    <div
+                      onClick={viewWorkStyle}
+                      className={
+                        analytics === 3 ? "BAselect activeselect" : "BAselect"
+                      }
+                    >
+                      Work Style
+                    </div>
+                    <div
+                      onClick={viewWorkMotivators}
+                      className={
+                        analytics === 4 ? "BAselect activeselect" : "BAselect"
+                      }
+                    >
+                      Work Motivators
+                    </div>
+                    <div
+                      onClick={viewWorkFunctions}
+                      className={
+                        analytics === 5 ? "BAselect activeselect" : "BAselect"
+                      }
+                    >
+                      Work Functions
+                    </div>
+                    <div
+                      onClick={viewCareerFitness}
+                      className={
+                        analytics === 6 ? "BAselect activeselect" : "BAselect"
+                      }
+                    >
+                      Career Fitness
+                    </div>
+                  </div>
+                </Row>
+                <Row className="BArow3">
+                  {analytics === 1 ? (
+                    <div className="BAanalyticsttl">
+                      <div className="BAAttl1">Personalities</div>
+                      <button className="BAmorebtn">
+                        Request more Insight
+                      </button>
+                    </div>
+                  ) : analytics === 2 ? (
+                    <div className="BAanalyticsttl">
+                      <div className="BAAttl1">Competencies</div>
+                      <button className="BAmorebtn">
+                        Request more Insight
+                      </button>
+                    </div>
+                  ) : analytics === 3 ? (
+                    <div className="BAanalyticsttl">
+                      <div className="BAAttl1">Work Style</div>
+                      <button className="BAmorebtn">
+                        Request more Insight
+                      </button>
+                    </div>
+                  ) : analytics === 4 ? (
+                    <div className="BAanalyticsttl">
+                      <div className="BAAttl1">Work Motivators</div>
+                      <button className="BAmorebtn">
+                        Request more Insight
+                      </button>
+                    </div>
+                  ) : analytics === 5 ? (
+                    <div className="BAanalyticsttl">
+                      <div className="BAAttl1">Work Functions</div>
+                      <button className="BAmorebtn">
+                        Request more Insight
+                      </button>
+                    </div>
+                  ) : analytics === 6 ? (
+                    <div className="BAanalyticsttl">
+                      <div className="BAAttl1">Career Fitness</div>
+                      <button className="BAmorebtn">
+                        Request more Insight
+                      </button>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </Row>
+                {/* Subscribed view ends*/}
 
-                {/*Please note! Analytics without subscription section*/}
+                {/* Analytics without subscription begins*/}
                 {/* <Row>
                   <img className="BAbalance" src={balance} />
                   <div className="BAsubtxt">
@@ -73,6 +193,7 @@ const BehaviouralAnalytics = () => {
                   </div>
                   <button className="BAsubbtn">Upgrade Subscription</button>
                 </Row> */}
+                {/* Analytics without subscription ends*/}
               </Col>
             </Row>
           </Col>
