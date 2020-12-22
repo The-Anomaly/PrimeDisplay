@@ -84,7 +84,7 @@ const ThirdPartyOverview = (props: any) => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarAffilliateDashboard />
+          <SideBarAffilliateDashboard ov={true} />
           <Col md={10} sm={12} className="prm newprm1">
             <Row>
               <Col md={12} className="firstqq firstAF genbg">

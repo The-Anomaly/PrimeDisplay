@@ -41,44 +41,44 @@ const SideBarAffilliateDashboard = withRouter((props: any) => {
           </Link>
         </div>{" "}
         <div className={hidemobile ? "navitemnone" : "navitem1 newitem"}>
-          <div className={props.ov ? "activegb shifbb" : "gbn shifbb"}>
-            <Link to="/organizations">
+        <Link to="/organizations">
+          <div className={props.ov ? "activecomp shifbb" : "gbn shifbb"}>
               <img
                 src={props.ov ? overview : Overview_inactive}
                 className="sideimage"
                 alt="sideimage"
               />{" "}
               Dashboard
-            </Link>
           </div>
+          </Link>
+            <Link to="/analytics">
           <div
-            className={props.bookedsession ? "activegb shifbb" : "gbn shifbb"}
+            className={props.analytics ? "activecomp shifbb" : "gbn shifbb"}
           >
-            <Link to="/counsellorbookings">
               <img
                 src={props.bookedsession ? activeinsight : inactiveinsight}
                 className="sideimage"
                 alt="sideimage"
               />
               Behavioural Analytics
-            </Link>
           </div>
-          <div className={props.messages ? "activegb shifbb" : "gbn shifbb"}>
-            {" "}
+            </Link>
             <Link to="/counsellormessages">
+          <div className={props.messages ? "activecomp shifbb" : "gbn shifbb"}>
+            {" "}
               <img
                 src={props.messages ? chatactive : chatinactive}
                 className="sideimage"
                 alt="sideimage"
               />
               Become a Counsellor
-            </Link>
           </div>
+            </Link>
 
           <div className="divide_thro shifbb"></div>
-          <div className={"gbn shifbb"}>
+          <div className={"gbn shifbb"} onClick={logOut}>
             {" "}
-            <span onClick={logOut}>
+            <span >
               <img src={logout} className="sideimage" alt="sideimage" />
               Logout
             </span>
