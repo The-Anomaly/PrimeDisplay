@@ -100,6 +100,7 @@ import CounsellorAssignedMembersViewOne from "./Components/KigenniDashboard/Coun
 import ForgotPasswordNew from "./Components/Home/Redesigned_signup_page/forgotpassword";
 import CounsellorViewUsersCVProfile from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUsersCVProfileBuilder";
 import CounsellorLandingPage from "./Components/KigenniDashboard/CounsellorLandingPage/counsellorlandingpage";
+import ThirdPartyOverview from "./Components/KigenniDashboard/AffiliateDashboard/ThirdPartyOverview";
 
 class App extends Component {
   constructor(props) {
@@ -500,7 +501,8 @@ class App extends Component {
                 component={CounsellorScheduledMeetings}
               />
               <Route exact path="/forcounsellors" component={CounsellorLandingPage} />
-
+              {/* Affiliates Starts here */}
+              <Route exact path="/organizations" component={ThirdPartyOverview} />
             </Switch>
           </BrowserRouter>
         </div>
