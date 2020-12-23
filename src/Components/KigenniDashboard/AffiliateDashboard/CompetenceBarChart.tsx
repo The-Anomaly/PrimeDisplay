@@ -11,35 +11,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SideBarAffilliateDashboard from "./SideBarAffiliateDashboard";
 import "./affiliate.css";
+import BarChart from "react-bar-chart";
 import Chart from "react-google-charts";
 
 const CompetenceBarChart = (props: any) => {
   const [state, setState] = React.useState<any>({
     errorMessage: "",
-    user: "",
-    isLoading: "",
-    clarityLink: "https://clarity.yudimy.com/?referral",
-    hascopiedLink: false,
-    memberInfo: [],
-    next: "",
-    previous: "",
-    free_members: [],
-    paid_members: [],
-    total_pages: "",
-    page: "",
-    overview: {},
+    user: [],
+    width: "",
   });
-  const {
-    user,
-    nextSessionMessage,
-    paid_members,
-    free_members,
-    isLoading,
-    hascopiedLink,
-    clarityLink,
-    overview,
-    memberInfo,
-  }: any = state;
+
+  const { user, nextSessionMessage, width, memberInfo }: any = state;
   const changeCopiedState = () => {
     setState({
       ...state,
@@ -59,100 +41,105 @@ const CompetenceBarChart = (props: any) => {
       : props.history.push("/counsellor/signin");
     const data = {};
     Axios.all([
-      Axios.get<any, AxiosResponse<any>>(`${API}/affiliate/members/`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
-      Axios.get<any, AxiosResponse<any>>(`${API}/affiliate/free-members/`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
-      Axios.get<any, AxiosResponse<any>>(`${API}/affiliate/info/`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
-      Axios.get<any, AxiosResponse<any>>(`${API}/affiliate/paid-members/`, {
+      Axios.get<any, AxiosResponse<any>>(`${API}${props.endpoint}`, {
         headers: { Authorization: `Token ${token}` },
       }),
     ])
       .then(
-        Axios.spread((res, res1, res2, res3, res4) => {
-          console.log(res.data.results[0]);
-          console.log(res.data.results);
+        Axios.spread((res) => {
+          console.log(res.data.competence);
           if (res.status === 200) {
             console.log(res);
             setState({
               ...state,
-              overview: res2.data,
-              memberInfo: [...res.data.results],
-              clarityLink: `https://clarity.yudimy.com/?referral=${res.data.aff_name}`,
-              paid_members: [...res3.data.results],
-              free_members: [...res1.data.results],
+              user: [...res.data.competence.data],
             });
           }
         })
       )
       .catch((error) => {
+        console.log(error);
         if (error && error.response && error.response.data) {
         }
       });
   }, []);
 
+  const data = [
+    { text: "Man", value: 500 },
+    { text: "Woman", value: 300 },
+  ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(paid_members);
+  console.log(user.length);
   return (
     <>
       <Row>
         <Col>
-          <Chart
-            width={"100%"}
-            height={"500px"}
-            chartType="Bar"
-
-            loader={<div>Loading Chart</div>}
-            data={[
-              ["SKILL", "VALUE"],
-              ["ADMIN", 200],
-              ["AGILE", 250],
-              ["ANALYTICAL", 300],
-              ["COUNSELLING", 350],
-              ["CREATIVE", 350],
-              ["ELOQUENCE", 350],
-              ["LEADERSHIP AND MANAGEMENT", 350],
-              ["PERSUATION", 350], 
-              ["SCIENCE AND RESEARCH", 350],
-              ["TECHNOLOGY APPRECIATION", 350],
-              ["TECHNICAL & MECHANICAL", 350],
-            ]}
-            options={{
-              // Material design options
-              chart: {
-                minSpacing: 20,
-                annotations: {
-                  textStyle: {
-                    fontName: 'inherit',
-                    fontSize: 12,
-                    bold: true,
-                    italic: true,
-                    // The color of the text.
-                    color: "rgba(115, 136, 169, 0.353283)",
-                    // The color of the text outline.
-                    auraColor: '#d799ae',
-                    // The transparency of the text.
-                    opacity: 0.8
-                  }
-                }
-              },
-              colors: ["rgba(115, 136, 169, 0.353283)","rgba(115, 136, 169, 0.353283)","#2E6AF0"],
-              hAxis: {
-                title: "Total Population",
-                minValue: 0,
-              },
-              fontSize: 12,
-              vAxis: {
-                title: "City",
-              },
-            }}
-            // For tests
-            rootProps={{ "data-testid": "2" }}
-          />
+          {/* <div>
+            <div style={{ width: "100%" }}>
+              <BarChart
+                className="newbars"
+                ylabel="Quantity"
+                width={100}
+                height={500}
+                data={data}
+              />
+            </div>
+          </div> */}
+          {user && user.length > 0 ? (
+            <Chart
+              width={"100%"}
+              height={"500px"}
+              chartType="Bar"
+              loader={<div>Loading Chart</div>}
+              data={[
+                ["Skills","Score"],
+                [user[0].name, user[0].value],
+                [user[1].name, user[1].value],
+                [user[2].name, user[2].value],
+                [user[3].name, user[3].value],
+                [user[4].name, user[4].value],
+                [user[5].name, user[5].value],
+                [user[6].name, user[6].value],
+                [user[7].name, user[7].value],
+                [user[8].name, user[8].value],
+                [user[9].name, user[9].value],
+                [user[10].name, user[10].value]
+              ]}
+              options={{
+                // Material design options
+                chart: {
+                  minSpacing: 20,
+                  annotations: {
+                    textStyle: {
+                      fontName: "inherit",
+                      fontSize: 12,
+                      bold: true,
+                      italic: true,
+                      // The color of the text.
+                      color: "#2E6AF0",
+                      // The color of the text outline.
+                      auraColor: "#d799ae",
+                      // The transparency of the text.
+                      opacity: 0.8,
+                    },
+                  },
+                },
+                colors: ["#2E6AF0", "#2E6AF0", "#2E6AF0"],
+                hAxis: {
+                  title: "Total Population",
+                  minValue: 0,
+                },
+                fontSize: 12,
+                vAxis: {
+                  title: "City",
+                },
+              }}
+              // For tests
+              rootProps={{ "data-testid": "2" }}
+            />
+          ) : (
+            ""
+          )}
         </Col>
       </Row>
     </>

@@ -93,6 +93,7 @@ import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
 import NewDashboardAllMessages from "./Components/KigenniDashboard/NewDashboardAllMessages";
+import Afflanding from "./Components/Home/Clarity Affiliate landing page/affiliate_landing";
 import { NewAbout } from "./Components/Home/About/NewAbout";
 import CounsellorCVProfileBuilder from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorCVProfileBuilder";
 import CousellorProfileBuilderEdit from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorProfileBuilder";
@@ -134,6 +135,7 @@ class App extends Component {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/signin" component={Signin} />
               <Route exact path="/" component={RedesignedHome} />
+              <Route exact path="/affiliatehomepage" component={Afflanding} />
               <Route
                 exact
                 path="/counsellor/signup"

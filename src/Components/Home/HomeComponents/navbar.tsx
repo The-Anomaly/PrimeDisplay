@@ -115,7 +115,7 @@ const Navbar = withRouter((props: any) => {
         <div className="top-layer">
           {/* mobile */}
           <div className="lakk">
-            <SideNav
+            < SideNav
               style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
               navStyle={{ width: "70%", background: "#131313" }}
               showNav={showNav}

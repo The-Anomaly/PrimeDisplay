@@ -159,7 +159,9 @@ const BehaviouralAnalytics = () => {
                         </button>
                       </div>
                       <div className="container space122a">
-                        <CompetenceBarChart />
+                        <CompetenceBarChart
+                          endpoint={"/affiliate/competences-graph"}
+                        />
                       </div>
                     </>
                   ) : analytics === 3 ? (
@@ -173,25 +175,39 @@ const BehaviouralAnalytics = () => {
                       </button>
                     </div>
                   ) : analytics === 4 ? (
-                    <div className="BAanalyticsttl">
-                      <div className="BAAttl1">
-                        Work Motivators
-                        <img className="BAinfo" src={info} alt="info" />
+                    <>
+                      <div className="BAanalyticsttl">
+                        <div className="BAAttl1">
+                          Work Motivators
+                          <img className="BAinfo" src={info} alt="info" />
+                        </div>
+                        <button className="BAmorebtn">
+                          Request more Insight
+                        </button>
                       </div>
-                      <button className="BAmorebtn">
-                        Request more Insight
-                      </button>
-                    </div>
+                      <div className="container space122a">
+                        <CompetenceBarChart
+                          endpoint={"/affiliate/competences-graph"}
+                        />
+                      </div>
+                    </>
                   ) : analytics === 5 ? (
-                    <div className="BAanalyticsttl">
-                      <div className="BAAttl1">
-                        Work Functions
-                        <img className="BAinfo" src={info} alt="info" />
+                    <>
+                      <div className="BAanalyticsttl">
+                        <div className="BAAttl1">
+                          Work Functions
+                          <img className="BAinfo" src={info} alt="info" />
+                        </div>
+                        <button className="BAmorebtn">
+                          Request more Insight
+                        </button>
                       </div>
-                      <button className="BAmorebtn">
-                        Request more Insight
-                      </button>
-                    </div>
+                      <div className="container space122a">
+                        <CompetenceBarChart
+                          endpoint={"/affiliate/competences-graph"}
+                        />
+                      </div>
+                    </>
                   ) : analytics === 6 ? (
                     <div className="BAanalyticsttl">
                       <div className="BAAttl1">

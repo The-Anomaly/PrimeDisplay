@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+.afflndbody{
+    background-color: #fcfcfc;
+    background-image: url(../../../assets/affbackimg.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    padding-bottom: 30px;
+}
+.afflandwrapper{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.afflndrow{
+    padding-top: 34px;
+    padding-bottom: 137px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.affbltxt{
+    color: #2f80ed;
+    font-size: 17px;
+}
+.afflndheading{
+    font-size: 62px;
+    color: #333333;
+}
+.afflndescr{
+    font-size: 13px;
+    width: 73%;
+    color: #666666;
+}
+.afflandgetstrdbtn{
+    display: inline-block;
+    padding: 15px 91px;
+    color: #fff;
+    background: linear-gradient(241.8deg, #9C1258 -24.42%, #18214D 171.01%);;
+    border-radius: 6px;
+    margin-top: 27px;
+    margin-bottom: 274px;
+    cursor: pointer;
+}
+.afflndbtn{
+    display: inline-block;
+    color: #ffffff;
+    cursor: pointer;
+    border: 1px solid #ffffff;
+    padding: 7px 35px;
+    border-radius: 6px;
+}
+.affsgnupdiv{
+    text-align: end;
+}
+
+.affsocialmedia{
+    margin-right: 40px;
+}
+@media (max-width: 768px){
+    .afflndbody{
+        background-position-x: -149px;
+        padding-bottom: 43px;
+    }
+}
