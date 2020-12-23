@@ -38,7 +38,7 @@ const CompetenceBarChart = (props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : props.history.push("/counsellor/signin");
+      : window.location.assign("/affiliates/signin");
     const data = {};
     Axios.all([
       Axios.get<any, AxiosResponse<any>>(`${API}${props.endpoint}`, {

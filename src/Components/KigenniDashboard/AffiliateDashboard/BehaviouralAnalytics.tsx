@@ -43,15 +43,13 @@ const BehaviouralAnalytics = () => {
   };
 
   React.useEffect((): any => {
-    // const availableToken = localStorage.getItem("userToken");
-    // const token: string = availableToken
-    //   ? JSON.parse(availableToken)
-    //   : window.location.assign("/signin");
-    Axios.get(`${API}/affiliate/personality-graph`
-    // , {
-    //   headers: { Authorization: `Token ${token}` },
-    // }
-    )
+    const availableToken = localStorage.getItem("userToken");
+    const token: string = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/affiliates/signin");
+    Axios.get(`${API}/affiliate/personality-graph`, {
+      headers: { Authorization: `Token ${token}` },
+    })
     .then((response) => {
       console.log(response)
     })
