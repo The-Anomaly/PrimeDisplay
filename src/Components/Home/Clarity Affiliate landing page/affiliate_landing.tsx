@@ -28,11 +28,11 @@ const Afflanding =()=>{
                           <span className="afflandgetstrdbtn">Get started</span>
                     </div>
                     <div>
-                        <img src={arrow} className="affsocialmedia" />
-                        <img src={facebk} className="affsocialmedia" />
-                        <img src={twitter} className="affsocialmedia"/>
-                        <img src={instagram} className="affsocialmedia"/>
-                        <img src={linkedin} className="affsocialmedia"/>
+                      <img src={arrow} className="affsocialmedia" />
+                       <a href="https://free.facebook.com/pages/category/Product-Service/109680753747119/?_rdc=1&_rdr" target="_blank"><img src={facebk} className="affsocialmedia" /></a>
+                       <a href="https://twitter.com/askyudimy?s=08" target="_blank"><img src={twitter} className="affsocialmedia"/></a>
+                       <a href="http://instagram.com/getclarity_" target="_blank"> <img src={instagram} className="affsocialmedia"/></a>
+                       <a href="https://ng.linkedin.com/company/yudimy" target="_blank"> <img src={linkedin} className="affsocialmedia"/></a>
                     </div>
                 </Col>
              </Row>
