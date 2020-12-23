@@ -45,8 +45,14 @@
 .payment-header{
     text-align: initial !important;
     padding-bottom: 12px !important;
+    margin-top: 33px;
     background-color: #fff !important;
     cursor: unset;
+}
+@media (max-width: 760px){
+    .btn-yellow{
+        margin: 64px 0px;
+    }
 }
 .payment-header span{
     font-size: 12px;
@@ -54,7 +60,7 @@
 }
 .payment-card{
     text-align: initial;
-    border-radius: 8px !important;
+    border-radius: 14px !important;
 }
 .card-div{
     border-bottom: 1px solid #ebeced;
@@ -150,12 +156,26 @@
 .btn-green::after{
     background-color: #46d68c;
 }
-@media screen and (max-width:760px){
-    .margined_col:not(:last-child){
-        margin-bottom: 15px;
+@media screen and (max-width:414px){
+    .margined_col{
+        margin-bottom: 38px;
+        max-width: 85%;
+    }
+    .btn-yellow{
+        margin: 49px 0px !important;
+    }
+    .btn-blue{
+        margin: 29px 0px;
+    }
+    .btn-green{
+        margin: 65px 0px;
+    }
+    .addmargin {
+        margin-top: 2rem;
+        max-width: 85%;
     }
 }
-@media screen and (max-width: 768px){
+/* @media screen and (max-width: 760px){
     .margined_col{
         min-width: 33%;
     }
@@ -170,7 +190,7 @@
     .btn-yellow{
         margin: 142px 0px !important;
     }
-}
+} */
 .red{
     color: #eb5757 !important;
     font-size: 21px;
@@ -194,7 +214,6 @@
     background-color:  #eb5757;
 }
 .subcription-card{
-    margin-top: 26px;
     border-radius: 8px !important;
 }
 .subscription-header{
@@ -361,9 +380,7 @@
         flex-direction: column;
         align-items: center;
     }
-    .addmargin {
-        margin-top: 3rem;
-    }
+  
 }
 
 .giftmail {

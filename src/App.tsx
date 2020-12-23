@@ -93,6 +93,7 @@ import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
 import NewDashboardAllMessages from "./Components/KigenniDashboard/NewDashboardAllMessages";
+import Afflanding from "./Components/Home/Clarity Affiliate landing page/affiliate_landing";
 import { NewAbout } from "./Components/Home/About/NewAbout";
 import CounsellorCVProfileBuilder from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorCVProfileBuilder";
 import CousellorProfileBuilderEdit from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorProfileBuilder";
@@ -101,6 +102,8 @@ import ForgotPasswordNew from "./Components/Home/Redesigned_signup_page/forgotpa
 import CounsellorViewUsersCVProfile from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUsersCVProfileBuilder";
 import CounsellorLandingPage from "./Components/KigenniDashboard/CounsellorLandingPage/counsellorlandingpage";
 import ThirdPartyOverview from "./Components/KigenniDashboard/AffiliateDashboard/ThirdPartyOverview";
+import SigninAffiliates from "./Components/Home/Redesigned_signup_page/signinAffiliates";
+import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAffiliates";
 import BehaviouralAnalytics from "./Components/KigenniDashboard/AffiliateDashboard/BehaviouralAnalytics";
 
 class App extends Component {
@@ -132,6 +135,7 @@ class App extends Component {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/signin" component={Signin} />
               <Route exact path="/" component={RedesignedHome} />
+              <Route exact path="/affiliatehomepage" component={Afflanding} />
               <Route
                 exact
                 path="/counsellor/signup"
@@ -243,7 +247,6 @@ class App extends Component {
                 path="/password_recovery"
                 component={ForgotPasswordNew}
               />
-
               <Route
                 exact
                 path="/assessmentphasecomplete"
@@ -501,9 +504,23 @@ class App extends Component {
                 path="/counsellormeetings"
                 component={CounsellorScheduledMeetings}
               />
-              <Route exact path="/forcounsellors" component={CounsellorLandingPage} />
+              <Route
+                exact
+                path="/affiliates/signin"
+                component={SigninAffiliates}
+              />
+              <Route
+                exact
+                path="/affiliates/signup"
+                component={AffiliatesSignup}
+              />
+              <Route
+                exact
+                path="/forcounsellors"
+                component={CounsellorLandingPage}
+              />
               {/* Affiliates Starts here */}
-              <Route exact path="/organizations" component={ThirdPartyOverview} />
+              <Route exact path="/affiliates" component={ThirdPartyOverview} />
               <Route exact path="/analytics" component={BehaviouralAnalytics} />
             </Switch>
           </BrowserRouter>

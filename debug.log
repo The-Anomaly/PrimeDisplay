@@ -3,6 +3,9 @@
 [1120/222328.818:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1124/093638.120:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1201/115223.603:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+<<<<<<< HEAD
+[1222/074655.764:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+=======
 [1221/121501.596:ERROR:crash_report_database_win.cc(496)] failed to stat report
 [1221/121501.690:ERROR:crash_report_database_win.cc(496)] failed to stat report
 [1221/121501.690:ERROR:crash_report_database_win.cc(496)] failed to stat report
@@ -130,4 +133,9 @@
 [1221/122501.637:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\Adekogbe Favour\AppData\Local\Google\Chrome\User Data\Crashpad\reports\d02ec10d-3c67-4af8-9f42-0d8192174f3f.dmp: The system cannot find the file specified. (0x2)
 [1221/122501.637:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\Adekogbe Favour\AppData\Local\Google\Chrome\User Data\Crashpad\reports\343adfa3-da94-4f73-97ed-c56deba5b67d.dmp: The system cannot find the file specified. (0x2)
 [1221/122501.637:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+<<<<<<< HEAD
 [1223/203459.182:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+=======
+>>>>>>> remotes/origin/sub
+[1223/072544.064:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+>>>>>>> 91908c80fd0c67dfe9910b594e76e9d15d82a77c

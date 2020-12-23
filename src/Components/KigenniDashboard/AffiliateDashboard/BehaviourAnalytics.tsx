@@ -26,7 +26,7 @@ import { Tab, Table, Tabs } from "react-bootstrap";
 import avatar from "../../../assets/avatar.svg";
 const moment = require("moment");
 
-const ThirdPartyOverview = (props: any) => {
+const BehaviourAnalytics = (props: any) => {
   const [state, setState] = React.useState<any>({
     errorMessage: "",
     user: "",
@@ -69,7 +69,7 @@ const ThirdPartyOverview = (props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : props.history.push("/affiliates/signin");
+      : props.history.push("/counsellor/signin");
     const data = {};
     Axios.all([
       Axios.get<any, AxiosResponse<any>>(`${API}/affiliate/members/`, {
@@ -95,7 +95,7 @@ const ThirdPartyOverview = (props: any) => {
               ...state,
               overview: res2.data,
               memberInfo: [...res.data.results],
-              clarityLink: `https://clarity.yudimy.com/signup?referral=${res2.data.aff_name}`,
+              clarityLink: `https://clarity.yudimy.com/?referral=${res.data.aff_name}`,
               paid_members: [...res3.data.results],
               free_members: [...res1.data.results],
             });
@@ -118,7 +118,7 @@ const ThirdPartyOverview = (props: any) => {
     <>
       <Container fluid={true} className="contann122">
         <Row>
-          <SideBarAffilliateDashboard ov={true} />
+          <SideBarAffilliateDashboard />
           <Col md={10} sm={12} className="prm newprm1">
             <Row>
               <Col md={12} className="firstqq firstAF genbg">
@@ -135,7 +135,7 @@ const ThirdPartyOverview = (props: any) => {
                       <input
                         type="search"
                         placeholder="Search"
-                        className="dshbdsearchbar form-control BAsearchbar"
+                        className="dshbdsearchbar form-control"
                       />
                     </form>
                     <div className="username23">
@@ -223,12 +223,10 @@ const ThirdPartyOverview = (props: any) => {
                           />{" "}
                         </div>
                         <div className="amnntt">N{overview?.bonus}</div>
-                        <div className="reflink2">Referral Link</div>
+                        <div className="reflink2">Referal Link</div>
                         <div className="sette">
                           <span className="clatxt">
-                            <a href={clarityLink} target="blank">
                             https://clarity.com?refer:112324/d/1kX_cq...
-                            </a>
                           </span>
                           <span className="clatxt2">
                             <img
@@ -375,4 +373,4 @@ const ThirdPartyOverview = (props: any) => {
     </>
   );
 };
-export default ThirdPartyOverview;
+export default BehaviourAnalytics;
