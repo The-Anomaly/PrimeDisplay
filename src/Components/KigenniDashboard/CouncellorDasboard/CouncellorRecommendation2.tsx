@@ -112,7 +112,7 @@ class CounsellorRecommendation2 extends React.Component {
         <CounsellorDashboardMobileNav councrec={true} />
           <Row>
             <SideBarCounsellorDashboard councrec={true}/>
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm1">
               <CounsellorDashboardNav title="Counsellors Recommendation" />
               <Link to="/counsellorrecommendations1" className="goback">&#8592;  Back</Link>
               <Row>

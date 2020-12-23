@@ -13,6 +13,13 @@ import "react-calendar/dist/Calendar.css";
 import write from "../../assets/write.png";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import Modal from "react-bootstrap/Modal";
+import close from "../../assets/close.svg";
+import checkede from "../../assets/checkede.png";
+import moment from "moment";
+import { Link } from "react-router-dom";
+import "../Home/Home/Home.css"
+import failedNotice from "../../assets/failedNotice.png";
 
 class CouncellorDates extends React.Component<React.Props<any>> {
   state: any = {
@@ -25,8 +32,13 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     startDate: "",
     endDate: "",
     time: "",
+    isOpen: false,
+    Canbooksession: false,
+    upgradeState: false,
   };
+  
   componentWillMount() {
+    window.scrollTo(-0, -0);
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -44,9 +56,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       })
       .catch((error) => {
-        if (error && error.response && error.response.data) {
+        if (error && error.response && error.response) {
           this.setState({
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
           });
         }
@@ -56,6 +68,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       });
   }
+  closeUpgradeModal = () => {
+    this.setState({
+      upgradeState: false,
+    })
+  };
   onchange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -64,6 +81,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   selectedTimeHandler = (e) => {
     this.setState({
       time: e.target.value,
+    });
+  };
+  closeModal = () => {
+    this.setState({
+      isOpen: false,
     });
   };
   getAvailableTime = (date) => {
@@ -82,9 +104,10 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       })
       .catch((error) => {
+        console.log(error);
         if (error && error.response && error.response.data) {
           this.setState({
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
           });
         }
@@ -94,7 +117,10 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         });
       });
   };
-
+  formatTime = (date) => {
+    const dateTime = moment(date).format("MMM YYYY");
+    return dateTime;
+  };
   handleChatCheck = () => {
     console.log("checking payment status");
     this.setState({ isLoading: true });
@@ -117,7 +143,10 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           // const userLocation = localStorage.getItem("currentLocation");
           // const prevLocation = userLocation ? JSON.parse(userLocation) : "";
           console.log("No payment");
-          return window.location.assign("/dashboardsubscriptionplan");
+          //return window.location.assign("/dashboardsubscriptionplan");
+          return this.setState({
+            upgradeState: true,
+          })
         }
       })
       .catch((error) => {
@@ -148,20 +177,19 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         if (response.status === 200) {
-          this.notify("Message Sent");
-          setTimeout(() => {
-            const self: any = this;
-            self.props.history.push("/overview");
-          }, 3000);
+          this.setState({
+            isOpen: true,
+          });
         }
       })
       .catch((error) => {
-        this.notify("Failed to Send");
-        if (error && error.response && error.response.data) {
+        console.log(error.response);
+        if (error && error?.response && error?.response?.data) {
           this.setState({
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data?.message,
             isLoading: false,
           });
+          this.notify(`Failed to process  ${error?.response?.data?.message}`);
         }
         this.setState({
           errorMessage: "failed",
@@ -178,7 +206,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       fullname,
       phone,
       careerbussines,
-      availabledate,
+      isOpen,
       feedbackText,
       startDate,
       endDate,
@@ -187,7 +215,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     return (
       <>
         <Navbar />
-        <Container fluid={true}>
+        <Container fluid={true} className="mobilepadding">
           <Row className="kli6 bcbv datesedit">
             <Col md={12} className="scheduleheader">
               Schedule a meeting
@@ -196,6 +224,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
               <Calendar
                 onChange={this.onChange}
                 value={this.state.date}
+                name="date"
                 allowPartialRange={true}
                 minDate={new Date(startDate)}
                 maxDate={new Date(endDate)}
@@ -254,7 +283,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                   />
                 </Col>
                 <Col md={7} className="text-right skd11">
-                  <div className="booksession" onClick={this.handleChatCheck}>
+                  <div className="booksession planupgradebtn1" onClick={this.handleChatCheck}>
                     Book Session <span className="text-white">&#8594;</span>
                   </div>
                 </Col>
@@ -269,7 +298,68 @@ class CouncellorDates extends React.Component<React.Props<any>> {
             </Col>
           </Row>
         </Container>
-        <Footer />
+        <Modal
+          show={isOpen}
+          className="modcomplete modsuccess"
+          centered={true}
+          onHide={this.closeModal}
+        >
+          <span className="close_view" onClick={this.closeModal}>
+            <img
+              className="closeview slsbtn"
+              src={close}
+              onClick={this.closeModal}
+              alt="close"
+            />
+          </span>
+          <Modal.Body>
+            <div className="modal_det"></div>
+            <div className="text-center">
+              <img src={checkede} className="checkedes" alt="success" />
+            </div>
+            <div className="successfullybooked">
+              You successfully booked a session with a counselllor on{" "}
+              <b>{this.formatTime(this.state.date)}</b> by{" "}
+              <b>{this.state.time}</b>
+            </div>
+            <div className="btncenter">
+              <button className="btncenter12">
+                {" "}
+                <Link to="/overview">Continue</Link>
+              </button>
+            </div>
+          </Modal.Body>
+        </Modal>
+        <Modal
+              show={this.state.upgradeState}
+              centered={true}
+              onHide={this.closeUpgradeModal}
+            >
+              <Modal.Body>
+                <div className="text-center">
+                  {" "}
+                  <img
+                    src={failedNotice}
+                    className="failedNotice"
+                    alt="failedNotice"
+                  />{" "}
+                </div>
+                <div className="onhno"> Oh No! </div>
+                <div className="onhno">
+                  This package is not available on this plan <br/> Please Upgrade your
+                  Plan
+                </div>
+                <div className="text-center planupgrade">
+                  <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/dashboardsubscriptionplan">View your current plan</Link>
+                  </div>
+                  {/* <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/paymentsummary">Upgrade your plan</Link>
+                  </div> */}
+                </div>
+              </Modal.Body>
+            </Modal>
+        {/* <Footer /> */}
       </>
     );
   }

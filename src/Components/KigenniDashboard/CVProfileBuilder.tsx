@@ -425,7 +425,7 @@ class CVProfileBuilder extends React.Component {
           <DashboardNav builder={true} />
           <Row>
             <SideBarNewDashboard builder={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Profile Builder" />
               <Row>
                 <Col md={11} className="kisls">
@@ -720,7 +720,7 @@ class CVProfileBuilder extends React.Component {
                       ))}
                     </Col>
                   </Row>
-                  <Row className="rowla">
+                  {/* <Row className="rowla">
                     <Col md={12}>
                       <div className="whatdoudo offpadd1">
                         <div className="what12">
@@ -745,7 +745,7 @@ class CVProfileBuilder extends React.Component {
                         {twitter && <a className="social1">{twitter}</a>}
                       </Row>
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Row>
                     <Col md={12} className="printcv">
                       <Link to="/cvdashboard">

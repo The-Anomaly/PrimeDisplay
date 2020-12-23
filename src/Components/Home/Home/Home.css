@@ -864,11 +864,13 @@ button {
   background: #23304c;
   color: #ffffff;
   width: 100vw;
-  padding-top: 1.4rem;
+  padding-top: 1rem;
   padding-right: 4rem;
   padding-left: 4rem;
-  padding-bottom: 1.4rem;
+  padding-bottom: 1rem;
   flex-wrap: nowrap;
+  transition: 0.5s;
+  box-shadow: 0 4px 2px -2px rgba(35, 48, 76, 30%);
 }
 .nav_titlenew {
   display: flex;
@@ -897,12 +899,18 @@ button {
 }
 .hometext {
   color: #ffffff;
-  margin-top: 15rem;
+  margin-top: 13rem;
   margin-bottom: 15rem;
   padding-left: 4%;
   padding-right: 5%;
   font-size: 45px;
   font-family: "Brfirma-Bold";
+}
+.smhometext {
+  font-size: 30px;
+  font-family: 'Brfirma-Regular';
+  font-weight: 500;
+  margin-top: 1rem;
 }
 .socials {
   display: flex;
@@ -953,14 +961,31 @@ button {
   padding-left: 0;
   z-index: 1;
   position: relative;
+  background-image: url("../../../assets/Landingrectangle.png");
+  background-size: contain;
+  padding-bottom: 20px;
+  padding-top: 8px;
+  padding-right: 2.5rem;
+  padding-left: 5px;
+  background-repeat: no-repeat;
+  display: inline-flex;
+}
+.trustttl {
+  padding-top: 5px;
+}
+.clientttl {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 .secondimg {
   position: absolute;
-  right: -46px;
+  /* right: -46px; */
+  left: -4px;
   top: -10px;
   z-index: -1;
   width: 150px;
   height: 68px;
+  display: none;
 }
 .crazycircle1 {
   display: flex;
@@ -1177,15 +1202,19 @@ button {
 }
 .fourthsubhead {
   font-family: "Brfirma-Bold";
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.3px;
+  position: relative;
+  z-index: 10;
 }
 .fourthsubtext {
   color: #666666;
   font-family: "BRFirma-Regular";
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.3px;
   margin-top: 0.7rem;
+  position: relative;
+  z-index: 10;
 }
 .homelaptop {
   position: absolute;
@@ -1197,6 +1226,7 @@ button {
   z-index: 10;
   width: 100%;
   top: 12.5rem;
+  left: -1rem;
 }
 .laptop {
   width: 49%;
@@ -1204,12 +1234,13 @@ button {
 .fourthposit {
   margin: auto;
   margin-bottom: 3rem;
-  margin-top: -3rem;
+  margin-top: -2.4rem;
 }
 .trustimg {
   text-align: center;
   margin-bottom: 0.5rem;
   position: relative;
+  z-index: 10;
 }
 .trustimgin {
   background: #17ddea;
@@ -1225,8 +1256,8 @@ button {
 .border2 {
   position: absolute;
   margin-top: 2rem;
-  margin-left: -13rem;
-  height: 224px;
+  height: 260px;
+  margin-left: -17rem;
 }
 .border3 {
   position: absolute;
@@ -1239,17 +1270,21 @@ button {
   position: absolute;
   margin-top: 2rem;
   height: 224px;
-  margin-left: -7rem;
+  width: 355px;
+  margin-left: -8.4rem;
 }
 .border5 {
   position: absolute;
-  margin-top: 2.3rem;
+  margin-top: 1.8rem;
   margin-left: 4rem;
   width: 280px;
 }
 .leftborder,
 .rightborder {
   display: none;
+}
+.frheight {
+  height: 133px;
 }
 /*Hear From Clients*/
 .homemap {
@@ -1279,6 +1314,11 @@ button {
   width: 300px;
   line-height: 25px;
   letter-spacing: 0.3px;
+}
+.mapname {
+  margin-top: 0.5rem;
+  font-family: 'Brfirma-Bold';
+  letter-spacing: 0.5px;
 }
 .clientimg {
   height: 84px;
@@ -1386,6 +1426,7 @@ button {
   padding-left: 2rem;
   font-size: 13.5px;
   letter-spacing: 0.6px;
+  outline: none;
 }
 .footer_mail::placeholder {
   font-size: 13px;
@@ -1613,6 +1654,18 @@ button {
   letter-spacing: 0.5px;
   padding-left: 0.3rem;
   position: relative;
+  background-image: url("../../../assets/Landingrectangle.png");
+  background-size: contain;
+  padding-right: 1.5rem;
+  padding-right: 2.5rem;
+  padding-top: 15px;
+  padding-bottom: 14px;
+  padding-left: 3px;
+  background-repeat: no-repeat;
+}
+.prodteam {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .indibox {
   z-index: -1;
@@ -1620,6 +1673,7 @@ button {
   position: absolute;
   left: 0rem;
   top: -5px;
+  display: none;
 }
 .prodgreentick {
   margin-right: 3rem;
@@ -1667,9 +1721,9 @@ button {
   }
   .fourthsubsec {
     border: 1px dashed #666666;
-    border-radius: 130px;
-    padding: 1rem 3rem;
-    width: 350px;
+    border-radius: 45%;
+    padding: 2rem 3rem;
+    width: 355px;
   }
   .newfirstrow {
     background-image: url("../../../assets/mobilebackdrop.svg");
@@ -1681,7 +1735,10 @@ button {
     padding-left: 0;
     padding-right: 0;
     font-size: 40px;
-    margin-top: 17rem;
+    margin-top: 15rem;
+  }
+  .smhometext {
+    font-size: 25px;
   }
   .jaiyeimg {
     display: block;
@@ -1693,6 +1750,9 @@ button {
   .mobilebg {
     display: block;
     width: 80%;
+  }
+  .frheight {
+    height: auto;
   }
 }
 
@@ -1706,7 +1766,7 @@ button {
     font-size: 30px;
   }
   .secondimg {
-    right: -60px;
+    /* right: -60px; */
     height: 55px;
     top: -7px;
   }
@@ -1727,7 +1787,7 @@ button {
     font-size: 13px;
   }
   .fourthsubsec {
-    width: 330px;
+    width: 335px;
   }
   .trustimg {
     width: 50px;
@@ -1772,6 +1832,9 @@ button {
     margin-top: 13rem;
     font-size: 35px;
   }
+  .smhometext {
+    font-size: 19px;
+  }
   .home1 {
     order: 2;
     margin-left: 3rem;
@@ -1788,8 +1851,18 @@ button {
   .secondtitle {
     font-size: 28px;
   }
+  .secondtitle1 {
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-right: 1rem;
+  }
+  .trustttl {
+    padding-right: 1.5rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
   .secondimg {
-    right: -48px;
+    /* right: -48px; */
     width: 130px;
   }
   .crazycircle1,
@@ -1909,6 +1982,8 @@ button {
   }
   .fourthsubsec {
     border: none;
+    width: 330px;
+    padding-bottom: 0;
   }
   .fourthsec {
     flex-direction: column;
@@ -1931,13 +2006,13 @@ button {
   }
   .leftborder1 {
     margin-top: 1.7rem;
-    height: 262px;
+    height: 298px;
   }
   .rightborder2 {
-    height: 265px;
+    height: 283px;
   }
   .leftborder2 {
-    height: 266px;
+    height: 249px;
   }
 }
 
@@ -1965,7 +2040,7 @@ button {
     position: absolute;
     right: 2rem;
     top: 13rem;
-    width: 50%;
+    width: 46%;
   }
 }
 
@@ -1980,7 +2055,7 @@ button {
   .secondimg {
     width: 105px;
     height: 45px;
-    right: -33px;
+    /* right: -33px; */
   }
   .fourthimg {
     width: 90px;
@@ -1998,8 +2073,7 @@ button {
     margin-bottom: 8rem;
   }
   .ellipse2 {
-    width: 65%;
-    height: 30rem;
+    width: 50%;
     right: 1.5rem;
     top: 12.5rem;
   }
@@ -2012,6 +2086,14 @@ button {
   }
 }
 
+@media (max-width: 550px) {
+  .newfirstrow {
+    background-image: url("../../../assets/mobilebg2.svg");
+  }
+  .ellipse1, .ellipse2 {
+    display: none;
+  }
+}
 @media (max-width: 400px) {
   .newthirdrow {
     padding: 3rem 2rem 4rem 2rem;
@@ -2025,7 +2107,7 @@ button {
   }
   .secondimg {
     width: 85px;
-    right: -14px;
+    /* right: -14px; */
   }
   .fourthttl {
     font-size: 20px;
@@ -2045,12 +2127,18 @@ button {
   .rightborder {
     margin-left: 5.8rem;
   }
+  .rightborder2 {
+    margin-left: 5rem;
+  }
   .leftborder {
     margin-left: -1.6rem;
   }
   .hometext {
     font-size: 30px;
     margin-top: 8rem;
+  }
+  .smhometext {
+    font-size: 18px;
   }
   .ellipse1 {
     width: 40px;
@@ -2287,6 +2375,8 @@ button {
   }
   .mapname {
     margin-top: 2rem;
+    font-family: 'Brfirma-Bold';
+    letter-spacing: 1px;
   }
   .clientimg {
     width: 80px;
@@ -2323,7 +2413,7 @@ button {
     width: 320px;
   }
   .homemap {
-    padding: 3rem 1rem;
+    padding: 3rem 2rem;
   }
 }
 
@@ -2556,6 +2646,11 @@ button {
 .newflexsss {
   background: #23304c;
   margin-right: -2px;
+  position: fixed;
+  width: 100vw;
+  z-index: 99;
+  transition: 0.5s;
+  box-shadow: 0 4px 2px -2px rgba(35, 48, 76, 30%);
 }
 .mobilelogo {
   margin-left: 1rem;
@@ -2650,29 +2745,65 @@ button {
 .newitem {
   font-size: 11px !important;
 }
+
 /*Hover Effects*/
 .trustimg:hover {
-  width: 65px;
-  height: 65px;
+  width: 62px;
+  height: 62px;
 }
 .fourthsubhead:hover {
-  font-size: 16px;
+  font-size: 15px;
 }
 .fourthsubtext:hover {
-  font-size: 14px;
+  font-size: 13px;
 }
 
-/* .hov1:hover .trustimg {
-  width: 65px;
-  height: 65px;
+@media(max-width: 800px) {
+  .trustimg:hover {
+    width: 52px;
+    height: 52px;
+  }
+  .fourthsubhead:hover {
+    font-size: 13.5px;
+  }
+  .fourthsubtext:hover {
+    font-size: 12.1px;
+  }
 }
-.hov1:hover .fourthsubhead {
-  font-size: 16px;
+
+/*Fixed Mobile Nav*/
+@media(max-width: 779px) {
+  .mobilepadding {
+    padding-top: 73px;
+  }
+  .mobilepaddingredo {
+    padding-top: 50px;
+  }
 }
-.hov1:hover .fourthsubtext {
-  font-size: 14px;
-} */
-/* .border4:hover {
-  height: 266px;
-  margin-left: -10rem;
-} */
+
+.planupgrade {
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.planupgradebtn {
+  font-size: 14px !important;
+  padding: 0.6rem 1.2rem !important;
+  transition: transform 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.planupgradebtn:hover {
+  color: #9c1258 !important;
+  background: #ffffff !important;
+  transform: scale(1.05);
+}
+.planupgradebtn1 {
+  transition: transform 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}
+.planupgradebtn1:hover {
+  transform: scale(1.05);
+}
+
+.lightnavlist {
+  color: #9c1258 !important;
+}

@@ -132,7 +132,7 @@ class DashboardCounsellorIntroHeader extends React.Component<any, any> {
                 <img src={money1} className="money1" alt="search" />
               </div>
               <div className="Earnings11as">Total Earnings </div>
-              <div className="Earnings11a">{amount}</div>
+              <div className="Earnings11a">₦{amount}</div>
             </div>
           )}
         </div>

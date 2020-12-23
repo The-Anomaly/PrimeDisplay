@@ -85,6 +85,9 @@ class NewDashboardJobOpportunities extends React.Component {
     width: 100,
   };
   submitForm = (e) => {
+    this.setState({
+      isloading: true,
+    });
     e.preventDefault();
     const {
       fullname,
@@ -116,10 +119,17 @@ class NewDashboardJobOpportunities extends React.Component {
       }
     )
       .then((res) => {
+        this.setState({
+          isloading: false,
+        });
         this.notify("Successful");
       })
       .catch((err) => {
-        this.notify("failed");
+        this.setState({
+          isloading: false,
+        });
+        console.log(err.response)
+        this.notify("failed" + err?.response?.data[0]?.message);
         if (err) {
         }
       });
@@ -135,10 +145,10 @@ class NewDashboardJobOpportunities extends React.Component {
     if (featureToCheck["job_recommendation"] === false) {
       console.log("Can't access job opportunities");
       return setTimeout(() => {
-        window.location.pathname = "/dashboardsubscriptionplan"
+        window.location.pathname = "/dashboardsubscriptionplan";
       }, 2000);
     }
-    
+
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -205,6 +215,7 @@ class NewDashboardJobOpportunities extends React.Component {
             isLoading: false,
           });
         }
+        console.log(error)
         this.setState({
           errorMessage: "failed",
           isLoading: false,
@@ -216,7 +227,7 @@ class NewDashboardJobOpportunities extends React.Component {
     const {
       fullname,
       isLoading,
-      social_media,
+      isloading,
       present_job,
       work_status,
       dob,
@@ -231,7 +242,7 @@ class NewDashboardJobOpportunities extends React.Component {
           <DashboardNav jobrec={true} />
           <Row>
             <SideBarNewDashboard jobrec={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Job Notifications" />
               <Row>
                 <Col md={11} className="kisls">
@@ -337,17 +348,6 @@ class NewDashboardJobOpportunities extends React.Component {
                           </Form.Control>
                         </Col>
                         <Col md={6}>
-                          <div className="whatdoudo">Social Media Handle </div>
-                          <textarea
-                            name="social_media"
-                            value={social_media}
-                            onChange={this.handleChange}
-                            className="form-control jobr subhyt"
-                          />
-                        </Col>
-                      </Row>
-                      <Row className="rowla">
-                        <Col md={6}>
                           <div className="whatdoudo">Present Work Status </div>
                           <Form.Control
                             as="select"
@@ -376,6 +376,17 @@ class NewDashboardJobOpportunities extends React.Component {
                             </option>
                           </Form.Control>
                         </Col>
+                        {/* <Col md={6}>
+                          <div className="whatdoudo">Social Media Handle </div>
+                          <textarea
+                            name="social_media"
+                            value={social_media}
+                            onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                          />
+                        </Col> */}
+                      </Row>
+                      <Row className="rowla">
                         <Col md={6}>
                           <div className="whatdoudo">
                             Opportunities Open to{" "}
@@ -399,8 +410,6 @@ class NewDashboardJobOpportunities extends React.Component {
                             </option>
                           </Form.Control>
                         </Col>
-                      </Row>
-                      <Row className="rowla">
                         <Col md={6}>
                           <div className="whatdoudo">Date of Birth </div>
                           <Form.Control
@@ -413,10 +422,14 @@ class NewDashboardJobOpportunities extends React.Component {
                         </Col>
                       </Row>
                     </Col>
+                    <Col md={12} className="sddx12">
+                      <div className="texsss1">
+                        <div className="ksk1" onClick={this.submitForm}>
+                          {isloading ? "Submitting" : "Submit"}
+                        </div>
+                      </div>
+                    </Col>
                   </Row>
-                  <div className="texsss1">
-                    <div className="ksk1 col-md-11">Submit</div>
-                  </div>
                 </Col>
               </Row>
             </Col>
@@ -444,6 +457,13 @@ class NewDashboardJobOpportunities extends React.Component {
             </Modal>
           </Row>
         </Container>
+        <ToastContainer
+          enableMultiContainer
+          containerId={"B"}
+          toastClassName="bg-info text-white"
+          hideProgressBar={true}
+          position={toast.POSITION.TOP_CENTER}
+        />
       </>
     );
   }

@@ -2,7 +2,7 @@
     text-align: center;
     padding: 30px 0px 100px 0px;
     background-color: #23304c;
-    background-size: cover;
+    background-size: contain;
     background-image: url(../../../assets/payment-img.png);
     background-repeat: no-repeat;
 }    
@@ -10,7 +10,7 @@
     justify-content: center;
 }
 .payment-decription{
-    padding-bottom: 76px;
+    padding-bottom: 4rem;
     color: #fff;
 }
 .payment-decription>h3{
@@ -283,42 +283,150 @@
         justify-content: center;
     }
 } 
-.payplndsply{
-    display: none;
+
+/*Gift A Subscription Modal*/
+.giftsubscrip {
+    text-align: center;
+}
+.gifttitle {
+    color: #EB5757;
+    font-family: "Brfirma-Bold";
+    margin-bottom: 2rem;
+    letter-spacing: 0.4px;
+}
+.giftline {
+    border: 0.1px solid #9999;
+    animation: move-sideway 1s ease-out 0.8s;
+    transition: transform 0.8s ease-in-out;
+    animation-fill-mode: backwards;
+}
+.giftsubtext {
+    position: relative;
+    font-size: 12px;
+    color: #92969D;
+    padding: 0px 13px;
+    top: -17px;
+    display: inline-block;
+    background-color: #fff;
+}
+.giftselectttl {
+    position: relative;
+    display: inline-block;
+    font-size: 11px;
+    top: 16px;
+    left: -6.5rem;
+    color: #23304C;
+    background-color: #fff;
+    padding: 0px 13px;
+    font-weight: 600;
+}
+.giftselect {
+    padding: 1rem;
+    border: 1px solid #9999 !important;
+    outline: none;
+    border-radius: 4px;
+    width: 100%;
+    color: #666666;
+    font-size: 12px;
+}
+.giftdisabled {
+    color: #666666;
+}
+.giftoptions {
+    font-size: 13px;
+    padding: 1rem 0;
+    text-overflow: ellipsis;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.rmpadding {
+    padding-top: 0 !important;
+}
+.subscripbtn {
+    background: #EB5757;
+    color: #ffffff;
+    margin: 3rem auto;
+    padding: 0.7rem 0;
+    width: 225px;
+    font-size: 11px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-family: 'Brfirma-Regular';
+    cursor: pointer;
+}
+@media(max-width: 800px) {
+    .giftselectttl {
+        left: -7.5rem;
+    }
+}
+@media(max-width: 450px) {
+    .giftselectttl {
+        left: -5.5rem;
+    }
+}
+@media(max-width: 400px) {
+    .giftselectttl {
+        left: 0;
+    }
 }
 
+/*Payment Redesign*/
 @media (max-width:779px){
-    .payplndsply{
-        display: block;
-    }
-    .pceplndsply{
-        display: none;
-    }
-    .oneoffdsply{
-        display: none;
-    }
     .mobilecards {
         flex-direction: column;
         align-items: center;
     }
   
 }
-/* @media and (min-width: 414px){
+
+.giftmail {
+    font-size: 13px;
+}
+.pymntpadding {
+    padding-top: 10rem;
+}
+@media(max-width: 779px) {
+    .pymntpadding {
+        padding-top: 4rem;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+@media(max-width: 400px) {
+    .pymntpadding {
+        padding-top: 4rem;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+.pymntline {
+    margin-top: 1.2rem;
+}
+
+.mobilepaymentview {
+    display: none;
+}
+
+@media(max-width: 779px) {
+    .mobilepaymentview {
+        display: block;
+    }
+    .webpaymentview {
+        display: none;
+    }
+    .payment-section {
+        background-image: none;
+    }
+    .mobilepaymentcard {
+        background: inherit;
+        border: none;
+    }
     .cardmini {
-        min-width: 33%;
-    }
-} */
-@media(max-width: 779px) and (min-width: 768px) {
-    .cardmini {
-        min-width: 50%;
-        margin-bottom: 3rem;
-    }
-    .oneoffmini {
-        margin-bottom: 0;
-    }
-    .progmargin {
+        max-width: 320px;
         margin: auto;
+        margin-bottom: 2rem;
         min-width: 50%;
-        margin-top: 3rem;
     }
 }

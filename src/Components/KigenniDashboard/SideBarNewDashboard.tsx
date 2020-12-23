@@ -21,21 +21,25 @@ import support from "../../assets/Support_active.png";
 import supportinactive from "../../assets/Support_inactive.png";
 import overview from "../../assets/overview.png";
 import "../Home/Home/Home.css";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import union from "../../assets/Union.png";
 import { toast } from "react-toastify";
-import { Spinner } from "react-bootstrap";
+import { Modal, Spinner } from "react-bootstrap";
 import { useEffect } from "react";
+import failedNotice from "../../assets/failedNotice.png";
 
 const SideBarNewDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
   const [state, setState] = React.useState({ isloading: false });
-  useEffect(() => {
-  }, []);
+  const [upgradeState, setUpgradeState] = React.useState(false);
+  useEffect(() => {}, []);
+  const closeUpgradeModal = () => {
+    setUpgradeState(false);
+  };
   const clearStorageAndTakeUserToCounsellorSignUp = () => {
     localStorage.clear();
     props.history.push("/counsellor/signin");
@@ -63,7 +67,8 @@ const SideBarNewDashboard = withRouter((props: any) => {
           ...state,
           isloading: false,
         });
-        return window.location.assign("/dashboardsubsriptionplan");
+        // return window.location.assign("/dashboardsubscriptionplan");
+        return setUpgradeState(true);
       })
       .catch((error) => {
         setState({
@@ -80,12 +85,13 @@ const SideBarNewDashboard = withRouter((props: any) => {
       console.log("Job opportunities successful");
       return window.location.assign("/jobopportunities");
     } else {
-      notify("Update your subscription to access this feature");
+      //notify("Update your subscription to access this feature");
       console.log("Can't access job opportunities");
-      return setTimeout(
-        (window.location.pathname = "/dashboardsubscriptionplan"),
-        2000
-      );
+      // return setTimeout(
+      //   (window.location.pathname = "/dashboardsubscriptionplan"),
+      //   2000
+      // );
+      return setUpgradeState(true);
     }
   };
   const checkIfUserHasAccessToAskACounselor = () => {
@@ -95,18 +101,19 @@ const SideBarNewDashboard = withRouter((props: any) => {
       console.log("Ask a counselor successful");
       window.location.assign("/allusermessages");
     } else {
-      notify("Update your subscription to access this feature");
+      //notify("Update your subscription to access this feature");
       console.log("Can't access ask a counselor");
-      return setTimeout(
-        (window.location.pathname = "/dashboardsubscriptionplan"),
-        2000
-      );
+      // return setTimeout(
+      //   (window.location.pathname = "/dashboardsubscriptionplan"),
+      //   2000
+      // );
+      return setUpgradeState(true);
     }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
   const logOut = () => {
     localStorage.clear();
-    window.location.assign("/");
+    window.location.assign("/signin");
   };
   return (
     <>
@@ -236,7 +243,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
               className="sideimage"
               alt="sideimage"
             />
-            Opportunity Recommended
+            Opportunity Recommender
           </div>
           <Link to="/profilebuilder">
             <div className={props.builder ? "activegb" : "gbn"}>
@@ -294,6 +301,33 @@ const SideBarNewDashboard = withRouter((props: any) => {
           </div>
         </div>
       </Col>
+      <Modal show={upgradeState} centered={true} onHide={closeUpgradeModal}>
+        <Modal.Body>
+          <div className="text-center">
+            {" "}
+            <img
+              src={failedNotice}
+              className="failedNotice"
+              alt="failedNotice"
+            />{" "}
+          </div>
+          <div className="onhno"> Oh No! </div>
+          <div className="onhno">
+            This package is not available on this plan <br /> Please Upgrade
+            your Plan
+          </div>
+          <div className="text-center planupgrade">
+            <div className="retaketest upss1 planupgradebtn">
+              <Link to="/dashboardsubscriptionplan">
+                View your current plan
+              </Link>
+            </div>
+            {/* <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/paymentsummary">Upgrade your plan</Link>
+                  </div> */}
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 });

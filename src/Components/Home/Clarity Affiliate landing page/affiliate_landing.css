@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+.afflndbody{
+    background-color: #fcfcfc;
+    background-image: url(../../../assets/affbackimg.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+}
+.afflandwrapper{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.afflndrow{
+    padding-top: 34px;
+}
+.affclalogo{
+    margin-bottom: 103px;
+}
+.affbltxt{
+    color: #2f80ed;
+    font-size: 17px;
+}
+.afflndheading{
+    font-family: 'DM Serif Display', serif;
+    font-size: 62px;
+    color: #333333;
+}
+.afflndescr{
+    font-size: 13px;
+    width: 73%;
+    color: #666666;
+}
+.afflandgetstrdbtn{
+    display: inline-block;
+    padding: 15px 91px;
+    color: #fff;
+    background-color: #9c1258;
+    border-radius: 6px;
+    margin-top: 27px;
+    cursor: pointer;
+}
+/* .afflndimage{
+    display: inline-block;
+    background-image: url(../../../assets/blueback.png);
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+} */

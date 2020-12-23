@@ -18,7 +18,7 @@ import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
 import close from "../../assets/close.svg";
 import { useState } from "react";
-import noplan from "../../assets/noplan.png";
+import noplan from "../../assets/notasks.png";
 import { toast, ToastContainer } from "react-toastify";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -47,6 +47,8 @@ const TodoOverview = withRouter((props: any) => {
     isOpen: false,
     id: 1,
     CreateTaskModalisOpen: false,
+    frequency: "",
+    startDate: "",
   });
   const { errorMessage, tasklist, user, success, alltask, isLoading } = state;
   React.useEffect(() => {
@@ -105,6 +107,8 @@ const TodoOverview = withRouter((props: any) => {
     isOpen,
     id,
     CreateTaskModalisOpen,
+    frequency,
+    startDate,
   } = modalState;
   const closeViewMoreModal = () => {
     setModState({
@@ -129,9 +133,22 @@ const TodoOverview = withRouter((props: any) => {
     });
     getTaskdetails();
   };
+  const closeModalCreateTaskModal = () => {
+    setModState({
+      ...modalState,
+      CreateTaskModalisOpen: false,
+      success: false,
+    });
+  };
   const formatTime = (date) => {
     const dateTime = moment(date).format("Do MMM YYYY");
     return dateTime;
+  };
+  const onchange = (e: any) => {
+    setModState({
+      ...modalState,
+      [e.target.name]: e.target.value,
+    });
   };
   const closeModalForCompleteTask = () => {
     setModState({
@@ -151,6 +168,39 @@ const TodoOverview = withRouter((props: any) => {
   };
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  const createNewTask = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+    const data = {
+      title,
+      description,
+      duration: Number(duration),
+      start_date: startDate,
+      reminder_frequency: frequency,
+    };
+    Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/todo`, data, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((res) => {
+        setFormState({
+          ...state,
+          success: true,
+        });
+        setTimeout(() => {
+          setFormState({
+            ...state,
+            CreateTaskModalisOpen: false,
+          });
+          window.location.reload();
+        }, 3000);
+      })
+      .catch((err) => {
+        console.log(err.response);
+        notify("Failed to send");
+      });
   };
   const submitTaskIsCompleteForm = () => {
     setFormState({
@@ -200,7 +250,7 @@ const TodoOverview = withRouter((props: any) => {
         <DashboardNav todo={true} />
         <Row>
           <SideBarNewDashboard todo={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm">
             <DashboardLargeScreenNav title="Todo Overview" />
             <Row>
               <Col md={12} className="firstqq">
@@ -308,14 +358,14 @@ const TodoOverview = withRouter((props: any) => {
                         </div>
                       </Carousel>
                     </div>
-                    <div className="greenbgcont">
+                    <div className="greenbgcont newgrnbg">
                       <img
                         src={greengood}
                         className="greengood"
                         alt="goodimage"
                       />
-                      It takes a hero to even start a task, but it seems
-                      like you have super powers. Keep going Champ!!!
+                      It takes a hero to even start a task, but it seems like
+                      you have super powers. Keep going Champ!!!
                     </div>
                     <div className="wrapline"></div>
                     {tasklist.length > 0 && (
@@ -336,41 +386,41 @@ const TodoOverview = withRouter((props: any) => {
                       </div>
                     )}
                     {tasklist.splice(0, 2).map((data, i) => (
-                      <div className="wrapc2 tasklist listit">
-                        <div className="cname tdw0 titl newtitl">
-                          <span className="task_title lowerr">Task Title</span>
-                          <div className="eplimit cname todo_name">
+                      <div className="wrapc2 tasklist listit newseccards">
+                        <div className="cname tdw0 titl newtitl cardsec2">
+                          <span className="task_title lowerr todominittl">Task Title</span>
+                          <div className="eplimit cname todo_name txtfont">
                             {data?.title}
                           </div>
                         </div>
 
-                        <div className="weeks">
-                          <span className="task_duration lowerr">Duration</span>
-                          <div className="cdate tdw1 todo_date">
+                        <div className="weeks cardsec3">
+                          <span className="task_duration lowerr todominittl">Duration</span>
+                          <div className="cdate tdw1 todo_date tododurr txtfont">
                             {data?.duration}
                           </div>
                         </div>
 
-                        <div className="durr">
-                          <span className="task_time lowerr">Date Created</span>
-                          <div className="ctime tdw1 todo_time">
+                        <div className="durr cardsec4">
+                          <span className="task_time lowerr todominittl tododate">Date Created</span>
+                          <div className="ctime tdw1 todo_time tododate1 txtfont">
                             {formatTime(data?.date_created)}
                           </div>
                         </div>
 
-                        <div className="cstatus2 tdw1 stat">
+                        <div className="cstatus2 tdw1 stat cardsec1">
                           <span
                             className={
                               data.status === "pending"
-                                ? "cstatus todo_status pending"
-                                : "cstatus todo_status"
+                                ? "cstatus todo_status pending cardsec1txt"
+                                : "cstatus todo_status cardsec1txt"
                             }
                           >
                             {capitalizeFirstLetter(data.status)}
                           </span>
                         </div>
 
-                        <div className="ctime todoo">
+                        <div className="ctime todoo cardsec5">
                           {data.status !== "pending" && (
                             <div
                               className="savebtn todo_button sizedtodobtn"
@@ -391,21 +441,33 @@ const TodoOverview = withRouter((props: any) => {
                       </div>
                     ))}
                     {alltask.length === 0 && (
-                      <div className="norec">
+                      <div className="norec newnorec">
                         <img
                           src={noplan}
                           className="norecommendations"
                           alt="norecommendations"
                         />
-                        <div className="udont1">Opps!!!</div>
                         <div className="udont">
-                          You have not created any todos
+                          You currently do not have any tasks created
+                        </div>
+                        <div
+                          className="noplancreate"
+                          onClick={() => {
+                            setModState({
+                              ...modalState,
+                              CreateTaskModalisOpen: true,
+                            });
+                          }}
+                        >
+                          Create New Task
                         </div>
                       </div>
                     )}
-                    <Link to="/todolist">
-                      <div className="viewall">View all Task</div>
-                    </Link>
+                    {alltask.length && (
+                      <Link to="/todolist">
+                        <div className="viewall">View all Task</div>
+                      </Link>
+                    )}
                   </Col>
                 </Row>
               </Col>
@@ -534,6 +596,87 @@ const TodoOverview = withRouter((props: any) => {
           <div className="modal_det">
             <div className="titlee">Counselor's Input</div>
             <textarea className="task_det" disabled={true}></textarea>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={CreateTaskModalisOpen}
+        centered={true}
+        onHide={closeModalCreateTaskModal}
+        className="modcomplete fixmodal"
+      >
+        <Modal.Title className="modal_title create_title">
+          Create Task
+        </Modal.Title>
+        {success && (
+          <Alert variant={"info"} className="text-center">
+            Created Task
+          </Alert>
+        )}
+        <a className="close_view" onClick={closeModalCreateTaskModal}>
+          <img className="closeview" src={close} alt="close" />
+        </a>
+        <Modal.Body className="create_body">
+          <div className="modal_det">
+            <div className="titlee">Task Title</div>
+            <textarea
+              className="note_det create_det"
+              placeholder="Enter a Task Title"
+              value={title}
+              name={"title"}
+              onChange={onchange}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Description</div>
+            <textarea
+              className="note_det"
+              placeholder="Enter a Task Description"
+              value={description}
+              name={"description"}
+              onChange={onchange}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Task Duration(Days)</div>
+            <input
+              className="note_det create_det "
+              type="number"
+              placeholder="Enter Duration "
+              value={duration}
+              name={"duration"}
+              onChange={onchange}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Start Date</div>
+            <input
+              className="note_det create_det "
+              type="date"
+              placeholder="Enter start date"
+              value={startDate}
+              name={"startDate"}
+              onChange={onchange}
+            />
+          </div>
+          <div className="modal_det">
+            <div className="titlee">Reminder Frequency(days)</div>
+            <input
+              type={"number"}
+              className="note_det create_det "
+              name="frequency"
+              onChange={onchange}
+              placeholder="Select how frequent you want to be reminded"
+              value={getTaskdetails()?.frequency}
+            />
+          </div>
+          <div className="mark_complete">
+            <div
+              className="savebtn todo_button markit createit"
+              onClick={createNewTask}
+            >
+              Create Task
+            </div>
           </div>
         </Modal.Body>
       </Modal>

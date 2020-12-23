@@ -16,12 +16,41 @@ const HearFromClients = () => {
     setIndex(selectedIndex);
   };
 
+  // function animateValue(id, start, end, duration) {
+  //   let obj = document.getElementById(id);
+  //   console.log(obj)
+  //   let range = end - start;
+    
+  //   let minTimer = 50;
+  //   let stepTime = Math.abs(Math.floor(duration/range));
+    
+  //   stepTime = Math.max(stepTime, minTimer);
+    
+  //   let startTime = new Date().getTime();
+  //   let endTime = startTime + duration;
+  //   let timer;
+    
+  //   function run() {
+  //     let now = new Date().getTime();
+  //     let remaining = Math.max((endTime - now) / duration, 0);
+  //     let value = Math.round(end - (remaining * range));
+  //     obj.innerHTML = value.toString();
+  //     if (value === end) {
+  //       clearInterval(timer);
+  //     }
+  //   }
+  //   timer = setInterval(run, stepTime);
+  //   run();
+  // }
+  
+  // animateValue("numcount", 100, 3100, 2000);
+
   return (
     <>
       <Row md={12} className="homemap">
         <div className="secondtitle homemaptitle">
           Hear from Happy{" "}
-          <span className="secondtitle1">
+          <span className="secondtitle1 clientttl">
             Clients <img src={rect} className="secondimg homemapimg" />
           </span>
         </div>
@@ -33,8 +62,8 @@ const HearFromClients = () => {
                 First and foremost let me say a very big thank you because after
                 my sessions with Omozino I've gotten Clarity in so many things .
                 My business has experienced growth, it's been amazing; I mean I
-                doubled my sales in June & July. Thank you so much. <br />
-                Gbemisola Williams
+                doubled my sales in June & July. Thank you so much.
+                <div className="mapname">Gbemisola Williams</div>
               </div>
             </div>
             <div className="homemapsubsec">
@@ -45,8 +74,7 @@ const HearFromClients = () => {
                 imagine for my life. Going through the process and working with
                 my assigned coach Omozino. I was able to see the patterns,
                 connect the dots and I'm very excited. I feel liberated.
-                <br />
-                Oluwasegunfunmi Folaranmi
+                <div className="mapname">Oluwasegunfunmi Folaranmi</div>
               </div>
             </div>
           </div>
@@ -60,20 +88,19 @@ const HearFromClients = () => {
                 matches my personality as I believe nothing is a fulfilling as
                 working with so much passion in an environment that you can make
                 the most impact.
-                <br />
-                Racheal Ifietekhai
+                <div className="mapname">Racheal Ifietekhai</div>
               </div>
             </div>
             <div className="homemapsubsec">
               <img src={client4} className="clientimg" alt="happy client" />
               <div className="clienttext">
                 I was very unclear on how to approach my career; I wasn’t even
-                sure what path to take. Going through the career clarity and
+                sure what path to take. Going through the career Clarity and
                 assessment solution everything changed, I knew exactly how to
                 approach my career, define my job- search strategy and before my
                 NYSC passing out I got a job. Clarity gave me the confidence I
-                needed. <br />
-                Fiyinfoluwa Olatubosun
+                needed.
+                <div className="mapname">Fiyinfoluwa Olatubosun</div>
               </div>
             </div>
           </div>
@@ -82,10 +109,9 @@ const HearFromClients = () => {
               <img src={client5} className="clientimg" alt="happy client" />
               <div className="clienttext">
                 The entire experience was beyond my expectations, from the
-                clarity assessment to my first session till now. I've gotten
+                Clarity assessment to my first session till now. I've gotten
                 more value than what I paid.
-                <br />
-                Oreva Akpoveso
+                <div className="mapname">Oreva Akpoveso</div>
               </div>
             </div>
             <div className="homemapsubsec">
@@ -93,8 +119,7 @@ const HearFromClients = () => {
               <div className="clienttext">
                 The entire experience was not just eye-opening but refreshing
                 for me.
-                <br />
-                Oluwanifesimi Folaranmi
+                <div className="mapname">Oluwanifesimi Folaranmi</div>
               </div>
             </div>
           </div>
@@ -145,7 +170,7 @@ const HearFromClients = () => {
               <img src={client4} className="clientimg" alt="happy client" />
               <div className="clienttext">
                 I was very unclear on how to approach my career; I wasn’t even
-                sure what path to take. Going through the career clarity and
+                sure what path to take. Going through the career Clarity and
                 assessment solution everything changed, I knew exactly how to
                 approach my career, define my job- search strategy and before my
                 NYSC passing out I got a job. Clarity gave me the confidence I
@@ -159,7 +184,7 @@ const HearFromClients = () => {
               <img src={client5} className="clientimg" alt="happy client" />
               <div className="clienttext">
                 The entire experience was beyond my expectations, from the
-                clarity assessment to my first session till now. I've gotten
+                Clarity assessment to my first session till now. I've gotten
                 more value than what I paid.
                 <div className="mapname">Oreva Akpoveso</div>
               </div>
@@ -178,7 +203,7 @@ const HearFromClients = () => {
           </Carousel>
         </div>
         <hr className="homemapline"/>
-        <div className="homemapbtmtxt">Over 3100 persons have taken the Assessment</div>
+        <div className="homemapbtmtxt">Over <span id="numcount">3100</span> persons have taken the Assessment</div>
       </Row>
     </>
   );

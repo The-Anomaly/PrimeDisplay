@@ -2,16 +2,17 @@ import React from "react";
 import { Container, Col, Card } from "react-bootstrap";
 import "./privacy_policy.css";
 import Footer from "../HomeComponents/newfooter";
+import demoLogo from "../../../assets/newclaritylogoa.png";
+import { Link } from "react-router-dom";
 
 const Privacy = () => {
   return (
     <div>
+      <Link to="/"><img className="privacylogo"  src={demoLogo} /></Link>
       <div className="policy_page">
-        <Container>
           <div className="privacy-title">
             <h2>Privacy Policy</h2>
           </div>
-        </Container>
       </div>
       <div className="policy-section">
         <Container>
@@ -49,10 +50,10 @@ const Privacy = () => {
                     or "Our" in this Agreement) refers to Yudimy Services Ltd, 3
                     Samuel Street, Ogudu, Lagos.
                     <br />
-                    -Website is referred to Yudimy.com or clarity.yudimy.com.
+                    -Website is referred to Yudimy.com or Clarity.yudimy.com.
                     <br />
                     -Service is referred to the website/app i.e
-                    clarity.yudimy.com.
+                    Clarity.yudimy.com.
                     <br />
                     -Service Provider means any natural or legal person who
                     processes the data on behalf of Yudimy. It refers to

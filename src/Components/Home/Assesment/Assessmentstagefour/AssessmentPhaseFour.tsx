@@ -531,7 +531,7 @@ const Assessmentfourthphase = (props: any) => {
             </div>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     </div>
   );

@@ -210,7 +210,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
         <DashboardNav messages={true} />
         <Row>
           <SideBarNewDashboard messages={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm">
             <DashboardLargeScreenNav messages="Messages" />
             <Row>
               <Col md={12} className="firstqq">

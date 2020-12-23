@@ -82,7 +82,6 @@ import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page"
 import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
 import Privacy from "./Components/Home/Legal_policy_page/privacy_policy";
 import Terms from "./Components/Home/Legal_policy_page/terms&conditions";
-import Monthly_plan from "./Components/Home/Redesigned_Payment_Page/Monthly_payment_plan";
 import Signup from "./Components/Home/Redesigned_signup_page/signup";
 import Signin from "./Components/Home/Redesigned_signup_page/signin";
 import Email_confirm_page from "./Components/Home/Redesigned_confirmation_page/email_confirmation";
@@ -94,11 +93,14 @@ import * as msgActions from "./Store/Actions/index";
 import { connect } from "react-redux";
 import FullResultForCounsellors from "./Components/KigenniDashboard/FullResultForCounsellors";
 import NewDashboardAllMessages from "./Components/KigenniDashboard/NewDashboardAllMessages";
+import Afflanding from "./Components/Home/Clarity Affiliate landing page/affiliate_landing";
 import { NewAbout } from "./Components/Home/About/NewAbout";
 import CounsellorCVProfileBuilder from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorCVProfileBuilder";
 import CousellorProfileBuilderEdit from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorProfileBuilder";
-import CounsellorAssignedMembersViewOne from './Components/KigenniDashboard/CouncellorDasboard/CounsellorAssignedMembersViewOne';
-import ForgotPasswordNew from './Components/Home/Redesigned_signup_page/forgotpassword';
+import CounsellorAssignedMembersViewOne from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorAssignedMembersViewOne";
+import ForgotPasswordNew from "./Components/Home/Redesigned_signup_page/forgotpassword";
+import CounsellorViewUsersCVProfile from "./Components/KigenniDashboard/CouncellorDasboard/CounsellorViewUsersCVProfileBuilder";
+import CounsellorLandingPage from "./Components/KigenniDashboard/CounsellorLandingPage/counsellorlandingpage";
 
 class App extends Component {
   constructor(props) {
@@ -120,27 +122,42 @@ class App extends Component {
         <div>
           <BrowserRouter>
             <Switch>
-            <Route exact path="/oldhome" component={Home} />
+              <Route exact path="/oldhome" component={Home} />
               <Route exact path="/contact" component={Contactpage} />
               <Route exact path="/payment" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
               <Route exact path="/terms&conditions" component={Terms} />
+              <Route exact path="/terms&conditions" component={Terms} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/signin" component={Signin} />
+              <Route exact path="/" component={RedesignedHome} />
+              <Route exact path="/affiliatehomepage" component={Afflanding} />
               <Route
                 exact
-                path="/progressive_clarity_experience"
-                component={Monthly_plan}
+                path="/counsellor/signup"
+                component={counsellorSignup}
               />
-              <Route exact path="/terms&conditions" component={Terms}/>
-              <Route exact path="/progressive_clarity_experience" component={Monthly_plan}/>
-              <Route exact path="/signup" component={Signup}/>
-              <Route exact path="/signin" component={Signin}/>
-              <Route exact path="/" component={RedesignedHome} />
-              <Route exact path="/counsellor/signup" component={counsellorSignup}/>
-              <Route exact path="/counsellor/signin" component={counsellorSignin}/>
-              <Route exact path="/counsellor/signin/forgotpassword" component={ForgotPasswordCounselor}/>
+              <Route
+                exact
+                path="/counsellor/signin"
+                component={counsellorSignin}
+              />
+              <Route
+                exact
+                path="/counsellor/signin/forgotpassword"
+                component={ForgotPasswordCounselor}
+              />
               {/* <Route exact path="/" component={Home} /> */}
-              <Route exact path="/confirm_email" component={Email_confirm_page}/>
-              <Route exact path="/account_confirmation" component={Acc_confirm_page}/>
+              <Route
+                exact
+                path="/confirm_email"
+                component={Email_confirm_page}
+              />
+              <Route
+                exact
+                path="/account_confirmation"
+                component={Acc_confirm_page}
+              />
               <Route exact path="/about" component={About} />
               <Route exact path="/aboutus" component={NewAbout} />
               <Route exact path="/faq" component={Faq} />
@@ -270,15 +287,12 @@ class App extends Component {
                 path="/old/counsellor/signin"
                 component={CounsellorsSignIn}
               />
+              <Route exact path="/old/signup" component={SignUp} />
+              <Route exact path="/old/signin" component={SignIn} />
               <Route
                 exact
-                path="/old/signup"
-                component={SignUp}
-              />
-              <Route
-                exact
-                path="/old/signin"
-                component={SignIn}
+                path="/users_profile/:email"
+                component={CounsellorViewUsersCVProfile}
               />
               <Route
                 exact
@@ -492,7 +506,8 @@ class App extends Component {
                 path="/counsellormeetings"
                 component={CounsellorScheduledMeetings}
               />
-              <Route exact path="/" component={RedesignedHome} />
+              <Route exact path="/forcounsellors" component={CounsellorLandingPage} />
+
             </Switch>
           </BrowserRouter>
         </div>

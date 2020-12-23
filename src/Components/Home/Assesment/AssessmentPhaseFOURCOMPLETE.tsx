@@ -32,7 +32,7 @@ const AssessmentFourthPhaseComplete = () => {
   return (
     <div>
       <Navbar />
-      <Container fluid={true}>
+      <Container fluid={true} >
         <Row className='firstrowcf cftcontent assesspadd'>
           <AssessmentFirstSection
             progressBar={45}
@@ -71,7 +71,7 @@ const AssessmentFourthPhaseComplete = () => {
             </Row>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
       <ToastContainer
         enableMultiContainer

@@ -189,6 +189,7 @@ const CounsellorOverview = (props: any) => {
         title: taskTitle,
         description: taskDescription,
         duration: taskDuration,
+        group: nature_of_task,
       },
     ];
     if (taskTitle === "" || taskDescription === "" || taskDuration === "") {
@@ -215,6 +216,7 @@ const CounsellorOverview = (props: any) => {
           title: taskTitle,
           description: taskDescription,
           duration: taskDuration,
+          group: nature_of_task,
         },
       ];
       const data = {
@@ -222,8 +224,7 @@ const CounsellorOverview = (props: any) => {
         notes: session_notes,
         rating: rate1,
         say_something: session_about,
-        id: sessionId,
-        group:nature_of_task
+        id: sessionId
       };
       console.log(data);
       Axios.post<any, AxiosResponse<any>>(
@@ -287,7 +288,7 @@ const CounsellorOverview = (props: any) => {
         <CounsellorDashboardMobileNav ov={true} />
         <Row>
           <SideBarCounsellorDashboard ov={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Overview" />
             <Row>
               <Col md={12} className="firstqq">
@@ -338,16 +339,16 @@ const CounsellorOverview = (props: any) => {
                     </div>
                     <div className="yudd1">{nextSessionMessage}</div>
                     {counsellorData.slice(0, 2).map((data, i) => (
-                      <div className="msgs teammembr booked bookedover" key={i}>
+                      <div className="msgs teammembr booked bookedover sessioncard" key={i}>
                         <div className="fromerit summary">
-                          <div className="cone">
+                          <div className="cone sesscard1">
                             <img
                               className="user_image"
                               src={userimg1}
                               alt="user image"
                             />
                           </div>
-                          <div className="ctwo">
+                          <div className="ctwo sesscard2">
                             <div>
                               <div className="lowerr nulower counlowerr">
                                 Name
@@ -357,41 +358,35 @@ const CounsellorOverview = (props: any) => {
                             </div>
                           </div>
 
-                          <div className="cthree">
+                          <div className="cthree sesscard3">
                             <div className="lowerr nulower counlowerr">
                               Date
                             </div>
                             <div>{formatTime(data.date)}</div>
                           </div>
-                          <div className="cfour">
+                          <div className="cfour sesscard4">
                             <div className="lowerr nulower counlowerr">
                               Time
                             </div>
                             <div className="">{data.time}</div>
                           </div>
 
-                          <div className="cfive">
-                            <div className="lowerr nulower counlowerr">
-                              Member Type
-                            </div>
-                            <div className="clarity12b">{data.member_type}</div>
+                          <div className="cfive sesscard5">
+                            <div className="clarity12b sesstype">{data.member_type}</div>
                           </div>
 
-                          <div className="csix">
-                            <div className="lowerr nulower sess counstat counlowerr">
-                              Status
-                            </div>
+                          <div className="csix sesscard6">
                             <span
                               className={
-                                !data.status ? "pend pltd" : "complt pltd"
+                                !data.status ? "pend pltd sessstat" : "complt pltd sessstat"
                               }
                             >
                               {!data.status ? "Pending" : "Completed"}
                             </span>
                           </div>
-                          <div className="cseven">
+                          <div className="cseven sesscard7">
                             <div
-                              className="counview"
+                              className="counview sessbtn"
                               onClick={() => openModal(data.id)}
                             >
                               View

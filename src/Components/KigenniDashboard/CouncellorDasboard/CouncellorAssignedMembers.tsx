@@ -17,6 +17,7 @@ import noData from "../../../assets/no recommendations.png";
 import { API } from "../../../config";
 import { Link } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import "./councellor.css"
 
 const CounsellorAssignedMembers = (props: any) => {
   const [state, setState] = useState<any>({
@@ -182,9 +183,12 @@ const CounsellorAssignedMembers = (props: any) => {
     const User = JSON.parse(user1);
     const data = {};
     Axios.all([
-      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat/?user_email=${user_email}`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/start-chat/?user_email=${user_email}`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
     ])
       .then(
         Axios.spread((res) => {
@@ -238,7 +242,7 @@ const CounsellorAssignedMembers = (props: any) => {
         <CounsellorDashboardMobileNav assignedmemb={true} />
         <Row>
           <SideBarCounsellorDashboard assignedmemb={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Assigned Members List" />
             <Row>
               <Col md={12} className="firstqq">
@@ -248,14 +252,14 @@ const CounsellorAssignedMembers = (props: any) => {
                   <Col md={12}>
                     {counsellorData.length > 0 && (
                       <div className="teammembr teamheading counheading mheadd">
-                        <div className="mone"> </div>
-                        <div className="mtwo">
+                        <div className="redomemb1"> </div>
+                        <div className="redomemb2">
                           <div>Name</div>
                         </div>
-                        <div className="mthree">
+                        <div className="redomemb3">
                           <div className="mmbr"> Member Type</div>
                         </div>
-                        <div className="msix"> </div>
+                        <div className="redomemb4"> </div>
                       </div>
                     )}
                     {isLoading && (
@@ -267,11 +271,13 @@ const CounsellorAssignedMembers = (props: any) => {
                       counsellorData.length > 0 &&
                       counsellorData.map((data, i) => (
                         <div
-                          className="msgs teammembr booked bookedover signed"
+                          className="msgs teammembr booked bookedover signed redomembcard"
                           key={i}
                         >
                           <div className="fromerit summary">
-                            <Link to={`/counsellorassignedmembers/${data?.email}`}>
+                            <Link className="redomemb1"
+                              to={`/counsellorassignedmembers/${data?.email}`}
+                            >
                               <div className="mone">
                                 <img
                                   className="user_image"
@@ -280,7 +286,9 @@ const CounsellorAssignedMembers = (props: any) => {
                                 />
                               </div>
                             </Link>
-                            <Link to={`/counsellorassignedmembers/${data?.id}`}>
+                            <Link className="redomemb2"
+                              to={`/counsellorassignedmembers/${data?.email}`}
+                            >
                               <div className="mtwo">
                                 <div>
                                   <div className="lowerr nulower counlowerr mhead">
@@ -295,22 +303,26 @@ const CounsellorAssignedMembers = (props: any) => {
                                 </div>
                               </div>
                             </Link>
-                            <div className="mthree">
-                              <div className="lowerr nulower counlowerr mhead">
+                            <div className="redomemb3">
+                              {/* <div className="lowerr nulower counlowerr mhead">
                                 Member type
-                              </div>
+                              </div>  */}
                               <div className="clarity12b">Clarity</div>
                             </div>
-                            {data.status && (
-                              <div className="msix">
-                                <div className="counview mbtn">View More</div>
+                            {true && (
+                              <div className="redomemb4">
+                                <Link
+                                  to={`/counsellorassignedmembers/${data?.email}`}
+                                >
+                                  <div className="counview mbtn redomembbtn">View More</div>
+                                </Link>
                               </div>
                             )}
-                            {!data.status && (
-                              <div className="msix">
+                            {false && (
+                              <div className="redomemb4">
                                 <div
-                                  onClick={()=>startChat(data.email)}
-                                  className="counview mbtn mbtnblu wd120"
+                                  onClick={() => startChat(data.email)}
+                                  className="counview mbtn mbtnblu wd120 redomembbtn"
                                 >
                                   Send Message
                                 </div>
@@ -319,6 +331,68 @@ const CounsellorAssignedMembers = (props: any) => {
                           </div>
                         </div>
                       ))}
+
+                      {/* <div
+                          className="msgs teammembr booked bookedover signed redomembcard"
+                          
+                        >
+                          <div className="fromerit summary">
+                            <Link to="/" className="redomemb1"
+                              // to={`/counsellorassignedmembers/${data?.email}`}
+                            >
+                              <div className="mone">
+                                <img
+                                  className="user_image"
+                                  src={userimg1}
+                                  alt="user image"
+                                />
+                              </div>
+                            </Link>
+                            <Link to="/" className="redomemb2"
+                              // to={`/counsellorassignedmembers/${data?.email}`}
+                            >
+                              <div className="">
+                                <div>
+                                  <div className="lowerr nulower counlowerr mhead">
+                                    Name
+                                  </div>
+                                  <div className="userrdet1 det1">
+                                    Jaiyeola Jones
+                                  </div>
+                                  <div className="userrdet2 memb">
+                                    Jaiyeolajones@yahoo.com
+                                  </div>
+                                </div>
+                              </div>
+                            </Link>
+                            <div className="redomemb3">
+                              <div className="lowerr nulower counlowerr mhead">
+                                Member type
+                              </div>
+                              <div className="clarity12b">Clarity</div>
+                            </div>
+                            {false && (
+                              <div className="redomemb4">
+                                <Link to="/"
+                                  // to={`/counsellorassignedmembers/${data?.email}`}
+                                >
+                                  <div className="counview mbtn rebomembbtn">View More</div>
+                                </Link>
+                              </div>
+                            )}
+                            {true && (
+                              <div className="redomemb4">
+                                <div
+                                  // onClick={() => startChat(data.email)}
+                                  className="counview mbtn mbtnblu wd120 rebomembbtn"
+                                >
+                                  Send Message
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                       */}
                     {counsellorData.length === 0 && !isLoading && (
                       <>
                         <div className="text-center">

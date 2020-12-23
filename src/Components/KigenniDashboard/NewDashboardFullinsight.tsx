@@ -99,7 +99,7 @@ class NewDashboardFullInsight extends React.Component {
           <DashboardNav insight={true} />
           <Row>
             <SideBarNewDashboard insight={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title={"Full Insight"}/>
               <Row>
                 <Col md={12} className="kislsree">

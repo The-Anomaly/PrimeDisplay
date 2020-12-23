@@ -7,7 +7,7 @@ const Acc_confirm_page = () => {
   return (
     <div>
       <Navbar />
-      <div className="acctcnfm-section">
+      <div className="acctcnfm-section padditacct">
         <Container>
           <Row>
             <Col md={12} className="acccnfimdiv">

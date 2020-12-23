@@ -239,7 +239,7 @@ const TodoListComponent = (props: any) => {
         setFormState({
           ...state,
           tasklist: [...res.data.results],
-          count: res.data.count,
+          count: res.data.page,
           nextLink: res.data.next,
           prevLink: res.data.previous,
         });
@@ -262,7 +262,7 @@ const TodoListComponent = (props: any) => {
         setFormState({
           ...state,
           tasklist: [...res.data.results],
-          count: res.data.count,
+          count: res.data.page,
           nextLink: res.data.next,
           prevLink: res.data.previous,
         });

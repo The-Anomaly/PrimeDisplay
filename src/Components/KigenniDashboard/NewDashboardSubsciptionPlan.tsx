@@ -86,7 +86,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
           <DashboardNav subscription={true} />
           <Row>
             <SideBarNewDashboard subscription={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title={"Subscription"} />
               <Row>
                 <Col md={12} className="kisls">
@@ -95,9 +95,9 @@ class NewDashboardSubsriptionPlan extends React.Component {
                       welcomeText={"A review of your current subcription plans"}
                     />
                     <div className="">
-                      <Button className="retaketest">
+                      <Button className="retaketest planupgradebtn">
                         <Link to="/paymentsummary">
-                          Review your current plan
+                          Upgrade your subscription
                         </Link>
                       </Button>
                     </div>
@@ -570,17 +570,62 @@ class NewDashboardSubsriptionPlan extends React.Component {
                       </>
                     )}
                     {plan === undefined && (
-                      <div className="norec">
-                        <img
-                          src={noplan}
-                          className="norecommendations"
-                          alt="norecommendations"
-                        />
-                        <div className="udont1">Oops!!!</div>
-                        <div className="udont">
-                          You are not subscribed to any plan yet
-                        </div>
+                      // <div className="norec">
+                      //   <img
+                      //     src={noplan}
+                      //     className="norecommendations"
+                      //     alt="norecommendations"
+                      //   />
+                      //   <div className="udont1">Oops!!!</div>
+                      //   <div className="udont">
+                      //     You are not subscribed to any plan yet
+                      //   </div>
+                      // </div>
+                      <div>
+                      <div>
+                          <div className="activeplac actplan">Active plan</div>
+                          <div className="subtert">
+                            You are currently subscribed to the <b>Free Plan</b>.
+                          </div>
                       </div>
+                      <Col md={3} sm={8} className="margined_col subpayment">
+                      <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
+                        <Card.Header className="payment-header">
+                          <h4>
+                            N0.00 <span>/one-off</span>
+                          </h4>
+                        </Card.Header>
+                        <Card.Body>
+                          <div className="card-div">
+                            <h6>Free</h6>
+                            <p>
+                              Get the first hand Clarity experience for no
+                              charge at all. Take action to experience career bliss.
+                            </p>
+                          </div>
+                          <ul className="card-list">
+                            <li>
+                              <img src={mark} className="card-image" />
+                              Career fitness score
+                            </li>
+                            <li>
+                              <img src={mark} className="card-image" />
+                              Career personality types
+                            </li>
+                            <li>
+                              <img src={mark} className="card-image" />
+                              Cv builder
+                            </li>
+                          </ul>
+                            {/* <Link to="/dashboardsubscriptionplan">
+                              <span className="card_btn btn-yellow">
+                                Subscribe
+                              </span>
+                            </Link> */}
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                    </div>
                     )}
                   </div>
                 </Col>

@@ -9,13 +9,17 @@ import RightTopImage from "../../../assets/2.png";
 import "./faqs.css";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
+import "../Home/Home.css"
 
 const Faq: React.FunctionComponent = (props) => {
   let [activeKey, setActiveKey] = useState("");
+  // const setKey = (e) => {
+  //   setActiveKey(e),
+  // }  
   return (
     <>
       <Navbar faq={true} />
-      <Container fluid={true}>
+      <Container fluid={true} className="mobilepaddingredo">
         <Row className="firstrow possition newfaqrow">
           <Col
             md={5}
@@ -42,9 +46,9 @@ const Faq: React.FunctionComponent = (props) => {
             className="faq-accordion"
           >
             <Accordion
-              activeKey={activeKey}
+              // activeKey={activeKey}
               defaultActiveKey=""
-              // onSelect={(e) => setActiveKey(e)}
+              // onSelect={(e: any) => console.log(toString(e))}
             >
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -86,7 +90,7 @@ const Faq: React.FunctionComponent = (props) => {
                       We totally understand, but we also know $11-$20 dollars is
                       not a lot of money if you are ready to take your work-life
                       up the notch all through the year. You can however, start
-                      getting the free clarity report on your strengths and
+                      getting the free Clarity report on your strengths and
                       weaknesses.
                     </p>
                   </Card.Body>
@@ -105,7 +109,7 @@ const Faq: React.FunctionComponent = (props) => {
                 <Accordion.Collapse eventKey="3">
                   <Card.Body>
                     <p className="faq-answers">
-                      <div>
+                      <div className="faq-answers1">
                         Objectivity, personalized and unbiased advice. It is our
                         duty to get to know you, understand you and help make
                         the best and most informed decisions at every point in
@@ -113,12 +117,12 @@ const Faq: React.FunctionComponent = (props) => {
                         you are and what career paths are best for you to thrive
                         in.
                       </div>
-                      <div>
+                      <div className="faq-answers1">
                         Clarity is like a therapist in your pocket, helping you
                         navigate through the challenges of your career and
                         personal struggles, as much as we are focused on helping
                         you build a fulfilling career we also realize that other
-                        aspects of your life matter too. Hence, clarity
+                        aspects of your life matter too. Hence, Clarity
                         counsellors and psychologists are equipped to help you
                         tackle various issues that come along your way as you
                         work on maximizing your potential.
@@ -179,7 +183,7 @@ const Faq: React.FunctionComponent = (props) => {
                 <Accordion.Toggle as={Card.Header} eventKey="7">
                   <div className="faq-side-header">
                     <div className="space111">
-                      <div>How Confidential are my conversations?</div>
+                      <div>How confidential are my conversations?</div>
                       <div className="plus_style">+</div>
                     </div>
                   </div>
@@ -193,7 +197,7 @@ const Faq: React.FunctionComponent = (props) => {
                       appropriate quarters. We ensure conversations are private,
                       providing a safe space to rant, learn and take progressive
                       action. We are emphatic and yet intentional about your
-                      personal development so every effort on clarity is
+                      personal development so every effort on Clarity is
                       propelled to move you forward.
                     </p>
                   </Card.Body>

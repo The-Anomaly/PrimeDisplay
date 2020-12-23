@@ -2,16 +2,17 @@ import React from "react";
 import { Container, Col, Card } from "react-bootstrap";
 import "./privacy_policy.css";
 import Footer from "../HomeComponents/newfooter";
+import demoLogo from "../../../assets/newclaritylogoa.png";
+import { Link } from "react-router-dom";
 
 const Terms = () => {
   return (
     <div>
+      <Link to="/"><img className="privacylogo"  src={demoLogo} /></Link>
       <div className="policy_page">
-        <Container>
           <div className="privacy-title">
             <h2>Terms & Conditions</h2>
           </div>
-        </Container>
       </div>
       <div className="policy-section">
         <Container>

@@ -3490,6 +3490,7 @@ textarea.form-control.jobr {
 .viewbook {
   float: right;
   margin-right: 3%;
+  transition: 0.3s;
 }
 .viewbook:hover {
   font-size: 15px;
@@ -3983,15 +3984,14 @@ textarea.form-control.jobr {
   line-height: 18px;
   color: #001833;
 }
-.weww{
+.weww {
   font-size: 16px;
 }
-.brfcase{
+.brfcase {
   width: 20px;
   object-fit: contain;
 }
-.todo1a{
-  
+.todo1a {
 }
 .gha {
   font-size: 11px;
@@ -4074,29 +4074,175 @@ textarea.form-control.jobr {
   text-align: center;
 }
 
-.ffas{
-  padding: .5rem 1rem;
+.ffas {
+  padding: 0.5rem 1.5rem;
+  border: .1px solid #1bb978;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 .mtwo div {
   flex: 10%;
   text-align: center;
   width: 180px;
 }
-@media(min-width:768px){
-  .mthree{
+@media (min-width: 768px) {
+  .mthree {
     display: flex;
-    justify-content: flex-end !important
+    justify-content: flex-end !important;
   }
-  .mmbr{
+  .mmbr {
     justify-content: space-between;
     align-items: center;
     display: flex;
   }
-  .msix{
+  .msix {
     display: flex;
     justify-content: flex-end;
   }
 }
-.ref_input{
+.ref_input {
   cursor: pointer;
+}
+
+@media (max-width: 905px) {
+  .sessioncard {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    padding-bottom: 0;
+  }
+  .sesscard1 {
+    flex: 30%;
+    padding-right: 1rem;
+  }
+  .sesscard2 {
+    flex: 70%;
+    padding: 0;
+  }
+  .sesscard3 {
+    flex: 30%;
+    margin-top: 1rem;
+  }
+  .sesscard4 {
+    flex: 70%;
+    margin-top: 1rem;
+  }
+  .sesscard5 {
+    flex: 50%;
+    margin-top: 1rem;
+    height: auto;
+  }
+  .sesscard6 {
+    flex: 50%;
+    margin-top: 1rem;
+    height: auto;
+    width: 80%;
+  }
+  .sesscard7 {
+    flex: 100%;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  .sesstype {
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+  }
+  .sessstat {
+    padding: 0.5rem 31%;
+  }
+  .sessbtn {
+    width: 80%;
+    margin: auto;
+    margin-top: 1rem;
+  }
+}
+@media(max-width: 800px) {
+  .newprm1 {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
+@media (max-width: 400px) {
+  .sessioncard {
+    width: 300px;
+    padding: 0 1rem;
+  }
+  .sesscard1 {
+    flex: 35%;
+  }
+  .sesscard2 {
+    flex: 65%;
+  }
+  .sesscard3 {
+    flex: 35%;
+  }
+  .sesscard4 {
+    flex: 65%;
+  }
+  .sesscard7 {
+    height: auto;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+  .sessbtn {
+    width: 100%;
+  }
+  .sessstat {
+    padding: 0.5rem 25%;
+  }
+}
+@media(min-width: 906px) and (max-width:1050px) {
+  .sesscard7 {
+    margin-left: 88%;
+  }
+}
+
+.redomemb1 {
+  flex: 15%;
+}
+.redomemb2 {
+  flex: 35%;
+}
+.redomemb3 {
+  flex: 25%;
+}
+.redomemb4 {
+  flex: 25%;
+}
+.redomemb2 div {
+  text-align: left !important;
+  width: auto;
+}
+
+@media(max-width: 950px) {
+  .redomembcard {
+    width: 400px;
+    margin: auto;
+    padding: 2rem;
+  }
+  .redomemb1 {
+    flex: 20%;
+  }
+  .redomemb2 {
+    flex: 70%;
+  }
+  .redomemb3 {
+    flex: 20%;
+    margin-top: 3rem;
+  }
+  .redomemb4 {
+    flex: 70%;
+    margin-top: 3rem;
+  }
+  .redomembbtn {
+    width: 100%;
+  }
+}
+
+@media(max-width: 400px) {
+  .redomembcard {
+    padding: 1rem;
+  }
 }

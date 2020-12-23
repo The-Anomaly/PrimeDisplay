@@ -209,6 +209,9 @@ class CounsellorsRecommendation extends React.Component {
     });
   };
   submitRating = () => {
+    this.setState({
+      isloading:true
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -226,12 +229,18 @@ class CounsellorsRecommendation extends React.Component {
     )
       .then((response) => {
         console.log(response);
+        this.setState({
+          isloading:false
+        })
         this.notify("Thank you for the rating");
         setTimeout(() => {
           this.closeRateSession();
         }, 3000);
       })
       .catch((err) => {
+        this.setState({
+          isloading:false
+        })
         this.notify("An error occured please try again");
         console.log(err);
         setTimeout(() => {
@@ -257,6 +266,7 @@ class CounsellorsRecommendation extends React.Component {
       reason,
       isLoading,
       counsellor,
+      isloading,
     } = this.state;
     return (
       <>
@@ -264,7 +274,7 @@ class CounsellorsRecommendation extends React.Component {
           <DashboardNav councrec={true} />
           <Row>
             <SideBarNewDashboard councrec={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <div className="navdash">
                 <div className="overview ovf">Counsellors Recommendation</div>
                 <div className="prm111">
@@ -475,7 +485,7 @@ class CounsellorsRecommendation extends React.Component {
                       Not now
                     </span>
                     <span className="rightnow" onClick={this.submitRating}>
-                      Submit
+                    { isloading? "Submit":"Submitting"}
                     </span>
                   </div>
                 </div>

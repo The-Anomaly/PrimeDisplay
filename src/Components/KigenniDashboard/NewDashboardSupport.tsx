@@ -24,6 +24,7 @@ interface State {
   isLoading: boolean;
   showWarning: boolean;
   width: number;
+  isloading:boolean;
 }
 class NewDashboardSupport extends React.Component {
   state: State = {
@@ -33,9 +34,13 @@ class NewDashboardSupport extends React.Component {
     successMsg: false,
     isLoading: false,
     showWarning: false,
+    isloading:false,
     width: 100,
   };
   submitForm = (e) => {
+    this.setState({
+      isloading:true
+    })
     e.preventDefault();
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
@@ -47,9 +52,18 @@ class NewDashboardSupport extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        this.setState({
+          isloading:false
+        })
         this.notify("Successful");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err) => {
+        this.setState({
+          isloading:false
+        })
         if (err) {
           this.notify("Failed to send");
         }
@@ -79,14 +93,14 @@ class NewDashboardSupport extends React.Component {
     });
   };
   render() {
-    const { complain, issue, isLoading, width } = this.state;
+    const { complain, issue, isLoading, isloading } = this.state;
     return (
       <>
         <Container fluid={true} className="contann122">
           <DashboardNav support={true}/>
           <Row>
             <SideBarNewDashboard support={true} />
-            <Col md={10} sm={12} className="prm">
+            <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title={"Support"} />
               <Row>
                 <Col md={12} className="kisls">
@@ -144,7 +158,7 @@ class NewDashboardSupport extends React.Component {
                             className="retaketest"
                             onClick={this.submitForm}
                           >
-                            Submit
+                             {isloading?"Submitting":"Submit"}
                           </Button>
                         </Col>
                       </Row>

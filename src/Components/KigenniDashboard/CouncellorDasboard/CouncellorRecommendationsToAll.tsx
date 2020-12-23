@@ -13,6 +13,9 @@ import prevpage from "../../../assets/prevpage.svg";
 import nextpage from "../../../assets/nextpage.svg";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import { Spinner } from "react-bootstrap";
+import noplan from "../../../assets/noplan.png";
+
+
 
 const CouncellorRecommendationsToAll = (props: any) => {
   const [state, setFormState] = React.useState<any>({
@@ -199,7 +202,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
         <CounsellorDashboardMobileNav councrec={true} />
         <Row>
           <SideBarCounsellorDashboard councrec={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Counsellors Recommendation" />
             <Row>
               <Col md={12} className="firstqq">
@@ -236,6 +239,18 @@ const CouncellorRecommendationsToAll = (props: any) => {
                         <div className="tymeline sjsso2">{data.date}</div>
                       </div>
                     ))}
+                     {user.length === 0 && !isloading && (
+                      <div className="norec newnorec">
+                        <img
+                          src={noplan}
+                          className="norecommendations"
+                          alt="norecommendations"
+                        />
+                        <div className="udont">
+                          You currently do not have any recommendation
+                        </div>
+                      </div>
+                    )}
                     <div className="next_page">
                       {user.length && (
                         <div>

@@ -20,12 +20,14 @@ import brfcase from "../../../assets/brfcase.png";
 import { Form } from "react-bootstrap";
 import completedTask from "../../../assets/completed-task.png";
 import TodoListComponent from "../TodoListComponent";
+import { Link } from "react-router-dom";
 
 const CounsellorAssignedMembersViewOne = (props: any) => {
   const [state, setState] = useState<any>({
     user: [],
     counsellorData: [],
     errorMessage: "",
+    counsellorViewProfile:{},
     nextLink: "",
     what_i_do: "",
     isOpen: false,
@@ -39,7 +41,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     industry_interest: "",
     present_pills: "",
     opportunities: "",
-    userProfile:[]
+    userProfile: [],
   });
   React.useEffect(() => {
     setState({
@@ -54,15 +56,21 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-members`, {
         headers: { Authorization: `Token ${token}` },
       }),
-      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-member/profile/${props.match.params.id}`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
-      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-member/career-preferences?email=${props.match.params.id}`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/counsellor/assigned-member/profile/${props.match.params.id}`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/counsellor/assigned-member/career-preferences?email=${props.match.params.id}`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
     ])
       .then(
-        Axios.spread((res,res1,res2) => {
+        Axios.spread((res, res1, res2) => {
           console.log(res1);
           console.log(res2);
           if (res.status === 200) {
@@ -70,12 +78,13 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
               ...state,
               user: [...res.data.results],
               counsellorData: [...res.data.results].reverse(),
-              userProfile:[],
+              userProfile: [],
               count: res.data.page,
               nextLink: res.data.next,
               prevLink: res.data.previous,
               total_pages: res.data.total_pages,
               isLoading: false,
+              counsellorViewProfile:res2.data,
             });
           }
         })
@@ -215,7 +224,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     dob,
     count,
     currently_seeking,
-    what_i_do,
+    counsellorViewProfile,
     total_pages,
     industry_interest,
   } = state;
@@ -226,7 +235,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
         <CounsellorDashboardMobileNav assignedmemb={true} />
         <Row>
           <SideBarCounsellorDashboard assignedmemb={true} />
-          <Col md={10} sm={12} className="prm">
+          <Col md={10} sm={12} className="prm newprm">
             <CounsellorDashboardNav title="Assigned Members List" />
             <Row>
               <Col md={12} className="firstqq">
@@ -309,7 +318,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
                     type="text"
                     className="userfield"
                     id="what_i_do"
-                    value={what_i_do}
+                    value={counsellorViewProfile?.present_job}
                     name="what_i_do"
                     placeholder=""
                   />
@@ -322,7 +331,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
                     type="text"
                     className="userfield"
                     id="industry_interest"
-                    value={industry_interest}
+                    value={counsellorViewProfile?.industry_interest}
                     placeholder=""
                   />
                 </Form.Group>
@@ -350,7 +359,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
                     type="text"
                     className="userfield"
                     id="present_pills"
-                    value={present_pills}
+                    value={counsellorViewProfile?.work_status}
                     placeholder=""
                   />
                 </Form.Group>
@@ -364,12 +373,12 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
                     type="text"
                     className="userfield"
                     id="opportunities"
-                    value={opportunities}
+                    value={counsellorViewProfile?.opportunities}
                     placeholder=""
                   />
                 </Form.Group>
               </Col>
-              <Col md={6}>
+              {/* <Col md={6}>
                 <Form.Group className="userfield1">
                   <h6 className="gha">Date of birth </h6>
                   <Form.Control
@@ -380,16 +389,18 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
                     placeholder=""
                   />
                 </Form.Group>
-              </Col>
+              </Col> */}
             </Row>
             <Row className="sdsaa">
               <Col md={6}>
                 <div className="fooass">View Assesment Result</div>
               </Col>
               <Col md={6}>
-                <div className="fooass counview1">
-                  View Professional Profile
-                </div>
+                <Link to={`/users_profile/${props.match.params.id}`}>
+                  <div className="fooass counview1">
+                    View Professional Profile
+                  </div>
+                </Link>
               </Col>
             </Row>
           </Form>

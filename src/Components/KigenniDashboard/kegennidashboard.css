@@ -830,6 +830,9 @@ a:hover {
   .modal-sm {
     max-width: 429px;
   }
+  .mddrrt{
+    margin-left: 4rem !important;
+  }
 }
 
 textarea.form-control {
@@ -2505,13 +2508,13 @@ textarea.form-control.jobr {
 .searchinput::placeholder {
   color: #717172;
 }
-.ffrr1 input{
+.ffrr1 input {
   border: 1px solid #b6b5b5 !important;
   outline: none;
   color: #717172 !important;
 }
 
-.ffrr1 input{
+.ffrr1 input {
   outline: none;
 }
 .useri1222 {
@@ -2924,6 +2927,9 @@ textarea.form-control.jobr {
   .buildingbg {
     height: 70px;
     padding: 1.9% 2% 2% 1.6%;
+  }
+  .navitem1 {
+    padding-top: 1rem !important;
   }
 }
 
@@ -3409,7 +3415,7 @@ input,
     margin-right: 8%;
   }
 }
-.mobilefour{
+.mobilefour {
   display: none;
 }
 @media (max-width: 670px) {
@@ -3419,7 +3425,7 @@ input,
   .tasklist {
     padding-left: 1rem;
   }
-  .mobilefour{
+  .mobilefour {
     display: block;
   }
 }
@@ -3805,7 +3811,7 @@ label {
   top: 74vh;
   height: 184px;
 }
-.usermmsa{
+.usermmsa {
   margin-bottom: 4rem;
 }
 @media (max-width: 600px) {
@@ -3845,7 +3851,7 @@ label {
     padding-top: 3rem;
     padding-bottom: 1rem;
   }
-  .hidinsmall{
+  .hidinsmall {
     display: none !important;
   }
 }
@@ -3857,13 +3863,93 @@ label {
   position: fixed;
   width: 300px;
   z-index: 2;
+  height: 100vh;
 }
-.usermmsa1{
+.usermmsa1 {
   margin-bottom: 9rem;
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .newliee {
     flex-direction: column;
+  }
+}
+.sddx12 {
+  overflow-y: hidden;
+  margin-bottom: 3rem;
+}
+.gray-text {
+  font-size: 12px;
+  display: contents;
+  display: block;
+  margin-top: 0.4rem;
+}
+.successfullybooked {
+  text-align: center;
+  letter-spacing: -0.4px;
+  color: #18214d;
+  padding-top: 2rem;
+  font-weight: 500;
+}
+.btncenter {
+  text-align: center;
+}
+.btncenter12 {
+  background: #9c1258;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  margin-top: 1rem;
+  padding: .5rem 1rem;
+}
+.slsbtn{
+  margin: 0px;
+  position: relative;
+  top: 1.5rem;
+}
+.mainwrap{
+  
+}
+
+.noref {
+  width: 50%;
+}
+.norefoops {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+.norefmarg {
+  margin-top: 1rem;
+}
+.refmarg {
+  margin-right: 5%;
+}
+.refdeet {
+  display: flex;
+    justify-content: space-between;
+    width: 40vw;
+}
+.refdeet1 {
+  width: 50%;
+}
+.refdeet1a {
+  padding-right: 1rem;
+}
+@media (max-width: 1000px) {
+  .refdeet {
+    width: 50vw;
+  }
+}
+@media(max-width: 800px) {
+  .refdeet {
+    width: 295px;
+  }
+}
+@media(max-width: 500px) {
+  .refdeet {
+    display: block;
+    width: auto;
   }
 }

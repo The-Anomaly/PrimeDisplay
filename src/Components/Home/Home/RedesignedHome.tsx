@@ -47,7 +47,7 @@ import smarrow1 from "../../../assets/smarrow1.svg";
 import smarrow2 from "../../../assets/smarrow2.svg";
 import smarrow4 from "../../../assets/smarrow4.svg";
 import smarrow5 from "../../../assets/smarrow5.svg";
-import smcircle1 from "../../../assets/smcircle1.svg";
+import smcircle1 from "../../../assets/circle3.svg";
 import smcircle2 from "../../../assets/smcircle2.svg";
 import smborder from "../../../assets/smborder.png";
 import jaiye from "../../../assets/jaiye.svg";
@@ -183,7 +183,7 @@ const RedesignedHome: React.FC = (props: any) => {
       )}
       {!isloading && (
         <>
-          <Container fluid={true}>
+          <Container fluid={true} className="mobilepaddingredo">
             <Row md={12} className="newfirstrow">
               <img className="ellipse1" src={ellipse1} />
               <img className="ellipse2" src={ellipse2} />
@@ -195,8 +195,8 @@ const RedesignedHome: React.FC = (props: any) => {
               <Col md={5} sm={11} className="hometext">
                 <div>
                   <div>We are like a map but for your career.</div>
-                  <div>Let's connect all the dots...</div>
-
+                  {/* <div>Let's connect all the dots...</div> */}
+                  <div className="smhometext">Discover your passion and talent, discover a more meaningful work life.</div>
                   <Link to="/signup">
                     <div className="hstarted">GET STARTED</div>
                   </Link>
@@ -279,8 +279,8 @@ const RedesignedHome: React.FC = (props: any) => {
                 <div className="newthirdrowtext">
                   Clarity by Yudimy is a career mapping platform that helps you
                   discover and define a clear road map with practical and
-                  actionable steps to get to your destination of meaningful and
-                  organized work-life.
+                  actionable steps to get to you to your destination of a
+                  meaningful and organized work-life.
                 </div>
                 <div className="newthirdrowbtn" onClick={GetStarted}>
                   GET STARTED
@@ -327,7 +327,7 @@ const RedesignedHome: React.FC = (props: any) => {
             <Row md={12} className="newfourthrow">
               <div className="secondtitle fourthttl">
                 A navigator you can{" "}
-                <span className="secondtitle1">
+                <span className="secondtitle1 trustttl">
                   trust <img src={rect} className="secondimg fourthimg" />
                 </span>
               </div>
@@ -365,11 +365,13 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img src={trust2} className="trustimg" />
                     <div className="fourthsubhead">Talk to a Counselor</div>
                     <div className="fourthsubtext">
-                      Your career trajectory is a sum total of all the choices
-                      you made that got you here. However, an important step for
-                      making effective decisions going forward is is connecting
-                      the dots, speaking with a clarity counsellor helps you do
-                      just this with specific recommendations on how.{" "}
+                      Your career trajectory is the sum of all the choices you
+                      have made so far. However, an important step when making
+                      future decisions is to connect the dots between where your
+                      passion and talent lies and which career will enable you
+                      to best express them. Speaking with a Clarity counsellor
+                      will help you achieve this with specific recommendations
+                      on how.
                     </div>
                   </div>
                 </div>
@@ -379,12 +381,13 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img className="rightborder rightborder2" src={smborder} />
                     <img src={trust3} className="trustimg" />
                     <div className="fourthsubhead">TO DO’s</div>
-                    <div className="fourthsubtext">
-                      Knowing the next step to take is one, getting there is
-                      another thing. With Yudimy’s Clarity you can immediately
-                      convert the recommendations from your counselling session
-                      to actionable task with frequent reminders and
-                      acccountability to help you achieve this.
+                    <div className="fourthsubtext frheight">
+                      Knowing what step to take next is one thing but getting
+                      there is another! With Yudimy's Clarity you can
+                      immediately convert the recommendations frommyour
+                      counselling session into actionable tasks and set up
+                      frequent reminders to keep you accountable and help you
+                      achieve them.
                     </div>
                   </div>
                   <div className="fourthsubsec hov4">
@@ -393,11 +396,10 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img src={trust4} className="trustimg trustimgin" />
                     <div className="fourthsubhead">Growth Challenge</div>
                     <div className="fourthsubtext">
-                      Beautiful things happen when preparation meets opportunity
-                      and our growth challenge feature keeps you accountable to
-                      growth, with the assistance of career-talent managers you
-                      have access to a career development road map that increase
-                      your appeal.
+                      When preparation meets opportunity, the result is success.
+                      Clarity's growth challenge feature is supported by our
+                      career talent managers who keep you accountable to your
+                      career development goals thereby increasing your appeal.
                     </div>
                   </div>
                 </div>
@@ -409,9 +411,9 @@ const RedesignedHome: React.FC = (props: any) => {
                   </div>
                   <div className="fourthsubtext">
                     As your career-talent managers committed to your success we
-                    work with you to articule your unique value propostion,
-                    profile and brand. Also, because we know understand you, we
-                    curate the best opportunities and send them to you.
+                    work with you to articulate your unique value proposition,
+                    profile and brand. Also, because we now understand you, we
+                    curate and connect you to the best opportunities.
                   </div>
                 </div>
               </div>
