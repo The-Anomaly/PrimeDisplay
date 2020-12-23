@@ -9,6 +9,8 @@ import eye from "../../../assets/eye.png";
 import balance from "../../../assets/balance.svg";
 import info from "../../../assets/info_circle.png";
 import { CirclePie } from "salad-ui.chart";
+import { API } from "../../../config";
+import Axios from "axios";
 
 const BehaviouralAnalytics = () => {
   const [viewProfile, SetViewProfile] = React.useState(false);
@@ -20,7 +22,6 @@ const BehaviouralAnalytics = () => {
       SetViewProfile(false);
     }
   };
-
   const viewPersonaties = () => {
     setAnalytics(1);
   };
@@ -39,6 +40,25 @@ const BehaviouralAnalytics = () => {
   const viewCareerFitness = () => {
     setAnalytics(6);
   };
+
+  React.useEffect((): any => {
+    // const availableToken = localStorage.getItem("userToken");
+    // const token: string = availableToken
+    //   ? JSON.parse(availableToken)
+    //   : window.location.assign("/signin");
+    Axios.get(`${API}/affiliate/personality-graph`
+    // , {
+    //   headers: { Authorization: `Token ${token}` },
+    // }
+    )
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      
+    })
+  }, []);
+
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -158,13 +178,13 @@ const BehaviouralAnalytics = () => {
                           </div>
                           <div className="BAboxcontent">
                             <div className="BApercent">
-                              <div className="">
+                              <div className="BAcircle1">
                                 <CirclePie
-                                  width={110}
-                                  height={110}
+                                  width={100}
+                                  height={100}
                                   strokeWidth={12}
                                   labelColor={"#000000"}
-                                  labelFontSize={"20px"}
+                                  labelFontSize={"18px"}
                                   strokeColor={"#EC6666"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
@@ -175,11 +195,11 @@ const BehaviouralAnalytics = () => {
                               </div>
                               <div className="">
                                 <CirclePie
-                                  width={110}
-                                  height={110}
+                                  width={100}
+                                  height={100}
                                   strokeWidth={12}
                                   labelColor={"#000000"}
-                                  labelFontSize={"20px"}
+                                  labelFontSize={"18px"}
                                   strokeColor={"#EC6666"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
@@ -200,13 +220,13 @@ const BehaviouralAnalytics = () => {
                           </div>
                           <div className="BAboxcontent">
                             <div className="BApercent">
-                              <div className="">
+                              <div className="BAcircle1">
                                 <CirclePie
-                                  width={110}
-                                  height={110}
+                                  width={100}
+                                  height={100}
                                   strokeWidth={12}
                                   labelColor={"#000000"}
-                                  labelFontSize={"20px"}
+                                  labelFontSize={"18px"}
                                   strokeColor={"#79D2DE"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
@@ -217,11 +237,11 @@ const BehaviouralAnalytics = () => {
                               </div>
                               <div className="">
                                 <CirclePie
-                                  width={110}
-                                  height={110}
+                                  width={100}
+                                  height={100}
                                   strokeWidth={12}
                                   labelColor={"#000000"}
-                                  labelFontSize={"20px"}
+                                  labelFontSize={"18px"}
                                   strokeColor={"#79D2DE"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
@@ -242,13 +262,13 @@ const BehaviouralAnalytics = () => {
                           </div>
                           <div className="BAboxcontent">
                             <div className="BApercent">
-                              <div className="">
+                              <div className="BAcircle1">
                                 <CirclePie
-                                  width={110}
-                                  height={110}
+                                  width={100}
+                                  height={100}
                                   strokeWidth={12}
                                   labelColor={"#000000"}
-                                  labelFontSize={"20px"}
+                                  labelFontSize={"18px"}
                                   strokeColor={"#A044D9"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
@@ -259,11 +279,11 @@ const BehaviouralAnalytics = () => {
                               </div>
                               <div className="">
                                 <CirclePie
-                                  width={110}
-                                  height={110}
+                                  width={100}
+                                  height={100}
                                   strokeWidth={12}
                                   labelColor={"#000000"}
-                                  labelFontSize={"20px"}
+                                  labelFontSize={"18px"}
                                   strokeColor={"#A044D9"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
@@ -284,13 +304,13 @@ const BehaviouralAnalytics = () => {
                           </div>
                           <div className="BAboxcontent">
                             <div className="BApercent">
-                              <div className="">
+                              <div className="BAcircle1">
                                 <CirclePie
-                                  width={110}
-                                  height={110}
+                                  width={100}
+                                  height={100}
                                   strokeWidth={12}
                                   labelColor={"#000000"}
-                                  labelFontSize={"20px"}
+                                  labelFontSize={"18px"}
                                   strokeColor={"#147AD6"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
@@ -301,11 +321,11 @@ const BehaviouralAnalytics = () => {
                               </div>
                               <div className="">
                                 <CirclePie
-                                  width={110}
-                                  height={110}
+                                  width={100}
+                                  height={100}
                                   strokeWidth={12}
                                   labelColor={"#000000"}
-                                  labelFontSize={"20px"}
+                                  labelFontSize={"18px"}
                                   strokeColor={"#147AD6"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}

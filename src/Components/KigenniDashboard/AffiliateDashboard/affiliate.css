@@ -391,6 +391,7 @@
   padding: 1rem;
   margin-left: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 .BAboxttl {
   display: flex;
@@ -420,6 +421,9 @@
     color: #333333;
     margin-top: 1rem;
 }
+.BAcircle1 {
+  margin-right: 1rem;
+}
 @media(max-width: 1000px) {
   .BAselect {
     height: 60px;
@@ -428,5 +432,48 @@
 @media(max-width: 800px) {
   .BArow3 {
     padding: 1rem 1.5rem;
+  }
+}
+@media(max-width: 700px) {
+  .BAsections {
+    flex-wrap: wrap;
+    padding-bottom: 0;
+  }
+  .BAselect {
+    margin-bottom: 0.3rem;
+    width: 33%;
+    height: 44px;
+  }
+}
+@media(max-width: 600px) {
+  .BAAbox {
+    margin-left: 0;
+  }
+  .BAboxcontent {
+    padding: 2.5rem 0.5rem 0.5rem;
+  }
+  .BAmorebtn {
+    width: 165px;
+  }
+}
+@media(max-width: 416px) {
+  .BAselect {
+    height: 66px;
+  }
+}
+@media(max-width: 416px) {
+  .BArow3 {
+    padding: 1rem;
+  }
+  .BAmorebtn {
+    margin-top: 3.5rem;
+    position: absolute;
+    right: 1rem;
+  }
+  .BAAboxes {
+    margin-top: 5rem;
+  }
+  .BAAbox {
+    width: 100%;
   }
 }
