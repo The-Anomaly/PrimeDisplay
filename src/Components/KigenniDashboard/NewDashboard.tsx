@@ -21,6 +21,11 @@ import HorizontalBar from "./HorizontalBar";
 import vector1 from "../../assets/whiteicon1.png";
 import vector2 from "../../assets/whiteicon2.png";
 import notice from "../../assets/notice.png";
+import unlock from "../../assets/Unlock.png";
+import blur from "../../assets/weakness_blur.png";
+import blur2 from "../../assets/fix_blur.png";
+import blur2a from "../../assets/fix_blur2.png";
+import unlock2 from "../../assets/unlock_white.png";
 
 interface State {
   fullname: string;
@@ -32,7 +37,7 @@ interface State {
   successMsg: boolean;
   errorMessage: string;
   isLoading: boolean;
-  isLoading_1:boolean;
+  isLoading_1: boolean;
   showWarning: boolean;
   width: number;
   onlyfree: boolean;
@@ -49,7 +54,7 @@ class NewDashboard extends React.Component {
     strongcompetencechartdata: [],
     errorMessage: "",
     successMsg: false,
-    isLoading_1:false,
+    isLoading_1: false,
     isLoading: false,
     showWarning: false,
     onlyfree: false,
@@ -60,8 +65,8 @@ class NewDashboard extends React.Component {
   submitRetakeAssessment = (e) => {
     e.preventDefault();
     this.setState({
-      isLoading_1:true
-    })
+      isLoading_1: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {};
@@ -71,56 +76,57 @@ class NewDashboard extends React.Component {
       .then((res) => {
         window.location.assign("/assessmentphaseone");
         this.setState({
-          isLoading_1:false
-        })
+          isLoading_1: false,
+        });
       })
       .catch((err) => {
         if (err) {
           this.setState({
-            isLoading_1:false
-          })
+            isLoading_1: false,
+          });
         }
       });
   };
   componentDidMount() {
-    this.setState({ 
-      isLoading: true
+    this.setState({
+      isLoading: true,
     });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
-      this.getUserInfo(token)
+    this.getUserInfo(token);
     const data = {};
-    Axios
-    .all([
+    Axios.all([
       Axios.get<any, AxiosResponse<any>>(`${API}/paiddashboard`, {
         headers: { Authorization: `Token ${token}` },
       }),
       Axios.get<any, AxiosResponse<any>>(`${API}/freedashboard`, {
         headers: { Authorization: `Token ${token}` },
-      })
+      }),
     ])
-      .then(Axios.spread((response, response2) => {
-        // console.log(response);
-        // console.log(response2);
-        if (response.status === 200 && response2.status === 200) {
-          this.setState({
-            client: response.data[0],
-            careerbussines: response?.data[0]?.career_business_expression[0],
-            jobfunctionchartdata: response?.data[0]?.job_function_fit?.graph,
-            averagecompetencechartdata:
-              response?.data[0]?.average_career_competences?.graph,
-            strongcompetencechartdata:
-              response?.data[0].strong_career_competences.graph,
-            fullname: response2.data[0].full_name,
-            successMsg: true,
-            isLoading: false,
-            client2: response2.data[0],
-          });
-        }
-        this.checkIfUserHasMadePayment();
-      }))
+      .then(
+        Axios.spread((response, response2) => {
+          // console.log(response);
+          // console.log(response2);
+          if (response.status === 200 && response2.status === 200) {
+            this.setState({
+              client: response.data[0],
+              careerbussines: response?.data[0]?.career_business_expression[0],
+              jobfunctionchartdata: response?.data[0]?.job_function_fit?.graph,
+              averagecompetencechartdata:
+                response?.data[0]?.average_career_competences?.graph,
+              strongcompetencechartdata:
+                response?.data[0].strong_career_competences.graph,
+              fullname: response2.data[0].full_name,
+              successMsg: true,
+              isLoading: false,
+              client2: response2.data[0],
+            });
+          }
+          this.checkIfUserHasMadePayment();
+        })
+      )
       .catch((error) => {
         if (error && error?.response && error?.response?.data) {
           this.setState({
@@ -143,9 +149,7 @@ class NewDashboard extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        if (
-          response?.data[0]?.view_result === true
-        ) {
+        if (response?.data[0]?.view_result === true) {
           this.setState({
             showfullresult: true,
           });
@@ -164,22 +168,17 @@ class NewDashboard extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        if (
-          response?.data[0]?.view_result === true
-        ) {
+        if (response?.data[0]?.view_result === true) {
           this.setState({
             showfullresult: true,
           });
         }
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   };
   checkIfUserHasAccessToAskACounselor = () => {
     const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature
-      ? JSON.parse(stringFeature)
-      : "";
+    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
 
     if (featureToCheck["ask_counsellor"] === true) {
       // console.log("Ask a counselor successful");
@@ -187,7 +186,10 @@ class NewDashboard extends React.Component {
     } else {
       //notify("Update your subscription to access this feature");
       // console.log("Can't access ask a counselor");
-      return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
+      return setTimeout(
+        (window.location.pathname = "/dashboardsubscriptionplan"),
+        2000
+      );
     }
   };
   CloseWarning = () => {
@@ -215,18 +217,15 @@ class NewDashboard extends React.Component {
     });
   };
   getUserInfo = (token: string): any => {
-    Axios
-      .get(`${API}/currentuser`, {
-        headers: { Authorization: `Token ${token}` },
-      })
+    Axios.get(`${API}/currentuser`, {
+      headers: { Authorization: `Token ${token}` },
+    })
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("user", JSON.stringify(response?.data));
         }
       })
-      .catch((error) => {
-
-      });
+      .catch((error) => {});
   };
   render() {
     const {
@@ -280,12 +279,14 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                     <div className="">
-                        <Button className="retaketest planupgradebtn"
+                      <Button
+                        className="retaketest planupgradebtn"
                         onClick={() =>
                           this.checkIfUserHasAccessToAskACounselor()
-                        }>
-                         {isLoading_1 ? "Processing":"Ask a counselor"}
-                        </Button>
+                        }
+                      >
+                        {isLoading_1 ? "Processing" : "Ask a counselor"}
+                      </Button>
                       {showfullresult && (
                         <Button
                           className="retaketest2 planupgradebtn"
@@ -301,8 +302,8 @@ class NewDashboard extends React.Component {
                       <div className="notpaid1">
                         <img src={caution} className="caution" alt="caution" />
                         <div className="notpaidtext">
-                          Oops!!! You need to upgrade your plan to get
-                          indepth details
+                          Oops!!! You need to upgrade your plan to get indepth
+                          details
                         </div>
                       </div>
                       <div className="retaketest upss planupgradebtn1">
@@ -311,7 +312,9 @@ class NewDashboard extends React.Component {
                     </div>
                   )}
                   <div className="resultsec2 lswid" id="seek">
-                    <div className="csfitscore2">Your Level of Career Clarity</div>
+                    <div className="csfitscore2">
+                      Your Level of Career Clarity
+                    </div>
                     <div className="resultsec22">
                       <CirclePie
                         width={190}
@@ -329,7 +332,7 @@ class NewDashboard extends React.Component {
                     <div className="csfitscore" id="drivers">
                       <div className="divide"></div>{" "}
                       <div className="csfitscore1">
-                      Your Level of Career Clarity
+                        Your Level of Career Clarity
                       </div>
                       <div className="vbnc1">
                         {" "}
@@ -342,26 +345,43 @@ class NewDashboard extends React.Component {
                   </div>
                   <hr className="lswid divider" />
                   <div className="lswid">
-                <div className="tipswrapper">
-                  <div>
-                    <div className="stbly1">
-                      {client2?.career_fitness?.quick_fix?.heading}
-                    </div>
-                    {client2?.career_fitness?.quick_fix?.body?.map(
-                      (data, index) => (
-                        <div key={index} className="csbody liuii">
-                          {index + 1}.{"  "}
-                          {data}
+                    <div className="tipswrapper">
+                      <div>
+                        <div className="stbly1">
+                          {client2?.career_fitness?.quick_fix?.heading}
                         </div>
-                      )
-                    )}
+                        {client2?.career_fitness?.quick_fix?.body?.map(
+                          (data, index) => (
+                            <div key={index} className="csbody liuii">
+                              {index + 1}.{"  "}
+                              {data}
+                            </div>
+                          )
+                        )}
+                        <div className="blursec">
+                            <img
+                              className="blur2"
+                              src={blur2}
+                              alt="blurred image"
+                            />
+                            <img 
+                              className="blur2a" 
+                              src={blur2a}
+                              alt="blurred image"/>
+                            <img
+                              className="unlock unlock2"
+                              src={unlock2}
+                              alt="unlock"
+                              onClick={() => this.setState({ onlyfree: true })}
+                            />
+                          </div>
+                      </div>
+                      <div className="notice">
+                        <img src={notice} className="noticee" alt="notice" />
+                      </div>
+                    </div>
                   </div>
-                  <div className="notice">
-                    <img src={notice} className="noticee" alt="notice" />
-                  </div>
-                </div>
-              </div>
-              <hr className="lswid divider" />
+                  <hr className="lswid divider" />
                   <div className="reess" id="personality">
                     <div className="resultsec3">
                       <div className="careerpersonalityheader">
@@ -411,39 +431,71 @@ class NewDashboard extends React.Component {
                     </div>
                   </div>
                   <div>
-                <div className="kz1" >
-                  <div className="contkflex newcontkflex" id="strength">
-                    <div className="kz2">
-                      <img src={vector1} className="kl3" alt="vector2" />
-                      <div>Your Strengths</div>
-                    </div>
-                    <div className="kz12">
-                      <ul className="grapwrap">
-                        {client2?.strengths?.map((strength, index) => (
-                          <li className="grapssin career221 insighttxt" key={index}>
-                            {strength}
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="kz1">
+                      <div className="contkflex newcontkflex" id="strength">
+                        <div className="kz2">
+                          <img src={vector1} className="kl3" alt="vector2" />
+                          <div>Your Strengths</div>
+                        </div>
+                        <div className="kz12">
+                          <ul className="grapwrap">
+                            {client2?.strengths?.map((strength, index) => (
+                              <li
+                                className="grapssin career221 insighttxt"
+                                key={index}
+                              >
+                                {strength}
+                              </li>
+                            ))}
+                          </ul>
+                          <div className="blursec">
+                            <img
+                              className="blur"
+                              src={blur}
+                              alt="blurred image"
+                            />
+                            <img
+                              className="unlock"
+                              src={unlock}
+                              alt="unlock"
+                              onClick={() => this.setState({ onlyfree: true })}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="contkflex newcontkflex" id="weakness">
+                        <div className="kz2a">
+                          <img src={vector2} className="kl3" alt="vector2" />
+                          <div>Your Weaknesses</div>
+                        </div>
+                        <div className="kz12">
+                          <ul className="grapwrap">
+                            {client2?.weaknesses?.map((weakness, index) => (
+                              <li
+                                className="grapssin career221 insighttxt"
+                                key={index}
+                              >
+                                {weakness}
+                              </li>
+                            ))}
+                          </ul>
+                          <div className="blursec">
+                            <img
+                              className="blur"
+                              src={blur}
+                              alt="blurred image"
+                            />
+                            <img
+                              className="unlock"
+                              src={unlock}
+                              alt="unlock"
+                              onClick={() => this.setState({ onlyfree: true })}
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="contkflex newcontkflex" id="weakness">
-                    <div className="kz2a">
-                      <img src={vector2} className="kl3" alt="vector2" />
-                      <div>Your Weaknesses</div>
-                    </div>
-                    <div className="kz12">
-                      <ul className="grapwrap">
-                        {client2?.weaknesses?.map((weakness, index) => (
-                          <li className="grapssin career221 insighttxt" key={index}>
-                            {weakness}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
                   {!showfullresult && (
                     <FreeOverviewCard
                       OpenModal={() => this.OpenNotPaidWarning}
@@ -507,7 +559,9 @@ class NewDashboard extends React.Component {
                     <Link to="/paymentsummary">Upgrade your Plan</Link>
                   </div> */}
                   <div className="retaketest upss1 planupgradebtn">
-                    <Link to="/dashboardsubscriptionplan">View your current plan</Link>
+                    <Link to="/dashboardsubscriptionplan">
+                      View your current plan
+                    </Link>
                   </div>
                 </div>
               </Modal.Body>
