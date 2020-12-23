@@ -349,6 +349,7 @@
 .BArow3 {
   background-color: #f5f5f5;
   padding: 1rem 2.5rem;
+  margin-bottom: 3rem;
 }
 .BAanalyticsttl {
   display: flex;
@@ -374,6 +375,50 @@
 }
 .BAinfo {
   margin-left: 1rem;
+}
+.BAAsection {
+  width: 100%;
+}
+.BAAboxes {
+  margin: 3rem 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.BAAbox {
+  background: #ffffff;
+  border-radius: 8px;
+  flex: 45%;
+  padding: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+.BAboxttl {
+  display: flex;
+}
+.BAboxtxt {
+  flex: 90%;
+  text-align: center;
+  font-size: 14px;
+  color: #333333;
+  font-weight: 600;
+}
+.BAboxinfo {
+  flex: 10%;
+  text-align: right;
+}
+.BAboxcontent {
+  padding: 2.5rem 2rem 2rem;
+}
+.BApercent {
+  justify-content: space-around;
+  display: flex;
+}
+.BApiettl {
+  text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333333;
+    margin-top: 1rem;
 }
 @media(max-width: 1000px) {
   .BAselect {

@@ -8,6 +8,7 @@ import caret from "../../../assets/caret_down.png";
 import eye from "../../../assets/eye.png";
 import balance from "../../../assets/balance.svg";
 import info from "../../../assets/info_circle.png";
+import { CirclePie } from "salad-ui.chart";
 
 const BehaviouralAnalytics = () => {
   const [viewProfile, SetViewProfile] = React.useState(false);
@@ -137,14 +138,186 @@ const BehaviouralAnalytics = () => {
                 </Row>
                 <Row className="BArow3">
                   {analytics === 1 ? (
-                    <div className="BAanalyticsttl">
-                      <div className="BAAttl1">
-                        Personalities
-                        <img className="BAinfo" src={info} alt="info" />
+                    <div className="BAAsection">
+                      <div className="BAanalyticsttl">
+                        <div className="BAAttl1">
+                          Personalities
+                          <img className="BAinfo" src={info} alt="info" />
+                        </div>
+                        <button className="BAmorebtn">
+                          Request more Insight
+                        </button>
                       </div>
-                      <button className="BAmorebtn">
-                        Request more Insight
-                      </button>
+                      <div className="BAAboxes">
+                        <div className="BAAbox">
+                          <div className="BAboxttl">
+                            <div className="BAboxtxt">Problem Solving</div>
+                            <div className="BAboxinfo">
+                              <img src={info} />
+                            </div>
+                          </div>
+                          <div className="BAboxcontent">
+                            <div className="BApercent">
+                              <div className="">
+                                <CirclePie
+                                  width={110}
+                                  height={110}
+                                  strokeWidth={12}
+                                  labelColor={"#000000"}
+                                  labelFontSize={"20px"}
+                                  strokeColor={"#EC6666"}
+                                  railColor={"#e6e6e6"}
+                                  fillColor={"#ffffff"}
+                                  percent={76}
+                                  padding={0}
+                                />
+                                <div className="BApiettl">Creative</div>
+                              </div>
+                              <div className="">
+                                <CirclePie
+                                  width={110}
+                                  height={110}
+                                  strokeWidth={12}
+                                  labelColor={"#000000"}
+                                  labelFontSize={"20px"}
+                                  strokeColor={"#EC6666"}
+                                  railColor={"#e6e6e6"}
+                                  fillColor={"#ffffff"}
+                                  percent={24}
+                                  padding={0}
+                                />
+                                <div className="BApiettl">Practical</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="BAAbox">
+                          <div className="BAboxttl">
+                            <div className="BAboxtxt">Interacting with People</div>
+                            <div className="BAboxinfo">
+                              <img src={info} />
+                            </div>
+                          </div>
+                          <div className="BAboxcontent">
+                            <div className="BApercent">
+                              <div className="">
+                                <CirclePie
+                                  width={110}
+                                  height={110}
+                                  strokeWidth={12}
+                                  labelColor={"#000000"}
+                                  labelFontSize={"20px"}
+                                  strokeColor={"#79D2DE"}
+                                  railColor={"#e6e6e6"}
+                                  fillColor={"#ffffff"}
+                                  percent={76}
+                                  padding={0}
+                                />
+                                <div className="BApiettl">Independent</div>
+                              </div>
+                              <div className="">
+                                <CirclePie
+                                  width={110}
+                                  height={110}
+                                  strokeWidth={12}
+                                  labelColor={"#000000"}
+                                  labelFontSize={"20px"}
+                                  strokeColor={"#79D2DE"}
+                                  railColor={"#e6e6e6"}
+                                  fillColor={"#ffffff"}
+                                  percent={24}
+                                  padding={0}
+                                />
+                                <div className="BApiettl">Social</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="BAAbox">
+                          <div className="BAboxttl">
+                            <div className="BAboxtxt">Decision Making</div>
+                            <div className="BAboxinfo">
+                              <img src={info} />
+                            </div>
+                          </div>
+                          <div className="BAboxcontent">
+                            <div className="BApercent">
+                              <div className="">
+                                <CirclePie
+                                  width={110}
+                                  height={110}
+                                  strokeWidth={12}
+                                  labelColor={"#000000"}
+                                  labelFontSize={"20px"}
+                                  strokeColor={"#A044D9"}
+                                  railColor={"#e6e6e6"}
+                                  fillColor={"#ffffff"}
+                                  percent={76}
+                                  padding={0}
+                                />
+                                <div className="BApiettl">Systematic</div>
+                              </div>
+                              <div className="">
+                                <CirclePie
+                                  width={110}
+                                  height={110}
+                                  strokeWidth={12}
+                                  labelColor={"#000000"}
+                                  labelFontSize={"20px"}
+                                  strokeColor={"#A044D9"}
+                                  railColor={"#e6e6e6"}
+                                  fillColor={"#ffffff"}
+                                  percent={24}
+                                  padding={0}
+                                />
+                                <div className="BApiettl">Spontaneous</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="BAAbox">
+                          <div className="BAboxttl">
+                            <div className="BAboxtxt">Processing Information</div>
+                            <div className="BAboxinfo">
+                              <img src={info} />
+                            </div>
+                          </div>
+                          <div className="BAboxcontent">
+                            <div className="BApercent">
+                              <div className="">
+                                <CirclePie
+                                  width={110}
+                                  height={110}
+                                  strokeWidth={12}
+                                  labelColor={"#000000"}
+                                  labelFontSize={"20px"}
+                                  strokeColor={"#147AD6"}
+                                  railColor={"#e6e6e6"}
+                                  fillColor={"#ffffff"}
+                                  percent={76}
+                                  padding={0}
+                                />
+                                <div className="BApiettl">Logical</div>
+                              </div>
+                              <div className="">
+                                <CirclePie
+                                  width={110}
+                                  height={110}
+                                  strokeWidth={12}
+                                  labelColor={"#000000"}
+                                  labelFontSize={"20px"}
+                                  strokeColor={"#147AD6"}
+                                  railColor={"#e6e6e6"}
+                                  fillColor={"#ffffff"}
+                                  percent={24}
+                                  padding={0}
+                                />
+                                <div className="BApiettl">Emotional</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   ) : analytics === 2 ? (
                     <div className="BAanalyticsttl">
