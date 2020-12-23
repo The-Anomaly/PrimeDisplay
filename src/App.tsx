@@ -103,7 +103,7 @@ import CounsellorLandingPage from "./Components/KigenniDashboard/CounsellorLandi
 import ThirdPartyOverview from "./Components/KigenniDashboard/AffiliateDashboard/ThirdPartyOverview";
 import SigninAffiliates from "./Components/Home/Redesigned_signup_page/signinAffiliates";
 import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAffiliates";
-import BehaviourPieChart from "./Components/KigenniDashboard/AffiliateDashboard/BehaviourPieChart";
+import BehaviouralAnalytics from "./Components/KigenniDashboard/AffiliateDashboard/BehaviouralAnalytics";
 
 class App extends Component {
   constructor(props) {
@@ -514,16 +514,12 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/affiliates/piechart"
-                component={BehaviourPieChart}
-              />
-              <Route
-                exact
                 path="/forcounsellors"
                 component={CounsellorLandingPage}
               />
               {/* Affiliates Starts here */}
               <Route exact path="/affiliates" component={ThirdPartyOverview} />
+              <Route exact path="/analytics" component={BehaviouralAnalytics} />
             </Switch>
           </BrowserRouter>
         </div>

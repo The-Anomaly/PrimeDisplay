@@ -185,8 +185,9 @@
   width: 50%;
   border-left: 0px solid #ffff !important;
 }
-.table-bordered td, .table-bordered th{
-    border: none !important;
+.table-bordered td,
+.table-bordered th {
+  border: none !important;
 }
 .ttebe {
   font-size: 12px;
@@ -251,5 +252,188 @@
   font-size: 14px;
 }
 .spec222e{
+  margin-top: 2rem;
+}
+.table-striped {
+  background: #f9f9f9;
+  border-bottom: 0px solid transparent;
+}
+
+.activecomp {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.125);
+  padding-left: 1rem;
+  line-height: 41px;
+}
+.BArow1 {
+  padding: 1rem 3rem;
+  background-color: #fcfcfc;
+}
+.BAfirstsec {
+  display: flex;
+  justify-content: space-between;
+}
+.BAform {
+  width: 85%;
+}
+.BAcaret {
+  margin: 1rem;
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+.BAcaret-up {
+  transform: rotate(0deg);
+}
+.BArow2 {
+  padding-top: 1.5rem;
+}
+.BArow2txt1 {
+  font-size: 18px;
+  color: #000000;
+  font-weight: 600;
+}
+.BAprofile {
+  position: relative;
+}
+.BAviewprofile {
+  position: absolute;
+  padding: 1rem;
+  width: 190px;
+  text-align: center;
+  right: 0;
+  background: #ffffff;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-top: 1rem;
+  box-shadow: 0px 6px 20px rgba(25, 32, 56, 0.24);
+}
+.BAvpeye {
+  margin-right: 0.8rem;
+}
+.BAbalance {
+  margin: 4rem auto 0rem auto;
+  width: 60%;
+}
+.BAsubtxt {
+  color: #666666;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+.BAsubbtn {
+  margin: 2rem auto 4rem;
+  background: #18214d;
+  border-radius: 6px;
+  border: 1px solid #18214d;
+  color: #ffffff;
+  font-size: 14px;
+  height: 45px;
+  width: 240px;
+  transition: 0.2s;
+}
+.BAsubbtn:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 800px) {
+  .BAform {
+    width: 60%;
+  }
+  .BAavatar {
+    width: 40px;
+  }
+  .BAsearchbar {
+    height: 40px;
+  }
+  .BAviewprofile {
+    width: 160px;
+  }
+}
+@media (max-width: 600px) {
+  .BAbalance {
+    width: 70%;
+  }
+}
+@media (max-width: 400px) {
+  .BAbalance {
+    width: 80%;
+  }
+  .BArow1 {
+    padding: 1rem 2rem;
+  }
+  .BArow2txt1 {
+    font-size: 16px;
+  }
+  .BAviewprofile {
+    width: 140px;
+  }
+}
+
+.BAsections {
+  display: flex;
+  background-color: #f5f5f5;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5px;
+  margin-bottom: 2rem;
+  font-size: 13px;
+  margin-top: 1rem;
+}
+.BAselect {
+  background: #ffffff;
+  text-align: center;
+  width: 16%;
+  padding: 0.8rem 0.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: center;
+  color: #999999;
+}
+.activeselect {
+  color: #9c1258;
+  font-weight: 600;
+}
+.BArow3 {
+  background-color: #f5f5f5;
+  padding: 1rem 2.5rem;
+}
+.BAanalyticsttl {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.BAAttl1 {
+  padding: 1rem 0;
+  font-size: 15px;
+  color: #9c1258;
+  font-weight: 600;
+}
+.BAmorebtn {
+  color: #1bb978;
+  font-size: 13px;
+  background: #e7ffe8;
+  box-shadow: 0px 4px 10px rgba(102, 102, 102, 0.16);
+  border-radius: 8px;
+  border: 1px solid #e7ffe8;
+  height: 50px;
+  font-weight: 600;
+  width: 200px;
+}
+.BAinfo {
+  margin-left: 1rem;
+}
+@media(max-width: 1000px) {
+  .BAselect {
+    height: 60px;
+  }
+}
+@media(max-width: 800px) {
+  .BArow3 {
+    padding: 1rem 1.5rem;
+  }
+}
+.space122a{
   margin-top: 2rem;
 }
