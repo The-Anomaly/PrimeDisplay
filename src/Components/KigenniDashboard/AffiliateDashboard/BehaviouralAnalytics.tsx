@@ -9,6 +9,7 @@ import eye from "../../../assets/eye.png";
 import balance from "../../../assets/balance.svg";
 import info from "../../../assets/info_circle.png";
 import CompetenceBarChart from "./CompetenceBarChart";
+import CareerFitnessPiechart from "./CareerFitness";
 
 const BehaviouralAnalytics = () => {
   const [viewProfile, SetViewProfile] = React.useState(false);
@@ -209,15 +210,21 @@ const BehaviouralAnalytics = () => {
                       </div>
                     </>
                   ) : analytics === 6 ? (
-                    <div className="BAanalyticsttl">
-                      <div className="BAAttl1">
-                        Career Fitness
-                        <img className="BAinfo" src={info} alt="info" />
+                    <>
+                      <div className="BAanalyticsttl">
+                        <div className="BAAttl1">
+                          Career Fitness
+                          <img className="BAinfo" src={info} alt="info" />
+                        </div>
+                        <button className="BAmorebtn">
+                          Request more Insight
+                        </button>
                       </div>
-                      <button className="BAmorebtn">
-                        Request more Insight
-                      </button>
-                    </div>
+                      <div className="container space122a">
+                        <CareerFitnessPiechart
+                        />
+                      </div>
+                    </>
                   ) : (
                     ""
                   )}
