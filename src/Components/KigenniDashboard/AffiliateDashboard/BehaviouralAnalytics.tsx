@@ -42,6 +42,7 @@ const BehaviouralAnalytics = () => {
     interactingWithPeopleInfo: "",
     decisionMakingInfo: "",
     processingInformationInfo: "",
+    subscriptionCheck: false,
   });
   const {
     header1,
@@ -69,6 +70,7 @@ const BehaviouralAnalytics = () => {
     interactingWithPeopleInfo,
     decisionMakingInfo,
     processingInformationInfo,
+    subscriptionCheck,
   }: any = state;
   const [viewProfile, SetViewProfile] = React.useState(false);
   const [analytics, setAnalytics] = React.useState(1);
@@ -130,46 +132,56 @@ const BehaviouralAnalytics = () => {
     const token: string = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/affiliates/signin");
-    Axios.get(`${API}/affiliate/personality-graph`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          setState({
-            header1: response?.data?.personality?.data[1]?.heading,
-            header2: response?.data?.personality?.data[0]?.heading,
-            header3: response?.data?.personality?.data[3]?.heading,
-            header4: response?.data?.personality?.data[2]?.heading,
-            percent1: response?.data?.personality?.data[1]?.graph[0]?.value,
-            percent2: response?.data?.personality?.data[1]?.graph[1]?.value,
-            percent3: response?.data?.personality?.data[0]?.graph[0]?.value,
-            percent4: response?.data?.personality?.data[0]?.graph[1]?.value,
-            percent5: response?.data?.personality?.data[3]?.graph[0]?.value,
-            percent6: response?.data?.personality?.data[3]?.graph[1]?.value,
-            percent7: response?.data?.personality?.data[2]?.graph[0]?.value,
-            percent8: response?.data?.personality?.data[2]?.graph[0]?.value,
-            percent1txt: response?.data?.personality?.data[1]?.graph[0]?.name,
-            percent2txt: response?.data?.personality?.data[1]?.graph[1]?.name,
-            percent3txt: response?.data?.personality?.data[0]?.graph[0]?.name,
-            percent4txt: response?.data?.personality?.data[0]?.graph[1]?.name,
-            percent5txt: response?.data?.personality?.data[3]?.graph[0]?.name,
-            percent6txt: response?.data?.personality?.data[3]?.graph[1]?.name,
-            percent7txt: response?.data?.personality?.data[2]?.graph[0]?.name,
-            percent8txt: response?.data?.personality?.data[2]?.graph[1]?.name,
-            personalityInfo: response?.data?.personality?.info,
-            problemSolvingInfo: response?.data?.personality?.data[1]?.info,
-            interactingWithPeopleInfo:
-              response?.data?.personality?.data[0]?.info,
-            decisionMakingInfo: response?.data?.personality?.data[3]?.info,
-            processingInformationInfo:
-              response?.data?.personality?.data[2]?.info,
-          });
-        }
-      })
+    Axios.all([
+      Axios.get(`${API}/affiliate/personality-graph`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get(`${API}/affiliate/upgrade/`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((response, response2) => {
+          // console.log(response);
+          // console.log(response2);
+          if (response.status === 200 && response2.status === 200) {
+            setState({
+              header1: response?.data?.personality?.data[1]?.heading,
+              header2: response?.data?.personality?.data[0]?.heading,
+              header3: response?.data?.personality?.data[3]?.heading,
+              header4: response?.data?.personality?.data[2]?.heading,
+              percent1: response?.data?.personality?.data[1]?.graph[0]?.value,
+              percent2: response?.data?.personality?.data[1]?.graph[1]?.value,
+              percent3: response?.data?.personality?.data[0]?.graph[0]?.value,
+              percent4: response?.data?.personality?.data[0]?.graph[1]?.value,
+              percent5: response?.data?.personality?.data[3]?.graph[0]?.value,
+              percent6: response?.data?.personality?.data[3]?.graph[1]?.value,
+              percent7: response?.data?.personality?.data[2]?.graph[0]?.value,
+              percent8: response?.data?.personality?.data[2]?.graph[0]?.value,
+              percent1txt: response?.data?.personality?.data[1]?.graph[0]?.name,
+              percent2txt: response?.data?.personality?.data[1]?.graph[1]?.name,
+              percent3txt: response?.data?.personality?.data[0]?.graph[0]?.name,
+              percent4txt: response?.data?.personality?.data[0]?.graph[1]?.name,
+              percent5txt: response?.data?.personality?.data[3]?.graph[0]?.name,
+              percent6txt: response?.data?.personality?.data[3]?.graph[1]?.name,
+              percent7txt: response?.data?.personality?.data[2]?.graph[0]?.name,
+              percent8txt: response?.data?.personality?.data[2]?.graph[1]?.name,
+              personalityInfo: response?.data?.personality?.info,
+              problemSolvingInfo: response?.data?.personality?.data[1]?.info,
+              interactingWithPeopleInfo:
+                response?.data?.personality?.data[0]?.info,
+              decisionMakingInfo: response?.data?.personality?.data[3]?.info,
+              processingInformationInfo:
+                response?.data?.personality?.data[2]?.info,
+                subscriptionCheck: response2?.data?.upgrade,
+            });
+          }
+        })
+      )
       .catch((error) => {});
   }, []);
-  console.log(infoModal);
+  // console.log(infoModal);
+  // console.log(subscriptionCheck);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -215,6 +227,8 @@ const BehaviouralAnalytics = () => {
                   <div className="BArow2txt1">Behavioural Analytics</div>
                 </Row>
                 {/* Subscribed view begins*/}
+                {subscriptionCheck === true &&
+                <>
                 <Row>
                   <div className="BAsections">
                     <div
@@ -550,10 +564,14 @@ const BehaviouralAnalytics = () => {
                     ""
                   )}
                 </Row>
+                </>
+                }
                 {/* Subscribed view ends*/}
 
                 {/* Analytics without subscription begins*/}
-                {/* <Row>
+
+                {subscriptionCheck === false && 
+                <Row>
                   <img className="BAbalance" src={balance} />
                   <div className="BAsubtxt">
                     Volutpat purus orci ipsum quis faucibus sed elit elit
@@ -561,7 +579,7 @@ const BehaviouralAnalytics = () => {
                     pellentesque urna faucibus.
                   </div>
                   <button className="BAsubbtn">Upgrade Subscription</button>
-                </Row> */}
+                </Row>}
                 {/* Analytics without subscription ends*/}
               </Col>
             </Row>

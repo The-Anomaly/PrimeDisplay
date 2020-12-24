@@ -449,6 +449,11 @@
 }
 .BAboxttl {
   display: flex;
+  border-bottom: 1px solid #E5e5e5;
+    padding-bottom: 1rem;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .BAboxtxt {
   flex: 90%;
@@ -462,7 +467,7 @@
   text-align: right;
 }
 .BAboxcontent {
-  padding: 2.5rem 2rem 2rem;
+  padding: 2rem;
 }
 .BApercent {
   justify-content: space-around;
