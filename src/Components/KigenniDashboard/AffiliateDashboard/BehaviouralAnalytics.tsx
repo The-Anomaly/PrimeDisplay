@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Modal, Row } from "react-bootstrap";
 import "./affiliate.css";
 import SideBarAffilliateDashboard from "./SideBarAffiliateDashboard";
 import searchImage from "../../../assets/search11.png";
@@ -12,6 +12,7 @@ import { CirclePie } from "salad-ui.chart";
 import { API } from "../../../config";
 import Axios from "axios";
 import CompetenceBarChart from "./CompetenceBarChart";
+import close from "../../../assets/off_close.png";
 
 const BehaviouralAnalytics = () => {
   const [state, setState] = React.useState<any>({
@@ -42,7 +43,7 @@ const BehaviouralAnalytics = () => {
     decisionMakingInfo: "",
     processingInformationInfo: "",
   });
-  const { 
+  const {
     header1,
     header2,
     header3,
@@ -68,9 +69,10 @@ const BehaviouralAnalytics = () => {
     interactingWithPeopleInfo,
     decisionMakingInfo,
     processingInformationInfo,
-   }: any = state;
+  }: any = state;
   const [viewProfile, SetViewProfile] = React.useState(false);
   const [analytics, setAnalytics] = React.useState(1);
+  const [infoValue, setInfoValue] = React.useState(0);
   const viewProfileButton = () => {
     if (viewProfile === false) {
       SetViewProfile(true);
@@ -78,7 +80,14 @@ const BehaviouralAnalytics = () => {
       SetViewProfile(false);
     }
   };
-  const viewPersonaties = () => {
+  const [infoModal, setInfoModal] = React.useState(false);
+  const closeInfoModal = () => {
+    setInfoModal(false);
+  };
+  const openInfoModal = () => {
+    setInfoModal(true);
+  };
+  const viewPersonalities = () => {
     setAnalytics(1);
   };
   const viewCompetencies = () => {
@@ -96,7 +105,26 @@ const BehaviouralAnalytics = () => {
   const viewCareerFitness = () => {
     setAnalytics(6);
   };
-
+  const personalityInfoTrigger = () => {
+    setInfoValue(1);
+    return openInfoModal();
+  };
+  const problemSolvingInfoTrigger = () => {
+    setInfoValue(2);
+    return openInfoModal();
+  };
+  const interactingWithPeopleInfoTrigger = () => {
+    setInfoValue(3);
+    return openInfoModal();
+  };
+  const decisionMakingInfoTrigger = () => {
+    setInfoValue(4);
+    return openInfoModal();
+  };
+  const processingInformationInfoTrigger = () => {
+    setInfoValue(5);
+    return openInfoModal();
+  };
   React.useEffect((): any => {
     const availableToken = localStorage.getItem("userToken");
     const token: string = availableToken
@@ -105,43 +133,43 @@ const BehaviouralAnalytics = () => {
     Axios.get(`${API}/affiliate/personality-graph`, {
       headers: { Authorization: `Token ${token}` },
     })
-    .then((response) => {
-      console.log(response)
-      if(response.status === 200) {
-        setState({
-          header1: response?.data?.personality?.data[1]?.heading,
-          header2: response?.data?.personality?.data[0]?.heading,
-          header3: response?.data?.personality?.data[3]?.heading,
-          header4: response?.data?.personality?.data[2]?.heading,
-          percent1: response?.data?.personality?.data[1]?.graph[0]?.value,
-          percent2: response?.data?.personality?.data[1]?.graph[1]?.value,
-          percent3: response?.data?.personality?.data[0]?.graph[0]?.value,
-          percent4: response?.data?.personality?.data[0]?.graph[1]?.value,
-          percent5: response?.data?.personality?.data[3]?.graph[0]?.value,
-          percent6: response?.data?.personality?.data[3]?.graph[1]?.value,
-          percent7: response?.data?.personality?.data[2]?.graph[0]?.value,
-          percent8: response?.data?.personality?.data[2]?.graph[0]?.value,
-          percent1txt: response?.data?.personality?.data[1]?.graph[0]?.name,
-          percent2txt: response?.data?.personality?.data[1]?.graph[1]?.name,
-          percent3txt: response?.data?.personality?.data[0]?.graph[0]?.name,
-          percent4txt: response?.data?.personality?.data[0]?.graph[1]?.name,
-          percent5txt: response?.data?.personality?.data[3]?.graph[0]?.name,
-          percent6txt: response?.data?.personality?.data[3]?.graph[1]?.name,
-          percent7txt: response?.data?.personality?.data[2]?.graph[0]?.name,
-          percent8txt: response?.data?.personality?.data[2]?.graph[1]?.name,
-          personalityInfo: response?.data?.personality?.info,
-          problemSolvingInfo: response?.data?.personality?.data[1]?.info,
-          interactingWithPeopleInfo: response?.data?.personality?.data[0]?.info,
-          decisionMakingInfo: response?.data?.personality?.data[3]?.info,
-          processingInformationInfo: response?.data?.personality?.data[2]?.info,
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          setState({
+            header1: response?.data?.personality?.data[1]?.heading,
+            header2: response?.data?.personality?.data[0]?.heading,
+            header3: response?.data?.personality?.data[3]?.heading,
+            header4: response?.data?.personality?.data[2]?.heading,
+            percent1: response?.data?.personality?.data[1]?.graph[0]?.value,
+            percent2: response?.data?.personality?.data[1]?.graph[1]?.value,
+            percent3: response?.data?.personality?.data[0]?.graph[0]?.value,
+            percent4: response?.data?.personality?.data[0]?.graph[1]?.value,
+            percent5: response?.data?.personality?.data[3]?.graph[0]?.value,
+            percent6: response?.data?.personality?.data[3]?.graph[1]?.value,
+            percent7: response?.data?.personality?.data[2]?.graph[0]?.value,
+            percent8: response?.data?.personality?.data[2]?.graph[0]?.value,
+            percent1txt: response?.data?.personality?.data[1]?.graph[0]?.name,
+            percent2txt: response?.data?.personality?.data[1]?.graph[1]?.name,
+            percent3txt: response?.data?.personality?.data[0]?.graph[0]?.name,
+            percent4txt: response?.data?.personality?.data[0]?.graph[1]?.name,
+            percent5txt: response?.data?.personality?.data[3]?.graph[0]?.name,
+            percent6txt: response?.data?.personality?.data[3]?.graph[1]?.name,
+            percent7txt: response?.data?.personality?.data[2]?.graph[0]?.name,
+            percent8txt: response?.data?.personality?.data[2]?.graph[1]?.name,
+            personalityInfo: response?.data?.personality?.info,
+            problemSolvingInfo: response?.data?.personality?.data[1]?.info,
+            interactingWithPeopleInfo:
+              response?.data?.personality?.data[0]?.info,
+            decisionMakingInfo: response?.data?.personality?.data[3]?.info,
+            processingInformationInfo:
+              response?.data?.personality?.data[2]?.info,
+          });
+        }
       })
-      }
-    })
-    .catch((error) => {
-      
-    })
+      .catch((error) => {});
   }, []);
-
+  console.log(infoModal);
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -190,7 +218,7 @@ const BehaviouralAnalytics = () => {
                 <Row>
                   <div className="BAsections">
                     <div
-                      onClick={viewPersonaties}
+                      onClick={viewPersonalities}
                       className={
                         analytics === 1 ? "BAselect activeselect" : "BAselect"
                       }
@@ -245,7 +273,12 @@ const BehaviouralAnalytics = () => {
                       <div className="BAanalyticsttl">
                         <div className="BAAttl1">
                           Personalities
-                          <img className="BAinfo" src={info} alt="info" />
+                          <img
+                            className="BAinfo"
+                            src={info}
+                            alt="info"
+                            onClick={personalityInfoTrigger}
+                          />
                         </div>
                         <button className="BAmorebtn">
                           Request more Insight
@@ -256,7 +289,12 @@ const BehaviouralAnalytics = () => {
                           <div className="BAboxttl">
                             <div className="BAboxtxt">{header1}</div>
                             <div className="BAboxinfo">
-                              <img className="BAAboxinfo" alt="info" src={info} />
+                              <img
+                                className="BAAboxinfo"
+                                alt="info"
+                                src={info}
+                                onClick={problemSolvingInfoTrigger}
+                              />
                             </div>
                           </div>
                           <div className="BAboxcontent">
@@ -298,7 +336,12 @@ const BehaviouralAnalytics = () => {
                           <div className="BAboxttl">
                             <div className="BAboxtxt">{header2}</div>
                             <div className="BAboxinfo">
-                              <img className="BAAboxinfo" alt="info" src={info} />
+                              <img
+                                className="BAAboxinfo"
+                                alt="info"
+                                src={info}
+                                onClick={interactingWithPeopleInfoTrigger}
+                              />
                             </div>
                           </div>
                           <div className="BAboxcontent">
@@ -340,7 +383,12 @@ const BehaviouralAnalytics = () => {
                           <div className="BAboxttl">
                             <div className="BAboxtxt">{header3}</div>
                             <div className="BAboxinfo">
-                              <img className="BAAboxinfo" alt="info" src={info} />
+                              <img
+                                className="BAAboxinfo"
+                                alt="info"
+                                src={info}
+                                onClick={decisionMakingInfoTrigger}
+                              />
                             </div>
                           </div>
                           <div className="BAboxcontent">
@@ -382,7 +430,12 @@ const BehaviouralAnalytics = () => {
                           <div className="BAboxttl">
                             <div className="BAboxtxt">{header4}</div>
                             <div className="BAboxinfo">
-                              <img className="BAAboxinfo" alt="info" src={info} />
+                              <img
+                                className="BAAboxinfo"
+                                alt="info"
+                                src={info}
+                                onClick={processingInformationInfoTrigger}
+                              />
                             </div>
                           </div>
                           <div className="BAboxcontent">
@@ -515,6 +568,51 @@ const BehaviouralAnalytics = () => {
           </Col>
         </Row>
       </Container>
+      <Modal
+        className="infoModal"
+        show={infoModal}
+        onHide={closeInfoModal}
+        centered={true}
+      >
+        <Modal.Header>
+          <div className="infoHeading">
+            <div className="infoTitle">
+              {infoValue === 1
+                ? "Personalities"
+                : infoValue === 2
+                ? `${header1}`
+                : infoValue === 3
+                ? `${header2}`
+                : infoValue === 4
+                ? `${header3}`
+                : infoValue === 5
+                ? `${header4}`
+                : "null"}
+            </div>
+            <img
+              className="infoClose"
+              src={close}
+              onClick={closeInfoModal}
+              alt="close"
+            />
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="infoText">
+            {infoValue === 1
+              ? `${personalityInfo}`
+              : infoValue === 2
+              ? `${problemSolvingInfo}`
+              : infoValue === 3
+              ? `${interactingWithPeopleInfo}`
+              : infoValue === 4
+              ? `${decisionMakingInfo}`
+              : infoValue === 5
+              ? `${processingInformationInfo}`
+              : "no info"}
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

@@ -567,3 +567,42 @@
 .x.axis path {
   display: none;
 }
+
+/*Info Modal*/
+.infoModal .modal-content {
+  background: #F0F5FF;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.infoHeading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.infoTitle {
+  color: #9c1258;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+}
+.infoClose {
+  cursor: pointer;
+}
+.infoText {
+  color: #979797;
+  font-size: 14px;
+  font-style: italic;
+}
+@media(max-width: 400px) {
+  .infoTitle {
+    font-size: 16px;
+  }
+  .infoText {
+    font-size: 13px;
+    line-height: 22px;
+  }
+  .infoClose {
+    width: 22px;
+    height: 22px;
+  }
+}
