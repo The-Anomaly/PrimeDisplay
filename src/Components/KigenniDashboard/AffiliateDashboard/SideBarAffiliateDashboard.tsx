@@ -30,7 +30,7 @@ const SideBarAffilliateDashboard = withRouter((props: any) => {
   };
   const logOut = () => {
     localStorage.clear();
-    window.location.assign("/signin");
+    window.location.assign("/affiliates/signin");
   };
   return (
     <>

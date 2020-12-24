@@ -87,10 +87,10 @@ const ThirdPartyOverview = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1, res2, res3, res4) => {
-          console.log(res.data.results[0]);
-          console.log(res.data.results);
+          // console.log(res.data.results[0]);
+          // console.log(res.data.results);
           if (res.status === 200) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               overview: res2.data,
@@ -113,7 +113,7 @@ const ThirdPartyOverview = (props: any) => {
     return dateTime;
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(paid_members);
+  // console.log(paid_members);
   return (
     <>
       <Container fluid={true} className="contann122">
