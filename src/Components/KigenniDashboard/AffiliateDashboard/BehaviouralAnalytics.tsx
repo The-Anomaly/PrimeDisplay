@@ -14,6 +14,61 @@ import Axios from "axios";
 import CompetenceBarChart from "./CompetenceBarChart";
 
 const BehaviouralAnalytics = () => {
+  const [state, setState] = React.useState<any>({
+    errorMessage: "",
+    header1: "",
+    header2: "",
+    header3: "",
+    header4: "",
+    percent1: 0,
+    percent2: 0,
+    percent3: 0,
+    percent4: 0,
+    percent5: 0,
+    percent6: 0,
+    percent7: 0,
+    percent8: 0,
+    percent1txt: "",
+    percent2txt: "",
+    percent3txt: "",
+    percent4txt: "",
+    percent5txt: "",
+    percent6txt: "",
+    percent7txt: "",
+    percent8txt: "",
+    personalityInfo: "",
+    problemSolvingInfo: "",
+    interactingWithPeopleInfo: "",
+    decisionMakingInfo: "",
+    processingInformationInfo: "",
+  });
+  const { 
+    header1,
+    header2,
+    header3,
+    header4,
+    percent1,
+    percent2,
+    percent3,
+    percent4,
+    percent5,
+    percent6,
+    percent7,
+    percent8,
+    percent1txt,
+    percent2txt,
+    percent3txt,
+    percent4txt,
+    percent5txt,
+    percent6txt,
+    percent7txt,
+    percent8txt,
+    personalityInfo,
+    problemSolvingInfo,
+    interactingWithPeopleInfo,
+    decisionMakingInfo,
+    processingInformationInfo,
+   }: any = state;
   const [viewProfile, SetViewProfile] = React.useState(false);
   const [analytics, setAnalytics] = React.useState(1);
   const viewProfileButton = () => {
@@ -52,6 +107,35 @@ const BehaviouralAnalytics = () => {
     })
     .then((response) => {
       console.log(response)
+      if(response.status === 200) {
+        setState({
+          header1: response?.data?.personality?.data[1]?.heading,
+          header2: response?.data?.personality?.data[0]?.heading,
+          header3: response?.data?.personality?.data[3]?.heading,
+          header4: response?.data?.personality?.data[2]?.heading,
+          percent1: response?.data?.personality?.data[1]?.graph[0]?.value,
+          percent2: response?.data?.personality?.data[1]?.graph[1]?.value,
+          percent3: response?.data?.personality?.data[0]?.graph[0]?.value,
+          percent4: response?.data?.personality?.data[0]?.graph[1]?.value,
+          percent5: response?.data?.personality?.data[3]?.graph[0]?.value,
+          percent6: response?.data?.personality?.data[3]?.graph[1]?.value,
+          percent7: response?.data?.personality?.data[2]?.graph[0]?.value,
+          percent8: response?.data?.personality?.data[2]?.graph[0]?.value,
+          percent1txt: response?.data?.personality?.data[1]?.graph[0]?.name,
+          percent2txt: response?.data?.personality?.data[1]?.graph[1]?.name,
+          percent3txt: response?.data?.personality?.data[0]?.graph[0]?.name,
+          percent4txt: response?.data?.personality?.data[0]?.graph[1]?.name,
+          percent5txt: response?.data?.personality?.data[3]?.graph[0]?.name,
+          percent6txt: response?.data?.personality?.data[3]?.graph[1]?.name,
+          percent7txt: response?.data?.personality?.data[2]?.graph[0]?.name,
+          percent8txt: response?.data?.personality?.data[2]?.graph[1]?.name,
+          personalityInfo: response?.data?.personality?.info,
+          problemSolvingInfo: response?.data?.personality?.data[1]?.info,
+          interactingWithPeopleInfo: response?.data?.personality?.data[0]?.info,
+          decisionMakingInfo: response?.data?.personality?.data[3]?.info,
+          processingInformationInfo: response?.data?.personality?.data[2]?.info,
+      })
+      }
     })
     .catch((error) => {
       
@@ -170,9 +254,9 @@ const BehaviouralAnalytics = () => {
                       <div className="BAAboxes">
                         <div className="BAAbox">
                           <div className="BAboxttl">
-                            <div className="BAboxtxt">Problem Solving</div>
+                            <div className="BAboxtxt">{header1}</div>
                             <div className="BAboxinfo">
-                              <img src={info} />
+                              <img className="BAAboxinfo" alt="info" src={info} />
                             </div>
                           </div>
                           <div className="BAboxcontent">
@@ -187,10 +271,10 @@ const BehaviouralAnalytics = () => {
                                   strokeColor={"#EC6666"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
-                                  percent={76}
+                                  percent={percent1}
                                   padding={0}
                                 />
-                                <div className="BApiettl">Creative</div>
+                                <div className="BApiettl">{percent1txt}</div>
                               </div>
                               <div className="">
                                 <CirclePie
@@ -202,19 +286,19 @@ const BehaviouralAnalytics = () => {
                                   strokeColor={"#EC6666"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
-                                  percent={24}
+                                  percent={percent2}
                                   padding={0}
                                 />
-                                <div className="BApiettl">Practical</div>
+                                <div className="BApiettl">{percent2txt}</div>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className="BAAbox">
                           <div className="BAboxttl">
-                            <div className="BAboxtxt">Interacting with People</div>
+                            <div className="BAboxtxt">{header2}</div>
                             <div className="BAboxinfo">
-                              <img src={info} />
+                              <img className="BAAboxinfo" alt="info" src={info} />
                             </div>
                           </div>
                           <div className="BAboxcontent">
@@ -229,10 +313,10 @@ const BehaviouralAnalytics = () => {
                                   strokeColor={"#79D2DE"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
-                                  percent={76}
+                                  percent={percent3}
                                   padding={0}
                                 />
-                                <div className="BApiettl">Independent</div>
+                                <div className="BApiettl">{percent3txt}</div>
                               </div>
                               <div className="">
                                 <CirclePie
@@ -244,19 +328,19 @@ const BehaviouralAnalytics = () => {
                                   strokeColor={"#79D2DE"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
-                                  percent={24}
+                                  percent={percent4}
                                   padding={0}
                                 />
-                                <div className="BApiettl">Social</div>
+                                <div className="BApiettl">{percent4txt}</div>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className="BAAbox">
                           <div className="BAboxttl">
-                            <div className="BAboxtxt">Decision Making</div>
+                            <div className="BAboxtxt">{header3}</div>
                             <div className="BAboxinfo">
-                              <img src={info} />
+                              <img className="BAAboxinfo" alt="info" src={info} />
                             </div>
                           </div>
                           <div className="BAboxcontent">
@@ -271,10 +355,10 @@ const BehaviouralAnalytics = () => {
                                   strokeColor={"#A044D9"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
-                                  percent={76}
+                                  percent={percent5}
                                   padding={0}
                                 />
-                                <div className="BApiettl">Systematic</div>
+                                <div className="BApiettl">{percent5txt}</div>
                               </div>
                               <div className="">
                                 <CirclePie
@@ -286,19 +370,19 @@ const BehaviouralAnalytics = () => {
                                   strokeColor={"#A044D9"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
-                                  percent={24}
+                                  percent={percent6}
                                   padding={0}
                                 />
-                                <div className="BApiettl">Spontaneous</div>
+                                <div className="BApiettl">{percent6txt}</div>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className="BAAbox">
                           <div className="BAboxttl">
-                            <div className="BAboxtxt">Processing Information</div>
+                            <div className="BAboxtxt">{header4}</div>
                             <div className="BAboxinfo">
-                              <img src={info} />
+                              <img className="BAAboxinfo" alt="info" src={info} />
                             </div>
                           </div>
                           <div className="BAboxcontent">
@@ -313,10 +397,10 @@ const BehaviouralAnalytics = () => {
                                   strokeColor={"#147AD6"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
-                                  percent={76}
+                                  percent={percent7}
                                   padding={0}
                                 />
-                                <div className="BApiettl">Logical</div>
+                                <div className="BApiettl">{percent7txt}</div>
                               </div>
                               <div className="">
                                 <CirclePie
@@ -328,10 +412,10 @@ const BehaviouralAnalytics = () => {
                                   strokeColor={"#147AD6"}
                                   railColor={"#e6e6e6"}
                                   fillColor={"#ffffff"}
-                                  percent={24}
+                                  percent={percent8}
                                   padding={0}
                                 />
-                                <div className="BApiettl">Emotional</div>
+                                <div className="BApiettl">{percent8txt}</div>
                               </div>
                             </div>
                           </div>
