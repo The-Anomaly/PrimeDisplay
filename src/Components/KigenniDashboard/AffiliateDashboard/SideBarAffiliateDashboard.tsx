@@ -30,7 +30,7 @@ const SideBarAffilliateDashboard = withRouter((props: any) => {
   };
   const logOut = () => {
     localStorage.clear();
-    window.location.assign("/signin");
+    window.location.assign("/affiliates/signin");
   };
   return (
     <>
@@ -51,7 +51,7 @@ const SideBarAffilliateDashboard = withRouter((props: any) => {
               Dashboard
           </div>
           </Link>
-            <Link to="/analytics">
+            <Link to="/affiliates/analytics">
           <div
             className={props.analytics ? "activecomp shifbb" : "gbn shifbb"}
           >
@@ -63,7 +63,7 @@ const SideBarAffilliateDashboard = withRouter((props: any) => {
               Behavioural Analytics
           </div>
             </Link>
-            <Link to="/counsellormessages">
+            <Link to="/affiliates">
           <div className={props.messages ? "activecomp shifbb" : "gbn shifbb"}>
             {" "}
               <img

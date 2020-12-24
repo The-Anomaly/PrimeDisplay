@@ -15,7 +15,7 @@ import BarChart from "react-bar-chart";
 import Chart from "react-google-charts";
 import { PieChart } from "react-minimal-pie-chart";
 
-const CareerFitnessPiechart = (props: any) => {
+const WorkStyle = (props: any) => {
   const [state, setState] = React.useState<any>({
     errorMessage: "",
     user: [],
@@ -78,23 +78,23 @@ const CareerFitnessPiechart = (props: any) => {
           <PieChart
             data={[
               {
-                title: "AWARENESS ",
-                value: user[0]?.AWARENESS,
+                title: "Prioritizing ",
+                value: user[0]?.Prioritizing,
                 color: "#F44E4E",
               },
               {
-                title: "CREATIVITY ",
-                value: user[1]?.CREATING,
+                title: "Visualizing ",
+                value: user[1]?.Visualizing,
                 color: "#1BB978",
               },
               {
-                title: `EXPLORING`,
-                value: user[2]?.EXPLORING,
+                title: `Coordinating`,
+                value: user[2]?.Coordinating,
                 color: "#FFBC41",
               },
               {
-                title: `MAINTENANCE`,
-                value: user[3]?.MAINTENANCE,
+                title: `Planning`,
+                value: user[3]?.Planning,
                 color: "#3965FF",
               },
             ]}
@@ -103,23 +103,23 @@ const CareerFitnessPiechart = (props: any) => {
         </Col>
         <Col md={4}>
           <div className="corrred">
-            <span className="grrenn"></span> AWARENESS
+            <span className="grrenn"></span> Prioritizing
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#F44E4E" }}></span>{" "}
-            CREATIVITY
+            Visualizing
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#FFBC41" }}></span>{" "}
-            EXPLORING
+            Coordinating
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#3965FF" }}></span>{" "}
-            MAINTENANCE
+            Planning
           </div>
         </Col>
       </Row>
     </>
   );
 };
-export default CareerFitnessPiechart;
+export default WorkStyle;

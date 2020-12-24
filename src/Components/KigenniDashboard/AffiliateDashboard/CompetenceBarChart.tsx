@@ -38,7 +38,7 @@ const CompetenceBarChart = (props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
-      : props.history.push("/counsellor/signin");
+      : window.location.assign("/affiliates/signin");
     const data = {};
     Axios.all([
       Axios.get<any, AxiosResponse<any>>(`${API}${props.endpoint}`, {
@@ -47,9 +47,9 @@ const CompetenceBarChart = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res.data.competence);
+          // console.log(res.data.competence);
           if (res.status === 200) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               user: [...res.data.competence.data],
@@ -58,7 +58,7 @@ const CompetenceBarChart = (props: any) => {
         })
       )
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error && error.response && error.response.data) {
         }
       });
@@ -69,7 +69,7 @@ const CompetenceBarChart = (props: any) => {
     { text: "Woman", value: 300 },
   ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(user.length);
+  // console.log(user.length);
   return (
     <>
       <Row>
