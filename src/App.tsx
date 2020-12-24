@@ -521,7 +521,7 @@ class App extends Component {
               />
               {/* Affiliates Starts here */}
               <Route exact path="/affiliates" component={ThirdPartyOverview} />
-              <Route exact path="/analytics" component={BehaviouralAnalytics} />
+              <Route exact path="/affiliates/analytics" component={BehaviouralAnalytics} />
             </Switch>
           </BrowserRouter>
         </div>
