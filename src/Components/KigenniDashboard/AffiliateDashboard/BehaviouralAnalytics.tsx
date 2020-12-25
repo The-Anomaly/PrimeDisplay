@@ -224,8 +224,7 @@ const BehaviouralAnalytics = (props) => {
               decisionMakingInfo: response?.data?.personality?.data[3]?.info,
               processingInformationInfo:
                 response?.data?.personality?.data[2]?.info,
-              // subscriptionCheck: response2?.data?.upgrade,
-              subscriptionCheck: true,
+              subscriptionCheck: response2?.data?.upgrade,
             });
           }
         })
