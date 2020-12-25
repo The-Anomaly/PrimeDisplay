@@ -281,7 +281,7 @@ const BehaviouralAnalytics = () => {
                     </div>
                   </div>
                 </Row>
-                <Row className="BArow3 bg-white">
+                <Row className={analytics === 1 ? "BArow3 personalitybg" : "BArow3"}>
                   {analytics === 1 ? (
                     <div className="BAAsection">
                       <div className="BAanalyticsttl">
