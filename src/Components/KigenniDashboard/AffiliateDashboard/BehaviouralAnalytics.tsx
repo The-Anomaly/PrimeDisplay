@@ -10,11 +10,13 @@ import balance from "../../../assets/balance.svg";
 import info from "../../../assets/info_circle.png";
 import { CirclePie } from "salad-ui.chart";
 import { API } from "../../../config";
-import Axios from "axios";
+import Axios, { AxiosResponse } from "axios";
 import CompetenceBarChart from "./CompetenceBarChart";
+import CareerFitnessPiechart from "./CareerFitness";
 import close from "../../../assets/off_close.png";
+import WorkStyle from "./WorkStyle";
 
-const BehaviouralAnalytics = () => {
+const BehaviouralAnalytics = (props) => {
   const [state, setState] = React.useState<any>({
     errorMessage: "",
     header1: "",
@@ -43,6 +45,9 @@ const BehaviouralAnalytics = () => {
     decisionMakingInfo: "",
     processingInformationInfo: "",
     subscriptionCheck: false,
+    privateModal: false,
+    privateModalHeading: "",
+    privateModalBody: "",
   });
   const {
     header1,
@@ -67,10 +72,13 @@ const BehaviouralAnalytics = () => {
     percent8txt,
     personalityInfo,
     problemSolvingInfo,
+    privateModalHeading,
+    privateModalBody,
     interactingWithPeopleInfo,
     decisionMakingInfo,
     processingInformationInfo,
     subscriptionCheck,
+    privateModal,
   }: any = state;
   const [viewProfile, SetViewProfile] = React.useState(false);
   const [analytics, setAnalytics] = React.useState(1);
@@ -81,6 +89,49 @@ const BehaviouralAnalytics = () => {
     } else {
       SetViewProfile(false);
     }
+  };
+  const closePrivateModal = () => {
+    setState({
+      ...state,
+      privateModal: false,
+    });
+  };
+  const openPrivateModal = () => {
+    setState({
+      ...state,
+      privateModal: true,
+    });
+  };
+  const FetchModalDetails = (endpoint, modalTitle) => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}${endpoint}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(res.data);
+          if (res.status === 200) {
+            console.log(res);
+            setState({
+              ...state,
+              privateModalBody: res.data.career_fitness.info,
+              privateModalHeading: modalTitle,
+              privateModal: true,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        console.log(error);
+        if (error && error.response && error.response.data) {
+        }
+      });
   };
   const [infoModal, setInfoModal] = React.useState(false);
   const closeInfoModal = () => {
@@ -173,13 +224,15 @@ const BehaviouralAnalytics = () => {
               decisionMakingInfo: response?.data?.personality?.data[3]?.info,
               processingInformationInfo:
                 response?.data?.personality?.data[2]?.info,
-                subscriptionCheck: response2?.data?.upgrade,
+              // subscriptionCheck: response2?.data?.upgrade,
+              subscriptionCheck: true,
             });
           }
         })
       )
       .catch((error) => {});
   }, []);
+  const requestAdmin = () => {};
   // console.log(infoModal);
   // console.log(subscriptionCheck);
   return (
@@ -281,305 +334,366 @@ const BehaviouralAnalytics = () => {
                     </div>
                   </div>
                 </Row>
-                <Row className={analytics === 1 ? "BArow3 personalitybg" : "BArow3"}>
-                  {analytics === 1 ? (
-                    <div className="BAAsection">
-                      <div className="BAanalyticsttl">
-                        <div className="BAAttl1">
-                          Personalities
-                          <img
-                            className="BAinfo"
-                            src={info}
-                            alt="info"
-                            onClick={personalityInfoTrigger}
-                          />
-                        </div>
-                        <button className="BAmorebtn">
-                          Request more Insight
-                        </button>
-                      </div>
-                      <div className="BAAboxes">
-                        <div className="BAAbox">
-                          <div className="BAboxttl">
-                            <div className="BAboxtxt">{header1}</div>
-                            <div className="BAboxinfo">
+                    <Row className={analytics === 1 ? "BArow3 personalitybg" : "BArow3"}>
+                      {analytics === 1 ? (
+                        <div className="BAAsection">
+                          <div className="BAanalyticsttl">
+                            <div className="BAAttl1">
+                              Personalities
                               <img
-                                className="BAAboxinfo"
-                                alt="info"
+                                className="BAinfo"
                                 src={info}
-                                onClick={problemSolvingInfoTrigger}
+                                alt="info"
+                                onClick={personalityInfoTrigger}
                               />
                             </div>
+                            <button className="BAmorebtn">
+                              Request more Insight
+                            </button>
                           </div>
-                          <div className="BAboxcontent">
-                            <div className="BApercent">
-                              <div className="BAcircle1">
-                                <CirclePie
-                                  width={100}
-                                  height={100}
-                                  strokeWidth={12}
-                                  labelColor={"#000000"}
-                                  labelFontSize={"18px"}
-                                  strokeColor={"#EC6666"}
-                                  railColor={"#e6e6e6"}
-                                  fillColor={"#ffffff"}
-                                  percent={percent1}
-                                  padding={0}
-                                />
-                                <div className="BApiettl">{percent1txt}</div>
+                          <div className="BAAboxes">
+                            <div className="BAAbox">
+                              <div className="BAboxttl">
+                                <div className="BAboxtxt">{header1}</div>
+                                <div className="BAboxinfo">
+                                  <img
+                                    className="BAAboxinfo"
+                                    alt="info"
+                                    src={info}
+                                    onClick={problemSolvingInfoTrigger}
+                                  />
+                                </div>
                               </div>
-                              <div className="">
-                                <CirclePie
-                                  width={100}
-                                  height={100}
-                                  strokeWidth={12}
-                                  labelColor={"#000000"}
-                                  labelFontSize={"18px"}
-                                  strokeColor={"#EC6666"}
-                                  railColor={"#e6e6e6"}
-                                  fillColor={"#ffffff"}
-                                  percent={percent2}
-                                  padding={0}
-                                />
-                                <div className="BApiettl">{percent2txt}</div>
+                              <div className="BAboxcontent">
+                                <div className="BApercent">
+                                  <div className="BAcircle1">
+                                    <CirclePie
+                                      width={100}
+                                      height={100}
+                                      strokeWidth={12}
+                                      labelColor={"#000000"}
+                                      labelFontSize={"18px"}
+                                      strokeColor={"#EC6666"}
+                                      railColor={"#e6e6e6"}
+                                      fillColor={"#ffffff"}
+                                      percent={percent1}
+                                      padding={0}
+                                    />
+                                    <div className="BApiettl">
+                                      {percent1txt}
+                                    </div>
+                                  </div>
+                                  <div className="">
+                                    <CirclePie
+                                      width={100}
+                                      height={100}
+                                      strokeWidth={12}
+                                      labelColor={"#000000"}
+                                      labelFontSize={"18px"}
+                                      strokeColor={"#EC6666"}
+                                      railColor={"#e6e6e6"}
+                                      fillColor={"#ffffff"}
+                                      percent={percent2}
+                                      padding={0}
+                                    />
+                                    <div className="BApiettl">
+                                      {percent2txt}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="BAAbox">
+                              <div className="BAboxttl">
+                                <div className="BAboxtxt">{header2}</div>
+                                <div className="BAboxinfo">
+                                  <img
+                                    className="BAAboxinfo"
+                                    alt="info"
+                                    src={info}
+                                    onClick={interactingWithPeopleInfoTrigger}
+                                  />
+                                </div>
+                              </div>
+                              <div className="BAboxcontent">
+                                <div className="BApercent">
+                                  <div className="BAcircle1">
+                                    <CirclePie
+                                      width={100}
+                                      height={100}
+                                      strokeWidth={12}
+                                      labelColor={"#000000"}
+                                      labelFontSize={"18px"}
+                                      strokeColor={"#79D2DE"}
+                                      railColor={"#e6e6e6"}
+                                      fillColor={"#ffffff"}
+                                      percent={percent3}
+                                      padding={0}
+                                    />
+                                    <div className="BApiettl">
+                                      {percent3txt}
+                                    </div>
+                                  </div>
+                                  <div className="">
+                                    <CirclePie
+                                      width={100}
+                                      height={100}
+                                      strokeWidth={12}
+                                      labelColor={"#000000"}
+                                      labelFontSize={"18px"}
+                                      strokeColor={"#79D2DE"}
+                                      railColor={"#e6e6e6"}
+                                      fillColor={"#ffffff"}
+                                      percent={percent4}
+                                      padding={0}
+                                    />
+                                    <div className="BApiettl">
+                                      {percent4txt}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="BAAbox">
+                              <div className="BAboxttl">
+                                <div className="BAboxtxt">{header3}</div>
+                                <div className="BAboxinfo">
+                                  <img
+                                    className="BAAboxinfo"
+                                    alt="info"
+                                    src={info}
+                                    onClick={decisionMakingInfoTrigger}
+                                  />
+                                </div>
+                              </div>
+                              <div className="BAboxcontent">
+                                <div className="BApercent">
+                                  <div className="BAcircle1">
+                                    <CirclePie
+                                      width={100}
+                                      height={100}
+                                      strokeWidth={12}
+                                      labelColor={"#000000"}
+                                      labelFontSize={"18px"}
+                                      strokeColor={"#A044D9"}
+                                      railColor={"#e6e6e6"}
+                                      fillColor={"#ffffff"}
+                                      percent={percent5}
+                                      padding={0}
+                                    />
+                                    <div className="BApiettl">
+                                      {percent5txt}
+                                    </div>
+                                  </div>
+                                  <div className="">
+                                    <CirclePie
+                                      width={100}
+                                      height={100}
+                                      strokeWidth={12}
+                                      labelColor={"#000000"}
+                                      labelFontSize={"18px"}
+                                      strokeColor={"#A044D9"}
+                                      railColor={"#e6e6e6"}
+                                      fillColor={"#ffffff"}
+                                      percent={percent6}
+                                      padding={0}
+                                    />
+                                    <div className="BApiettl">
+                                      {percent6txt}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="BAAbox">
+                              <div className="BAboxttl">
+                                <div className="BAboxtxt">{header4}</div>
+                                <div className="BAboxinfo">
+                                  <img
+                                    className="BAAboxinfo"
+                                    alt="info"
+                                    src={info}
+                                    onClick={processingInformationInfoTrigger}
+                                  />
+                                </div>
+                              </div>
+                              <div className="BAboxcontent">
+                                <div className="BApercent">
+                                  <div className="BAcircle1">
+                                    <CirclePie
+                                      width={100}
+                                      height={100}
+                                      strokeWidth={12}
+                                      labelColor={"#000000"}
+                                      labelFontSize={"18px"}
+                                      strokeColor={"#147AD6"}
+                                      railColor={"#e6e6e6"}
+                                      fillColor={"#ffffff"}
+                                      percent={percent7}
+                                      padding={0}
+                                    />
+                                    <div className="BApiettl">
+                                      {percent7txt}
+                                    </div>
+                                  </div>
+                                  <div className="">
+                                    <CirclePie
+                                      width={100}
+                                      height={100}
+                                      strokeWidth={12}
+                                      labelColor={"#000000"}
+                                      labelFontSize={"18px"}
+                                      strokeColor={"#147AD6"}
+                                      railColor={"#e6e6e6"}
+                                      fillColor={"#ffffff"}
+                                      percent={percent8}
+                                      padding={0}
+                                    />
+                                    <div className="BApiettl">
+                                      {percent8txt}
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className="BAAbox">
-                          <div className="BAboxttl">
-                            <div className="BAboxtxt">{header2}</div>
-                            <div className="BAboxinfo">
+                      ) : analytics === 2 ? (
+                        <>
+                          <div className="BAanalyticsttl">
+                            <div className="BAAttl1">
+                              Competencies
+                              <img className="BAinfo" src={info} alt="info" />
+                            </div>
+                            <button className="BAmorebtn">
+                              Request more Insight
+                            </button>
+                          </div>
+                          <div className="container space122a">
+                            <CompetenceBarChart
+                              endpoint={"/affiliate/competences-graph"}
+                            />
+                          </div>
+                        </>
+                      ) : analytics === 3 ? (
+                        <>
+                          <div className="BAanalyticsttl">
+                            <div className="BAAttl1">
+                              Work Style
+                              <img className="BAinfo"
+                              onClick={() =>
+                                FetchModalDetails(
+                                  "/affiliate/work-style-graph/",
+                                  "Work Style"
+                                )
+                              }
+                              src={info} alt="info" />
+                            </div>
+                            <button
+                              className="BAmorebtn"
+                              onClick={requestAdmin}
+                            >
+                              Request more Insight
+                            </button>
+                          </div>
+                          <div className="container space122a">
+                            <WorkStyle
+                              endpoint={"/affiliate/work-style-graph/"}
+                            />
+                          </div>
+                        </>
+                      ) : analytics === 4 ? (
+                        <>
+                          <div className="BAanalyticsttl">
+                            <div className="BAAttl1">
+                              Work Motivators
                               <img
-                                className="BAAboxinfo"
-                                alt="info"
+                                className="BAinfo"
+                                onClick={() =>
+                                  FetchModalDetails(
+                                    "/affiliate/career-fitness-graph/",
+                                    "Work Motivator"
+                                  )
+                                }
                                 src={info}
-                                onClick={interactingWithPeopleInfoTrigger}
+                                alt="info"
                               />
                             </div>
+                            <button className="BAmorebtn">
+                              Request more Insight
+                            </button>
                           </div>
-                          <div className="BAboxcontent">
-                            <div className="BApercent">
-                              <div className="BAcircle1">
-                                <CirclePie
-                                  width={100}
-                                  height={100}
-                                  strokeWidth={12}
-                                  labelColor={"#000000"}
-                                  labelFontSize={"18px"}
-                                  strokeColor={"#79D2DE"}
-                                  railColor={"#e6e6e6"}
-                                  fillColor={"#ffffff"}
-                                  percent={percent3}
-                                  padding={0}
-                                />
-                                <div className="BApiettl">{percent3txt}</div>
-                              </div>
-                              <div className="">
-                                <CirclePie
-                                  width={100}
-                                  height={100}
-                                  strokeWidth={12}
-                                  labelColor={"#000000"}
-                                  labelFontSize={"18px"}
-                                  strokeColor={"#79D2DE"}
-                                  railColor={"#e6e6e6"}
-                                  fillColor={"#ffffff"}
-                                  percent={percent4}
-                                  padding={0}
-                                />
-                                <div className="BApiettl">{percent4txt}</div>
-                              </div>
+                          <div className="container space122a">
+                            <CompetenceBarChart
+                              endpoint={"/affiliate/competences-graph"}
+                            />
+                          </div>
+                        </>
+                      ) : analytics === 5 ? (
+                        <>
+                          <div className="BAanalyticsttl">
+                            <div className="BAAttl1">
+                              Work Functions
+                              <img className="BAinfo" src={info} alt="info" />
                             </div>
+                            <button className="BAmorebtn">
+                              Request more Insight
+                            </button>
                           </div>
-                        </div>
-                        <div className="BAAbox">
-                          <div className="BAboxttl">
-                            <div className="BAboxtxt">{header3}</div>
-                            <div className="BAboxinfo">
+                          <div className="container space122a">
+                            <CompetenceBarChart
+                              endpoint={"/affiliate/competences-graph"}
+                            />
+                          </div>
+                        </>
+                      ) : analytics === 6 ? (
+                        <>
+                          <div className="bbgwh">
+                            <div className="BAAttl1">
+                              Career Fitness
                               <img
-                                className="BAAboxinfo"
-                                alt="info"
+                                className="BAinfo"
+                                onClick={() =>
+                                  FetchModalDetails(
+                                    "/affiliate/career-fitness-graph/",
+                                    "Career Fitness"
+                                  )
+                                }
                                 src={info}
-                                onClick={decisionMakingInfoTrigger}
+                                alt="info"
                               />
                             </div>
+                            <button className="BAmorebtn">
+                              Request more Insight
+                            </button>
                           </div>
-                          <div className="BAboxcontent">
-                            <div className="BApercent">
-                              <div className="BAcircle1">
-                                <CirclePie
-                                  width={100}
-                                  height={100}
-                                  strokeWidth={12}
-                                  labelColor={"#000000"}
-                                  labelFontSize={"18px"}
-                                  strokeColor={"#A044D9"}
-                                  railColor={"#e6e6e6"}
-                                  fillColor={"#ffffff"}
-                                  percent={percent5}
-                                  padding={0}
-                                />
-                                <div className="BApiettl">{percent5txt}</div>
-                              </div>
-                              <div className="">
-                                <CirclePie
-                                  width={100}
-                                  height={100}
-                                  strokeWidth={12}
-                                  labelColor={"#000000"}
-                                  labelFontSize={"18px"}
-                                  strokeColor={"#A044D9"}
-                                  railColor={"#e6e6e6"}
-                                  fillColor={"#ffffff"}
-                                  percent={percent6}
-                                  padding={0}
-                                />
-                                <div className="BApiettl">{percent6txt}</div>
-                              </div>
-                            </div>
+                          <div className="container space122a">
+                            <CareerFitnessPiechart
+                              endpoint={"/affiliate/career-fitness-graph/"}
+                            />
                           </div>
-                        </div>
-                        <div className="BAAbox">
-                          <div className="BAboxttl">
-                            <div className="BAboxtxt">{header4}</div>
-                            <div className="BAboxinfo">
-                              <img
-                                className="BAAboxinfo"
-                                alt="info"
-                                src={info}
-                                onClick={processingInformationInfoTrigger}
-                              />
-                            </div>
-                          </div>
-                          <div className="BAboxcontent">
-                            <div className="BApercent">
-                              <div className="BAcircle1">
-                                <CirclePie
-                                  width={100}
-                                  height={100}
-                                  strokeWidth={12}
-                                  labelColor={"#000000"}
-                                  labelFontSize={"18px"}
-                                  strokeColor={"#147AD6"}
-                                  railColor={"#e6e6e6"}
-                                  fillColor={"#ffffff"}
-                                  percent={percent7}
-                                  padding={0}
-                                />
-                                <div className="BApiettl">{percent7txt}</div>
-                              </div>
-                              <div className="">
-                                <CirclePie
-                                  width={100}
-                                  height={100}
-                                  strokeWidth={12}
-                                  labelColor={"#000000"}
-                                  labelFontSize={"18px"}
-                                  strokeColor={"#147AD6"}
-                                  railColor={"#e6e6e6"}
-                                  fillColor={"#ffffff"}
-                                  percent={percent8}
-                                  padding={0}
-                                />
-                                <div className="BApiettl">{percent8txt}</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ) : analytics === 2 ? (
-                    <>
-                      <div className="BAanalyticsttl">
-                        <div className="BAAttl1">
-                          Competencies
-                          <img className="BAinfo" src={info} alt="info" />
-                        </div>
-                        <button className="BAmorebtn">
-                          Request more Insight
-                        </button>
-                      </div>
-                      <div className="container space122a">
-                        <CompetenceBarChart
-                          endpoint={"/affiliate/competences-graph"}
-                        />
-                      </div>
-                    </>
-                  ) : analytics === 3 ? (
-                    <div className="BAanalyticsttl">
-                      <div className="BAAttl1">
-                        Work Style
-                        <img className="BAinfo" src={info} alt="info" />
-                      </div>
-                      <button className="BAmorebtn">
-                        Request more Insight
-                      </button>
-                    </div>
-                  ) : analytics === 4 ? (
-                    <>
-                      <div className="BAanalyticsttl">
-                        <div className="BAAttl1">
-                          Work Motivators
-                          <img className="BAinfo" src={info} alt="info" />
-                        </div>
-                        <button className="BAmorebtn">
-                          Request more Insight
-                        </button>
-                      </div>
-                      <div className="container space122a">
-                        <CompetenceBarChart
-                          endpoint={"/affiliate/competences-graph"}
-                        />
-                      </div>
-                    </>
-                  ) : analytics === 5 ? (
-                    <>
-                      <div className="BAanalyticsttl">
-                        <div className="BAAttl1">
-                          Work Functions
-                          <img className="BAinfo" src={info} alt="info" />
-                        </div>
-                        <button className="BAmorebtn">
-                          Request more Insight
-                        </button>
-                      </div>
-                      <div className="container space122a">
-                        <CompetenceBarChart
-                          endpoint={"/affiliate/competences-graph"}
-                        />
-                      </div>
-                    </>
-                  ) : analytics === 6 ? (
-                    <div className="BAanalyticsttl">
-                      <div className="BAAttl1">
-                        Career Fitness
-                        <img className="BAinfo" src={info} alt="info" />
-                      </div>
-                      <button className="BAmorebtn">
-                        Request more Insight
-                      </button>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </Row>
+                        </>
+                      ) : (
+                        ""
+                      )}
+                    </Row>
                 </>
                 }
                 {/* Subscribed view ends*/}
 
                 {/* Analytics without subscription begins*/}
 
-                {subscriptionCheck === false && 
-                <Row>
-                  <img className="BAbalance" src={balance} />
-                  <div className="BAsubtxt">
-                    Volutpat purus orci ipsum quis faucibus sed elit elit
-                    gravida. Sodales facilisis sed nulla lobortis in convallis
-                    pellentesque urna faucibus.
-                  </div>
-                  <button className="BAsubbtn">Upgrade Subscription</button>
-                </Row>}
+                {subscriptionCheck === false && (
+                  <Row>
+                    <img className="BAbalance" src={balance} />
+                    <div className="BAsubtxt">
+                      Volutpat purus orci ipsum quis faucibus sed elit elit
+                      gravida. Sodales facilisis sed nulla lobortis in convallis
+                      pellentesque urna faucibus.
+                    </div>
+                    <button className="BAsubbtn">Upgrade Subscription</button>
+                  </Row>
+                )}
                 {/* Analytics without subscription ends*/}
               </Col>
             </Row>
@@ -629,6 +743,27 @@ const BehaviouralAnalytics = () => {
               ? `${processingInformationInfo}`
               : "no info"}
           </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        className="infoModal"
+        show={privateModal}
+        onHide={closePrivateModal}
+        centered={true}
+      >
+        <Modal.Header>
+          <div className="infoHeading">
+            <div className="infoTitle">{privateModalHeading}</div>
+            <img
+              className="infoClose"
+              src={close}
+              onClick={closePrivateModal}
+              alt="close"
+            />
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="infoText">{privateModalBody}</div>
         </Modal.Body>
       </Modal>
     </>

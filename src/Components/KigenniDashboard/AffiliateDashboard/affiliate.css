@@ -452,11 +452,11 @@
 }
 .BAboxttl {
   display: flex;
-  border-bottom: 1px solid #E5e5e5;
-    padding-bottom: 1rem;
-    margin: 0 -1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 1rem;
+  margin: 0 -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .BAboxtxt {
   flex: 90%;
@@ -578,7 +578,7 @@
 
 /*Info Modal*/
 .infoModal .modal-content {
-  background: #F0F5FF;
+  background: #f0f5ff;
   max-height: 85vh;
   overflow-y: auto;
 }
@@ -601,7 +601,7 @@
   font-size: 14px;
   font-style: italic;
 }
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .infoTitle {
     font-size: 16px;
   }
@@ -613,4 +613,30 @@
     width: 22px;
     height: 22px;
   }
+}
+.grrenn {
+  background: #1bb978;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+.corrred {
+  color: #333333;
+  display: flex;
+  align-items: center;
+  margin-left: 3rem;
+  margin-bottom:2rem
+}
+.cllcc {
+  justify-content: center;
+  align-items: center;
+}
+
+.bbgwh{
+  background: #fff !important;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
