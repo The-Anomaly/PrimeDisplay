@@ -15,6 +15,7 @@ import CompetenceBarChart from "./CompetenceBarChart";
 import CareerFitnessPiechart from "./CareerFitness";
 import close from "../../../assets/off_close.png";
 import WorkStyle from "./WorkStyle";
+import CompetenceBarChart1 from "./CompetenceBarChart1";
 
 const BehaviouralAnalytics = (props) => {
   const [state, setState] = React.useState<any>({
@@ -116,11 +117,47 @@ const BehaviouralAnalytics = (props) => {
       .then(
         Axios.spread((res) => {
           console.log(res.data);
-          if (res.status === 200) {
+          if (res.status === 200 && res.data.career_fitness) {
             console.log(res);
             setState({
               ...state,
               privateModalBody: res.data.career_fitness.info,
+              privateModalHeading: modalTitle,
+              privateModal: true,
+            });
+          }
+          if (res.status === 200 && res.data.competence) {
+            console.log(res);
+            setState({
+              ...state,
+              privateModalBody: res.data.competence.info,
+              privateModalHeading: modalTitle,
+              privateModal: true,
+            });
+          }
+          if (res.status === 200 && res.data.career_motivator) {
+            console.log(res);
+            setState({
+              ...state,
+              privateModalBody: res.data.career_motivator.info,
+              privateModalHeading: modalTitle,
+              privateModal: true,
+            });
+          }
+          if (res.status === 200 && res.data.work_style) {
+            console.log(res);
+            setState({
+              ...state,
+              privateModalBody: res.data.work_style.info,
+              privateModalHeading: modalTitle,
+              privateModal: true,
+            });
+          }
+          if (res.status === 200 && res.data.work_function) {
+            console.log(res);
+            setState({
+              ...state,
+              privateModalBody: res.data.work_function.info,
               privateModalHeading: modalTitle,
               privateModal: true,
             });
@@ -345,7 +382,7 @@ const BehaviouralAnalytics = (props) => {
                         </div>
                       </div>
                     </Row>
-                    <Row className="BArow3 bgite">
+                    <Row className="BArow3 bgite bg-white">
                       {analytics === 1 ? (
                         <div className="BAAsection">
                           <div className="BAanalyticsttl">
@@ -574,7 +611,17 @@ const BehaviouralAnalytics = (props) => {
                           <div className="BAanalyticsttl">
                             <div className="BAAttl1">
                               Competencies
-                              <img className="BAinfo" src={info} alt="info" />
+                              <img
+                                className="BAinfo"
+                                onClick={() =>
+                                  FetchModalDetails(
+                                    "/affiliate/competences-graph/",
+                                    "Competence"
+                                  )
+                                }
+                                src={info}
+                                alt="info"
+                              />
                             </div>
                             <button className="BAmorebtn">
                               Request more Insight
@@ -591,14 +638,17 @@ const BehaviouralAnalytics = (props) => {
                           <div className="BAanalyticsttl">
                             <div className="BAAttl1">
                               Work Style
-                              <img className="BAinfo"
-                              onClick={() =>
-                                FetchModalDetails(
-                                  "/affiliate/work-style-graph/",
-                                  "Work Style"
-                                )
-                              }
-                              src={info} alt="info" />
+                              <img
+                                className="BAinfo"
+                                onClick={() =>
+                                  FetchModalDetails(
+                                    "/affiliate/work-style-graph/",
+                                    "Work Style"
+                                  )
+                                }
+                                src={info}
+                                alt="info"
+                              />
                             </div>
                             <button
                               className="BAmorebtn"
@@ -622,7 +672,7 @@ const BehaviouralAnalytics = (props) => {
                                 className="BAinfo"
                                 onClick={() =>
                                   FetchModalDetails(
-                                    "/affiliate/career-fitness-graph/",
+                                    "/affiliate/career-motivator-graph/",
                                     "Work Motivator"
                                   )
                                 }
@@ -635,8 +685,8 @@ const BehaviouralAnalytics = (props) => {
                             </button>
                           </div>
                           <div className="container space122a">
-                            <CompetenceBarChart
-                              endpoint={"/affiliate/competences-graph"}
+                            <CompetenceBarChart1
+                              endpoint={"/affiliate/career-motivator-graph/"}
                             />
                           </div>
                         </>
@@ -645,7 +695,17 @@ const BehaviouralAnalytics = (props) => {
                           <div className="BAanalyticsttl">
                             <div className="BAAttl1">
                               Work Functions
-                              <img className="BAinfo" src={info} alt="info" />
+                              <img
+                                className="BAinfo"
+                                src={info}
+                                onClick={() =>
+                                  FetchModalDetails(
+                                    "/affiliate/work-function-graph",
+                                    "Work Function"
+                                  )
+                                }
+                                alt="info"
+                              />
                             </div>
                             <button className="BAmorebtn">
                               Request more Insight
@@ -653,7 +713,7 @@ const BehaviouralAnalytics = (props) => {
                           </div>
                           <div className="container space122a">
                             <CompetenceBarChart
-                              endpoint={"/affiliate/competences-graph"}
+                              endpoint={"/affiliate/work-function-graph/"}
                             />
                           </div>
                         </>

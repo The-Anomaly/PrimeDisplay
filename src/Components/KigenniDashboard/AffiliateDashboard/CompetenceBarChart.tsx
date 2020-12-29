@@ -49,16 +49,34 @@ const CompetenceBarChart = (props: any) => {
         Axios.spread((res) => {
           // console.log(res.data.competence);
           if (res.status === 200) {
-            // console.log(res);
-            setState({
-              ...state,
-              user: [...res.data.competence.data],
-            });
+            console.log(res);
+            if(res.data.competence){
+              setState({
+                ...state,
+                user: [...res.data.competence.data],
+              });
+            return
+            }
+            if (res.status === 200 && res.data.work_function) {
+                setState({
+                  ...state,
+                  user: [...res.data.work_function.data],
+                });
+              return
+              }
+            
+            if(res.data.career_motivator){
+              setState({
+                ...state,
+                user: [...res.data.career_motivator.data],
+              });
+            return
+            }
           }
         })
       )
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         if (error && error.response && error.response.data) {
         }
       });
@@ -69,7 +87,7 @@ const CompetenceBarChart = (props: any) => {
     { text: "Woman", value: 300 },
   ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  // console.log(user.length);
+  console.log(user);
   return (
     <>
       <Row>
@@ -99,11 +117,11 @@ const CompetenceBarChart = (props: any) => {
                 [user[3].name, user[3].value],
                 [user[4].name, user[4].value],
                 [user[5].name, user[5].value],
-                [user[6].name, user[6].value],
-                [user[7].name, user[7].value],
-                [user[8].name, user[8].value],
-                [user[9].name, user[9].value],
-                [user[10].name, user[10].value]
+                [user[6]?.name, user[6]?.value],
+                [user[7]?.name, user[7]?.value],
+                [user[8]?.name, user[8]?.value],
+                [user[9]?.name, user[9]?.value],
+                [user[10]?.name, user[10]?.value]
               ]}
               options={{
                 // Material design options

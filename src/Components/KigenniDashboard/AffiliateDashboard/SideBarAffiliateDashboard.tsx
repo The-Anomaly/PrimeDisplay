@@ -63,7 +63,7 @@ const SideBarAffilliateDashboard = withRouter((props: any) => {
               Behavioural Analytics
           </div>
             </Link>
-            <Link to="/affiliates">
+            <Link to="/counsellor/signup">
           <div className={props.messages ? "activecomp shifbb" : "gbn shifbb"}>
             {" "}
               <img

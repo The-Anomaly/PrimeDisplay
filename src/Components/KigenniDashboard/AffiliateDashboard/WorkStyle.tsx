@@ -48,12 +48,12 @@ const WorkStyle = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res.data);
+          console.log(res);
           if (res.status === 200) {
             console.log(res);
             setState({
               ...state,
-              user: [...res.data.career_fitness.data],
+              user: [...res.data.work_style.data],
             });
           }
         })
@@ -63,7 +63,7 @@ const WorkStyle = (props: any) => {
         if (error && error.response && error.response.data) {
         }
       });
-  }, []);
+  }, [props.endpoint]);
 
   const data = [
     { text: "Man", value: 500 },
@@ -75,31 +75,31 @@ const WorkStyle = (props: any) => {
     <>
       <Row className="cllcc">
         <Col md={4}>
-          <PieChart
+         {user.length > 0 && <PieChart
             data={[
               {
-                title: "Prioritizing ",
-                value: user[0]?.Prioritizing,
+                title:user[0].name,
+                value: user[0].value,
                 color: "#F44E4E",
               },
               {
-                title: "Visualizing ",
-                value: user[1]?.Visualizing,
+                title: user[1].name,
+                value: user[1].value,
                 color: "#1BB978",
               },
               {
-                title: `Coordinating`,
-                value: user[2]?.Coordinating,
+                title: user[2].name,
+                value: user[2].value,
                 color: "#FFBC41",
               },
               {
-                title: `Planning`,
-                value: user[3]?.Planning,
+                title:  user[3].name,
+                value: user[3].value,
                 color: "#3965FF",
               },
             ]}
             lineWidth={30}
-          />
+          /> }
         </Col>
         <Col md={4}>
           <div className="corrred">
