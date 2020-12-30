@@ -294,9 +294,10 @@ const CounsellorBookedSessions = (props: any) => {
         title: taskTitle,
         description: taskDescription,
         duration: taskDuration,
+        group: nature_of_task,
       },
     ];
-    if (taskTitle === "" || taskDescription === "" || taskDuration === "") {
+    if (taskTitle === "" || taskDescription === "" || taskDuration === "" || nature_of_task === "") {
       return notify("Please complete the user todo entry");
     }
     setState({
@@ -319,6 +320,7 @@ const CounsellorBookedSessions = (props: any) => {
           title: taskTitle,
           description: taskDescription,
           duration: taskDuration,
+          group: nature_of_task,
         },
       ];
       const data = {
@@ -327,7 +329,6 @@ const CounsellorBookedSessions = (props: any) => {
         rating: rate1,
         say_something: session_about,
         id: sessionId,
-        group: nature_of_task,
       };
       // console.log(data);
       Axios.post<any, AxiosResponse<any>>(
