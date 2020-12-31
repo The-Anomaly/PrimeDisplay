@@ -319,6 +319,7 @@ const CounsellorBookedSessions = (props: any) => {
           title: taskTitle,
           description: taskDescription,
           duration: taskDuration,
+          group: nature_of_task,
         },
       ];
       const data = {

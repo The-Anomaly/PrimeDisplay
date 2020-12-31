@@ -16,6 +16,7 @@ import CareerFitnessPiechart from "./CareerFitness";
 import close from "../../../assets/off_close.png";
 import WorkStyle from "./WorkStyle";
 import CompetenceBarChart1 from "./CompetenceBarChart1";
+import SmallScreenNavbarAffiliates from "../CouncellorDasboard/SmallScreenNavbarAffiliates";
 
 const BehaviouralAnalytics = (props) => {
   const [state, setState] = React.useState<any>({
@@ -274,6 +275,7 @@ const BehaviouralAnalytics = (props) => {
   return (
     <>
       <Container fluid={true} className="contann122">
+        <SmallScreenNavbarAffiliates />
         <Row>
           <SideBarAffilliateDashboard analytics={true} />
           <Col md={10} sm={12} className="prm newprm1">

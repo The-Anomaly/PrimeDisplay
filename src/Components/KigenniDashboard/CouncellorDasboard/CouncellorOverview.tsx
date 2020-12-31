@@ -226,7 +226,7 @@ const CounsellorOverview = (props: any) => {
         say_something: session_about,
         id: sessionId
       };
-      // console.log(data);
+      console.log(data);
       Axios.post<any, AxiosResponse<any>>(
         `${API}/counsellor/complete-session`,
         data,
@@ -252,6 +252,7 @@ const CounsellorOverview = (props: any) => {
         rating: rate1,
         say_something: session_about,
         id: sessionId,
+        group:nature_of_task
       };
       // console.log(data);
       Axios.post<any, AxiosResponse<any>>(
