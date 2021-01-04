@@ -43,6 +43,7 @@ interface State {
   onlyfree: boolean;
   showfullresult: boolean;
   client2: any;
+  paid: boolean;
 }
 class NewDashboard extends React.Component {
   state: State = {
@@ -61,6 +62,7 @@ class NewDashboard extends React.Component {
     width: 100,
     showfullresult: false,
     client2: [],
+    paid: false,
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
@@ -104,11 +106,20 @@ class NewDashboard extends React.Component {
       Axios.get<any, AxiosResponse<any>>(`${API}/freedashboard`, {
         headers: { Authorization: `Token ${token}` },
       }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
     ])
       .then(
-        Axios.spread((response, response2) => {
+        Axios.spread((response, response2, response3) => {
           // console.log(response);
           // console.log(response2);
+          if (response3.status === 200) {
+            this.setState({
+              paid: response3?.data[0]?.view_result,
+            });
+          }
+
           if (response.status === 200 && response2.status === 200) {
             this.setState({
               client: response.data[0],
@@ -240,6 +251,7 @@ class NewDashboard extends React.Component {
       isLoading_1,
       showfullresult,
       client2,
+      paid,
     } = this.state;
     return (
       <>
@@ -346,28 +358,44 @@ class NewDashboard extends React.Component {
                   <hr className="lswid divider" />
                   <div className="lswid">
                     <div className="tipswrapper">
-                      <div>
-                        <div className="stbly1">
-                          {client2?.career_fitness?.quick_fix?.heading}
+                      {paid === true ? (
+                        <div>
+                          <div className="stbly1">
+                            {client?.career_fitness?.quick_fix?.heading}
+                          </div>
+                          {client?.career_fitness?.quick_fix?.body?.map(
+                            (data, index) => (
+                              <div key={index} className="csbody liuii">
+                                {index + 1}.{"  "}
+                                {data}
+                              </div>
+                            )
+                          )}
                         </div>
-                        {client2?.career_fitness?.quick_fix?.body?.map(
-                          (data, index) => (
-                            <div key={index} className="csbody liuii">
-                              {index + 1}.{"  "}
-                              {data}
-                            </div>
-                          )
-                        )}
-                        <div className="blursec">
+                      ) : (
+                        <div>
+                          <div className="stbly1">
+                            {client2?.career_fitness?.quick_fix?.heading}
+                          </div>
+                          {client2?.career_fitness?.quick_fix?.body?.map(
+                            (data, index) => (
+                              <div key={index} className="csbody liuii">
+                                {index + 1}.{"  "}
+                                {data}
+                              </div>
+                            )
+                          )}
+                          <div className="blursec">
                             <img
                               className="blur2"
                               src={blur2}
                               alt="blurred image"
                             />
-                            <img 
-                              className="blur2a" 
+                            <img
+                              className="blur2a"
                               src={blur2a}
-                              alt="blurred image"/>
+                              alt="blurred image"
+                            />
                             <img
                               className="unlock unlock2"
                               src={unlock2}
@@ -375,7 +403,8 @@ class NewDashboard extends React.Component {
                               onClick={() => this.setState({ onlyfree: true })}
                             />
                           </div>
-                      </div>
+                        </div>
+                      )}
                       <div className="notice">
                         <img src={notice} className="noticee" alt="notice" />
                       </div>
@@ -437,62 +466,96 @@ class NewDashboard extends React.Component {
                           <img src={vector1} className="kl3" alt="vector2" />
                           <div>Your Strengths</div>
                         </div>
-                        <div className="kz12">
-                          <ul className="grapwrap">
-                            {client2?.strengths?.map((strength, index) => (
-                              <li
-                                className="grapssin career221 insighttxt"
-                                key={index}
-                              >
-                                {strength}
-                              </li>
-                            ))}
-                          </ul>
-                          <div className="blursec">
-                            <img
-                              className="blur"
-                              src={blur}
-                              alt="blurred image"
-                            />
-                            <img
-                              className="unlock"
-                              src={unlock}
-                              alt="unlock"
-                              onClick={() => this.setState({ onlyfree: true })}
-                            />
+                        {paid === true ? (
+                          <div className="kz12">
+                            <ul className="grapwrap">
+                              {client?.strengths?.map((strength, index) => (
+                                <li
+                                  className="grapssin career221 insighttxt"
+                                  key={index}
+                                >
+                                  {strength}
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-                        </div>
+                        ) : (
+                          <div className="kz12">
+                            <ul className="grapwrap">
+                              {client2?.strengths?.map((strength, index) => (
+                                <li
+                                  className="grapssin career221 insighttxt"
+                                  key={index}
+                                >
+                                  {strength}
+                                </li>
+                              ))}
+                            </ul>
+                            <div className="blursec">
+                              <img
+                                className="blur"
+                                src={blur}
+                                alt="blurred image"
+                              />
+                              <img
+                                className="unlock"
+                                src={unlock}
+                                alt="unlock"
+                                onClick={() =>
+                                  this.setState({ onlyfree: true })
+                                }
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                       <div className="contkflex newcontkflex" id="weakness">
                         <div className="kz2a">
                           <img src={vector2} className="kl3" alt="vector2" />
                           <div>Your Weaknesses</div>
                         </div>
-                        <div className="kz12">
-                          <ul className="grapwrap">
-                            {client2?.weaknesses?.map((weakness, index) => (
-                              <li
-                                className="grapssin career221 insighttxt"
-                                key={index}
-                              >
-                                {weakness}
-                              </li>
-                            ))}
-                          </ul>
-                          <div className="blursec">
-                            <img
-                              className="blur"
-                              src={blur}
-                              alt="blurred image"
-                            />
-                            <img
-                              className="unlock"
-                              src={unlock}
-                              alt="unlock"
-                              onClick={() => this.setState({ onlyfree: true })}
-                            />
+                        {paid === true ? (
+                          <div className="kz12">
+                            <ul className="grapwrap">
+                              {client?.weaknesses?.map((weakness, index) => (
+                                <li
+                                  className="grapssin career221 insighttxt"
+                                  key={index}
+                                >
+                                  {weakness}
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-                        </div>
+                        ) : (
+                          <div className="kz12">
+                            <ul className="grapwrap">
+                              {client2?.weaknesses?.map((weakness, index) => (
+                                <li
+                                  className="grapssin career221 insighttxt"
+                                  key={index}
+                                >
+                                  {weakness}
+                                </li>
+                              ))}
+                            </ul>
+                            <div className="blursec">
+                              <img
+                                className="blur"
+                                src={blur}
+                                alt="blurred image"
+                              />
+                              <img
+                                className="unlock"
+                                src={unlock}
+                                alt="unlock"
+                                onClick={() =>
+                                  this.setState({ onlyfree: true })
+                                }
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
