@@ -78,22 +78,22 @@ const WorkStyle = (props: any) => {
          {user.length > 0 && <PieChart
             data={[
               {
-                title:user[0].name,
+                title:user[0].name + " " + user[0].value,
                 value: user[0].value,
                 color: "#F44E4E",
               },
               {
-                title: user[1].name,
+                title: user[1].name + " " + user[1].value,
                 value: user[1].value,
                 color: "#1BB978",
               },
               {
-                title: user[2].name,
+                title: user[2].name + " " + user[2].value,
                 value: user[2].value,
                 color: "#FFBC41",
               },
               {
-                title:  user[3].name,
+                title:  user[3].name + " " + user[3].value,
                 value: user[3].value,
                 color: "#3965FF",
               },
@@ -103,19 +103,19 @@ const WorkStyle = (props: any) => {
         </Col>
         <Col md={4}>
           <div className="corrred">
-            <span className="grrenn"></span> Prioritizing
+            <span className="grrenn"></span> {user[1]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#F44E4E" }}></span>{" "}
-            Visualizing
+            {user[0]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#FFBC41" }}></span>{" "}
-            Coordinating
+            {user[2]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#3965FF" }}></span>{" "}
-            Planning
+            {user[3]?.name}
           </div>
         </Col>
       </Row>

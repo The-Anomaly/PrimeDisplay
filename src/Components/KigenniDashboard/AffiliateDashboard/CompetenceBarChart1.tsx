@@ -90,8 +90,8 @@ const CompetenceBarChart1 = (props: any) => {
           {user && user.length > 0 ? (
             <Chart
               width={"100%"}
-              height={"500px"}
-              chartType="Bar"
+              height={"600px"}
+              chartType="BarChart"
               loader={<div>Loading Chart</div>}
               data={[
                 ["Skills", "Score"],
@@ -108,8 +108,10 @@ const CompetenceBarChart1 = (props: any) => {
               ]}
               options={{
                 // Material design options
+                width: 600,
+                height: 400,
                 chart: {
-                  minSpacing: 20,
+                  minSpacing: 40,
                   annotations: {
                     textStyle: {
                       fontName: "inherit",
@@ -127,16 +129,16 @@ const CompetenceBarChart1 = (props: any) => {
                 },
                 colors: ["#2E6AF0", "#2E6AF0", "#2E6AF0"],
                 hAxis: {
-                  title: "Total Population",
+                  title: "Score",
                   minValue: 0,
                 },
                 fontSize: 12,
                 vAxis: {
-                  title: "City",
+                  title: "Skills",
                 },
               }}
               // For tests
-              rootProps={{ "data-testid": "2" }}
+              rootProps={{ "data-testid": "1" }}
             />
           ) : (
             ""

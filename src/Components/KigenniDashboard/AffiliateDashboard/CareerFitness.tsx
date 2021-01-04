@@ -105,19 +105,19 @@ const CareerFitnessPiechart = (props: any) => {
         </Col>
         <Col md={4}>
           <div className="corrred">
-            <span className="grrenn"></span> AWARENESS
+            <span className="grrenn"></span> {user[1]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#F44E4E" }}></span>{" "}
-            CREATIVITY
+            {user[0]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#FFBC41" }}></span>{" "}
-            EXPLORING
+            {user[2]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#3965FF" }}></span>{" "}
-            MAINTENANCE
+            {user[3]?.name}
           </div>
         </Col>
       </Row>

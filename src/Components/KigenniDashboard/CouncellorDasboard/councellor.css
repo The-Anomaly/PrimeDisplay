@@ -1753,6 +1753,7 @@ textarea.form-control.jobr {
   display: inline-block;
   font-weight: 700;
   cursor: pointer;
+  min-width: 90px;
 }
 .printcv {
   padding-bottom: 1rem;
@@ -4248,4 +4249,11 @@ textarea.form-control.jobr {
   .redomembcard {
     padding: 1rem;
   }
+}
+.textright{
+  text-align: right;
+  font-size: 2rem;
+}
+.times4{
+  cursor: pointer;
 }

@@ -43,7 +43,7 @@ const CounsellorOverview = (props: any) => {
     sessionId: "",
     recommendations: [],
     nextSessionMessage: "",
-    accordionisopen:false,
+    accordionisopen: false,
     taskTitle: "",
     session_email: "",
     taskDuration: "",
@@ -114,7 +114,7 @@ const CounsellorOverview = (props: any) => {
               prevLink: res1.data.previous,
               total_pages: res1.data.total_pages,
               nextSessionMessage: res2.data.message,
-              task_type:[...res3.data]
+              task_type: [...res3.data],
             });
           }
         })
@@ -224,7 +224,7 @@ const CounsellorOverview = (props: any) => {
         notes: session_notes,
         rating: rate1,
         say_something: session_about,
-        id: sessionId
+        id: sessionId,
       };
       console.log(data);
       Axios.post<any, AxiosResponse<any>>(
@@ -252,7 +252,7 @@ const CounsellorOverview = (props: any) => {
         rating: rate1,
         say_something: session_about,
         id: sessionId,
-        group:nature_of_task
+        group: nature_of_task,
       };
       // console.log(data);
       Axios.post<any, AxiosResponse<any>>(
@@ -274,12 +274,12 @@ const CounsellorOverview = (props: any) => {
         });
     }
   };
-  const toggleWhenOpen =()=>{
+  const toggleWhenOpen = () => {
     setFormState({
       ...state,
-      accordionisopen:state.accordionisopen?false:true
-    })
-  }
+      accordionisopen: state.accordionisopen ? false : true,
+    });
+  };
 
   const notify = (message: string) => toast(message, { containerId: "B" });
   // console.log(task_type);
@@ -340,7 +340,10 @@ const CounsellorOverview = (props: any) => {
                     </div>
                     <div className="yudd1">{nextSessionMessage}</div>
                     {counsellorData.slice(0, 2).map((data, i) => (
-                      <div className="msgs teammembr booked bookedover sessioncard" key={i}>
+                      <div
+                        className="msgs teammembr booked bookedover sessioncard"
+                        key={i}
+                      >
                         <div className="fromerit summary">
                           <div className="cone sesscard1">
                             <img
@@ -373,13 +376,17 @@ const CounsellorOverview = (props: any) => {
                           </div>
 
                           <div className="cfive sesscard5">
-                            <div className="clarity12b sesstype">{data.member_type}</div>
+                            <div className="clarity12b sesstype">
+                              {data.member_type}
+                            </div>
                           </div>
 
                           <div className="csix sesscard6">
                             <span
                               className={
-                                !data.status ? "pend pltd sessstat" : "complt pltd sessstat"
+                                !data.status
+                                  ? "pend pltd sessstat"
+                                  : "complt pltd sessstat"
                               }
                             >
                               {!data.status ? "Pending" : "Completed"}
@@ -428,6 +435,11 @@ const CounsellorOverview = (props: any) => {
         onHide={closeModal}
       >
         <Container>
+          <div className="textright">
+            <span className="times4" onClick={closeModal}>
+              &times;
+            </span>
+          </div>
           <h6>{name}</h6>
           <span className="modal-btn">
             <a href={`/counsellor/result/${session_email}`} target="blank">
@@ -485,15 +497,21 @@ const CounsellorOverview = (props: any) => {
                   </p>
                 </Accordion.Toggle>
                 <Accordion.Toggle as={Card.Header} eventKey="5">
-                {
-                      state.accordionisopen ? (
-                        <img src={expand}  onClick={toggleWhenOpen} className="expand11" alt="expand" />
-                      )
-                      :
-                      (
-                        <img src={isopen}  onClick={toggleWhenOpen} className="expand11" alt="expanded"/>
-                      )
-                    }
+                  {state.accordionisopen ? (
+                    <img
+                      src={expand}
+                      onClick={toggleWhenOpen}
+                      className="expand11"
+                      alt="expand"
+                    />
+                  ) : (
+                    <img
+                      src={isopen}
+                      onClick={toggleWhenOpen}
+                      className="expand11"
+                      alt="expanded"
+                    />
+                  )}
                 </Accordion.Toggle>
               </div>
               <Accordion.Collapse eventKey="5">
@@ -541,7 +559,11 @@ const CounsellorOverview = (props: any) => {
                         >
                           <option></option>
                           {task_type.map((data, i) => (
-                            <option className="uii11" value={data.request_name} key={i}>
+                            <option
+                              className="uii11"
+                              value={data.request_name}
+                              key={i}
+                            >
                               {data.display_name}
                             </option>
                           ))}

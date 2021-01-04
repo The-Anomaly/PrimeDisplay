@@ -420,11 +420,11 @@ class CounsellorsRecommendation extends React.Component {
                 />
               </div>
               <div className="modal_det">
-                <div className="titlee">Reminder Frequency</div>
+                <div className="titlee">Reminder Frequency (days)</div>
                 <input
                   className="note_det create_det "
                   type="number"
-                  placeholder="Enter Duration "
+                  placeholder="Select how frequent you want to be reminded"
                   value={frequency}
                   name={"frequency"}
                   onChange={this.onchange}

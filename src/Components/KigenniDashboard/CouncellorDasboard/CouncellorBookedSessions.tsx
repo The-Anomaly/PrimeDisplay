@@ -540,6 +540,11 @@ const CounsellorBookedSessions = (props: any) => {
         onHide={closeModal}
       >
         <Container>
+        <div className="textright">
+            <span className="times4" onClick={closeModal}>
+              &times;
+            </span>
+          </div>
           <h6>{name}</h6>
           <span className="modal-btn">
             <a href={`/counsellor/result/${session_email}`} target="blank">

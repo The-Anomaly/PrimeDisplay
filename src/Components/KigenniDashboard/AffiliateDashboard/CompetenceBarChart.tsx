@@ -50,27 +50,27 @@ const CompetenceBarChart = (props: any) => {
           // console.log(res.data.competence);
           if (res.status === 200) {
             console.log(res);
-            if(res.data.competence){
+            if (res.data.competence) {
               setState({
                 ...state,
                 user: [...res.data.competence.data],
               });
-            return
+              return;
             }
             if (res.status === 200 && res.data.work_function) {
-                setState({
-                  ...state,
-                  user: [...res.data.work_function.data],
-                });
-              return
-              }
-            
-            if(res.data.career_motivator){
+              setState({
+                ...state,
+                user: [...res.data.work_function.data],
+              });
+              return;
+            }
+
+            if (res.data.career_motivator) {
               setState({
                 ...state,
                 user: [...res.data.career_motivator.data],
               });
-            return
+              return;
             }
           }
         })
@@ -106,11 +106,11 @@ const CompetenceBarChart = (props: any) => {
           {user && user.length > 0 ? (
             <Chart
               width={"100%"}
-              height={"500px"}
-              chartType="Bar"
+              height={"600px"}
+              chartType="BarChart"
               loader={<div>Loading Chart</div>}
               data={[
-                ["Skills","Score"],
+                ["Skills", "Score"],
                 [user[0].name, user[0].value],
                 [user[1].name, user[1].value],
                 [user[2].name, user[2].value],
@@ -121,12 +121,14 @@ const CompetenceBarChart = (props: any) => {
                 [user[7]?.name, user[7]?.value],
                 [user[8]?.name, user[8]?.value],
                 [user[9]?.name, user[9]?.value],
-                [user[10]?.name, user[10]?.value]
+                [user[10]?.name, user[10]?.value],
               ]}
               options={{
                 // Material design options
                 chart: {
-                  minSpacing: 20,
+                  width: 600,
+                  height: 400,
+                  minSpacing: 40,
                   annotations: {
                     textStyle: {
                       fontName: "inherit",
@@ -144,16 +146,16 @@ const CompetenceBarChart = (props: any) => {
                 },
                 colors: ["#2E6AF0", "#2E6AF0", "#2E6AF0"],
                 hAxis: {
-                  title: "Total Population",
+                  title: "Score",
                   minValue: 0,
                 },
                 fontSize: 12,
                 vAxis: {
-                  title: "City",
+                  title: "Skills",
                 },
               }}
               // For tests
-              rootProps={{ "data-testid": "2" }}
+              rootProps={{ "data-testid": "1" }}
             />
           ) : (
             ""
