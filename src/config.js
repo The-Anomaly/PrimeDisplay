@@ -1,5 +1,6 @@
-export const API = "https://claritystaging.herokuapp.com";
-export const webSocketAPI = "claritystaging.herokuapp.com";
+// Clarity Production API
+export const API = "https://clarityappapi.herokuapp.com";
+export const webSocketAPI = "clarityappapi.herokuapp.com";
 
 
 // export const webSocketAPI = "https://clarityappapi.herokuapp.com";

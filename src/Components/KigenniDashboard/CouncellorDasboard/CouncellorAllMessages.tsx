@@ -49,6 +49,9 @@ const CounsellorAllMessages = withRouter((props: any) => {
       modalState: true,
     });
   };
+  const checkIfIsOdd = (n) => {
+    return Math.abs(n % 2) == 1;
+  };
   React.useEffect(() => {
     getMessages();
   }, []);
