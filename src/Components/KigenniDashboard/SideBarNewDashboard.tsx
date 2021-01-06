@@ -26,7 +26,7 @@ import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
-import union from "../../assets/Union.png";
+import logoutImage from "../../assets/logout.png";
 import { toast } from "react-toastify";
 import { Modal, Spinner } from "react-bootstrap";
 import { useEffect } from "react";
@@ -36,6 +36,21 @@ const SideBarNewDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
   const [state, setState] = React.useState({ isloading: false });
   const [upgradeState, setUpgradeState] = React.useState(false);
+  const [logoutState, setLogoutState] = React.useState({ logoutModal: false });
+
+  const closeLogoutModal = () => {
+    setLogoutState({
+      ...logoutState,
+      logoutModal: false,
+    });
+  };
+  const openLogoutModal = () => {
+    setLogoutState({
+      ...logoutState,
+      logoutModal: true,
+    });
+  };
+  const { logoutModal } = logoutState;
   useEffect(() => {}, []);
   const closeUpgradeModal = () => {
     setUpgradeState(false);
@@ -292,7 +307,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
               Support
             </div>
           </Link>
-          <div className={"gbn"} onClick={logOut}>
+          <div className={"gbn"} onClick={openLogoutModal}>
             {" "}
             <span>
               <img src={logout} className="sideimage" alt="sideimage" />
@@ -325,6 +340,36 @@ const SideBarNewDashboard = withRouter((props: any) => {
             {/* <div className="retaketest upss1 planupgradebtn">
                     <Link to="/paymentsummary">Upgrade your plan</Link>
                   </div> */}
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={logoutModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeLogoutModal}
+      >
+        <Modal.Body>
+          <div className="text-center">
+            {" "}
+            <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
+          </div>
+          <div className="areusure1">
+            are you sure you want to <b> LogOut?</b>
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeLogoutModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={logOut}
+            >
+              Log out
+            </div>
           </div>
         </Modal.Body>
       </Modal>

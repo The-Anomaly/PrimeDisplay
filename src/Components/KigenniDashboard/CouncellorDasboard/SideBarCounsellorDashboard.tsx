@@ -24,12 +24,31 @@ import { Link, withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import "./councellor.css";
-import clockactive from "../../../assets/clock_active.png"
-import clockinactive from "../../../assets/clock_inactive.png"
-import referralinactive from "../../../assets/referral_inactive.png"
+import clockactive from "../../../assets/clock_active.png";
+import clockinactive from "../../../assets/clock_inactive.png";
+import referralinactive from "../../../assets/referral_inactive.png";
+import logoutImage from "../../../assets/logout.png";
+import { Modal, Spinner } from "react-bootstrap";
+
+
 
 const SideBarCounsellorDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
+  const [logoutState, setLogoutState] = React.useState({ logoutModal: false });
+  const closeLogoutModal = () => {
+    setLogoutState({
+      ...logoutState,
+      logoutModal: false,
+    });
+  };
+  const openLogoutModal = () => {
+    setLogoutState({
+      ...logoutState,
+      logoutModal: true,
+    });
+  };
+  const { logoutModal } = logoutState;
+
   const changeHideStatus = () => {
     sethidemobile(hidemobile ? false : true);
   };
@@ -42,7 +61,11 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
       <Col md={2} className={hidemobile ? "siddle siddlenone" : "siddle"}>
         <div className="dlex">
           <Link to="/counselloroverview">
-            <img src={imgCart} className="imgCart33 sidebarlogo" alt="imgCart" />
+            <img
+              src={imgCart}
+              className="imgCart33 sidebarlogo"
+              alt="imgCart"
+            />
           </Link>
         </div>{" "}
         <div className={hidemobile ? "navitemnone" : "navitem1 newitem"}>
@@ -56,9 +79,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               Overview
             </Link>
           </div>
-          <div
-            className={props.bookedsession ? "activegb" : "gbn"}
-          >
+          <div className={props.bookedsession ? "activegb" : "gbn"}>
             <Link to="/counsellorbookings">
               <img
                 src={props.bookedsession ? activeinsight : inactiveinsight}
@@ -139,11 +160,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
             {" "}
             <Link to="/referrals">
               <img
-                src={
-                  props.counreferral
-                    ? referralinactive
-                    : referralinactive
-                }
+                src={props.counreferral ? referralinactive : referralinactive}
                 className="sideimage"
                 alt="sideimage"
               />
@@ -166,9 +183,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
             {" "}
             <Link to="/counsellorsupport">
               <img
-                src={
-                  props.counselorsupport ? supportactive : supportinactive
-                }
+                src={props.counselorsupport ? supportactive : supportinactive}
                 className="sideimage"
                 alt="sideimage"
               />
@@ -188,13 +203,43 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
           </div> */}
           <div className={"gbn"}>
             {" "}
-            <span onClick={logOut}>
+            <span onClick={openLogoutModal}>
               <img src={logout} className="sideimage" alt="sideimage" />
               Logout
             </span>
           </div>
         </div>
       </Col>
+      <Modal
+        show={logoutModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeLogoutModal}
+      >
+        <Modal.Body>
+          <div className="text-center">
+            {" "}
+            <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
+          </div>
+          <div className="areusure1">
+            are you sure you want to <b> LogOut?</b>
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeLogoutModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={logOut}
+            >
+              Log out
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 });

@@ -5,7 +5,7 @@ import DashboardNav from "./DashboardNavBar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import userimg from "../../assets/userimg.png";
+import userimg from "../../assets/avatar.svg";
 import { Link, withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";

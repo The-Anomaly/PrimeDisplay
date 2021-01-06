@@ -14,7 +14,9 @@ import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import search from "../../../assets/search.png";
 import moment from "moment";
 import noplan from "../../../assets/noplan.png";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Modal, Form } from "react-bootstrap";
+import searchimage from "../../../assets/search.png";
+import avatar from "../../../assets/avatar.svg";
 
 const CounsellorAllMessages = withRouter((props: any) => {
   const [state, setState] = React.useState<any>({
@@ -24,8 +26,29 @@ const CounsellorAllMessages = withRouter((props: any) => {
     searchKey: "",
     isLoading: false,
     isloading: false,
+    modalState: true,
+    search_1: "",
   });
-  const { errorMessage, isloading, counsellorData, searchKey } = state;
+  const {
+    errorMessage,
+    isloading,
+    counsellorData,
+    searchKey,
+    modalState,
+    search_1,
+  } = state;
+  const closeModal = () => {
+    setState({
+      ...state,
+      modalState: false,
+    });
+  };
+  const openModal = () => {
+    setState({
+      ...state,
+      modalState: true,
+    });
+  };
   React.useEffect(() => {
     getMessages();
   }, []);
@@ -228,6 +251,55 @@ const CounsellorAllMessages = withRouter((props: any) => {
           </Col>
         </Row>
       </Container>
+      <Modal
+        show={modalState}
+        className="userlist10"
+        centered={true}
+        onHide={closeModal}
+      >
+        {" "}
+        <div className="textright22">
+          <span className="times42" onClick={closeModal}>
+            &times;
+          </span>
+        </div>
+        <Modal.Body>
+          <div className="wrrrz">
+            <div className="wrrrz1">
+              <div className="selezr">Select a User</div>
+              <div className="sele2">To send a message</div>
+            </div>
+            <div className="wrrrz2">
+              <span className="searchimage1">
+                <img src={searchimage} className="searchimage11" />
+              </span>
+              <Form.Control
+                type="text"
+                onChange={onchange}
+                required
+                value={search_1}
+                className={"frmcttl1"}
+                name="search_1"
+                placeholder="Search Client by Name"
+              />
+            </div>
+          </div>
+          <div className="rubbg">
+            <div className="janame2">
+              <img src={avatar} className="avatarb" alt="avatar" />
+            </div>
+            <div className="jname1">Jayeola Jones</div>
+            <div className="jemail1">jaye@user.com</div>
+          </div>
+          <div className="rubbg lightbg">
+            <div className="janame2">
+              <img src={avatar} className="avatarb" alt="avatar" />
+            </div>
+            <div className="jname1">Jayeola Jones</div>
+            <div className="jemail1">jaye@user.com</div>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 });

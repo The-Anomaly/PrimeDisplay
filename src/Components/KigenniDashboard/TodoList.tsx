@@ -25,7 +25,10 @@ import "react-toastify/dist/ReactToastify.css";
 import ViewMoreModal from "./ViewMoreModal";
 import noplan from "../../assets/noplan.png";
 import { Spinner } from "react-bootstrap";
+import logoutImage from "../../assets/logout.png";
 const moment = require("moment");
+
+
 
 const TodoList = (props: any) => {
   const [state, setFormState] = React.useState<any>({
@@ -57,6 +60,22 @@ const TodoList = (props: any) => {
     viewmoreisOpen: false,
     CreateTaskModalisOpen: false,
   });
+  const [ConfirmationState, setConfirmationState] = React.useState({ confirmationModal: false });
+
+  const closeConfirmationModal = () => {
+    setConfirmationState({
+      ...ConfirmationState,
+      confirmationModal: false,
+    });
+  };
+  const openConfirmationModal = () => {
+    setConfirmationState({
+      ...ConfirmationState,
+      confirmationModal: true,
+    });
+  };
+  const { confirmationModal } = ConfirmationState;
+
   const { errorMessage, tasklist, nextLink, prevLink, reason,isloading, success } = state;
   const {
     task_title,
@@ -526,7 +545,7 @@ const TodoList = (props: any) => {
           <div className="mark_complete">
             <div
               className="savebtn todo_button markit"
-              onClick={submitTaskIsCompleteForm}
+              onClick={openConfirmationModal}
             >
               Mark as Complete
             </div>
@@ -675,6 +694,36 @@ const TodoList = (props: any) => {
             <div className="titlee">Counselor's Input</div>
             <textarea className="task_det" disabled={true}></textarea>
           </div> */}
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={confirmationModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeConfirmationModal}
+      >
+        <Modal.Body>
+          <div className="text-center">
+            {" "}
+            <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
+          </div>
+          <div className="areusure1">
+            are you sure you want to <b> do this?</b>
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeConfirmationModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={submitTaskIsCompleteForm}
+            >
+              Continue
+            </div>
+          </div>
         </Modal.Body>
       </Modal>
       <ToastContainer

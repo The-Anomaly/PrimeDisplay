@@ -29,12 +29,28 @@ import { API } from "../../../config";
 import clockactive from "../../../assets/clock_active.png";
 import clockinactive from "../../../assets/clock_inactive.png";
 import referralinactive from "../../../assets/referral_inactive.png";
-import starrating from "../../../assets/starrating.png";
+import logoutImage from "../../../assets/logout.png";
+import { Modal, Spinner } from "react-bootstrap";
 import supportactive from "../../../assets/Support_active.png";
 
 const CounsellorsDashboardMobileNav = (props: any) => {
   const [user, setNewState] = React.useState("");
   const [showNav, setShowNav]: any = React.useState(false);
+  const [logoutState, setLogoutState] = React.useState({ logoutModal: false });
+  const closeLogoutModal = () => {
+    setLogoutState({
+      ...logoutState,
+      logoutModal: false,
+    });
+  };
+  const openLogoutModal = () => {
+    setLogoutState({
+      ...logoutState,
+      logoutModal: true,
+    });
+  };
+  const { logoutModal } = logoutState;
+
   const logOutMobile = (e) => {
     e.preventDefault();
     const details: any = localStorage.getItem("userDetails");
@@ -241,7 +257,7 @@ const CounsellorsDashboardMobileNav = (props: any) => {
           </div> */}
               <div className={"gbn"}>
                 {" "}
-                <span onClick={logOut}>
+                <span onClick={openLogoutModal}>
                   <img src={logout} className="sideimage" alt="sideimage" />
                   Logout
                 </span>
@@ -250,6 +266,36 @@ const CounsellorsDashboardMobileNav = (props: any) => {
           </div>,
         ]}
       />
+      <Modal
+        show={logoutModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeLogoutModal}
+      >
+        <Modal.Body>
+          <div className="text-center">
+            {" "}
+            <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
+          </div>
+          <div className="areusure1">
+            are you sure you want to <b> LogOut?</b>
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeLogoutModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={logOut}
+            >
+              Log out
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
