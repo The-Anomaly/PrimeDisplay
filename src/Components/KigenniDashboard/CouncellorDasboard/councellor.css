@@ -4272,6 +4272,7 @@ textarea.form-control.jobr {
 }
 .userlist10 .modal-dialog .modal-content {
   padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .wrrrz2 {
   width: 50%;
@@ -4326,7 +4327,10 @@ textarea.form-control.jobr {
   padding-bottom: 1rem;
 }
 .avatarb{
-  width: 30px;
+  width: 35px;
+  border-radius: 50%;
+  object-fit: fill;
+  height: 35px;
 }
 .janame2{
   width:15%;

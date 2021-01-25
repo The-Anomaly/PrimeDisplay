@@ -29,8 +29,10 @@ class CounsellorSettings extends React.Component {
     showWarning: false,
     image: null,
     width: 100,
-    isloading:false,
+    isloading: false,
     fillStatus: true,
+    imageName: "",
+    uploadLoading: false,
   };
   validateForm = (e) => {
     const {
@@ -63,13 +65,55 @@ class CounsellorSettings extends React.Component {
   };
   handleImageChange = (e) => {
     this.setState({
-      image: e.target.files[0],
+      // image: e.target.files[0],
+      imageName: e.target.files[0].name,
     });
+    const img = e.target.files[0];
+    this.uploadImage(img);
+  };
+  uploadImage = (img) => {
+    this.setState({
+      uploadLoading:true
+    })
+    const self: any = this;
+    const { image } = this.state;
+    console.log(image);
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    const data = new FormData();
+    data.append("image", img);
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/dashboard/upload-profile-photo`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        this.setState({
+          uploadLoading: false,
+        });
+        console.log(res.data);
+        this.notify("Successful");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((err) => {
+        this.setState({
+          uploadLoading: false,
+        });
+        console.log(err.response);
+        this.notify("failed");
+        if (err) {
+          console.log(err);
+        }
+      });
   };
   submitForm = (e) => {
     this.setState({
-      isloading:true
-    })
+      isloading: true,
+    });
     e.preventDefault();
     const {
       first_name,
@@ -84,7 +128,7 @@ class CounsellorSettings extends React.Component {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = new FormData();
-    data.append("image", image);
+    // data.append("image", image);
     data.append("last_name", last_name);
     data.append("first_name", first_name);
     data.append("email", email);
@@ -92,13 +136,9 @@ class CounsellorSettings extends React.Component {
     data.append("phone", phone);
     data.append("job_description", job_description);
     data.append("website_link", website_link);
-    Axios.post<any, AxiosResponse<any>>(
-      `${API}/counsellors/settings/`,
-      data,
-      {
-        headers: { Authorization: `Token ${token}` },
-      }
-    )
+    Axios.post<any, AxiosResponse<any>>(`${API}/counsellors/settings/`, data, {
+      headers: { Authorization: `Token ${token}` },
+    })
       .then((res) => {
         //this.notify("Successful");
         setTimeout(() => {
@@ -117,7 +157,6 @@ class CounsellorSettings extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    
   };
   fileInput: HTMLInputElement | null | undefined;
   componentDidMount() {
@@ -152,7 +191,7 @@ class CounsellorSettings extends React.Component {
   }
   render() {
     const {
-      fullname,
+      imageName,
       email,
       address,
       image,
@@ -160,6 +199,7 @@ class CounsellorSettings extends React.Component {
       first_name,
       last_name,
       job_description,
+      uploadLoading,
       website_link,
       isloading,
     } = this.state;
@@ -198,19 +238,24 @@ class CounsellorSettings extends React.Component {
                               className="filechan"
                               onClick={() => this.fileInput?.click()}
                             >
-                              Upload Image
+                              <div
+                                className="filechan"
+                                onClick={() => this.fileInput?.click()}
+                              >
+                                {uploadLoading
+                                  ? "Uploading..."
+                                  : "Upload Image"}
+                              </div>
                             </div>
-                            <span className="infoforimage">
-                              Image should be 80 &times; 80 pixels
-                            </span>
-                            <span className="gray-text">{this.state?.image?.name}</span>
+                            {imageName && (
+                              <span className="infoforimage">{imageName}</span>
+                            )}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div>
-                  </div>
+                  <div></div>
                   <Row>
                     <Col md={12}>
                       <hr />
@@ -345,7 +390,7 @@ class CounsellorSettings extends React.Component {
                       className="kskthin col-md-11 retaketest subsupport"
                       onClick={this.validateForm}
                     >
-                      { isloading? "Saving...":" Save Profile"}
+                      {isloading ? "Saving..." : " Save Profile"}
                     </div>
                   </div>
                 </Col>

@@ -27,9 +27,10 @@ class NewDashboardSettings extends React.Component {
     isloading: false,
     showWarning: false,
     image: null,
-    imageName:"",
+    imageName: "",
     width: 100,
     fillStatus: true,
+    uploadLoading: "",
   };
   validateForm = (e) => {
     const {
@@ -62,9 +63,48 @@ class NewDashboardSettings extends React.Component {
   };
   handleImageChange = (e) => {
     this.setState({
-      image: e.target.files[0],
-      imageName:e.target.files
+      // image: e.target.files[0],
+      uploadLoading: true,
+      imageName: e.target.files[0].name,
     });
+    const img = e.target.files[0];
+    this.uploadImage(img);
+  };
+  uploadImage = (img) => {
+    const self: any = this;
+    const { image } = this.state;
+    console.log(image);
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    const data = new FormData();
+    data.append("image", img);
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/dashboard/upload-profile-photo`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        this.setState({
+          uploadLoading: false,
+        });
+        console.log(res.data);
+        this.notify("Successful");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((err) => {
+        this.setState({
+          uploadLoading: false,
+        });
+        console.log(err.response);
+        this.notify("failed");
+        if (err) {
+          console.log(err);
+        }
+      });
   };
   submitForm = (e) => {
     this.setState({
@@ -84,7 +124,7 @@ class NewDashboardSettings extends React.Component {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = new FormData();
-    data.append("image", image);
+    // data.append("image", image);
     data.append("last_name", last_name);
     data.append("first_name", first_name);
     data.append("email", email);
@@ -165,6 +205,8 @@ class NewDashboardSettings extends React.Component {
       website_link,
       isloading,
       isLoading,
+      imageName,
+      uploadLoading,
     } = this.state;
     // console.log(this.state.image);
     return (
@@ -193,20 +235,17 @@ class NewDashboardSettings extends React.Component {
                             type="file"
                             onChange={this.handleImageChange}
                             style={{ display: "none" }}
-                            ref={(fileInput) => 
-                              (this.fileInput = fileInput)
-                            }
+                            ref={(fileInput) => (this.fileInput = fileInput)}
                           />
                           <div
                             className="filechan"
                             onClick={() => this.fileInput?.click()}
                           >
-                            Upload Image
+                            {uploadLoading ? "Uploading..." : "Upload Image"}
                           </div>
-                          <span className="infoforimage">
-                            Image should be 80 &times; 80 pixels
-                          </span>
-                          <span className="gray-text">{this.state?.image?.name}</span>
+                          {imageName && (
+                            <span className="infoforimage">{imageName}</span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -347,7 +386,7 @@ class NewDashboardSettings extends React.Component {
                     >
                       {isloading ? "Saving..." : "Save"}
                     </div>
-                  </div> 
+                  </div>
                 </Col>
                 <ToastContainer
                   enableMultiContainer

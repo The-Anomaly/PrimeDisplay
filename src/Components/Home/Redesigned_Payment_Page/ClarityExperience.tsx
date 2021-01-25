@@ -101,7 +101,7 @@ const Payment = (props: any) => {
     }
     //  else if (selectedSubscription === "One-off Direction Plan") {
     //   return giftSubscriptionPayref("One-off Direction Plan", 10000);
-    // } 
+    // }
     else if (selectedSubscription === "Progressive Insight Plan") {
       return giftSubscriptionPayref("Progressive Insight Plan", 12000);
     } else if (selectedSubscription === "Progressive Directive Plan") {
@@ -705,6 +705,14 @@ const Payment = (props: any) => {
                               <div>
                                 <img src={mark_blue} className="card-image" />
                               </div>
+                              Unlimited Chat Access with Coaches & Counsellors
+                            </div>
+                          </li>
+                          <li>
+                            <div className="card-list-box">
+                              <div>
+                                <img src={mark_blue} className="card-image" />
+                              </div>
                               Feedback on execution of recommended tasks
                               assigned by counsellor
                             </div>
@@ -759,7 +767,7 @@ const Payment = (props: any) => {
                         <ul className="card-list">
                           <li>
                             <img src={mark_green} className="card-image" />
-                            Everything under{" "}
+                            All Services listed under{" "}
                             <span className="blue">DIRECTION</span>
                           </li>
                           <li>
@@ -767,8 +775,39 @@ const Payment = (props: any) => {
                               <div>
                                 <img src={mark_green} className="card-image" />
                               </div>
-                              40 minutes career-planning session with a Clarity
-                              counselor X2
+                              2 hours of a One-on-one, Personalised Career
+                              Planning Session with a Clarity Counsellor at the
+                              beginning of the month
+                            </div>
+                          </li>
+                          <li>
+                            <div className="card-list-box">
+                              <div>
+                                <img src={mark_green} className="card-image" />
+                              </div>
+                              Receive Post-session Recommendations from your
+                              Counsellor on How to Track and Achieve your Career
+                              Goals as well as Suitable Activities to Engage In,
+                              all highlighted on your Personal Dashboard
+                            </div>
+                          </li>
+                          <li>
+                            <div className="card-list-box">
+                              <div>
+                                <img src={mark_green} className="card-image" />
+                              </div>
+                              Weekly Check-ins and Goal Tracking via the
+                              Platform
+                            </div>
+                          </li>
+                          <li>
+                            <div className="card-list-box">
+                              <div>
+                                <img src={mark_green} className="card-image" />
+                              </div>
+                              2 hours of a One-on-one Follow-up Session with
+                              your Clarity Counsellor to review progress at the
+                              end of the month
                             </div>
                           </li>
                         </ul>

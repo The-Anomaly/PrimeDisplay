@@ -100,12 +100,6 @@ const SideBarNewDashboard = withRouter((props: any) => {
       // console.log("Job opportunities successful");
       return window.location.assign("/jobopportunities");
     } else {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access job opportunities");
-      // return setTimeout(
-      //   (window.location.pathname = "/dashboardsubscriptionplan"),
-      //   2000
-      // );
       return setUpgradeState(true);
     }
   };
@@ -173,17 +167,6 @@ const SideBarNewDashboard = withRouter((props: any) => {
               ""
             )}
           </div>
-          {/* <div className={props.chat ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/allusermessages">
-              <img
-                src={props.chat ? chatactive : chatinactive}
-                className="sideimage"
-                alt="sideimage"
-              />
-              Chat with a Counsellor
-            </Link>
-          </div> */}
           <div className={props.chat ? "activegb" : "gbn"}>
             {" "}
             <Accordion defaultActiveKey="">

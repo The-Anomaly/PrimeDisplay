@@ -1414,6 +1414,7 @@ abbr[title] {
 .kisls {
   padding-left: 3rem;
   padding-top: 3rem;
+  min-height: 90vh;
 }
 .ksname {
   font-weight: 800;
@@ -1811,6 +1812,7 @@ textarea.form-control.jobr {
 }
 .printcv {
   padding-bottom: 1rem;
+  padding-top:1rem
 }
 .experience {
   margin-top: 0.5rem;
@@ -4172,4 +4174,14 @@ label {
   text-overflow: unset;
   overflow: hidden;
   font-size: 14px;
+}
+.Toastify__toast--default {
+  background: #001833d0 !important;
+  color: #aaa;
+  padding: 2rem;
+  border-radius: 1rem;
+  border:2px solid white;
+}
+.Toastify__close-button--default{
+  color: white;
 }
