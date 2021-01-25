@@ -4166,3 +4166,33 @@ label {
     margin-top: -8rem;
   }
 }
+.jbdescr {
+  padding-top: 1rem;
+  min-height: 100px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+.jbdescr:active, .jbdescr:hover, .jbdescr:visited {
+  outline: 1px solid #e5e5e5;
+}
+.infoforsave {
+  font-size: 12px;
+  letter-spacing: normal;
+  background: #3964ff23;
+  color: #3965ff;
+  padding: 0.5rem;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+.sskill {
+  padding-top: 3rem !important;
+}
+.dateinputt {
+  padding-top: 1rem !important;
+}
+.newrtt {
+  margin-top: 1rem;
+}
+.socialpad {
+  padding-top: 1rem !important;
+}

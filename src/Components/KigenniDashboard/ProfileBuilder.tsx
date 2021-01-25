@@ -157,7 +157,7 @@ class ProfileBuilder extends React.Component {
       certificateName: "",
       valid_from: "",
       valid_till: "",
-      expirationStatus: "",
+      expirationStatus: false,
       certificateInstitution: "",
     });
   };
@@ -213,7 +213,7 @@ class ProfileBuilder extends React.Component {
       organizationname: "",
       organizationposition: "",
       jobdescription: "",
-      mycurrentwork: "",
+      mycurrentwork: false,
       startDate: "",
       endDate: "",
     });
@@ -261,6 +261,9 @@ class ProfileBuilder extends React.Component {
           isloading:false
         })
         this.notify("Successful");
+        setTimeout(() => {
+          window.location.assign("/profilebuilder");
+        });
       })
       .catch((err) => {
         if (err) {
@@ -513,14 +516,22 @@ class ProfileBuilder extends React.Component {
                           <div className="whatdoudo" id="about">
                             About{" "}
                           </div>
-                          <input
+                          <textarea
+                            className="form-control jobr jbdescr"
+                            value={about}
+                            onChange={this.handleChange}
+                            id="about"
+                            placeholder="Provide a description of what defines you and your process"
+                          >
+                          </textarea>
+                          {/* <input
                             type="text"
                             className="form-control jobr"
                             value={about}
                             onChange={this.handleChange}
                             id="about"
                             placeholder="Provide a description of what defines you and your process"
-                          />
+                          /> */}
                         </Col>
                       </Row>
                       <hr />
@@ -535,6 +546,9 @@ class ProfileBuilder extends React.Component {
                                 title="Add entry"
                               >
                                 <span className="addone"> +</span>
+                                <span className="infoforsave">
+                                From older to latest experience
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -550,7 +564,7 @@ class ProfileBuilder extends React.Component {
                               />
                             </Col>
                             <Col md={6}>
-                              <div className="whatdoudo offpad"></div>
+                              {/* <div className="whatdoudo offpad"></div> */}
                               <div className="plusnew1">Position</div>
                               <textarea
                                 id="organizationposition"
@@ -568,7 +582,7 @@ class ProfileBuilder extends React.Component {
                                 type="date"
                                 value={startDate}
                                 id="startDate"
-                                className="fmc jobr subhyt"
+                                className="fmc jobr subhyt dateinputt"
                                 onChange={this.handleChange}
                               ></Form.Control>
                             </Col>
@@ -597,7 +611,7 @@ class ProfileBuilder extends React.Component {
                                 type="date"
                                 value={endDate}
                                 id="endDate"
-                                className="fmc jobr subhyt"
+                                className="fmc jobr subhyt dateinputt"
                                 onChange={this.handleChange}
                                 disabled={mycurrentwork ? true : false}
                               ></Form.Control>
@@ -606,7 +620,17 @@ class ProfileBuilder extends React.Component {
                           <Row className="rowla">
                             <Col md={12}>
                               <div className="plusnew1">Job Description</div>
-                              <input
+                              <textarea 
+                                name=""
+                                id="jobdescription"
+                                onChange={this.handleChange}
+                                className="form-control jobr jbdescr"
+                                placeholder="Enter a job descrption"
+                                value={jobdescription}
+                                >
+                                
+                                </textarea>
+                              {/* <input
                                 name=""
                                 id="jobdescription"
                                 value={jobdescription}
@@ -618,15 +642,18 @@ class ProfileBuilder extends React.Component {
                                   }
                                 }}
                                 placeholder=""
-                              />
+                              /> */}
                             </Col>
                           </Row>
                           <div
-                            className="plusnew rtt"
+                            className="plusnew rtt newrtt"
                             onClick={this.addExperience}
                             title="Add entry"
                           >
                             <span className="addone wrarr">Save</span>
+                            <span className="infoforsave">
+                            Click to save entry and add another
+                            </span>
                           </div>
                         </Col>
                         {experiences.map((data, index) => (
@@ -678,7 +705,7 @@ class ProfileBuilder extends React.Component {
                                 <Form.Control
                                   value={data.started_from}
                                   id="startDate"
-                                  className="fmc jobr subhyt subhyt12"
+                                  className="fmc jobr subhyt subhyt12 dateinputt"
                                   disabled={true}
                                 ></Form.Control>
                               </Col>
@@ -778,7 +805,7 @@ class ProfileBuilder extends React.Component {
                                 type="date"
                                 value={education_valid_from}
                                 id="education_valid_from"
-                                className="fmc jobr subhyt"
+                                className="fmc jobr subhyt dateinputt"
                                 onChange={this.handleChange}
                               ></Form.Control>
                             </Col>
@@ -807,7 +834,7 @@ class ProfileBuilder extends React.Component {
                                 type="date"
                                 value={education_valid_till}
                                 id="education_valid_till"
-                                className="fmc jobr subhyt"
+                                className="fmc jobr subhyt dateinputt"
                                 onChange={this.handleChange}
                                 disabled={
                                   education_doesnot_expire ? true : false
@@ -831,11 +858,14 @@ class ProfileBuilder extends React.Component {
                             </Col>
                           </Row>
                           <div
-                            className="plusnew rtt"
+                            className="plusnew rtt newrtt"
                             onClick={this.addNewEducation}
                             title="Add entry"
                           >
                             <span className="addone wrarr">Save</span>
+                            <span className="infoforsave">
+                            Click to save entry and add another
+                            </span>
                           </div>
                         </Col>
                         {education.map((data, index) => (
@@ -881,7 +911,7 @@ class ProfileBuilder extends React.Component {
                                   value={data.start_date}
                                   id="valid_from"
                                   disabled={true}
-                                  className="fmc jobr subhyt"
+                                  className="fmc jobr subhyt dateinputt"
                                 ></Form.Control>
                               </Col>
                               <Col md={6}>
@@ -912,7 +942,7 @@ class ProfileBuilder extends React.Component {
                                   type="date"
                                   value={data.end_date}
                                   id="end_date"
-                                  className="fmc jobr subhyt"
+                                  className="fmc jobr subhyt dateinputt"
                                   onChange={this.handleChange}
                                   disabled={true}
                                 ></Form.Control>
@@ -974,7 +1004,8 @@ class ProfileBuilder extends React.Component {
                               }
                             }}
                             onChange={this.handleChange}
-                            className="form-control jobr"
+                            className="form-control jobr sskill"
+                            placeholder="Type in a skill and click enter to add it"
                           />
                         </Col>
                       </Row>
@@ -1025,7 +1056,7 @@ class ProfileBuilder extends React.Component {
                                 type="date"
                                 value={valid_from}
                                 id="valid_from"
-                                className="fmc jobr subhyt"
+                                className="fmc jobr subhyt dateinputt"
                                 onChange={this.handleChange}
                               ></Form.Control>
                               <Col md={6}>
@@ -1052,7 +1083,7 @@ class ProfileBuilder extends React.Component {
                                 type="date"
                                 value={valid_till}
                                 id="valid_till"
-                                className="fmc jobr subhyt"
+                                className="fmc jobr subhyt dateinputt"
                                 disabled={expirationStatus ? true : false}
                                 onChange={this.handleChange}
                                 onKeyPress={(e) => {
@@ -1064,11 +1095,14 @@ class ProfileBuilder extends React.Component {
                             </Col>
                           </Row>
                           <div
-                            className="plusnew rtt"
+                            className="plusnew rtt newrtt"
                             onClick={this.addNewCertification}
                             title="Add entry"
                           >
                             <span className="addone wrarr">Save</span>
+                            <span className="infoforsave">
+                            Click to save entry and add another
+                            </span>
                           </div>
                         </Col>
                         {certifications.map((data, index) => (
@@ -1118,7 +1152,7 @@ class ProfileBuilder extends React.Component {
                                   type="date"
                                   value={data.valid_from}
                                   id="valid_from"
-                                  className="fmc jobr subhyt plusnew12"
+                                  className="fmc jobr subhyt plusnew12 dateinputt"
                                   onChange={this.handleChange}
                                 ></Form.Control>
                                 <Col md={6}>
@@ -1144,7 +1178,7 @@ class ProfileBuilder extends React.Component {
                                   type="date"
                                   value={data.valid_till}
                                   id="valid_till"
-                                  className="fmc jobr subhyt plusnew12"
+                                  className="fmc jobr subhyt plusnew12 dateinputt"
                                   onChange={this.handleChange}
                                 ></Form.Control>
                               </Col>
@@ -1171,17 +1205,6 @@ class ProfileBuilder extends React.Component {
                       </div>
                       <Row>
                         <Col md={6}>
-                          <div className="plusnew1"> Name</div>
-                          <textarea
-                            name=""
-                            id="referencename"
-                            onChange={this.handleChange}
-                            value={referencename}
-                            className="form-control jobr subhyt"
-                            placeholder=""
-                          />
-                        </Col>
-                        <Col md={6}>
                           <div className="whatdoudo offpad"></div>
                           <div className="plusnew1">Title</div>
                           <textarea
@@ -1189,6 +1212,17 @@ class ProfileBuilder extends React.Component {
                             id="referencetitle"
                             value={referencetitle}
                             onChange={this.handleChange}
+                            className="form-control jobr subhyt"
+                            placeholder=""
+                          />
+                        </Col>
+                        <Col md={6}>
+                          <div className="plusnew1"> Name</div>
+                          <textarea
+                            name=""
+                            id="referencename"
+                            onChange={this.handleChange}
+                            value={referencename}
                             className="form-control jobr subhyt"
                             placeholder=""
                           />
@@ -1235,11 +1269,14 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                       <div
-                        className="plusnew rtt"
+                        className="plusnew rtt newrtt"
                         onClick={this.addNewReferences}
                         title="Add entry"
                       >
                         <span className="addone wrarr">Save</span>
+                        <span className="infoforsave">
+                            Click to save entry and add another
+                            </span>
                       </div>
                     </Col>
                     {references.map((data, index) => (
@@ -1332,8 +1369,8 @@ class ProfileBuilder extends React.Component {
                             id="linkedin"
                             value={linkedin}
                             onChange={this.handleChange}
-                            className="form-control jobr subhyt"
-                            placeholder=""
+                            className="form-control jobr subhyt socialpad"
+                            placeholder="linkedin.com/jaiyeola-jones"
                           />
                         </Col>
                         <Col md={6}>
@@ -1344,8 +1381,8 @@ class ProfileBuilder extends React.Component {
                             id="twitter"
                             value={twitter}
                             onChange={this.handleChange}
-                            className="form-control jobr subhyt"
-                            placeholder=""
+                            className="form-control jobr subhyt socialpad"
+                            placeholder="twitter.com/jaiyeola-jones"
                           />
                         </Col>
                       </Row>
@@ -1357,8 +1394,8 @@ class ProfileBuilder extends React.Component {
                             id="facebook"
                             value={facebook}
                             onChange={this.handleChange}
-                            className="form-control jobr subhyt"
-                            placeholder=""
+                            className="form-control jobr subhyt socialpad"
+                            placeholder="facebook.com/jaiyeola-jones"
                           />
                         </Col>
                         <Col md={6}>
@@ -1369,8 +1406,8 @@ class ProfileBuilder extends React.Component {
                             id="instagram"
                             value={instagram}
                             onChange={this.handleChange}
-                            className="form-control jobr subhyt"
-                            placeholder=""
+                            className="form-control jobr subhyt socialpad"
+                            placeholder="instagram.com/jaiyeola-jones"
                           />
                         </Col>
                       </Row>
@@ -1378,12 +1415,12 @@ class ProfileBuilder extends React.Component {
                   </Row> */}
                   <Row>
                     <Col md={12} className="printcv">
-                      <Link to="/profilebuilder">
+                      {/* <Link to="/profilebuilder">
                         {" "}
                         <div className="print">Preview</div>
-                      </Link>
+                      </Link> */}
                       <div className="savebtn" onClick={this.submitForm}>
-                       {isloading?"Saving":"Save"}
+                       {isloading? "Saving..." : "Save"}
                       </div>
                     </Col>
                   </Row>
