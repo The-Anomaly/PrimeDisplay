@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DashboardCounsellorIntroHeader from "./DashboardCounsellorIntroHeader";
-import userimg from "../../../assets/userimg.png";
+import userimg from "../../../assets/avatar.svg";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
 import prevpage from "../../../assets/prevpage.svg";
@@ -64,7 +64,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          // console.log(res);
+          console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,

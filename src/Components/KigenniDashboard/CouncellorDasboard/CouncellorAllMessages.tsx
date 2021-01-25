@@ -14,18 +14,47 @@ import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import search from "../../../assets/search.png";
 import moment from "moment";
 import noplan from "../../../assets/noplan.png";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Modal, Form } from "react-bootstrap";
+import searchimage from "../../../assets/search.png";
+import avatar from "../../../assets/avatar.svg";
+import newmessage from "../../../assets/newmessage.png";
 
 const CounsellorAllMessages = withRouter((props: any) => {
   const [state, setState] = React.useState<any>({
     errorMessage: "",
     user: [],
     counsellorData: [],
+    chatList: [],
     searchKey: "",
     isLoading: false,
     isloading: false,
+    modalState: false,
+    search_1: "",
   });
-  const { errorMessage, isloading, counsellorData, searchKey } = state;
+  const {
+    errorMessage,
+    isloading,
+    counsellorData,
+    searchKey,
+    modalState,
+    search_1,
+    chatList,
+  } = state;
+  const closeModal = () => {
+    setState({
+      ...state,
+      modalState: false,
+    });
+  };
+  const openModal = () => {
+    setState({
+      ...state,
+      modalState: true,
+    });
+  };
+  const checkIfIsOdd = (n) => {
+    return Math.abs(n % 2) == 1;
+  };
   React.useEffect(() => {
     getMessages();
   }, []);
@@ -43,16 +72,20 @@ const CounsellorAllMessages = withRouter((props: any) => {
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/get-chats`, {
         headers: { Authorization: `Token ${token}` },
       }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/chat-list/`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
     ])
       .then(
-        Axios.spread((res) => {
-          // console.log(res);
+        Axios.spread((res, res2) => {
+          console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
               counsellorData: [...res.data].reverse(),
               errorMessage: "",
               isloading: false,
+              chatList: [...res2.data.results],
             });
           }
         })
@@ -74,6 +107,59 @@ const CounsellorAllMessages = withRouter((props: any) => {
         });
       });
   };
+  const startChat = (useremail) => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const user1: any = localStorage.getItem("user");
+    const User = JSON.parse(user1);
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/start-chat`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          // console.log(User);
+          // console.log(res);
+          window.location.assign(
+            `/counsellormessagehistory/${useremail}/${res.data.chatId}`
+          );
+          if (res.status === 200) {
+            return setState({
+              ...state,
+              errorMessage: "",
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error?.response?.status === 400) {
+          setState({
+            ...state,
+            errorMessage: error.response.data.message,
+            userData: [],
+          });
+        }
+        // console.log(error.response);
+        if (error && error.response && error.response.data) {
+          return setState({
+            ...state,
+            errorMessage: error?.response?.data?.message,
+            isLoading: false,
+            userData: [],
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+
   const onchange = (e) => {
     setState({
       ...state,
@@ -134,6 +220,56 @@ const CounsellorAllMessages = withRouter((props: any) => {
   const formatTime = (date) => {
     return moment(date).fromNow();
   };
+  const searchUserlist = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/counsellor/chat-list/?query=${search_1}`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            return setState({
+              ...state,
+              chatList: [...res.data.results],
+              errorMessage: "",
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error?.response?.status == 400) {
+          setState({
+            ...state,
+            errorMessage: error.response.data.message,
+            counsellorData: [],
+          });
+        }
+        // console.log(error.response);
+        if (error && error.response && error.response.data) {
+          return setState({
+            ...state,
+            errorMessage: error?.response?.data?.message,
+            isLoading: false,
+            counsellorData: [],
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -181,7 +317,11 @@ const CounsellorAllMessages = withRouter((props: any) => {
                           <div className="useri1222 ui1222 ssgs">
                             <div className="msg1">
                               <img
-                                src={userimg}
+                                src={
+                                  data.message.photo
+                                    ? data.message.photo
+                                    : avatar
+                                }
                                 className="userimg imguserrr"
                                 alt="userphoto"
                               />
@@ -224,10 +364,70 @@ const CounsellorAllMessages = withRouter((props: any) => {
                   </Col>
                 </Row>
               </Col>
+              <img
+                src={newmessage}
+                onClick={openModal}
+                title="New Message"
+                className="newmessage12"
+                alt="newmessage"
+              />{" "}
             </Row>
           </Col>
         </Row>
       </Container>
+      <Modal
+        show={modalState}
+        className="userlist10"
+        centered={true}
+        onHide={closeModal}
+      >
+        {" "}
+        <div className="textright22">
+          <span className="times42" onClick={closeModal}>
+            &times;
+          </span>
+        </div>
+        <Modal.Body>
+          <div className="wrrrz">
+            <div className="wrrrz1">
+              <div className="selezr">Select a User</div>
+              <div className="sele2">To send a message</div>
+            </div>
+            <div className="wrrrz2">
+              <span className="searchimage1">
+                <img src={searchimage} className="searchimage11" />
+              </span>
+              <Form.Control
+                type="text"
+                onChange={onchange}
+                required
+                value={search_1}
+                onKeyPress={(e) => {
+                  if (e.key == "Enter") {
+                    searchUserlist();
+                  }
+                }}
+                className={"frmcttl1"}
+                name="search_1"
+                placeholder="Search Client by Name"
+              />
+            </div>
+          </div>
+          {chatList.map((data, i) => (
+            <div className={checkIfIsOdd(i) ? "rubbg" : "rubbg lightbg"} key={i}>
+              <div className="janame2">
+                <img
+                  src={data.member_photo ? data.member_photo : avatar}
+                  className="avatarb"
+                  alt="avatar"
+                />
+              </div>
+                <div className="jname1" onClick={()=>startChat(data.email)}>{data.name}</div>
+              <div className="jemail1">{data.email}</div>
+            </div>
+          ))}
+        </Modal.Body>
+      </Modal>
     </>
   );
 });

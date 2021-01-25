@@ -1753,6 +1753,7 @@ textarea.form-control.jobr {
   display: inline-block;
   font-weight: 700;
   cursor: pointer;
+  min-width: 90px;
 }
 .printcv {
   padding-bottom: 1rem;
@@ -4076,7 +4077,7 @@ textarea.form-control.jobr {
 
 .ffas {
   padding: 0.5rem 1.5rem;
-  border: .1px solid #1bb978;
+  border: 0.1px solid #1bb978;
   box-sizing: border-box;
   border-radius: 8px;
 }
@@ -4158,7 +4159,7 @@ textarea.form-control.jobr {
     margin-top: 1rem;
   }
 }
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .newprm1 {
     max-width: 100%;
     flex: 0 0 100%;
@@ -4193,7 +4194,7 @@ textarea.form-control.jobr {
     padding: 0.5rem 25%;
   }
 }
-@media(min-width: 906px) and (max-width:1075px) {
+@media (min-width: 906px) and (max-width: 1075px) {
   .sesscard7 {
     margin-left: 88%;
   }
@@ -4219,7 +4220,7 @@ textarea.form-control.jobr {
   width: auto;
 }
 
-@media(max-width: 950px) {
+@media (max-width: 950px) {
   .redomembcard {
     width: 400px;
     margin: auto;
@@ -4244,8 +4245,120 @@ textarea.form-control.jobr {
   }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .redomembcard {
     padding: 1rem;
   }
+}
+.textright {
+  text-align: right;
+  font-size: 2rem;
+}
+.times4 {
+  cursor: pointer;
+}
+.wrrrz {
+  display: flex;
+  padding-left: 4rem;
+  padding-bottom: 2rem;
+}
+.userlist10 .modal-dialog {
+  width: 700px;
+  max-width: 700px;
+}
+.userlist10 .modal-dialog .modal-content,
+.userlist10 .modal-dialog .modal-body {
+  padding: 0px;
+}
+.userlist10 .modal-dialog .modal-content {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.wrrrz2 {
+  width: 50%;
+  margin: auto;
+  min-width: 300px;
+}
+.selezr {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 1px;
+  color: #18214d;
+  font-weight: bold;
+}
+.sele2 {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  color: #979797;
+}
+.wrrrz1{
+  width: 30%;
+}
+ .frmcttl1,.frmcttl1:focus{
+  border: 1px solid #c5c7cd !important;
+  box-sizing: border-box;
+  border-radius: .3rem !important;
+  padding: 1.3rem !important;
+  padding-left: 3rem !important;
+  color: #979797 !important;
+  outline: none;
+  font-size: 12px !important;
+}
+.frmcttl1::placeholder{
+  color: #979797;
+}
+.searchimage1{
+  position: relative;
+  position: relative;
+    left: .9rem;
+    top: .9rem;
+}
+.searchimage11{
+  position: absolute;
+  width: 17px;
+}
+.rubbg{
+  background: #F9F9F9;
+  display: flex;
+  align-items: center;
+  padding-left: 3.9rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.avatarb{
+  width: 35px;
+  border-radius: 50%;
+  object-fit: fill;
+  height: 35px;
+}
+.janame2{
+  width:15%;
+  min-width: 40px;
+}
+.jname1{
+  width: 30%;
+  font-weight: 500;
+}
+.jname1:hover{
+  font-weight: 800;
+  cursor: pointer;
+}
+.jemail1{
+color: #B8BFD3;
+}
+.lightbg{
+  background:white;
+}
+.textright22 {
+  text-align: right;
+  font-size: 2rem;
+  position: absolute;
+  right: 0px;
+}
+.times42{
+  position: relative;
+  bottom: 2.6rem;
+  right: .2rem;
+  cursor: pointer;
 }

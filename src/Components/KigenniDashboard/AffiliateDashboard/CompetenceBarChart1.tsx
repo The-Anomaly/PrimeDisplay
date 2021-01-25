@@ -14,7 +14,7 @@ import "./affiliate.css";
 import BarChart from "react-bar-chart";
 import Chart from "react-google-charts";
 
-const CompetenceBarChart = (props: any) => {
+const CompetenceBarChart1 = (props: any) => {
   const [state, setState] = React.useState<any>({
     errorMessage: "",
     user: [],
@@ -49,22 +49,6 @@ const CompetenceBarChart = (props: any) => {
         Axios.spread((res) => {
           // console.log(res.data.competence);
           if (res.status === 200) {
-            console.log(res);
-            if (res.data.competence) {
-              setState({
-                ...state,
-                user: [...res.data.competence.data],
-              });
-              return;
-            }
-            if (res.status === 200 && res.data.work_function) {
-              setState({
-                ...state,
-                user: [...res.data.work_function.data],
-              });
-              return;
-            }
-
             if (res.data.career_motivator) {
               setState({
                 ...state,
@@ -120,14 +104,13 @@ const CompetenceBarChart = (props: any) => {
                 [user[6]?.name, user[6]?.value],
                 [user[7]?.name, user[7]?.value],
                 [user[8]?.name, user[8]?.value],
-                [user[9]?.name, user[9]?.value],
-                [user[10]?.name, user[10]?.value],
+                // [user[9]?.name, user[9]?.value],
               ]}
               options={{
                 // Material design options
+                width: 600,
+                height: 400,
                 chart: {
-                  width: 600,
-                  height: 400,
                   minSpacing: 40,
                   annotations: {
                     textStyle: {
@@ -165,4 +148,4 @@ const CompetenceBarChart = (props: any) => {
     </>
   );
 };
-export default CompetenceBarChart;
+export default CompetenceBarChart1;

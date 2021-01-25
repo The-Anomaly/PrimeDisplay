@@ -32,11 +32,27 @@ import union from "../../assets/Union.png";
 import { toast } from "react-toastify";
 import failedNotice from "../../assets/failedNotice.png";
 import { Modal } from "react-bootstrap";
+import logoutImage from "../../assets/logout.png";
 
 const DashboardNav = (props: any) => {
   const [user, setNewState] = React.useState("");
   const [showNav, setShowNav]: any = React.useState(false);
   const [upgradeState, setUpgradeState] = React.useState(false);
+  const [logoutState, setLogoutState] = React.useState({ logoutModal: false });
+
+  const closeLogoutModal = () => {
+    setLogoutState({
+      ...logoutState,
+      logoutModal: false,
+    });
+  };
+  const openLogoutModal = () => {
+    setLogoutState({
+      ...logoutState,
+      logoutModal: true,
+    });
+  };
+  const { logoutModal } = logoutState;
   const closeUpgradeModal = () => {
     setUpgradeState(false);
   };
@@ -81,9 +97,7 @@ const DashboardNav = (props: any) => {
   };
   const checkIfUserHasAccessToOpportunityRecommender = () => {
     const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature
-      ? JSON.parse(stringFeature)
-      : "";
+    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
 
     if (featureToCheck["job_recommendation"] === true) {
       // console.log("Job opportunities successful");
@@ -97,9 +111,7 @@ const DashboardNav = (props: any) => {
   };
   const checkIfUserHasAccessToAskACounselor = () => {
     const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature
-      ? JSON.parse(stringFeature)
-      : "";
+    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
 
     if (featureToCheck["ask_counsellor"] === true) {
       // console.log("Ask a counselor successful");
@@ -114,73 +126,73 @@ const DashboardNav = (props: any) => {
   const notify = (message: string) => toast(message, { containerId: "B" });
   return (
     <>
-    <div>
-      <Row className="fixeddashnav">
-        <div className="hnav">
-          <Link to="/" className="ddaa">
-            {" "}
-            <img src={imgCart} className="imgCart newcart" alt="imgCart" />
-          </Link>
-          <div className="hamburger hamdash" onClick={() => setShowNav(true)}>
-            <div className="line2a"></div>
-            <div className="line2a"></div>
-            <div className="line2a newlinedash"></div>
+      <div>
+        <Row className="fixeddashnav">
+          <div className="hnav">
+            <Link to="/" className="ddaa">
+              {" "}
+              <img src={imgCart} className="imgCart newcart" alt="imgCart" />
+            </Link>
+            <div className="hamburger hamdash" onClick={() => setShowNav(true)}>
+              <div className="line2a"></div>
+              <div className="line2a"></div>
+              <div className="line2a newlinedash"></div>
+            </div>
           </div>
-        </div>
-      </Row>
-      <SideNav
-        showNav={showNav}
-        style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "none" }}
-        navStyle={{
-          width: "70%",
-          background: "#001833",
-          padding: 0,
-          margin: "0px",
-        }}
-        onHideNav={() => setShowNav(false)}
-        openFromRight={true}
-        titleStyle={{
-          backgroundColor: "#fff",
-          color: "#444444",
-          paddingLeft: 0,
-          paddingBottom: 0,
-          paddingTop: 0,
-          fontSize: 17,
-          textAlign: "left",
-        }}
-        title={[,]}
-        itemStyle={{
-          backgroundColor: "#fff",
-          padding: 0,
-          margin: "0px",
-          textAlign: "left",
-        }}
-        items={[
-          <div className={"siddlemobile newsiddle"}>
-            <div className={"navitem1"}>
+        </Row>
+        <SideNav
+          showNav={showNav}
+          style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "none" }}
+          navStyle={{
+            width: "70%",
+            background: "#001833",
+            padding: 0,
+            margin: "0px",
+          }}
+          onHideNav={() => setShowNav(false)}
+          openFromRight={true}
+          titleStyle={{
+            backgroundColor: "#fff",
+            color: "#444444",
+            paddingLeft: 0,
+            paddingBottom: 0,
+            paddingTop: 0,
+            fontSize: 17,
+            textAlign: "left",
+          }}
+          title={[,]}
+          itemStyle={{
+            backgroundColor: "#fff",
+            padding: 0,
+            margin: "0px",
+            textAlign: "left",
+          }}
+          items={[
+            <div className={"siddlemobile newsiddle"}>
+              <div className={"navitem1"}>
                 <Link to="/overview">
-              <div className={props.overview ? "activegb" : "gbn"}>
+                  <div className={props.overview ? "activegb" : "gbn"}>
+                    <img
+                      src={props.overview ? overview : Overview_inactive}
+                      className="sideimage"
+                      alt="sideimage"
+                    />{" "}
+                    Overview
+                  </div>
+                </Link>
+                <div
+                  onClick={checkIfUserHasMadePaymentForFullResult}
+                  className={props.insight ? "activegb" : "gbn"}
+                >
+                  {" "}
                   <img
-                    src={props.overview ? overview : Overview_inactive}
+                    src={props.insight ? activeinsight : inactiveinsight}
                     className="sideimage"
                     alt="sideimage"
-                  />{" "}
-                  Overview
-              </div>
-              </Link>
-              <div
-                onClick={checkIfUserHasMadePaymentForFullResult}
-                className={props.insight ? "activegb" : "gbn"}
-              >
-                {" "}
-                <img
-                  src={props.insight ? activeinsight : inactiveinsight}
-                  className="sideimage"
-                  alt="sideimage"
-                />
-                Career Insight
-              </div>
-              {/* <div className={props.chat ? "activegb" : "gbn"}>
+                  />
+                  Career Insight
+                </div>
+                {/* <div className={props.chat ? "activegb" : "gbn"}>
                 {" "}
                 <Link to="/allusermessages">
                   <img
@@ -191,104 +203,111 @@ const DashboardNav = (props: any) => {
                   Talk to a Counsellor
                 </Link>
               </div> */}
-              <div className={props.chat ? "activegb" : "gbn"}>
-                {" "}
-                <Accordion defaultActiveKey="">
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    className="hpadd"
-                    eventKey="3"
-                  >
-                    <img
-                      src={props.chat ? chatactive : chatinactive}
-                      className="sideimage"
-                      alt="sideimage"
-                    />
-                    Talk to a Counselor
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="3">
-                    <Card.Body>
-                      <Link to="/counsellordates">
-                        <div className="task112">Book a private session</div>
-                      </Link>
-                        <div className="task112" onClick={checkIfUserHasAccessToAskACounselor}>Ask a Counselor</div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Accordion>
-              </div>
+                <div className={props.chat ? "activegb" : "gbn"}>
+                  {" "}
+                  <Accordion defaultActiveKey="">
+                    <Accordion.Toggle
+                      as={Card.Header}
+                      className="hpadd"
+                      eventKey="3"
+                    >
+                      <img
+                        src={props.chat ? chatactive : chatinactive}
+                        className="sideimage"
+                        alt="sideimage"
+                      />
+                      Talk to a Counselor
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="3">
+                      <Card.Body>
+                        <Link to="/counsellordates">
+                          <div className="task112">Book a private session</div>
+                        </Link>
+                        <div
+                          className="task112"
+                          onClick={checkIfUserHasAccessToAskACounselor}
+                        >
+                          Ask a Counselor
+                        </div>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Accordion>
+                </div>
                 <Link to="/counsellorsrecommendation">
-              <div className={props.councrec ? "activegb" : "gbn"}>
-                {" "}
-                  <img
-                    src={
-                      props.councrec
-                        ? recommedationactive
-                        : recommedationinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Recommended Task
-              </div>
-                </Link>
-              <div className={props.todo ? "activegb" : "gbn"}>
-                {" "}
-                <Accordion defaultActiveKey="">
-                  <Accordion.Toggle
-                    as={Card.Header}
-                    className="hpadd"
-                    eventKey="5"
-                  >
+                  <div className={props.councrec ? "activegb" : "gbn"}>
+                    {" "}
                     <img
-                      src={props.todo ? profilebuilder : profilebuilderinactive}
+                      src={
+                        props.councrec
+                          ? recommedationactive
+                          : recommedationinactive
+                      }
                       className="sideimage"
                       alt="sideimage"
                     />
-                    Task Todo
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="5">
-                    <Card.Body>
-                      <Link to="/todooverview">
-                        <div className="task112">Task Overview</div>
-                      </Link>
-                      <Link to="/todoList">
-                        <div className="task112">All Task</div>
-                      </Link>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Accordion>
-              </div>
-              <div
-                className={props.jobrec ? "activegb" : "gbn"}
-                onClick={checkIfUserHasAccessToOpportunityRecommender}
-              >
-                {" "}
-                <img
-                  src={
-                    props.jobrec
-                      ? jobrecommedationactive
-                      : jobrecommedationinactive
-                  }
-                  className="sideimage"
-                  alt="sideimage"
-                />
-                Opportunity Recommender
-              </div>
-                <Link to="/profilebuilder">
-              <div className={props.builder ? "activegb" : "gbn"}>
-                {" "}
+                    Recommended Task
+                  </div>
+                </Link>
+                <div className={props.todo ? "activegb" : "gbn"}>
+                  {" "}
+                  <Accordion defaultActiveKey="">
+                    <Accordion.Toggle
+                      as={Card.Header}
+                      className="hpadd"
+                      eventKey="5"
+                    >
+                      <img
+                        src={
+                          props.todo ? profilebuilder : profilebuilderinactive
+                        }
+                        className="sideimage"
+                        alt="sideimage"
+                      />
+                      Task Todo
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="5">
+                      <Card.Body>
+                        <Link to="/todooverview">
+                          <div className="task112">Task Overview</div>
+                        </Link>
+                        <Link to="/todoList">
+                          <div className="task112">All Task</div>
+                        </Link>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Accordion>
+                </div>
+                <div
+                  className={props.jobrec ? "activegb" : "gbn"}
+                  onClick={checkIfUserHasAccessToOpportunityRecommender}
+                >
+                  {" "}
                   <img
                     src={
-                      props.builder ? profilebuilder : profilebuilderinactive
+                      props.jobrec
+                        ? jobrecommedationactive
+                        : jobrecommedationinactive
                     }
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Profile Builder
-              </div>
+                  Opportunity Recommender
+                </div>
+                <Link to="/profilebuilder">
+                  <div className={props.builder ? "activegb" : "gbn"}>
+                    {" "}
+                    <img
+                      src={
+                        props.builder ? profilebuilder : profilebuilderinactive
+                      }
+                      className="sideimage"
+                      alt="sideimage"
+                    />
+                    Profile Builder
+                  </div>
                 </Link>
-              <div className="divide_thro"></div>
-              {/* <div className={props.councrec ? "activegb" : "gbn"}>
+                <div className="divide_thro"></div>
+                {/* <div className={props.councrec ? "activegb" : "gbn"}>
                 {" "}
                 <Link to="/counsellorsrecommendation">
                   <img
@@ -304,55 +323,55 @@ const DashboardNav = (props: any) => {
                 </Link>
               </div> */}
                 <Link to="/dashboardsubscriptionplan">
-              <div className={props.subscription ? "activegb" : "gbn"}>
-                {" "}
-                  <img
-                    src={
-                      props.subscription
-                        ? subscriptionactive
-                        : subscriptioninactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Subscription
-              </div>
+                  <div className={props.subscription ? "activegb" : "gbn"}>
+                    {" "}
+                    <img
+                      src={
+                        props.subscription
+                          ? subscriptionactive
+                          : subscriptioninactive
+                      }
+                      className="sideimage"
+                      alt="sideimage"
+                    />
+                    Subscription
+                  </div>
                 </Link>
                 <Link to="/dashboardsupport">
-              <div className={props.support ? "activegb" : "gbn"}>
-                {" "}
-                  <img
-                    src={props.support ? support : supportinactive}
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Support
-              </div>
+                  <div className={props.support ? "activegb" : "gbn"}>
+                    {" "}
+                    <img
+                      src={props.support ? support : supportinactive}
+                      className="sideimage"
+                      alt="sideimage"
+                    />
+                    Support
+                  </div>
                 </Link>
                 <Link to="/dashboardsettings">
-              <div className={props.settings ? "activegb" : "gbn"}>
-                {" "}
-                  <img
-                    src={props.settings ? settingsactive : settingsinactive}
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Settings
-              </div>
+                  <div className={props.settings ? "activegb" : "gbn"}>
+                    {" "}
+                    <img
+                      src={props.settings ? settingsactive : settingsinactive}
+                      className="sideimage"
+                      alt="sideimage"
+                    />
+                    Settings
+                  </div>
                 </Link>
-              <div className={"gbn"} onClick={logOut}>
-                {" "}
-                <span >
-                  <img src={logout} className="sideimage" alt="sideimage" />
-                  Logout
-                </span>
+                <div className={"gbn"} onClick={openLogoutModal}>
+                  {" "}
+                  <span>
+                    <img src={logout} className="sideimage" alt="sideimage" />
+                    Logout
+                  </span>
+                </div>
               </div>
-            </div>
-          </div>,
-        ]}
-      />
-    </div>
-    <Modal show={upgradeState} centered={true} onHide={closeUpgradeModal}>
+            </div>,
+          ]}
+        />
+      </div>
+      <Modal show={upgradeState} centered={true} onHide={closeUpgradeModal}>
         <Modal.Body>
           <div className="text-center">
             {" "}
@@ -376,6 +395,36 @@ const DashboardNav = (props: any) => {
             {/* <div className="retaketest upss1 planupgradebtn">
                     <Link to="/paymentsummary">Upgrade your plan</Link>
                   </div> */}
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={logoutModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeLogoutModal}
+      >
+        <Modal.Body>
+          <div className="text-center">
+            {" "}
+            <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
+          </div>
+          <div className="areusure1">
+            are you sure you want to <b> LogOut?</b>
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeLogoutModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={logOut}
+            >
+              Log out
+            </div>
           </div>
         </Modal.Body>
       </Modal>

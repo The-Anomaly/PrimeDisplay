@@ -27,7 +27,7 @@ import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import isopen from "../../../assets/outarrow.png";
-import "./councellor.css"
+import "./councellor.css";
 const moment = require("moment");
 
 const CounsellorBookedSessions = (props: any) => {
@@ -54,6 +54,7 @@ const CounsellorBookedSessions = (props: any) => {
     recommendations: [],
     taskTitle: "",
     taskDuration: "",
+    completing:false,
     taskDescription: "",
     session_notes: "",
     session_about: "",
@@ -103,6 +104,7 @@ const CounsellorBookedSessions = (props: any) => {
     taskDescription,
     session_notes,
     session_about,
+    completing,
     sessionId,
     name,
   } = state;
@@ -297,7 +299,12 @@ const CounsellorBookedSessions = (props: any) => {
         group: nature_of_task,
       },
     ];
-    if (taskTitle === "" || taskDescription === "" || taskDuration === "" || nature_of_task === "") {
+    if (
+      taskTitle === "" ||
+      taskDescription === "" ||
+      taskDuration === "" ||
+      nature_of_task === ""
+    ) {
       return notify("Please complete the user todo entry");
     }
     setState({
@@ -309,6 +316,10 @@ const CounsellorBookedSessions = (props: any) => {
     });
   };
   const complete_session = () => {
+    setState({
+      ...state,
+      completing:true
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -341,11 +352,19 @@ const CounsellorBookedSessions = (props: any) => {
         .then((res) => {
           // console.log(res);
           notify("Successful");
+          setState({
+            ...state,
+            completing:false
+          })
           setTimeout(() => {
             window.location.reload();
           }, 2000);
         })
         .catch((err) => {
+          setState({
+            ...state,
+            completing:false
+          })
           // console.log(err.response);
         });
     }
@@ -377,12 +396,12 @@ const CounsellorBookedSessions = (props: any) => {
         });
     }
   };
-  const toggleWhenOpen =()=>{
+  const toggleWhenOpen = () => {
     setState({
       ...state,
-      accordionisopen:state.accordionisopen?false:true
-    })
-  }
+      accordionisopen: state.accordionisopen ? false : true,
+    });
+  };
 
   // console.log(session_email);
   return (
@@ -393,7 +412,7 @@ const CounsellorBookedSessions = (props: any) => {
           <SideBarCounsellorDashboard bookedsession={true} />
           <Col md={10} sm={12} className="prm newprm1">
             <CounsellorDashboardNav title="Booked Sessions" />
-            <Row 
+            <Row
             // className="wrapc222"
             >
               <Col md={12} className="firstqq">
@@ -432,7 +451,10 @@ const CounsellorBookedSessions = (props: any) => {
                       </div>
                     )}
                     {counsellorData.map((data, i) => (
-                      <div className="msgs teammembr booked bookedover sessioncard" key={i}>
+                      <div
+                        className="msgs teammembr booked bookedover sessioncard"
+                        key={i}
+                      >
                         <div className="fromerit summary">
                           <div className="cone sesscard1">
                             <img
@@ -463,14 +485,17 @@ const CounsellorBookedSessions = (props: any) => {
                             <div className="">{data.time}</div>
                           </div>
                           <div className="cfive sesscard5">
-                            <div className="clarity12b sesstype">{data.member_type}</div>
+                            <div className="clarity12b sesstype">
+                              {data.member_type}
+                            </div>
                           </div>
 
                           <div className="csix sesscard6">
-                            
                             <span
                               className={
-                                !data.status ? "pend pltd sessstat" : "complt pltd sessstat"
+                                !data.status
+                                  ? "pend pltd sessstat"
+                                  : "complt pltd sessstat"
                               }
                             >
                               {!data.status ? "Pending" : "Completed"}
@@ -540,6 +565,11 @@ const CounsellorBookedSessions = (props: any) => {
         onHide={closeModal}
       >
         <Container>
+          <div className="textright">
+            <span className="times4" onClick={closeModal}>
+              &times;
+            </span>
+          </div>
           <h6>{name}</h6>
           <span className="modal-btn">
             <a href={`/counsellor/result/${session_email}`} target="blank">
@@ -584,19 +614,27 @@ const CounsellorBookedSessions = (props: any) => {
                     <span>Add Task</span>
                   </p>
                 </Accordion.Toggle>
-                <Accordion.Toggle as={Card.Header} eventKey="5"
+                <Accordion.Toggle
+                  as={Card.Header}
+                  eventKey="5"
                   onClick={toggleWhenOpen}
                 >
                   <span className="tododw">
-                    {
-                      state.accordionisopen ? (
-                        <img src={expand}  onClick={toggleWhenOpen} className="expand11" alt="expand" />
-                      )
-                      :
-                      (
-                        <img src={isopen}  onClick={toggleWhenOpen} className="expand11" alt="expanded"/>
-                      )
-                    }
+                    {state.accordionisopen ? (
+                      <img
+                        src={expand}
+                        onClick={toggleWhenOpen}
+                        className="expand11"
+                        alt="expand"
+                      />
+                    ) : (
+                      <img
+                        src={isopen}
+                        onClick={toggleWhenOpen}
+                        className="expand11"
+                        alt="expanded"
+                      />
+                    )}
                   </span>
                 </Accordion.Toggle>
               </div>
@@ -691,16 +729,22 @@ const CounsellorBookedSessions = (props: any) => {
                   </p>
                 </Accordion.Toggle>
                 <Accordion.Toggle as={Card.Header} eventKey="5">
-                <span className="tododw">
-                    {
-                      state.accordionisopen ? (
-                        <img src={expand}  onClick={toggleWhenOpen} className="expand11" alt="expand" />
-                      )
-                      :
-                      (
-                        <img src={isopen}  onClick={toggleWhenOpen} className="expand11" alt="expanded"/>
-                      )
-                    }
+                  <span className="tododw">
+                    {state.accordionisopen ? (
+                      <img
+                        src={expand}
+                        onClick={toggleWhenOpen}
+                        className="expand11"
+                        alt="expand"
+                      />
+                    ) : (
+                      <img
+                        src={isopen}
+                        onClick={toggleWhenOpen}
+                        className="expand11"
+                        alt="expanded"
+                      />
+                    )}
                   </span>
                   <span className="andtimes" onClick={() => deleteEntry(i)}>
                     &times;
@@ -793,17 +837,32 @@ const CounsellorBookedSessions = (props: any) => {
           <div className="center-btn">
             {" "}
             <Link to="counsellorbookings">
-              <span
-                className="modal-btn"
-                onClick={() =>
-                  completedStatus
-                    ? notify("Session closed")
-                    : complete_session()
-                }
-              >
-                {completedStatus ? "Session Closed" : " Close session"}{" "}
-                <i className="fa fa-arrow-right"></i>
-              </span>
+              {completedStatus && (
+                <span
+                  className="modal-btn"
+                  onClick={() =>
+                    completedStatus
+                      ? notify("Session closed")
+                      : complete_session()
+                  }
+                >
+                  {completedStatus ? "Session Closed" : " Close session"}{" "}
+                  <i className="fa fa-arrow-right"></i>
+                </span>
+              )}
+              {!completedStatus && (
+                <span
+                  className="modal-btn"
+                  onClick={() =>
+                    completedStatus
+                      ? notify("Session closed")
+                      : complete_session()
+                  }
+                >
+                  {!completing? "Close session":"processing"}{" "}
+                  <i className="fa fa-arrow-right"></i>
+                </span>
+              )}
             </Link>
           </div>
         </Container>

@@ -25,7 +25,10 @@ import "react-toastify/dist/ReactToastify.css";
 import ViewMoreModal from "./ViewMoreModal";
 import noplan from "../../assets/noplan.png";
 import { Spinner } from "react-bootstrap";
+import logoutImage from "../../assets/logout.png";
 const moment = require("moment");
+
+
 
 const TodoList = (props: any) => {
   const [state, setFormState] = React.useState<any>({
@@ -40,6 +43,7 @@ const TodoList = (props: any) => {
     count: "",
     success: "",
     isloading:false,
+    iscreating:false,
     total_pages: "",
   });
   const [modalState, setModState] = useState<any>({
@@ -57,7 +61,23 @@ const TodoList = (props: any) => {
     viewmoreisOpen: false,
     CreateTaskModalisOpen: false,
   });
-  const { errorMessage, tasklist, nextLink, prevLink, reason,isloading, success } = state;
+  const [ConfirmationState, setConfirmationState] = React.useState({ confirmationModal: false });
+
+  const closeConfirmationModal = () => {
+    setConfirmationState({
+      ...ConfirmationState,
+      confirmationModal: false,
+    });
+  };
+  const openConfirmationModal = () => {
+    setConfirmationState({
+      ...ConfirmationState,
+      confirmationModal: true,
+    });
+  };
+  const { confirmationModal } = ConfirmationState;
+
+  const { errorMessage, tasklist, nextLink, prevLink,iscreating ,reason,isloading, success } = state;
   const {
     task_title,
     task_description,
@@ -149,6 +169,10 @@ const TodoList = (props: any) => {
       });
   };
   const createNewTask = () => {
+    setFormState({
+      ...state,
+      iscreating:true
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -167,6 +191,7 @@ const TodoList = (props: any) => {
         setFormState({
           ...state,
           success: true,
+          iscreating:false
         });
         setTimeout(() => {
           setFormState({
@@ -179,6 +204,10 @@ const TodoList = (props: any) => {
       .catch((err) => {
         // console.log(err.response);
         notify("Failed to send");
+        setFormState({
+          ...state,
+          iscreating:false
+        })
       });
   };
   const notify = (message: string) => toast(message, { containerId: "i" });
@@ -526,7 +555,7 @@ const TodoList = (props: any) => {
           <div className="mark_complete">
             <div
               className="savebtn todo_button markit"
-              onClick={submitTaskIsCompleteForm}
+              onClick={openConfirmationModal}
             >
               Mark as Complete
             </div>
@@ -609,7 +638,7 @@ const TodoList = (props: any) => {
               className="savebtn todo_button markit createit"
               onClick={createNewTask}
             >
-              Create Task
+              {!iscreating?"Create Task":"Creating..."}
             </div>
           </div>
         </Modal.Body>
@@ -675,6 +704,36 @@ const TodoList = (props: any) => {
             <div className="titlee">Counselor's Input</div>
             <textarea className="task_det" disabled={true}></textarea>
           </div> */}
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={confirmationModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeConfirmationModal}
+      >
+        <Modal.Body>
+          {/* <div className="text-center">
+            {" "}
+            <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
+          </div> */}
+          <div className="areusure1">
+            are you sure you want to <b> do this?</b>
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeConfirmationModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={submitTaskIsCompleteForm}
+            >
+              Continue
+            </div>
+          </div>
         </Modal.Body>
       </Modal>
       <ToastContainer

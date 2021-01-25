@@ -37,6 +37,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     time: "",
     isOpen: false,
     Canbooksession: false,
+    no_subscription: false,
+    incomplete_profile_builder: false,
+    incomplete_job_rec: false,
     upgradeState: false,
   };
 
@@ -75,6 +78,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     this.setState({
       upgradeState: false,
     });
+    setTimeout(()=>{
+      window.location.reload()
+    },1000)
   };
   onchange = (e) => {
     this.setState({
@@ -137,18 +143,27 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         // console.log(response);
-        // console.log(localStorage.getItem("accessFeature"));
+        if (response?.data[0]?.job_recommendation_filled === false) {
+          return this.setState({
+            incomplete_profile_builder:false,
+            incomplete_job_rec:true,
+            upgradeState:true
+          })
+        }
+        if (response?.data[0]?.profile_builder_submitted === false) {
+          return this.setState({
+            incomplete_profile_builder:true,
+            incomplete_job_rec:false,
+            upgradeState:true
+          })
+        }
         if (response?.data[0]?.book_session === true) {
           // console.log("Payment Summary Check");
           return this.sendMessageToCounselor();
         } else {
-          // localStorage.setItem("currentLocation", window.location.pathname);
-          // const userLocation = localStorage.getItem("currentLocation");
-          // const prevLocation = userLocation ? JSON.parse(userLocation) : "";
-          // console.log("No payment");
-          //return window.location.assign("/dashboardsubscriptionplan");
           return this.setState({
             upgradeState: true,
+            no_subscription:true
           });
         }
       })
@@ -208,7 +223,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     const {
       fullname,
       phone,
-      careerbussines,
+      no_subscription,
+      incomplete_profile_builder,
+      incomplete_job_rec,
       isOpen,
       feedbackText,
       startDate,
@@ -222,7 +239,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           <Row>
             <SideBarNewDashboard />
             <Col md={10} sm={12} className="prm mobilepadding">
-            <DashboardLargeScreenNav title="" />
+              <DashboardLargeScreenNav title="" />
               <Row className="kli6 bcbv datesedit">
                 <Col md={12} className="scheduleheader">
                   Schedule a meeting
@@ -232,6 +249,14 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                     onChange={this.onChange}
                     value={this.state.date}
                     name="date"
+                    tileDisabled={({ activeStartDate, date, view }) => {
+                      if (date.getDay() === 6) {
+                        return true;
+                      }
+                      if (date.getDay() === 0) {
+                        return true;
+                      }
+                    }}
                     allowPartialRange={true}
                     minDate={new Date(startDate)}
                     maxDate={new Date(endDate)}
@@ -332,7 +357,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
               <img src={checkede} className="checkedes" alt="success" />
             </div>
             <div className="successfullybooked">
-              You successfully booked a session with a counselllor on{" "}
+              You successfully booked a session with a counsellor on{" "}
               <b>{this.formatTime(this.state.date)}</b> by{" "}
               <b>{this.state.time}</b>
             </div>
@@ -358,21 +383,54 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                 alt="failedNotice"
               />{" "}
             </div>
-            <div className="onhno"> Oh No! </div>
-            <div className="onhno">
-              This package is not available on this plan <br /> Please Upgrade
-              your Plan
-            </div>
-            <div className="text-center planupgrade">
-              <div className="retaketest upss1 planupgradebtn">
-                <Link to="/dashboardsubscriptionplan">
-                  View your current plan
-                </Link>
-              </div>
-              {/* <div className="retaketest upss1 planupgradebtn">
-                    <Link to="/paymentsummary">Upgrade your plan</Link>
-                  </div> */}
-            </div>
+            {no_subscription && (
+              <>
+                <div className="onhno"> Oh No! </div>
+                <div className="onhno">
+                  This package is not available on this plan <br /> Please
+                  Upgrade your Plan
+                </div>
+                <div className="text-center planupgrade">
+                  <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/dashboardsubscriptionplan">
+                      View your current plan
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
+            {incomplete_job_rec && (
+              <>
+                <div className="onhno"> Oh No! </div>
+                <div className="onhno">
+                  You are required to complete your Opportunity Recommender form
+                  before booking a private session
+                </div>
+                <div className="text-center planupgrade">
+                  <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/jobopportunities">
+                      Complete job recommendation
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
+            {incomplete_profile_builder && (
+              <>
+                <div className="onhno"> Oh No! </div>
+                <div className="onhno">
+                  You are required to complete your profile builder form
+                  before booking a private session
+                </div>
+                <div className="text-center planupgrade">
+                  <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/profilebuilder">
+                      Complete Profile builder
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
           </Modal.Body>
         </Modal>
         {/* <Footer /> */}

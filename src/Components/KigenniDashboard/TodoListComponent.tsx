@@ -523,7 +523,7 @@ const TodoListComponent = (props: any) => {
             />
           </div>
           <div className="modal_det">
-            <div className="titlee">Reminder Frequency</div>
+            <div className="titlee">Reminder Frequency(days)</div>
             <input
               type={"number"}
               className="note_det create_det "

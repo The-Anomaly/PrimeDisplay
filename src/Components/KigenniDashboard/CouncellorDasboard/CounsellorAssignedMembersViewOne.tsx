@@ -27,7 +27,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     user: [],
     counsellorData: [],
     errorMessage: "",
-    counsellorViewProfile:{},
+    counsellorViewProfile: {},
     nextLink: "",
     what_i_do: "",
     isOpen: false,
@@ -84,7 +84,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
               prevLink: res.data.previous,
               total_pages: res.data.total_pages,
               isLoading: false,
-              counsellorViewProfile:res2.data,
+              counsellorViewProfile: res2.data,
             });
           }
         })
@@ -308,6 +308,11 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
           centered={true}
           onHide={closeModal}
         >
+          <div className="textright">
+            <span className="times4" onClick={closeModal}>
+              &times;
+            </span>
+          </div>
           <div className="careerpref">Career Preferences</div>
           <Form>
             <Row>
@@ -393,12 +398,18 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
             </Row>
             <Row className="sdsaa">
               <Col md={6}>
-              <Link to={`/counsellor/result/${props.match.params.id}`} target="_blank">
-                <div className="fooass">View Assessment Result</div>
+                <Link
+                  to={`/counsellor/result/${props.match.params.id}`}
+                  target="_blank"
+                >
+                  <div className="fooass">View Assessment Result</div>
                 </Link>
               </Col>
               <Col md={6}>
-                <Link to={`/users_profile/${props.match.params.id}`} target="_blank">
+                <Link
+                  to={`/users_profile/${props.match.params.id}`}
+                  target="_blank"
+                >
                   <div className="fooass counview1">
                     View Professional Profile
                   </div>

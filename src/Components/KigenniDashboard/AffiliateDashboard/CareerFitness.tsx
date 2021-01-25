@@ -70,52 +70,54 @@ const CareerFitnessPiechart = (props: any) => {
     { text: "Woman", value: 300 },
   ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(user.length);
+  console.log(user);
   return (
     <>
       <Row className="cllcc">
         <Col md={4}>
-          <PieChart
-            data={[
-              {
-                title: "AWARENESS ",
-                value: user[0]?.AWARENESS,
-                color: "#F44E4E",
-              },
-              {
-                title: "CREATIVITY ",
-                value: user[1]?.CREATING,
-                color: "#1BB978",
-              },
-              {
-                title: `EXPLORING`,
-                value: user[2]?.EXPLORING,
-                color: "#FFBC41",
-              },
-              {
-                title: `MAINTENANCE`,
-                value: user[3]?.MAINTENANCE,
-                color: "#3965FF",
-              },
-            ]}
-            lineWidth={30}
-          />
+          {user.length > 0 && (
+            <PieChart
+              data={[
+                {
+                  title: user[0]?.name,
+                  value: user[0]?.value,
+                  color: "#F44E4E",
+                },
+                {
+                  title: user[1]?.name,
+                  value: user[1].value,
+                  color: "#1BB978",
+                },
+                {
+                  title: user[2]?.name,
+                  value: user[2].value,
+                  color: "#FFBC41",
+                },
+                {
+                  title: user[3]?.name,
+                  value: user[3]?.value,
+                  color: "#3965FF",
+                },
+              ]}
+              lineWidth={30}
+            />
+          )}
         </Col>
         <Col md={4}>
           <div className="corrred">
-            <span className="grrenn"></span> AWARENESS
+            <span className="grrenn"></span> {user[1]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#F44E4E" }}></span>{" "}
-            CREATIVITY
+            {user[0]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#FFBC41" }}></span>{" "}
-            EXPLORING
+            {user[2]?.name}
           </div>
           <div className="corrred">
             <span className="grrenn" style={{ background: "#3965FF" }}></span>{" "}
-            MAINTENANCE
+            {user[3]?.name}
           </div>
         </Col>
       </Row>

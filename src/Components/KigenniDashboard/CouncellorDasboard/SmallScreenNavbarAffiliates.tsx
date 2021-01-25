@@ -26,15 +26,15 @@ import "../../Home/Home/Home.css";
 import { Link } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
-import clockactive from "../../../assets/clock_active.png";
-import clockinactive from "../../../assets/clock_inactive.png";
-import referralinactive from "../../../assets/referral_inactive.png";
 import logoutImage from "../../../assets/logout.png";
-import { Modal, Spinner } from "react-bootstrap";
-import supportactive from "../../../assets/Support_active.png";
+import { Modal } from "react-bootstrap";
 
-const CounsellorsDashboardMobileNav = (props: any) => {
+const SmallScreenNavbarAffiliates = (props: any) => {
   const [user, setNewState] = React.useState("");
+  const [hidemobile, sethidemobile] = React.useState(false);
+  const changeHideStatus = () => {
+    sethidemobile(hidemobile ? false : true);
+  };
   const [showNav, setShowNav]: any = React.useState(false);
   const [logoutState, setLogoutState] = React.useState({ logoutModal: false });
   const closeLogoutModal = () => {
@@ -50,7 +50,6 @@ const CounsellorsDashboardMobileNav = (props: any) => {
     });
   };
   const { logoutModal } = logoutState;
-
   const logOutMobile = (e) => {
     e.preventDefault();
     const details: any = localStorage.getItem("userDetails");
@@ -71,7 +70,7 @@ const CounsellorsDashboardMobileNav = (props: any) => {
   // })
   const logOut = () => {
     localStorage.clear();
-    window.location.assign("/counsellor/signin");
+    window.location.assign("/affiliates/signin");
   };
   return (
     <div>
@@ -114,150 +113,60 @@ const CounsellorsDashboardMobileNav = (props: any) => {
         }}
         items={[
           <div className={"siddlemobile"}>
-            <div className={"navitem1"}>
-              <div className={props.ov ? "activegb" : "gbn"}>
-                <Link to="/counselloroverview">
+            <div className="dlex">
+              <Link to="/">
+                <img
+                  src={imgCart}
+                  className="imgCart33 sidebarlogo"
+                  alt="imgCart"
+                />
+              </Link>
+            </div>{" "}
+            <div className={hidemobile ? "navitemnone" : "navitem1 newitem"}>
+              <Link to="/affiliates">
+                <div className={props.ov ? "activecomp shifbb" : "gbn shifbb"}>
                   <img
                     src={props.ov ? overview : Overview_inactive}
                     className="sideimage"
                     alt="sideimage"
                   />{" "}
-                  Overview
-                </Link>
-              </div>
-              <div className={props.bookedsession ? "activegb" : "gbn"}>
-                <Link to="/counsellorbookings">
+                  Dashboard
+                </div>
+              </Link>
+              <Link to="/affiliates/analytics">
+                <div
+                  className={
+                    props.analytics ? "activecomp shifbb" : "gbn shifbb"
+                  }
+                >
                   <img
                     src={props.bookedsession ? activeinsight : inactiveinsight}
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Booked Sessions
-                </Link>
-              </div>
-              <div className={props.builder ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/counsellorprofilebuilder">
-                  <img
-                    src={
-                      props.builder
-                        ? recommedationactive
-                        : recommedationinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Profile Builder
-                </Link>
-              </div>
-              <div className={props.messages ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/counsellormessages">
+                  Behavioural Analytics
+                </div>
+              </Link>
+              <Link to="/counsellor/signup">
+                <div
+                  className={
+                    props.messages ? "activecomp shifbb" : "gbn shifbb"
+                  }
+                >
+                  {" "}
                   <img
                     src={props.messages ? chatactive : chatinactive}
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Messages
-                </Link>
-              </div>
-              <div className={props.councrec ? "activegb" : "gbn"}>
+                  Become a Counsellor
+                </div>
+              </Link>
+
+              <div className="divide_thro shifbb"></div>
+              <div className={"gbn shifbb"} onClick={openLogoutModal}>
                 {" "}
-                <Link to="/counsellorrecommendations1">
-                  <img
-                    src={
-                      props.councrec
-                        ? recommedationactive
-                        : recommedationinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Recommended Task
-                </Link>
-              </div>
-              <div className={props.assignedmemb ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/counsellorassignedmembers">
-                  <img
-                    src={
-                      props.assignedmemb
-                        ? jobrecommedationactive
-                        : jobrecommedationinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Assigned Members
-                </Link>
-              </div>
-              {/* <div className={props.counmeeting ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/counsellormeetings">
-              <img
-                src={
-                  props.counmeeting
-                    ? clockactive
-                    : clockinactive
-                }
-                className="sideimage"
-                alt="sideimage"
-              />
-              Scheduled Meetings
-            </Link>
-          </div> */}
-              <div className={props.counreferral ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/referrals">
-                  <img
-                    src={
-                      props.counreferral ? referralinactive : referralinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Referrals
-                </Link>
-              </div>
-              <div className="divide_thro"></div>
-              <div className={props.settings ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/counsellorsettings">
-                  <img
-                    src={props.settings ? settingsactive : settingsinactive}
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Settings
-                </Link>
-              </div>
-              <div className={props.counselorsupport ? "activegb" : "gbn"}>
-                {" "}
-                <Link to="/counsellorsupport">
-                  <img
-                    src={
-                      props.counselorsupport ? supportactive : supportinactive
-                    }
-                    className="sideimage"
-                    alt="sideimage"
-                  />
-                  Support
-                </Link>
-              </div>
-              {/* <div className={props.support ? "activegb" : "gbn"}>
-            {" "}
-            <Link to="/ratings">
-              <img
-                src={props.support ? starrating : starrating}
-                className="sideimage"
-                alt="sideimage"
-              />
-              Ratings
-            </Link>
-          </div> */}
-              <div className={"gbn"}>
-                {" "}
-                <span onClick={openLogoutModal}>
+                <span>
                   <img src={logout} className="sideimage" alt="sideimage" />
                   Logout
                 </span>
@@ -299,4 +208,4 @@ const CounsellorsDashboardMobileNav = (props: any) => {
     </div>
   );
 };
-export default CounsellorsDashboardMobileNav;
+export default SmallScreenNavbarAffiliates;

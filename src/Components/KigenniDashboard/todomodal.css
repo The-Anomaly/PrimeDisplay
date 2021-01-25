@@ -382,3 +382,26 @@
     margin-right: auto;
   }
 }
+.areusure1{
+  text-align: center;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+.popUUp{
+  width: 50px;
+}
+.mddd{
+  color: #3965FF;
+  background: #fff;
+  border: 1px solid #3965FF;
+}
+.mddd2,.mddd2:hover{
+  background: #FF523D !important;
+  border: 1px solid #FF523D;
+  color: #fff !important;
+  margin-left: 0px;
+}
+.warning22e .modal-dialog .modal-content{
+  padding: 0px;
+  padding-bottom: 1rem;
+}

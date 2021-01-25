@@ -24,6 +24,7 @@ import greenstar from "../../../assets/greenstar.png";
 import more_vertical from "../../../assets/more_vertical.png";
 import { Tab, Table, Tabs } from "react-bootstrap";
 import avatar from "../../../assets/avatar.svg";
+import SmallScreenNavbarAffiliates from "../CouncellorDasboard/SmallScreenNavbarAffiliates";
 const moment = require("moment");
 
 const ThirdPartyOverview = (props: any) => {
@@ -117,6 +118,7 @@ const ThirdPartyOverview = (props: any) => {
   return (
     <>
       <Container fluid={true} className="contann122">
+        <SmallScreenNavbarAffiliates />
         <Row>
           <SideBarAffilliateDashboard ov={true} />
           <Col md={10} sm={12} className="prm newprm1">
@@ -227,7 +229,7 @@ const ThirdPartyOverview = (props: any) => {
                         <div className="sette">
                           <span className="clatxt">
                             <a href={clarityLink} target="blank">
-                            https://clarity.com?refer:112324/d/1kX_cq...
+                              https://clarity.com?refer:112324/d/1kX_cq...
                             </a>
                           </span>
                           <span className="clatxt2">

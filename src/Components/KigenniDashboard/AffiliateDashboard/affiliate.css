@@ -640,3 +640,6 @@
   width: 100%;
   justify-content: space-between;
 }
+.bg-white{
+  background: white !important;
+}

@@ -23,6 +23,7 @@ import close from "../../assets/close.svg";
 import StarRatingComponent from "react-star-rating-component";
 import axios from "axios";
 import moment from "moment";
+import failedNotice from "../../assets/failedNotice.png";
 
 class CounsellorsRecommendation extends React.Component {
   state: any = {
@@ -36,6 +37,7 @@ class CounsellorsRecommendation extends React.Component {
     frequency: 1,
     success: "",
     isLoading: false,
+    isloading: false,
     ratingInfo: {},
     setReminderModal: false,
     setRatingModal: true,
@@ -43,6 +45,7 @@ class CounsellorsRecommendation extends React.Component {
     showWarning: false,
     width: 100,
     rate: "",
+    upgradeState: false,
     canrate: false,
     reason: "",
   };
@@ -53,7 +56,6 @@ class CounsellorsRecommendation extends React.Component {
     });
   };
   openModal = (id) => {
-    // console.log(id);
     this.setState({
       setReminderModal: true,
       id,
@@ -76,6 +78,14 @@ class CounsellorsRecommendation extends React.Component {
           this.notify("Error occured failed to send");
         }
       });
+  };
+  closeUpgradeModal = () => {
+    this.setState({
+      upgradeState: false,
+    });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
   componentDidMount() {
     this.setState({ isLoading: true });
@@ -102,7 +112,7 @@ class CounsellorsRecommendation extends React.Component {
             ratingInfo: response1.data,
             canrate: response1.data.unrated,
             last_session_id: response1?.data?.sessionId,
-            isLoading:false
+            isLoading: false,
           });
         })
       )
@@ -147,15 +157,15 @@ class CounsellorsRecommendation extends React.Component {
           }, 3000);
         }
         this.setState({
-          isLoading:false
-        })
+          isLoading: false,
+        });
       })
       .catch((error) => {
         this.notify("Failed to process");
         setTimeout(() => {}, 2000);
         this.setState({
-          isLoading:false
-        })  
+          isLoading: false,
+        });
       });
   };
   onchange = (e) => {
@@ -167,26 +177,31 @@ class CounsellorsRecommendation extends React.Component {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-  // handleChatCheck = () => {
-  //   this.setState({ isLoading: true });
-  //   const availableToken = localStorage.getItem("userToken");
-  //   const token = availableToken
-  //     ? JSON.parse(availableToken)
-  //     : window.location.assign("/signin");
-  //   Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-  //     headers: { Authorization: `Token ${token}` },
-  //   })
-  //     .then((response) => {
-  //       return window.location.assign("/counsellordates");
-  //       // if (response?.data[0]?.direction_plan === true) {
-  //       //   return window.location.assign("/counsellordates");
-  //       // }
-  //       // if (response?.data[0]?.direction_plan === false) {
-  //       //   return window.location.assign("/counsellorfee");
-  //       // }
-  //     })
-  //     .catch((error) => {});
-  // };
+  handleChatCheck = (id) => {
+    // this.setState({ isLoading: true });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        // console.log(response);
+        if (response?.data[0]?.convert_to_todo === false) {
+          return this.setState({
+            upgradeState: true,
+            isLoading: false,
+          });
+        }
+        this.openModal(id);
+      })
+      .catch((error) => {
+        this.setState({
+          isLoading: false,
+        });
+      });
+  };
   notify = (message: string) => toast(message, { containerId: "B" });
   onStarClick = (nextValue, prevValue, name) => {
     this.setState({
@@ -210,8 +225,8 @@ class CounsellorsRecommendation extends React.Component {
   };
   submitRating = () => {
     this.setState({
-      isloading:true
-    })
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -230,8 +245,8 @@ class CounsellorsRecommendation extends React.Component {
       .then((response) => {
         // console.log(response);
         this.setState({
-          isloading:false
-        })
+          isloading: false,
+        });
         this.notify("Thank you for the rating");
         setTimeout(() => {
           this.closeRateSession();
@@ -239,8 +254,8 @@ class CounsellorsRecommendation extends React.Component {
       })
       .catch((err) => {
         this.setState({
-          isloading:false
-        })
+          isloading: false,
+        });
         this.notify("An error occured please try again");
         // console.log(err);
         setTimeout(() => {
@@ -332,7 +347,7 @@ class CounsellorsRecommendation extends React.Component {
                                   </div>
                                   <div
                                     className="upss smtd smtdis"
-                                    onClick={() => this.openModal(data.id)}
+                                    // onClick={() => this.openModal(data.id)}
                                   >
                                     <a>Set Reminder </a>
                                   </div>
@@ -354,7 +369,9 @@ class CounsellorsRecommendation extends React.Component {
                                   </div>
                                   <div
                                     className="retaketest upss smtd"
-                                    onClick={() => this.openModal(data.id)}
+                                    onClick={() =>
+                                      this.handleChatCheck(data.id)
+                                    }
                                   >
                                     <div>Set Reminder </div>
                                   </div>
@@ -420,11 +437,11 @@ class CounsellorsRecommendation extends React.Component {
                 />
               </div>
               <div className="modal_det">
-                <div className="titlee">Reminder Frequency</div>
+                <div className="titlee">Reminder Frequency (days)</div>
                 <input
                   className="note_det create_det "
                   type="number"
-                  placeholder="Enter Duration "
+                  placeholder="Select how frequent you want to be reminded"
                   value={frequency}
                   name={"frequency"}
                   onChange={this.onchange}
@@ -435,7 +452,7 @@ class CounsellorsRecommendation extends React.Component {
                   className="savebtn todo_button markit createit"
                   onClick={() => this.makeRecommendationToDo()}
                 >
-                 {isLoading?"Processing":"Save"} 
+                  {isLoading ? "Processing" : "Save"}
                 </div>
               </div>
             </Modal.Body>
@@ -485,13 +502,48 @@ class CounsellorsRecommendation extends React.Component {
                       Not now
                     </span>
                     <span className="rightnow" onClick={this.submitRating}>
-                    { isloading? "Submit":"Submitting"}
+                      {!isloading ? "Submit" : "Submitting"}
                     </span>
                   </div>
                 </div>
               </Modal.Body>
             </Modal>
           )}
+          <Modal
+            show={this.state.upgradeState}
+            centered={true}
+            onHide={this.closeUpgradeModal}
+          >
+            <span className="times42" onClick={this.closeUpgradeModal}>
+              &times;
+            </span>
+            <Modal.Body>
+              <div className="text-center">
+                {" "}
+                <img
+                  src={failedNotice}
+                  className="failedNotice"
+                  alt="failedNotice"
+                />{" "}
+              </div>
+              {
+                <>
+                  <div className="onhno"> Oh No! </div>
+                  <div className="onhno">
+                    This package is not available on this plan <br /> Please
+                    Upgrade your Plan
+                  </div>
+                  <div className="text-center planupgrade">
+                    <div className="retaketest upss1 planupgradebtn">
+                      <Link to="/dashboardsubscriptionplan">
+                        View your current plan
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              }
+            </Modal.Body>
+          </Modal>
         </Container>
       </>
     );
