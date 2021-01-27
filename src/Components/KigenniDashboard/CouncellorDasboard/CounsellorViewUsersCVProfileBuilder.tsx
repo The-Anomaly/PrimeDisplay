@@ -21,7 +21,8 @@ import dropdown from "../../../assets/dropdown.svg";
 import CounsellorsDashboardMobileNav from "./CounsellorsDashboardNavBar";
 import SideBarCounsellorDashboard from "./SideBarCounsellorDashboard";
 import CounsellorDashboardNav from "./CounsellorDashboardNav";
-import DashboardInfoArea from '../DashboardInfoArea';
+import DashboardInfoArea from "../DashboardInfoArea";
+import DashboardLargeScreenNav from "../DashboardLargeScreenNav";
 const moment = require("moment");
 
 class CounsellorViewUsersCVProfile extends React.Component {
@@ -71,9 +72,10 @@ class CounsellorViewUsersCVProfile extends React.Component {
     userHasAddedExperience: false,
     startDate: "",
     endDate: "",
+    new_user:"",
     width: 100,
   };
-  props:any;
+  props: any;
   addNewSkill = () => {
     const skillz = [
       {
@@ -130,13 +132,7 @@ class CounsellorViewUsersCVProfile extends React.Component {
         does_not_expire: this.state.expirationStatus,
       },
     ];
-    const [
-      {
-        certificate_name,
-        institution,
-        valid_from,
-      },
-    ] = certificationz;
+    const [{ certificate_name, institution, valid_from }] = certificationz;
     if (certificate_name === "" || institution === "" || valid_from === "") {
       return this.notify("Please enter all certification data");
     }
@@ -178,36 +174,37 @@ class CounsellorViewUsersCVProfile extends React.Component {
     });
   };
   componentDidMount() {
-    window.scrollTo(-0, -0);
+    this.setState({ isLoading: true });
+    const self: any = this;
     const availableToken = localStorage.getItem("userToken");
-    const token = availableToken ? JSON.parse(availableToken) : "";
-    Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-member/profile/${this.props.match.params.email}`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((res) => {
-        if(res.data.new_user){
-         return this.notify("Please fill your profile")
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(
+      `${API}/profilebuilder/${this.props.match.params.email}`,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((response) => {
+        if (response.status === 200) {
+          this.setState({
+            user: response.data,
+            new_user:response?.data?.new_user,
+          });
         }
-        // console.log(res)
-        this.setState({
-          skills: res.data.skills,
-          about: res.data.about,
-          experiences: [...res?.data?.user_experiences],
-          certifications: [...res.data.certification],
-          education: [...res.data.education],
-          references: [...res.data.user_refernce],
-          socials: res.data.user_social,
-          facebook: res.data.user_social.facebook,
-          linkedin: res.data.user_social.linkedin,
-          instagram: res.data.user_social.instagram,
-          twitter: res.data.user_social.twitter,
-        });
       })
-      .catch((err) => {
-        // console.log(err)
-        if (err) {
-          this.notify("Failed to fetch data");
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          this.setState({
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
         }
+        this.setState({
+          errorMessage: "failed",
+          isLoading: false,
+        });
       });
   }
   componentWillMount() {
@@ -217,14 +214,21 @@ class CounsellorViewUsersCVProfile extends React.Component {
     const token = availableToken
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
-    Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-member/profile/${this.props.match.params.email}`, {
-      headers: { Authorization: `Token ${token}` },
-    })
+    Axios.get<any, AxiosResponse<any>>(
+      `${API}/profilebuilder/${this.props.match.params.email}`,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
       .then((response) => {
+        console.log(response)
         if (response.status === 200) {
           this.setState({
             user: response.data,
           });
+        }
+        if(response?.data?.new_user){
+          this.notify("This professional profile does not have any entry")
         }
       })
       .catch((error) => {
@@ -347,32 +351,37 @@ class CounsellorViewUsersCVProfile extends React.Component {
           <Row>
             {/* <SideBarCounsellorDashboard builder={true} /> */}
             <Col md={12} sm={12} className="prm">
-              <CounsellorDashboardNav title="Assigned Users Professional Profile" />
-              <div className="userprofilettl">Assigned Users Professional Profile</div>
+              <CounsellorDashboardNav title="Individual Professional Profile" />
+              <div className="userprofilettl">
+                Assigned Users Professional Profile
+              </div>
               <Row>
-                <Col md={11} className="kisls">
-                  <div className="kdashheader uidd11">
-                    <div className="fjss">
-                      <div>
-                        {" "}
-                        <div className="smalls">
-                          <img
-                            src={user && user.image ? user.image : avatar}
-                            className="avatar avar"
-                            alt="avatar"
-                          />
-                        </div>
-                        <span className="kdashheaderlight idds">
-                          <span className="ch112 ksname">
+                {/* <SideBarCounsellorDashboard builder={true} /> */}
+                <Col md={12} sm={12} className="prm">
+                  <Row>
+                    <Col md={11} className="kisls centrmargin">
+                      <div className="kdashheader uidd11">
+                        <div className="fjss">
+                          <div>
                             {" "}
-                            {user && user.first_name && user.first_name
-                              ? user.first_name + " " + user.last_name
-                              : ""}
-                          </span>
-                        </span>
-                      </div>
-                      <div className="ch11">
-                        {/* <Link to="/dashboardsettings">
+                            <div className="smalls">
+                              <img
+                                src={user && user.image ? user.image : avatar}
+                                className="avatar avar"
+                                alt="avatar"
+                              />
+                            </div>
+                            <span className="kdashheaderlight idds">
+                              <span className="ch112 ksname">
+                                {" "}
+                                {user && user.first_name && user.first_name
+                                  ? user.first_name + " " + user.last_name
+                                  : ""}
+                              </span>
+                            </span>
+                          </div>
+                          <div className="ch11">
+                            {/* <Link to="/dashboardsettings">
                           <img
                             src={writeicon}
                             className="writeicon"
@@ -380,35 +389,35 @@ class CounsellorViewUsersCVProfile extends React.Component {
                           />
                           Edit Profile
                         </Link> */}
+                          </div>
+                        </div>
+                        <div></div>
                       </div>
-                    </div>
-                    <div></div>
-                  </div>
-                  <Row>
-                    <Col md={12}>
-                    {/* <DashboardInfoArea /> */}
-                      <hr />
-                      <Row className="rowla">
+                      <Row>
                         <Col md={12}>
-                          <div className="whatdoudo">About </div>
-                          <div className="edittt">
-                            <Link to="/counsellorprofilebuilderedit/#about">
+                          {/* <DashboardInfoArea /> */}
+                          <hr />
+                          <Row className="rowla">
+                            <Col md={12}>
+                              <div className="whatdoudo">About </div>
+                              <div className="edittt">
+                                {/* <Link to="/counsellorprofilebuilderedit/#about">
                               <img
                                 className="edit_icon"
                                 src={editicon}
                                 alt="edit icon"
                               />
-                            </Link>
-                          </div>
-                          <div className="aboutprv">{about}</div>
-                        </Col>
-                      </Row>
-                      <Row className="rowla">
-                        <Col md={12}>
-                          <div className="whatdoudo offpad">
-                            <div className="what12">
-                              Experience{" "}
-                              <div className="plusnew" title="Add entry">
+                            </Link> */}
+                              </div>
+                              <div className="aboutprv">{about}</div>
+                            </Col>
+                          </Row>
+                          <Row className="rowla">
+                            <Col md={12}>
+                              <div className="whatdoudo offpad">
+                                <div className="what12">
+                                  Experience{" "}
+                                  {/* <div className="plusnew" title="Add entry">
                                 <span className="addone">
                                   <Link to="/counsellorprofilebuilderedit/#experience">
                                     <img
@@ -418,48 +427,50 @@ class CounsellorViewUsersCVProfile extends React.Component {
                                     />
                                   </Link>
                                 </span>
+                              </div> */}
+                                </div>
                               </div>
-                            </div>
-                          </div>
-                          <Row className="cvexperience">
-                            {experiences.map((data) => (
-                              <Row className="roww">
-                                <Col md={1} sm={1} className="buildingbg">
-                                  <img
-                                    className="building"
-                                    src={building}
-                                    alt="building icon"
-                                  />
-                                </Col>
-                                <Col md={9} sm={8} className="cvexp">
-                                  <div className="role">{data.position}</div>
-                                  <div className="company">
-                                    {data.organisation}
-                                  </div>
-                                  <div className="time">
-                                    {this.formatTime(data.started_from)} -
-                                    {data.current ? " Present" : ""}{" "}
-                                    {data?.end_date}
-                                  </div>
-                                  <hr />
-                                </Col>
+                              <Row className="cvexperience">
+                                {experiences.map((data) => (
+                                  <Row className="roww">
+                                    <Col md={1} sm={1} className="buildingbg">
+                                      <img
+                                        className="building"
+                                        src={building}
+                                        alt="building icon"
+                                      />
+                                    </Col>
+                                    <Col md={9} sm={8} className="cvexp">
+                                      <div className="role">
+                                        {data.position}
+                                      </div>
+                                      <div className="company">
+                                        {data.organisation}
+                                      </div>
+                                      <div className="time">
+                                        {this.formatTime(data.started_from)} -
+                                        {data.current ? " Present" : ""}{" "}
+                                        {data?.end_date}
+                                      </div>
+                                      <hr />
+                                    </Col>
+                                  </Row>
+                                ))}
                               </Row>
-                            ))}
+                              {false && (
+                                <a href="#" className="showmore">
+                                  Show More
+                                </a>
+                              )}
+                            </Col>
                           </Row>
-                          {false && (
-                            <a href="#" className="showmore">
-                              Show More
-                            </a>
-                          )}
-                        </Col>
-                      </Row>
-                      <hr />
-                      <Row className="skill_row">
-                        <Col md={12}>
-                          <div className="whatdoudo offpad">
-                            <div className="what12 lass">
-                              Skills{" "}
-                              <div className="plusnew" title="Add entry">
+                          <hr />
+                          <Row className="skill_row">
+                            <Col md={12}>
+                              <div className="whatdoudo offpad">
+                                <div className="what12 lass">
+                                  Skills{" "}
+                                  {/* <div className="plusnew" title="Add entry">
                                 <span className="addone">
                                   <Link to="/counsellorprofilebuilderedit/#skills">
                                     <img
@@ -469,38 +480,35 @@ class CounsellorViewUsersCVProfile extends React.Component {
                                     />
                                   </Link>
                                 </span>
+                              </div> */}
+                                </div>
                               </div>
-                            </div>
-                          </div>
-                        </Col>
-                        <Col md={12} className="">
-                          <div className="plusnew1 ll122">
-                            {skills.map((data, ind) => (
-                              <div className="skills" key={ind}>
-                                {data.skill}{" "}
-                                <span
-                                  className="dlete"
-                                  onClick={() => this.deleteSkill(ind)}
-                                >
-                                  {/* <img
+                            </Col>
+                            <Col md={12} className="">
+                              <div className="plusnew1 ll122">
+                                {skills.map((data, ind) => (
+                                  <div className="skills" key={ind}>
+                                    {data.skill}{" "}
+                                    <span className="dlete">
+                                      {/* <img
                                     className="skill_cancel"
                                     src={x}
                                     alt="delete skill"
                                   /> */}
-                                </span>
+                                    </span>
+                                  </div>
+                                ))}
                               </div>
-                            ))}
-                          </div>
-                          <div className="aboutprv jobr"></div>
-                        </Col>
-                      </Row>
+                              <div className="aboutprv jobr"></div>
+                            </Col>
+                          </Row>
 
-                      <Row className="rowla skill_row">
-                        <Col md={12}>
-                          <div className="whatdoudo offpad">
-                            <div className="what12">
-                              Education{" "}
-                              <div className="plusnew" title="Add entry">
+                          <Row className="rowla skill_row">
+                            <Col md={12}>
+                              <div className="whatdoudo offpad">
+                                <div className="what12">
+                                  Education{" "}
+                                  {/* <div className="plusnew" title="Add entry">
                                 <span className="addone">
                                   <Link to="/counsellorprofilebuilderedit/#education">
                                     <img
@@ -510,45 +518,47 @@ class CounsellorViewUsersCVProfile extends React.Component {
                                     />
                                   </Link>
                                 </span>
+                              </div> */}
+                                </div>
                               </div>
-                            </div>
-                          </div>
-                          <Row>
-                            {education.map((data, i) => (
-                              <div className="cveducation" key={i}>
-                                <span>
-                                  <img
-                                    className="cvedu"
-                                    src={book}
-                                    alt="book icon"
-                                  />
-                                </span>
-                                <span className="sch_details">
-                                  <div className="school">
-                                    {data.institution}
-                                  </div>
-                                  <div className="course">{data.degree}</div>
-                                  <div className="location">
-                                    {data.location}
-                                  </div>
-                                </span>
-                                <Link
+                              <Row>
+                                {education.map((data, i) => (
+                                  <div className="cveducation" key={i}>
+                                    <span>
+                                      <img
+                                        className="cvedu"
+                                        src={book}
+                                        alt="book icon"
+                                      />
+                                    </span>
+                                    <span className="sch_details">
+                                      <div className="school">
+                                        {data.institution}
+                                      </div>
+                                      <div className="course">
+                                        {data.degree}
+                                      </div>
+                                      <div className="location">
+                                        {data.location}
+                                      </div>
+                                    </span>
+                                    {/* <Link
                                   className="edit_descrip"
                                   to="/counsellorprofilebuilderedit/#education"
                                 >
                                   Edit Description
-                                </Link>
-                              </div>
-                            ))}
+                                </Link> */}
+                                  </div>
+                                ))}
+                              </Row>
+                            </Col>
                           </Row>
-                        </Col>
-                      </Row>
-                      <Row className="rowla newrowla">
-                        <Col md={12}>
-                          <div className="whatdoudo offpadd1">
-                            <div className="what12">
-                              Certification{" "}
-                              <div className="plusnew" title="Add entry">
+                          <Row className="rowla newrowla">
+                            <Col md={12}>
+                              <div className="whatdoudo offpadd1">
+                                <div className="what12">
+                                  Certification{" "}
+                                  {/* <div className="plusnew" title="Add entry">
                                 <span className="addone">
                                   <Link to="/counsellorprofilebuilderedit/#certification">
                                     <img
@@ -558,62 +568,63 @@ class CounsellorViewUsersCVProfile extends React.Component {
                                     />
                                   </Link>
                                 </span>
-                              </div>
-                            </div>
-                          </div>
-                          <Row className="cvexperience">
-                            {certifications.map((data) => (
-                              <Row className="roww">
-                                <Col md={1} sm={1} className="buildingbg">
-                                  <img
-                                    className="building"
-                                    src={building}
-                                    alt="building icon"
-                                  />
-                                </Col>
-                                <Col md={9} sm={8} className="cvexp">
-                                  <div className="role">
-                                    {data.certificate_name}
-                                  </div>
-                                  <div className="company">
-                                    {data.institution}
-                                  </div>
-                                  <div className="time">
-                                    Issued {this.formatTime(data.valid_from)}
-                                    {" - "}
-                                    {data.does_not_expire
-                                      ? "No Expiration Date"
-                                      : ""}{" "}
-                                    {this.formatTime(data.valid_from)}
-                                  </div>
-                                  <hr />
-                                </Col>
-                                <div className="dropit">
-                                  <img
-                                    className="drop"
-                                    src={dropdown}
-                                    alt="dropdown"
-                                  />
+                              </div> */}
                                 </div>
+                              </div>
+                              <Row className="cvexperience">
+                                {certifications.map((data) => (
+                                  <Row className="roww">
+                                    <Col md={1} sm={1} className="buildingbg">
+                                      <img
+                                        className="building"
+                                        src={building}
+                                        alt="building icon"
+                                      />
+                                    </Col>
+                                    <Col md={9} sm={8} className="cvexp">
+                                      <div className="role">
+                                        {data.certificate_name}
+                                      </div>
+                                      <div className="company">
+                                        {data.institution}
+                                      </div>
+                                      <div className="time">
+                                        Issued{" "}
+                                        {this.formatTime(data.valid_from)}
+                                        {" - "}
+                                        {data.does_not_expire
+                                          ? "No Expiration Date"
+                                          : ""}{" "}
+                                        {this.formatTime(data.valid_from)}
+                                      </div>
+                                      <hr />
+                                    </Col>
+                                    <div className="dropit">
+                                      <img
+                                        className="drop"
+                                        src={dropdown}
+                                        alt="dropdown"
+                                      />
+                                    </div>
+                                  </Row>
+                                ))}
                               </Row>
-                            ))}
+                              {false && (
+                                <a href="#" className="showmore">
+                                  Show More
+                                </a>
+                              )}
+                            </Col>
                           </Row>
-                          {false && (
-                            <a href="#" className="showmore">
-                              Show More
-                            </a>
-                          )}
                         </Col>
                       </Row>
-                    </Col>
-                  </Row>
-                  <hr />
-                  <Row className="skill_row">
-                    <Col md={12}>
-                      <div className="whatdoudo unbtm">
-                        <div className="what12">
-                          Reference{" "}
-                          <div className="plusnew" title="Add entry">
+                      <hr />
+                      <Row className="skill_row">
+                        <Col md={12}>
+                          <div className="whatdoudo unbtm">
+                            <div className="what12">
+                              Reference{" "}
+                              {/* <div className="plusnew" title="Add entry">
                             <span className="addone">
                               <Link to="/counsellorprofilebuilderedit/#reference">
                                 <img
@@ -623,31 +634,31 @@ class CounsellorViewUsersCVProfile extends React.Component {
                                 />
                               </Link>
                             </span>
+                          </div> */}
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      {references.map((data, i) => (
-                        <Row key={i}>
-                          <div className="cvreference">
-                            <span className="ref_details">
-                              <div className="name">{data.name}</div>
-                              <div className="mail">{data.ref_email}</div>
-                              <div className="phone">{data.phone}</div>
-                              <div className="relation">
-                                {data.relationship}
+                          {references.map((data, i) => (
+                            <Row key={i}>
+                              <div className="cvreference">
+                                <span className="ref_details">
+                                  <div className="name">{data.name}</div>
+                                  <div className="mail">{data.ref_email}</div>
+                                  <div className="phone">{data.phone}</div>
+                                  <div className="relation">
+                                    {data.relationship}
+                                  </div>
+                                </span>
                               </div>
-                            </span>
-                          </div>
-                        </Row>
-                      ))}
-                    </Col>
-                  </Row>
-                  <Row className="rowla">
-                    <Col md={12}>
-                      <div className="whatdoudo offpadd1">
-                        <div className="what12">
-                          Social Media Link{""}
-                          <div className="plusnew" title="Add entry">
+                            </Row>
+                          ))}
+                        </Col>
+                      </Row>
+                      <Row className="rowla">
+                        <Col md={12}>
+                          <div className="whatdoudo offpadd1">
+                            <div className="what12">
+                              Social Media Link{""}
+                              {/* <div className="plusnew" title="Add entry">
                             <span className="addone">
                               <Link to="/counsellorprofilebuilderedit/#socialmedia">
                                 <img
@@ -657,19 +668,22 @@ class CounsellorViewUsersCVProfile extends React.Component {
                                 />
                               </Link>
                             </span>
+                          </div> */}
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <Row className="cvsocial">
-                        {linkedin && <a className="social1">{linkedin}</a>}
-                        {facebook && <a className="social1">{facebook}</a>}
-                        {instagram && <a className="social1">{instagram}</a>}
-                        {twitter && <a className="social1">{twitter}</a>}
+                          <Row className="cvsocial">
+                            {linkedin && <a className="social1">{linkedin}</a>}
+                            {facebook && <a className="social1">{facebook}</a>}
+                            {instagram && (
+                              <a className="social1">{instagram}</a>
+                            )}
+                            {twitter && <a className="social1">{twitter}</a>}
+                          </Row>
+                        </Col>
                       </Row>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12} className="printcv">
+                      <Row>
+                        <Col md={12} className="printcv"></Col>
+                      </Row>
                     </Col>
                   </Row>
                 </Col>

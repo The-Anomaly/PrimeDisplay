@@ -1,3 +1,6 @@
+:root {
+  --claritypurple: #9c1258;
+}
 /*View More Modal Styling*/
 .modcomplete .modal-dialog {
   max-width: 60%;
@@ -62,8 +65,8 @@
   border: none;
   padding: 0.5rem 1rem;
 }
-.date_infoq{
-  cursor:not-allowed;
+.date_infoq {
+  cursor: not-allowed;
 }
 .note_det {
   width: 100%;
@@ -126,10 +129,10 @@
   .date_section {
     width: 47%;
   }
-  .hidinsmall{
+  .hidinsmall {
     display: none !important;
   }
-  .mobileviewtodo{
+  .mobileviewtodo {
     margin: auto;
     width: 300px !important;
     max-width: 324px;
@@ -233,30 +236,30 @@
   display: flex;
   justify-content: flex-end;
 }
-.notnow{
-  color: #18214D;
-  padding-right: .5rem;
+.notnow {
+  color: #18214d;
+  padding-right: 0.5rem;
   cursor: pointer;
   font-weight: bold;
 }
-.rightnow{
-  color: #A5A5A5;
+.rightnow {
+  color: #a5a5a5;
   cursor: pointer;
   font-weight: bold;
 }
-.ratingcont{
+.ratingcont {
   min-width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.ratingcont .dv-star-rating i{
+.ratingcont .dv-star-rating i {
   font-size: 2.2em !important;
 }
-.modcomplete4 .modal-dialog .modal-content{
+.modcomplete4 .modal-dialog .modal-content {
   padding: 0px;
 }
-.pleaseRate{
+.pleaseRate {
   background: #001833;
   color: #ffffff;
   padding: 1rem;
@@ -266,15 +269,15 @@
 }
 .noplancreate {
   background: #9c1258;
-    color: #ffffff;
-    font-size: 12px;
-    padding: 0.7rem 1rem;
-    width: 150px;
-    margin: auto;
-    border-radius: 5px;
-    font-family: 'Brfirma-Bold';
-    letter-spacing: 0.3px;
-    cursor: pointer;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 0.7rem 1rem;
+  width: 150px;
+  margin: auto;
+  border-radius: 5px;
+  font-family: "Brfirma-Bold";
+  letter-spacing: 0.3px;
+  cursor: pointer;
 }
 .newnorec {
   margin-top: 3rem;
@@ -289,7 +292,7 @@
   padding: 0.1rem 1rem;
   width: 100px;
 }
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .newprm {
     max-width: 100%;
     flex: 0 0 100%;
@@ -356,7 +359,7 @@
     margin-top: 1rem;
   }
 }
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .newseccards {
     width: 300px;
     padding-left: 1rem;
@@ -382,26 +385,27 @@
     margin-right: auto;
   }
 }
-.areusure1{
+.areusure1 {
   text-align: center;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
-.popUUp{
+.popUUp {
   width: 50px;
 }
-.mddd{
-  color: #3965FF;
+.mddd {
+  color: #3965ff;
   background: #fff;
-  border: 1px solid #3965FF;
+  border: 1px solid #3965ff;
 }
-.mddd2,.mddd2:hover{
-  background: #FF523D !important;
-  border: 1px solid #FF523D;
+.mddd2,
+.mddd2:hover {
+  background: var(--claritypurple) !important;
+  border: 1px solid var(--claritypurple);
   color: #fff !important;
   margin-left: 0px;
 }
-.warning22e .modal-dialog .modal-content{
+.warning22e .modal-dialog .modal-content {
   padding: 0px;
   padding-bottom: 1rem;
 }

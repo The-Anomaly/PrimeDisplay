@@ -1,3 +1,8 @@
+Clarity Frontend App is web application built with version  React 16.8.1. Clarity Frontend App goes beyond usual html and css and provides you entire intuitive user experience and a development friendly coding approach.The application is built with client side Rendering and API's are built on python backend.
+
+Moreover, there are several versions of the Clarity frontend application, enhanced with different features.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -25,20 +30,29 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Background
+Note
 
-### `npm run eject`
+Consider this the canonical resource for contributing Javascript and CSS. We are currently in the process of modernizing our front end development procedures. You will see a lot of different styles around the code base for front end JavaScript and CSS.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Our front end development stack includes the following tools:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+HTML,
+JAVASCRIPT,
+CSS,
+REACT JS.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+We use the following UI libraries:
+Bootstrap,
+React-bootstrap.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The front end application currently has some dependecies required for the application to start this are being managed in the package.json file of the application.
 
-## Learn More
+### `Getting Started`
+You will need a working version of Node (tested with v10.17.0) and NPM to get started. We won’t cover that here, as it varies from platform to platform.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To install these tools and dependencies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm install
+
+This command installs all the front end dependecies registered in the package.json.

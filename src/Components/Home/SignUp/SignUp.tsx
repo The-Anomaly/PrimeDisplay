@@ -78,6 +78,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
     axios
       .post<any, AxiosResponse<any>>(`${API}/accounts/signup/`, data)
       .then((response) => {
+        window.scrollTo(-0,-0)
         // console.log(response)
         if (response.status === 200) {
           return setFormState({

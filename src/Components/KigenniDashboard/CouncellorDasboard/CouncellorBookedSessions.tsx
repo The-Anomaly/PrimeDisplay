@@ -54,11 +54,12 @@ const CounsellorBookedSessions = (props: any) => {
     recommendations: [],
     taskTitle: "",
     taskDuration: "",
-    completing:false,
+    completing: false,
     taskDescription: "",
     session_notes: "",
     session_about: "",
     accordionisopen: false,
+    confirmModal: false,
   });
   const openModal = (id) => {
     // console.log(counsellorData);
@@ -107,11 +108,25 @@ const CounsellorBookedSessions = (props: any) => {
     completing,
     sessionId,
     name,
+    confirmModal,
   } = state;
   const onStarClick = (nextValue, prevValue, name) => {
     setState({
       ...state,
       [name]: nextValue.toString(),
+    });
+  };
+
+  const closeconfirmModal = () => {
+    setState({
+      ...state,
+      confirmModal: false,
+    });
+  };
+  const openconfirmModal = () => {
+    setState({
+      ...state,
+      confirmModal: true,
     });
   };
   React.useEffect(() => {
@@ -137,7 +152,7 @@ const CounsellorBookedSessions = (props: any) => {
     ])
       .then(
         Axios.spread((res, res2) => {
-          // console.log(res2);
+          console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -318,8 +333,8 @@ const CounsellorBookedSessions = (props: any) => {
   const complete_session = () => {
     setState({
       ...state,
-      completing:true
-    })
+      completing: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -354,8 +369,8 @@ const CounsellorBookedSessions = (props: any) => {
           notify("Successful");
           setState({
             ...state,
-            completing:false
-          })
+            completing: false,
+          });
           setTimeout(() => {
             window.location.reload();
           }, 2000);
@@ -363,8 +378,8 @@ const CounsellorBookedSessions = (props: any) => {
         .catch((err) => {
           setState({
             ...state,
-            completing:false
-          })
+            completing: false,
+          });
           // console.log(err.response);
         });
     }
@@ -837,35 +852,43 @@ const CounsellorBookedSessions = (props: any) => {
           <div className="center-btn">
             {" "}
             <Link to="counsellorbookings">
-              {completedStatus && (
-                <span
-                  className="modal-btn"
-                  onClick={() =>
-                    completedStatus
-                      ? notify("Session closed")
-                      : complete_session()
-                  }
-                >
+              {completedStatus == false ? (
+                <span className="modal-btn" onClick={openconfirmModal}>
                   {completedStatus ? "Session Closed" : " Close session"}{" "}
                   <i className="fa fa-arrow-right"></i>
                 </span>
-              )}
-              {!completedStatus && (
-                <span
-                  className="modal-btn"
-                  onClick={() =>
-                    completedStatus
-                      ? notify("Session closed")
-                      : complete_session()
-                  }
-                >
-                  {!completing? "Close session":"processing"}{" "}
-                  <i className="fa fa-arrow-right"></i>
-                </span>
+              ) : (
+                ""
               )}
             </Link>
           </div>
         </Container>
+      </Modal>
+      <Modal
+        show={confirmModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeconfirmModal}
+      >
+        <Modal.Body>
+          <div className="areusure1">
+            are you sure you want to <b> close this session?</b>
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeconfirmModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={complete_session}
+            >
+              {completing ? "Processing" : "Continue"}
+            </div>
+          </div>
+        </Modal.Body>
       </Modal>
     </>
   );

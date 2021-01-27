@@ -40,6 +40,7 @@ const SigninAffiliates = withRouter((props: any) => {
     axios
       .post(`${API}/affiliate/login/`, data)
       .then((response) => {
+        window.scrollTo(-0,-0)
         console.log(response);
         if (response.status === 200) {
           localStorage.setItem(

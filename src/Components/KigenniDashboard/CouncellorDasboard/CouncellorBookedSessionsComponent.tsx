@@ -43,6 +43,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     prevLink: "",
     count: "",
     success: "",
+    confirmModal:"",
     total_pages: "",
     completedStatus: false,
     user_issues: "",
@@ -51,6 +52,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     taskTitle: "",
     taskDuration: "",
     taskDescription: "",
+    session_completed:false,
     session_notes: "",
     session_about: "",
   });
@@ -72,6 +74,19 @@ const CounsellorBookedSessionsComponent = (props: any) => {
       }
     });
   };
+  
+  const closeconfirmModal = () => {
+    setState({
+      ...state,
+      confirmModal: false,
+    });
+  };
+  const openconfirmModal = () => {
+    setState({
+      ...state,
+      confirmModal: true,
+    });
+  };
   const closeModal = () => {
     setState({
       ...state,
@@ -89,6 +104,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     prevLink,
     count,
     total_pages,
+    session_completed,
     user_issues,
     taskTitle,
     taskDuration,
@@ -97,6 +113,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     session_notes,
     session_about,
     sessionId,
+    confirmModal,
     name,
   } = state;
   const onStarClick = (nextValue, prevValue, name) => {
@@ -116,13 +133,16 @@ const CounsellorBookedSessionsComponent = (props: any) => {
       : props.history.push("/counsellor/signin");
     const data = {};
     Axios.all([
-      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/booked-sessions`, {
-        headers: { Authorization: `Token ${token}` },
-      }),
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/counsellor/assigned-member/booked-sessions/?email=${props.email}`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
     ])
       .then(
         Axios.spread((res) => {
-          // console.log(res);
+          console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
@@ -361,7 +381,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         });
     }
   };
-  // console.log(session_email);
+  console.log(completedStatus);
   return (
     <>
       <Row>
@@ -610,7 +630,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
                 <div className="addmore" onClick={add_new_task}>
                   <p className="hjhh">Save &#43;</p>
                 </div>
-                {/* <div className="recommendationlist">
+                <div className="recommendationlist">
                   {recommendations.map((data, i) => (
                     <div className="cveducation" key={i}>
                       <span>
@@ -631,7 +651,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
                       </span>
                     </div>
                   ))}
-                </div> */}
+                </div>
               </Card.Body>
             </Accordion.Collapse>
           </Accordion>
@@ -725,20 +745,48 @@ const CounsellorBookedSessionsComponent = (props: any) => {
           <div className="center-btn">
             {" "}
             <Link to="counsellorbookings">
-              <span
-                className="modal-btn"
-                onClick={() =>
-                  completedStatus
-                    ? notify("Session closed")
-                    : complete_session()
-                }
-              >
-                {completedStatus ? "Session Closed" : " Close session"}{" "}
-                <i className="fa fa-arrow-right"></i>
-              </span>
+              {!session_completed && (
+                <span
+                  className="modal-btn"
+                  onClick={() =>
+                    session_completed
+                      ? notify("Session closed")
+                      : openconfirmModal()
+                  }
+                >
+                  {completedStatus ? "Session Closed" : " Close session"}{" "}
+                  <i className="fa fa-arrow-right"></i>
+                </span>
+              )}
             </Link>
           </div>
         </Container>
+      </Modal>
+      <Modal
+        show={confirmModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeconfirmModal}
+      >
+        <Modal.Body>
+          <div className="areusure1">
+            are you sure you want to <b> close this session?</b>
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeconfirmModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={complete_session}
+            >
+              {isLoading?"Processing":"Continue"}
+            </div>
+          </div>
+        </Modal.Body>
       </Modal>
     </>
   );

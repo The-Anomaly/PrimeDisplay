@@ -28,8 +28,6 @@ import { Spinner } from "react-bootstrap";
 import logoutImage from "../../assets/logout.png";
 const moment = require("moment");
 
-
-
 const TodoList = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
@@ -42,8 +40,8 @@ const TodoList = (props: any) => {
     showratemodal: true,
     count: "",
     success: "",
-    isloading:false,
-    iscreating:false,
+    isloading: false,
+    iscreating: false,
     total_pages: "",
   });
   const [modalState, setModState] = useState<any>({
@@ -61,7 +59,9 @@ const TodoList = (props: any) => {
     viewmoreisOpen: false,
     CreateTaskModalisOpen: false,
   });
-  const [ConfirmationState, setConfirmationState] = React.useState({ confirmationModal: false });
+  const [ConfirmationState, setConfirmationState] = React.useState({
+    confirmationModal: false,
+  });
 
   const closeConfirmationModal = () => {
     setConfirmationState({
@@ -77,7 +77,16 @@ const TodoList = (props: any) => {
   };
   const { confirmationModal } = ConfirmationState;
 
-  const { errorMessage, tasklist, nextLink, prevLink,iscreating ,reason,isloading, success } = state;
+  const {
+    errorMessage,
+    tasklist,
+    nextLink,
+    prevLink,
+    iscreating,
+    reason,
+    isloading,
+    success,
+  } = state;
   const {
     task_title,
     task_description,
@@ -171,8 +180,8 @@ const TodoList = (props: any) => {
   const createNewTask = () => {
     setFormState({
       ...state,
-      iscreating:true
-    })
+      iscreating: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -188,10 +197,11 @@ const TodoList = (props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        window.scrollTo(-0, -0);
         setFormState({
           ...state,
           success: true,
-          iscreating:false
+          iscreating: false,
         });
         setTimeout(() => {
           setFormState({
@@ -206,8 +216,8 @@ const TodoList = (props: any) => {
         notify("Failed to send");
         setFormState({
           ...state,
-          iscreating:false
-        })
+          iscreating: false,
+        });
       });
   };
   const notify = (message: string) => toast(message, { containerId: "i" });
@@ -261,8 +271,8 @@ const TodoList = (props: any) => {
   const LoadOldData = () => {
     setFormState({
       ...state,
-      isloading:true
-    })
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -277,14 +287,14 @@ const TodoList = (props: any) => {
           count: res.data.page,
           nextLink: res.data.next,
           prevLink: res.data.previous,
-          isloading:false
+          isloading: false,
         });
       })
       .catch((err) => {
         setFormState({
           ...state,
-          isloading:false
-        })
+          isloading: false,
+        });
         if (err?.status === 401) {
           props.history.push("/signin");
         }
@@ -295,29 +305,28 @@ const TodoList = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
-      setFormState({
-        ...state,
-        isloading:true
-      })
+    setFormState({
+      ...state,
+      isloading: true,
+    });
     Axios.get<any, AxiosResponse<any>>(`${nextLink}`, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        
         setFormState({
           ...state,
           tasklist: [...res.data.results],
           count: res.data.page,
           nextLink: res.data.next,
           prevLink: res.data.previous,
-          isloading:false
+          isloading: false,
         });
       })
       .catch((err) => {
         setFormState({
           ...state,
-          isloading:false
-        })
+          isloading: false,
+        });
         if (err?.status === 401) {
           props.history.push("/signin");
         }
@@ -379,8 +388,8 @@ const TodoList = (props: any) => {
                         className="yellowgood newgrnbg"
                         alt="goodimage"
                       />
-                      It takes a hero to even start a task, but it seems
-                      like you have super powers. Keep going Champ!!!
+                      It takes a hero to even start a task, but it seems like
+                      you have super powers. Keep going Champ!!!
                     </div>
                     {tasklist.length > 0 && (
                       <div className="task_table">
@@ -397,7 +406,9 @@ const TodoList = (props: any) => {
                             <span className="task_title lowerr todominittl">
                               Task Title
                             </span>
-                            <div className="cname todo_name txtfont">{data?.title}</div>
+                            <div className="cname todo_name txtfont">
+                              {data?.title}
+                            </div>
                           </div>
 
                           <div className="weeks cardsec3">
@@ -638,7 +649,7 @@ const TodoList = (props: any) => {
               className="savebtn todo_button markit createit"
               onClick={createNewTask}
             >
-              {!iscreating?"Create Task":"Creating..."}
+              {!iscreating ? "Create Task" : "Creating..."}
             </div>
           </div>
         </Modal.Body>

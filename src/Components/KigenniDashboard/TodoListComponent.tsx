@@ -52,6 +52,7 @@ const TodoListComponent = (props: any) => {
     startDate: "",
     isOpen: false,
     id: 1,
+    isloading:false,
     viewmoreisOpen: false,
     CreateTaskModalisOpen: false,
   });
@@ -65,7 +66,7 @@ const TodoListComponent = (props: any) => {
     duration,
     title,
     description,
-    add_note,
+    isloading,
     rate,
     isOpen,
     id,
@@ -190,13 +191,13 @@ const TodoListComponent = (props: any) => {
       Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/todo`, {
         headers: { Authorization: `Token ${token}` },
       }),
-      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/todo`, {
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/assigned-member/recommended-tasks/?email=${props.email}`, {
         headers: { Authorization: `Token ${token}` },
       }),
     ])
       .then(
         Axios.spread((res, res1) => {
-          // console.log(res);
+          console.log(res1);
           if (res.status === 200) {
             setFormState({
               ...state,
@@ -204,10 +205,10 @@ const TodoListComponent = (props: any) => {
               successMsg: true,
               isLoading: false,
               tasklist: [...res1.data.results].reverse(),
-              count: res1.data.page,
-              nextLink: res1.data.next,
-              prevLink: res1.data.previous,
-              total_pages: res1.data.total_pages,
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
             });
           }
         })
@@ -279,7 +280,9 @@ const TodoListComponent = (props: any) => {
     return dateTime;
   };
   const capitalizeFirstLetter = (string: string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    if(string){
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
   };
   const getTaskdetails: any = () => {
     let result: any = {};
@@ -290,7 +293,7 @@ const TodoListComponent = (props: any) => {
     });
     return result;
   };
-
+console.log(tasklist)
   return (
     <>
       <Col md={12} className="firstqq">
@@ -306,7 +309,7 @@ const TodoListComponent = (props: any) => {
               </div>
             )}
             {tasklist.length !== 0 &&
-              tasklist.map((data, i) => (
+              tasklist?.map((data, i) => (
                 <div className="wrapc2 tasklist" key={i}>
                   <div className="titl">
                     <span className="task_title lowerr">Task Title</span>
@@ -331,12 +334,12 @@ const TodoListComponent = (props: any) => {
                   <div className="cstatus2 stat">
                     <span
                       className={
-                        data.status === "pending"
+                        !data.is_completed
                           ? "cstatus todo_status pending"
                           : "cstatus todo_status"
                       }
                     >
-                      {capitalizeFirstLetter(data.status)}
+                      {data.is_completed?"Complete":"Pending"}
                     </span>
                   </div>
                   <div className="ctime todoo">
@@ -404,7 +407,7 @@ const TodoListComponent = (props: any) => {
         centered={true}
         onHide={closeModalForCompleteTask}
       >
-        <Modal.Title className="modal_title">Complete Task</Modal.Title>
+        <Modal.Title className="modal_title">Task Details</Modal.Title>
         <div className="text-center">{errorMessage}</div>
         {success && (
           <Alert variant={"info"} className="text-center">
@@ -447,18 +450,18 @@ const TodoListComponent = (props: any) => {
               placeholder="Enter number of days"
               name="add_note"
               disabled={true}
-              value={getTaskdetails()?.notes}
+              value={getTaskdetails()?.duration}
             />
           </div>
 
           <div className="request_input"></div>
           <div className="mark_complete">
-            <div
+            {/* <div
               className="savebtn todo_button markit"
               onClick={submitTaskIsCompleteForm}
             >
-              Mark as Complete
-            </div>
+              {!isloading?"Mark as Complete":"Processing"}
+            </div> */}
           </div>
         </Modal.Body>
       </Modal>
