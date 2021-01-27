@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../../KigenniDashboard/CounsellorLandingPage/counsellornavbar";
+import Navbar from "../../Dashboard/CounsellorLandingPage/counsellornavbar";
 import "./signup.css";
 import { Link, withRouter } from "react-router-dom";
 import { Container, Row, Col, Form, Alert } from "react-bootstrap";
