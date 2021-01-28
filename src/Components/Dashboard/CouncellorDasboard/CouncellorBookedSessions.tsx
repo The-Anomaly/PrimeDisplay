@@ -380,6 +380,7 @@ const CounsellorBookedSessions = (props: any) => {
             ...state,
             completing: false,
           });
+          notify("Failed")
           // console.log(err.response);
         });
     }
@@ -400,14 +401,24 @@ const CounsellorBookedSessions = (props: any) => {
         }
       )
         .then((res) => {
-          // console.log(res);
+          setState({
+            ...state,
+            completing: false,
+          });
           notify("Successful");
           setTimeout(() => {
-            // window.location.reload();
+            window.location.reload();
           }, 2000);
         })
         .catch((err) => {
-          // console.log(err.response);
+          setState({
+            ...state,
+            completing: false,
+          });
+          notify("Failed")
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         });
     }
   };

@@ -197,7 +197,7 @@ const TodoListComponent = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res1);
+          // console.log(res1);
           if (res.status === 200) {
             setFormState({
               ...state,
@@ -293,7 +293,7 @@ const TodoListComponent = (props: any) => {
     });
     return result;
   };
-console.log(tasklist)
+// console.log(tasklist)
   return (
     <>
       <Col md={12} className="firstqq">
@@ -603,10 +603,10 @@ console.log(tasklist)
               />
             </div>
           </div>
-          <div className="modal_det">
+          {/* <div className="modal_det">
             <div className="titlee">Counselor's Input</div>
             <textarea className="task_det" disabled={true}></textarea>
-          </div>
+          </div> */}
         </Modal.Body>
       </Modal>
       <ToastContainer

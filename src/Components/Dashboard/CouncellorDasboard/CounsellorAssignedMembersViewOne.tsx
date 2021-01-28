@@ -243,7 +243,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardCounsellorIntroHeader
-                  welcomeText={`This is a report of detailed information ${counsellorData.name}`}
+                  welcomeText={`This is a report of detailed information`}
                 />
                 <Row className="signedfjss">
                   <Col md={12}>

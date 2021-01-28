@@ -43,7 +43,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     prevLink: "",
     count: "",
     success: "",
-    confirmModal:"",
+    confirmModal: "",
     total_pages: "",
     completedStatus: false,
     user_issues: "",
@@ -52,9 +52,10 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     taskTitle: "",
     taskDuration: "",
     taskDescription: "",
-    session_completed:false,
+    session_completed: false,
     session_notes: "",
     session_about: "",
+    completing: false,
   });
   const openModal = (id) => {
     // console.log(counsellorData);
@@ -70,11 +71,12 @@ const CounsellorBookedSessionsComponent = (props: any) => {
           sessionId: data.id,
           completedStatus: data.status,
           user_issues: data.user_vent,
+          session_completed: data?.session_completed,
         });
       }
     });
   };
-  
+
   const closeconfirmModal = () => {
     setState({
       ...state,
@@ -106,6 +108,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     total_pages,
     session_completed,
     user_issues,
+    completing,
     taskTitle,
     taskDuration,
     recommendations,
@@ -318,6 +321,10 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/counsellor/signin");
+    setState({
+      ...state,
+      completing: true,
+    });
     if (taskTitle !== "" || taskDescription !== "" || taskDuration !== "") {
       // console.log("here");
       const recommendation = [
@@ -343,13 +350,28 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         }
       )
         .then((res) => {
-          // console.log(res);
+          
           notify("Successful");
           setTimeout(() => {
-            window.location.reload();
+            setState({
+              ...state,
+              completing: false,
+              confirmModal:false,
+              isOpen:false
+            });
+            window.location.reload()
           }, 2000);
         })
         .catch((err) => {
+          setTimeout(() => {
+            setState({
+              ...state,
+              completing: false,
+              confirmModal:false,
+              isOpen:false
+            });
+            window.location.reload()
+          }, 2000);
           // console.log(err.response);
         });
     }
@@ -370,14 +392,27 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         }
       )
         .then((res) => {
-          // console.log(res);
           notify("Successful");
           setTimeout(() => {
-            // window.location.reload();
+            setState({
+              ...state,
+              completing: false,
+              confirmModal:false,
+              isOpen:false
+            });
+            window.location.reload()
           }, 2000);
         })
         .catch((err) => {
-          // console.log(err.response);
+          setTimeout(() => {
+            setState({
+              ...state,
+              completing: false,
+              confirmModal:false,
+              isOpen:false
+            });
+            window.location.reload()
+          }, 2000);
         });
     }
   };
@@ -461,10 +496,12 @@ const CounsellorBookedSessionsComponent = (props: any) => {
                           </div>
                           <span
                             className={
-                              !data.status ? "pend pltd" : "complt pltd"
+                              !data.session_completed
+                                ? "pend pltd"
+                                : "complt pltd"
                             }
                           >
-                            {!data.status ? "Pending" : "Completed"}
+                            {!data.session_completed ? "Pending" : "Completed"}
                           </span>
                         </div>
 
@@ -533,6 +570,9 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         centered={true}
         onHide={closeModal}
       >
+        <div className="text-right">
+          <span onClick={closeModal}>&times;</span>
+        </div>
         <Container>
           <h6>{name}</h6>
           <span className="modal-btn">
@@ -566,95 +606,102 @@ const CounsellorBookedSessionsComponent = (props: any) => {
               onChange={inputChangeHandler}
             />
           </form>
-          <Accordion defaultActiveKey="" className="councld1">
-            <div className="councld11">
-              <Accordion.Toggle as={Card.Header} className="hpadd" eventKey="5">
-                <p className="to-do-header councld">
-                  {" "}
-                  <span>Add Task</span>
-                </p>
-              </Accordion.Toggle>
-              <Accordion.Toggle as={Card.Header} eventKey="5">
-                <span className="tododw">
-                  <img src={expand} className="expand11" alt="expand" />
-                </span>
-              </Accordion.Toggle>
-            </div>
-            <Accordion.Collapse eventKey="5">
-              <Card.Body>
-                <form className="to-do-form">
-                  <Row className="taskrow">
-                    <Col md={6}>
-                      <label className="taskcl">Task Title</label>
-                      <input
-                        type="text"
-                        placeholder="enter a title"
-                        name="taskTitle"
-                        value={taskTitle}
-                        onChange={inputChangeHandler}
-                        className="form-control todo-input"
-                        size={25}
-                      />
-                    </Col>
-                    <Col md={6}>
-                      <label className="taskcl">
-                        How long should this take?{" "}
-                        <span className="dayss">(Days)</span>
-                      </label>
-                      <input
-                        type="number"
-                        placeholder="Enter the number of days"
-                        className="form-control todo-input"
-                        name="taskDuration"
-                        value={taskDuration}
-                        onChange={inputChangeHandler}
-                        size={25}
-                      />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <label className="taskcl">Task Objective</label>
-                      <textarea
-                        placeholder="Describe the nature of the task"
-                        cols={67}
-                        rows={3}
-                        className="form-control text-decription"
-                        name="taskDescription"
-                        value={taskDescription}
-                        onChange={inputChangeHandler}
-                      />
-                    </Col>
-                  </Row>
-                </form>
-                <div className="addmore" onClick={add_new_task}>
-                  <p className="hjhh">Save &#43;</p>
-                </div>
-                <div className="recommendationlist">
-                  {recommendations.map((data, i) => (
-                    <div className="cveducation" key={i}>
-                      <span>
-                        <img className="cvedu" src={book} alt="book icon" />
-                      </span>
-                      <span className="sch_details">
-                        <div className="school">{data.title}</div>
-                        <div className="course">
-                          {data.duration} {data.duration == 1 ? "day" : "days"}
-                        </div>
-                        <div className="location">{data.description}</div>
-                      </span>
-                      <span
-                        className="edit_descripd"
-                        onClick={() => deleteEntry(i)}
-                      >
-                        <span className="dwq12">&times;</span>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Accordion>
+          {!session_completed && (
+            <Accordion defaultActiveKey="" className="councld1">
+              <div className="councld11">
+                <Accordion.Toggle
+                  as={Card.Header}
+                  className="hpadd"
+                  eventKey="5"
+                >
+                  <p className="to-do-header councld">
+                    {" "}
+                    <span>Add Task</span>
+                  </p>
+                </Accordion.Toggle>
+                <Accordion.Toggle as={Card.Header} eventKey="5">
+                  <span className="tododw">
+                    <img src={expand} className="expand11" alt="expand" />
+                  </span>
+                </Accordion.Toggle>
+              </div>
+              <Accordion.Collapse eventKey="5">
+                <Card.Body>
+                  <form className="to-do-form">
+                    <Row className="taskrow">
+                      <Col md={6}>
+                        <label className="taskcl">Task Title</label>
+                        <input
+                          type="text"
+                          placeholder="enter a title"
+                          name="taskTitle"
+                          value={taskTitle}
+                          onChange={inputChangeHandler}
+                          className="form-control todo-input"
+                          size={25}
+                        />
+                      </Col>
+                      <Col md={6}>
+                        <label className="taskcl">
+                          How long should this take?{" "}
+                          <span className="dayss">(Days)</span>
+                        </label>
+                        <input
+                          type="number"
+                          placeholder="Enter the number of days"
+                          className="form-control todo-input"
+                          name="taskDuration"
+                          value={taskDuration}
+                          onChange={inputChangeHandler}
+                          size={25}
+                        />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <label className="taskcl">Task Objective</label>
+                        <textarea
+                          placeholder="Describe the nature of the task"
+                          cols={67}
+                          rows={3}
+                          className="form-control text-decription"
+                          name="taskDescription"
+                          value={taskDescription}
+                          onChange={inputChangeHandler}
+                        />
+                      </Col>
+                    </Row>
+                  </form>
+                  <div className="addmore" onClick={add_new_task}>
+                    <p className="hjhh">Save &#43;</p>
+                  </div>
+                  <div className="recommendationlist">
+                    {recommendations.map((data, i) => (
+                      <div className="cveducation" key={i}>
+                        <span>
+                          <img className="cvedu" src={book} alt="book icon" />
+                        </span>
+                        <span className="sch_details">
+                          <div className="school">{data.title}</div>
+                          <div className="course">
+                            {data.duration}{" "}
+                            {data.duration == 1 ? "day" : "days"}
+                          </div>
+                          <div className="location">{data.description}</div>
+                        </span>
+                        <span
+                          className="edit_descripd"
+                          onClick={() => deleteEntry(i)}
+                        >
+                          <span className="dwq12">&times;</span>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Accordion>
+          )}
           {recommendations.map((data, i) => (
             <Accordion defaultActiveKey="" className="councld1">
               <div className="councld11">
@@ -744,7 +791,6 @@ const CounsellorBookedSessionsComponent = (props: any) => {
           />
           <div className="center-btn">
             {" "}
-            <Link to="counsellorbookings">
               {!session_completed && (
                 <span
                   className="modal-btn"
@@ -754,11 +800,10 @@ const CounsellorBookedSessionsComponent = (props: any) => {
                       : openconfirmModal()
                   }
                 >
-                  {completedStatus ? "Session Closed" : " Close session"}{" "}
+                  {session_completed ? "Session Closed" : " Close session"}{" "}
                   <i className="fa fa-arrow-right"></i>
                 </span>
               )}
-            </Link>
           </div>
         </Container>
       </Modal>
@@ -783,7 +828,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
               className="retaketest upss1 planupgradebtn mddd2"
               onClick={complete_session}
             >
-              {isLoading?"Processing":"Continue"}
+              {completing ? "Processing" : "Continue"}
             </div>
           </div>
         </Modal.Body>

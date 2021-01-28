@@ -38,9 +38,11 @@ Consider this the canonical resource for contributing Javascript and CSS. We are
 Our front end development stack includes the following tools:
 
 HTML,
-JAVASCRIPT,
+Javascript,
+Typescript,
 CSS,
-REACT JS.
+SCSS,
+REACT JS
 
 We use the following UI libraries:
 Bootstrap,
