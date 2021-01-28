@@ -1,4 +1,4 @@
-Clarity Frontend App is web application built with version  React 16.8.1. Clarity Frontend App goes beyond usual html and css and provides you entire intuitive user experience and a development friendly coding approach.The application is built with client side Rendering and API's are built on python backend.
+Clarity Frontend App is web application built with React version 16.8.3 Clarity Frontend App goes beyond usual html and css and provides you entire intuitive user experience and a development friendly coding approach.The application is built with client side Rendering and API's are built on python backend.
 
 Moreover, there are several versions of the Clarity frontend application, enhanced with different features.
 
