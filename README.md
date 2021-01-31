@@ -168,7 +168,7 @@ The *Subscription* tab is linked to the ~~ NewDashboardSubsciptionPlan.tsx ~~ fi
 
 The *Support* tab is linked to the ~~ NewDashboardSupport.tsx ~~ file which can be accessed via the path "/dashboardsupport".
 
-The *Logout* makes a call to `**openLogoutModal()**` which opens up a logout confirmation modal.
+The *Logout* tab makes a call to `**openLogoutModal()**` which opens up a logout confirmation modal.
 
 
 ***Counselor Dashboard***
@@ -177,6 +177,35 @@ The *Logout* makes a call to `**openLogoutModal()**` which opens up a logout con
 The root component for this can be found in the ~~ SideBarCounsellorDashboard.tsx ~~ file for the desktop screen and the ~~ CounsellorsDashboardNavBar.tsx ~~ file for the mobile screen.
 This component handles the navigation on the counselor dashboard. It comprises several elements (tabs) that are linked to other components.
 
+The *Overview* tab is linked to the ~~ CouncellorOverview.tsx ~~ file which can be accessed via the path "/counselloroverview".
+
+The *Booked Sessions* tab is linked to the ~~ CouncellorBookedSessions.tsx ~~ file which can be accessed via the path "/counsellorbookings".
+
+The *Messages* tab is linked to the ~~ CouncellorAllMessages.tsx ~~ file which can be accessed via the path "/counsellormessages".
+
+The *Recommended Task* tab is linked to the ~~ CouncellorRecommendations1.tsx ~~ file which can be accessed via the path "/counsellorrecommendations1".
+
+The *Profile Builder* tab is linked to the ~~ CounsellorCVProfileBuilder.tsx ~~ file which can be accessed via the path "/counsellorprofilebuilder".
+
+The *Assigned Members* tab is linked to the ~~ CouncellorAssignedMembers.tsx ~~ file which can be accessed via the path "/counsellorassignedmembers".
+
+The *Referrals* tab is linked to the ~~ referrals.tsx ~~ file which can be accessed via the path "/referrals".
+
+The *Settings* tab is linked to the ~~ CouncellorSettings.tsx ~~ file which can be accessed via the path "/counsellorsettings".
+
+The *Support* tab is linked to the ~~ CouncellorSupport.tsx ~~ file which can be accessed via the path "/counsellorsupport".
+
+The *Logout* tab makes a call to `**openLogoutModal()**` which opens up a logout confirmation modal.
+
 
 ***Affiliate Dashboard***
 
+**Navigation**
+The root component for this can be found in the ~~ SideBarAffiliateDashboard.tsx ~~ file for the desktop screen and the ~~ SmallScreenNavbarAffiliates.tsx ~~ file for the mobile screen.
+This component handles the navigation on the affiliate dashboard. It comprises several elements (tabs) that are linked to other components.
+
+The *Dashboard* tab is linked to the ~~ ThirdPartyOverview.tsx ~~ file which can be accessed via the path "/affiliates".
+
+The *Behavioural Analytics* tab is linked to the ~~ BehaviouralAnalytics.tsx ~~ file which can be accessed via the path "/affiliates/analytics".
+
+The *Logout* tab makes a call to `**openLogoutModal()**` which opens up a logout confirmation modal.
