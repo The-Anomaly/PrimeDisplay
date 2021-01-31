@@ -78,7 +78,7 @@ The dashboard folder contains the components that can require authentication bef
 The dashboard has three user types namely; individual, counselor & affiliate.
 
 # `Individual`
-The components for the clarity for individuals section can be found in the Dashboard folder. These componenets require authrntication for user access. 
+The components for the clarity for individuals section can be found in the Dashboard folder. These componenets require authentication for user access. 
 
 # `Counselor`
 The components for the clarity for counselor section can be found in the CouncellorDasboard and CounsellorLandingPage folders located at the directories "src\Components\Dashboard\CouncellorDasboard" and "src\Components\Dashboard\CounsellorLandingPage" respectively.
@@ -97,14 +97,13 @@ The AffiliateDashboard folder contains the components that require authenticatio
 ## `Routes`
 The App.tsx folder located in the directory "src\App.tsx" contains the Routes to the different components accessible by the user.
 
+
 ## `Component Description`
 
-
-**Home page**
-The component for the home page can be found in the RedesignedHome.tsx file. The function getCurrentAssessmentPosition() is called within this page to determine the logged in user last assessment step and redirected to the page to continue session.
+**Landing page**
+The component for the landing page can be found in the RedesignedHome.tsx file. The function getCurrentAssessmentPosition() is called within this page to determine the logged in user last assessment step and redirected to the page to continue session.
 
 A get request is made within this function to fetch the last session of the user from this endpoint `{{url}}/progress`.
-
 
 **About page**
 No functionality applied here
@@ -124,7 +123,7 @@ A controlled form is used in the forgot password page and a get request is made 
 The page can be found on the \Redesigned_signup_page\signup.tsx 
 
 **Password reset page**
-This page recieves two dynamic parameters via the route. these are userid and token 
+This page recieves two dynamic parameters via the route. These are userid and token 
 a post request is sent to an endpoint with path `/resetpassword/${userid}/${token}`.
 
 **Payment Page** 
@@ -134,3 +133,50 @@ The paymentsummary component can be found in the file named ClarityExperience.ts
 The Payment gate way is monnify and this is initailized via a content delivery network.
 A function that handles the payment reference `**requestForPayref()**` is called first then the payment gate is called as a callback function.
 A different function is often called when the gift a subscription `**giftSubscriptionPayref()**` is selected.
+
+***Individual Dashboard***
+
+**Navigation**
+The root component for this can be found in the ~~ SideBarNewDashboard.tsx ~~ file for the desktop screen and the ~~ DashboardNavBar.tsx ~~ file for the mobile screen.
+This component handles the navigation on the user dashboard. It comprises several elements (tabs) that are linked to other components.
+
+The *Overview* tab is linked to the ~~ NewDashboard.tsx ~~ file which can be accessed via the path "/overview".
+
+The *Career Insight* tab is linked to the ~~ NewDashboardFullInsight.tsx ~~ file which can be accessed via the path "/thirdpary/fullresult" that redirects to the path "/fullinsight". This page is only accessible to users who satisfy a condition. This condition is determined by the data obtained from a get request made to an endpoint with the path `/paymentstatus`.
+
+The *Talk to a Counselor* tab opens up an accordion that reveals two sub-tabs.
+
+    The *Book a private session* tab is linked to the ~~ CouncellorDates.tsx ~~ file which can be accessed via the path "/counsellordates".
+
+    The *Ask a Counselor* tab is linked to the ~~ NewDashboardAllMessages.tsx ~~ file which can be accessed via the pathname "/allusermessages". This page is only accessible to users who satisfy a condition. This condition is determined by the data obtained from a get request made to an endpoint with the path `/paymentstatus`. This data is stored in the local storage under the name "accessFeature".
+
+The *Recommended Task* tab is linked to the ~~ NewCouncellorsRecommendation.tsx ~~ file which can be accessed via the path "/counsellorsrecommendation".
+
+The *Task Todo* tab opens up an accordion that reveals two sub-tabs.
+
+    The *Task Overview* tab is linked to the ~~ TodoOverview.tsx ~~ file which can be accessed via the path "/todooverview".
+
+    The *All Task* tab is linked to the ~~ TodoList.tsx ~~ file which can be accessed via the path "/todolist".
+
+The *Opportunity Recommender* tab is linked to the ~~ NewDashboardJobOpportunities.tsx ~~ file which can be accessed via the path "/jobopportunities". his page is only accessible to users who satisfy a condition. This condition is determined by the data obtained from a get request made to an endpoint with the path `/paymentstatus`. This data is stored in the local storage under the name "accessFeature".
+
+The *Profile Builder* tab is linked to the ~~ CVProfileBuilder.tsx ~~ file which can be accessed via the path "/profilebuilder".
+
+The *Settings* tab is linked to the ~~ DashboardSettings.tsx ~~ file which can be accessed via the path "/dashboardsettings".
+
+The *Subscription* tab is linked to the ~~ NewDashboardSubsciptionPlan.tsx ~~ file which can be accessed via the path "/dashboardsubscriptionplan".
+
+The *Support* tab is linked to the ~~ NewDashboardSupport.tsx ~~ file which can be accessed via the path "/dashboardsupport".
+
+The *Logout* makes a call to `**openLogoutModal()**` which opens up a logout confirmation modal.
+
+
+***Counselor Dashboard***
+
+**Navigation**
+The root component for this can be found in the ~~ SideBarCounsellorDashboard.tsx ~~ file for the desktop screen and the ~~ CounsellorsDashboardNavBar.tsx ~~ file for the mobile screen.
+This component handles the navigation on the counselor dashboard. It comprises several elements (tabs) that are linked to other components.
+
+
+***Affiliate Dashboard***
+

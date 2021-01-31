@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import "./App.css";
-import Home from "./Components/Home/Home/Home";
+// import Home from "./Components/Home/Home/Home";
 import { About } from "./Components/Home/About/About";
 import Faq from "./Components/Home/FAQs/faq";
 import OnboardingChat from "./Components/Home/OnboardingChat/onboardingchat";
@@ -126,7 +126,7 @@ class App extends Component {
         <div>
           <BrowserRouter>
             <Switch>
-              <Route exact path="/oldhome" component={Home} />
+              {/* <Route exact path="/oldhome" component={Home} /> */}
               <Route exact path="/contact" component={Contactpage} />
               <Route exact path="/pricing" component={Paymentpage} />
               <Route exact path="/privacy_policy" component={Privacy} />
