@@ -30,11 +30,13 @@ import referralinactive from "../../../assets/referral_inactive.png";
 import logoutImage from "../../../assets/logout.png";
 import { Modal, Spinner } from "react-bootstrap";
 
-
-
 const SideBarCounsellorDashboard = withRouter((props: any) => {
   const [hidemobile, sethidemobile] = React.useState(false);
-  const [logoutState, setLogoutState] = React.useState({ logoutModal: false });
+  const [logoutState, setLogoutState] = React.useState({
+    logoutModal: false,
+    assessmentModal: false,
+    isloading: false,
+  });
   const closeLogoutModal = () => {
     setLogoutState({
       ...logoutState,
@@ -47,7 +49,20 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
       logoutModal: true,
     });
   };
-  const { logoutModal } = logoutState;
+
+  const openAssesmentModal = () => {
+    setLogoutState({
+      ...logoutState,
+      assessmentModal: true,
+    });
+  };
+  const closeAssesmentModal = () => {
+    setLogoutState({
+      ...logoutState,
+      assessmentModal: false,
+    });
+  };
+  const { logoutModal, assessmentModal, isloading } = logoutState;
 
   const changeHideStatus = () => {
     sethidemobile(hidemobile ? false : true);
@@ -55,6 +70,84 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
   const logOut = () => {
     localStorage.clear();
     window.location.assign("/counsellor/signin");
+  };
+  const getCurrentAssessmentPosition = (): void => {
+    setLogoutState({
+      ...logoutState,
+      isloading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token: string = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get(`${API}/progress`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        setLogoutState({
+          ...logoutState,
+          isloading: false,
+        });
+        if (
+          (response.status === 200 &&
+            response.data[0].next === "phase_four_nature") ||
+          response.data[0].next === "phase_four_health" ||
+          response.data[0].next === "phase_four_building" ||
+          response.data[0].next === "phase_four_creative"
+        ) {
+          return props.history.push(`/assessmentphasefour`);
+        }
+        if (
+          (response.status === 200 &&
+            response.data[0].next === "phase_four_sports") ||
+          response.data[0].next === "phase_four_business" ||
+          response.data[0].next === "phase_four_stem" ||
+          response.data[0].next === "phase_four_humanitarian"
+        ) {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasefour1`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_one") {
+          closeAssesmentModal();
+          return window.open(`/assessmentphaseone`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_two") {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasetwo`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "phase_three"
+        ) {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasethree`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_five") {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasefive`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_six") {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasesix/?counsellor=true`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "phase_seven"
+        ) {
+          closeAssesmentModal();
+          return window.open(`/assessmentphaseseven/?counsellor=true`);
+        }
+        if (response.status === 200 && response.data[0].next === "home") {
+          closeAssesmentModal();
+          return window.open(`/counsellorresultpage`);
+        }
+      })
+      .catch((error) => {
+        setLogoutState({
+          ...logoutState,
+          isloading: false,
+        });
+      });
   };
   return (
     <>
@@ -190,17 +283,18 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               Support
             </Link>
           </div>
-          {/* <div className={props.support ? "activegb" : "gbn"}>
+          <div
+            className={props.assessment ? "activegb" : "gbn"}
+            onClick={openAssesmentModal}
+          >
             {" "}
-            <Link to="/ratings">
-              <img
-                src={props.support ? starrating : starrating}
-                className="sideimage"
-                alt="sideimage"
-              />
-              Ratings
-            </Link>
-          </div> */}
+            <img
+              src={props.assessment ? starrating : starrating}
+              className="sideimage"
+              alt="sideimage"
+            />
+            Clarity Assessment
+          </div>
           <div className={"gbn"}>
             {" "}
             <span onClick={openLogoutModal}>
@@ -236,6 +330,36 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               onClick={logOut}
             >
               Log out
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={assessmentModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeLogoutModal}
+      >
+        <Modal.Body>
+          <div className="text-center"> </div>
+          <div className="areusure1">
+            Are you sure you want to <b> take the assessment?</b>
+          </div>
+          <div className="text-center">
+            {isloading && <Spinner animation="grow" />}
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeAssesmentModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={getCurrentAssessmentPosition}
+            >
+              Take assessment
             </div>
           </div>
         </Modal.Body>

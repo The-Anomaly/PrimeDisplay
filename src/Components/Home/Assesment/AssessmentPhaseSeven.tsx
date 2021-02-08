@@ -120,6 +120,16 @@ const AssessmentSeventhPhase = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
+        const User1 = localStorage.getItem("user")
+        const User2 = User1? JSON.parse(User1):""
+        const urlParams = new URLSearchParams(window.location.search);
+        let urlkey = urlParams.get("counsellor");
+        if(urlkey=="true"){
+         return props.history.push("/counsellorresultpage");          
+        }
+        if(User2?.is_counsellor ==true){
+          return props.history.push("/counsellorresultpage");  
+        }
         if (response.status === 200) {
           props.history.push("/assessmentphasesevencomplete");
         }

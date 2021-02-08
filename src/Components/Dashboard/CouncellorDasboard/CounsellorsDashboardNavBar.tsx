@@ -23,9 +23,10 @@ import supportinactive from "../../../assets/Support_inactive.png";
 import overview from "../../../assets/overview.png";
 import logout from "../../../assets/log-out.png";
 import "../../Home/Home/Home.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 import { API } from "../../../config";
+import starrating from "../../../assets/starrating.png";
 import clockactive from "../../../assets/clock_active.png";
 import clockinactive from "../../../assets/clock_inactive.png";
 import referralinactive from "../../../assets/referral_inactive.png";
@@ -33,10 +34,14 @@ import logoutImage from "../../../assets/logout.png";
 import { Modal, Spinner } from "react-bootstrap";
 import supportactive from "../../../assets/Support_active.png";
 
-const CounsellorsDashboardMobileNav = (props: any) => {
+const CounsellorsDashboardMobileNav = withRouter((props: any) => {
   const [user, setNewState] = React.useState("");
   const [showNav, setShowNav]: any = React.useState(false);
-  const [logoutState, setLogoutState] = React.useState({ logoutModal: false });
+  const [logoutState, setLogoutState] = React.useState({
+    logoutModal: false,
+    assessmentModal: false,
+    isloading: false,
+  });
   const closeLogoutModal = () => {
     setLogoutState({
       ...logoutState,
@@ -49,7 +54,19 @@ const CounsellorsDashboardMobileNav = (props: any) => {
       logoutModal: true,
     });
   };
-  const { logoutModal } = logoutState;
+  const openAssesmentModal = () => {
+    setLogoutState({
+      ...logoutState,
+      assessmentModal: true,
+    });
+  };
+  const closeAssesmentModal = () => {
+    setLogoutState({
+      ...logoutState,
+      assessmentModal: false,
+    });
+  };
+  const { logoutModal, assessmentModal, isloading } = logoutState;
 
   const logOutMobile = (e) => {
     e.preventDefault();
@@ -72,6 +89,84 @@ const CounsellorsDashboardMobileNav = (props: any) => {
   const logOut = () => {
     localStorage.clear();
     window.location.assign("/counsellor/signin");
+  };
+  const getCurrentAssessmentPosition = (): void => {
+    setLogoutState({
+      ...logoutState,
+      isloading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token: string = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get(`${API}/progress`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        setLogoutState({
+          ...logoutState,
+          isloading: false,
+        });
+        if (
+          (response.status === 200 &&
+            response.data[0].next === "phase_four_nature") ||
+          response.data[0].next === "phase_four_health" ||
+          response.data[0].next === "phase_four_building" ||
+          response.data[0].next === "phase_four_creative"
+        ) {
+          return props.history.push(`/assessmentphasefour/?counsellor=true`);
+        }
+        if (
+          (response.status === 200 &&
+            response.data[0].next === "phase_four_sports") ||
+          response.data[0].next === "phase_four_business" ||
+          response.data[0].next === "phase_four_stem" ||
+          response.data[0].next === "phase_four_humanitarian"
+        ) {
+          return props.history.push(`/assessmentphasefour1/?counsellor=true`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_one") {
+          closeAssesmentModal();
+          return window.open(`/assessmentphaseone/?counsellor=true`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_two") {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasetwo/?counsellor=true`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "phase_three"
+        ) {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasethree/?counsellor=true`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_five") {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasefive/?counsellor=true`);
+        }
+        if (response.status === 200 && response.data[0].next === "phase_six") {
+          closeAssesmentModal();
+          return window.open(`/assessmentphasesix/?counsellor=true`);
+        }
+        if (
+          response.status === 200 &&
+          response.data[0].next === "phase_seven"
+        ) {
+          closeAssesmentModal();
+          return window.open(`/assessmentphaseseven/?counsellor=true`);
+        }
+        if (response.status === 200 && response.data[0].next === "home") {
+          closeAssesmentModal();
+          return window.open(`/counsellorresultpage`);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setLogoutState({
+          ...logoutState,
+          isloading: false,
+        });
+      });
   };
   return (
     <div>
@@ -244,6 +339,18 @@ const CounsellorsDashboardMobileNav = (props: any) => {
                   Support
                 </Link>
               </div>
+              <div
+                className={props.assessment ? "activegb" : "gbn"}
+                onClick={openAssesmentModal}
+              >
+                {" "}
+                <img
+                  src={props.support ? starrating : starrating}
+                  className="sideimage"
+                  alt="sideimage"
+                />
+                Clarity Assessment
+              </div>
               {/* <div className={props.support ? "activegb" : "gbn"}>
             {" "}
             <Link to="/ratings">
@@ -296,7 +403,37 @@ const CounsellorsDashboardMobileNav = (props: any) => {
           </div>
         </Modal.Body>
       </Modal>
+      <Modal
+        show={assessmentModal}
+        className="warning22e"
+        centered={true}
+        onHide={closeLogoutModal}
+      >
+        <Modal.Body>
+          <div className="text-center"> </div>
+          <div className="areusure1">
+            Are you sure you want to <b> take the assessment?</b>
+          </div>
+          <div className="text-center">
+            {isloading && <Spinner animation="grow" />}
+          </div>
+          <div className="text-center planupgrade">
+            <div
+              className="retaketest upss1 planupgradebtn mddd"
+              onClick={closeAssesmentModal}
+            >
+              Go Back
+            </div>
+            <div
+              className="retaketest upss1 planupgradebtn mddd2"
+              onClick={getCurrentAssessmentPosition}
+            >
+              Take assessment
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
-};
+});
 export default CounsellorsDashboardMobileNav;

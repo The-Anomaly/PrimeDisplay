@@ -107,6 +107,7 @@ import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAff
 import BehaviouralAnalytics from "./Components/Dashboard/AffiliateDashboard/BehaviouralAnalytics";
 
 import ReactGA from "react-ga";
+import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
 
 ReactGA.initialize("UA-151203321-1");
 class App extends Component {
@@ -428,6 +429,11 @@ class App extends Component {
                 exact
                 path="/counsellor/userinsight"
                 component={CounsellorViewUserResult}
+              />
+              <Route
+                exact
+                path="/counsellorresultpage"
+                component={COUNSELLORRESULT}
               />
               <Route
                 exact

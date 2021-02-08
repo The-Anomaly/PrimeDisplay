@@ -112,6 +112,11 @@ const AssessmentSixthPhase = (props: any) => {
   };
   const handleSuccess = (response: any) => {
     if (response.status === 200) {
+      const urlParams = new URLSearchParams(window.location.search);
+      let urlkey = urlParams.get("counsellor");
+      if(urlkey="true"){
+       return props.history.push("/assessmentphasesixcomplete/?counsellor=true");
+      }
       props.history.push("/assessmentphasesixcomplete");
     }
   };
