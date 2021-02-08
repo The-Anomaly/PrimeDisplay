@@ -57,11 +57,14 @@ import ellipse2 from "../../../assets/ellipse2.png";
 import Axios from "axios";
 import { API } from "../../../config";
 import preloader2 from "../../../assets/preloader2.gif";
+import ReactGA from "react-ga";
 
+ReactGA.initialize("UA-151203321-1");
 const RedesignedHome: React.FC = (props: any) => {
   const [name, setName] = React.useState("");
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
+    // ReactGA.pageview(window.location.pathname);
   }, []);
 
   const [state, setState] = React.useState<any>({
@@ -196,7 +199,10 @@ const RedesignedHome: React.FC = (props: any) => {
                 <div>
                   <div>We are like a map but for your career.</div>
                   {/* <div>Let's connect all the dots...</div> */}
-                  <div className="smhometext">Discover your passion and talent, discover a more meaningful work life.</div>
+                  <div className="smhometext">
+                    Discover your passion and talent, discover a more meaningful
+                    work life.
+                  </div>
                   <Link to="/signup">
                     <div className="hstarted">GET STARTED</div>
                   </Link>

@@ -71,9 +71,9 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1, res2) => {
-          console.log(res);
-          console.log(res1);
-          console.log(res2);
+          // console.log(res);
+          // console.log(res1);
+          // console.log(res2);
           if (res.status === 200) {
             setState({
               ...state,
@@ -91,7 +91,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
         })
       )
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
         if (error && error.response && error.response.data) {
           setState({
             ...state,

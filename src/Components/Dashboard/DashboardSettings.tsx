@@ -73,7 +73,7 @@ class NewDashboardSettings extends React.Component {
   uploadImage = (img) => {
     const self: any = this;
     const { image } = this.state;
-    console.log(image);
+    // console.log(image);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = new FormData();
@@ -89,7 +89,7 @@ class NewDashboardSettings extends React.Component {
         this.setState({
           uploadLoading: false,
         });
-        console.log(res.data);
+        // console.log(res.data);
         this.notify("Successful");
         setTimeout(() => {
           window.location.reload();
@@ -99,10 +99,10 @@ class NewDashboardSettings extends React.Component {
         this.setState({
           uploadLoading: false,
         });
-        console.log(err.response);
+        // console.log(err.response);
         this.notify("failed");
         if (err) {
-          console.log(err);
+          // console.log(err);
         }
       });
   };

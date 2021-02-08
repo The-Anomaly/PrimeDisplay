@@ -78,7 +78,7 @@ const CounsellorAllMessages = withRouter((props: any) => {
     ])
       .then(
         Axios.spread((res, res2) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,

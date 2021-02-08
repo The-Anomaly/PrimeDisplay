@@ -87,10 +87,10 @@ const BehaviourAnalytics = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1, res2, res3, res4) => {
-          console.log(res.data.results[0]);
-          console.log(res.data.results);
+          // console.log(res.data.results[0]);
+          // console.log(re?s.data.results);
           if (res.status === 200) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               overview: res2.data,

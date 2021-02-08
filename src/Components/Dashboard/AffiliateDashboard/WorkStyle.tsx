@@ -48,9 +48,9 @@ const WorkStyle = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               user: [...res.data.work_style.data],
@@ -59,7 +59,7 @@ const WorkStyle = (props: any) => {
         })
       )
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error && error.response && error.response.data) {
         }
       });

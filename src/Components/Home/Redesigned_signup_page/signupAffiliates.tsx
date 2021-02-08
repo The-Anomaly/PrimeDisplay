@@ -51,7 +51,7 @@ const AffiliatesSignup = withRouter((props: any) => {
       .post(`${API}/affiliate/signup/`, data)
       .then((response) => {
         window.scrollTo(-0,-0)
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           localStorage.setItem("userEmail", JSON.stringify(email));
           setTimeout(() => {
@@ -76,7 +76,7 @@ const AffiliatesSignup = withRouter((props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         window.scrollTo(-0, -0);
         if (error && error.response && error.response.data) {
           return setFormState({

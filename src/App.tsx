@@ -106,6 +106,9 @@ import SigninAffiliates from "./Components/Home/Redesigned_signup_page/signinAff
 import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAffiliates";
 import BehaviouralAnalytics from "./Components/Dashboard/AffiliateDashboard/BehaviouralAnalytics";
 
+import ReactGA from "react-ga";
+
+ReactGA.initialize("UA-151203321-1");
 class App extends Component {
   constructor(props) {
     super(props);
@@ -116,7 +119,9 @@ class App extends Component {
       self.props.addMessage.bind(this)
     );
   }
-  componentDidMount() {}
+  componentDidMount() {
+    ReactGA.pageview(window.location.pathname);
+  }
   render() {
     return (
       <div className="App">

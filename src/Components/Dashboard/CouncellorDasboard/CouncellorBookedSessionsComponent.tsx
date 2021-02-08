@@ -145,7 +145,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setState({
               ...state,

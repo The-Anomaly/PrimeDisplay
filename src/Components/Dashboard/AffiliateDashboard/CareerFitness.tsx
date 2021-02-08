@@ -48,9 +48,9 @@ const CareerFitnessPiechart = (props: any) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.status === 200) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               user: [...res.data.career_fitness.data],
@@ -59,7 +59,7 @@ const CareerFitnessPiechart = (props: any) => {
         })
       )
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error && error.response && error.response.data) {
         }
       });
@@ -70,7 +70,7 @@ const CareerFitnessPiechart = (props: any) => {
     { text: "Woman", value: 300 },
   ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <Row className="cllcc">

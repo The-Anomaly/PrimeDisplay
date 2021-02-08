@@ -60,7 +60,7 @@ const CompetenceBarChart1 = (props: any) => {
         })
       )
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error && error.response && error.response.data) {
         }
       });
@@ -71,7 +71,7 @@ const CompetenceBarChart1 = (props: any) => {
     { text: "Woman", value: 300 },
   ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <Row>

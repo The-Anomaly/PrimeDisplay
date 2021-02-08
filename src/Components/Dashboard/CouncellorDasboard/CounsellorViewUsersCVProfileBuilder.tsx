@@ -221,7 +221,7 @@ class CounsellorViewUsersCVProfile extends React.Component {
       }
     )
       .then((response) => {
-        console.log(response)
+        // console.log(response)
         if (response.status === 200) {
           this.setState({
             user: response.data,

@@ -117,7 +117,7 @@ const BehaviouralAnalytics = (props) => {
     ])
       .then(
         Axios.spread((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.status === 200 && res.data.career_fitness) {
             console.log(res);
             setState({
@@ -128,7 +128,7 @@ const BehaviouralAnalytics = (props) => {
             });
           }
           if (res.status === 200 && res.data.competence) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               privateModalBody: res.data.competence.info,
@@ -137,7 +137,7 @@ const BehaviouralAnalytics = (props) => {
             });
           }
           if (res.status === 200 && res.data.career_motivator) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               privateModalBody: res.data.career_motivator.info,
@@ -146,7 +146,7 @@ const BehaviouralAnalytics = (props) => {
             });
           }
           if (res.status === 200 && res.data.work_style) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               privateModalBody: res.data.work_style.info,
@@ -155,7 +155,7 @@ const BehaviouralAnalytics = (props) => {
             });
           }
           if (res.status === 200 && res.data.work_function) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               privateModalBody: res.data.work_function.info,
@@ -166,7 +166,7 @@ const BehaviouralAnalytics = (props) => {
         })
       )
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error && error.response && error.response.data) {
         }
       });
