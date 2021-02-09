@@ -220,6 +220,18 @@ const CounsellorsDashboardMobileNav = withRouter((props: any) => {
                   Overview
                 </Link>
               </div>
+              <div
+                className={props.assessment ? "activegb" : "gbn"}
+                onClick={openAssesmentModal}
+              >
+                {" "}
+                <img
+                  src={props.support ? starrating : starrating}
+                  className="sideimage"
+                  alt="sideimage"
+                />
+                Clarity Assessment
+              </div>
               <div className={props.bookedsession ? "activegb" : "gbn"}>
                 <Link to="/counsellorbookings">
                   <img
@@ -339,18 +351,7 @@ const CounsellorsDashboardMobileNav = withRouter((props: any) => {
                   Support
                 </Link>
               </div>
-              <div
-                className={props.assessment ? "activegb" : "gbn"}
-                onClick={openAssesmentModal}
-              >
-                {" "}
-                <img
-                  src={props.support ? starrating : starrating}
-                  className="sideimage"
-                  alt="sideimage"
-                />
-                Clarity Assessment
-              </div>
+
               {/* <div className={props.support ? "activegb" : "gbn"}>
             {" "}
             <Link to="/ratings">

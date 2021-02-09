@@ -172,6 +172,18 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               Overview
             </Link>
           </div>
+          <div
+            className={props.assessment ? "activegb" : "gbn"}
+            onClick={openAssesmentModal}
+          >
+            {" "}
+            <img
+              src={props.assessment ? starrating : starrating}
+              className="sideimage"
+              alt="sideimage"
+            />
+            Clarity Assessment
+          </div>
           <div className={props.bookedsession ? "activegb" : "gbn"}>
             <Link to="/counsellorbookings">
               <img
@@ -282,18 +294,6 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
               />
               Support
             </Link>
-          </div>
-          <div
-            className={props.assessment ? "activegb" : "gbn"}
-            onClick={openAssesmentModal}
-          >
-            {" "}
-            <img
-              src={props.assessment ? starrating : starrating}
-              className="sideimage"
-              alt="sideimage"
-            />
-            Clarity Assessment
           </div>
           <div className={"gbn"}>
             {" "}

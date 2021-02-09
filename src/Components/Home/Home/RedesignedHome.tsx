@@ -58,12 +58,20 @@ import Axios from "axios";
 import { API } from "../../../config";
 import preloader2 from "../../../assets/preloader2.gif";
 import ReactGA from "react-ga";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 ReactGA.initialize("UA-151203321-1");
 const RedesignedHome: React.FC = (props: any) => {
   const [name, setName] = React.useState("");
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
+    AOS.init({
+      duration: 1500,
+      offset: 300,
+      easing: "ease-in-out",
+    });
+    AOS.refresh();
     // ReactGA.pageview(window.location.pathname);
   }, []);
 
@@ -196,7 +204,13 @@ const RedesignedHome: React.FC = (props: any) => {
                 <img className="mobilebg" src={mobileimg} />
               </Col>
               <Col md={5} sm={11} className="hometext">
-                <div>
+                <div
+                  data-aos="zoom-in-up"
+                  data-aos-duration="600"
+                  data-aos-offset="200"
+                  data-aos-easing="ease-in-sine"
+                  data-aos-once={false}
+                >
                   <div>We are like a map but for your career.</div>
                   {/* <div>Let's connect all the dots...</div> */}
                   <div className="smhometext">
@@ -247,42 +261,114 @@ const RedesignedHome: React.FC = (props: any) => {
               </Col>
             </Row>
             <Row md={12} className="newsecondrow">
-              <div className="secondtitle">
+              <div
+                className="secondtitle"
+                data-aos="fade-zoom-in"
+                data-aos-offset="200"
+                data-aos-easing="ease-in-sine"
+                data-aos-duration="600"
+              >
                 It's a Crazy{" "}
                 <span className="secondtitle1">
                   Circle <img src={rect} className="secondimg" />
                 </span>
               </div>
               <div className="crazycircle1">
-                <img src={circle1} className="lcircle1" />
-                <img src={arrow1} className="larrow1" />
-                <img src={smarrow1} className="smarrow1" />
-                <img src={circle2} className="lcircle2" />
+                <img
+                  src={circle1}
+                  className="lcircle1"
+                  data-aos="fade-zoom-in"
+                />
+                <img src={arrow1} className="larrow1" data-aos="fade-zoom-in" />
+                <img
+                  src={smarrow1}
+                  className="smarrow1"
+                  data-aos="fade-zoom-in"
+                  data-aos-offset="200"
+                  data-aos-duration="600"
+                />
+                <img
+                  src={circle2}
+                  className="lcircle2"
+                  data-aos="flip-left"
+                  data-aos-duration="600"
+                />
               </div>
               <div className="crazycircle2">
-                <img src={arrow2} className="larrow2" />
-                <img src={smarrow2} className="smarrow2" />
-                <img src={circle3} className="lcircle3" />
+                <img src={arrow2} className="larrow2" data-aos="flip-left" />
+                <img
+                  src={smarrow2}
+                  className="smarrow2"
+                  data-aos="flip-left"
+                  data-aos-easing="ease-in-sine"
+                  data-aos-duration="600"
+                />
+                <img
+                  src={circle3}
+                  className="lcircle3"
+                  data-aos="flip-left"
+                  data-aos-duration="600"
+                />
                 <img src={smcircle1} className="smcircle1" />
-                <img src={arrow3} className="larrow3" />
+                <img
+                  src={arrow3}
+                  className="larrow3"
+                  data-aos="flip-right"
+                  data-aos-duration="600"
+                />
               </div>
-              <div className="crazycircle3">
-                <img src={circle4} className="lcircle4" />
-                <img src={smarrow4} className="smarrow4" />
-                <img src={arrow6} className="larrow6" />
-                <img src={circle5} className="lcircle5" />
+              <div className="crazycircle3" data-aos="flip-left">
+                <img
+                  src={circle4}
+                  className="lcircle4"
+                  data-aos="flip-right"
+                  data-aos-duration="600"
+                />
+                <img
+                  src={smarrow4}
+                  className="smarrow4"
+                  data-aos="flip-right"
+                  data-aos-duration="600"
+                />
+                <img src={arrow6} className="larrow6" data-aos="flip-right" />
+                <img src={circle5} className="lcircle5" data-aos="flip-right" />
               </div>
               <div className="crazycircle4">
-                <img src={arrow4} className="larrow4" />
-                <img src={smarrow5} className="smarrow5" />
-                <img src={smcircle2} className="smcircle2" />
-                <img src={circle6} className="lcircle6" />
-                <img src={arrow5} className="larrow5" />
+                <img
+                  src={arrow4}
+                  className="larrow4"
+                  data-aos="fade-zoom-in"
+                  data-aos-duration="600"
+                />
+                <img
+                  src={smarrow5}
+                  className="smarrow5"
+                  data-aos="flip-right"
+                  data-aos-duration="600"
+                />
+                <img
+                  src={smcircle2}
+                  className="smcircle2"
+                  data-aos="flip-right"
+                  data-aos-duration="600"
+                />
+                <img
+                  src={circle6}
+                  className="lcircle6"
+                  data-aos="flip-left"
+                  data-aos-duration="600"
+                />
+                <img
+                  src={arrow5}
+                  className="larrow5"
+                  data-aos="flip-right"
+                  data-aos-duration="600"
+                />
               </div>
             </Row>
             {press === false ? (
               <Row md={12} className="newthirdrow">
-                <div className="newthirdrowtext">
+                <div className="newthirdrowtext" data-aos="flip-left">
                   Clarity by Yudimy is a career mapping platform that helps you
                   discover and define a clear road map with practical and
                   actionable steps to get to you to your destination of a
@@ -300,9 +386,12 @@ const RedesignedHome: React.FC = (props: any) => {
                   onClick={CloseGetStarted}
                   alt="close"
                 />
-                <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
+                <Card
+                  className="h-300 shadow-sm bg-white thirdgetstartedcard"
+                  data-aos="flip-left"
+                >
                   <div className="thirdgthead">Start my personal Journey</div>
-                  <div className="thirdgttxt">
+                  <div className="thirdgttxt" data-aos="fade-right">
                     Lets give you a perception to what your career should look
                     like
                   </div>
@@ -310,9 +399,14 @@ const RedesignedHome: React.FC = (props: any) => {
                     <div className="thirdgtbtn1">Sign Up</div>
                   </Link>
                 </Card>
-                <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
-                  <div className="thirdgthead">Gift a Friend</div>
-                  <div className="thirdgttxt">
+                <Card
+                  className="h-300 shadow-sm bg-white thirdgetstartedcard"
+                  data-aos="flip-down"
+                >
+                  <div className="thirdgthead" data-aos="fade-right">
+                    Gift a Friend
+                  </div>
+                  <div className="thirdgttxt" data-aos="fade-right">
                     Give a gift of success. Choose one of the three different
                     plans
                   </div>
@@ -320,9 +414,12 @@ const RedesignedHome: React.FC = (props: any) => {
                     <div className="thirdgtbtn2">Get Started</div>
                   </Link>
                 </Card>
-                <Card className="h-300 shadow-sm bg-white thirdgetstartedcard">
+                <Card
+                  className="h-300 shadow-sm bg-white thirdgetstartedcard"
+                  data-aos="flip-right"
+                >
                   <div className="thirdgthead">Use Clarity for my Team</div>
-                  <div className="thirdgttxt">
+                  <div className="thirdgttxt" data-aos="fade-right">
                     Lets get your team to their highest potential and get your
                     ROI to the roof
                   </div>
@@ -339,10 +436,10 @@ const RedesignedHome: React.FC = (props: any) => {
               </div>
               <div className="fourthline"> </div>
               <div className="fourthtext">
-                <div>
+                <div data-aos="fade-right">
                   Are you struggling to figure out your next career move?
                 </div>
-                <div>Clarity by Yudimy is for you.</div>
+                <div data-aos="fade-right">Clarity by Yudimy is for you.</div>
               </div>
               <div className="homelaptop">
                 <div className="homelaptop1">
@@ -355,10 +452,10 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img className="border1" src={border5} />
                     <img className="rightborder" src={smborder} />
                     <img src={trust1} className="trustimg" />
-                    <div className="fourthsubhead">
+                    <div className="fourthsubhead" data-aos="fade-right">
                       Career & Competence Evaluation Assessment
                     </div>
-                    <div className="fourthsubtext">
+                    <div className="fourthsubtext" data-aos="fade-right">
                       This one of a kind assessment tells if you are on the
                       right career track or not, the competencies you need to
                       develop, the best career-business expressions for your
@@ -369,8 +466,10 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img className="border2" src={border2} />
                     <img className="leftborder leftborder1" src={smborder} />
                     <img src={trust2} className="trustimg" />
-                    <div className="fourthsubhead">Talk to a Counselor</div>
-                    <div className="fourthsubtext">
+                    <div className="fourthsubhead" data-aos="fade-right">
+                      Talk to a Counselor
+                    </div>
+                    <div className="fourthsubtext" data-aos="fade-right">
                       Your career trajectory is the sum of all the choices you
                       have made so far. However, an important step when making
                       future decisions is to connect the dots between where your
@@ -387,7 +486,10 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img className="rightborder rightborder2" src={smborder} />
                     <img src={trust3} className="trustimg" />
                     <div className="fourthsubhead">TO DO’s</div>
-                    <div className="fourthsubtext frheight">
+                    <div
+                      className="fourthsubtext frheight"
+                      data-aos="fade-right"
+                    >
                       Knowing what step to take next is one thing but getting
                       there is another! With Yudimy's Clarity you can
                       immediately convert the recommendations frommyour
@@ -401,7 +503,7 @@ const RedesignedHome: React.FC = (props: any) => {
                     <img className="leftborder leftborder2" src={smborder} />
                     <img src={trust4} className="trustimg trustimgin" />
                     <div className="fourthsubhead">Growth Challenge</div>
-                    <div className="fourthsubtext">
+                    <div className="fourthsubtext" data-aos="fade-right">
                       When preparation meets opportunity, the result is success.
                       Clarity's growth challenge feature is supported by our
                       career talent managers who keep you accountable to your
@@ -415,7 +517,7 @@ const RedesignedHome: React.FC = (props: any) => {
                   <div className="fourthsubhead">
                     Career Positioning & Opportunity Recommendation
                   </div>
-                  <div className="fourthsubtext">
+                  <div className="fourthsubtext" data-aos="fade-left">
                     As your career-talent managers committed to your success we
                     work with you to articulate your unique value proposition,
                     profile and brand. Also, because we now understand you, we

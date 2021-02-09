@@ -144,7 +144,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
           </Link>
         </div>{" "}
         <div
-          className={hidemobile ? "navitemnone" : "navitem1 navft side_navv"}
+          className={hidemobile ? "navitemnone" : "navitem1 newitemz navft side_navv"}
         >
           <Link to="/overview">
             <div className={props.overview ? "activegb" : "gbn"}>
