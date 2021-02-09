@@ -4215,3 +4215,8 @@ label {
 .Toastify__close-button--default{
   color: white;
 }
+.newitemz{
+  overflow-y: scroll;
+  min-height: 500px;
+  max-height: 516px;
+}
