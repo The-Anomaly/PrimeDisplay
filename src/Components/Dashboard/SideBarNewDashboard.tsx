@@ -51,7 +51,13 @@ const SideBarNewDashboard = withRouter((props: any) => {
     });
   };
   const { logoutModal } = logoutState;
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const User1 = localStorage.getItem("user");
+    const User2 = User1 ? JSON.parse(User1) : "";
+    if (User2[0]?.is_counsellor == true) {
+      return window.location.assign("/counselloroverview");
+    }
+  }, []);
   const closeUpgradeModal = () => {
     setUpgradeState(false);
   };

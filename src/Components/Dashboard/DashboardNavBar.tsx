@@ -39,7 +39,13 @@ const DashboardNav = (props: any) => {
   const [showNav, setShowNav]: any = React.useState(false);
   const [upgradeState, setUpgradeState] = React.useState(false);
   const [logoutState, setLogoutState] = React.useState({ logoutModal: false });
-
+React.useEffect(()=>{
+  const User1 = localStorage.getItem("user")
+  const User2 = User1? JSON.parse(User1):""
+  if(User2[0]?.is_counsellor ==true){
+    return window.location.assign("/counselloroverview");  
+  }
+},[])
   const closeLogoutModal = () => {
     setLogoutState({
       ...logoutState,

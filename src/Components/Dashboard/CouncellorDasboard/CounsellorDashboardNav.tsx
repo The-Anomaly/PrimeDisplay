@@ -48,9 +48,13 @@ class CounsellorDashboardNav extends React.Component<any, any> {
       .catch((error) => {
         if (error && error.response && error.response.data) {
           this.setState({
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
           });
+        }
+        if(error?.response?.status==401){
+          localStorage.clear()
+         return window.location.assign("/counsellor/signin")
         }
         this.setState({
           errorMessage: "failed",

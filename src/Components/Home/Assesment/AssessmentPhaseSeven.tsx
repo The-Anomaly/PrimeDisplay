@@ -127,7 +127,7 @@ const AssessmentSeventhPhase = (props: any) => {
         if(urlkey=="true"){
          return props.history.push("/counsellorresultpage");          
         }
-        if(User2?.is_counsellor ==true){
+        if(User2[0]?.is_counsellor ==true){
           return props.history.push("/counsellorresultpage");  
         }
         if (response.status === 200) {

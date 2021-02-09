@@ -120,10 +120,10 @@ const CounsellorOverview = (props: any) => {
         })
       )
       .catch((error) => {
-        if (error && error.response && error.response.data) {
+        if (error && error?.response && error?.response?.data) {
           setFormState({
             ...state,
-            errorMessage: error.response.data[0].message,
+            errorMessage: error?.response?.data[0]?.message,
             isLoading: false,
           });
         }

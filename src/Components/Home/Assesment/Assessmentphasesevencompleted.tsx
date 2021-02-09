@@ -16,9 +16,26 @@ import "react-toastify/dist/ReactToastify.css";
 // team
 type User = string | null;
 
-const AssessmentSeventhPhaseComplete = () => {
+const AssessmentSeventhPhaseComplete = (props:any) => {
   const [name, setName] = React.useState("");
+  const [state, Update] = React.useState({is_counsellor:false});
   React.useEffect((): any => {
+    const User1 = localStorage.getItem("user")
+    const User2 = User1? JSON.parse(User1):""
+    // console.log(User2)
+    if(User2[0]?.is_counsellor ==true){
+      Update({
+        ...state,
+        is_counsellor:true
+      })
+      return props.history.push("/counsellorresultpage");  
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    let urlkey = urlParams.get("counsellor");
+    if(urlkey=="true"){
+     return props.history.push("/counsellorresultpage");          
+    }
+
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
     const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
@@ -55,9 +72,18 @@ const AssessmentSeventhPhaseComplete = () => {
                     your report
                   </div>
                   <div className="awesome2">
+                    {
+                      state.is_counsellor?
+                      <Link to="/counsellorresultpage">
+                      <button className="awesomebtn">View Result</button>
+                    </Link>
+                    :
                     <Link to="/free/dashboard">
-                      <button className="awesomebtn">Get Results</button>
-                    </Link>{" "}
+                    <button className="awesomebtn">Get Results</button>
+                  </Link>
+                  
+                    }
+                    
                     <button onClick={saveProgress} className="awesomebtnsubmit">
                       Save Progress
                     </button>
