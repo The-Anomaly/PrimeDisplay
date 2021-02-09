@@ -248,7 +248,7 @@ const RedesignedHome: React.FC = (props: any) => {
             </Row>
             <Row md={12} className="newsecondrow">
               <div className="secondtitle">
-                It's a Crazy{" "}
+                It's a Vicious{" "}
                 <span className="secondtitle1">
                   Circle <img src={rect} className="secondimg" />
                 </span>
@@ -283,7 +283,7 @@ const RedesignedHome: React.FC = (props: any) => {
             {press === false ? (
               <Row md={12} className="newthirdrow">
                 <div className="newthirdrowtext">
-                  Clarity by Yudimy is a career mapping platform that helps you
+                  Clarity by Yudimy is Lagos' leading career mapping platform that helps you
                   discover and define a clear road map with practical and
                   actionable steps to get to you to your destination of a
                   meaningful and organized work-life.
