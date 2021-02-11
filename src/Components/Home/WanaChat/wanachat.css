@@ -1,0 +1,24 @@
+.wanacontainer {
+    padding: 0 !important;
+    transition: 0.2s;
+}
+.wanattl {
+    padding: 7rem 2rem 3rem;
+    font-weight: 600;
+    transition: 0.2s;
+    font-family: 'Brfirma-Bold';
+}
+.texttext {
+    text-align: center;
+    padding: 1rem 0;
+}
+.botinput {
+    width: 80%;
+    min-width: 300px;
+    margin: 5rem 0px 2rem;
+    padding: 1rem;
+    max-height: 80px;
+    height: 60px;
+    min-height: 60px;
+    transition: 0.2s;
+}

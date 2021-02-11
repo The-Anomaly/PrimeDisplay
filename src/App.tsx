@@ -105,6 +105,7 @@ import ThirdPartyOverview from "./Components/Dashboard/AffiliateDashboard/ThirdP
 import SigninAffiliates from "./Components/Home/Redesigned_signup_page/signinAffiliates";
 import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAffiliates";
 import BehaviouralAnalytics from "./Components/Dashboard/AffiliateDashboard/BehaviouralAnalytics";
+import WanaChatBot from "./Components/Home/WanaChat/WanaChatBot";
 
 import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
@@ -533,6 +534,7 @@ class App extends Component {
               {/* Affiliates Starts here */}
               <Route exact path="/affiliates" component={ThirdPartyOverview} />
               <Route exact path="/affiliates/analytics" component={BehaviouralAnalytics} />
+              <Route exact path="/wana" component={WanaChatBot} />
             </Switch>
           </BrowserRouter>
         </div>

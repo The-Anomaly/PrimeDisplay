@@ -1513,9 +1513,6 @@ abbr[title] {
   .texsss1 {
     text-align: left;
   }
-  .kitemwrapper {
-    width: 100% !important;
-  }
 }
 .liee {
   display: flex;
@@ -4219,4 +4216,10 @@ label {
   overflow-y: scroll;
   min-height: 500px;
   max-height: 516px;
+}
+@media(max-width: 400px) {
+  .kiconrow .kitemwrapper {
+    width: 250px !important;
+    height: 200px;
+  }
 }
