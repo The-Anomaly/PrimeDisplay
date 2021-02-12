@@ -105,10 +105,20 @@ import ThirdPartyOverview from "./Components/Dashboard/AffiliateDashboard/ThirdP
 import SigninAffiliates from "./Components/Home/Redesigned_signup_page/signinAffiliates";
 import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAffiliates";
 import BehaviouralAnalytics from "./Components/Dashboard/AffiliateDashboard/BehaviouralAnalytics";
-
 import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
+import ReactPixel from 'react-facebook-pixel';
 
+
+
+
+const advancedMatching :any= { em: 'yudimyapp@gmail.com' }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
+const options = {
+  autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
+  debug: false, // enable logs
+};
+ReactPixel.init('1336761443373942', advancedMatching, options);
+ReactPixel.pageView(); // For tracking page view
 ReactGA.initialize("UA-151203321-1");
 class App extends Component {
   constructor(props) {
