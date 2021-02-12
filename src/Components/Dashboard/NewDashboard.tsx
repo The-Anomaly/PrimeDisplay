@@ -44,6 +44,7 @@ interface State {
   showfullresult: boolean;
   client2: any;
   paid: boolean;
+  viewinsight: boolean;
 }
 class NewDashboard extends React.Component {
   state: State = {
@@ -63,6 +64,7 @@ class NewDashboard extends React.Component {
     showfullresult: false,
     client2: [],
     paid: false,
+    viewinsight: false,
   };
   submitRetakeAssessment = (e) => {
     e.preventDefault();
@@ -164,9 +166,9 @@ class NewDashboard extends React.Component {
           this.setState({
             showfullresult: true,
           });
-          return window.location.assign("/thirdpary/fullresult");
+          return this.OpenInsightModal();
         }
-        return window.location.assign("/dashboardsubscriptionplan");
+        return this.OpenNotPaidWarning();
       })
       .catch((error) => {});
   };
@@ -227,6 +229,16 @@ class NewDashboard extends React.Component {
       onlyfree: true,
     });
   };
+  CloseInsightModal = () => {
+    this.setState({
+      viewinsight: false,
+    });
+  };
+  OpenInsightModal = () => {
+    this.setState({
+      viewinsight: true,
+    });
+  };
   getUserInfo = (token: string): any => {
     Axios.get(`${API}/currentuser`, {
       headers: { Authorization: `Token ${token}` },
@@ -252,6 +264,7 @@ class NewDashboard extends React.Component {
       showfullresult,
       client2,
       paid,
+      viewinsight,
     } = this.state;
     return (
       <>
@@ -614,8 +627,8 @@ class NewDashboard extends React.Component {
                 </div>
                 <div className="onhno"> Oh No! </div>
                 <div className="onhno">
-                  This package is not available on this plan Please Upgrade your
-                  Plan
+                  This package is not available on this plan. Please upgrade your
+                  plan
                 </div>
                 <div className="text-center">
                   {/* <div className="retaketest upss1">
@@ -627,6 +640,18 @@ class NewDashboard extends React.Component {
                     </Link>
                   </div>
                 </div>
+              </Modal.Body>
+            </Modal>
+            <Modal show={this.state.viewinsight} onHide={this.CloseInsightModal} centered>
+              <Modal.Body>
+                <div className="text-center">
+                  <h6 className="txttxtview">Click the button below to view your complete career insight.</h6>
+                </div>
+              <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/thirdpary/fullresult">
+                      View full insight
+                    </Link>
+                  </div>
               </Modal.Body>
             </Modal>
           </Row>

@@ -222,15 +222,13 @@
     cursor: unset;
 }
 .card_btn--pce1{
-    margin: 0px !important;
+    margin: 2rem 0 !important;
 }
 .card_btn--pce2{
-    margin-top: 68px;
-    margin-bottom: 127px;
+    margin: 2rem 0;
 }
 .card_btn--pce3{
-    margin-top: 211px !important;
-    margin-bottom: 126px !important;
+    margin: 2rem 0;
 }
 .card-list-box{
     display: flex;
@@ -433,4 +431,20 @@
 }
 .card-list li{
     text-transform: capitalize;
+}
+.unavailableplan {
+    text-align: center;
+}
+.unavailableplan > h5 {
+    font-family: 'Brfirma-Bold';
+}
+.unavailableplan > h6 {
+    margin-top: 1rem;
+}
+.unavailableplan a, .unavailableplan a:hover {
+    color: blueviolet;
+    text-decoration: underline;
+}
+.submargin {
+    margin-top: 3rem;
 }

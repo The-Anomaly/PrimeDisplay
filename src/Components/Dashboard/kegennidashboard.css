@@ -4223,3 +4223,7 @@ label {
     height: 200px;
   }
 }
+.txttxtview {
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
