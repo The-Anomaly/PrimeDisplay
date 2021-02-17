@@ -155,7 +155,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                 thirdresponse?.status == 200 &&
                 fourthres
               ) {
-                props.history.push("/assessmentphasefourcomplete");
+                props.history.push("/secondphasecomplete");
               }
             }
           )
@@ -178,8 +178,8 @@ const Assessmentfourthphase_1 = (props: any) => {
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
             progressBar={40}
-            phase="Phase 4"
-            nextPhase="Phase 5"
+            phase="Phase 2"
+            nextPhase="Phase 3"
             time={10}
           />
           <Col md={11}></Col>

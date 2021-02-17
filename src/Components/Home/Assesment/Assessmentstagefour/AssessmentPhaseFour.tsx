@@ -143,7 +143,7 @@ const Assessmentfourthphase = (props: any) => {
               thirdresponse?.status == 200 &&
               fourthresp?.status == 200
             ) {
-              props.history.push("/assessmentphasefour1");
+              props.history.push("/assessmentphasetwo1");
             }
           }
         )
@@ -166,8 +166,8 @@ const Assessmentfourthphase = (props: any) => {
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
             progressBar={40}
-            phase="Phase 4"
-            nextPhase="Phase 5"
+            phase="Phase 2"
+            nextPhase="Phase 3"
             time={10}
           />
           <Col md={11}></Col>

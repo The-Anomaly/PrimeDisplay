@@ -70,13 +70,6 @@ const AssessmentThirdPhaseComplete = (props: any) => {
         </Row>
         {/* <Footer /> */}
       </Container>
-      <ToastContainer
-        enableMultiContainer
-        containerId={"B"}
-        toastClassName="bg-info text-white"
-        hideProgressBar={true}
-        position={toast.POSITION.TOP_CENTER}
-      />
     </div>
   );
 };

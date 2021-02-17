@@ -11,7 +11,7 @@ import AssessmentFirstPhase from "./Components/Home/Assesment/AssessmentPhaseone
 import AssessmentFirstPhaseComplete from "./Components/Home/Assesment/AssessmentPhaseonecomplete";
 import AssessmentSecondPhase from "./Components/Home/Assesment/AssessmentPhaseTwo";
 import AssessmentSecondPhaseComplete from "./Components/Home/Assesment/AssessmentPhaseTWOcomplete";
-import AssessmentThirdPhase from "./Components/Home/Assesment/AssessmentPhaseThree";
+import NewAssessmentPhaseOne from "./Components/Home/Assesment/NewAssessmentPhaseOne";
 import AssessmentThirdPhaseComplete from "./Components/Home/Assesment/AssessmentPhaseTHREEComplete";
 import Assessmentfourthphase from "./Components/Home/Assesment/Assessmentstagefour/AssessmentPhaseFour";
 import Assessmentfourthphase_1 from "./Components/Home/Assesment/Assessmentstagefour/AssessmentPhaseFour_1";
@@ -107,17 +107,14 @@ import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAff
 import BehaviouralAnalytics from "./Components/Dashboard/AffiliateDashboard/BehaviouralAnalytics";
 import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
-import ReactPixel from 'react-facebook-pixel';
+import ReactPixel from "react-facebook-pixel";
 
-
-
-
-const advancedMatching :any= { em: 'yudimyapp@gmail.com' }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
+const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {
   autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
   debug: false, // enable logs
 };
-ReactPixel.init('1336761443373942', advancedMatching, options);
+ReactPixel.init("1336761443373942", advancedMatching, options);
 ReactPixel.pageView(); // For tracking page view
 ReactGA.initialize("UA-151203321-1");
 class App extends Component {
@@ -253,11 +250,11 @@ class App extends Component {
                 path="/assessmentphasesevencomplete"
                 component={AssessmentSeventhPhaseComplete}
               />
-              <Route
+              {/* <Route
                 exact
-                path="/assessmentphasethree"
-                component={AssessmentThirdPhase}
-              />
+                path="/assessmentphaseone"
+                component={NewAssessmentPhaseOne}
+              /> */}
               <Route
                 exact
                 path="/password_recovery"
@@ -280,12 +277,12 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/assessmentphasefour"
+                path="/assessmentphasetwo"
                 component={Assessmentfourthphase}
               />
               <Route
                 exact
-                path="/assessmentphasefour1"
+                path="/assessmentphasetwo1"
                 component={Assessmentfourthphase_1}
               />
               <Route
@@ -295,8 +292,13 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/assessmentphasetwo"
-                component={AssessmentSecondPhase}
+                path="/assessmentphasefour"
+                component={AssessmentSeventhPhase}
+              />
+              <Route
+                exact
+                path="/assessmentphasethree"
+                component={AssessmentFifthPhase}
               />
               <Route exact path="/paymentplan" component={SelectPaymentPlan} />
               <Route exact path="/signup" component={SignUp} />
@@ -542,7 +544,11 @@ class App extends Component {
               />
               {/* Affiliates Starts here */}
               <Route exact path="/affiliates" component={ThirdPartyOverview} />
-              <Route exact path="/affiliates/analytics" component={BehaviouralAnalytics} />
+              <Route
+                exact
+                path="/affiliates/analytics"
+                component={BehaviouralAnalytics}
+              />
             </Switch>
           </BrowserRouter>
         </div>
