@@ -1418,13 +1418,14 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 510px;
 }
 .footer_maill > label {
   flex: 100%;
   font-weight: 600;
 }
 .footer_maill > label > p {
-  padding-left: 7rem;
+  padding-left: 1rem;
   margin-bottom: 0;
 }
 .footer_mail {
@@ -2214,6 +2215,9 @@ button {
   .footer_signup {
     font-size: 16px;
   }
+  .footer_maill {
+    width: 380px;
+  }
   .footer_mail {
     height: 45px;
     width: 280px;
@@ -2260,6 +2264,10 @@ button {
   .footer_signup {
     font-size: 14px;
   }
+  .footer_maill {
+    width: 400px;
+    margin: 2rem auto;
+  }
   .footer_mail {
     border-radius: 100px;
     height: 55px;
@@ -2269,7 +2277,7 @@ button {
     border-radius: 100px;
     position: absolute;
     margin-left: 18rem;
-    margin-top: 2.55rem;
+    margin-top: 2.5rem;
   }
   .footer_socials {
     width: 350px;
@@ -2292,6 +2300,9 @@ button {
 }
 
 @media (max-width: 600px) {
+  .footer_maill {
+    width: 300px;
+  }
   .footer_mail {
     width: 300px;
   }
@@ -2300,17 +2311,16 @@ button {
     margin-top: 2.5rem;
   }
 }
-@media(max-width: 500px) {
-  .footer_maill > label > p {
-    padding-left: 5rem;
-  }
-}
+
 @media (max-width: 400px) {
+  .footer_maill {
+    width: 260px;
+  }
   .footer_mail {
     width: 260px;
   }
   .footer_btn {
-    margin-left: 9.7rem;
+    margin-left: 9.4rem;
   }
   .footer_socials {
     width: 90%;

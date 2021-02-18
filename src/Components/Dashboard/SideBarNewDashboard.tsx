@@ -144,7 +144,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
           </Link>
         </div>{" "}
         <div
-          className={hidemobile ? "navitemnone" : "navitem1 newitemz navft side_navv"}
+          className={hidemobile ? "navitemnone" : "navitem1 newitemz navitem2 navft side_navv"}
         >
           <Link to="/overview">
             <div className={props.overview ? "activegb" : "gbn"}>
@@ -344,7 +344,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
             <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
           </div>
           <div className="areusure1">
-            are you sure you want to <b> LogOut?</b>
+            Are you sure you want to <b> LogOut?</b>
           </div>
           <div className="text-center planupgrade">
             <div

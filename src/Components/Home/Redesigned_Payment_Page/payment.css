@@ -448,3 +448,12 @@
 .submargin {
     margin-top: 3rem;
 }
+.progressivepadding {
+    padding: 0 4rem;
+}
+.progressivewidth {
+    max-width: 400px;
+}
+.switchcardwidth {
+    max-width: 500px;
+}

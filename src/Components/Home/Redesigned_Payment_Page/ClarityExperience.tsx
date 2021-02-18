@@ -322,8 +322,8 @@ const Payment = (props: any) => {
                 <Card
                   className={
                     plan === true && !withoutlogin
-                      ? "plan-cards one-off gborder"
-                      : "plan-cards one-off"
+                      ? "plan-cards one-off gborder switchcardwidth"
+                      : "plan-cards one-off switchcardwidth"
                   }
                 >
                   <Card.Body onClick={OneOff}>
@@ -336,8 +336,8 @@ const Payment = (props: any) => {
                   <div
                     className={
                       plan === true && !withoutlogin
-                        ? "plan-card-arr gnotch"
-                        : "plan-card-arr"
+                        ? "plan-card-arr gnotch switchcardwidth"
+                        : "plan-card-arr switchcardwidth"
                     }
                   >
                     <i className="fas fa-caret-down"></i>
@@ -350,8 +350,8 @@ const Payment = (props: any) => {
                 <Card
                   className={
                     plan === false && !withoutlogin
-                      ? "plan-cards pce bborder"
-                      : "plan-cards pce"
+                      ? "plan-cards pce bborder switchcardwidth"
+                      : "plan-cards pce switchcardwidth"
                   }
                 >
                   <Card.Body onClick={Progressive}>
@@ -364,8 +364,8 @@ const Payment = (props: any) => {
                   <div
                     className={
                       plan === false && !withoutlogin
-                        ? "plan-card-arr bnotch"
-                        : "plan-card-arr"
+                        ? "plan-card-arr bnotch switchcardwidth"
+                        : "plan-card-arr switchcardwidth"
                     }
                   >
                     <i className="fas fa-caret-down"></i>
@@ -379,7 +379,7 @@ const Payment = (props: any) => {
               <div>
                 {" "}
                 <Row className="centered_payment mobilecards">
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -428,7 +428,7 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className=" shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -506,7 +506,7 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                  {/* <Col md={3} sm={8} className="margined_col cardmini">
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -538,22 +538,22 @@ const Payment = (props: any) => {
                             </div>
                           </li>
                         </ul>
-                        {/* {withoutlogin ? (
-                          <Link to="/signin">
-                            <span className="card_btn btn-green card_btn--animated">
-                              Get Started
-                            </span>
-                          </Link>
-                        ) : (
-                          <span
-                            className="card_btn btn-green card_btn--animated"
-                            onClick={() =>
-                              requestForPayref("One-off Direction Plan", 12000)
-                            }
-                          >
-                            Upgrade to Direction
-                          </span>
-                        )} */}
+                        // {withoutlogin ? (
+                        //   <Link to="/signin">
+                        //     <span className="card_btn btn-green card_btn--animated">
+                        //       Get Started
+                        //     </span>
+                        //   </Link>
+                        // ) : (
+                        //   <span
+                        //     className="card_btn btn-green card_btn--animated"
+                        //     onClick={() =>
+                        //       requestForPayref("One-off Direction Plan", 12000)
+                        //     }
+                        //   >
+                        //     Upgrade to Direction
+                        //   </span>
+                        // )}
                         <span
                             className="card_btn btn-green card_btn--animated"
                             onClick={openUnavailableModal}
@@ -562,7 +562,7 @@ const Payment = (props: any) => {
                           </span>
                       </Card.Body>
                     </Card>
-                  </Col>
+                  </Col>*/}
                 </Row>
                 <Row className="centered_payment submargin">
                   <Col md={3} sm={8} className="margined_col cardmini">
@@ -598,8 +598,8 @@ const Payment = (props: any) => {
 
             {plan === false && (
               <div>
-                <Row className="centered_payment mobilecards">
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                <Row className="centered_payment mobilecards progressivepadding">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -698,7 +698,7 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className=" shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -767,7 +767,7 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -1045,7 +1045,7 @@ const Payment = (props: any) => {
                         </Card.Body>
                       </Card>
                     </Col>
-                    <Col md={3} sm={8} className="margined_col cardmini">
+                    {/* <Col md={3} sm={8} className="margined_col cardmini">
                       <Card className="h-300 shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
@@ -1080,25 +1080,25 @@ const Payment = (props: any) => {
                               </div>
                             </li>
                           </ul>
-                          {/* {withoutlogin ? (
-                            <Link to="/signin">
-                              <span className="card_btn btn-green card_btn--animated">
-                                Get Started
-                              </span>
-                            </Link>
-                          ) : (
-                            <span
-                              className="card_btn btn-green card_btn--animated"
-                              onClick={() =>
-                                requestForPayref(
-                                  "One-off Direction Plan",
-                                  12000
-                                )
-                              }
-                            >
-                              Upgrade to Direction
-                            </span>
-                          )} */}
+                          // {withoutlogin ? (
+                          //   <Link to="/signin">
+                          //     <span className="card_btn btn-green card_btn--animated">
+                          //       Get Started
+                          //     </span>
+                          //   </Link>
+                          // ) : (
+                          //   <span
+                          //     className="card_btn btn-green card_btn--animated"
+                          //     onClick={() =>
+                          //       requestForPayref(
+                          //         "One-off Direction Plan",
+                          //         12000
+                          //       )
+                          //     }
+                          //   >
+                          //     Upgrade to Direction
+                          //   </span>
+                          // )}
                           <span
                               className="card_btn btn-green card_btn--animated"
                               onClick={openUnavailableModal}
@@ -1107,7 +1107,7 @@ const Payment = (props: any) => {
                             </span>
                         </Card.Body>
                       </Card>
-                    </Col>
+                    </Col> */}
                     <Col md={3} sm={8} className="margined_col cardmini">
                     <Card className="h-300 shadow-sm bg-white subcription-card">
                       <Card.Header className="subscription-header">
