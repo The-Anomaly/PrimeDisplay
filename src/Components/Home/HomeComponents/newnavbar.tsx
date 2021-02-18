@@ -181,7 +181,7 @@ const newNavbar = withRouter((props: any) => {
           <div className="lakk">
             <SideNav
               openFromRight={true}
-              style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
+              style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit"}}
               navStyle={{ width: "70%", background:  navbar ? "white" : darknav ? "#131313" : "white" }}
               showNav={showNav}
               onHideNav={() => setShowNav({ ...state, showNav: true })}
@@ -224,7 +224,7 @@ const newNavbar = withRouter((props: any) => {
               items={[
                 <div
                   className={
-                    showNav ? "listwraper animated fadeInLeft" : "listwraper"
+                    showNav ? "listwraper animated fadeInLeft scrollscroll" : "listwraper"
                   }
                 >
                   {!userLoggedIn ? (

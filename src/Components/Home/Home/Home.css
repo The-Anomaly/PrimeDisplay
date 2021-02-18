@@ -2850,3 +2850,8 @@ button {
 .newsiddle {
   padding-top: 4rem !important;
 }
+.scrollscroll {
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 6rem;
+}
