@@ -2267,6 +2267,7 @@ button {
   .footer_maill {
     width: 400px;
     margin: 2rem auto;
+    position: relative;
   }
   .footer_mail {
     border-radius: 100px;
@@ -2276,8 +2277,8 @@ button {
   .footer_btn {
     border-radius: 100px;
     position: absolute;
-    margin-left: 18rem;
     margin-top: 2.5rem;
+    left: 18.4rem;
   }
   .footer_socials {
     width: 350px;
@@ -2307,8 +2308,8 @@ button {
     width: 300px;
   }
   .footer_btn {
-    margin-left: 11.9rem;
     margin-top: 2.5rem;
+    left: 12.2rem;
   }
 }
 
@@ -2320,7 +2321,7 @@ button {
     width: 260px;
   }
   .footer_btn {
-    margin-left: 9.4rem;
+    left: 9.7rem;
   }
   .footer_socials {
     width: 90%;
