@@ -109,6 +109,7 @@ import WanaChatBot from "./Components/Home/WanaChat/WanaChatBot";
 
 import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
+import IceBreaker from "./Components/Home/Assesment/AssessmentIceBreaker";
 
 ReactGA.initialize("UA-151203321-1");
 class App extends Component {
@@ -535,6 +536,7 @@ class App extends Component {
               <Route exact path="/affiliates" component={ThirdPartyOverview} />
               <Route exact path="/affiliates/analytics" component={BehaviouralAnalytics} />
               <Route exact path="/wana" component={WanaChatBot} />
+              <Route exact path="/icebreaker" component={IceBreaker} />
             </Switch>
           </BrowserRouter>
         </div>

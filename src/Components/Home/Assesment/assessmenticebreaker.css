@@ -1,0 +1,99 @@
+.icebreakercontainer {
+    padding: 7rem 0 2rem;
+    text-align: center;
+}
+.icebreakerbtns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    margin: 2rem auto;
+}
+.icebreakerbtns > button {
+    height: 40px;
+    width: 200px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-style: solid;
+}
+.icebreakerprogress {
+    margin: 0 0 2rem 0;
+    width: 100%;
+}
+.center-it {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.wanatxtsec {
+    width: 100%;
+    display: flex;
+    padding: 0 6rem;
+    margin-bottom: 2rem;
+}
+.wanaimg {
+    width: 130px;
+}
+.wanatxt {
+    text-align: left;
+    width: 500px;
+    border: 2px solid #9c1258;
+    border-radius: 35px;
+    border-bottom-left-radius: 4px;
+    padding: 1rem;
+    position: relative;
+    margin-top: -1rem;
+}
+.wanatxt1 {
+    height: 100px;
+}
+.wanatxt2 {
+    height: 60px;
+}
+.wanatxt > h5 {
+    font-family: 'Brfirma-Bold';
+}
+
+@keyframes chatanimation {
+    from {opacity: 0;}
+    to {visibility: visible; opacity: 1;}
+}
+
+.wanachat {
+    animation-name: chatanimation;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    visibility: hidden;
+}
+
+.spacespace {
+    text-align: left;
+    padding: 1rem 7rem;
+}
+.snippetcard {
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgb(24 33 77 / 25%);
+    padding: 2rem;
+}
+
+.spacespace h5 {
+    font-family: 'Brfirma-Bold';
+}
+.phasedescrip {
+    font-family: 'Brfirma-Bold';
+    font-size: 18px;
+}
+.phasephase {
+    width: 100%;
+    background: #f7f7f7;
+    border-radius: 6px;
+    padding: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+.phasephase > p {
+    font-size: 18px;
+}
