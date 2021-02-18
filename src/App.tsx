@@ -247,7 +247,7 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/assessmentphasesevencomplete"
+                path="/assessmentcompleted"
                 component={AssessmentSeventhPhaseComplete}
               />
               {/* <Route

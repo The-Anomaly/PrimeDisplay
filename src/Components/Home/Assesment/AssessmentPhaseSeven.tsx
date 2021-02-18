@@ -8,7 +8,7 @@ import Footer from "../HomeComponents/newfooter";
 import Navbar from "../HomeComponents/newnavbar";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "../Forms/recruitmentform.css";
 import axios from "axios";
 import { API } from "../../../config";
@@ -43,7 +43,7 @@ interface State {
   token: string;
 }
 
-const AssessmentSeventhPhase = (props: any) => {
+const AssessmentSeventhPhase = withRouter((props: any) => {
   const [value, setValue] = React.useState<number>(0);
   const [state, setCheckboxValue]: any = React.useState<State>({
     question1: "1",
@@ -138,20 +138,21 @@ const AssessmentSeventhPhase = (props: any) => {
       q14: question14,
       q15: question15,
       q16: question16,
-      q17:question17,
-      q18:question18,
-      q19:question19,
-      q20:question20,
-      q21:question21,
-      q22:question22,
-      q23:question23,
-      q24:question24,
+      q17: question17,
+      q18: question18,
+      q19: question19,
+      q20: question20,
+      q21: question21,
+      q22: question22,
+      q23: question23,
+      q24: question24,
     };
     axios
-      .post(`${API}/workfunction`, data, {
+      .post(`${API}/phase-four`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
+        console.log(response);
         const User1 = localStorage.getItem("user");
         const User2 = User1 ? JSON.parse(User1) : "";
         const urlParams = new URLSearchParams(window.location.search);
@@ -163,10 +164,11 @@ const AssessmentSeventhPhase = (props: any) => {
           return props.history.push("/counsellorresultpage");
         }
         if (response.status === 200) {
-          props.history.push("/assessmentphasesevencomplete");
+          props.history.push("/assessmentcompleted");
         }
       })
       .catch((error) => {
+        console.log(error);
         if (error && error.response && error.response.data) {
           notify(error?.response?.data[0]?.message);
         }
@@ -2057,6 +2059,6 @@ const AssessmentSeventhPhase = (props: any) => {
       </Container>
     </div>
   );
-};
+});
 
 export default AssessmentSeventhPhase;

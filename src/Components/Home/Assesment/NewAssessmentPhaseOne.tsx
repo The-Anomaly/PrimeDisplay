@@ -12,10 +12,12 @@ import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSe
 import axios from "axios";
 import { API } from "../../../config";
 import { ToastContainer, toast } from "react-toastify";
+import { Spinner } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 
 // team
 
-const NewAssessmentPhaseOne = (props: any) => {
+const NewAssessmentPhaseOne = withRouter((props: any) => {
   const [value, setValue] = React.useState<number>(0);
   const [state, setCheckboxValue]: any = React.useState({
     question1: "1",
@@ -48,7 +50,7 @@ const NewAssessmentPhaseOne = (props: any) => {
     question28: "1",
     question29: "1",
     question30: "1",
-    isloading:false,
+    isloading: false,
     token: "",
   });
   const {
@@ -108,8 +110,8 @@ const NewAssessmentPhaseOne = (props: any) => {
   const submitForm = (e: any) => {
     setCheckboxValue({
       ...state,
-      isloading:true
-    })
+      isloading: true,
+    });
     e.preventDefault();
     const data = {
       q1: question1,
@@ -143,24 +145,27 @@ const NewAssessmentPhaseOne = (props: any) => {
       q29: question29,
       q30: question30,
     };
+    console.log(data);
     axios
-      .post(`${API}/naturalcompetence`, data, {
+      .post(`${API}/phase-one`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
+        console.log(response);
         setCheckboxValue({
           ...state,
-          isloading:false
-        })
+          isloading: false,
+        });
         if (response.status === 200) {
           props.history.push("/assessmentphasecomplete");
         }
       })
       .catch((error) => {
+        console.log(error);
         setCheckboxValue({
           ...state,
-          isloading:false
-        })
+          isloading: false,
+        });
         if (error && error.response && error.response.data) {
           notify(error.response.data[0].message);
         }
@@ -2468,12 +2473,13 @@ const NewAssessmentPhaseOne = (props: any) => {
               <button className="nxtbtn" onClick={submitForm}>
                 Next
               </button>
+              {isloading && <Spinner animation={"grow"} />}
             </div>
           </Row>
         </Row>
       </Col>
     </>
   );
-};
+});
 
 export default NewAssessmentPhaseOne;

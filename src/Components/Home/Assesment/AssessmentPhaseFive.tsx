@@ -122,7 +122,7 @@ const AssessmentFifthPhase = (props: any) => {
         q18: question18,
       };
       axios
-        .post(`${API}/careermotivator`, data, {
+        .post(`${API}/phase-three`, data, {
           headers: { Authorization: `Token ${token}` },
         })
         .then((response) => {
