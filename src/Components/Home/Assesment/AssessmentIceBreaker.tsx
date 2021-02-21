@@ -19,7 +19,7 @@ const IceBreaker = () => {
               time={10}
             />
           </Row>
-          <Row>
+          <Row className="chatrow">
             <div className="wanatxtsec">
               <img
                 className="wanaimg"
@@ -31,9 +31,10 @@ const IceBreaker = () => {
                 <p>
                   You have completed 1 out of the 4 assessment phases. &#128079;
                 </p>
+                <p>Here's a sneak peek of what we've gathered about you.</p>
               </div>
             </div>
-            <div className="wanatxtsec wanachat">
+            {/* <div className="wanatxtsec wanachat">
               <img
                 className="wanaimg"
                 src={wana}
@@ -42,7 +43,7 @@ const IceBreaker = () => {
               <div className="wanatxt wanatxt2">
                 <p>Here's a sneak peek of what we've gathered about you.</p>
               </div>
-            </div>
+            </div> */}
           </Row>
           <Row className="spacespace">
             <div className="snippetcard">

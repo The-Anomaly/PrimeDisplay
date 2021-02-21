@@ -6,15 +6,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 500px;
+    max-width: 500px;
     margin: 2rem auto;
 }
 .icebreakerbtns > button {
-    height: 40px;
-    width: 200px;
+    height: 45px;
+    width: 220px;
     border-radius: 6px;
     border-width: 1px;
     border-style: solid;
+    transition: 0.3s;
 }
 .icebreakerprogress {
     margin: 0 0 2rem 0;
@@ -29,11 +30,14 @@
 .wanatxtsec {
     width: 100%;
     display: flex;
-    padding: 0 6rem;
     margin-bottom: 2rem;
 }
+.chatrow {
+    padding: 2rem 6rem 0;
+}
 .wanaimg {
-    width: 130px;
+    width: 80px;
+    height: 80px;
 }
 .wanatxt {
     text-align: left;
@@ -43,16 +47,22 @@
     border-bottom-left-radius: 4px;
     padding: 1rem;
     position: relative;
-    margin-top: -1rem;
+    margin-top: -3rem;
+}
+.wanatxt > p {
+    font-size: 15px;
+    margin: 0;
 }
 .wanatxt1 {
-    height: 100px;
+    min-height: 105px;
+    max-height: 105px;
 }
 .wanatxt2 {
-    height: 60px;
+    min-height: 60px;
 }
 .wanatxt > h5 {
     font-family: 'Brfirma-Bold';
+    font-size: 1.15rem;
 }
 
 @keyframes chatanimation {
@@ -96,4 +106,110 @@
 }
 .phasephase > p {
     font-size: 18px;
+}
+
+.icebreakerbtns button:nth-child(1) {
+    color: #150538;
+    border: 1px solid #9c1258;
+    background-color: #ffffff;
+}
+.icebreakerbtns button:nth-child(2) {
+    color: #ffffff;
+    border: 1px solid #9c1258;
+    background-color: #9c1258;
+}
+.icebreakerbtns > button:hover {
+    transform: scale(1.05);
+}
+
+@media(max-width: 1000px) {
+    .icebreakercontainer {
+        padding: 5rem 0 2rem;
+    }
+    .spacespace {
+        padding: 1rem 5rem;
+    }
+    .chatrow {
+        padding: 2rem 5rem 0;
+    }
+}
+
+@media(max-width: 800px) {
+    .icebreakercontainer {
+        padding: 4rem 0 2rem;
+    }
+    .spacespace {
+        padding: 1rem 4rem;
+    }
+    .chatrow {
+        padding: 2rem 4rem 0;
+    }
+    .wanatxt {
+        width: 460px;
+    }
+}
+
+@media(max-width: 600px) {
+    .icebreakerprogress {
+        padding: 0 1rem;
+    }
+    .spacespace {
+        padding: 1rem 2rem;
+    }
+    .chatrow {
+        padding: 2rem 2rem 0;
+    }
+    .wanatxt {
+        width: 460px;
+    }
+    .phasephase > p {
+        font-size: 16px;
+    }
+    .icebreakerbtns {
+        max-width: 400px;
+    }
+    .icebreakerbtns > button {
+        width: 145px;
+    }
+    .phasedescrip {
+        font-size: 16px;
+    }
+    .snippetcard {
+        padding: 2rem 1.5rem;
+    }
+    .wanatxt {
+        width: 80%;
+        min-height: 150px;
+        /* max-height: 150px; */
+    }
+    .wanaimg {
+        margin-top: 4rem;
+    }
+}
+
+@media(max-width: 400px) {
+    .icebreakerbtns {
+        flex-direction: column;
+        height: 110px;
+    }
+    .icebreakerbtns > button {
+        width: 100%;
+        height: 45px;
+    }
+    .phasephase > p, .phasephase {
+        font-size: 14px;
+    }
+    .wanatxt {
+        width: 250px;
+    }
+}
+
+@media(max-width: 360px) {
+    .wanatxt {
+        width: 220px;
+        max-height: 200px;
+    }
+    .wanaimg {
+        margin-top: 6rem;
+    }
 }
