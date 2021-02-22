@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../Home/Home.css";
 import "../assessment.css";
 import Container from "react-bootstrap/Container";
-import {Row,Spinner} from "react-bootstrap";
+import { Row, Spinner } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Footer from "../../HomeComponents/newfooter";
 import Navbar from "../../HomeComponents/newnavbar";
@@ -43,7 +43,7 @@ const Assessmentfourthphase = (props: any) => {
     rate23: "0",
     rate24: "0",
     token: "",
-    isloading:false,
+    isloading: false,
   });
   const {
     rate1,
@@ -91,8 +91,8 @@ const Assessmentfourthphase = (props: any) => {
   const submitForm = (e: any) => {
     setRateValue({
       ...state,
-      isloading:true
-    })
+      isloading: true,
+    });
     e.preventDefault();
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -152,8 +152,8 @@ const Assessmentfourthphase = (props: any) => {
               props.history.push("/assessmentphasetwo1");
               setRateValue({
                 ...state,
-                isloading:false
-              })
+                isloading: false,
+              });
             }
           }
         )
@@ -161,8 +161,8 @@ const Assessmentfourthphase = (props: any) => {
       .catch((error) => {
         setRateValue({
           ...state,
-          isloading:false
-        })
+          isloading: false,
+        });
         if (error && error.response && error.response.data) {
           notify(error.response.data[0].message);
         }
@@ -180,7 +180,7 @@ const Assessmentfourthphase = (props: any) => {
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
             progressBar={40}
-            phase="Phase 2"
+            phase="Phase 2a"
             nextPhase="Phase 2b"
             time={10}
           />
