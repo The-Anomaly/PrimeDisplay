@@ -48,37 +48,24 @@
     padding: 1rem;
     position: relative;
     margin-top: -3rem;
+    min-height: 105px;
+    max-height: 105px;
 }
 .wanatxt > p {
     font-size: 15px;
     margin: 0;
 }
 .wanatxt1 {
-    min-height: 105px;
-    max-height: 105px;
+    min-height: 190px;
+    max-height: 190px;
 }
-.wanatxt2 {
-    min-height: 60px;
+.wanaimg1 {
+    margin-top: 6rem;
 }
 .wanatxt > h5 {
     font-family: 'Brfirma-Bold';
     font-size: 1.15rem;
 }
-
-@keyframes chatanimation {
-    from {opacity: 0;}
-    to {visibility: visible; opacity: 1;}
-}
-
-.wanachat {
-    animation-name: chatanimation;
-    animation-duration: 4s;
-    animation-delay: 2s;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
-    visibility: hidden;
-}
-
 .spacespace {
     text-align: left;
     padding: 1rem 7rem;
@@ -87,14 +74,17 @@
     border-radius: 8px;
     box-shadow: 0px 2px 6px rgb(24 33 77 / 25%);
     padding: 2rem;
+    width: 50%;
+    min-width: 300px;
 }
-
 .spacespace h5 {
     font-family: 'Brfirma-Bold';
 }
 .phasedescrip {
     font-family: 'Brfirma-Bold';
     font-size: 18px;
+    width: 50%;
+    min-width: 300px;
 }
 .phasephase {
     width: 100%;
@@ -121,6 +111,10 @@
 .icebreakerbtns > button:hover {
     transform: scale(1.05);
 }
+.phasedescrip1 {
+    min-width: 400px;
+    width: 60%;
+}
 
 @media(max-width: 1000px) {
     .icebreakercontainer {
@@ -146,6 +140,10 @@
     }
     .wanatxt {
         width: 460px;
+    }
+    .snippetcard, .phasedescrip {
+        width: 80%;
+        min-width: 300px;
     }
 }
 
@@ -180,10 +178,15 @@
     .wanatxt {
         width: 80%;
         min-height: 150px;
-        /* max-height: 150px; */
     }
     .wanaimg {
         margin-top: 4rem;
+    }
+    .wanatxt1 {
+        max-height: none;
+    }
+    .phasedescrip1 {
+        min-width: 300px;
     }
 }
 
@@ -202,6 +205,13 @@
     .wanatxt {
         width: 250px;
     }
+    .snippetcard, .phasedescrip {
+        width: 100%;
+        min-width: 250px;
+    }
+    .wanatxt1 {
+        max-height: 400px;
+    }
 }
 
 @media(max-width: 360px) {
@@ -211,5 +221,8 @@
     }
     .wanaimg {
         margin-top: 6rem;
+    }
+    .wanatxt1 {
+        max-height: 400px;
     }
 }

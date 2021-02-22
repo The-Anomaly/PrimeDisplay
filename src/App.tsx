@@ -109,7 +109,11 @@ import WanaChatBot from "./Components/Home/WanaChat/WanaChatBot";
 
 import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
-import IceBreaker from "./Components/Home/Assesment/AssessmentIceBreaker";
+import WelcomeIceBreaker from "./Components/Home/Assesment/AssessmentWelcomeIceBreaker";
+import PhaseOneIceBreaker from "./Components/Home/Assesment/AssessmentPhase1IceBreaker";
+import PhaseTwoIceBreaker from "./Components/Home/Assesment/AssessmentPhase2IceBreaker";
+import PhaseThreeIceBreaker from "./Components/Home/Assesment/AssessmentPhase3IceBreaker";
+import PhaseFourIceBreaker from "./Components/Home/Assesment/AssessmentPhase4IceBreaker";
 
 ReactGA.initialize("UA-151203321-1");
 class App extends Component {
@@ -536,7 +540,11 @@ class App extends Component {
               <Route exact path="/affiliates" component={ThirdPartyOverview} />
               <Route exact path="/affiliates/analytics" component={BehaviouralAnalytics} />
               <Route exact path="/wana" component={WanaChatBot} />
-              <Route exact path="/icebreaker" component={IceBreaker} />
+              <Route exact path="/assessment/welcome" component={WelcomeIceBreaker} />
+              <Route exact path="/assessment/phaseone/complete" component={PhaseOneIceBreaker} />
+              <Route exact path="/assessment/phasetwo/complete" component={PhaseTwoIceBreaker} />
+              <Route exact path="/assessment/phasethree/complete" component={PhaseThreeIceBreaker} />
+              <Route exact path="/assessment/phasefour/complete" component={PhaseFourIceBreaker} />
             </Switch>
           </BrowserRouter>
         </div>

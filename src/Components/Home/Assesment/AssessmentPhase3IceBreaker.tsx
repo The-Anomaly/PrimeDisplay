@@ -5,7 +5,10 @@ import { Container, Row } from "react-bootstrap";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import wana from "../../../assets/chatgirl.png";
 
-const IceBreaker = () => {
+const PhaseThreeIceBreaker = () => {
+  const nextPhase = () => {
+    return window.location.assign("/assessment/phasefour/complete");
+  };
   return (
     <>
       <Navbar />
@@ -13,9 +16,9 @@ const IceBreaker = () => {
         <Row className="icebreakercontainer">
           <Row className="icebreakerprogress center-it">
             <AssessmentFirstSection
-              progressBar={25}
+              progressBar={75}
               phase=""
-              nextPhase="Phase 2"
+              nextPhase="Phase 4"
               time={10}
             />
           </Row>
@@ -26,24 +29,14 @@ const IceBreaker = () => {
                 src={wana}
                 alt="wana, your clarity assistant"
               />
-              <div className="wanatxt wanatxt1">
-                <h5>Way to go Jaiyeola!</h5>
+              <div className="wanatxt">
+                <h5>Hats off to you Jaiyeola!</h5>
                 <p>
-                  You have completed 1 out of the 4 assessment phases. &#128079;
+                  You have completed 3 out of the 4 assessment phases. &#128079;
                 </p>
                 <p>Here's a sneak peek of what we've gathered about you.</p>
               </div>
             </div>
-            {/* <div className="wanatxtsec wanachat">
-              <img
-                className="wanaimg"
-                src={wana}
-                alt="wana, your clarity assistant"
-              />
-              <div className="wanatxt wanatxt2">
-                <p>Here's a sneak peek of what we've gathered about you.</p>
-              </div>
-            </div> */}
           </Row>
           <Row className="spacespace">
             <div className="snippetcard">
@@ -61,19 +54,18 @@ const IceBreaker = () => {
           </Row>
           <Row className="spacespace">
             <p className="phasedescrip">
-              The next phase assesses your career strengths and weaknesses. It
-              also helps us to know how well you function in your work
-              environment.
+              The fourth and final phase of this assessment determines your work style and work function fit. This allows us to
+              make recommendations to spike up your productivity.
             </p>
 
             <div className="phasephase">
               <p>
-                This phase contains a total of 24 questions. Would you like to
+                This phase contains a total of 22 questions. Would you like to
                 continue now or get a reminder later?
               </p>
               <div className="icebreakerbtns">
                 <button>Remind Me</button>
-                <button>Continue</button>
+                <button onClick={nextPhase}>Continue</button>
               </div>
             </div>
           </Row>
@@ -83,4 +75,4 @@ const IceBreaker = () => {
   );
 };
 
-export default IceBreaker;
+export default PhaseThreeIceBreaker;
