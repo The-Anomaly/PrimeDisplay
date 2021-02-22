@@ -15,7 +15,7 @@ import { API } from "../../../config";
 import { ToastContainer, toast } from "react-toastify";
 
 // team
-const AssessmentFifthPhase = (props: any) => {
+const NewAssessmentPhaseThree = (props: any) => {
   const [value, setValue] = React.useState<number>(0);
   const [state, setCheckboxValue]: any = React.useState({
     question1: "",
@@ -137,7 +137,7 @@ const AssessmentFifthPhase = (props: any) => {
   };
   const handleSuccess = (response: any) => {
     if (response.status === 200) {
-      props.history.push("/thirdphasecomplete");
+      props.history.push("/assessment/phasethree/complete");
     }
   };
   const handleErrors = (error: any) => {
@@ -158,7 +158,7 @@ const AssessmentFifthPhase = (props: any) => {
             progressBar={70}
             phase="Phase 3"
             nextPhase="Phase 4"
-            time={13}
+            time={10}
           />
           <Col md={11}>
             <Row className="firstrowcf2 cftcontent">
@@ -1565,4 +1565,4 @@ const AssessmentFifthPhase = (props: any) => {
     </div>
   );
 };
-export default AssessmentFifthPhase;
+export default NewAssessmentPhaseThree;

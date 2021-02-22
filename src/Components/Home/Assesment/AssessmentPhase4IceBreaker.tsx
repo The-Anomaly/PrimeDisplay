@@ -5,7 +5,20 @@ import { Container, Row } from "react-bootstrap";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import wana from "../../../assets/chatgirl.png";
 
+// team
+type User = string | null;
+
 const PhaseFourIceBreaker = () => {
+  const [name, setName] = React.useState("");
+  React.useEffect((): any => {
+    window.scrollTo(-0, -0);
+    const user: User = localStorage.getItem("user");
+    const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
+    setName(currentUser[0].first_name);
+  }, []);
+  const assessmentComplete = () => {
+    return window.location.assign("/free/dashboard");
+  };
   return (
     <>
       <Navbar />
@@ -49,7 +62,7 @@ const PhaseFourIceBreaker = () => {
               </p>
             </div>
           </Row>
-          <Row className="spacespace">
+          <Row className="spacespace spacespace1">
             {/* <p className="phasedescrip">
               The next phase assesses your career strengths and weaknesses. It
               also helps us to know how well you function in your work
@@ -63,7 +76,7 @@ const PhaseFourIceBreaker = () => {
               </p>
               <div className="icebreakerbtns">
                 <button>Remind Me</button>
-                <button>Get Results</button>
+                <button onClick={assessmentComplete}>Get Results</button>
               </div>
             </div>
           </Row>

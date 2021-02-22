@@ -43,7 +43,7 @@ interface State {
   token: string;
 }
 
-const AssessmentSeventhPhase = withRouter((props: any) => {
+const NewAssessmentPhaseFour = withRouter((props: any) => {
   const [value, setValue] = React.useState<number>(0);
   const [state, setCheckboxValue]: any = React.useState<State>({
     question1: "1",
@@ -164,7 +164,7 @@ const AssessmentSeventhPhase = withRouter((props: any) => {
           return props.history.push("/counsellorresultpage");
         }
         if (response.status === 200) {
-          props.history.push("/assessmentcompleted");
+          props.history.push("/assessment/phasefour/complete");
         }
       })
       .catch((error) => {
@@ -2061,4 +2061,4 @@ const AssessmentSeventhPhase = withRouter((props: any) => {
   );
 });
 
-export default AssessmentSeventhPhase;
+export default NewAssessmentPhaseFour;

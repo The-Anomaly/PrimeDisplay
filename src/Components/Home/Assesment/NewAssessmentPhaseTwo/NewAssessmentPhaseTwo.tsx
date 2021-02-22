@@ -16,7 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 // team
 
-const Assessmentfourthphase = (props: any) => {
+const NewAssessmentPhaseTwo = (props: any) => {
   const [state, setRateValue] = React.useState({
     rate1: "0",
     rate2: "0",
@@ -182,7 +182,7 @@ const Assessmentfourthphase = (props: any) => {
             progressBar={43}
             phase="Phase 2a"
             nextPhase="Phase 2b"
-            time={10}
+            time={6}
           />
           <Col md={11}></Col>
           <Col md={1}></Col>
@@ -552,4 +552,4 @@ const Assessmentfourthphase = (props: any) => {
   );
 };
 
-export default Assessmentfourthphase;
+export default NewAssessmentPhaseTwo;

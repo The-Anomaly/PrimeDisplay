@@ -139,7 +139,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((res) => {
-        window.location.assign("/assessmentphaseone");
+        window.location.assign("/assessment/welcome");
       })
       .catch((err) => {
         if (err) {

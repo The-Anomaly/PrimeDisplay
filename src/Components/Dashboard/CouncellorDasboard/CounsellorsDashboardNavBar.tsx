@@ -127,7 +127,7 @@ const CounsellorsDashboardMobileNav = withRouter((props: any) => {
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
           closeAssesmentModal();
-          return window.open(`/assessmentphaseone/?counsellor=true`);
+          return window.open(`/assessment/welcome/?counsellor=true`);
         }
         if (response.status === 200 && response.data[0].next === "phase_two") {
           closeAssesmentModal();

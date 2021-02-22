@@ -65,7 +65,7 @@ class OnboardingChatPhase2 extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        self.props.history.push("/assessmentphaseone");
+        self.props.history.push("/assessment/welcome");
       })
       .catch((err) => {});
   };

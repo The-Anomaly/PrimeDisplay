@@ -109,7 +109,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
           closeAssesmentModal();
-          return window.open(`/assessmentphaseone`);
+          return window.open(`/assessment/welcome`);
         }
         if (response.status === 200 && response.data[0].next === "phase_two") {
           closeAssesmentModal();

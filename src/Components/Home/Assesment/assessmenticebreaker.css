@@ -115,6 +115,9 @@
     min-width: 400px;
     width: 60%;
 }
+.spacespace1 {
+    width: 100%;
+}
 
 @media(max-width: 1000px) {
     .icebreakercontainer {

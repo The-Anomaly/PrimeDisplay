@@ -5,9 +5,19 @@ import { Container, Row } from "react-bootstrap";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import wana from "../../../assets/chatgirl.png";
 
+// team
+type User = string | null;
+
 const WelcomeIceBreaker = () => {
+  const [name, setName] = React.useState("");
+  React.useEffect((): any => {
+    window.scrollTo(-0, -0);
+    const user: User = localStorage.getItem("user");
+    const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
+    setName(currentUser[0].first_name);
+  }, []);
   const nextPhase = () => {
-    return window.location.assign("/assessment/phaseone/complete")
+    return window.location.assign("/assessmentphaseone")
   };
   return (
     <>
@@ -19,7 +29,7 @@ const WelcomeIceBreaker = () => {
               progressBar={0}
               phase=""
               nextPhase="Phase 1"
-              time={13}
+              time={15}
             />
           </Row>
           <Row className="chatrow">
@@ -30,7 +40,7 @@ const WelcomeIceBreaker = () => {
                 alt="wana, your clarity assistant"
               />
               <div className="wanatxt wanatxt1">
-                <h5>Hello Jaiyeola</h5>
+                <h5>Hello {name}</h5>
                 <p>
                 A fulfilling life, career or business starts with intentional
                 self-awareness, evaluating where you are, to determine the right

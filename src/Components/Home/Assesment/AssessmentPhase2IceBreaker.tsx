@@ -5,9 +5,19 @@ import { Container, Row } from "react-bootstrap";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import wana from "../../../assets/chatgirl.png";
 
+// team
+type User = string | null;
+
 const PhaseTwoIceBreaker = () => {
+  const [name, setName] = React.useState("");
+  React.useEffect((): any => {
+    window.scrollTo(-0, -0);
+    const user: User = localStorage.getItem("user");
+    const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
+    setName(currentUser[0].first_name);
+  }, []);
   const nextPhase = () => {
-    return window.location.assign("/assessment/phasethree/complete")
+    return window.location.assign("/assessmentphasethree")
   }
   return (
     <>
@@ -19,7 +29,7 @@ const PhaseTwoIceBreaker = () => {
               progressBar={50}
               phase=""
               nextPhase="Phase 3"
-              time={8}
+              time={10}
             />
           </Row>
           <Row className="chatrow">
@@ -30,7 +40,7 @@ const PhaseTwoIceBreaker = () => {
                 alt="wana, your clarity assistant"
               />
               <div className="wanatxt">
-                <h5>Well-done Jaiyeola!</h5>
+                <h5>Well-done {name}!</h5>
                 <p>
                   You have completed 2 out of the 4 assessment phases. &#128079;
                 </p>

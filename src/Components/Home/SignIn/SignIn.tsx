@@ -133,7 +133,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
           return props.history.push(`/assessmentphasetwo1`);
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessmentphaseone`);
+          return props.history.push(`/assessment/welcome`);
         }
         if (
           response.status === 200 &&
