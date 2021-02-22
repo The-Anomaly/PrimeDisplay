@@ -185,7 +185,7 @@ const AssessmentSeventhPhase = withRouter((props: any) => {
       <Container fluid={true}>
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
-            progressBar={100}
+            progressBar={70}
             phase="Phase 4"
             nextPhase="Finish"
             time={13}
