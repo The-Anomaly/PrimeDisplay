@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../Home/Home.css";
 import "../assessment.css";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+import { Row, Spinner } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Footer from "../../HomeComponents/newfooter";
 import Navbar from "../../HomeComponents/newnavbar";
@@ -43,6 +43,7 @@ const Assessmentfourthphase = (props: any) => {
     rate23: "0",
     rate24: "0",
     token: "",
+    isloading: false,
   });
   const {
     rate1,
@@ -69,6 +70,7 @@ const Assessmentfourthphase = (props: any) => {
     rate22,
     rate23,
     rate24,
+    isloading,
     token,
   } = state;
   //cdm
@@ -87,37 +89,41 @@ const Assessmentfourthphase = (props: any) => {
   };
   //subform
   const submitForm = (e: any) => {
+    setRateValue({
+      ...state,
+      isloading: true,
+    });
     e.preventDefault();
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
     const firstApiData = {
-      q36a: rate1,
-      q36b: rate2,
-      q36c: rate3,
-      q36d: rate4,
-      q36e: rate5,
-      q36f: rate6,
-      q36g: rate7,
-      q36h: rate8,
+      q1: rate1,
+      q2: rate2,
+      q3: rate3,
+      q4: rate4,
+      q5: rate5,
+      q6: rate6,
+      q7: rate7,
+      q8: rate8,
     };
     const secondApiData = {
-      q37a: rate9,
-      q37b: rate10,
-      q37c: rate11,
-      q37d: rate12,
+      q1: rate9,
+      q2: rate10,
+      q3: rate11,
+      q4: rate12,
     };
     const thirdApiData = {
-      q38a: rate17,
-      q38b: rate18,
-      q38c: rate19,
+      q1: rate17,
+      q2: rate18,
+      q3: rate19,
     };
     const fourthApiData = {
-      q39a: rate13,
-      q39b: rate14,
-      q39c: rate15,
-      q39d: rate16,
+      q1: rate13,
+      q2: rate14,
+      q3: rate15,
+      q4: rate16,
     };
     axios
       .all([
@@ -143,12 +149,20 @@ const Assessmentfourthphase = (props: any) => {
               thirdresponse?.status == 200 &&
               fourthresp?.status == 200
             ) {
-              props.history.push("/assessmentphasefour1");
+              props.history.push("/assessmentphasetwo1");
+              setRateValue({
+                ...state,
+                isloading: false,
+              });
             }
           }
         )
       )
       .catch((error) => {
+        setRateValue({
+          ...state,
+          isloading: false,
+        });
         if (error && error.response && error.response.data) {
           notify(error.response.data[0].message);
         }
@@ -165,9 +179,9 @@ const Assessmentfourthphase = (props: any) => {
       <Container fluid={true}>
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
-            progressBar={40}
-            phase="Phase 4"
-            nextPhase="Phase 5"
+            progressBar={43}
+            phase="Phase 2a"
+            nextPhase="Phase 2b"
             time={10}
           />
           <Col md={11}></Col>
@@ -528,6 +542,7 @@ const Assessmentfourthphase = (props: any) => {
               <button className="nxtbtn" onClick={submitForm}>
                 Next
               </button>
+              {isloading && <Spinner animation={"grow"} />}
             </div>
           </Col>
         </Row>

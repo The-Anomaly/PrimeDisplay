@@ -53,7 +53,7 @@ const AssessmentSeventhPhaseComplete = (props:any) => {
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
             progressBar={100}
-            phase="Phase 7"
+            phase="Phase 4"
             nextPhase="Results"
             time={10}
           />

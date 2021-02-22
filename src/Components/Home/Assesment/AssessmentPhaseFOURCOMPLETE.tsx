@@ -35,9 +35,9 @@ const AssessmentFourthPhaseComplete = () => {
       <Container fluid={true} >
         <Row className='firstrowcf cftcontent assesspadd'>
           <AssessmentFirstSection
-            progressBar={45}
-            phase="Phase 4"
-            nextPhase="Phase 5"
+            progressBar={40}
+            phase="Phase 2"
+            nextPhase="Phase 3"
             time={10}
           />
           <Col md={11}>

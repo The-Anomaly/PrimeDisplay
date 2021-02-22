@@ -101,34 +101,34 @@ const Assessmentfourthphase_1 = (props: any) => {
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
     const firstApiData = {
-      q41a: rate1,
-      q41b: rate2,
-      q41c: rate3,
-      q41d: rate4,
-      q41e: rate5,
+      q1: rate1,
+      q2: rate2,
+      q3: rate3,
+      q4: rate4,
+      q5: rate5,
     };
     const secondApiData = {
-      q42a: rate16,
-      q42b: rate17,
-      q42c: rate18,
-      q42d: rate19,
-      q42e: rate20,
+      q1: rate16,
+      q2: rate17,
+      q3: rate18,
+      q4: rate19,
+      q5: rate20,
     };
     const thirdApiData = {
-      q43a: rate21,
-      q43b: rate22,
-      q43c: rate23,
-      q43d: rate24,
-      q43e: rate25,
-      q43f: rate26,
-      q43g: rate27,
+      q1: rate21,
+      q2: rate22,
+      q3: rate23,
+      q4: rate24,
+      q5: rate25,
+      q6: rate26,
+      q7: rate27,
     };
     const fourthApiData = {
-      q40a: rate6,
-      q40b: rate7,
-      q40c: rate8,
-      q40d: rate9,
-      q40e: rate10,
+      q1: rate6,
+      q2: rate7,
+      q3: rate8,
+      q4: rate9,
+      q5: rate10,
     };
     if (token) {
       axios
@@ -155,7 +155,7 @@ const Assessmentfourthphase_1 = (props: any) => {
                 thirdresponse?.status == 200 &&
                 fourthres
               ) {
-                props.history.push("/assessmentphasefourcomplete");
+                props.history.push("/secondphasecomplete");
               }
             }
           )
@@ -177,9 +177,9 @@ const Assessmentfourthphase_1 = (props: any) => {
       <Container fluid={true}>
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
-            progressBar={40}
-            phase="Phase 4"
-            nextPhase="Phase 5"
+            progressBar={47}
+            phase="Phase 2b"
+            nextPhase="Phase 3"
             time={10}
           />
           <Col md={11}></Col>

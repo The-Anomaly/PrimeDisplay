@@ -102,27 +102,27 @@ const AssessmentFifthPhase = (props: any) => {
       question18
     ) {
       const data = {
-        q44: question1,
-        q45: question2,
-        q46: question3,
-        q47: question4,
-        q48: question5,
-        q49: question6,
-        q50: question7,
-        q51: question8,
-        q52: question9,
-        q53: question10,
-        q54: question11,
-        q55: question12,
-        q56: question13,
-        q57: question14,
-        q58: question15,
-        q59: question16,
-        q60: question17,
-        q61: question18,
+        q1: question1,
+        q2: question2,
+        q3: question3,
+        q4: question4,
+        q5: question5,
+        q6: question6,
+        q7: question7,
+        q8: question8,
+        q9: question9,
+        q10: question10,
+        q11: question11,
+        q12: question12,
+        q13: question13,
+        q14: question14,
+        q15: question15,
+        q16: question16,
+        q17: question17,
+        q18: question18,
       };
       axios
-        .post(`${API}/careermotivator`, data, {
+        .post(`${API}/phase-three`, data, {
           headers: { Authorization: `Token ${token}` },
         })
         .then((response) => {
@@ -137,7 +137,7 @@ const AssessmentFifthPhase = (props: any) => {
   };
   const handleSuccess = (response: any) => {
     if (response.status === 200) {
-      props.history.push("/assessmentphasefivecomplete");
+      props.history.push("/thirdphasecomplete");
     }
   };
   const handleErrors = (error: any) => {
@@ -155,9 +155,9 @@ const AssessmentFifthPhase = (props: any) => {
       <Container fluid={true} >
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
-            progressBar={60}
-            phase="Phase 5"
-            nextPhase="Phase 6"
+            progressBar={70}
+            phase="Phase 3"
+            nextPhase="Phase 4"
             time={13}
           />
           <Col md={11}>

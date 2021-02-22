@@ -251,11 +251,11 @@ const SignUp: React.FunctionComponent = (props: any) => {
         if (
           (
           response.status === 200 &&
-          response.data[0].next === "phase_four_sports") ||
-          response.data[0].next === "phase_four_business" ||
-          response.data[0].next === "phase_four_stem"
+          response.data[0].next === "phase_two_sports") ||
+          response.data[0].next === "phase_two_business" ||
+          response.data[0].next === "phase_two_stem"
         ) {
-          return props.history.push(`/assessmentphasefour1`);
+          return props.history.push(`/assessmentphasetwo1`);
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
           return props.history.push(`/assessmentphaseone`);
