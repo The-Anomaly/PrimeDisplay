@@ -421,7 +421,7 @@
     width: 98%;
   }
   .kiconrow {
-    display: none;
+    /* display: none; */
     flex-wrap: wrap;
   }
   .csfitscore {
@@ -1458,9 +1458,6 @@ abbr[title] {
   }
   .texsss1 {
     text-align: left;
-  }
-  .kitemwrapper {
-    width: 100% !important;
   }
 }
 .liee {
@@ -2954,7 +2951,7 @@ textarea.form-control.jobr {
     justify-content: center;
   }
   .kiconrow {
-    display: none;
+    /* display: none; */
   }
 }
 /*Admin Dashboard Styling*/

@@ -173,7 +173,7 @@ export default function PaymentSummary(props: any) {
     props.history.push("/thirdpary/fullresult");
   };
   return (
-    <div>
+    <div className="fullwidth">
       <Container fluid={true}>
         <Payment />
       </Container>

@@ -38,7 +38,8 @@ const newNavbar = withRouter((props: any) => {
       window.location.pathname === "/password_recovery" ||
       window.location.pathname === "/counsellor/signin/forgotpassword" || 
       window.location.pathname === "/affiliates/signin" || 
-      window.location.pathname === "/affiliates/signup"
+      window.location.pathname === "/affiliates/signup" ||
+      window.location.pathname === "/wana"
     ) {
       setDarkNav(true)
     }
@@ -138,7 +139,7 @@ const newNavbar = withRouter((props: any) => {
           return props.history.push(`/assessmentphasetwo1`);
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessmentphaseone`);
+          return props.history.push(`/assessment/welcome`);
         }
         if (response.status === 200 && response.data[0].next === "phase_two") {
           return props.history.push(`/assessmentphasetwo`);
@@ -181,7 +182,7 @@ const newNavbar = withRouter((props: any) => {
           <div className="lakk">
             <SideNav
               openFromRight={true}
-              style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit" }}
+              style={{ background: showNav ? "rgba(0, 0, 0, 0.7)" : "inherit"}}
               navStyle={{ width: "70%", background:  navbar ? "white" : darknav ? "#131313" : "white" }}
               showNav={showNav}
               onHideNav={() => setShowNav({ ...state, showNav: true })}
@@ -224,7 +225,7 @@ const newNavbar = withRouter((props: any) => {
               items={[
                 <div
                   className={
-                    showNav ? "listwraper animated fadeInLeft" : "listwraper"
+                    showNav ? "listwraper animated fadeInLeft scrollscroll" : "listwraper"
                   }
                 >
                   {!userLoggedIn ? (

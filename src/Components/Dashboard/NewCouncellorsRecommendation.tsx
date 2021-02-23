@@ -71,7 +71,7 @@ class CounsellorsRecommendation extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        window.location.assign("/assessmentphaseone");
+        window.location.assign("/assessment/welcome");
       })
       .catch((err) => {
         if (err) {

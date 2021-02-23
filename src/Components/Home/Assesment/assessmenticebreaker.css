@@ -1,0 +1,231 @@
+.icebreakercontainer {
+    padding: 7rem 0 2rem;
+    text-align: center;
+}
+.icebreakerbtns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+.icebreakerbtns > button {
+    height: 45px;
+    width: 220px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-style: solid;
+    transition: 0.3s;
+}
+.icebreakerprogress {
+    margin: 0 0 2rem 0;
+    width: 100%;
+}
+.center-it {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.wanatxtsec {
+    width: 100%;
+    display: flex;
+    margin-bottom: 2rem;
+}
+.chatrow {
+    padding: 2rem 6rem 0;
+}
+.wanaimg {
+    width: 80px;
+    height: 80px;
+}
+.wanatxt {
+    text-align: left;
+    width: 500px;
+    border: 2px solid #9c1258;
+    border-radius: 35px;
+    border-bottom-left-radius: 4px;
+    padding: 1rem;
+    position: relative;
+    margin-top: -3rem;
+    min-height: 105px;
+    max-height: 105px;
+}
+.wanatxt > p {
+    font-size: 15px;
+    margin: 0;
+}
+.wanatxt1 {
+    min-height: 190px;
+    max-height: 190px;
+}
+.wanaimg1 {
+    margin-top: 6rem;
+}
+.wanatxt > h5 {
+    font-family: 'Brfirma-Bold';
+    font-size: 1.15rem;
+}
+.spacespace {
+    text-align: left;
+    padding: 1rem 7rem;
+}
+.snippetcard {
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgb(24 33 77 / 25%);
+    padding: 2rem;
+    width: 50%;
+    min-width: 300px;
+}
+.spacespace h5 {
+    font-family: 'Brfirma-Bold';
+}
+.phasedescrip {
+    font-family: 'Brfirma-Bold';
+    font-size: 18px;
+    width: 50%;
+    min-width: 300px;
+}
+.phasephase {
+    width: 100%;
+    background: #f7f7f7;
+    border-radius: 6px;
+    padding: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+.phasephase > p {
+    font-size: 18px;
+}
+
+.icebreakerbtns button:nth-child(1) {
+    color: #150538;
+    border: 1px solid #9c1258;
+    background-color: #ffffff;
+}
+.icebreakerbtns button:nth-child(2) {
+    color: #ffffff;
+    border: 1px solid #9c1258;
+    background-color: #9c1258;
+}
+.icebreakerbtns > button:hover {
+    transform: scale(1.05);
+}
+.phasedescrip1 {
+    min-width: 400px;
+    width: 60%;
+}
+.spacespace1 {
+    width: 100%;
+}
+
+@media(max-width: 1000px) {
+    .icebreakercontainer {
+        padding: 5rem 0 2rem;
+    }
+    .spacespace {
+        padding: 1rem 5rem;
+    }
+    .chatrow {
+        padding: 2rem 5rem 0;
+    }
+}
+
+@media(max-width: 800px) {
+    .icebreakercontainer {
+        padding: 4rem 0 2rem;
+    }
+    .spacespace {
+        padding: 1rem 4rem;
+    }
+    .chatrow {
+        padding: 2rem 4rem 0;
+    }
+    .wanatxt {
+        width: 460px;
+    }
+    .snippetcard, .phasedescrip {
+        width: 80%;
+        min-width: 300px;
+    }
+}
+
+@media(max-width: 600px) {
+    .icebreakerprogress {
+        padding: 0 1rem;
+    }
+    .spacespace {
+        padding: 1rem 2rem;
+    }
+    .chatrow {
+        padding: 2rem 2rem 0;
+    }
+    .wanatxt {
+        width: 460px;
+    }
+    .phasephase > p {
+        font-size: 16px;
+    }
+    .icebreakerbtns {
+        max-width: 400px;
+    }
+    .icebreakerbtns > button {
+        width: 145px;
+    }
+    .phasedescrip {
+        font-size: 16px;
+    }
+    .snippetcard {
+        padding: 2rem 1.5rem;
+    }
+    .wanatxt {
+        width: 80%;
+        min-height: 150px;
+    }
+    .wanaimg {
+        margin-top: 4rem;
+    }
+    .wanatxt1 {
+        max-height: none;
+    }
+    .phasedescrip1 {
+        min-width: 300px;
+    }
+}
+
+@media(max-width: 400px) {
+    .icebreakerbtns {
+        flex-direction: column;
+        height: 110px;
+    }
+    .icebreakerbtns > button {
+        width: 100%;
+        height: 45px;
+    }
+    .phasephase > p, .phasephase {
+        font-size: 14px;
+    }
+    .wanatxt {
+        width: 250px;
+    }
+    .snippetcard, .phasedescrip {
+        width: 100%;
+        min-width: 250px;
+    }
+    .wanatxt1 {
+        max-height: 400px;
+    }
+}
+
+@media(max-width: 360px) {
+    .wanatxt {
+        width: 220px;
+        max-height: 200px;
+    }
+    .wanaimg {
+        margin-top: 6rem;
+    }
+    .wanatxt1 {
+        max-height: 400px;
+    }
+}

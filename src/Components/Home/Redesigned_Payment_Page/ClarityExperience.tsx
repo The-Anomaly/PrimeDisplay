@@ -26,8 +26,9 @@ const Payment = (props: any) => {
   const [modState, setModalState] = React.useState<any>({
     giftASub: false,
     giftASub2: false,
+    unavailable: false,
   });
-  const { giftASub, giftASub2 } = modState;
+  const { giftASub, giftASub2, unavailable } = modState;
   const openGiftASubscriptionModal = () => {
     setModalState({
       ...modState,
@@ -40,6 +41,12 @@ const Payment = (props: any) => {
       giftASub2: true,
     });
   };
+  const openUnavailableModal = () => {
+    setModalState({
+      ...modState,
+      unavailable: true,
+    });
+  };
   const closeGiftASubscriptionModal = () => {
     setModalState({
       ...modState,
@@ -50,6 +57,12 @@ const Payment = (props: any) => {
     setModalState({
       ...modState,
       giftASub2: false,
+    });
+  };
+  const closeUnavailableModal = () => {
+    setModalState({
+      ...modState,
+      unavailable: false,
     });
   };
   const OneOff = () => {
@@ -71,7 +84,7 @@ const Payment = (props: any) => {
   const { plan, withoutlogin, selectedSubscription, giftmail } = state;
 
   React.useEffect(() => {
-    if (window.location.pathname === "/payment") {
+    if (window.location.pathname === "/pricing") {
       setFormState({
         ...state,
         withoutlogin: true,
@@ -301,7 +314,7 @@ const Payment = (props: any) => {
             }
           >
             <h3>We have curated payments plans with you in mind</h3>
-            {withoutlogin ? <div className="fourthline pymntline"> </div> : ""}
+            {withoutlogin && (<div className="fourthline pymntline"> </div>)}
           </div>
           <div className="webpaymentview">
             <Row className="payment-plans">
@@ -309,8 +322,8 @@ const Payment = (props: any) => {
                 <Card
                   className={
                     plan === true && !withoutlogin
-                      ? "plan-cards one-off gborder"
-                      : "plan-cards one-off"
+                      ? "plan-cards one-off gborder switchcardwidth"
+                      : "plan-cards one-off switchcardwidth"
                   }
                 >
                   <Card.Body onClick={OneOff}>
@@ -323,8 +336,8 @@ const Payment = (props: any) => {
                   <div
                     className={
                       plan === true && !withoutlogin
-                        ? "plan-card-arr gnotch"
-                        : "plan-card-arr"
+                        ? "plan-card-arr gnotch switchcardwidth"
+                        : "plan-card-arr switchcardwidth"
                     }
                   >
                     <i className="fas fa-caret-down"></i>
@@ -337,8 +350,8 @@ const Payment = (props: any) => {
                 <Card
                   className={
                     plan === false && !withoutlogin
-                      ? "plan-cards pce bborder"
-                      : "plan-cards pce"
+                      ? "plan-cards pce bborder switchcardwidth"
+                      : "plan-cards pce switchcardwidth"
                   }
                 >
                   <Card.Body onClick={Progressive}>
@@ -351,8 +364,8 @@ const Payment = (props: any) => {
                   <div
                     className={
                       plan === false && !withoutlogin
-                        ? "plan-card-arr bnotch"
-                        : "plan-card-arr"
+                        ? "plan-card-arr bnotch switchcardwidth"
+                        : "plan-card-arr switchcardwidth"
                     }
                   >
                     <i className="fas fa-caret-down"></i>
@@ -366,7 +379,7 @@ const Payment = (props: any) => {
               <div>
                 {" "}
                 <Row className="centered_payment mobilecards">
-                  <Col md={4} sm={8} className="margined_col cardmini">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -415,7 +428,7 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={4} sm={8} className="margined_col cardmini">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className=" shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -525,27 +538,33 @@ const Payment = (props: any) => {
                             </div>
                           </li>
                         </ul>
-                        {withoutlogin ? (
-                          <Link to="/signin">
-                            <span className="card_btn btn-green card_btn--animated">
-                              Get Started
-                            </span>
-                          </Link>
-                        ) : (
-                          <span
+                        // {withoutlogin ? (
+                        //   <Link to="/signin">
+                        //     <span className="card_btn btn-green card_btn--animated">
+                        //       Get Started
+                        //     </span>
+                        //   </Link>
+                        // ) : (
+                        //   <span
+                        //     className="card_btn btn-green card_btn--animated"
+                        //     onClick={() =>
+                        //       requestForPayref("One-off Direction Plan", 12000)
+                        //     }
+                        //   >
+                        //     Upgrade to Direction
+                        //   </span>
+                        // )}
+                        <span
                             className="card_btn btn-green card_btn--animated"
-                            onClick={() =>
-                              requestForPayref("One-off Direction Plan", 12000)
-                            }
+                            onClick={openUnavailableModal}
                           >
                             Upgrade to Direction
                           </span>
-                        )}
                       </Card.Body>
                     </Card>
-                  </Col> */}
+                  </Col>*/}
                 </Row>
-                <Row className="centered_payment">
+                <Row className="centered_payment submargin">
                   <Col md={3} sm={8} className="margined_col cardmini">
                     <Card className="subcription-card">
                       <Card.Header className="subscription-header">
@@ -579,8 +598,8 @@ const Payment = (props: any) => {
 
             {plan === false && (
               <div>
-                <Row className="centered_payment mobilecards">
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                <Row className="centered_payment mobilecards progressivepadding">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -679,7 +698,7 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className=" shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -748,7 +767,7 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={3} sm={8} className="margined_col cardmini">
+                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -834,7 +853,7 @@ const Payment = (props: any) => {
                     </Card>
                   </Col>
                 </Row>
-                <Row className="centered_payment">
+                <Row className="centered_payment submargin">
                   <Col md={3} sm={8} className="margined_col cardmini">
                     <Card className="subcription-card">
                       <Card.Header className="subscription-header">
@@ -1026,7 +1045,7 @@ const Payment = (props: any) => {
                         </Card.Body>
                       </Card>
                     </Col>
-                    <Col md={3} sm={8} className="margined_col cardmini">
+                    {/* <Col md={3} sm={8} className="margined_col cardmini">
                       <Card className="h-300 shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
@@ -1061,28 +1080,61 @@ const Payment = (props: any) => {
                               </div>
                             </li>
                           </ul>
-                          {withoutlogin ? (
-                            <Link to="/signin">
-                              <span className="card_btn btn-green card_btn--animated">
-                                Get Started
-                              </span>
-                            </Link>
-                          ) : (
-                            <span
+                          // {withoutlogin ? (
+                          //   <Link to="/signin">
+                          //     <span className="card_btn btn-green card_btn--animated">
+                          //       Get Started
+                          //     </span>
+                          //   </Link>
+                          // ) : (
+                          //   <span
+                          //     className="card_btn btn-green card_btn--animated"
+                          //     onClick={() =>
+                          //       requestForPayref(
+                          //         "One-off Direction Plan",
+                          //         12000
+                          //       )
+                          //     }
+                          //   >
+                          //     Upgrade to Direction
+                          //   </span>
+                          // )}
+                          <span
                               className="card_btn btn-green card_btn--animated"
-                              onClick={() =>
-                                requestForPayref(
-                                  "One-off Direction Plan",
-                                  12000
-                                )
-                              }
+                              onClick={openUnavailableModal}
                             >
                               Upgrade to Direction
                             </span>
-                          )}
                         </Card.Body>
                       </Card>
-                    </Col>
+                    </Col> */}
+                    <Col md={3} sm={8} className="margined_col cardmini">
+                    <Card className="h-300 shadow-sm bg-white subcription-card">
+                      <Card.Header className="subscription-header">
+                        <h6 className="red">Gift a Subscription</h6>
+                      </Card.Header>
+                      <Card.Body>
+                        <p className="sub-p">
+                          Give a gift of success. Choose one of the three
+                          different plans
+                        </p>
+                        {withoutlogin ? (
+                          <Link to="/signin">
+                            <span className="card_btn btn-red card_btn--animated">
+                              Give a Clarity Subscription
+                            </span>
+                          </Link>
+                        ) : (
+                          <span
+                            className="card_btn btn-red card_btn--animated"
+                            onClick={openGiftASubscriptionModal}
+                          >
+                            Give a Clarity Subscription
+                          </span>
+                        )}
+                      </Card.Body>
+                    </Card>
+                  </Col>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -1389,6 +1441,33 @@ const Payment = (props: any) => {
                         </Card.Body>
                       </Card>
                     </Col>
+                    <Col md={3} sm={8} className="margined_col cardmini">
+                    <Card className="h-300 shadow-sm bg-white subcription-card">
+                      <Card.Header className="subscription-header">
+                        <h6 className="red">Gift a Subscription</h6>
+                      </Card.Header>
+                      <Card.Body>
+                        <p className="sub-p">
+                          Give a gift of success. Choose one of the three
+                          different plans
+                        </p>
+                        {withoutlogin ? (
+                          <Link to="/signin">
+                            <span className="card_btn btn-red card_btn--animated">
+                              Give a Clarity Subscription
+                            </span>
+                          </Link>
+                        ) : (
+                          <span
+                            className="card_btn btn-red card_btn--animated"
+                            onClick={openGiftASubscriptionModal2}
+                          >
+                            Give a Clarity Subscription
+                          </span>
+                        )}
+                      </Card.Body>
+                    </Card>
+                  </Col>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -1434,9 +1513,9 @@ const Payment = (props: any) => {
               <option className="giftoptions" value="One-off Insight Plan">
                 One-off Insight Plan
               </option>
-              <option className="giftoptions" value="One-off Direction Plan">
+              {/* <option className="giftoptions" value="One-off Direction Plan">
                 One-off Direction Plan
-              </option>
+              </option> */}
             </select>
           </label>
           <label>
@@ -1510,6 +1589,15 @@ const Payment = (props: any) => {
           </label>
           <div className="subscripbtn" onClick={giftSubscriptionPayment}>
             Proceed to Payment
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal show={unavailable} onHide={closeUnavailableModal} centered>
+        <Modal.Body>
+          <div className="unavailableplan">
+          <h5>This plan is only available for the promo.</h5>
+          <h6>Follow <a href="http://instagram.com/getclarity_" target="_blank">@getclarity_</a> on instagram for more info.</h6>
+          <p>It's the season of love! &#128525;</p>
           </div>
         </Modal.Body>
       </Modal>

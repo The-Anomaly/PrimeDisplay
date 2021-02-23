@@ -175,7 +175,7 @@ React.useEffect(()=>{
           }}
           items={[
             <div className={"siddlemobile newsiddle"}>
-              <div className={"navitem1"}>
+              <div className={"navitem1 navitem2"}>
                 <Link to="/overview">
                   <div className={props.overview ? "activegb" : "gbn"}>
                     <img
@@ -416,7 +416,7 @@ React.useEffect(()=>{
             <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
           </div>
           <div className="areusure1">
-            are you sure you want to <b> LogOut?</b>
+            Are you sure you want to <b> LogOut?</b>
           </div>
           <div className="text-center planupgrade">
             <div

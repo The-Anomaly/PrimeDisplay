@@ -73,7 +73,7 @@ const EmailVerification = withRouter((props: any) => {
               JSON.stringify(response?.data[0]?.token)
             );
           }
-          // props.history.push("/assessmentphaseone");
+          // props.history.push("/assessment/welcome");
         }
       })
       .catch((error) => {

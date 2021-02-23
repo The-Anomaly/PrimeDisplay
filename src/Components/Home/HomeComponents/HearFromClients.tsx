@@ -51,7 +51,7 @@ const HearFromClients = () => {
         <div className="secondtitle homemaptitle">
           Hear from Happy{" "}
           <span className="secondtitle1 clientttl">
-            Clients <img src={rect} className="secondimg homemapimg" />
+            Clients <img src={rect} className="secondimg homemapimg" alt="map"/>
           </span>
         </div>
         <div className="homemapclient mapdesktop">

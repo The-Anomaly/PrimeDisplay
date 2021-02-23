@@ -40,7 +40,7 @@ const AssessmentFirstPhase = (props: any) => {
   return (
     <div>
       <Navbar />
-      <Modal
+      {/* <Modal
         size="sm"
         show={show}
         centered
@@ -63,7 +63,7 @@ const AssessmentFirstPhase = (props: any) => {
             Got it
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
       <Container fluid={true}>
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection

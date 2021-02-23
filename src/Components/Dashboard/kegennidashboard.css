@@ -1513,9 +1513,6 @@ abbr[title] {
   .texsss1 {
     text-align: left;
   }
-  .kitemwrapper {
-    width: 100% !important;
-  }
 }
 .liee {
   display: flex;
@@ -4217,6 +4214,23 @@ label {
 }
 .newitemz{
   overflow-y: scroll;
-  min-height: 500px;
+  /* min-height: 500px; */
   max-height: 516px;
+}
+@media(max-width: 400px) {
+  .kiconrow .kitemwrapper {
+    width: 250px !important;
+    height: 200px;
+  }
+}
+.txttxtview {
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+.navitem2 {
+  height: 100vh;
+  padding-bottom: 7rem;
+}
+.fullwidth {
+  width: 100%;
 }

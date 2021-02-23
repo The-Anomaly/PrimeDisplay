@@ -157,7 +157,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
           isloading: false,
         });
         if (response.status === 200) {
-          props.history.push("/assessmentphasecomplete");
+          props.history.push("/assessment/phaseone/complete");
         }
       })
       .catch((error) => {

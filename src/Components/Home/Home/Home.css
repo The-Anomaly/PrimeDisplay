@@ -1250,14 +1250,14 @@ button {
 .border1 {
   position: absolute;
   margin-top: 2rem;
-  margin-left: 4rem;
+  margin-left: 2rem;
   z-index: 0;
 }
 .border2 {
   position: absolute;
   margin-top: 2rem;
   height: 260px;
-  margin-left: -17rem;
+  margin-left: -19rem;
 }
 .border3 {
   position: absolute;
@@ -1271,12 +1271,12 @@ button {
   margin-top: 2rem;
   height: 224px;
   width: 355px;
-  margin-left: -8.4rem;
+  margin-left: -10.4rem;
 }
 .border5 {
   position: absolute;
-  margin-top: 1.8rem;
-  margin-left: 4rem;
+  margin-top: 1.75rem;
+  margin-left: 2rem;
   width: 280px;
 }
 .leftborder,
@@ -1288,6 +1288,7 @@ button {
 }
 /*Hear From Clients*/
 .homemap {
+  background-color: #23304c;
   background-image: url("../../../assets/map.svg");
   background-size: cover;
   padding: 3rem;
@@ -1415,6 +1416,17 @@ button {
 .footer_maill {
   margin: 2rem 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 510px;
+}
+.footer_maill > label {
+  flex: 100%;
+  font-weight: 600;
+}
+.footer_maill > label > p {
+  padding-left: 1rem;
+  margin-bottom: 0;
 }
 .footer_mail {
   height: 50px;
@@ -1983,7 +1995,6 @@ button {
   .fourthsubsec {
     border: none;
     width: 330px;
-    padding-bottom: 0;
   }
   .fourthsec {
     flex-direction: column;
@@ -2000,19 +2011,22 @@ button {
   .rightborder {
     transform: rotate(180deg);
     margin-left: 8rem;
+    width: 185px;
+    height: 284.4px;
   }
   .leftborder {
     margin-left: -4rem;
   }
   .leftborder1 {
     margin-top: 1.7rem;
-    height: 298px;
+    height: 330px;
   }
   .rightborder2 {
-    height: 283px;
+    height: 317px;
+    width: 180px;
   }
   .leftborder2 {
-    height: 249px;
+    height: 284px;
   }
 }
 
@@ -2126,12 +2140,20 @@ button {
   }
   .rightborder {
     margin-left: 5.8rem;
+    width: 170px;
   }
   .rightborder2 {
-    margin-left: 5rem;
+    margin-left: 6rem;
   }
   .leftborder {
-    margin-left: -1.6rem;
+    margin-left: -3rem;
+  }
+  .leftborder1 {
+    margin-left: -2rem;
+  }
+  .leftborder2 {
+    width: 170px;
+    margin-left: -2rem;
   }
   .hometext {
     font-size: 30px;
@@ -2193,6 +2215,9 @@ button {
   .footer_signup {
     font-size: 16px;
   }
+  .footer_maill {
+    width: 380px;
+  }
   .footer_mail {
     height: 45px;
     width: 280px;
@@ -2239,6 +2264,11 @@ button {
   .footer_signup {
     font-size: 14px;
   }
+  .footer_maill {
+    width: 400px;
+    margin: 2rem auto;
+    position: relative;
+  }
   .footer_mail {
     border-radius: 100px;
     height: 55px;
@@ -2247,8 +2277,8 @@ button {
   .footer_btn {
     border-radius: 100px;
     position: absolute;
-    margin-left: 18.5rem;
-    margin-top: 0.35rem;
+    margin-top: 2.5rem;
+    left: 18.4rem;
   }
   .footer_socials {
     width: 350px;
@@ -2271,20 +2301,27 @@ button {
 }
 
 @media (max-width: 600px) {
+  .footer_maill {
+    width: 300px;
+  }
   .footer_mail {
     width: 300px;
   }
   .footer_btn {
-    margin-left: 12.2rem;
+    margin-top: 2.5rem;
+    left: 12.2rem;
   }
 }
 
 @media (max-width: 400px) {
+  .footer_maill {
+    width: 260px;
+  }
   .footer_mail {
     width: 260px;
   }
   .footer_btn {
-    margin-left: 9.7rem;
+    left: 9.7rem;
   }
   .footer_socials {
     width: 90%;
@@ -2747,27 +2784,17 @@ button {
 }
 
 /*Hover Effects*/
-.trustimg:hover {
-  width: 62px;
-  height: 62px;
+.fourthsubsechov {
+  transition: 0.2s;
+  position: relative;
+  z-index: 10;
 }
-.fourthsubhead:hover {
-  font-size: 15px;
+.fourthsubsechov:hover {
+  transform: scale(1.1);
 }
-.fourthsubtext:hover {
-  font-size: 13px;
-}
-
 @media(max-width: 800px) {
-  .trustimg:hover {
-    width: 52px;
-    height: 52px;
-  }
-  .fourthsubhead:hover {
-    font-size: 13.5px;
-  }
-  .fourthsubtext:hover {
-    font-size: 12.1px;
+  .fourthsubsechov:hover {
+    transform: scale(1.09);
   }
 }
 
@@ -2823,4 +2850,9 @@ button {
 }
 .newsiddle {
   padding-top: 4rem !important;
+}
+.scrollscroll {
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 6rem;
 }
