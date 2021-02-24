@@ -118,7 +118,10 @@
 .spacespace1 {
     width: 100%;
 }
-
+.getresult > button {
+    color: #ffffff !important;
+    background: #9c1258 !important;
+}
 @media(max-width: 1000px) {
     .icebreakercontainer {
         padding: 5rem 0 2rem;
@@ -191,6 +194,9 @@
     .phasedescrip1 {
         min-width: 300px;
     }
+    .getresult > button {
+        width: 100%;
+    }
 }
 
 @media(max-width: 400px) {
@@ -214,6 +220,9 @@
     }
     .wanatxt1 {
         max-height: 400px;
+    }
+    .getresult {
+        height: 45px;
     }
 }
 

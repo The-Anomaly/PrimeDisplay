@@ -71,11 +71,9 @@ const PhaseFourIceBreaker = () => {
 
             <div className="phasephase">
               <p>
-                Time to view your full results. Would you like to
-                continue now or get a reminder later?
+                Time to completely discover what we've learnt about you.
               </p>
-              <div className="icebreakerbtns">
-                <button>Remind Me</button>
+              <div className="icebreakerbtns center-it getresult">
                 <button onClick={assessmentComplete}>Get Results</button>
               </div>
             </div>

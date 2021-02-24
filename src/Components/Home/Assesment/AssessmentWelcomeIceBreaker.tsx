@@ -34,18 +34,15 @@ const WelcomeIceBreaker = (props: any) => {
       next_phase: "1",
     };
     axios
-      .post(`${API}/phase-four`, data, {
+      .post(`${API}/assessment-remind`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response?.data?.message);
+        // console.log(response?.data?.message);
         notify(response?.data?.message);
-        return setTimeout(() => {
-          props.history.push("/overview");
-        }, 1000);
       })
       .catch((error) => {
-        console.log(error?.response?.message);
+        // console.log(error?.response?.message);
         notify(error?.response?.message);
       });
   };
