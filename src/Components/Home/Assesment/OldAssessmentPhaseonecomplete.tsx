@@ -36,6 +36,7 @@ const AssessmentFirstPhaseComplete = () => {
           <AssessmentFirstSection
             progressBar={38}
             phase="Phase 1"
+            
             nextPhase="Phase 2"
             time={10}
           />
