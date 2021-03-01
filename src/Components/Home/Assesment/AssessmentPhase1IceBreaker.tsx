@@ -16,9 +16,10 @@ const PhaseOneIceBreaker = (props: any) => {
   const [snippet, setSnippet] = React.useState({
     head: "",
     content: "",
-    loading: true,
+    loading: false,
+    loading2: false,
   });
-  const { head, content, loading } = snippet;
+  const { head, content, loading, loading2 } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
@@ -38,7 +39,7 @@ const PhaseOneIceBreaker = (props: any) => {
         notify(response?.data?.message);
         setSnippet({
           ...snippet,
-          loading: false,
+          loading: true,
           head: response?.data?.text,
           content: response?.data.support_text,
         });
@@ -52,6 +53,10 @@ const PhaseOneIceBreaker = (props: any) => {
     return window.location.assign("/assessmentphasetwo");
   };
   const remindMe = () => {
+    setSnippet({
+      ...snippet,
+      loading2: true,
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -65,10 +70,18 @@ const PhaseOneIceBreaker = (props: any) => {
       })
       .then((response) => {
         // console.log(response?.data?.message);
+        setSnippet({
+          ...snippet,
+          loading2: false,
+        })
         notify(response?.data?.message);
       })
       .catch((error) => {
         // console.log(error?.response?.message);
+        setSnippet({
+          ...snippet,
+          loading2: false,
+        })
         notify(error?.response?.message);
       });
   };
@@ -77,6 +90,11 @@ const PhaseOneIceBreaker = (props: any) => {
     <>
       <Navbar />
       <Container fluid={true}>
+      {loading2 === true && (
+          <div className="icebreakerpreloader center-it">
+            <div className="icebreakerspinner"></div>
+          </div>
+        )}
         <Row className="icebreakercontainer">
           <Row className="icebreakerprogress center-it">
             <AssessmentFirstSection
@@ -104,7 +122,7 @@ const PhaseOneIceBreaker = (props: any) => {
           </Row>
           <Row className="spacespace">
             <div className="snippetcard">
-              {loading === false ? (
+              {loading === true ? (
                 <>
                   <h5>
                     You have the Career Personality of a <span>{head}</span>

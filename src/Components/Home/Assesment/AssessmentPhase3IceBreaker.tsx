@@ -17,9 +17,10 @@ const PhaseThreeIceBreaker = (props: any) => {
     head_1: "",
     head_2: "",
     content: "Hold on while we fetch your result...",
-    loading: true,
+    loading: false,
+    loading2: false,
   });
-  const { head_1, head_2, content, loading } = snippet;
+  const { head_1, head_2, content, loading, loading2 } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
@@ -38,7 +39,7 @@ const PhaseThreeIceBreaker = (props: any) => {
         notify(response?.data?.message);
         setSnippet({
           ...snippet,
-          loading: false,
+          loading: true,
           head_1: response?.data?.motivator1,
           head_2: response?.data?.motivator2,
           content: response?.data.support_text,
@@ -53,6 +54,10 @@ const PhaseThreeIceBreaker = (props: any) => {
     return window.location.assign("/assessmentphasefour");
   };
   const remindMe = () => {
+    setSnippet({
+      ...snippet,
+      loading2: true,
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -66,10 +71,18 @@ const PhaseThreeIceBreaker = (props: any) => {
       })
       .then((response) => {
         // console.log(response?.data?.message);
+        setSnippet({
+          ...snippet,
+          loading2: false,
+        })
         notify(response?.data?.message);
       })
       .catch((error) => {
         // console.log(error?.response?.message);
+        setSnippet({
+          ...snippet,
+          loading2: false,
+        })
         notify(error?.response?.message);
       });
   };
@@ -78,6 +91,11 @@ const PhaseThreeIceBreaker = (props: any) => {
     <>
       <Navbar />
       <Container fluid={true}>
+        {loading2 === true && (
+          <div className="icebreakerpreloader center-it">
+            <div className="icebreakerspinner"></div>
+          </div>
+        )}
         <Row className="icebreakercontainer">
           <Row className="icebreakerprogress center-it">
             <AssessmentFirstSection
@@ -105,7 +123,7 @@ const PhaseThreeIceBreaker = (props: any) => {
           </Row>
           <Row className="spacespace">
             <div className="snippetcard">
-              {loading === false ? (
+              {loading === true ? (
                 <>
                   <h5>
                     Your top two career non-negotiables are{" "}
