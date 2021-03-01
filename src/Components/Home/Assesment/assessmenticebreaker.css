@@ -34,6 +34,7 @@
 }
 .chatrow {
     padding: 2rem 6rem 0;
+    width: 100%;
 }
 .wanaimg {
     width: 80px;
@@ -83,7 +84,7 @@
 }
 .spacespace h5 {
     font-family: 'Brfirma-Regular';
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 .spacespace span {
     font-family: 'Brfirma-Bold';

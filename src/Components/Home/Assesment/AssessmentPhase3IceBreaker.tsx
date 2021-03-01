@@ -17,8 +17,9 @@ const PhaseThreeIceBreaker = (props: any) => {
     head_1: "",
     head_2: "",
     content: "Hold on while we fetch your result...",
+    loading: true,
   });
-  const { head_1, head_2, content } = snippet;
+  const { head_1, head_2, content, loading } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
@@ -37,6 +38,7 @@ const PhaseThreeIceBreaker = (props: any) => {
         notify(response?.data?.message);
         setSnippet({
           ...snippet,
+          loading: false,
           head_1: response?.data?.motivator1,
           head_2: response?.data?.motivator2,
           content: response?.data.support_text,
@@ -103,11 +105,19 @@ const PhaseThreeIceBreaker = (props: any) => {
           </Row>
           <Row className="spacespace">
             <div className="snippetcard">
-              <h5>
-                Your top two career non-negotiables are <span>{head_1}</span>{" "}
-                and <span>{head_2}</span>
-              </h5>
-              <p>{content}</p>
+              {loading === false ? (
+                <>
+                  <h5>
+                    Your top two career non-negotiables are{" "}
+                    <span>{head_1}</span> and <span>{head_2}</span>
+                  </h5>
+                  <p>{content}</p>
+                </>
+              ) : (
+                <h6>
+                  <i>Hold on while we fetch your result...</i>
+                </h6>
+              )}
             </div>
           </Row>
           <Row className="spacespace">

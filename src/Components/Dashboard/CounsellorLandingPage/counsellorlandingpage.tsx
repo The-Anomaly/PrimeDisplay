@@ -70,7 +70,7 @@ const CounsellorLandingPage: React.FC = (props: any) => {
           <div className="ouroffertxt1">What we are offering</div>
           <div className="ouroffertxt2">
             With the human behaviour becoming complex, no two clients are the
-            same, using the clarity tool you'd be able to create the best
+            same, using the Clarity tool you'd be able to create the best
             coaching strategies for your client.
           </div>
           <div className="offerlistsec">

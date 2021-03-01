@@ -1276,7 +1276,7 @@ const Payment = (props: any) => {
                       <Card className=" shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            30000 <span>/month</span>
+                            30,000 <span>/month</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -1346,7 +1346,7 @@ const Payment = (props: any) => {
                       <Card className="h-300 shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N10500 <span>/month</span>
+                            N50,500 <span>/month</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>

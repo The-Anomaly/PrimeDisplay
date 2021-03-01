@@ -14,10 +14,11 @@ type User = string | null;
 const PhaseOneIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
   const [snippet, setSnippet] = React.useState({
-    head: "Result Snippet",
-    content: "Hold on while we fetch your result...",
-  })
-  const { head, content } = snippet;
+    head: "",
+    content: "",
+    loading: true,
+  });
+  const { head, content, loading } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
@@ -28,7 +29,7 @@ const PhaseOneIceBreaker = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
-      axios
+    axios
       .get(`${API}/icebreaker/phase-one`, {
         headers: { Authorization: `Token ${token}` },
       })
@@ -37,9 +38,10 @@ const PhaseOneIceBreaker = (props: any) => {
         notify(response?.data?.message);
         setSnippet({
           ...snippet,
+          loading: false,
           head: response?.data?.text,
           content: response?.data.support_text,
-        })
+        });
       })
       .catch((error) => {
         // console.log(error?.response?.message);
@@ -47,7 +49,7 @@ const PhaseOneIceBreaker = (props: any) => {
       });
   }, []);
   const nextPhase = () => {
-    return window.location.assign("/assessmentphasetwo")
+    return window.location.assign("/assessmentphasetwo");
   };
   const remindMe = () => {
     const availableToken = localStorage.getItem("userToken");
@@ -102,15 +104,22 @@ const PhaseOneIceBreaker = (props: any) => {
           </Row>
           <Row className="spacespace">
             <div className="snippetcard">
-              <h5>You have the Career Personality of a <span>{head}</span></h5>
-              <p>
-                {content}
-              </p>
+              {loading === false ? (
+                <>
+                  <h5>
+                    You have the Career Personality of a <span>{head}</span>
+                  </h5>
+                  <p>{content}</p>
+                </>
+              ) : (
+                <h6><i>Hold on while we fetch your result...</i></h6>
+              )}
             </div>
           </Row>
           <Row className="spacespace">
             <p className="phasedescrip">
-              The next phase evaluates your career interests and matches it against your natural competencies to find the best fit for you.
+              The next phase evaluates your career interests and matches it
+              against your natural competencies to find the best fit for you.
             </p>
 
             <div className="phasephase">

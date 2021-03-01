@@ -214,7 +214,7 @@ const RedesignedHome: React.FC = (props: any) => {
                   <div>We are like a map but for your career.</div>
                   {/* <div>Let's connect all the dots...</div> */}
                   <div className="smhometext">
-                    Discover your passion and talent, discover a more meaningful
+                    Discover your passion and talent. Discover a more meaningful
                     work life.
                   </div>
                   <Link to="/signup">
@@ -557,7 +557,7 @@ const RedesignedHome: React.FC = (props: any) => {
                       >
                         Knowing what step to take next is one thing but getting
                         there is another! With Yudimy's Clarity you can
-                        immediately convert the recommendations frommyour
+                        immediately convert the recommendations from your
                         counselling session into actionable tasks and set up
                         frequent reminders to keep you accountable and help you
                         achieve them.

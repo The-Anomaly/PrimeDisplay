@@ -16,8 +16,9 @@ const PhaseTwoIceBreaker = (props: any) => {
   const [snippet, setSnippet] = React.useState({
     head: "",
     content: "Hold on while we fetch your result...",
-  })
-  const { head, content } = snippet;
+    loading: true,
+  });
+  const { head, content, loading } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
@@ -27,7 +28,7 @@ const PhaseTwoIceBreaker = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
-      axios
+    axios
       .get(`${API}/icebreaker/phase-two`, {
         headers: { Authorization: `Token ${token}` },
       })
@@ -36,9 +37,10 @@ const PhaseTwoIceBreaker = (props: any) => {
         notify(response?.data?.message);
         setSnippet({
           ...snippet,
+          loading: false,
           head: response?.data?.text,
           content: response?.data.support_text,
-        })
+        });
       })
       .catch((error) => {
         // console.log(error?.response?.message);
@@ -46,7 +48,7 @@ const PhaseTwoIceBreaker = (props: any) => {
       });
   }, []);
   const nextPhase = () => {
-    return window.location.assign("/assessmentphasethree")
+    return window.location.assign("/assessmentphasethree");
   };
   const remindMe = () => {
     const availableToken = localStorage.getItem("userToken");
@@ -100,16 +102,25 @@ const PhaseTwoIceBreaker = (props: any) => {
             </div>
           </Row>
           <Row className="spacespace">
-            <div className="snippetcard">
-              <h5>Your strongest natural competence is <span>{head}</span></h5>
-              <p>
-                {content}
-              </p>
-            </div>
+            {loading === false ? (
+              <>
+                <div className="snippetcard">
+                  <h5>
+                    Your strongest natural competence is <span>{head}</span>
+                  </h5>
+                  <p>{content}</p>
+                </div>
+              </>
+            ) : (
+              <h6>
+                <i>Hold on while we fetch your result...</i>
+              </h6>
+            )}
           </Row>
           <Row className="spacespace">
             <p className="phasedescrip">
-              The next assessment phase determines what your natural work motivators are.
+              The next assessment phase determines what your natural work
+              motivators are.
             </p>
 
             <div className="phasephase">
