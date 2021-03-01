@@ -14,10 +14,11 @@ type User = string | null;
 const PhaseThreeIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
   const [snippet, setSnippet] = React.useState({
-    head: "Result Snippet",
+    head_1: "",
+    head_2: "",
     content: "Hold on while we fetch your result...",
-  })
-  const { head, content } = snippet;
+  });
+  const { head_1, head_2, content } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
@@ -27,7 +28,7 @@ const PhaseThreeIceBreaker = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
-      axios
+    axios
       .get(`${API}/icebreaker/phase-three`, {
         headers: { Authorization: `Token ${token}` },
       })
@@ -36,9 +37,10 @@ const PhaseThreeIceBreaker = (props: any) => {
         notify(response?.data?.message);
         setSnippet({
           ...snippet,
-          head: response?.data?.text,
+          head_1: response?.data?.motivator1,
+          head_2: response?.data?.motivator2,
           content: response?.data.support_text,
-        })
+        });
       })
       .catch((error) => {
         // console.log(error?.response?.message);
@@ -100,17 +102,19 @@ const PhaseThreeIceBreaker = (props: any) => {
             </div>
           </Row>
           <Row className="spacespace">
-          <div className="snippetcard">
-              <h5>The one thing you should not compromise for optimal Career Satisfaction is <span>{head}</span></h5>
-              <p>
-                {content}
-              </p>
+            <div className="snippetcard">
+              <h5>
+                Your top two career non-negotiables are <span>{head_1}</span>{" "}
+                and <span>{head_2}</span>
+              </h5>
+              <p>{content}</p>
             </div>
           </Row>
           <Row className="spacespace">
             <p className="phasedescrip">
-              The fourth and final phase of this assessment determines your work style and work function fit. This allows us to
-              make recommendations to spike up your productivity.
+              The fourth and final phase of this assessment determines your work
+              style and work function fit. This allows us to make
+              recommendations to spike up your productivity.
             </p>
 
             <div className="phasephase">

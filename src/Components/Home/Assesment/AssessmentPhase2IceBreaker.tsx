@@ -14,7 +14,7 @@ type User = string | null;
 const PhaseTwoIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
   const [snippet, setSnippet] = React.useState({
-    head: "Result Snippet",
+    head: "",
     content: "Hold on while we fetch your result...",
   })
   const { head, content } = snippet;
