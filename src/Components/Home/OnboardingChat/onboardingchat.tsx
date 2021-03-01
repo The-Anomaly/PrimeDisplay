@@ -20,14 +20,75 @@ import SendMessageToolbar from "./chatcomponents/sendMessageTool";
 import Axios from "axios";
 import { API } from "../../../config";
 import Form from "react-bootstrap/Form";
+import { connect } from "react-redux";
+import WebSocketInstance from "../../../wanaWebsocket";
 
 class OnboardingChat extends React.Component {
   state: any = {
     offline: false,
     userMessage: [],
     wanaResponse: [],
+    question1: "",
+    disableInput: false,
     msg: "",
+    chatid: "",
   };
+  props: any;
+  messagesEnd: any;
+  constructor(props: any) {
+    super(props);
+  }
+  initialiseChat(id) {
+    this.waitForSocketConnection(() => {
+      WebSocketInstance.fetchMessages(id);
+    });
+    WebSocketInstance.connect(id);
+  }
+  waitForSocketConnection = (callback) => {
+    const component = this;
+    setTimeout(function () {
+      if (WebSocketInstance.state() === 1) {
+        // console.log("conection is made!");
+        callback();
+        return;
+      } else {
+        // console.log("waiting for connection....");
+        component.waitForSocketConnection(callback);
+      }
+    }, 100);
+  };
+  componentWillUnmount() {
+    WebSocketInstance.disconnect();
+  }
+  componentDidUpdate(newProps) {
+    this.scrollToBottom();
+  }
+  scrollToBottom = () => {
+    // console.log(this.messagesEnd);
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  };
+  sendMessageHandler = (e) => {
+    e.preventDefault();
+    const messageObject = {
+      text: this.state.msg,
+      chatId: this.state.chatid,
+    };
+    WebSocketInstance.newChatMessage(messageObject);
+    this.setState({
+      disableInput: false,
+      message: "",
+      msg: "",
+    });
+    this.scrollToBottom();
+  };
+
+  onchange = (e: any) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+      disableInput: false,
+    });
+  };
+
   offlineColor = "#3cb238";
   onlineColor = "#7f8fa4b9";
   onlineTxt = "#9c1258";
@@ -60,12 +121,17 @@ class OnboardingChat extends React.Component {
           return {
             userMessage: [...state.userMessage],
             msg: "",
+            chat_id: this.state.chatid,
             wanaResponse: [state.wanaResponse],
+            disableInput: false,
           };
         });
         this.componentDidMount();
       })
       .catch((err) => {
+        this.setState({
+          disableInput: false,
+        });
       });
   };
   componentDidMount() {
@@ -74,22 +140,35 @@ class OnboardingChat extends React.Component {
     const token = availableToken
       ? JSON.parse(availableToken)
       : self.history.push("/signin");
-    Axios.get(`${API}/chat`, {
+    Axios.get(`${API}/onboarding-chat-id`, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        if (res?.data?.next) {
-          self.history.push("/clientchat2");
-        }
+        console.log(res.data);
+        this.initialiseChat(res.data.chat);
+        setTimeout(() => {
+          this.scrollToBottom();
+        }, 1000);
         this.setState({
-          wanaResponse: res?.data?.response,
+          chatid: res.data.chat,
         });
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
+  }
+  isArray(arr) {
+    return arr.constructor.toString().indexOf("Array") > -1;
   }
   render() {
-    const { offline, userMessage, msg, wanaResponse } = this.state;
+    let a = "abcdefghijklmnopqrstuvwxyz".split("");
+    console.log(this.props.messages);
+    const {
+      offline,
+      userMessage,
+      question1,
+      msg,
+      wanaResponse,
+      disableInput,
+    } = this.state;
     return (
       <>
         <Navbar />
@@ -126,18 +205,85 @@ class OnboardingChat extends React.Component {
                 <Col md={8} className="chatwrap">
                   <ChatBot name="Wana Yudimy" />
                   {/* First Message from Api */}
-                  {wanaResponse?.map((data, index) => (
+                  {this.props.messages?.map((data, index) => (
                     <>
-                      <ChatBotShortAssessment
-                        key={index}
-                        message={data.server}
-                      />
-                      <div className="user_response_wrapper">
-                        <UserChatScreenTitle name="You" />
-                        <UserSentChat message={data.user} />
-                      </div>
+                      {this.isArray(data?.content) === false
+                        ? data?.author == "wana" && (
+                            <ChatBotShortAssessment
+                              key={index}
+                              message={data?.content}
+                            />
+                          )
+                        : ""}
+                      {this.isArray(data?.content)
+                        ? data.content.map((data, i) =>
+                            data == "Proceed" ? (
+                              <div className="rsliderclas122">
+                                <label className="checkcontainer1 klsll1">
+                                  <input
+                                    type="radio"
+                                    value={"Yes, please proceed"}
+                                    name="question2"
+                                    onClick={() =>
+                                      window.location.assign(
+                                        "/assessment/welcome"
+                                      )
+                                    }
+                                  />
+                                  Yes, please proceed
+                                </label>
+                                <label className="checkcontainer1 klsll2">
+                                  <input
+                                    type="radio"
+                                    value={"No, some other time"}
+                                    name="question2"
+                                    onClick={() => {
+                                      localStorage.clear()
+                                      window.location.assign("/");
+                                    }}
+                                  />
+                                  No, some other time
+                                </label>
+                              </div>
+                            ) : (
+                              <>
+                                {() =>
+                                  this.setState({
+                                    disableInput: true,
+                                  })
+                                }
+                                <Col md={12} className="nopadd2" key={i}>
+                                  <div className="rsliderclaskl">
+                                    <label className="checkcontainer1 klsll">
+                                      <input
+                                        type="radio"
+                                        onChange={this.onchange}
+                                        value={data}
+                                        name="msg"
+                                      />
+                                      <span className="checkmark1">{a[i]}</span>
+                                      {data}
+                                    </label>
+                                  </div>
+                                </Col>
+                              </>
+                            )
+                          )
+                        : ""}
+                      {data?.author == "user" && (
+                        <div className="user_response_wrapper">
+                          <UserChatScreenTitle name="You" />
+                          <UserSentChat message={data?.content} />
+                        </div>
+                      )}
                     </>
                   ))}
+                  <div
+                    style={{ float: "left", clear: "both" }}
+                    ref={(el) => {
+                      this.messagesEnd = el;
+                    }}
+                  ></div>
                   {/* User Message Reply */}
                 </Col>
               </Row>
@@ -147,11 +293,12 @@ class OnboardingChat extends React.Component {
               <div className="bottomChatArea">
                 <div className="fle111">
                   <div className="p32">
-                    <Form onSubmit={this.sendFormData}>
+                    <Form onSubmit={this.sendMessageHandler}>
                       <input
                         type="text"
                         className="typeMessagehere"
                         value={msg}
+                        disabled={disableInput ? true : false}
                         name="msg"
                         onChange={this.changeHandler}
                         placeholder="Type a message"
@@ -164,7 +311,7 @@ class OnboardingChat extends React.Component {
                       src={sendButton}
                       className="sendButton"
                       alt="sendButton"
-                      onClick={this.sendFormData}
+                      onClick={this.sendMessageHandler}
                     />
                   </div>
                 </div>
@@ -178,4 +325,10 @@ class OnboardingChat extends React.Component {
   }
 }
 
-export default OnboardingChat;
+const mapStateToProps = (state) => {
+  return {
+    messages: state.message.messages,
+  };
+};
+
+export default connect(mapStateToProps)(OnboardingChat);

@@ -86,9 +86,8 @@ const WelcomeIceBreaker = (props: any) => {
               The first phase of this assessment is going to measure your
               personality composition and your natural work competencies.
             </p>
-
             <div className="phasephase">
-              <p>
+              <p className="fufillingz">
                 This phase contains a total of 30 questions. Would you like to
                 start now or get a reminder later?
               </p>

@@ -76,7 +76,8 @@ import CouncellorRecommendationsToAll from "./Components/Dashboard/CouncellorDas
 import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 import CounsellorViewUserResult from "./Components/Dashboard/CouncellorDasboard/CounsellorViewUserResult";
-import WebSocketInstance from "./websocket";
+import  WebSocketInstance  from "./websocket";
+import wanaWebSocketInstance from "./wanaWebsocket";
 import RedesignedHome from "./Components/Home/Home/RedesignedHome";
 import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
 import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
@@ -122,6 +123,7 @@ const options = {
   autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
   debug: false, // enable logs
 };
+
 ReactPixel.init("1336761443373942", advancedMatching, options);
 ReactPixel.pageView(); // For tracking page view
 ReactGA.initialize("UA-151203321-1");
@@ -134,7 +136,12 @@ class App extends Component {
       self.props.setMessages.bind(this),
       self.props.addMessage.bind(this)
     );
+    wanaWebSocketInstance?.addCallbacks(
+      self.props.setMessagesForWana.bind(this),
+      self.props.addMessage.bind(this)
+    );
   }
+  msgActions:any;
   componentDidMount() {
     ReactGA.pageview(window.location.pathname);
   }
@@ -223,7 +230,7 @@ class App extends Component {
                 path="/dashboard/careerfitness"
                 component={CareerFitness}
               />
-              
+
               {/* <Route
                 exact
                 path="/assessmentphasefive"
@@ -590,7 +597,6 @@ class App extends Component {
                 path="/assessmentphasefour"
                 component={NewAssessmentPhaseFour}
               />
-              
             </Switch>
           </BrowserRouter>
         </div>
@@ -602,6 +608,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addMessage: (message) => dispatch(msgActions.addMessage(message)),
     setMessages: (messages) => dispatch(msgActions.setMessages(messages)),
+    setMessagesForWana: (messages) => dispatch(msgActions.setMessagesForWana(messages)),
   };
 };
 export default connect(null, mapDispatchToProps)(App);

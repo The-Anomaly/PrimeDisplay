@@ -31,7 +31,7 @@
 }
 
 
-@media (max-width: 430px) {
+@media (max-width: 460px) {
   .whatsapp {
     width: 40px;
     position: fixed;
@@ -40,7 +40,7 @@
     z-index: 100;
   }
 }
-@media(min-width:431px){
+@media(min-width:461px){
   .whatsapp{
     display: none;
   }
