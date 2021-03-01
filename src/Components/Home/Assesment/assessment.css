@@ -527,7 +527,7 @@ a:hover{
 /* Create a custom checkbox */
 .checkmark1 {
   position: absolute;
-  bottom: 1px;
+  bottom: 4px;
   left: 0;
   font-size: 12px;
   height: 20px;

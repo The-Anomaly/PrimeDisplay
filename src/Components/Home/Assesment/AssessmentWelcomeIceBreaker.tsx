@@ -17,7 +17,7 @@ const WelcomeIceBreaker = () => {
     setName(currentUser[0].first_name);
   }, []);
   const nextPhase = () => {
-    return window.location.assign("/assessmentphaseone")
+    return window.location.assign("/assessmentphaseone");
   };
   return (
     <>
@@ -41,23 +41,24 @@ const WelcomeIceBreaker = () => {
               />
               <div className="wanatxt wanatxt1">
                 <h5>Hello {name}</h5>
-                <p>
-                A fulfilling life, career or business starts with intentional
-                self-awareness, evaluating where you are, to determine the right
-                direction forward. The objective of this assessment is to help you
-                kick-start this process. Be relaxed and honest when answering all 
-                the questions, this will help you to gain maximum benefit.
+                <p className="fufillingz">
+                  A fulfilling life, career or business starts with intentional
+                  self-awareness, evaluating where you are, to determine the
+                  right direction forward. The objective of this assessment is
+                  to help you kick-start this process. Be relaxed and honest
+                  when answering all the questions, this will help you to gain
+                  maximum benefit.
                 </p>
               </div>
             </div>
           </Row>
           <Row className="spacespace">
             <p className="phasedescrip phasedescrip1">
-              The first phase of this assessment is going to measure your personality composition and your natural work competencies.
+              The first phase of this assessment is going to measure your
+              personality composition and your natural work competencies.
             </p>
-
             <div className="phasephase">
-              <p>
+              <p className="fufillingz">
                 This phase contains a total of 30 questions. Would you like to
                 start now or get a reminder later?
               </p>
