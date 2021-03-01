@@ -13,15 +13,42 @@ type User = string | null;
 
 const PhaseOneIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
+  const [snippet, setSnippet] = React.useState({
+    head: "Result Snippet",
+    content: "Hold on while we fetch your result...",
+  })
+  const { head, content } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
     const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
     setName(currentUser[0].first_name);
+
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+      axios
+      .get(`${API}/icebreaker/phase-one`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        // console.log(response?.data?.message);
+        notify(response?.data?.message);
+        setSnippet({
+          ...snippet,
+          head: response?.data?.text,
+          content: response?.data.support_text,
+        })
+      })
+      .catch((error) => {
+        // console.log(error?.response?.message);
+        // notify(error?.response?.message);
+      });
   }, []);
   const nextPhase = () => {
     return window.location.assign("/assessmentphasetwo")
-  }
+  };
   const remindMe = () => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -75,15 +102,9 @@ const PhaseOneIceBreaker = (props: any) => {
           </Row>
           <Row className="spacespace">
             <div className="snippetcard">
-              <h5>Result Snippet</h5>
+              <h5>You have the Career Personality of a <span>{head}</span></h5>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {content}
               </p>
             </div>
           </Row>
