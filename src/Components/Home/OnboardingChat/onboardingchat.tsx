@@ -31,8 +31,10 @@ class OnboardingChat extends React.Component {
     question1: "",
     disableInput: false,
     msg: "",
+    msg1: "",
     chatid: "",
   };
+  
   props: any;
   messagesEnd: any;
   constructor(props: any) {
@@ -70,7 +72,7 @@ class OnboardingChat extends React.Component {
   sendMessageHandler = (e) => {
     e.preventDefault();
     const messageObject = {
-      text: this.state.msg,
+      text: this.state.msg ? this.state.msg : this.state.msg1,
       chatId: this.state.chatid,
     };
     WebSocketInstance.newChatMessage(messageObject);
@@ -78,11 +80,35 @@ class OnboardingChat extends React.Component {
       disableInput: false,
       message: "",
       msg: "",
+      msg1: "",
     });
     this.scrollToBottom();
   };
+  sendMessageHandler1 = (e) => {
+    console.log(this.state.msg1);
+    e.preventDefault();
+    const messageObject = {
+      text: this.state.msg1,
+      chatId: this.state.chatid,
+    };
+    WebSocketInstance.newChatMessage(messageObject);
+    this.setState({
+      disableInput: false,
+      message: "",
+      msg: "",
+      msg1: "",
+    });
+    this.scrollToBottom();
+    console.log(this.state.msg1);
+  };
 
   onchange = (e: any) => {
+    // if (/\d/.test(this.state.msg1)) {
+    //   this.sendMessageHandler1(e);
+    // }
+    // if (!this.state.msg1) {
+    //   this.sendMessageHandler1(e);
+    // }
     this.setState({
       [e.target.name]: e.target.value,
       disableInput: false,
@@ -156,7 +182,9 @@ class OnboardingChat extends React.Component {
       .catch((err) => {});
   }
   isArray(arr) {
-    return arr.constructor.toString().indexOf("Array") > -1;
+    if (arr) {
+      return arr.constructor.toString().indexOf("Array") > -1;
+    }
   }
   render() {
     let a = "abcdefghijklmnopqrstuvwxyz".split("");
@@ -166,6 +194,7 @@ class OnboardingChat extends React.Component {
       userMessage,
       question1,
       msg,
+      msg1,
       wanaResponse,
       disableInput,
     } = this.state;
@@ -205,19 +234,22 @@ class OnboardingChat extends React.Component {
                 <Col md={8} className="chatwrap">
                   <ChatBot name="Wana Yudimy" />
                   {/* First Message from Api */}
-                  {this.props.messages?.map((data, index) => (
+                  {this.props.messages?.map((data1, index) => (
                     <>
-                      {this.isArray(data?.content) === false
-                        ? data?.author == "wana" && (
-                            <ChatBotShortAssessment
-                              key={index}
-                              message={data?.content}
-                            />
+                      {this.isArray(data1?.content) === false
+                        ? data1?.author == "wana" && (
+                            <>
+                              <ChatBotShortAssessment
+                                key={index}
+                                message={data1?.content}
+                              />
+                            </>
                           )
                         : ""}
-                      {this.isArray(data?.content)
-                        ? data.content.map((data, i) =>
-                            data == "Proceed" ? (
+
+                      {this.isArray(data1?.content)
+                        ? data1.content.map((data, i) =>
+                            data == " d " ? (
                               <div className="rsliderclas122">
                                 <label className="checkcontainer1 klsll1">
                                   <input
@@ -238,7 +270,7 @@ class OnboardingChat extends React.Component {
                                     value={"No, some other time"}
                                     name="question2"
                                     onClick={() => {
-                                      localStorage.clear()
+                                      localStorage.clear();
                                       window.location.assign("/");
                                     }}
                                   />
@@ -247,33 +279,48 @@ class OnboardingChat extends React.Component {
                               </div>
                             ) : (
                               <>
-                                {() =>
-                                  this.setState({
-                                    disableInput: true,
-                                  })
-                                }
                                 <Col md={12} className="nopadd2" key={i}>
                                   <div className="rsliderclaskl">
                                     <label className="checkcontainer1 klsll">
                                       <input
                                         type="radio"
-                                        onChange={this.onchange}
+                                        onChange={this.changeHandler}
                                         value={data}
-                                        name="msg"
+                                        name="msg1"
+                                        disabled={
+                                          data1?.content?.isAnswered
+                                            ? true
+                                            : false
+                                        }
                                       />
                                       <span className="checkmark1">{a[i]}</span>
                                       {data}
                                     </label>
+                                    {/* This condition   Check for the last item in the array and display a proceed button under  */}
+                                    {!data1?.content?.isAnswered &&
+                                    i == data1?.content?.length - 1 ? (
+                                      <label className="checkcontainer1 klsll klsll1">
+                                        <input
+                                          type="radio"
+                                          value={"Yes, please proceed"}
+                                          name="question2"
+                                          onClick={this.sendMessageHandler1}
+                                        />
+                                        Proceed
+                                      </label>
+                                    ) : (
+                                      ""
+                                    )}
                                   </div>
                                 </Col>
                               </>
                             )
                           )
                         : ""}
-                      {data?.author == "user" && (
+                      {data1?.author == "user" && (
                         <div className="user_response_wrapper">
                           <UserChatScreenTitle name="You" />
-                          <UserSentChat message={data?.content} />
+                          <UserSentChat message={data1?.content} />
                         </div>
                       )}
                     </>
@@ -298,7 +345,15 @@ class OnboardingChat extends React.Component {
                         type="text"
                         className="typeMessagehere"
                         value={msg}
-                        disabled={disableInput ? true : false}
+                        disabled={
+                          this.isArray(this.props.messages[this.props.messages.length-1]?.content)
+                            ? true
+                            : msg1
+                            ? true
+                            : /\d/.test(this.state.msg1)
+                            ? true
+                            : false
+                        }
                         name="msg"
                         onChange={this.changeHandler}
                         placeholder="Type a message"

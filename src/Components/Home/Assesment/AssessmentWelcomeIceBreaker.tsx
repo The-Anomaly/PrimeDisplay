@@ -4,21 +4,50 @@ import Navbar from "../HomeComponents/newnavbar";
 import { Container, Row } from "react-bootstrap";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import wana from "../../../assets/chatgirl.png";
+import axios from "axios";
+import { API } from "../../../config";
+import { toast, ToastContainer } from "react-toastify";
 
 // team
 type User = string | null;
 
-const WelcomeIceBreaker = () => {
+const WelcomeIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
+
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
     const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
     setName(currentUser[0].first_name);
   }, []);
+
   const nextPhase = () => {
     return window.location.assign("/assessmentphaseone");
   };
+
+  const remindMe = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+    const data = {
+      next_phase: "1",
+    };
+    axios
+      .post(`${API}/assessment-remind`, data, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        // console.log(response?.data?.message);
+        notify(response?.data?.message);
+      })
+      .catch((error) => {
+        // console.log(error?.response?.message);
+        notify(error?.response?.message);
+      });
+  };
+
+  const notify = (message: string) => toast(message, { containerId: "B" });
   return (
     <>
       <Navbar />
@@ -41,7 +70,7 @@ const WelcomeIceBreaker = () => {
               />
               <div className="wanatxt wanatxt1">
                 <h5>Hello {name}</h5>
-                <p className="fufillingz">
+                <p>
                   A fulfilling life, career or business starts with intentional
                   self-awareness, evaluating where you are, to determine the
                   right direction forward. The objective of this assessment is
@@ -63,13 +92,20 @@ const WelcomeIceBreaker = () => {
                 start now or get a reminder later?
               </p>
               <div className="icebreakerbtns">
-                <button>Remind Me</button>
+                <button onClick={remindMe}>Remind Me</button>
                 <button onClick={nextPhase}>Start</button>
               </div>
             </div>
           </Row>
         </Row>
       </Container>
+      <ToastContainer
+        enableMultiContainer
+        containerId={"B"}
+        toastClassName="bg-info text-white"
+        hideProgressBar={true}
+        position={toast.POSITION.TOP_CENTER}
+      />
     </>
   );
 };

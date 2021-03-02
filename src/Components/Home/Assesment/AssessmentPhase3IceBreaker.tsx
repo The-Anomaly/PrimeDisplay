@@ -4,21 +4,72 @@ import Navbar from "../HomeComponents/newnavbar";
 import { Container, Row } from "react-bootstrap";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import wana from "../../../assets/chatgirl.png";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { API } from "../../../config";
 
 // team
 type User = string | null;
 
-const PhaseThreeIceBreaker = () => {
+const PhaseThreeIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
+  const [snippet, setSnippet] = React.useState({
+    head: "Result Snippet",
+    content: "Hold on while we fetch your result...",
+  })
+  const { head, content } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
     const currentUser = user ? JSON.parse(user) : [{ first_name: "" }];
     setName(currentUser[0].first_name);
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+      axios
+      .get(`${API}/icebreaker/phase-three`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        // console.log(response?.data?.message);
+        notify(response?.data?.message);
+        setSnippet({
+          ...snippet,
+          head: response?.data?.text,
+          content: response?.data.support_text,
+        })
+      })
+      .catch((error) => {
+        // console.log(error?.response?.message);
+        notify(error?.response?.message);
+      });
   }, []);
   const nextPhase = () => {
     return window.location.assign("/assessmentphasefour");
   };
+  const remindMe = () => {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/signin");
+    const data = {
+      next_phase: "4",
+    };
+    axios
+      .post(`${API}/assessment-remind`, data, {
+        headers: { Authorization: `Token ${token}` },
+      })
+      .then((response) => {
+        // console.log(response?.data?.message);
+        notify(response?.data?.message);
+      })
+      .catch((error) => {
+        // console.log(error?.response?.message);
+        notify(error?.response?.message);
+      });
+  };
+  const notify = (message: string) => toast(message, { containerId: "B" });
   return (
     <>
       <Navbar />
@@ -49,16 +100,10 @@ const PhaseThreeIceBreaker = () => {
             </div>
           </Row>
           <Row className="spacespace">
-            <div className="snippetcard">
-              <h5>Result Snippet</h5>
+          <div className="snippetcard">
+              <h5>The one thing you should not compromise for optimal Career Satisfaction is <span>{head}</span></h5>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {content}
               </p>
             </div>
           </Row>
@@ -74,13 +119,20 @@ const PhaseThreeIceBreaker = () => {
                 continue now or get a reminder later?
               </p>
               <div className="icebreakerbtns">
-                <button>Remind Me</button>
+                <button onClick={remindMe}>Remind Me</button>
                 <button onClick={nextPhase}>Continue</button>
               </div>
             </div>
           </Row>
         </Row>
       </Container>
+      <ToastContainer
+        enableMultiContainer
+        containerId={"B"}
+        toastClassName="bg-info text-white"
+        hideProgressBar={true}
+        position={toast.POSITION.TOP_CENTER}
+      />
     </>
   );
 };
