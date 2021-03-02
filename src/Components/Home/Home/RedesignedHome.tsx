@@ -596,7 +596,7 @@ const RedesignedHome: React.FC = (props: any) => {
                       Career Positioning & Opportunity Recommendation
                     </div>
                     <div className="fourthsubtext" data-aos="fade-left">
-                      As your career-talent managers committed to your success
+                      As your career-talent managers, we are committed to your success,
                       we work with you to articulate your unique value
                       proposition, profile and brand. Also, because we now
                       understand you, we curate and connect you to the best
