@@ -142,8 +142,8 @@ class OnboardingChat extends React.Component {
       ? JSON.parse(availableToken)
       : self.history.push("/signin");
     const data = {
-      text: this.state.msg,
-    };
+      next_phase: "1",
+    }
     Axios.post(`${API}/assessment-remind`, data, {
       headers: { Authorization: `Token ${token}` },
     })
@@ -302,9 +302,7 @@ class OnboardingChat extends React.Component {
                                         value={data}
                                         name="msg1"
                                         disabled={
-                                          data1?.isAnswered
-                                            ? true
-                                            : false
+                                          data1?.isAnswered ? true : false
                                         }
                                       />
                                       <span className="checkmark1">{a[i]}</span>
@@ -359,8 +357,8 @@ class OnboardingChat extends React.Component {
                         e.preventDefault();
                       }}
                     >
-                      <input
-                        type="text"
+                      <textarea
+                        // type="text"
                         className="typeMessagehere"
                         value={msg}
                         disabled={
