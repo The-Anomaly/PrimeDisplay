@@ -26,6 +26,7 @@ import blur from "../../assets/weakness_blur.png";
 import blur2 from "../../assets/fix_blur.png";
 import blur2a from "../../assets/fix_blur2.png";
 import unlock2 from "../../assets/unlock_white.png";
+import caution1 from "../../assets/caution1.svg"
 
 interface State {
   fullname: string;
@@ -323,9 +324,9 @@ class NewDashboard extends React.Component {
                     </div>
                   </div>
                   {!showfullresult && (
-                    <div className="notpaid hh">
+                    <div className="notpaid hh oops-upgrade">
                       <div className="notpaid1">
-                        <img src={caution} className="caution" alt="caution" />
+                        <img src={caution1} className="caution" alt="caution" />
                         <div className="notpaidtext">
                           Oops!!! You need to upgrade your plan to get indepth
                           details
@@ -336,7 +337,7 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                   )}
-                  <div className="resultsec2 lswid" id="seek">
+                  {/* <div className="resultsec2 lswid" id="seek">
                     <div className="csfitscore2">
                       Your Level of Career Clarity
                     </div>
@@ -367,7 +368,7 @@ class NewDashboard extends React.Component {
                         {client2?.career_fitness?.body}
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <hr className="lswid divider" />
                   <div className="lswid">
                     <div className="tipswrapper">

@@ -126,8 +126,9 @@ const PhaseThreeIceBreaker = (props: any) => {
               {loading === true ? (
                 <>
                   <h5>
-                    Your top two career non-negotiables are{" "}
-                    <span>{head_1}</span> and <span>{head_2}</span>
+                    {/* Your top two career non-negotiables are{" "}
+                    <span>{head_1}</span> and <span>{head_2}</span> */}
+                    One thing you shouldn't compromise for career satisfaction is... &#128521;
                   </h5>
                   <p>{content}</p>
                 </>

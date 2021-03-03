@@ -166,7 +166,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
               className="sideimage"
               alt="sideimage"
             />
-            Career Insight
+            Career Insights
             {state.isloading ? (
               <Spinner variant={"info"} animation="grow" />
             ) : (
@@ -209,7 +209,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
                 className="sideimage"
                 alt="sideimage"
               />
-              Recommended Task
+              Recommended Tasks
             </div>
           </Link>
           <div className={props.todo ? "activegb jusas" : "gbn jusas"}>
@@ -221,7 +221,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
                   className="sideimage"
                   alt="sideimage"
                 />
-                Task Todo
+                Career Todo List
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="5">
                 <Card.Body>

@@ -517,7 +517,7 @@ class CVProfileBuilder extends React.Component {
                                   <div className="time">
                                     {this.formatTime(data.started_from)} -
                                     {data.current ? " Present" : ""}{" "}
-                                    {data?.end_date}
+                                    {data?.to}
                                   </div>
                                   <hr />
                                 </Col>
@@ -552,7 +552,7 @@ class CVProfileBuilder extends React.Component {
                           </div>
                         </Col>
                         <Col md={12} className="">
-                          <div className="plusnew1 ll122">
+                          <div className="plusnew1 ll122 skill-container">
                             {skills.map((data, ind) => (
                               <div className="skills" key={ind}>
                                 {data.skill}{" "}
@@ -666,13 +666,13 @@ class CVProfileBuilder extends React.Component {
                                   </div>
                                   <hr />
                                 </Col>
-                                <div className="dropit">
+                                {/* <div className="dropit">
                                   <img
                                     className="drop"
                                     src={dropdown}
                                     alt="dropdown"
                                   />
-                                </div>
+                                </div> */}
                               </Row>
                             ))}
                           </Row>

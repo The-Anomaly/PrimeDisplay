@@ -3170,6 +3170,7 @@ textarea.form-control.jobr {
   border: 1px solid #dedddd;
   box-sizing: border-box;
   border-radius: 8px;
+  overflow-y: auto;
 }
 .hpadd {
   padding-left: 0px;
@@ -4236,4 +4237,23 @@ label {
 }
 .fullwidth {
   width: 100%;
+}
+.skill-container {
+  width: 92% !important;
+  height: 90% !important;
+  overflow-y: auto;
+  top: 0px !important;
+  margin-left: 1rem !important;
+}
+.skill-container > .skills {
+  margin-bottom: 5px;
+}
+.oops-upgrade {
+  background: #e5e5e5 !important;
+}
+.oops-upgrade .notpaidtext {
+  color: #001833 !important;
+}
+.oops-upgrade .retaketest {
+  text-align: center;
 }
