@@ -4016,6 +4016,9 @@ label {
     display: block;
     width: auto;
   }
+  .dash-compromise {
+    text-align: center;
+  }
 }
 .insightfeedback {
   color: blue;

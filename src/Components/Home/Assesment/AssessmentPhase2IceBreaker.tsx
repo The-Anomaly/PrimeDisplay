@@ -14,10 +14,12 @@ type User = string | null;
 const PhaseTwoIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
   const [snippet, setSnippet] = React.useState({
-    head: "Result Snippet",
+    head: "",
     content: "Hold on while we fetch your result...",
-  })
-  const { head, content } = snippet;
+    loading: false,
+    loading2: false,
+  });
+  const { head, content, loading, loading2 } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
@@ -27,7 +29,7 @@ const PhaseTwoIceBreaker = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
-      axios
+    axios
       .get(`${API}/icebreaker/phase-two`, {
         headers: { Authorization: `Token ${token}` },
       })
@@ -36,9 +38,10 @@ const PhaseTwoIceBreaker = (props: any) => {
         notify(response?.data?.message);
         setSnippet({
           ...snippet,
+          loading: true,
           head: response?.data?.text,
           content: response?.data.support_text,
-        })
+        });
       })
       .catch((error) => {
         // console.log(error?.response?.message);
@@ -46,9 +49,13 @@ const PhaseTwoIceBreaker = (props: any) => {
       });
   }, []);
   const nextPhase = () => {
-    return window.location.assign("/assessmentphasethree")
+    return window.location.assign("/assessmentphasethree");
   };
   const remindMe = () => {
+    setSnippet({
+      ...snippet,
+      loading2: true,
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -62,10 +69,18 @@ const PhaseTwoIceBreaker = (props: any) => {
       })
       .then((response) => {
         // console.log(response?.data?.message);
+        setSnippet({
+          ...snippet,
+          loading2: false,
+        })
         notify(response?.data?.message);
       })
       .catch((error) => {
         // console.log(error?.response?.message);
+        setSnippet({
+          ...snippet,
+          loading2: false,
+        })
         notify(error?.response?.message);
       });
   };
@@ -74,6 +89,11 @@ const PhaseTwoIceBreaker = (props: any) => {
     <>
       <Navbar />
       <Container fluid={true}>
+      {loading2 === true && (
+          <div className="icebreakerpreloader center-it">
+            <div className="icebreakerspinner"></div>
+          </div>
+        )}
         <Row className="icebreakercontainer">
           <Row className="icebreakerprogress center-it">
             <AssessmentFirstSection
@@ -100,16 +120,25 @@ const PhaseTwoIceBreaker = (props: any) => {
             </div>
           </Row>
           <Row className="spacespace">
-            <div className="snippetcard">
-              <h5>Your strongest natural competence is <span>{head}</span></h5>
-              <p>
-                {content}
-              </p>
-            </div>
+            {loading === true ? (
+              <>
+                <div className="snippetcard">
+                  <h5>
+                    Your strongest natural competence is <span>{head}</span>
+                  </h5>
+                  <p>{content}</p>
+                </div>
+              </>
+            ) : (
+              <h6>
+                <i>Hold on while we fetch your result...</i>
+              </h6>
+            )}
           </Row>
           <Row className="spacespace">
             <p className="phasedescrip">
-              The next assessment phase determines what your natural work motivators are.
+              The next assessment phase determines what your natural work
+              motivators are.
             </p>
 
             <div className="phasephase">

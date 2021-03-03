@@ -14,10 +14,13 @@ type User = string | null;
 const PhaseThreeIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
   const [snippet, setSnippet] = React.useState({
-    head: "Result Snippet",
+    head_1: "",
+    head_2: "",
     content: "Hold on while we fetch your result...",
-  })
-  const { head, content } = snippet;
+    loading: false,
+    loading2: false,
+  });
+  const { head_1, head_2, content, loading, loading2 } = snippet;
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
     const user: User = localStorage.getItem("user");
@@ -27,7 +30,7 @@ const PhaseThreeIceBreaker = (props: any) => {
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
-      axios
+    axios
       .get(`${API}/icebreaker/phase-three`, {
         headers: { Authorization: `Token ${token}` },
       })
@@ -36,9 +39,11 @@ const PhaseThreeIceBreaker = (props: any) => {
         notify(response?.data?.message);
         setSnippet({
           ...snippet,
-          head: response?.data?.text,
+          loading: true,
+          head_1: response?.data?.motivator1,
+          head_2: response?.data?.motivator2,
           content: response?.data.support_text,
-        })
+        });
       })
       .catch((error) => {
         // console.log(error?.response?.message);
@@ -49,6 +54,10 @@ const PhaseThreeIceBreaker = (props: any) => {
     return window.location.assign("/assessmentphasefour");
   };
   const remindMe = () => {
+    setSnippet({
+      ...snippet,
+      loading2: true,
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -62,10 +71,18 @@ const PhaseThreeIceBreaker = (props: any) => {
       })
       .then((response) => {
         // console.log(response?.data?.message);
+        setSnippet({
+          ...snippet,
+          loading2: false,
+        })
         notify(response?.data?.message);
       })
       .catch((error) => {
         // console.log(error?.response?.message);
+        setSnippet({
+          ...snippet,
+          loading2: false,
+        })
         notify(error?.response?.message);
       });
   };
@@ -74,6 +91,11 @@ const PhaseThreeIceBreaker = (props: any) => {
     <>
       <Navbar />
       <Container fluid={true}>
+        {loading2 === true && (
+          <div className="icebreakerpreloader center-it">
+            <div className="icebreakerspinner"></div>
+          </div>
+        )}
         <Row className="icebreakercontainer">
           <Row className="icebreakerprogress center-it">
             <AssessmentFirstSection
@@ -100,17 +122,27 @@ const PhaseThreeIceBreaker = (props: any) => {
             </div>
           </Row>
           <Row className="spacespace">
-          <div className="snippetcard">
-              <h5>The one thing you should not compromise for optimal Career Satisfaction is <span>{head}</span></h5>
-              <p>
-                {content}
-              </p>
+            <div className="snippetcard">
+              {loading === true ? (
+                <>
+                  <h5>
+                    Your top two career non-negotiables are{" "}
+                    <span>{head_1}</span> and <span>{head_2}</span>
+                  </h5>
+                  <p>{content}</p>
+                </>
+              ) : (
+                <h6>
+                  <i>Hold on while we fetch your result...</i>
+                </h6>
+              )}
             </div>
           </Row>
           <Row className="spacespace">
             <p className="phasedescrip">
-              The fourth and final phase of this assessment determines your work style and work function fit. This allows us to
-              make recommendations to spike up your productivity.
+              The fourth and final phase of this assessment determines your work
+              style and work function fit. This allows us to make
+              recommendations to spike up your productivity.
             </p>
 
             <div className="phasephase">

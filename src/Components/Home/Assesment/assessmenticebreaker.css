@@ -34,6 +34,7 @@
 }
 .chatrow {
     padding: 2rem 6rem 0;
+    width: 100%;
 }
 .wanaimg {
     width: 80px;
@@ -83,7 +84,7 @@
 }
 .spacespace h5 {
     font-family: 'Brfirma-Regular';
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 .spacespace span {
     font-family: 'Brfirma-Bold';
@@ -245,6 +246,33 @@
     .wanatxt1 {
         max-height: 400px;
     }
+}
+
+.icebreakerpreloader {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #f7f7f780;
+    z-index: 10;
+    text-align: center;
+}
+
+.icebreakerspinner {
+    border: 14px solid #f3f3f3;
+    border-top: 14px solid #9c1258;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }
 .fufillingz{
     font-size:15px !important;

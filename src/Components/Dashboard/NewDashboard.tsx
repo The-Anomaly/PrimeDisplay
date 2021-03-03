@@ -388,9 +388,9 @@ class NewDashboard extends React.Component {
                       ) : (
                         <div>
                           <div className="stbly1">
-                            {client2?.career_fitness?.quick_fix?.heading}
+                            {client?.career_fitness?.quick_fix?.heading}
                           </div>
-                          {client2?.career_fitness?.quick_fix?.body?.map(
+                          {client?.career_fitness?.quick_fix?.body?.map(
                             (data, index) => (
                               <div key={index} className="csbody liuii">
                                 {index + 1}.{"  "}
@@ -398,7 +398,7 @@ class NewDashboard extends React.Component {
                               </div>
                             )
                           )}
-                          <div className="blursec">
+                          {/* <div className="blursec">
                             <img
                               className="blur2"
                               src={blur2}
@@ -415,7 +415,7 @@ class NewDashboard extends React.Component {
                               alt="unlock"
                               onClick={() => this.setState({ onlyfree: true })}
                             />
-                          </div>
+                          </div> */}
                         </div>
                       )}
                       <div className="notice">
@@ -472,7 +472,7 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="reess">
                     <div className="kz1">
                       <div className="contkflex newcontkflex" id="strength">
                         <div className="kz2">
@@ -495,7 +495,7 @@ class NewDashboard extends React.Component {
                         ) : (
                           <div className="kz12">
                             <ul className="grapwrap">
-                              {client2?.strengths?.map((strength, index) => (
+                              {client?.strengths?.map((strength, index) => (
                                 <li
                                   className="grapssin career221 insighttxt"
                                   key={index}
@@ -504,7 +504,7 @@ class NewDashboard extends React.Component {
                                 </li>
                               ))}
                             </ul>
-                            <div className="blursec">
+                            {/* <div className="blursec">
                               <img
                                 className="blur"
                                 src={blur}
@@ -518,14 +518,14 @@ class NewDashboard extends React.Component {
                                   this.setState({ onlyfree: true })
                                 }
                               />
-                            </div>
+                            </div> */}
                           </div>
                         )}
                       </div>
                       <div className="contkflex newcontkflex" id="weakness">
                         <div className="kz2a">
                           <img src={vector2} className="kl3" alt="vector2" />
-                          <div>Your Weaknesses</div>
+                          <div>Possible Weaknesses</div>
                         </div>
                         {paid === true ? (
                           <div className="kz12">
@@ -543,7 +543,7 @@ class NewDashboard extends React.Component {
                         ) : (
                           <div className="kz12">
                             <ul className="grapwrap">
-                              {client2?.weaknesses?.map((weakness, index) => (
+                              {client?.weaknesses?.map((weakness, index) => (
                                 <li
                                   className="grapssin career221 insighttxt"
                                   key={index}
@@ -552,7 +552,7 @@ class NewDashboard extends React.Component {
                                 </li>
                               ))}
                             </ul>
-                            <div className="blursec">
+                            {/* <div className="blursec">
                               <img
                                 className="blur"
                                 src={blur}
@@ -566,12 +566,48 @@ class NewDashboard extends React.Component {
                                   this.setState({ onlyfree: true })
                                 }
                               />
-                            </div>
+                            </div> */}
                           </div>
                         )}
                       </div>
                     </div>
                   </div>
+                  <hr />
+                  <div className="reess">
+                  <h5 className="dash-compromise"><strong>The Top Two Things You Shouldn't Compromise for a Happy Career</strong></h5>
+                  <br/>
+                  {client?.career_drivers?.fields?.map((data, index) => (
+                  <div>
+                    <div className="stbly">
+                      <div className="stbly1">{data.heading}</div>
+                      <div className="career221 insighttxt">{data.body}</div>
+                    </div>
+                    {/* <div className="tipswrapper">
+                      <div>
+                        <div className="noticeee">
+                          <img
+                            src={notice}
+                            className="noticeee1"
+                            alt="notice1"
+                          />
+                        </div>
+                        <div className="stbly1">
+                          Tips to Harnessing This Motivator:
+                          <div className="underlinee"></div>
+                        </div>
+                        {data?.tips?.map((dataindata, index) => (
+                          <div key={index}>
+                            {index + 1}.{"  "}
+                            {dataindata}
+                          </div>
+                        ))}
+                      </div>
+                      <div className="notice">
+                        <img src={notice} className="noticee" alt="notice" />
+                      </div>
+                    </div> */}
+                  </div>
+                ))}</div>
                   {!showfullresult && (
                     <FreeOverviewCard
                       OpenModal={() => this.OpenNotPaidWarning}
