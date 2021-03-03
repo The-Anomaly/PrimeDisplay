@@ -22,6 +22,7 @@ import { API } from "../../../config";
 import Form from "react-bootstrap/Form";
 import { connect } from "react-redux";
 import WebSocketInstance from "../../../wanaWebsocket";
+import StarRatingComponent from "react-star-rating-component";
 
 class OnboardingChat extends React.Component {
   state: any = {
@@ -33,8 +34,9 @@ class OnboardingChat extends React.Component {
     msg: "",
     msg1: "",
     chatid: "",
+    isloading: false,
   };
-  
+
   props: any;
   messagesEnd: any;
   constructor(props: any) {
@@ -65,6 +67,11 @@ class OnboardingChat extends React.Component {
   componentDidUpdate(newProps) {
     this.scrollToBottom();
   }
+  onStarClick = (nextValue, prevValue, name) => {
+    this.setState({
+      [name]: nextValue.toString(),
+    });
+  };
   scrollToBottom = () => {
     // console.log(this.messagesEnd);
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
@@ -127,6 +134,9 @@ class OnboardingChat extends React.Component {
   sendFormData = (e) => {
     e.preventDefault();
     const self: any = this.props;
+    this.setState({
+      isloading: true,
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -134,29 +144,24 @@ class OnboardingChat extends React.Component {
     const data = {
       text: this.state.msg,
     };
-    Axios.post(`${API}/chat`, data, {
+    Axios.post(`${API}/assessment-remind`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        this.setState({
+          isloading: false,
+        });
         setTimeout(() => {
-          if (res?.data?.next) {
-            self.history.push("/clientchat2");
+          if (res?.data) {
+            window.location.assign("/");
           }
         }, 2000);
-        this.setState((state: any) => {
-          return {
-            userMessage: [...state.userMessage],
-            msg: "",
-            chat_id: this.state.chatid,
-            wanaResponse: [state.wanaResponse],
-            disableInput: false,
-          };
-        });
-        this.componentDidMount();
       })
       .catch((err) => {
+        window.location.assign("/");
+        console.log(err);
         this.setState({
-          disableInput: false,
+          isloading: false,
         });
       });
   };
@@ -246,10 +251,20 @@ class OnboardingChat extends React.Component {
                             </>
                           )
                         : ""}
-
-                      {this.isArray(data1?.content)
+                      {data1.type == "rating" && (
+                        <div className="assessrating">
+                          <StarRatingComponent
+                            name="msg1"
+                            starCount={5}
+                            value={msg1}
+                            onStarClick={this.onStarClick}
+                            emptyStarColor={"#444"}
+                          />
+                        </div>
+                      )}
+                      {data1.type !== "rating" && this.isArray(data1?.content)
                         ? data1.content.map((data, i) =>
-                            data == " d " ? (
+                            data == "Proceed" ? (
                               <div className="rsliderclas122">
                                 <label className="checkcontainer1 klsll1">
                                   <input
@@ -269,9 +284,8 @@ class OnboardingChat extends React.Component {
                                     type="radio"
                                     value={"No, some other time"}
                                     name="question2"
-                                    onClick={() => {
-                                      localStorage.clear();
-                                      window.location.assign("/");
+                                    onClick={(e) => {
+                                      this.sendFormData(e);
                                     }}
                                   />
                                   No, some other time
@@ -288,7 +302,7 @@ class OnboardingChat extends React.Component {
                                         value={data}
                                         name="msg1"
                                         disabled={
-                                          data1?.content?.isAnswered
+                                          data1?.isAnswered
                                             ? true
                                             : false
                                         }
@@ -297,7 +311,7 @@ class OnboardingChat extends React.Component {
                                       {data}
                                     </label>
                                     {/* This condition   Check for the last item in the array and display a proceed button under  */}
-                                    {!data1?.content?.isAnswered &&
+                                    {/* {!data1?.content?.isAnswered &&
                                     i == data1?.content?.length - 1 ? (
                                       <label className="checkcontainer1 klsll klsll1">
                                         <input
@@ -310,7 +324,7 @@ class OnboardingChat extends React.Component {
                                       </label>
                                     ) : (
                                       ""
-                                    )}
+                                    )} */}
                                   </div>
                                 </Col>
                               </>
@@ -340,13 +354,20 @@ class OnboardingChat extends React.Component {
               <div className="bottomChatArea">
                 <div className="fle111">
                   <div className="p32">
-                    <Form onSubmit={this.sendMessageHandler}>
+                    <Form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                      }}
+                    >
                       <input
                         type="text"
                         className="typeMessagehere"
                         value={msg}
                         disabled={
-                          this.isArray(this.props.messages[this.props.messages.length-1]?.content)
+                          this.isArray(
+                            this.props.messages[this.props.messages.length - 1]
+                              ?.content
+                          )
                             ? true
                             : msg1
                             ? true
@@ -356,18 +377,45 @@ class OnboardingChat extends React.Component {
                         }
                         name="msg"
                         onChange={this.changeHandler}
-                        placeholder="Type a message"
+                        // if the checkbox message variable is true display else display Type message
+                        placeholder={
+                          msg1
+                            ? msg1
+                            : this.isArray(
+                                this.props.messages[
+                                  this.props.messages.length - 1
+                                ]?.content
+                              )
+                            ? "This question requires you to select the option"
+                            : "Type a message"
+                        }
                       />
                     </Form>
                   </div>
                   <div>
                     <input className="hidden" type="submit" />
-                    <img
-                      src={sendButton}
-                      className="sendButton"
-                      alt="sendButton"
-                      onClick={this.sendMessageHandler}
-                    />
+                    {msg1 ? (
+                      <img
+                        src={sendButton}
+                        className="sendButton"
+                        alt="sendButton"
+                        onClick={this.sendMessageHandler1}
+                      />
+                    ) : /\d/.test(this.state.msg1) ? (
+                      <img
+                        src={sendButton}
+                        className="sendButton"
+                        alt="sendButton"
+                        onClick={this.sendMessageHandler1}
+                      />
+                    ) : (
+                      <img
+                        src={sendButton}
+                        className="sendButton"
+                        alt="sendButton"
+                        onClick={this.sendMessageHandler}
+                      />
+                    )}
                   </div>
                 </div>
               </div>

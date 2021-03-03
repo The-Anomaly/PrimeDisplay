@@ -374,7 +374,7 @@
   }
   .chatwrappp {
     padding-left: 0rem;
-  }
+  } 
   .chatouter {
     margin-bottom: 0rem;
   }
@@ -382,5 +382,7 @@
     margin-top: 104px;
   }
 }
-
+.typeMessagehere::placeholder{
+  color: #474646 !important;
+}
 
