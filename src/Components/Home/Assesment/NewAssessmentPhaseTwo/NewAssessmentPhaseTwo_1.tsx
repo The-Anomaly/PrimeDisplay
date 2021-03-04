@@ -198,7 +198,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                     </div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        a. Overseeing business activities and people to achieve
+                        1. Overseeing business activities and people to achieve
                         a common goal.
                       </div>
                       <div className="assessrating">
@@ -215,7 +215,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        b. Employ, train and manage people who work for an
+                        2. Employ, train and manage people who work for an
                         organization.
                       </div>
                       <div className="assessrating">
@@ -232,7 +232,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        c. Convince people to buy into an idea, service or
+                        3. Convince people to buy into an idea, service or
                         product.
                       </div>
                       <div className="assessrating">
@@ -249,7 +249,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        d. Help people make smart decisions with money.
+                        4. Help people make smart decisions with money.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -265,7 +265,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        e. Provide additional help for the smooth running of a
+                        5. Provide additional help for the smooth running of a
                         business.
                       </div>
                       <div className="assessrating">
@@ -290,7 +290,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                         <div className="skip"></div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            f. Understand how the world and the universe around
+                            6. Understand how the world and the universe around
                             us works.
                           </div>
                           <div className="assessrating">
@@ -307,7 +307,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            g. Use technology to make people’s lives and jobs
+                            7. Use technology to make people’s lives and jobs
                             easier.
                           </div>
                           <div className="assessrating">
@@ -324,7 +324,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            h. Figure out how things work and find practical use
+                            8. Figure out how things work and find practical use
                             for scientific discoveries.
                           </div>
                           <div className="assessrating">
@@ -341,7 +341,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            i. Apply mathematical theories and techniques in
+                            9. Apply mathematical theories and techniques in
                             solving real life problems.
                           </div>
                           <div className="assessrating">
@@ -358,7 +358,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            j. Study people’s behavior and why they do the
+                            10. Study people’s behavior and why they do the
                             things they do.
                           </div>
                           <div className="assessrating">
@@ -385,7 +385,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                         <div className="skip"></div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            k. Share your opinion on a football match for others
+                            11. Share your opinion on a football match for others
                             to watch.
                           </div>
                           <div className="assessrating">
@@ -402,7 +402,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            l. Create a platform where people can bet on their
+                            12. Create a platform where people can bet on their
                             favorite players.
                           </div>
                           <div className="assessrating">
@@ -419,7 +419,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            m. Create opportunities for people to have fun doing
+                            13. Create opportunities for people to have fun doing
                             sports.
                           </div>
                           <div className="assessrating">
@@ -436,7 +436,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            n. Take care of the health and well-being of
+                            14. Take care of the health and well-being of
                             athletes.
                           </div>
                           <div className="assessrating">
@@ -453,7 +453,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            o. Create innovative products and solutions that
+                            15. Create innovative products and solutions that
                             make athletes quicker and stronger.
                           </div>
                           <div className="assessrating">
@@ -470,7 +470,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            p. Play different sports professionally.
+                            16. Play different sports professionally.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -486,7 +486,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            q. Be involved in the business of sports and
+                            17. Be involved in the business of sports and
                             recreation.
                           </div>
                           <div className="assessrating">
@@ -520,7 +520,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                     <div className="skip"></div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        r. Impart knowledge and guide people down the right path.
+                        18. Impart knowledge and guide people down the right path.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -536,7 +536,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        s. Champion a cause that changes the lives of people
+                        19. Champion a cause that changes the lives of people
                         positively.
                       </div>
                       <div className="assessrating">
@@ -553,7 +553,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        t. Represent the public interest of a group of people,
+                        20. Represent the public interest of a group of people,
                         country or nation.
                       </div>
                       <div className="assessrating">
@@ -570,7 +570,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        u. Advocate for people’s rights using the law.
+                        21. Advocate for people’s rights using the law.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -586,7 +586,7 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        v. Provide physical, emotional and social support to
+                        22. Provide physical, emotional and social support to
                         help people live their best lives.
                       </div>
                       <div className="assessrating">

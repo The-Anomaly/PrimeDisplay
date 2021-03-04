@@ -164,7 +164,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  a. You would rather have someone else make all the strategic
+                  1. You would rather have someone else make all the strategic
                   decisions and tell you what to do.
                 </div>
                 <div className="rsliderclass9">
@@ -241,7 +241,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  b. You’ve realized over time that you achieve more results
+                  2. You’ve realized over time that you achieve more results
                   when accountable to someone than alone.
                 </div>
                 <div className="rsliderclass9">
@@ -318,7 +318,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  c. To you being part of a team is more important than working
+                  3. To you being part of a team is more important than working
                   alone.
                 </div>
                 <div className="rsliderclass9 ">
@@ -395,7 +395,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  d. A work environment with cooperative colleagues can keep you
+                  4. A work environment with cooperative colleagues can keep you
                   at a job longer.
                 </div>
                 <div className="rsliderclass9">
@@ -472,7 +472,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  e. You would take a job with lower pay if it gave you the
+                  5. You would take a job with lower pay if it gave you the
                   opportunity to fulfill purpose, because life is more than a
                   pay check.
                 </div>
@@ -550,7 +550,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  f. You always seek opportunities to meet needs in your
+                  6. You always seek opportunities to meet needs in your
                   society, because if one of us can make it all of us can make
                   it.
                 </div>
@@ -628,7 +628,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  g. You are energized when you have real control
+                  7. You are energized when you have real control
                   over people and resources; other than that, working is a waste
                   of time.
                 </div>
@@ -706,7 +706,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  h. You find yourself pushing your point of views subtly or
+                  8. You find yourself pushing your point of views subtly or
                   forcefully till the person accepts it.
                 </div>
                 <div className="rsliderclass9">
@@ -783,7 +783,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  i. Pursuing a vision or ambition on an empty bank account is
+                  9. Pursuing a vision or ambition on an empty bank account is
                   too risky, a steady job is better for you.
                 </div>
                 <div className="rsliderclass9">
@@ -860,7 +860,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  j. You would choose a job with secure working conditions and
+                  10. You would choose a job with secure working conditions and
                   income than a growing a business with little initial income.
                 </div>
                 <div className="rsliderclass9">
@@ -937,7 +937,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  k. Respect and prestige isn’t very important to you in life.
+                  11. Respect and prestige isn’t very important to you in life.
                 </div>
                 <div className="rsliderclass9">
                   <div className="agree">Agree</div>
@@ -1013,7 +1013,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  l. You shy away from public recognition.
+                  12. You shy away from public recognition.
                 </div>
                 <div className="rsliderclass9">
                   <div className="agree">Agree</div>
@@ -1089,7 +1089,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  m. If your employer recognizes the value of your work you will
+                  13. If your employer recognizes the value of your work you will
                   stand by them.
                 </div>
                 <div className="rsliderclass9">
@@ -1166,7 +1166,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  n. Positive feedback energizes you.
+                  14. Positive feedback energizes you.
                 </div>
                 <div className="rsliderclass9">
                   <div className="agree">Agree</div>
@@ -1242,7 +1242,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  o. You are keen on being referred to as a thought leader in
+                  15. You are keen on being referred to as a thought leader in
                   your career.
                 </div>
                 <div className="rsliderclass9">
@@ -1319,7 +1319,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  p. Being a master of one trade is better than being a master of many.
+                  16. Being a master of one trade is better than being a master of many.
                 </div>
                 <div className="rsliderclass9">
                   <div className="agree">Agree</div>
@@ -1395,7 +1395,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  q. In making money, if you have just enough to meet your
+                  17. In making money, if you have just enough to meet your
                   essential needs you are satisfied.
                 </div>
                 <div className="rsliderclass9">
@@ -1472,7 +1472,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  r. Success on a project for you isn’t necessarily tied to how
+                  18. Success on a project for you isn’t necessarily tied to how
                   much financial returns you make.
                 </div>
                 <div className="rsliderclass9">
