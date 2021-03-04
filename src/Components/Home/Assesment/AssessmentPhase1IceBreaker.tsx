@@ -142,7 +142,7 @@ const PhaseOneIceBreaker = (props: any) => {
 
             <div className="phasephase">
               <p>
-                This phase contains a total of 7 categories. Would you like to
+                This phase contains a total of 7 questions. Would you like to
                 continue now or get a reminder later?
               </p>
               <div className="icebreakerbtns">

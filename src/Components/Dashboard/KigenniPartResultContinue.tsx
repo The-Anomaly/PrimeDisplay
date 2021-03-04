@@ -405,7 +405,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 </div>
               </div>
               <hr />
-              <div className="resultsec2" id="seek">
+              {/* <div className="resultsec2" id="seek">
                 <div className="csfitscore2">Your Level of Career Clarity</div>
                 <div className="resultsec22">
                   <CirclePie
@@ -420,7 +420,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     percent={client?.career_fitness?.score}
                     padding={0}
                   />
-                  {/* <img src={firstChart} className="firstChart" alt="firstChart" /> */}
+                  // <img src={firstChart} className="firstChart" alt="firstChart" />
                 </div>
                 <div className="csfitscore">
                   <div className="csfitscore1">Your Level of Career Clarity</div>
@@ -431,7 +431,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   <div className="csbody newcsbody">{client?.career_fitness?.body}</div>
                 </div>
               </div>
-              <hr />
+              <hr /> */}
               <div>
                 <div className="tipswrapper">
                   <div>

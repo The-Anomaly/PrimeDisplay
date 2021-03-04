@@ -196,7 +196,7 @@ React.useEffect(()=>{
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Career Insight
+                  Career Insights
                 </div>
                 {/* <div className={props.chat ? "activegb" : "gbn"}>
                 {" "}
@@ -251,7 +251,7 @@ React.useEffect(()=>{
                       className="sideimage"
                       alt="sideimage"
                     />
-                    Recommended Task
+                    Recommended Tasks
                   </div>
                 </Link>
                 <div className={props.todo ? "activegb" : "gbn"}>
@@ -269,7 +269,7 @@ React.useEffect(()=>{
                         className="sideimage"
                         alt="sideimage"
                       />
-                      Task Todo
+                      Career Todo List
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="5">
                       <Card.Body>
