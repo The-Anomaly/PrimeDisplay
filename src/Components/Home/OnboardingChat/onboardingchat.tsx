@@ -252,7 +252,7 @@ class OnboardingChat extends React.Component {
                           )
                         : ""}
                       {data1.type == "rating" && (
-                        <div className="assessrating">
+                        <div className="Chatassessrating">
                           <StarRatingComponent
                             name="msg1"
                             starCount={5}

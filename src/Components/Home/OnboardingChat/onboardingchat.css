@@ -386,3 +386,13 @@
   color: #474646 !important;
 }
 
+.Chatassessrating{
+  font-size: 16px !important;
+  margin-left: 3rem;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+}
+.Chatassessrating div label i{
+  font-size: 25px;
+}
