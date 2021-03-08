@@ -38,7 +38,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     isOpen: false,
     Canbooksession: false,
     no_subscription: false,
-    incomplete_profile_builder: false,
+    incomplete_usersettings: false,
     incomplete_job_rec: false,
     upgradeState: false,
   };
@@ -78,9 +78,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     this.setState({
       upgradeState: false,
     });
-    setTimeout(()=>{
-      window.location.reload()
-    },1000)
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
   onchange = (e) => {
     this.setState({
@@ -142,20 +142,20 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         if (response?.data[0]?.job_recommendation_filled === false) {
           return this.setState({
-            incomplete_profile_builder:false,
-            incomplete_job_rec:true,
-            upgradeState:true
-          })
+            incomplete_usersettings: false,
+            incomplete_job_rec: true,
+            upgradeState: true,
+          });
         }
         if (response?.data[0]?.profile_builder_submitted === false) {
           return this.setState({
-            incomplete_profile_builder:true,
-            incomplete_job_rec:false,
-            upgradeState:true
-          })
+            incomplete_usersettings: true,
+            incomplete_job_rec: false,
+            upgradeState: true,
+          });
         }
         if (response?.data[0]?.book_session === true) {
           // console.log("Payment Summary Check");
@@ -163,7 +163,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         } else {
           return this.setState({
             upgradeState: true,
-            no_subscription:true
+            no_subscription: true,
           });
         }
       })
@@ -224,7 +224,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       fullname,
       phone,
       no_subscription,
-      incomplete_profile_builder,
+      incomplete_usersettings,
       incomplete_job_rec,
       isOpen,
       feedbackText,
@@ -415,18 +415,30 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                 </div>
               </>
             )}
-            {incomplete_profile_builder && (
+            {/* {incomplete_profile_builder && (
               <>
                 <div className="onhno"> Oh No! </div>
                 <div className="onhno">
-                  You are required to complete your profile builder form
-                  before booking a private session
+                  You are required to complete your profile builder form before
+                  booking a private session
                 </div>
                 <div className="text-center planupgrade">
                   <div className="retaketest upss1 planupgradebtn">
-                    <Link to="/profilebuilder">
-                      Complete Profile builder
-                    </Link>
+                    <Link to="/profilebuilder">Complete Profile builder</Link>
+                  </div>
+                </div>
+              </>
+            )} */}
+            {incomplete_usersettings && (
+              <>
+                <div className="onhno"> Oh No! </div>
+                <div className="onhno">
+                  You are required to complete your user profile form before
+                  booking a private session
+                </div>
+                <div className="text-center planupgrade">
+                  <div className="retaketest upss1 planupgradebtn">
+                    <Link to="/settings">Complete User Profile</Link>
                   </div>
                 </div>
               </>

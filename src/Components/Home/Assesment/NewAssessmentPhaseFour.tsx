@@ -152,7 +152,7 @@ const NewAssessmentPhaseFour = withRouter((props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         const User1 = localStorage.getItem("user");
         const User2 = User1 ? JSON.parse(User1) : "";
         const urlParams = new URLSearchParams(window.location.search);
@@ -168,7 +168,7 @@ const NewAssessmentPhaseFour = withRouter((props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error && error.response && error.response.data) {
           notify(error?.response?.data[0]?.message);
         }

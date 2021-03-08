@@ -92,7 +92,7 @@ class OnboardingChat extends React.Component {
     this.scrollToBottom();
   };
   sendMessageHandler1 = (e) => {
-    console.log(this.state.msg1);
+    // console.log(this.state.msg1);
     e.preventDefault();
     const messageObject = {
       text: this.state.msg1,
@@ -106,7 +106,7 @@ class OnboardingChat extends React.Component {
       msg1: "",
     });
     this.scrollToBottom();
-    console.log(this.state.msg1);
+    // console.log(this.state.msg1);
   };
 
   onchange = (e: any) => {
@@ -159,7 +159,7 @@ class OnboardingChat extends React.Component {
       })
       .catch((err) => {
         window.location.assign("/");
-        console.log(err);
+        // console.log(err);
         this.setState({
           isloading: false,
         });
@@ -175,7 +175,7 @@ class OnboardingChat extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         this.initialiseChat(res.data.chat);
         setTimeout(() => {
           this.scrollToBottom();
@@ -193,7 +193,7 @@ class OnboardingChat extends React.Component {
   }
   render() {
     let a = "abcdefghijklmnopqrstuvwxyz".split("");
-    console.log(this.props.messages);
+    // console.log(this.props.messages);
     const {
       offline,
       userMessage,

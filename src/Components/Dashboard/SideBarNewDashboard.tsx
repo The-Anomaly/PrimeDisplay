@@ -112,18 +112,34 @@ const SideBarNewDashboard = withRouter((props: any) => {
   const checkIfUserHasAccessToAskACounselor = () => {
     const stringFeature = localStorage.getItem("accessFeature");
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    if (featureToCheck["ask_counsellor"] === true) {
-      // console.log("Ask a counselor successful");
-      window.location.assign("/allusermessages");
-    } else {
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        if (response?.data[0]?.ask_counsellor === true) {
+          return  window.location.assign("/allusermessages");;
+        }
+        if (response?.data[0]?.ask_counsellor === false) {
+          return setUpgradeState(true);;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // console.error("Payment Status Error");
+      });
       //notify("Update your subscription to access this feature");
       // console.log("Can't access ask a counselor");
       // return setTimeout(
       //   (window.location.pathname = "/dashboardsubscriptionplan"),
       //   2000
       // );
-      return setUpgradeState(true);
-    }
+      // return setUpgradeState(true);
+  
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
   const logOut = () => {

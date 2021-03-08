@@ -4257,3 +4257,23 @@ label {
 .oops-upgrade .retaketest {
   text-align: center;
 }
+.editiconn1{
+  color: #9c1258;
+  margin-right: .5rem;
+  margin-top: .1rem;
+  position: relative;
+  top: .07rem;
+}
+.btnws1{
+  border: 1px solid #9c1258 !important;
+  background: white !important;
+  color: #9c1258 !important;
+  font-size: 12px;
+}
+a{
+  color: inherit !important;
+}
+.widincr .modal-dialog{
+  width: 600px;
+  max-width: 600px;
+}
