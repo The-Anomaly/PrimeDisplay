@@ -150,7 +150,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
             upgradeState: true,
           });
         }
-        if (response?.data[0]?.profile_builder_submitted === false) {
+        if (response?.data[0]?.personal_info === false) {
           return this.setState({
             incomplete_usersettings: true,
             incomplete_job_rec: false,

@@ -124,7 +124,7 @@ const options = {
   debug: false, // enable logs
 };
 
-ReactPixel.init("1336761443373942", advancedMatching, options);
+ReactPixel.init("366580180990564", advancedMatching, options);
 ReactPixel.pageView(); // For tracking page view
 ReactGA.initialize("UA-151203321-1");
 class App extends Component {
