@@ -208,12 +208,12 @@ class NewDashboardJobOpportunities extends React.Component {
   componentDidMount() {
     const stringFeature = localStorage.getItem("accessFeature");
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    // if (featureToCheck["job_recommendation"] === false) {
-    //   console.log("Can't access job opportunities");
-    //   return setTimeout(() => {
-    //     window.location.pathname = "/dashboardsubscriptionplan";
-    //   }, 2000);
-    // }
+    if (featureToCheck["job_recommendation"] === false) {
+      console.log("Can't access job opportunities");
+      return setTimeout(() => {
+        window.location.pathname = "/dashboardsubscriptionplan";
+      }, 2000);
+    }
 
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
