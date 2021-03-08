@@ -294,7 +294,7 @@ const TestPdf = () => {
           <Col md={12} className="jcenter2">
             <div className="mainwrap" ref={ref}>
               <div className="wrapperdiv">
-                <div className="dsnwrap">
+                <div className="dsnwrap"> 
                   <div className="bluebg1">{job_description}</div>
                   <div className="careernm">{first_name + " " + last_name}</div>
                 </div>
