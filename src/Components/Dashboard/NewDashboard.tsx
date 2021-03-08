@@ -26,7 +26,7 @@ import blur from "../../assets/weakness_blur.png";
 import blur2 from "../../assets/fix_blur.png";
 import blur2a from "../../assets/fix_blur2.png";
 import unlock2 from "../../assets/unlock_white.png";
-import caution1 from "../../assets/caution1.svg"
+import caution1 from "../../assets/caution1.svg";
 
 interface State {
   fullname: string;
@@ -193,18 +193,37 @@ class NewDashboard extends React.Component {
   checkIfUserHasAccessToAskACounselor = () => {
     const stringFeature = localStorage.getItem("accessFeature");
     const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-
-    if (featureToCheck["ask_counsellor"] === true) {
-      // console.log("Ask a counselor successful");
-      window.location.assign("/allusermessages");
-    } else {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access ask a counselor");
-      return setTimeout(
-        (window.location.pathname = "/dashboardsubscriptionplan"),
-        2000
-      );
-    }
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        if (response?.data[0]?.ask_counsellor === true) {
+          return window.location.assign("/allusermessages");
+        }
+        if (response?.data[0]?.ask_counsellor === false) {
+          return setTimeout(
+            (window.location.pathname = "/dashboardsubscriptionplan"),
+            2000
+          );
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // console.error("Payment Status Error");
+      });
+    //  else {
+    //notify("Update your subscription to access this feature");
+    // console.log("Can't access ask a counselor");
+    //   return setTimeout(
+    //     (window.location.pathname = "/dashboardsubscriptionplan"),
+    //     2000
+    //   );
+    // }
   };
   CloseWarning = () => {
     this.setState({
@@ -575,15 +594,22 @@ class NewDashboard extends React.Component {
                   </div>
                   <hr />
                   <div className="reess">
-                  <h5 className="dash-compromise"><strong>The Top Two Things You Shouldn't Compromise for a Happy Career</strong></h5>
-                  <br/>
-                  {client?.career_drivers?.fields?.map((data, index) => (
-                  <div>
-                    <div className="stbly">
-                      <div className="stbly1">{data.heading}</div>
-                      <div className="career221 insighttxt">{data.body}</div>
-                    </div>
-                    {/* <div className="tipswrapper">
+                    <h5 className="dash-compromise">
+                      <strong>
+                        The Top Two Things You Shouldn't Compromise for a Happy
+                        Career
+                      </strong>
+                    </h5>
+                    <br />
+                    {client?.career_drivers?.fields?.map((data, index) => (
+                      <div>
+                        <div className="stbly">
+                          <div className="stbly1">{data.heading}</div>
+                          <div className="career221 insighttxt">
+                            {data.body}
+                          </div>
+                        </div>
+                        {/* <div className="tipswrapper">
                       <div>
                         <div className="noticeee">
                           <img
@@ -607,8 +633,9 @@ class NewDashboard extends React.Component {
                         <img src={notice} className="noticee" alt="notice" />
                       </div>
                     </div> */}
+                      </div>
+                    ))}
                   </div>
-                ))}</div>
                   {!showfullresult && (
                     <FreeOverviewCard
                       OpenModal={() => this.OpenNotPaidWarning}
@@ -664,8 +691,8 @@ class NewDashboard extends React.Component {
                 </div>
                 <div className="onhno"> Oh No! </div>
                 <div className="onhno">
-                  This package is not available on this plan. Please upgrade your
-                  plan
+                  This package is not available on this plan. Please upgrade
+                  your plan
                 </div>
                 <div className="text-center">
                   {/* <div className="retaketest upss1">
@@ -679,16 +706,20 @@ class NewDashboard extends React.Component {
                 </div>
               </Modal.Body>
             </Modal>
-            <Modal show={this.state.viewinsight} onHide={this.CloseInsightModal} centered>
+            <Modal
+              show={this.state.viewinsight}
+              onHide={this.CloseInsightModal}
+              centered
+            >
               <Modal.Body>
                 <div className="text-center">
-                  <h6 className="txttxtview">Click the button below to view your complete career insight.</h6>
+                  <h6 className="txttxtview">
+                    Click the button below to view your complete career insight.
+                  </h6>
                 </div>
-              <div className="retaketest upss1 planupgradebtn">
-                    <Link to="/thirdpary/fullresult">
-                      View full insight
-                    </Link>
-                  </div>
+                <div className="retaketest upss1 planupgradebtn">
+                  <Link to="/thirdpary/fullresult">View full insight</Link>
+                </div>
               </Modal.Body>
             </Modal>
           </Row>

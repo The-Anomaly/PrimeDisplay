@@ -14,7 +14,7 @@ const WanaChatBot = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(message);
+  // console.log(message);
   return (
     <>
       <Container className="wanacontainer" fluid={true}>

@@ -300,11 +300,7 @@
 .checkcontainer1 {
   font-size: 14px !important;
 }
-.klsll {
-  margin-right: 0.4rem !important;
-  border-radius: 0px 1rem 1rem 1rem !important;
-  padding: 2px 9px 2px 39px !important;
-}
+
 .checksd {
   padding-left: 0.1rem !important;
 }
@@ -325,6 +321,11 @@
   background: transparent !important;
 }
 
+.klsll {
+  margin-right: 0.4rem !important;
+  border-radius: 0px 1rem 1rem 1rem !important;
+  padding: 2px 9px 2px 39px !important;
+}
 @media (min-width: 1169px) {
   .chatwrapper {
     margin-top: 8%;
@@ -373,7 +374,7 @@
   }
   .chatwrappp {
     padding-left: 0rem;
-  }
+  } 
   .chatouter {
     margin-bottom: 0rem;
   }
@@ -381,5 +382,17 @@
     margin-top: 104px;
   }
 }
+.typeMessagehere::placeholder{
+  color: #474646 !important;
+}
 
-
+.Chatassessrating{
+  font-size: 16px !important;
+  margin-left: 3rem;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+}
+.Chatassessrating div label i{
+  font-size: 25px;
+}

@@ -16,7 +16,7 @@ const ChatBot: React.FunctionComponent<ChatBotProps> = (props) => {
                 {props.name}
             </div>
             <div className="chatym">
-                4:29 pm
+                {/* 4:29 pm */}
             </div>
         </div>
       </>

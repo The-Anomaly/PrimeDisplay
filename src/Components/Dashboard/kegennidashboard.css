@@ -835,7 +835,7 @@ a:hover {
 }
 .feedbackheader {
   font-size: 15px;
-  font-family: 'Brfirma-Bold';
+  font-family: "Brfirma-Bold";
 }
 .fdbck-ques {
   margin-top: 2rem;
@@ -854,7 +854,10 @@ a:hover {
   margin-top: -0.4rem;
   min-width: 80px;
 }
-.fdbck-questxtarea::placeholder, .fdbck-select, .fdbck-link, .fdbck-link::placeholder {
+.fdbck-questxtarea::placeholder,
+.fdbck-select,
+.fdbck-link,
+.fdbck-link::placeholder {
   font-size: 13px !important;
 }
 .modal-content {
@@ -891,8 +894,8 @@ a:hover {
   }
   .fdback-modal .modal-dialog {
     max-width: 500px !important;
-  } 
-  .mddrrt{
+  }
+  .mddrrt {
     margin-left: 4rem !important;
   }
 }
@@ -1809,7 +1812,7 @@ textarea.form-control.jobr {
 }
 .printcv {
   padding-bottom: 1rem;
-  padding-top:1rem
+  padding-top: 1rem;
 }
 .experience {
   margin-top: 0.5rem;
@@ -3534,7 +3537,7 @@ input,
     width: 100%;
     margin: auto;
   }
-  .cptext{
+  .cptext {
     font-size: 13px !important;
   }
 }
@@ -3965,15 +3968,14 @@ label {
   font-size: 14px;
   border: none;
   margin-top: 1rem;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
-.slsbtn{
+.slsbtn {
   margin: 0px;
   position: relative;
   top: 1.5rem;
 }
-.mainwrap{
-  
+.mainwrap {
 }
 
 .noref {
@@ -3992,8 +3994,8 @@ label {
 }
 .refdeet {
   display: flex;
-    justify-content: space-between;
-    width: 40vw;
+  justify-content: space-between;
+  width: 40vw;
 }
 .refdeet1 {
   width: 50%;
@@ -4006,12 +4008,12 @@ label {
     width: 50vw;
   }
 }
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .refdeet {
     width: 295px;
   }
 }
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .refdeet {
     display: block;
     width: auto;
@@ -4031,7 +4033,7 @@ label {
 .insighttxt {
   text-align: left !important;
 }
-@media(max-width: 550px) {
+@media (max-width: 550px) {
   .profiletxt {
     font-size: 24px !important;
     margin-top: 0.2rem;
@@ -4057,7 +4059,7 @@ label {
   }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .nujs {
     padding-bottom: 0.5rem !important;
     padding-top: 0.5rem !important;
@@ -4067,12 +4069,12 @@ label {
   }
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
   .newcsfitscore {
     padding-top: 1rem;
   }
 }
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .newcontkflex {
     background: #f8f8f8;
   }
@@ -4085,17 +4087,17 @@ label {
   display: none;
 }
 
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .userprofilettl {
     display: block;
     font-size: 16px;
     padding-left: 1rem;
     padding-bottom: 1rem;
     padding-top: 1rem;
-    box-shadow: 4px 2px 4px #e5e5e5
+    box-shadow: 4px 2px 4px #e5e5e5;
   }
 }
-@media(max-width: 700px) {
+@media (max-width: 700px) {
   .userrslt {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -4128,12 +4130,12 @@ label {
 .blur2a {
   display: none;
 }
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .blur2 {
     height: 180px;
   }
 }
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .blur {
     padding-left: 0;
   }
@@ -4144,12 +4146,13 @@ label {
     margin-top: 4rem;
   }
 }
-@media(max-width: 500px) {
-  .blur2a, .blur2 {
+@media (max-width: 500px) {
+  .blur2a,
+  .blur2 {
     margin-top: -1rem;
   }
 }
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .unlock {
     width: 30px;
     margin-left: calc(-50% - 15px);
@@ -4174,7 +4177,9 @@ label {
   max-height: 100px;
   overflow-y: auto;
 }
-.jbdescr:active, .jbdescr:hover, .jbdescr:visited {
+.jbdescr:active,
+.jbdescr:hover,
+.jbdescr:visited {
   outline: 1px solid #e5e5e5;
 }
 .infoforsave {
@@ -4198,7 +4203,7 @@ label {
 .socialpad {
   padding-top: 1rem !important;
 }
-.messagedetails{
+.messagedetails {
   padding-top: 0.4rem;
   height: 70px;
   text-overflow: unset;
@@ -4210,17 +4215,17 @@ label {
   color: #aaa;
   padding: 2rem;
   border-radius: 1rem;
-  border:2px solid white;
+  border: 2px solid white;
 }
-.Toastify__close-button--default{
+.Toastify__close-button--default {
   color: white;
 }
-.newitemz{
+.newitemz {
   overflow-y: scroll;
   /* min-height: 500px; */
   max-height: 516px;
 }
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .kiconrow .kitemwrapper {
     width: 250px !important;
     height: 200px;
@@ -4258,30 +4263,30 @@ label {
 }
 .job-oppt-submit {
   border-radius: 6px;
-    height: 40px;
-    width: 100px;
-    text-align: center;
-    border: 1px solid #9c1258;
-    font-size: 14px;
-    color: #fff;
-    background: #9c1258;
+  height: 40px;
+  width: 100px;
+  text-align: center;
+  border: 1px solid #9c1258;
+  font-size: 14px;
+  color: #fff;
+  background: #9c1258;
 }
 .industry-selection {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
 }
-.industry-selection > div{
+.industry-selection > div {
   border: 1px solid blue;
-    border-radius: 15px;
-    padding: 0px 4px;
-    font-size: 12px;
-    color: #fff;
-    background: blue;
-    max-width: max-content;
-    white-space: normal;
-    margin-bottom: 5px;
-    margin-right: 5px;
+  border-radius: 15px;
+  padding: 0px 4px;
+  font-size: 12px;
+  color: #fff;
+  background: blue;
+  max-width: max-content;
+  white-space: normal;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 .industry-selection > div > span {
   margin-left: 5px;
@@ -4290,13 +4295,13 @@ label {
 
 .session-card {
   padding: 1rem;
-    box-shadow: 0px 2px 6px rgb(24 33 77 / 25%);
-    border-radius: 6px;
-    width: 98%;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    margin-bottom: 1rem;
+  box-shadow: 0px 2px 6px rgb(24 33 77 / 25%);
+  border-radius: 6px;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-bottom: 1rem;
 }
 .session-card-title {
   display: flex;
@@ -4306,29 +4311,32 @@ label {
   margin: 1rem 0;
   padding: 1rem;
 }
-.session-card span:nth-child(1), .session-card-title span:nth-child(1) {
+.session-card span:nth-child(1),
+.session-card-title span:nth-child(1) {
   flex: 40%;
   min-width: 100px;
 }
-.session-card span:nth-child(2), .session-card-title span:nth-child(2) {
+.session-card span:nth-child(2),
+.session-card-title span:nth-child(2) {
   flex: 45%;
   min-width: 150px;
 }
-.session-card span:nth-child(3), .session-card-title span:nth-child(3) {
+.session-card span:nth-child(3),
+.session-card-title span:nth-child(3) {
   flex: 15%;
 }
 .session-status {
-    border-radius: 5px;
-    width: 120px;
-    text-align: center;
-    color: #fff;
-    height: 40px;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 1rem;
-    margin: auto;
+  border-radius: 5px;
+  width: 120px;
+  text-align: center;
+  color: #fff;
+  height: 40px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 1rem;
+  margin: auto;
 }
 .session-status-pending {
   background: #f93939;
@@ -4340,8 +4348,8 @@ label {
 }
 .no-session-book-btn {
   font-size: 16px;
-    height: 40px;
-    transition: 0.3s;
+  height: 40px;
+  transition: 0.3s;
 }
 .no-session-book-btn:hover {
   transform: scale(1.1);
@@ -4349,13 +4357,13 @@ label {
 .session-card-mobile-title {
   display: none;
 }
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .session-status {
     width: 100px;
   }
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .session-card {
     flex-wrap: wrap;
     max-width: 350px;
@@ -4391,12 +4399,12 @@ label {
 
 .task-create {
   min-width: 140px;
-    padding: 5px 10px;
-    text-align: center;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 5px 10px;
+  text-align: center;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .task-welcome {
   margin-bottom: 2rem;
@@ -4404,7 +4412,7 @@ label {
   width: 96%;
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .task-create {
     margin-right: 0;
     position: absolute;
@@ -4424,4 +4432,24 @@ label {
     width: 80% !important;
     margin-top: 2rem;
   }
+}
+.editiconn1 {
+  color: #9c1258;
+  margin-right: 0.5rem;
+  margin-top: 0.1rem;
+  position: relative;
+  top: 0.07rem;
+}
+.btnws1 {
+  border: 1px solid #9c1258 !important;
+  background: white !important;
+  color: #9c1258 !important;
+  font-size: 12px;
+}
+a {
+  color: inherit !important;
+}
+.widincr .modal-dialog {
+  width: 600px;
+  max-width: 600px;
 }

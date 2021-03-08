@@ -76,7 +76,7 @@ import CouncellorRecommendationsToAll from "./Components/Dashboard/CouncellorDas
 import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 import CounsellorViewUserResult from "./Components/Dashboard/CouncellorDasboard/CounsellorViewUserResult";
-import  WebSocketInstance  from "./websocket";
+import WebSocketInstance from "./websocket";
 import wanaWebSocketInstance from "./wanaWebsocket";
 import RedesignedHome from "./Components/Home/Home/RedesignedHome";
 import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
@@ -143,16 +143,18 @@ class App extends Component {
       self.props.addMessage.bind(this)
     );
   }
-  msgActions:any;
+  msgActions: any;
   componentDidMount() {
     ReactGA.pageview(window.location.pathname);
   }
   render() {
     return (
       <div className="App">
-        <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
-          <img src={whatsapp} className="whatsapp" alt="whatsapp" />
-        </a>
+        {window.location.pathname == "/" && (
+          <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
+            <img src={whatsapp} className="whatsapp" alt="whatsapp" />
+          </a>
+        )}
         <div>
           <BrowserRouter>
             <Switch>
@@ -615,7 +617,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addMessage: (message) => dispatch(msgActions.addMessage(message)),
     setMessages: (messages) => dispatch(msgActions.setMessages(messages)),
-    setMessagesForWana: (messages) => dispatch(msgActions.setMessagesForWana(messages)),
+    setMessagesForWana: (messages) =>
+      dispatch(msgActions.setMessagesForWana(messages)),
   };
 };
 export default connect(null, mapDispatchToProps)(App);

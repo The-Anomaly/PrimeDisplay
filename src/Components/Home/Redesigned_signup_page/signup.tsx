@@ -17,7 +17,7 @@ const Signup = withRouter((props: any) => {
     email: "",
     password: "",
     howYouHeardAboutUs: "",
-    referralCode: "",
+    referral_code: "",
     successMessage: "",
     errorMessage: "",
     passwordIsOpen: true,
@@ -31,7 +31,7 @@ const Signup = withRouter((props: any) => {
     password,
     isLoading,
     howYouHeardAboutUs,
-    referralCode,
+    referral_code,
     lastname,
     successMessage,
     errorMessage,
@@ -45,7 +45,7 @@ const Signup = withRouter((props: any) => {
       email: email,
       password: password,
       info: howYouHeardAboutUs,
-      referral_code: referralCode,
+      referral_code: referral_code,
     };
     // console.log(data);
     //posting data to the api
@@ -94,7 +94,7 @@ const Signup = withRouter((props: any) => {
     if(referralKey){
       setFormState({
         ...state,
-        referralCode:referralKey
+        referral_code:referralKey
       })
     }
   }, []);
@@ -327,9 +327,9 @@ const Signup = withRouter((props: any) => {
                     <input
                       type="text"
                       size={25}
-                      name="referralCode"
+                      name="referral_code"
                       className="rdfrmtinptt"
-                      value={referralCode}
+                      value={referral_code}
                       onChange={onChangeHandler}
                       placeholder="Enter referral code (optional)"
                     />

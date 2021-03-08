@@ -38,7 +38,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     isOpen: false,
     Canbooksession: false,
     no_subscription: false,
-    incomplete_profile_builder: false,
+    incomplete_usersettings: false,
     incomplete_job_rec: false,
     upgradeState: false,
   };
@@ -247,7 +247,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       fullname,
       phone,
       no_subscription,
-      incomplete_profile_builder,
+      incomplete_usersettings,
       incomplete_job_rec,
       isOpen,
       feedbackText,
@@ -426,7 +426,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
               <>
                 <div className="onhno"> Oh No! </div>
                 <div className="onhno">
-                  You are required to complete your Opportunity Recommender form
+                  You are required to complete the Opportunity Recommender form
                   before booking a private session
                 </div>
                 <div className="text-center planupgrade">
@@ -438,11 +438,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                 </div>
               </>
             )}
-            {incomplete_profile_builder && (
+            {/* {incomplete_profile_builder && (
               <>
                 <div className="onhno"> Oh No! </div>
                 <div className="onhno">
-                  You are required to complete your profile builder form before
+                  You are required to complete the profile builder form before
                   booking a private session
                 </div>
                 <div className="text-center planupgrade">
@@ -450,6 +450,17 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                     <Link to="/profilebuilder">Complete Profile builder</Link>
                   </div>
                 </div>
+              </>
+            )} */}
+            {incomplete_usersettings && (
+              <>
+                <div className="onhno"> Oh No! </div>
+                <div className="onhno">
+                  You are required to complete the user profile form before
+                  booking a private session
+                </div>
+                <div className="text-center planupgrade">
+                  </div>
               </>
             )}
           </Modal.Body>

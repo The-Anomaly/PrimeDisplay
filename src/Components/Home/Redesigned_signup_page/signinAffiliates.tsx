@@ -36,12 +36,12 @@ const SigninAffiliates = withRouter((props: any) => {
       email,
       password,
     };
-    console.log(data)
+    // console.log(data)
     axios
       .post(`${API}/affiliate/login/`, data)
       .then((response) => {
         window.scrollTo(-0,-0)
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "userToken",

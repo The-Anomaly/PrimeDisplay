@@ -12,7 +12,7 @@ const UserChatScreenTitle: React.FunctionComponent<userChatProps> = (props) => {
             <div className="inc_img">
             </div>
             <div className="chatym p111">
-                4:29 pm
+                {/* 4:29 pm */}
             </div>
             <div className="incoming_chat_first_section">
                 {props.name}

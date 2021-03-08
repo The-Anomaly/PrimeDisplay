@@ -145,13 +145,13 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
       q29: question29,
       q30: question30,
     };
-    console.log(data);
+    // console.log(data);
     axios
       .post(`${API}/phase-one`, data, {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setCheckboxValue({
           ...state,
           isloading: false,
@@ -161,7 +161,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setCheckboxValue({
           ...state,
           isloading: false,
