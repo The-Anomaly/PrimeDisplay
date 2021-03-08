@@ -4295,14 +4295,14 @@ label {
     width: 98%;
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 1rem;
 }
 .session-card-title {
   display: flex;
   align-items: center;
   color: #666666;
-  font-size: 18px;
+  font-size: 16px;
   margin: 1rem 0;
   padding: 1rem;
 }
