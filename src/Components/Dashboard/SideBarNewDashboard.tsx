@@ -331,8 +331,8 @@ const SideBarNewDashboard = withRouter((props: any) => {
               alt="failedNotice"
             />{" "}
           </div>
-          <div className="onhno"> Oh No! </div>
-          <div className="onhno">
+          <div className="onhno no-access-ttl"> Oh No! </div>
+          <div className="onhno no-access-txt">
             This package is not available on this plan <br /> Please Upgrade
             your Plan
           </div>
