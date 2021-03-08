@@ -226,7 +226,7 @@ React.useEffect(()=>{
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="3">
                       <Card.Body>
-                        <Link to="/counsellordates">
+                        <Link to="/allbookedsessions">
                           <div className="task112">Book a private session</div>
                         </Link>
                         <div

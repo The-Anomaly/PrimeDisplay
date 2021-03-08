@@ -361,10 +361,10 @@ const TodoList = (props: any) => {
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
-                <div className="begin">
-                  <DashboardUsernameheader welcomeText="View list of all available tasks" />
+                <div className="begin task-name">
+                  <DashboardUsernameheader welcomeText="" />
                   <span
-                    className="create_task"
+                    className="create_task task-create"
                     onClick={() => {
                       setModState({
                         ...modalState,
@@ -380,17 +380,26 @@ const TodoList = (props: any) => {
                     />
                   </span>
                 </div>
+                <div className="task-welcome">
+                  Dreams are great but what is greater is an action plan that
+                  gets you started. <br /> Define a road map for your career
+                  growth, create tasks that lead you to the ultimate
+                  destination.
+                </div>
+
                 <Row>
                   <Col md={12}>
-                    <div className="yellowbg">
-                      <img
-                        src={yellowthumb}
-                        className="yellowgood newgrnbg"
-                        alt="goodimage"
-                      />
-                      It takes a hero to even start a task, but it seems like
-                      you have super powers. Keep going Champ!!!
-                    </div>
+                    {tasklist.length > 0 && (
+                      <div className="yellowbg">
+                        <img
+                          src={yellowthumb}
+                          className="yellowgood newgrnbg"
+                          alt="goodimage"
+                        />
+                        It takes a hero to even start a task, but it seems like
+                        you have super powers. Keep going Champ!!!
+                      </div>
+                    )}
                     {tasklist.length > 0 && (
                       <div className="task_table">
                         <span className="task_title">Task Title</span>
@@ -463,7 +472,7 @@ const TodoList = (props: any) => {
                       <div className="norec">
                         <img
                           src={noplan}
-                          className="norecommendations"
+                          className="norecommendations norecommendations1"
                           alt="norecommendations"
                         />
                         <div className="udont1">Opps!!!</div>

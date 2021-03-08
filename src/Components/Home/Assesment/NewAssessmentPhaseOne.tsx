@@ -502,7 +502,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
           <Col md={12}>
             <div className="firstquestion">
               5. When making decisions do you consider how the circumstances
-              make you feel or the facts?
+              make you feel?
             </div>
             <div className="rsliderclass9">
               <div className="agree">Agree</div>
@@ -715,7 +715,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
         <Row className="firstrowcf2 cftcontent">
           <Col md={12}>
             <div className="firstquestion">
-              8. Would rather enjoy now then complete your assignments ?
+              8. Would rather enjoy now then complete your assignments later?
             </div>
             <div className="rsliderclass9">
               <div className="agree">Agree</div>

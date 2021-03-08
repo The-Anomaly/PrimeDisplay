@@ -716,7 +716,7 @@ a:hover {
   font-size: 15px;
   line-height: 26px;
   text-align: center;
-  font-family: "Ubuntu";
+  /* font-family: "Ubuntu"; */
   color: #001833;
   text-align: center;
   padding-left: 0.5rem;
@@ -1432,7 +1432,7 @@ abbr[title] {
   line-height: 1;
 }
 .smalls {
-  font-family: Ubuntu;
+  /* font-family: Ubuntu; */
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
@@ -1605,7 +1605,7 @@ textarea.form-control.jobr {
   padding-top: 1rem;
 }
 .smalls22 {
-  font-family: Ubuntu;
+  /* font-family: Ubuntu; */
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
@@ -1821,7 +1821,7 @@ textarea.form-control.jobr {
   padding-top: 0px;
 }
 .picic {
-  font-family: Ubuntu;
+  /* font-family: Ubuntu; */
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -2057,7 +2057,7 @@ textarea.form-control.jobr {
   justify-content: center;
 }
 .ctime {
-  font-family: Ubuntu;
+  /* font-family: Ubuntu; */
   font-style: normal;
   font-weight: 500;
   line-height: 25px;
@@ -2130,7 +2130,7 @@ textarea.form-control.jobr {
   border-radius: 8px;
 }
 .dspl {
-  font-family: Ubuntu;
+  /* font-family: Ubuntu; */
   font-style: normal;
   font-weight: 500;
   line-height: 25px;
@@ -3906,14 +3906,13 @@ label {
 }
 
 .datesedit {
-  margin-top: 0 !important;
-  padding-top: 8rem;
+  margin-top: 0;
   padding-bottom: 3rem;
 }
 
 @media (max-width: 779px) {
   .datesedit {
-    padding-top: 3rem;
+    padding: 0 10%;
     padding-bottom: 1rem;
   }
   .hidinsmall {
@@ -4256,4 +4255,173 @@ label {
 }
 .oops-upgrade .retaketest {
   text-align: center;
+}
+.job-oppt-submit {
+  border-radius: 6px;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    border: 1px solid #9c1258;
+    font-size: 14px;
+    color: #fff;
+    background: #9c1258;
+}
+.industry-selection {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.industry-selection > div{
+  border: 1px solid blue;
+    border-radius: 15px;
+    padding: 0px 4px;
+    font-size: 12px;
+    color: #fff;
+    background: blue;
+    max-width: max-content;
+    white-space: normal;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+.industry-selection > div > span {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.session-card {
+  padding: 1rem;
+    box-shadow: 0px 2px 6px rgb(24 33 77 / 25%);
+    border-radius: 6px;
+    width: 98%;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+.session-card-title {
+  display: flex;
+  align-items: center;
+  color: #666666;
+  font-size: 18px;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+.session-card span:nth-child(1), .session-card-title span:nth-child(1) {
+  flex: 40%;
+  min-width: 100px;
+}
+.session-card span:nth-child(2), .session-card-title span:nth-child(2) {
+  flex: 45%;
+  min-width: 150px;
+}
+.session-card span:nth-child(3), .session-card-title span:nth-child(3) {
+  flex: 15%;
+}
+.session-status {
+    border-radius: 5px;
+    width: 120px;
+    text-align: center;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 1rem;
+    margin: auto;
+}
+.session-status-pending {
+  background: #f93939;
+  border: 1px solid #f93939;
+}
+.session-status-closed {
+  background: #19c519;
+  border: 1px solid #19c519;
+}
+.no-session-book-btn {
+  font-size: 16px;
+    height: 40px;
+    transition: 0.3s;
+}
+.no-session-book-btn:hover {
+  transform: scale(1.1);
+}
+.session-card-mobile-title {
+  display: none;
+}
+@media(max-width: 800px) {
+  .session-status {
+    width: 100px;
+  }
+}
+
+@media(max-width: 500px) {
+  .session-card {
+    flex-wrap: wrap;
+    max-width: 350px;
+    margin: 1rem auto;
+    padding: 2rem 1rem;
+  }
+  .session-card span:nth-child(1) {
+    flex: 50%;
+    order: 2;
+  }
+  .session-card span:nth-child(2) {
+    flex: 50%;
+    order: 3;
+  }
+  .session-card span:nth-child(3) {
+    flex: 100%;
+    order: 1;
+    margin-bottom: 1rem;
+  }
+  .session-status {
+    margin-right: 0;
+  }
+  .session-card-title {
+    display: none;
+  }
+  .session-card-mobile-title {
+    display: block;
+    color: #666666;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+.task-create {
+  min-width: 140px;
+    padding: 5px 10px;
+    text-align: center;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.task-welcome {
+  margin-bottom: 2rem;
+  font-size: 15px;
+  width: 96%;
+}
+
+@media(max-width: 400px) {
+  .task-create {
+    margin-right: 0;
+    position: absolute;
+    right: 2rem;
+    min-width: 120px;
+    width: 125px;
+    top: 1rem;
+  }
+  .task-name {
+    margin-top: 1.5rem;
+    padding: 0px;
+    margin-bottom: -1rem;
+  }
+}
+@media (max-width: 600px) {
+  .norecommendations1 {
+    width: 80% !important;
+    margin-top: 2rem;
+  }
 }
