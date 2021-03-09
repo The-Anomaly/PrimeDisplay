@@ -77,13 +77,35 @@ class NewDashboardJobOpportunities extends React.Component {
     user: [],
     dob: "",
     present_industry: "",
-    industry_interest: "",
-    opportunities_open_to: "",
+    industry_interest: [],
+    opportunities_open_to: [],
     successMsg: false,
     isLoading: false,
     showWarning: false,
     width: 100,
   };
+  validateEntry = (e) => {
+    e.preventDefault();
+    if (this.state.industry_interest.length === 0){
+      return this.notify("Please select the industries you're interested in");
+    }
+    else if (this.state.opportunities_open_to.length === 0){
+      return this.notify("Please select the opportunities you're open to");
+    }
+    else if (this.state.present_job === ""){
+      return this.notify("Please enter details of your present job");
+    }
+    else if (this.state.present_industry === ""){
+      return this.notify("Please enter details of your present industry");
+    }
+    else if (this.state.work_status === ""){
+      return this.notify("Please enter your work status");
+    }
+    else if (this.state.dob === ""){
+      return this.notify("Please enter your date of birth");;
+    }
+    else {return this.submitForm(e);}
+  }
   submitForm = (e) => {
     this.setState({
       isloading: true,
@@ -100,6 +122,7 @@ class NewDashboardJobOpportunities extends React.Component {
       opportunities_open_to,
       present_industry,
     } = this.state;
+    console.log(industry_interest);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
@@ -129,7 +152,7 @@ class NewDashboardJobOpportunities extends React.Component {
           isloading: false,
         });
         // console.log(err.response)
-        this.notify("failed" + err?.response?.data[0]?.message);
+        this.notify("Failed " + err?.response?.data[0]?.message);
         if (err) {
         }
       });
@@ -139,16 +162,50 @@ class NewDashboardJobOpportunities extends React.Component {
       [e.target.name]: e.target.value,
     });
   };
-  componentDidMount() {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    if (featureToCheck["job_recommendation"] === false) {
-      // console.log("Can't access job opportunities");
-      return setTimeout(() => {
-        window.location.pathname = "/dashboardsubscriptionplan";
-      }, 2000);
+  handleChangeCheckBox = (e) => {
+    if (this.state.industry_interest.includes(e.target.value) === false) {
+      this.setState({
+        industry_interest: [...this.state.industry_interest, e.target.value],
+      });
     }
-
+    else {
+      // console.log("it's in the array")
+    }
+    // console.log(this.state.industry_interest);
+  };
+  handleChangeCheckBox2 = (e) => {
+    if (this.state.opportunities_open_to.includes(e.target.value) === false) {
+      this.setState({
+        opportunities_open_to: [...this.state.opportunities_open_to, e.target.value],
+      });
+    }
+    else {
+      // console.log("it's in the array")
+    }
+    console.log(this.state.opportunities_open_to);
+  };
+  
+  removeInterest = (interest) => {
+    let interest_index = this.state.industry_interest.indexOf(interest);
+    if(interest_index >= 0){
+    this.state.industry_interest.splice(interest_index, 1);
+    this.setState({
+      industry_interest: [...this.state.industry_interest],
+    });
+    // console.log(this.state.industry_interest);
+    }
+  };
+  removeOpportunity = (opportunity) => {
+    let opportunity_index = this.state.opportunities_open_to.indexOf(opportunity);
+    if(opportunity_index >= 0){
+    this.state.opportunities_open_to.splice(opportunity_index, 1);
+    this.setState({
+      opportunities_open_to: [...this.state.opportunities_open_to],
+    });
+    console.log(this.state.opportunities_open_to);
+    }
+  };
+  componentDidMount() {
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -156,13 +213,30 @@ class NewDashboardJobOpportunities extends React.Component {
       : window.location.assign("/signin");
     this.checkIfUserHasMadePaymentForFullResult(token);
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/jobnotification`, {
+    Axios.all([Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/jobnotification`, {
       headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (response.status === 200) {
-        }
-      })
+    }),
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })])
+      .then(Axios.spread((response, response2) => {
+        if (response.status === 200 && response2.status === 200) {
+          if (response2?.data[0]?.job_recommendation === false) {
+            return setTimeout(() => {
+              window.location.pathname = "/dashboardsubscriptionplan";
+            }, 2000);
+          }
+          else {
+          this.setState({
+            industry_interest: response?.data?.industry_interest,
+            opportunities_open_to: response?.data?.opportunities_open_to,
+            present_job: response?.data?.present_job,
+            present_industry: response?.data?.present_industry,
+            work_status: response?.data?.work_status,
+            dob: response?.data?.dob,
+          })
+        }}
+      }))
       .catch((error) => {
         if (error && error.response && error.response.data) {
           this.setState({
@@ -177,19 +251,9 @@ class NewDashboardJobOpportunities extends React.Component {
       });
   }
   checkIfUserHasMadePaymentForFullResult = (token: string) => {};
-  CloseWarning = () => {
-    this.setState({
-      showWarning: false,
-    });
-  };
   capitalize = (s) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
-  };
-  openWarning = () => {
-    this.setState({
-      showWarning: true,
-    });
   };
   componentWillMount() {
     this.setState({ isLoading: true });
@@ -286,7 +350,7 @@ class NewDashboardJobOpportunities extends React.Component {
                       <Row className="rowla">
                         <Col md={6}>
                           <div className="whatdoudo">
-                            What do you presently do{" "}
+                            What do you presently do? <span className="notfilled"> *</span>
                           </div>
                           <textarea
                             name="present_job"
@@ -298,7 +362,7 @@ class NewDashboardJobOpportunities extends React.Component {
                         </Col>
                         <Col md={6}>
                           <div className="whatdoudo">
-                            What Industry Do you Presently work in?{" "}
+                            What industry do you presently work in? <span className="notfilled"> *</span>
                           </div>
                           <Form.Control
                             as="select"
@@ -324,18 +388,19 @@ class NewDashboardJobOpportunities extends React.Component {
                       <Row className="rowla">
                         <Col md={6}>
                           <div className="whatdoudo">
-                            What industries are you presently interested in{" "}
+                            What industries are you presently interested in? <span className="notfilled"> *</span>
                           </div>
 
                           <Form.Control
                             as="select"
-                            className="fmc jobr subhyt"
+                            className="fmc jobr subhyt job-oopt-select-multiple"
                             name="industry_interest"
                             value={industry_interest}
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeCheckBox}
                             placeholder="Select Industry"
+                            multiple={true}
                           >
-                            <option></option>
+                            <option className="hide-on-desktop"></option>
                             {IndustryList.map((data, i) => (
                               <option
                                 className="uii11"
@@ -346,9 +411,15 @@ class NewDashboardJobOpportunities extends React.Component {
                               </option>
                             ))}
                           </Form.Control>
+                          <div className="industry-selection" >
+                          {industry_interest.map((data, i) => (
+                            <div key={i}>
+                              {data}<span onClick={() => this.removeInterest(data)}>&#10005;</span>
+                            </div>))}
+                          </div>
                         </Col>
                         <Col md={6}>
-                          <div className="whatdoudo">Present Work Status </div>
+                          <div className="whatdoudo">Present Work Status<span className="notfilled"> *</span> </div>
                           <Form.Control
                             as="select"
                             className="fmc jobr subhyt"
@@ -389,18 +460,21 @@ class NewDashboardJobOpportunities extends React.Component {
                       <Row className="rowla">
                         <Col md={6}>
                           <div className="whatdoudo">
-                            Opportunities Open to{" "}
+                            Opportunities Open to{" "}<span className="notfilled"> *</span>
                           </div>
                           <Form.Control
                             as="select"
-                            className="fmc jobr subhyt"
+                            className="fmc jobr subhyt job-oopt-select-multiple"
                             name="opportunities_open_to"
                             value={opportunities_open_to}
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeCheckBox2}
                             placeholder="Select the type of opportunity you are open for"
+                            multiple
                           >
+                            <option className="hide-on-desktop"></option>
                             <option value="Full-time">Full-time</option>
                             <option value="Part-time">Part-time</option>
+                            <option value="Freelance">Freelance</option>
                             <option value="Courses/ trainings">
                               Courses/ trainings
                             </option>
@@ -409,9 +483,15 @@ class NewDashboardJobOpportunities extends React.Component {
                               Business resources
                             </option>
                           </Form.Control>
+                          <div className="industry-selection" >
+                          {opportunities_open_to.map((data, i) => (
+                            <div key={i}>
+                              {data}<span onClick={() => this.removeOpportunity(data)}>&#10005;</span>
+                            </div>))}
+                          </div>
                         </Col>
                         <Col md={6}>
-                          <div className="whatdoudo">Date of Birth </div>
+                          <div className="whatdoudo">Date of Birth<span className="notfilled"> *</span> </div>
                           <Form.Control
                             type="date"
                             value={dob}
@@ -424,37 +504,18 @@ class NewDashboardJobOpportunities extends React.Component {
                     </Col>
                     <Col md={12} className="sddx12">
                       <div className="texsss1">
-                        <div className="ksk1" onClick={this.submitForm}>
-                          {isloading ? "Submitting" : "Submit"}
-                        </div>
+                        <button
+                          className="job-oppt-submit"
+                          onClick={this.validateEntry}
+                        >
+                          {isloading ? "Submitting..." : "Submit"}
+                        </button>
                       </div>
                     </Col>
                   </Row>
                 </Col>
               </Row>
             </Col>
-            <Modal show={this.state.showWarning} onHide={this.CloseWarning}>
-              <Modal.Body>
-                Please note that retaking the assessment would require you to
-                make payment to view the result
-              </Modal.Body>
-              <Modal.Footer>
-                <Button
-                  className="btnws"
-                  variant="secondary"
-                  onClick={this.CloseWarning}
-                >
-                  Back
-                </Button>
-                <Button
-                  variant="danger"
-                  className="btnws"
-                  onClick={this.submitForm}
-                >
-                  Continue
-                </Button>
-              </Modal.Footer>
-            </Modal>
           </Row>
         </Container>
         <ToastContainer

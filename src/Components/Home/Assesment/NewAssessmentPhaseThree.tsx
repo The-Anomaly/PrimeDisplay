@@ -706,7 +706,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  8. You find yourself pushing your point of views subtly or
+                  8. You find yourself pushing your point of view subtly or
                   forcefully till the person accepts it.
                 </div>
                 <div className="rsliderclass9">
@@ -1472,7 +1472,7 @@ const NewAssessmentPhaseThree = (props: any) => {
             <Row className="firstrowcf2 cftcontent">
               <Col md={12}>
                 <div className="firstquestion">
-                  18. Success on a project for you isn’t necessarily tied to how
+                  18. Success on a project isn’t necessarily tied to how
                   much financial returns you make.
                 </div>
                 <div className="rsliderclass9">

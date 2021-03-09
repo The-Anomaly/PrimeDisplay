@@ -191,8 +191,6 @@ class NewDashboard extends React.Component {
       .catch((error) => {});
   };
   checkIfUserHasAccessToAskACounselor = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -216,14 +214,6 @@ class NewDashboard extends React.Component {
         console.log(error);
         // console.error("Payment Status Error");
       });
-    //  else {
-    //notify("Update your subscription to access this feature");
-    // console.log("Can't access ask a counselor");
-    //   return setTimeout(
-    //     (window.location.pathname = "/dashboardsubscriptionplan"),
-    //     2000
-    //   );
-    // }
   };
   CloseWarning = () => {
     this.setState({
