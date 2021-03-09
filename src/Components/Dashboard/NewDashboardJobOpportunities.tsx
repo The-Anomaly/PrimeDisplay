@@ -206,15 +206,6 @@ class NewDashboardJobOpportunities extends React.Component {
     }
   };
   componentDidMount() {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    if (featureToCheck["job_recommendation"] === false) {
-      console.log("Can't access job opportunities");
-      return setTimeout(() => {
-        window.location.pathname = "/dashboardsubscriptionplan";
-      }, 2000);
-    }
-
     this.setState({ isLoading: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -222,11 +213,20 @@ class NewDashboardJobOpportunities extends React.Component {
       : window.location.assign("/signin");
     this.checkIfUserHasMadePaymentForFullResult(token);
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/jobnotification`, {
+    Axios.all([Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/jobnotification`, {
       headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        if (response.status === 200) {
+    }),
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })])
+      .then(Axios.spread((response, response2) => {
+        if (response.status === 200 && response2.status === 200) {
+          if (response2?.data[0]?.job_recommendation === false) {
+            return setTimeout(() => {
+              window.location.pathname = "/dashboardsubscriptionplan";
+            }, 2000);
+          }
+          else {
           this.setState({
             industry_interest: response?.data?.industry_interest,
             opportunities_open_to: response?.data?.opportunities_open_to,
@@ -235,8 +235,8 @@ class NewDashboardJobOpportunities extends React.Component {
             work_status: response?.data?.work_status,
             dob: response?.data?.dob,
           })
-        }
-      })
+        }}
+      }))
       .catch((error) => {
         if (error && error.response && error.response.data) {
           this.setState({
@@ -393,14 +393,14 @@ class NewDashboardJobOpportunities extends React.Component {
 
                           <Form.Control
                             as="select"
-                            className="fmc jobr subhyt"
+                            className="fmc jobr subhyt job-oopt-select-multiple"
                             name="industry_interest"
                             value={industry_interest}
                             onChange={this.handleChangeCheckBox}
                             placeholder="Select Industry"
                             multiple={true}
                           >
-                            <option></option>
+                            <option className="hide-on-desktop"></option>
                             {IndustryList.map((data, i) => (
                               <option
                                 className="uii11"
@@ -464,13 +464,14 @@ class NewDashboardJobOpportunities extends React.Component {
                           </div>
                           <Form.Control
                             as="select"
-                            className="fmc jobr subhyt"
+                            className="fmc jobr subhyt job-oopt-select-multiple"
                             name="opportunities_open_to"
                             value={opportunities_open_to}
                             onChange={this.handleChangeCheckBox2}
                             placeholder="Select the type of opportunity you are open for"
                             multiple
                           >
+                            <option className="hide-on-desktop"></option>
                             <option value="Full-time">Full-time</option>
                             <option value="Part-time">Part-time</option>
                             <option value="Freelance">Freelance</option>

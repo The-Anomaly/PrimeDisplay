@@ -99,19 +99,28 @@ const SideBarNewDashboard = withRouter((props: any) => {
       });
   };
   const checkIfUserHasAccessToOpportunityRecommender = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-
-    if (featureToCheck["job_recommendation"] === true) {
-      // console.log("Job opportunities successful");
-      return window.location.assign("/jobopportunities");
-    } else {
-      return setUpgradeState(true);
-    }
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        if (response?.data[0]?.job_recommendation === true) {
+          return  window.location.assign("/jobopportunities");;
+        }
+        else {
+          return setUpgradeState(true);;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // console.error("Payment Status Error");
+      });
   };
   const checkIfUserHasAccessToAskACounselor = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -124,7 +133,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
         if (response?.data[0]?.ask_counsellor === true) {
           return  window.location.assign("/allusermessages");;
         }
-        if (response?.data[0]?.ask_counsellor === false) {
+        else {
           return setUpgradeState(true);;
         }
       })
@@ -132,14 +141,6 @@ const SideBarNewDashboard = withRouter((props: any) => {
         console.log(error);
         // console.error("Payment Status Error");
       });
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access ask a counselor");
-      // return setTimeout(
-      //   (window.location.pathname = "/dashboardsubscriptionplan"),
-      //   2000
-      // );
-      // return setUpgradeState(true);
-  
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
   const logOut = () => {

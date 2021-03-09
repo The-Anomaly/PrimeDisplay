@@ -52,31 +52,6 @@ const Signin = withRouter((props: any) => {
           ...state,
           isLoading: false,
         });
-        const availableToken = localStorage.getItem("userToken");
-          const token = availableToken
-            ? JSON.parse(availableToken)
-            : window.location.assign("/signin");
-          axios
-            .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-              headers: { Authorization: `Token ${token}` },
-            })
-            .then((response1) => {
-              // console.log(response1);
-              // console.log(response1?.data[0]);
-              localStorage.setItem(
-                "accessFeature",
-                JSON.stringify(response1?.data[0])
-              );
-              const stringFeature = localStorage.getItem("accessFeature")
-              const featureToCheck = stringFeature
-                ? JSON.parse(stringFeature)
-                : "";
-              // console.log(featureToCheck);
-              // console.log(featureToCheck["view_result"]);
-            })
-            .catch((error) => {
-              console.error("Payment Status Error");
-            });
       })
       .catch((error) => {
         // console.log(error);

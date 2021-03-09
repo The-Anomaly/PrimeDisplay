@@ -170,29 +170,6 @@ const Payment = (props: any) => {
               //   3000
               // );
             }
-            // console.log("paid");
-            const availableToken = localStorage.getItem("userToken");
-            const token = availableToken ? JSON.parse(availableToken) : "";
-            axios
-              .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-                headers: { Authorization: `Token ${token}` },
-              })
-              .then((response1) => {
-                // console.log(response1);
-                //console.log(response1?.data[0]);
-                localStorage.setItem(
-                  "accessFeature",
-                  JSON.stringify(response1?.data[0])
-                );
-                // console.log(localStorage.getItem("accessFeature"));
-                const stringFeature = localStorage.getItem("accessFeature");
-                const featureToCheck = stringFeature
-                  ? JSON.parse(stringFeature)
-                  : "";
-              })
-              .catch((error) => {
-                // console.error("Payment Status Error");
-              });
             // console.log("Payment Successfull");
           }
           if (response.paymentStatus === "PENDING") {

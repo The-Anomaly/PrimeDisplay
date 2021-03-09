@@ -4458,3 +4458,21 @@ a {
   width: 600px;
   max-width: 600px;
 }
+@media(min-width: 767px) {
+.rowla .job-oopt-select-multiple {
+  height: 150px !important;
+}
+.rowla .job-oopt-select-multiple > option {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+}
+.hide-on-desktop {
+  display: none !important;
+}
+@media(max-width: 767px) {
+  .hide-on-desktop {
+    display: flex !important;
+  }
+}

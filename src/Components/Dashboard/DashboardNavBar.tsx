@@ -104,23 +104,29 @@ React.useEffect(()=>{
   };
 
   const checkIfUserHasAccessToOpportunityRecommender = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-
-    if (featureToCheck["job_recommendation"] === true) {
-      // console.log("Job opportunities successful");
-      window.location.assign("/jobopportunities");
-    } else {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access job opportunities");
-      return setUpgradeState(true);
-      //return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
-    }
+    const availableToken = localStorage.getItem("userToken");
+      const token = availableToken
+        ? JSON.parse(availableToken)
+        : window.location.assign("/signin");
+      Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+        .then((response) => {
+          console.log(response);
+          if (response?.data[0]?.job_recommendation === true) {
+            return  window.location.assign("/jobopportunities");;
+          }
+          else if (response?.data[0]?.job_recommendation === false) {
+            return setUpgradeState(true);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          // console.error("Payment Status Error");
+        });
   };
   
   const checkIfUserHasAccessToAskACounselor = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
       // console.log("checking payment status");
       const availableToken = localStorage.getItem("userToken");
       const token = availableToken
@@ -142,16 +148,6 @@ React.useEffect(()=>{
           console.log(error);
           // console.error("Payment Status Error");
         });
-    if (featureToCheck["ask_counsellor"] === true) {
-      // console.log("Ask a counselor successful");
-      // window.location.assign("/allusermessages");
-    } 
-    // else {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access ask a counselor");
-      // return setUpgradeState(true);
-      //return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
-    // }
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
   return (
