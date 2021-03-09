@@ -76,6 +76,7 @@ class ProfileBuilder extends React.Component {
     editreference: false,
     startDate: "",
     endDate: "",
+    job_description: "",
     width: 100,
   };
   moveTo = (str) => {
@@ -379,7 +380,7 @@ class ProfileBuilder extends React.Component {
       editcertification: false,
     });
   };
-  checkforid = (id) => {
+  checkforidExperience = (id) => {
     this.state.experiences.forEach((element) => {
       if (element.id == id) {
         console.log(element);
@@ -396,7 +397,6 @@ class ProfileBuilder extends React.Component {
       }
     });
   };
-
   updateExperience = () => {
     this.setState({
       isloading: true,
@@ -406,10 +406,12 @@ class ProfileBuilder extends React.Component {
     const data = {
       organisation: this.state.organizationname,
       position: this.state.organizationposition,
-      start_date: this.state.startDate,
+      started_from: this.state.startDate,
       end_date: this.state.endDate,
-      i_currently_study_here: this.state.mycurrentwork,
+      current: this.state.mycurrentwork,
+      job_description: this.state.job_description,
     };
+    console.log(data)
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-experience/${this.state.experience_id}/`,
       data,
@@ -527,8 +529,8 @@ class ProfileBuilder extends React.Component {
           expirationStatus: element.does_not_expire,
           certification_id: id,
           certificateInstitution: element.institution,
-          education_valid_from: element.valid_from,
-          education_valid_till: element.valid_till,
+          valid_from: element.valid_from,
+          valid_till: element.valid_till,
           editcertification: true,
         });
       }
@@ -541,12 +543,13 @@ class ProfileBuilder extends React.Component {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
-      organisation: this.state.certificateName,
-      position: this.state.organizationposition,
-      start_date: this.state.startDate,
-      end_date: this.state.endDate,
-      i_currently_study_here: this.state.mycurrentwork,
+      certificate_name: this.state.certificateName,
+      institution: this.state.certificateInstitution,
+      valid_from: this.state.valid_from,
+      valid_till: this.state.valid_till,
+      does_not_expire: this.state.expirationStatus,
     };
+    console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-certification/${this.state.certification_id}/`,
       data,
@@ -560,8 +563,8 @@ class ProfileBuilder extends React.Component {
           certificateName: "",
           expirationStatus: "",
           certificateInstitution: "",
-          education_valid_from: "",
-          education_valid_till: "",
+          valid_from: "",
+          valid_till: "",
           editcertification: false,
         });
         this.notify("Successful");
@@ -576,14 +579,15 @@ class ProfileBuilder extends React.Component {
           certificateName: "",
           expirationStatus: "",
           certificateInstitution: "",
-          education_valid_from: "",
-          education_valid_till: "",
+          valid_from: "",
+          valid_till: "",
           editcertification: false,
         });
       });
   };
   //reference
   checkforReferenceId = (id) => {
+    console.log(this.state.references)
     this.state.references.forEach((element) => {
       if (element.id == id) {
         console.log(element);
@@ -591,7 +595,7 @@ class ProfileBuilder extends React.Component {
           referencetitle: element.title,
           referencename: element.name,
           referencephone: element.phone,
-          reference_id: id,
+          reference_id: element.id,
           referenceemail: element.ref_email,
           referencerelationship: element.relationship,
           editreference: true,
@@ -606,12 +610,13 @@ class ProfileBuilder extends React.Component {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
-      organisation: this.state.certificateName,
-      position: this.state.organizationposition,
-      start_date: this.state.startDate,
-      end_date: this.state.endDate,
-      i_currently_study_here: this.state.mycurrentwork,
+      name: this.state.referencename,
+      title: this.state.referencetitle,
+      ref_email: this.state.referenceemail,
+      phone: this.state.referencephone,
+      relationship: this.state.referencerelationship,
     };
+    console.log(data)
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-reference/${this.state.reference_id}/`,
       data,
@@ -622,11 +627,11 @@ class ProfileBuilder extends React.Component {
       .then((res) => {
         this.setState({
           isloading: false,
-          certificateName: "",
-          expirationStatus: "",
-          certificateInstitution: "",
-          education_valid_from: "",
-          education_valid_till: "",
+          referencetitle: "",
+          referencename: "",
+          referencephone: "",
+          referenceemail: "",
+          referencerelationship: "",
           editreference: false,
         });
         this.notify("Successful");
@@ -638,11 +643,11 @@ class ProfileBuilder extends React.Component {
         }
         this.setState({
           isloading: false,
-          certificateName: "",
-          expirationStatus: "",
-          certificateInstitution: "",
-          education_valid_from: "",
-          education_valid_till: "",
+          referencetitle: "",
+          referencename: "",
+          referencephone: "",
+          referenceemail: "",
+          referencerelationship: "",
           editreference: false,
         });
       });
@@ -754,6 +759,7 @@ class ProfileBuilder extends React.Component {
       twitter,
       instagram,
       facebook,
+      job_description,
       education_valid_from,
       education_valid_till,
       education_doesnot_expire,
@@ -831,7 +837,7 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                       <hr />
-                                        <br/>
+                      <br />
                       <Row className="rowla" id="experience">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -961,7 +967,7 @@ class ProfileBuilder extends React.Component {
                               <i
                                 title={"Edit"}
                                 className="editiconn1 fa fa-pencil-square-o"
-                                onClick={() => this.checkforid(data.id)}
+                                onClick={() => this.checkforidExperience(data.id)}
                               ></i>
                               <i
                                 className="fa fa-trash"
@@ -1059,7 +1065,7 @@ class ProfileBuilder extends React.Component {
                         ))}
                       </Row>
                       <hr />
-                      <br/>
+                      <br />
                       <Row className="rowla" id="education">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -1271,7 +1277,7 @@ class ProfileBuilder extends React.Component {
                         ))}
                       </Row>
                       <hr />
-                      <br/>
+                      <br />
                       <Row>
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -1317,7 +1323,7 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                       <hr />
-                      <br/>
+                      <br />
                       <Row className="rowla">
                         <Col md={12} id="certification">
                           <div className="whatdoudo offpadd1">
@@ -1502,7 +1508,7 @@ class ProfileBuilder extends React.Component {
                     </Col>
                   </Row>
                   <hr />
-                  <br/>
+                  <br />
                   <Row>
                     <Col md={12} id="reference">
                       <div className="whatdoudo unbtm">
@@ -1847,11 +1853,11 @@ class ProfileBuilder extends React.Component {
                     <div className="plusnew1">Job Description</div>
                     <textarea
                       name=""
-                      id="jobdescription"
+                      id="job_description"
                       onChange={this.handleChange}
                       className="form-control jobr jbdescr"
                       placeholder="Enter a job descrption"
-                      value={jobdescription}
+                      value={job_description}
                     ></textarea>
                   </Col>
                 </Row>

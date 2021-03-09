@@ -2852,6 +2852,7 @@ textarea.form-control.jobr {
   border-radius: 8px;
   padding: 1rem 2.5rem 1rem 1.15rem;
   height: 80px;
+  margin-bottom: 2rem;
 }
 .building {
   width: 50px;
@@ -4263,6 +4264,7 @@ label {
   margin-top: .1rem;
   position: relative;
   top: .07rem;
+  cursor: pointer;
 }
 .btnws1{
   border: 1px solid #9c1258 !important;
@@ -4276,4 +4278,10 @@ a{
 .widincr .modal-dialog{
   width: 600px;
   max-width: 600px;
+}
+@media print and (color) {
+  * {
+      -webkit-print-color-adjust: exact !important;
+      -webkit-print-color-adjust: exact !important;
+  }
 }
