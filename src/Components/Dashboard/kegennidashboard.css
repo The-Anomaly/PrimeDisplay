@@ -4466,6 +4466,10 @@ a {
       -webkit-print-color-adjust: exact !important;
       -webkit-print-color-adjust: exact !important;
   }
+  /* .pagebreak {
+    clear: both;
+    page-break-after: always;
+} */
 }
 @media(min-width: 767px) {
 .rowla .job-oopt-select-multiple {

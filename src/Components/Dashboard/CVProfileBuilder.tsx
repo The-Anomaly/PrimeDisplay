@@ -379,6 +379,7 @@ class CVProfileBuilder extends React.Component {
     const dateTime = moment(date).format("MMM YYYY");
     return dateTime;
   };
+
   render() {
     const {
       fullname,
@@ -419,6 +420,8 @@ class CVProfileBuilder extends React.Component {
       width,
       user,
     } = this.state;
+    console.log(certifications)
+    console.log(education)
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -517,7 +520,7 @@ class CVProfileBuilder extends React.Component {
                                   <div className="time">
                                     {this.formatTime(data.started_from)} -
                                     {data.current ? " Present" : ""}{" "}
-                                    {data?.to}
+                                    {!data.current && this.formatTime(data?.to)}
                                   </div>
                                   <hr />
                                 </Col>
@@ -609,6 +612,15 @@ class CVProfileBuilder extends React.Component {
                                   <div className="location">
                                     {data.location}
                                   </div>
+                                  
+                                <div className="time">
+                                    Started {this.formatTime(data.start_date)}
+                                    {" - "}
+                                    {!data?.end_date && data.i_currently_study_here
+                                      ? "I currently study here"
+                                      : ""}{" "}
+                                    {!data.i_currently_study_here && this.formatTime(data?.end_date)}
+                                  </div>
                                 </span>
                                 <Link
                                   className="edit_descrip"
@@ -662,7 +674,7 @@ class CVProfileBuilder extends React.Component {
                                     {data.does_not_expire
                                       ? "No Expiration Date"
                                       : ""}{" "}
-                                    {this.formatTime(data.valid_from)}
+                                    {this.formatTime(data?.valid_till)}
                                   </div>
                                   <hr />
                                 </Col>
