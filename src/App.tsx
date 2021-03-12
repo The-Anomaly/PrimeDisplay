@@ -119,6 +119,7 @@ import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/Counsell
 import ReactPixel from "react-facebook-pixel";
 
 import AllBookedSessions from "./Components/Dashboard/AllBookedSessions"
+import CvDesign from "./Components/Dashboard/CvDesign";
 
 const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {
@@ -605,6 +606,12 @@ class App extends Component {
                 exact
                 path="/assessmentphasefour"
                 component={NewAssessmentPhaseFour}
+              />
+              <Route 
+                exact 
+                path="/cvdesign"
+                component={CvDesign}
+              
               />
             </Switch>
           </BrowserRouter>
