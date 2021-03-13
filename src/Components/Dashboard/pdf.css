@@ -231,4 +231,15 @@
   .bulma_columns__3WmlH{
     white-space: pre-wrap;
   }
-  
+  @media (max-width: 600px) {
+    .widincr .modal-dialog{
+      width: 320px;
+    }
+    .modal.show .modal-dialog{
+      margin: auto;
+    }
+    .modcomplete .modal-dialog{
+      width: 320px;
+      max-width: 400px;
+    }
+  }

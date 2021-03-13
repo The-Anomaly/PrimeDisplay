@@ -385,8 +385,8 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                         <div className="skip"></div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            11. Share your opinion on a football match for others
-                            to watch.
+                            11. Share your opinion on a football match for
+                            others to watch.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -419,8 +419,8 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                       <div>
                         <div className="assessquestionwrap">
                           <div className="assessquestion">
-                            13. Create opportunities for people to have fun doing
-                            sports.
+                            13. Create opportunities for people to have fun
+                            doing sports.
                           </div>
                           <div className="assessrating">
                             <StarRatingComponent
@@ -520,7 +520,8 @@ const NewAssessmentPhaseTwo_1 = (props: any) => {
                     <div className="skip"></div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        18. Impart knowledge and guide people down the right path.
+                        18. Impart knowledge and guide people down the right
+                        path.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent

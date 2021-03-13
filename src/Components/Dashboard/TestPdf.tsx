@@ -160,9 +160,9 @@ const TestPdf = () => {
                     { type: "email", value: email },
                     { type: "phone", value: phone },
                     { type: "location", value: address },
-                    { type: "website", value: website },
-                    { type: "linkedin", value: linkedin },
-                    { type: "twitter", value: twitter },
+                    // { type: "website", value: website },
+                    // { type: "linkedin", value: linkedin },
+                    // { type: "twitter", value: twitter },
                   ],
                 }}
                 sections={[

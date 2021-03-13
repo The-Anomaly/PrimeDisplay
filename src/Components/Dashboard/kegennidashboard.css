@@ -4438,6 +4438,9 @@ label {
     width: 80% !important;
     margin-top: 2rem;
   }
+  .widincr .modal-dialog{
+    width: 320px;
+  }
 }
 .editiconn1 {
   color: #9c1258;
@@ -4487,5 +4490,12 @@ a {
 @media(max-width: 767px) {
   .hide-on-desktop {
     display: flex !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .modcomplete .modal-dialog{
+    width: 330px ;
+    max-width: 400px;
   }
 }
