@@ -18,7 +18,6 @@ const NewFooter: React.FC = (props) => {
   });
 
   const { usermail } = state;
-
   const handleChange = (e) => {
     setState({
       ...state,
