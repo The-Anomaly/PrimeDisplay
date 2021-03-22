@@ -22,20 +22,20 @@ class WebSocketService {
     const path =
       "wss://" + `${webSocketAPI}` + "/ws/onboarding-chat" + `/${chatURL}/`;
     // const path = `ws://theminglemarket.com:8000/ws/chat/${chatURL}/`;
-    console.log(path);
+    // console.log(path);
     self.socketRef = new WebSocket(path);
     self.socketRef.onopen = () => {
-      console.log("websocket is open");
+      // console.log("websocket is open");
     };
     this.socketNewMessage(JSON.stringify({ command: "fetch_messages" }));
     self.socketRef.onmessage = (e) => {
-      this.socketNewMessage(e.data);
+      // this.socketNewMessage(e.data);
     };
     self.socketRef.onerror = (e) => {
-      console.log(e.message);
+      // console.log(e.message);
     };
     self.socketRef.onclose = () => {
-      console.log("websocket is closed");
+      // console.log("websocket is closed");
       this.connect(chatURL);
     };
   }
@@ -43,7 +43,7 @@ class WebSocketService {
     const self: any = this;
     self.socketRef.close();
     self.socketRef.onclose = () => {
-      console.log("socket is closed");
+      // console.log("socket is closed");
     };
   }
   socketNewMessage(data) {
@@ -64,7 +64,7 @@ class WebSocketService {
   }
 
   fetchMessages(chatId) {
-    console.log(chatId);
+    // console.log(chatId);
     this.sendMessage({
       command: "fetch_messages",
       chatId: chatId,
@@ -72,7 +72,7 @@ class WebSocketService {
   }
 
   newChatMessage(message) {
-    console.log(message);
+    // console.log(message);
     this.sendMessage({
       command: "new_message",
       text: message.text,
@@ -99,7 +99,7 @@ class WebSocketService {
       const self: any = this;
       self.socketRef.send(JSON.stringify({ ...data }));
     } catch (err) {
-      console.log(err.message);
+      // console.log(err.message);
     }
   }
 
@@ -114,13 +114,13 @@ class WebSocketService {
     const recursion = self.waitForSocketConnection;
     setTimeout(function () {
       if (socket.readyState === 1) {
-        console.log("Connection is secure");
+        // console.log("Connection is secure");
         if (callback != null) {
           callback();
         }
         return;
       } else {
-        console.log("Waiting for connection....");
+        // console.log("Waiting for connection....");
         recursion(callback);
       }
     }, 1);

@@ -142,7 +142,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (
           response?.data[0]?.job_recommendation_filled === false &&
           response?.data[0]?.personal_info === false

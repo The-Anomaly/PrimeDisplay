@@ -49,7 +49,7 @@ class AllBookedSessions extends React.Component {
     ])
       .then(
         axios.spread((res) => {
-          console.log(res);
+          // console.log(res);
           this.setState({
             isLoading: false,
             sessionData: [...res.data.results].reverse(),

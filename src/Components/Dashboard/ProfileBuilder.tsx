@@ -290,7 +290,7 @@ class ProfileBuilder extends React.Component {
         if (res?.data?.new_user) {
           return;
         }
-        console.log(res.data);
+        // console.log(res.data);
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
@@ -383,7 +383,7 @@ class ProfileBuilder extends React.Component {
   checkforidExperience = (id, index) => {
     this.state.experiences.forEach((element) => {
       if (element.id && element.id === id) {
-        console.log(index);
+        // console.log(index);
         this.setState({
           organizationname: element.organisation,
           organizationposition: element.position,
@@ -399,8 +399,8 @@ class ProfileBuilder extends React.Component {
         let experiences = this.state.experiences;
         experiences.findIndex((element, i) => {
           if (index === i) {
-            console.log(i);
-            console.log(element);
+            // console.log(i);
+            // console.log(element);
             if (!element.organizationname) {
               return this.setState({
                 organizationname: element.organisation,
@@ -431,7 +431,7 @@ class ProfileBuilder extends React.Component {
   checkforidEdu = (id, index) => {
     this.state.education.forEach((element) => {
       if (element.id && element.id == id) {
-        console.log(element);
+        // console.log(element);
         this.setState({
           degreeObtained: element.degree,
           education_doesnot_expire: element.i_currently_study_here,
@@ -447,8 +447,8 @@ class ProfileBuilder extends React.Component {
         let education = this.state.education;
         education.findIndex((element, i) => {
           if (index === i) {
-            console.log(i);
-            console.log(element);
+            // console.log(i);
+            // console.log(element);
             if (element.institution) {
               return this.setState({
                 institutionname: element.institution,
@@ -480,10 +480,10 @@ class ProfileBuilder extends React.Component {
   };
   //reference
   checkforReferenceId = (id, index) => {
-    console.log(this.state.references);
+    // console.log(this.state.references);
     this.state.references.forEach((element) => {
       if (element.id && element.id == id) {
-        console.log(element);
+        // console.log(element);
         this.setState({
           referencetitle: element.title,
           referencename: element.name,
@@ -498,8 +498,8 @@ class ProfileBuilder extends React.Component {
         let references = this.state.references;
         references.findIndex((element, i) => {
           if (index === i) {
-            console.log(i);
-            console.log(element);
+            // console.log(i);
+            // console.log(element);
             if (element.title || element.name) {
               return this.setState({
                 referencetitle: element.title,
@@ -547,8 +547,8 @@ class ProfileBuilder extends React.Component {
         let certifications = this.state.certifications;
         certifications.findIndex((element, i) => {
           if (index === i) {
-            console.log(i);
-            console.log(element);
+            // console.log(i);
+            // console.log(element);
             if (element.certificate_name) {
               return this.setState({
                 certificateName: element.certificate_name,
@@ -589,7 +589,7 @@ class ProfileBuilder extends React.Component {
             current: this.state.mycurrentwork,
             job_description: this.state.job_description,
           };
-          console.log(experiences);
+          // console.log(experiences);
           this.setState({
             experiences: experiences,
             editexperience: false,
@@ -618,7 +618,7 @@ class ProfileBuilder extends React.Component {
       current: this.state.mycurrentwork,
       job_description: this.state.job_description,
     };
-    console.log(data);
+    // console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-experience/${this.state.experience_id}/`,
       data,
@@ -671,7 +671,7 @@ class ProfileBuilder extends React.Component {
             start_date: this.state.education_valid_from,
             end_date: this.state.education_valid_till,
           };
-          console.log(education);
+          // console.log(education);
           this.setState({
             education,
             degreeObtained: " ",
@@ -700,7 +700,7 @@ class ProfileBuilder extends React.Component {
       start_date: this.state.education_valid_from,
       end_date: this.state.education_valid_till,
     };
-    console.log(data);
+    // console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-education/${this.state.education_id}/`,
       data,
@@ -751,7 +751,7 @@ class ProfileBuilder extends React.Component {
             valid_from: this.state.valid_from,
             valid_till: this.state.valid_till,
           };
-          console.log(certifications);
+          // console.log(certifications);
           this.setState({
             certifications,
             certificateName: "",
@@ -778,7 +778,7 @@ class ProfileBuilder extends React.Component {
       valid_till: this.state.valid_till,
       does_not_expire: this.state.expirationStatus,
     };
-    console.log(data);
+    // console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-certification/${this.state.certification_id}/`,
       data,
@@ -827,7 +827,7 @@ class ProfileBuilder extends React.Component {
             ref_email: this.state.referenceemail,
             relationship: this.state.referencerelationship,
           };
-          console.log(references);
+          // console.log(references);
           this.setState({
             references,
             referencetitle: "",
@@ -855,7 +855,7 @@ class ProfileBuilder extends React.Component {
       phone: this.state.referencephone,
       relationship: this.state.referencerelationship,
     };
-    console.log(data);
+    // console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-reference/${this.state.reference_id}/`,
       data,
@@ -1006,7 +1006,7 @@ class ProfileBuilder extends React.Component {
       width,
       user,
     } = this.state;
-    console.log(education);
+    // console.log(education);
     return (
       <>
         <Container fluid={true} className="contann122">

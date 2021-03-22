@@ -94,8 +94,8 @@ const TestPdf = () => {
       ])
       .then(
         axios.spread((res, res1, res2) => {
-          console.log(res1);
-          console.log(res2.data);
+          // console.log(res1);
+          // console.log(res2.data);
           setState({
             ...state,
             skills: [...res.data.skills],
@@ -130,7 +130,7 @@ const TestPdf = () => {
     return dateTime;
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(cv_data.education);
+  // console.log(cv_data.education);
   const options = {
     orientation: 'landscape',
     unit: 'in',

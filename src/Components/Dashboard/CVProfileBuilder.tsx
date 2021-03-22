@@ -420,8 +420,8 @@ class CVProfileBuilder extends React.Component {
       width,
       user,
     } = this.state;
-    console.log(certifications)
-    console.log(education)
+    // console.log(certifications)
+    // console.log(education)
     return (
       <>
         <Container fluid={true} className="contann122">
