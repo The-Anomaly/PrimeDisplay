@@ -251,14 +251,14 @@ const SignUp: React.FunctionComponent = (props: any) => {
         if (
           (
           response.status === 200 &&
-          response.data[0].next === "phase_four_sports") ||
-          response.data[0].next === "phase_four_business" ||
-          response.data[0].next === "phase_four_stem"
+          response.data[0].next === "phase_two_sports") ||
+          response.data[0].next === "phase_two_business" ||
+          response.data[0].next === "phase_two_stem"
         ) {
-          return props.history.push(`/assessmentphasefour1`);
+          return props.history.push(`/assessmentphasetwo1`);
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessmentphaseone`);
+          return props.history.push(`/assessment/welcome`);
         }
         if (response.status === 200 && response.data[0].next === "phase_two") {
           return props.history.push(`/assessmentphasetwo`);
@@ -308,7 +308,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
             />
           </Col>
           <Col md={5}>
-            <div className="signwa">Sign up</div>
+            <div className="signwa">Sign Up</div>
             <div className="signwa1 difg">To Get Clarity</div>
             {successMsg && (
               <Alert key={1} variant="info">

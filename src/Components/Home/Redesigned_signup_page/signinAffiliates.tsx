@@ -36,12 +36,12 @@ const SigninAffiliates = withRouter((props: any) => {
       email,
       password,
     };
-    console.log(data)
+    // console.log(data)
     axios
       .post(`${API}/affiliate/login/`, data)
       .then((response) => {
         window.scrollTo(-0,-0)
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           localStorage.setItem(
             "userToken",
@@ -53,31 +53,6 @@ const SigninAffiliates = withRouter((props: any) => {
           ...state,
           isLoading: false,
         });
-        const availableToken = localStorage.getItem("userToken");
-          const token = availableToken
-            ? JSON.parse(availableToken)
-            : window.location.assign("/signin");
-          axios
-            .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-              headers: { Authorization: `Token ${token}` },
-            })
-            .then((response1) => {
-              // console.log(response1);
-              // console.log(response1?.data[0]);
-              localStorage.setItem(
-                "accessFeature",
-                JSON.stringify(response1?.data[0])
-              );
-              const stringFeature = localStorage.getItem("accessFeature")
-              const featureToCheck = stringFeature
-                ? JSON.parse(stringFeature)
-                : "";
-              // console.log(featureToCheck);
-              // console.log(featureToCheck["view_result"]);
-            })
-            .catch((error) => {
-              console.error("Payment Status Error");
-            });
       })
       .catch((error) => {
         // console.log(error);

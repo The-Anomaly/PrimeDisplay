@@ -109,25 +109,25 @@ const CounsellorsDashboardMobileNav = withRouter((props: any) => {
         });
         if (
           (response.status === 200 &&
-            response.data[0].next === "phase_four_nature") ||
-          response.data[0].next === "phase_four_health" ||
-          response.data[0].next === "phase_four_building" ||
-          response.data[0].next === "phase_four_creative"
+            response.data[0].next === "phase_two_creative") ||
+          response.data[0].next === "phase_two_health" ||
+          response.data[0].next === "phase_two_building" ||
+          response.data[0].next === "phase_two_creative"
         ) {
-          return props.history.push(`/assessmentphasefour/?counsellor=true`);
+          return props.history.push(`/assessmentphasetwo/?counsellor=true`);
         }
         if (
           (response.status === 200 &&
-            response.data[0].next === "phase_four_sports") ||
-          response.data[0].next === "phase_four_business" ||
-          response.data[0].next === "phase_four_stem" ||
-          response.data[0].next === "phase_four_humanitarian"
+            response.data[0].next === "phase_two_sports") ||
+          response.data[0].next === "phase_two_business" ||
+          response.data[0].next === "phase_two_stem" ||
+          response.data[0].next === "phase_two_humanitarian"
         ) {
-          return props.history.push(`/assessmentphasefour1/?counsellor=true`);
+          return props.history.push(`/assessmentphasetwo1/?counsellor=true`);
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
           closeAssesmentModal();
-          return window.open(`/assessmentphaseone/?counsellor=true`);
+          return window.open(`/assessment/welcome/?counsellor=true`);
         }
         if (response.status === 200 && response.data[0].next === "phase_two") {
           closeAssesmentModal();

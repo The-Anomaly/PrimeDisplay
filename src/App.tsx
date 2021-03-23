@@ -7,26 +7,26 @@ import Faq from "./Components/Home/FAQs/faq";
 import OnboardingChat from "./Components/Home/OnboardingChat/onboardingchat";
 import { ClarityForTeams } from "./Components/Home/ClarityForTeams/clarityforteams";
 import { RecruitmentAnalysisForm } from "./Components/Home/Forms/RecruitmentAnalysisForm";
-import AssessmentFirstPhase from "./Components/Home/Assesment/AssessmentPhaseone";
-import AssessmentFirstPhaseComplete from "./Components/Home/Assesment/AssessmentPhaseonecomplete";
-import AssessmentSecondPhase from "./Components/Home/Assesment/AssessmentPhaseTwo";
-import AssessmentSecondPhaseComplete from "./Components/Home/Assesment/AssessmentPhaseTWOcomplete";
-import AssessmentThirdPhase from "./Components/Home/Assesment/AssessmentPhaseThree";
-import AssessmentThirdPhaseComplete from "./Components/Home/Assesment/AssessmentPhaseTHREEComplete";
-import Assessmentfourthphase from "./Components/Home/Assesment/Assessmentstagefour/AssessmentPhaseFour";
-import Assessmentfourthphase_1 from "./Components/Home/Assesment/Assessmentstagefour/AssessmentPhaseFour_1";
+import AssessmentFirstPhase from "./Components/Home/Assesment/NewAssessmentPhaseone_1";
+import AssessmentFirstPhaseComplete from "./Components/Home/Assesment/OldAssessmentPhaseonecomplete";
+import AssessmentSecondPhase from "./Components/Home/Assesment/OldAssessmentPhaseTwo";
+import AssessmentSecondPhaseComplete from "./Components/Home/Assesment/OldAssessmentPhaseTWOcomplete";
+import NewAssessmentPhaseOne from "./Components/Home/Assesment/NewAssessmentPhaseOne";
+import AssessmentThirdPhaseComplete from "./Components/Home/Assesment/OldAssessmentPhaseTHREEComplete";
+import NewAssessmentPhaseTwo from "./Components/Home/Assesment/NewAssessmentPhaseTwo/NewAssessmentPhaseTwo";
+import NewAssessmentPhaseTwo_1 from "./Components/Home/Assesment/NewAssessmentPhaseTwo/NewAssessmentPhaseTwo_1";
 import { SelectPaymentPlan } from "./Components/Home/Assesment/SelectPaymentPlan";
 import SignUp from "./Components/Home/SignUp/SignUp";
 import SignIn from "./Components/Home/SignIn/SignIn";
-import AssessmentFifthPhase from "./Components/Home/Assesment/AssessmentPhaseFive";
-import AssessmentSixthPhase from "./Components/Home/Assesment/AssessmentPhaseSix";
-import AssessmentSeventhPhase from "./Components/Home/Assesment/AssessmentPhaseSeven";
+import NewAssessmentPhaseThree from "./Components/Home/Assesment/NewAssessmentPhaseThree";
+import AssessmentSixthPhase from "./Components/Home/Assesment/OldAssessmentPhaseSix";
+import NewAssessmentPhaseFour from "./Components/Home/Assesment/NewAssessmentPhaseFour";
 import CareerFitness from "./Components/Home/Dashboard/CareerFitness";
 import PersonalityType from "./Components/Home/Dashboard/PersonalityType";
-import AssessmentFourthPhaseComplete from "./Components/Home/Assesment/AssessmentPhaseFOURCOMPLETE";
-import AssessmentFifthPhaseComplete from "./Components/Home/Assesment/Assessmentphasefivecomplete";
-import AssessmentSixthPhaseComplete from "./Components/Home/Assesment/Assessmentsixthphasecomplete";
-import AssessmentSeventhPhaseComplete from "./Components/Home/Assesment/Assessmentphasesevencompleted";
+import AssessmentFourthPhaseComplete from "./Components/Home/Assesment/OldAssessmentPhaseFOURCOMPLETE";
+import AssessmentFifthPhaseComplete from "./Components/Home/Assesment/OldAssessmentphasefivecomplete";
+import AssessmentSixthPhaseComplete from "./Components/Home/Assesment/OldAssessmentsixthphasecomplete";
+import AssessmentSeventhPhaseComplete from "./Components/Home/Assesment/OldAssessmentphasesevencompleted";
 import SignUpKigenni from "./Components/Home/SignUp Kigenni/SignUpKigenni";
 import KigenniDashboard from "./Components/Dashboard/KigenniDashoard";
 import KigenniFullResultPage from "./Components/Dashboard/KigenniFullResultPage";
@@ -77,6 +77,7 @@ import CounsellorsSignIn from "./Components/Home/SignIn/CounsellorsSignIn";
 import CounsellorSignUp from "./Components/Home/SignUp/CounsellorSignUp";
 import CounsellorViewUserResult from "./Components/Dashboard/CouncellorDasboard/CounsellorViewUserResult";
 import WebSocketInstance from "./websocket";
+import wanaWebSocketInstance from "./wanaWebsocket";
 import RedesignedHome from "./Components/Home/Home/RedesignedHome";
 import Contactpage from "./Components/Home/Redesigned_Contact_page/contact_page";
 import Paymentpage from "./Components/Home/Redesigned_Payment_Page/payment_page";
@@ -107,9 +108,26 @@ import AffiliatesSignup from "./Components/Home/Redesigned_signup_page/signupAff
 import BehaviouralAnalytics from "./Components/Dashboard/AffiliateDashboard/BehaviouralAnalytics";
 import WanaChatBot from "./Components/Home/WanaChat/WanaChatBot";
 
+import WelcomeIceBreaker from "./Components/Home/Assesment/AssessmentWelcomeIceBreaker";
+import PhaseOneIceBreaker from "./Components/Home/Assesment/AssessmentPhase1IceBreaker";
+import PhaseTwoIceBreaker from "./Components/Home/Assesment/AssessmentPhase2IceBreaker";
+import PhaseThreeIceBreaker from "./Components/Home/Assesment/AssessmentPhase3IceBreaker";
+import PhaseFourIceBreaker from "./Components/Home/Assesment/AssessmentPhase4IceBreaker";
+
 import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
+import ReactPixel from "react-facebook-pixel";
 
+import AllBookedSessions from "./Components/Dashboard/AllBookedSessions"
+
+const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
+const options = {
+  autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
+  debug: false, // enable logs
+};
+
+ReactPixel.init("366580180990564", advancedMatching, options);
+ReactPixel.pageView(); // For tracking page view
 ReactGA.initialize("UA-151203321-1");
 class App extends Component {
   constructor(props) {
@@ -120,16 +138,23 @@ class App extends Component {
       self.props.setMessages.bind(this),
       self.props.addMessage.bind(this)
     );
+    wanaWebSocketInstance?.addCallbacks(
+      self.props.setMessagesForWana.bind(this),
+      self.props.addMessage.bind(this)
+    );
   }
+  msgActions: any;
   componentDidMount() {
     ReactGA.pageview(window.location.pathname);
   }
   render() {
     return (
       <div className="App">
-        <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
-          <img src={whatsapp} className="whatsapp" alt="whatsapp" />
-        </a>
+        {window.location.pathname == "/" && (
+          <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
+            <img src={whatsapp} className="whatsapp" alt="whatsapp" />
+          </a>
+        )}
         <div>
           <BrowserRouter>
             <Switch>
@@ -209,16 +234,12 @@ class App extends Component {
                 path="/dashboard/careerfitness"
                 component={CareerFitness}
               />
-              <Route
-                exact
-                path="/assessmentphaseone"
-                component={AssessmentFirstPhase}
-              />
-              <Route
+
+              {/* <Route
                 exact
                 path="/assessmentphasefive"
                 component={AssessmentFifthPhase}
-              />
+              /> */}
               <Route
                 exact
                 path="/assessmentphasefivecomplete"
@@ -234,20 +255,15 @@ class App extends Component {
                 path="/assessmentphasesixcomplete"
                 component={AssessmentSixthPhaseComplete}
               />
-              <Route
+              {/* <Route
                 exact
                 path="/assessmentphaseseven"
                 component={AssessmentSeventhPhase}
-              />
+              /> */}
               <Route
                 exact
-                path="/assessmentphasesevencomplete"
+                path="/assessmentcompleted"
                 component={AssessmentSeventhPhaseComplete}
-              />
-              <Route
-                exact
-                path="/assessmentphasethree"
-                component={AssessmentThirdPhase}
               />
               <Route
                 exact
@@ -271,23 +287,8 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/assessmentphasefour"
-                component={Assessmentfourthphase}
-              />
-              <Route
-                exact
-                path="/assessmentphasefour1"
-                component={Assessmentfourthphase_1}
-              />
-              <Route
-                exact
                 path="/assessmentphasefourcomplete"
                 component={AssessmentFourthPhaseComplete}
-              />
-              <Route
-                exact
-                path="/assessmentphasetwo"
-                component={AssessmentSecondPhase}
               />
               <Route exact path="/paymentplan" component={SelectPaymentPlan} />
               <Route exact path="/signup" component={SignUp} />
@@ -364,6 +365,11 @@ class App extends Component {
                 exact
                 path="/counsellorsrecommendation"
                 component={CounsellorsRecommendation}
+              />
+              <Route
+                exact
+                path="/allbookedsessions"
+                component={AllBookedSessions}
               />
               <Route
                 exact
@@ -533,8 +539,73 @@ class App extends Component {
               />
               {/* Affiliates Starts here */}
               <Route exact path="/affiliates" component={ThirdPartyOverview} />
-              <Route exact path="/affiliates/analytics" component={BehaviouralAnalytics} />
+              <Route
+                exact
+                path="/affiliates/analytics"
+                component={BehaviouralAnalytics}
+              />
+
+              {/* Wana Chat Bot */}
               <Route exact path="/wana" component={WanaChatBot} />
+
+              {/* Assessment Icebreaker Paths */}
+              <Route
+                exact
+                path="/assessment/welcome"
+                component={WelcomeIceBreaker}
+              />
+              <Route
+                exact
+                path="/assessment/phaseone/complete"
+                component={PhaseOneIceBreaker}
+              />
+              <Route
+                exact
+                path="/assessment/phasetwo/complete"
+                component={PhaseTwoIceBreaker}
+              />
+              <Route
+                exact
+                path="/assessment/phasethree/complete"
+                component={PhaseThreeIceBreaker}
+              />
+              <Route
+                exact
+                path="/assessment/phasefour/complete"
+                component={PhaseFourIceBreaker}
+              />
+
+              {/* Assessment Paths */}
+              <Route
+                exact
+                path="/assessmentphaseone"
+                component={AssessmentFirstPhase}
+              />
+              {/* <Route
+                exact
+                path="/assessmentphaseone"
+                component={NewAssessmentPhaseOne}
+              /> */}
+              <Route
+                exact
+                path="/assessmentphasetwo"
+                component={NewAssessmentPhaseTwo}
+              />
+              <Route
+                exact
+                path="/assessmentphasetwo1"
+                component={NewAssessmentPhaseTwo_1}
+              />
+              <Route
+                exact
+                path="/assessmentphasethree"
+                component={NewAssessmentPhaseThree}
+              />
+              <Route
+                exact
+                path="/assessmentphasefour"
+                component={NewAssessmentPhaseFour}
+              />
             </Switch>
           </BrowserRouter>
         </div>
@@ -546,6 +617,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addMessage: (message) => dispatch(msgActions.addMessage(message)),
     setMessages: (messages) => dispatch(msgActions.setMessages(messages)),
+    setMessagesForWana: (messages) =>
+      dispatch(msgActions.setMessagesForWana(messages)),
   };
 };
 export default connect(null, mapDispatchToProps)(App);

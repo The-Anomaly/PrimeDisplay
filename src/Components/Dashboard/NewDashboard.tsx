@@ -26,6 +26,7 @@ import blur from "../../assets/weakness_blur.png";
 import blur2 from "../../assets/fix_blur.png";
 import blur2a from "../../assets/fix_blur2.png";
 import unlock2 from "../../assets/unlock_white.png";
+import caution1 from "../../assets/caution1.svg";
 
 interface State {
   fullname: string;
@@ -78,7 +79,7 @@ class NewDashboard extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        window.location.assign("/assessmentphaseone");
+        window.location.assign("/assessment/welcome");
         this.setState({
           isLoading_1: false,
         });
@@ -190,20 +191,29 @@ class NewDashboard extends React.Component {
       .catch((error) => {});
   };
   checkIfUserHasAccessToAskACounselor = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-
-    if (featureToCheck["ask_counsellor"] === true) {
-      // console.log("Ask a counselor successful");
-      window.location.assign("/allusermessages");
-    } else {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access ask a counselor");
-      return setTimeout(
-        (window.location.pathname = "/dashboardsubscriptionplan"),
-        2000
-      );
-    }
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        // console.log(response);
+        if (response?.data[0]?.ask_counsellor === true) {
+          return window.location.assign("/allusermessages");
+        }
+        if (response?.data[0]?.ask_counsellor === false) {
+          return setTimeout(
+            (window.location.pathname = "/dashboardsubscriptionplan"),
+            2000
+          );
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        // console.error("Payment Status Error");
+      });
   };
   CloseWarning = () => {
     this.setState({
@@ -323,9 +333,9 @@ class NewDashboard extends React.Component {
                     </div>
                   </div>
                   {!showfullresult && (
-                    <div className="notpaid hh">
+                    <div className="notpaid hh oops-upgrade">
                       <div className="notpaid1">
-                        <img src={caution} className="caution" alt="caution" />
+                        <img src={caution1} className="caution" alt="caution" />
                         <div className="notpaidtext">
                           Oops!!! You need to upgrade your plan to get indepth
                           details
@@ -336,7 +346,7 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                   )}
-                  <div className="resultsec2 lswid" id="seek">
+                  {/* <div className="resultsec2 lswid" id="seek">
                     <div className="csfitscore2">
                       Your Level of Career Clarity
                     </div>
@@ -367,7 +377,7 @@ class NewDashboard extends React.Component {
                         {client2?.career_fitness?.body}
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <hr className="lswid divider" />
                   <div className="lswid">
                     <div className="tipswrapper">
@@ -388,9 +398,9 @@ class NewDashboard extends React.Component {
                       ) : (
                         <div>
                           <div className="stbly1">
-                            {client2?.career_fitness?.quick_fix?.heading}
+                            {client?.career_fitness?.quick_fix?.heading}
                           </div>
-                          {client2?.career_fitness?.quick_fix?.body?.map(
+                          {client?.career_fitness?.quick_fix?.body?.map(
                             (data, index) => (
                               <div key={index} className="csbody liuii">
                                 {index + 1}.{"  "}
@@ -398,7 +408,7 @@ class NewDashboard extends React.Component {
                               </div>
                             )
                           )}
-                          <div className="blursec">
+                          {/* <div className="blursec">
                             <img
                               className="blur2"
                               src={blur2}
@@ -415,7 +425,7 @@ class NewDashboard extends React.Component {
                               alt="unlock"
                               onClick={() => this.setState({ onlyfree: true })}
                             />
-                          </div>
+                          </div> */}
                         </div>
                       )}
                       <div className="notice">
@@ -472,7 +482,7 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="reess">
                     <div className="kz1">
                       <div className="contkflex newcontkflex" id="strength">
                         <div className="kz2">
@@ -495,7 +505,7 @@ class NewDashboard extends React.Component {
                         ) : (
                           <div className="kz12">
                             <ul className="grapwrap">
-                              {client2?.strengths?.map((strength, index) => (
+                              {client?.strengths?.map((strength, index) => (
                                 <li
                                   className="grapssin career221 insighttxt"
                                   key={index}
@@ -504,7 +514,7 @@ class NewDashboard extends React.Component {
                                 </li>
                               ))}
                             </ul>
-                            <div className="blursec">
+                            {/* <div className="blursec">
                               <img
                                 className="blur"
                                 src={blur}
@@ -518,14 +528,14 @@ class NewDashboard extends React.Component {
                                   this.setState({ onlyfree: true })
                                 }
                               />
-                            </div>
+                            </div> */}
                           </div>
                         )}
                       </div>
                       <div className="contkflex newcontkflex" id="weakness">
                         <div className="kz2a">
                           <img src={vector2} className="kl3" alt="vector2" />
-                          <div>Your Weaknesses</div>
+                          <div>Possible Weaknesses</div>
                         </div>
                         {paid === true ? (
                           <div className="kz12">
@@ -543,7 +553,7 @@ class NewDashboard extends React.Component {
                         ) : (
                           <div className="kz12">
                             <ul className="grapwrap">
-                              {client2?.weaknesses?.map((weakness, index) => (
+                              {client?.weaknesses?.map((weakness, index) => (
                                 <li
                                   className="grapssin career221 insighttxt"
                                   key={index}
@@ -552,7 +562,7 @@ class NewDashboard extends React.Component {
                                 </li>
                               ))}
                             </ul>
-                            <div className="blursec">
+                            {/* <div className="blursec">
                               <img
                                 className="blur"
                                 src={blur}
@@ -566,11 +576,55 @@ class NewDashboard extends React.Component {
                                   this.setState({ onlyfree: true })
                                 }
                               />
-                            </div>
+                            </div> */}
                           </div>
                         )}
                       </div>
                     </div>
+                  </div>
+                  <hr />
+                  <div className="reess">
+                    <h5 className="dash-compromise">
+                      <strong>
+                        The Top Two Things You Shouldn't Compromise for a Happy
+                        Career
+                      </strong>
+                    </h5>
+                    <br />
+                    {client?.career_drivers?.fields?.map((data, index) => (
+                      <div>
+                        <div className="stbly">
+                          <div className="stbly1">{data.heading}</div>
+                          <div className="career221 insighttxt">
+                            {data.body}
+                          </div>
+                        </div>
+                        {/* <div className="tipswrapper">
+                      <div>
+                        <div className="noticeee">
+                          <img
+                            src={notice}
+                            className="noticeee1"
+                            alt="notice1"
+                          />
+                        </div>
+                        <div className="stbly1">
+                          Tips to Harnessing This Motivator:
+                          <div className="underlinee"></div>
+                        </div>
+                        {data?.tips?.map((dataindata, index) => (
+                          <div key={index}>
+                            {index + 1}.{"  "}
+                            {dataindata}
+                          </div>
+                        ))}
+                      </div>
+                      <div className="notice">
+                        <img src={notice} className="noticee" alt="notice" />
+                      </div>
+                    </div> */}
+                      </div>
+                    ))}
                   </div>
                   {!showfullresult && (
                     <FreeOverviewCard
@@ -627,8 +681,8 @@ class NewDashboard extends React.Component {
                 </div>
                 <div className="onhno"> Oh No! </div>
                 <div className="onhno">
-                  This package is not available on this plan. Please upgrade your
-                  plan
+                  This package is not available on this plan. Please upgrade
+                  your plan
                 </div>
                 <div className="text-center">
                   {/* <div className="retaketest upss1">
@@ -642,16 +696,20 @@ class NewDashboard extends React.Component {
                 </div>
               </Modal.Body>
             </Modal>
-            <Modal show={this.state.viewinsight} onHide={this.CloseInsightModal} centered>
+            <Modal
+              show={this.state.viewinsight}
+              onHide={this.CloseInsightModal}
+              centered
+            >
               <Modal.Body>
                 <div className="text-center">
-                  <h6 className="txttxtview">Click the button below to view your complete career insight.</h6>
+                  <h6 className="txttxtview">
+                    Click the button below to view your complete career insight.
+                  </h6>
                 </div>
-              <div className="retaketest upss1 planupgradebtn">
-                    <Link to="/thirdpary/fullresult">
-                      View full insight
-                    </Link>
-                  </div>
+                <div className="retaketest upss1 planupgradebtn">
+                  <Link to="/thirdpary/fullresult">View full insight</Link>
+                </div>
               </Modal.Body>
             </Modal>
           </Row>

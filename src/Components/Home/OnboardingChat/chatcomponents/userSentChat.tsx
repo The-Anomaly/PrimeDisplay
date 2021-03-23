@@ -3,16 +3,13 @@ import chatgirl from "../../../../assets/chatgirl.png";
 
 
 interface sentChatProps {
-  message: [];
+  message: string;
 }
 
 const UserSentChat: React.FunctionComponent<sentChatProps> = (props) => {
   return (
     <>
-      {props.message?.map((data, index) => {
-        return (<div className="chatbotText userbg" key={index}>{data}</div>);
-      })
-    }
+      <div className="chatbotText userbg" >{props.message}</div>
     </>
   );
 };

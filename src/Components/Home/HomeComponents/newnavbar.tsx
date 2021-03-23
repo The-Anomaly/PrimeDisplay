@@ -38,7 +38,8 @@ const newNavbar = withRouter((props: any) => {
       window.location.pathname === "/password_recovery" ||
       window.location.pathname === "/counsellor/signin/forgotpassword" || 
       window.location.pathname === "/affiliates/signin" || 
-      window.location.pathname === "/affiliates/signup"
+      window.location.pathname === "/affiliates/signup" ||
+      window.location.pathname === "/wana"
     ) {
       setDarkNav(true)
     }
@@ -121,24 +122,24 @@ const newNavbar = withRouter((props: any) => {
       .then((response) => {
         if (
           (response.status === 200 &&
-            response.data[0].next === "phase_four_nature") ||
-          response.data[0].next === "phase_four_health" ||
-          response.data[0].next === "phase_four_building" ||
-          response.data[0].next === "phase_four_creative"
+            response.data[0].next === "phase_two_nature") ||
+          response.data[0].next === "phase_two_health" ||
+          response.data[0].next === "phase_two_building" ||
+          response.data[0].next === "phase_two_creative"
         ) {
-          return props.history.push(`/assessmentphasefour`);
+          return props.history.push(`/assessmentphasetwo`);
         }
         if (
           (response.status === 200 &&
-            response.data[0].next === "phase_four_sports") ||
-          response.data[0].next === "phase_four_business" ||
-          response.data[0].next === "phase_four_stem" ||
-          response.data[0].next === "phase_four_humanitarian"
+            response.data[0].next === "phase_two_sports") ||
+          response.data[0].next === "phase_two_business" ||
+          response.data[0].next === "phase_two_stem" ||
+          response.data[0].next === "phase_two_humanitarian"
         ) {
-          return props.history.push(`/assessmentphasefour1`);
+          return props.history.push(`/assessmentphasetwo1`);
         }
         if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessmentphaseone`);
+          return props.history.push(`/assessment/welcome`);
         }
         if (response.status === 200 && response.data[0].next === "phase_two") {
           return props.history.push(`/assessmentphasetwo`);

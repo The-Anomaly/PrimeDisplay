@@ -99,31 +99,48 @@ const SideBarNewDashboard = withRouter((props: any) => {
       });
   };
   const checkIfUserHasAccessToOpportunityRecommender = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-
-    if (featureToCheck["job_recommendation"] === true) {
-      // console.log("Job opportunities successful");
-      return window.location.assign("/jobopportunities");
-    } else {
-      return setUpgradeState(true);
-    }
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        // console.log(response);
+        if (response?.data[0]?.job_recommendation === true) {
+          return  window.location.assign("/jobopportunities");;
+        }
+        else {
+          return setUpgradeState(true);;
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        // console.error("Payment Status Error");
+      });
   };
   const checkIfUserHasAccessToAskACounselor = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    if (featureToCheck["ask_counsellor"] === true) {
-      // console.log("Ask a counselor successful");
-      window.location.assign("/allusermessages");
-    } else {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access ask a counselor");
-      // return setTimeout(
-      //   (window.location.pathname = "/dashboardsubscriptionplan"),
-      //   2000
-      // );
-      return setUpgradeState(true);
-    }
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        // console.log(response);
+        if (response?.data[0]?.ask_counsellor === true) {
+          return  window.location.assign("/allusermessages");;
+        }
+        else {
+          return setUpgradeState(true);;
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        // console.error("Payment Status Error");
+      });
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
   const logOut = () => {
@@ -166,7 +183,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
               className="sideimage"
               alt="sideimage"
             />
-            Career Insight
+            Career Insights
             {state.isloading ? (
               <Spinner variant={"info"} animation="grow" />
             ) : (
@@ -186,7 +203,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="3">
                 <Card.Body>
-                  <Link to="/counsellordates" target="_blank">
+                  <Link to="/allbookedsessions" target="_blank">
                     <div className="task112">Book a private session</div>
                   </Link>
                   <div
@@ -209,7 +226,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
                 className="sideimage"
                 alt="sideimage"
               />
-              Recommended Task
+              Recommended Tasks
             </div>
           </Link>
           <div className={props.todo ? "activegb jusas" : "gbn jusas"}>
@@ -221,7 +238,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
                   className="sideimage"
                   alt="sideimage"
                 />
-                Task Todo
+                Career Todo List
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="5">
                 <Card.Body>
@@ -315,8 +332,8 @@ const SideBarNewDashboard = withRouter((props: any) => {
               alt="failedNotice"
             />{" "}
           </div>
-          <div className="onhno"> Oh No! </div>
-          <div className="onhno">
+          <div className="onhno no-access-ttl"> Oh No! </div>
+          <div className="onhno no-access-txt">
             This package is not available on this plan <br /> Please Upgrade
             your Plan
           </div>

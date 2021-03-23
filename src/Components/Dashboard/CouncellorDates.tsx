@@ -38,7 +38,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     isOpen: false,
     Canbooksession: false,
     no_subscription: false,
-    incomplete_profile_builder: false,
+    incomplete_usersettings: false,
     incomplete_job_rec: false,
     upgradeState: false,
   };
@@ -78,9 +78,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     this.setState({
       upgradeState: false,
     });
-    setTimeout(()=>{
-      window.location.reload()
-    },1000)
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
   onchange = (e) => {
     this.setState({
@@ -143,19 +143,42 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       })
       .then((response) => {
         // console.log(response);
-        if (response?.data[0]?.job_recommendation_filled === false) {
+        if (
+          response?.data[0]?.job_recommendation_filled === false &&
+          response?.data[0]?.personal_info === false
+        ) {
           return this.setState({
-            incomplete_profile_builder:false,
-            incomplete_job_rec:true,
-            upgradeState:true
-          })
-        }
-        if (response?.data[0]?.profile_builder_submitted === false) {
+            incomplete_usersettings: true,
+            incomplete_job_rec: true,
+            upgradeState: true,
+          });
+        } else if (
+          response?.data[0]?.job_recommendation_filled === true &&
+          response?.data[0]?.personal_info === true
+        ) {
           return this.setState({
-            incomplete_profile_builder:true,
-            incomplete_job_rec:false,
-            upgradeState:true
-          })
+            incomplete_usersettings: false,
+            incomplete_job_rec: false,
+            upgradeState: false,
+          });
+        } else if (
+          response?.data[0]?.job_recommendation_filled === false &&
+          response?.data[0]?.personal_info === true
+        ) {
+          return this.setState({
+            incomplete_usersettings: false,
+            incomplete_job_rec: true,
+            upgradeState: true,
+          });
+        } else if (
+          response?.data[0]?.job_recommendation_filled === true &&
+          response?.data[0]?.personal_info === false
+        ) {
+          return this.setState({
+            incomplete_usersettings: true,
+            incomplete_job_rec: false,
+            upgradeState: true,
+          });
         }
         if (response?.data[0]?.book_session === true) {
           // console.log("Payment Summary Check");
@@ -163,7 +186,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         } else {
           return this.setState({
             upgradeState: true,
-            no_subscription:true
+            no_subscription: true,
           });
         }
       })
@@ -224,7 +247,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
       fullname,
       phone,
       no_subscription,
-      incomplete_profile_builder,
+      incomplete_usersettings,
       incomplete_job_rec,
       isOpen,
       feedbackText,
@@ -238,11 +261,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           <DashboardNav />
           <Row>
             <SideBarNewDashboard />
-            <Col md={10} sm={12} className="prm mobilepadding">
-              <DashboardLargeScreenNav title="" />
+            <Col md={10} sm={12} className="prm newprm mobilepadding">
+              <DashboardLargeScreenNav title="Schedule a Meeting" />
               <Row className="kli6 bcbv datesedit">
                 <Col md={12} className="scheduleheader">
-                  Schedule a meeting
+                  <strong>Schedule a meeting</strong>
                 </Col>
                 <Col md={6} className="calwrapper">
                   <Calendar
@@ -385,8 +408,8 @@ class CouncellorDates extends React.Component<React.Props<any>> {
             </div>
             {no_subscription && (
               <>
-                <div className="onhno"> Oh No! </div>
-                <div className="onhno">
+                <div className="onhno no-access-ttl"> Oh No! </div>
+                <div className="onhno no-access-txt">
                   This package is not available on this plan <br /> Please
                   Upgrade your Plan
                 </div>
@@ -401,9 +424,9 @@ class CouncellorDates extends React.Component<React.Props<any>> {
             )}
             {incomplete_job_rec && (
               <>
-                <div className="onhno"> Oh No! </div>
-                <div className="onhno">
-                  You are required to complete your Opportunity Recommender form
+                <div className="onhno no-access-ttl"> Oh No! </div>
+                <div className="onhno no-access-txt">
+                  You are required to complete the Opportunity Recommender form
                   before booking a private session
                 </div>
                 <div className="text-center planupgrade">
@@ -415,20 +438,18 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                 </div>
               </>
             )}
-            {incomplete_profile_builder && (
+            {incomplete_usersettings && (
               <>
-                <div className="onhno"> Oh No! </div>
-                <div className="onhno">
-                  You are required to complete your profile builder form
-                  before booking a private session
+                <div className="onhno no-access-ttl"> Aww, no access </div>
+                <div className="onhno no-access-txt">
+                  You are required to complete the user profile form before
+                  booking a private session
                 </div>
                 <div className="text-center planupgrade">
                   <div className="retaketest upss1 planupgradebtn">
-                    <Link to="/profilebuilder">
-                      Complete Profile builder
-                    </Link>
+                    <Link to="/dashboardsettings">Complete user profile</Link>
                   </div>
-                </div>
+                  </div>
               </>
             )}
           </Modal.Body>

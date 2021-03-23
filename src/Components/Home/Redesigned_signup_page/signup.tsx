@@ -17,7 +17,7 @@ const Signup = withRouter((props: any) => {
     email: "",
     password: "",
     howYouHeardAboutUs: "",
-    referralCode: "",
+    referral_code: "",
     successMessage: "",
     errorMessage: "",
     passwordIsOpen: true,
@@ -31,7 +31,7 @@ const Signup = withRouter((props: any) => {
     password,
     isLoading,
     howYouHeardAboutUs,
-    referralCode,
+    referral_code,
     lastname,
     successMessage,
     errorMessage,
@@ -45,7 +45,7 @@ const Signup = withRouter((props: any) => {
       email: email,
       password: password,
       info: howYouHeardAboutUs,
-      referral_code: referralCode,
+      referral_code: referral_code,
     };
     // console.log(data);
     //posting data to the api
@@ -53,7 +53,7 @@ const Signup = withRouter((props: any) => {
       .post(`${API}/accounts/signup/`, data)
       .then((response) => {
         //console.log(response)
-        window.scrollTo(-0,-0);
+        window.scrollTo(-0, -0);
         if (response.status === 200) {
           localStorage.setItem("userEmail", JSON.stringify(email));
           setTimeout(() => {
@@ -71,7 +71,7 @@ const Signup = withRouter((props: any) => {
       })
       .catch((error) => {
         // console.log(error.response);
-        window.scrollTo(-0,-0);
+        window.scrollTo(-0, -0);
         if (error && error.response && error.response.data) {
           return setFormState({
             ...state,
@@ -91,11 +91,11 @@ const Signup = withRouter((props: any) => {
   useEffect(() => {
     const query = new URLSearchParams(props.location.search);
     const referralKey = query.get("referral");
-    if(referralKey){
+    if (referralKey) {
       setFormState({
         ...state,
-        referralCode:referralKey
-      })
+        referral_code: referralKey,
+      });
     }
   }, []);
   const onChangeHandler = (e) => {
@@ -177,22 +177,30 @@ const Signup = withRouter((props: any) => {
               <p>
                 Registering to this website, you accept our
                 <span className="t_plinkspn">
-                  <Link to="/terms&conditions" target="_blank"> Terms of Use </Link>{" "}
+                  <Link to="/terms&conditions" target="_blank">
+                    {" "}
+                    Terms of Use{" "}
+                  </Link>{" "}
                 </span>{" "}
                 and our
                 <span className="t_plinkspn">
                   {" "}
-                  <Link to="/privacy_policy" target="_blank">Privacy Policy</Link>{" "}
+                  <Link to="/privacy_policy" target="_blank">
+                    Privacy Policy
+                  </Link>{" "}
                 </span>
               </p>
             </Col>
             <Col md={7}>
               <Form className="rdsignupform" onSubmit={validateForm}>
                 <div className="rdsignupfrmdv">
-                  <h4 className="sgnfrmhder">Sign Up</h4>
+                  <h4 className="sgnfrmhder">
+                    Welcome to Clarity<div>Sign Up</div>
+                  </h4>
+
                   <div>
                     <div className="sgnupfrmline"></div>
-                    <span className="sgnupdescr">(to get Clarity)</span>
+                    <span className="sgnupdescr">(to Speak to a Counsellor)</span>
                   </div>
                 </div>
                 {successMessage && (
@@ -327,9 +335,9 @@ const Signup = withRouter((props: any) => {
                     <input
                       type="text"
                       size={25}
-                      name="referralCode"
+                      name="referral_code"
                       className="rdfrmtinptt"
-                      value={referralCode}
+                      value={referral_code}
                       onChange={onChangeHandler}
                       placeholder="Enter referral code (optional)"
                     />
@@ -345,7 +353,7 @@ const Signup = withRouter((props: any) => {
                   </button>
                 </div>
                 <p className="rdsgnalready">
-                <Link to="/signin">  Already Registered? Sign In</Link>
+                  <Link to="/signin"> Already Registered? Sign In</Link>
                 </p>
               </Form>
             </Col>

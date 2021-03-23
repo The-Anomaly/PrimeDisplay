@@ -1,15 +1,15 @@
 import * as React from "react";
 
 interface ChatBotProps {
-  message: [];
+  message: string;
 }
 
-const ChatBotSentMessages: React.FunctionComponent<ChatBotProps> = (props) => {
+const ChatBotSentMessages: React.FunctionComponent<ChatBotProps> = (
+  props: any
+) => {
   return (
     <>
-      {props?.message?.map((data, index) => {
-        return <div className="chatbotText sentbg" key={index}>{data}</div>;
-      })}
+      <div className="chatbotText sentbg">{props.message}</div>
     </>
   );
 };

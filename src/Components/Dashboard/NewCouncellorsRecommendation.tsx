@@ -71,7 +71,7 @@ class CounsellorsRecommendation extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        window.location.assign("/assessmentphaseone");
+        window.location.assign("/assessment/welcome");
       })
       .catch((err) => {
         if (err) {
@@ -304,11 +304,11 @@ class CounsellorsRecommendation extends React.Component {
                   <div className="kdashheader npps">
                     <DashboardUsernameheader
                       welcomeText={
-                        " Find below summary of all your chats and recomendation with your counsellor"
+                        " Find below a summary of all your chats and recomendation with your counsellor"
                       }
                     />
                     <div className="">
-                      <Link to="/counsellordates">
+                      <Link to="/allbookedsessions">
                         <Button className="retaketest">
                           Book a private session
                         </Button>
@@ -389,7 +389,7 @@ class CounsellorsRecommendation extends React.Component {
                           />
                           <div className="udont1">Opps!!!</div>
                           <div className="udont">
-                            You dont have any Recommendation yet, you should
+                            You don't have any recommendations yet, you should
                             speak to a counsellor now
                           </div>
                         </div>

@@ -516,6 +516,16 @@ const TodoOverview = withRouter((props: any) => {
             />
           </div>
           <div className="modal_det">
+            <div className="titlee">Task Duration (days)</div>
+            <textarea
+              className="note_det"
+              placeholder="Enter number of days"
+              name="add_note"
+              disabled={true}
+              value={getTaskdetails()?.duration}
+            />
+          </div>
+          {/* <div className="modal_det">
             <div className="titlee">Note</div>
             <textarea
               className="note_det"
@@ -524,7 +534,7 @@ const TodoOverview = withRouter((props: any) => {
               disabled={true}
               value={getTaskdetails()?.notes}
             />
-          </div>
+          </div> */}
           <div className="request_input"></div>
           <div className="mark_complete">
             <div

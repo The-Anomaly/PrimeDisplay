@@ -25,33 +25,32 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     isLoading: false,
   });
   const { errorMessage, user, userData, searchKey } = state;
-  // React.componentDidMount() {
-  //   const stringFeature = localStorage.getItem("accessFeature");
-  //   const featureToCheck = stringFeature
-  //     ? JSON.parse(stringFeature)
-  //     : "";
-
-  //   if (featureToCheck["ask_a_counselor"] === true) {
-  //     console.log("Ask a counselor successful");
-  //     window.location.assign("/allusermessages");
-  //   } else {
-  //     //notify("Update your subscription to access this feature");
-  //     console.log("Can't access ask a counselor");
-  //     return setInterval((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
-  //   }
-  // }
   React.useEffect(() => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-    if (featureToCheck["ask_counsellor"] === false) {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access ask a counselor");
-      setTimeout(
-        (window.location.pathname = "/dashboardsubscriptionplan"),
-        1000
-      );
-    }
-    getMessages();
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : window.location.assign("/signin");
+    Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((response) => {
+        // console.log(response);
+        if (response?.data[0]?.ask_counsellor === false) {
+            //notify("Update your subscription to access this feature");
+            // console.log("Can't access ask a counselor");
+            setTimeout(
+              (window.location.pathname = "/dashboardsubscriptionplan"),
+              1000
+            );
+          }
+          if (response?.data[0]?.ask_counsellor === true){
+            getMessages();
+          }
+      })
+      .catch((error) => {
+        // console.log(error);
+        // console.error("Payment Status Error");
+      });
   }, []);
   const getMessages = () => {
     const availableToken = localStorage.getItem("userToken");

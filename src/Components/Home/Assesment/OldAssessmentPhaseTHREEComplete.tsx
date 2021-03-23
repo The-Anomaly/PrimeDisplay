@@ -35,7 +35,7 @@ const AssessmentThirdPhaseComplete = (props: any) => {
       <Container fluid={true}>
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
-            progressBar={35}
+            progressBar={60}
             phase="Phase 3"
             nextPhase="Phase 4"
             time={10}
@@ -70,13 +70,6 @@ const AssessmentThirdPhaseComplete = (props: any) => {
         </Row>
         {/* <Footer /> */}
       </Container>
-      <ToastContainer
-        enableMultiContainer
-        containerId={"B"}
-        toastClassName="bg-info text-white"
-        hideProgressBar={true}
-        position={toast.POSITION.TOP_CENTER}
-      />
     </div>
   );
 };

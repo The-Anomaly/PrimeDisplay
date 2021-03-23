@@ -33,6 +33,7 @@ import { toast } from "react-toastify";
 import failedNotice from "../../assets/failedNotice.png";
 import { Modal } from "react-bootstrap";
 import logoutImage from "../../assets/logout.png";
+import { handleChatCheck } from "./services";
 
 const DashboardNav = (props: any) => {
   const [user, setNewState] = React.useState("");
@@ -101,33 +102,52 @@ React.useEffect(()=>{
       })
       .catch((error) => {});
   };
+
   const checkIfUserHasAccessToOpportunityRecommender = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-
-    if (featureToCheck["job_recommendation"] === true) {
-      // console.log("Job opportunities successful");
-      window.location.assign("/jobopportunities");
-    } else {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access job opportunities");
-      return setUpgradeState(true);
-      //return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
-    }
+    const availableToken = localStorage.getItem("userToken");
+      const token = availableToken
+        ? JSON.parse(availableToken)
+        : window.location.assign("/signin");
+      Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+        .then((response) => {
+          // console.log(response);
+          if (response?.data[0]?.job_recommendation === true) {
+            return  window.location.assign("/jobopportunities");;
+          }
+          else if (response?.data[0]?.job_recommendation === false) {
+            return setUpgradeState(true);
+          }
+        })
+        .catch((error) => {
+          // console.log(error);
+          // console.error("Payment Status Error");
+        });
   };
+  
   const checkIfUserHasAccessToAskACounselor = () => {
-    const stringFeature = localStorage.getItem("accessFeature");
-    const featureToCheck = stringFeature ? JSON.parse(stringFeature) : "";
-
-    if (featureToCheck["ask_counsellor"] === true) {
-      // console.log("Ask a counselor successful");
-      window.location.assign("/allusermessages");
-    } else {
-      //notify("Update your subscription to access this feature");
-      // console.log("Can't access ask a counselor");
-      return setUpgradeState(true);
-      //return setTimeout((window.location.pathname = "/dashboardsubscriptionplan"), 2000);
-    }
+      // console.log("checking payment status");
+      const availableToken = localStorage.getItem("userToken");
+      const token = availableToken
+        ? JSON.parse(availableToken)
+        : window.location.assign("/signin");
+      Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+        headers: { Authorization: `Token ${token}` },
+      })
+        .then((response) => {
+          // console.log(response);
+          if (response?.data[0]?.ask_counsellor === true) {
+            return  window.location.assign("/allusermessages");;
+          }
+          if (response?.data[0]?.ask_counsellor === false) {
+            return setUpgradeState(true);;
+          }
+        })
+        .catch((error) => {
+          // console.log(error);
+          // console.error("Payment Status Error");
+        });
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
   return (
@@ -196,7 +216,7 @@ React.useEffect(()=>{
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Career Insight
+                  Career Insights
                 </div>
                 {/* <div className={props.chat ? "activegb" : "gbn"}>
                 {" "}
@@ -226,7 +246,7 @@ React.useEffect(()=>{
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="3">
                       <Card.Body>
-                        <Link to="/counsellordates">
+                        <Link to="/allbookedsessions">
                           <div className="task112">Book a private session</div>
                         </Link>
                         <div
@@ -251,7 +271,7 @@ React.useEffect(()=>{
                       className="sideimage"
                       alt="sideimage"
                     />
-                    Recommended Task
+                    Recommended Tasks
                   </div>
                 </Link>
                 <div className={props.todo ? "activegb" : "gbn"}>
@@ -269,7 +289,7 @@ React.useEffect(()=>{
                         className="sideimage"
                         alt="sideimage"
                       />
-                      Task Todo
+                      Career Todo List
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="5">
                       <Card.Body>
@@ -387,8 +407,8 @@ React.useEffect(()=>{
               alt="failedNotice"
             />{" "}
           </div>
-          <div className="onhno"> Oh No! </div>
-          <div className="onhno">
+          <div className="onhno no-access-ttl"> Oh No! </div>
+          <div className="onhno no-access-txt">
             This package is not available on this plan <br /> Please Upgrade
             your Plan
           </div>

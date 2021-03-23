@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../Home/Home.css";
 import "../assessment.css";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+import { Row, Spinner } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Footer from "../../HomeComponents/newfooter";
 import Navbar from "../../HomeComponents/newnavbar";
@@ -16,7 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 // team
 
-const Assessmentfourthphase = (props: any) => {
+const NewAssessmentPhaseTwo = (props: any) => {
   const [state, setRateValue] = React.useState({
     rate1: "0",
     rate2: "0",
@@ -43,6 +43,7 @@ const Assessmentfourthphase = (props: any) => {
     rate23: "0",
     rate24: "0",
     token: "",
+    isloading: false,
   });
   const {
     rate1,
@@ -69,6 +70,7 @@ const Assessmentfourthphase = (props: any) => {
     rate22,
     rate23,
     rate24,
+    isloading,
     token,
   } = state;
   //cdm
@@ -87,37 +89,41 @@ const Assessmentfourthphase = (props: any) => {
   };
   //subform
   const submitForm = (e: any) => {
+    setRateValue({
+      ...state,
+      isloading: true,
+    });
     e.preventDefault();
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
       : props.history.push("/signin");
     const firstApiData = {
-      q36a: rate1,
-      q36b: rate2,
-      q36c: rate3,
-      q36d: rate4,
-      q36e: rate5,
-      q36f: rate6,
-      q36g: rate7,
-      q36h: rate8,
+      q1: rate1,
+      q2: rate2,
+      q3: rate3,
+      q4: rate4,
+      q5: rate5,
+      q6: rate6,
+      q7: rate7,
+      q8: rate8,
     };
     const secondApiData = {
-      q37a: rate9,
-      q37b: rate10,
-      q37c: rate11,
-      q37d: rate12,
+      q1: rate9,
+      q2: rate10,
+      q3: rate11,
+      q4: rate12,
     };
     const thirdApiData = {
-      q38a: rate17,
-      q38b: rate18,
-      q38c: rate19,
+      q1: rate17,
+      q2: rate18,
+      q3: rate19,
     };
     const fourthApiData = {
-      q39a: rate13,
-      q39b: rate14,
-      q39c: rate15,
-      q39d: rate16,
+      q1: rate13,
+      q2: rate14,
+      q3: rate15,
+      q4: rate16,
     };
     axios
       .all([
@@ -143,12 +149,20 @@ const Assessmentfourthphase = (props: any) => {
               thirdresponse?.status == 200 &&
               fourthresp?.status == 200
             ) {
-              props.history.push("/assessmentphasefour1");
+              props.history.push("/assessmentphasetwo1");
+              setRateValue({
+                ...state,
+                isloading: false,
+              });
             }
           }
         )
       )
       .catch((error) => {
+        setRateValue({
+          ...state,
+          isloading: false,
+        });
         if (error && error.response && error.response.data) {
           notify(error.response.data[0].message);
         }
@@ -165,10 +179,10 @@ const Assessmentfourthphase = (props: any) => {
       <Container fluid={true}>
         <Row className="firstrowcf cftcontent assesspadd">
           <AssessmentFirstSection
-            progressBar={40}
-            phase="Phase 4"
-            nextPhase="Phase 5"
-            time={10}
+            progressBar={43}
+            phase="Phase 2a"
+            nextPhase="Phase 2b"
+            time={6}
           />
           <Col md={11}></Col>
           <Col md={1}></Col>
@@ -186,7 +200,7 @@ const Assessmentfourthphase = (props: any) => {
                     </div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        a. Music, Dance, Drama, Oratory & Comedy.
+                        1. Music, Dance, Drama, Oratory & Comedy.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -202,7 +216,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        b. Cartoon Creation, Games, Visuals.
+                        2. Cartoon Creation, Games, Visuals.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -218,7 +232,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        c. Radio/TV Presenting, Writing, Blogging.
+                        3. Radio/TV Presenting, Writing, Blogging.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -234,7 +248,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        d. Baking, Cooking, Event Planning, Travelling.
+                        4. Baking, Cooking, Event Planning, Travelling.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -250,7 +264,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        e. Make-Up Application, Hair, Nails and Skin Care.
+                        5. Make-Up Application, Hair, Nails and Skin Care.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -266,7 +280,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        f. Fashion and Accessory Design, Celebrity Styling.
+                        6. Fashion and Accessory Design, Celebrity Styling.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -282,7 +296,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        g. Organizing & Beautifying Spaces.
+                        7. Organizing & Beautifying Spaces.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -298,7 +312,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        h. Creating Movies, Documentaries, Capturing Beautiful
+                        8. Creating Movies, Documentaries, Capturing Beautiful
                         Moments in Pictures.
                       </div>
                       <div className="assessrating">
@@ -324,7 +338,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        i. Constructing or Designing Houses, Roads, Bridges.
+                        9. Constructing or Designing Houses, Roads, Bridges.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -340,7 +354,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        j. Organizing and Regulating the way a space is used.
+                        10. Organizing and Regulating the way a space is used.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -356,7 +370,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        k. Make possible the selling/buying of land and property
+                        11. Make possible the selling/buying of land and property
                         between people.
                       </div>
                       <div className="assessrating">
@@ -373,7 +387,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        l. Make easy the movement of people, goods and things
+                        12. Make easy the movement of people, goods and things
                         from one point to another.
                       </div>
                       <div className="assessrating">
@@ -395,7 +409,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        m. Process, produce and distribute agricultural (crops
+                        13. Process, produce and distribute agricultural (crops
                         and animals) products to people.
                       </div>
                       <div className="assessrating">
@@ -412,7 +426,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        n. Protect and preserve our natural environment so
+                        14. Protect and preserve our natural environment so
                         others can enjoy it.
                       </div>
                       <div className="assessrating">
@@ -429,7 +443,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        o. Understand how the earth works so you can protect the
+                        15. Understand how the earth works so you can protect the
                         environment and human health.
                       </div>
                       <div className="assessrating">
@@ -446,7 +460,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        p. Use the sun, wind, charcoal, water or fossil fuel to
+                        16. Use the sun, wind, charcoal, water or fossil fuel to
                         generate power for electricity.
                       </div>
                       <div className="assessrating">
@@ -468,7 +482,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        q. Identify and prevent a range of conditions and
+                        17. Identify and prevent a range of conditions and
                         illnesses from occurring.
                       </div>
                       <div className="assessrating">
@@ -485,7 +499,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        r. Work with people to maintain a healthy lifestyle.
+                        18. Work with people to maintain a healthy lifestyle.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -501,7 +515,7 @@ const Assessmentfourthphase = (props: any) => {
                   <div>
                     <div className="assessquestionwrap">
                       <div className="assessquestion">
-                        s. Diagnose and treat a variety of medical issues.
+                        19. Diagnose and treat a variety of medical issues.
                       </div>
                       <div className="assessrating">
                         <StarRatingComponent
@@ -528,6 +542,7 @@ const Assessmentfourthphase = (props: any) => {
               <button className="nxtbtn" onClick={submitForm}>
                 Next
               </button>
+              {isloading && <Spinner animation={"grow"} />}
             </div>
           </Col>
         </Row>
@@ -537,4 +552,4 @@ const Assessmentfourthphase = (props: any) => {
   );
 };
 
-export default Assessmentfourthphase;
+export default NewAssessmentPhaseTwo;

@@ -2806,6 +2806,9 @@ button {
   .mobilepaddingredo {
     padding-top: 50px;
   }
+  .fourthsubsechov {
+    z-index: 1;
+  }
 }
 
 .planupgrade {

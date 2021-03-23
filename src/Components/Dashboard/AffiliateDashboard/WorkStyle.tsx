@@ -70,7 +70,7 @@ const WorkStyle = (props: any) => {
     { text: "Woman", value: 300 },
   ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  console.log(user.length);
+  // console.log(user.length);
   return (
     <>
       <Row className="cllcc">

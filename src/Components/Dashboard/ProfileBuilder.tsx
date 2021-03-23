@@ -41,7 +41,7 @@ class ProfileBuilder extends React.Component {
     valid_from: "",
     valid_till: "",
     organizationname: "",
-    isloading:false,
+    isloading: false,
     referencename: "",
     referenceid: "",
     referenceemail: "",
@@ -65,9 +65,19 @@ class ProfileBuilder extends React.Component {
     isLoading: false,
     showWarning: false,
     mycurrentwork: false,
+    experience_id: "",
+    education_id: "",
+    certification_id: "",
+    reference_id: "",
+    elIndex: "",
     userHasAddedExperience: false,
+    editexperience: false,
+    editeducation: false,
+    editcertification: false,
+    editreference: false,
     startDate: "",
     endDate: "",
+    job_description: "",
     width: 100,
   };
   moveTo = (str) => {
@@ -90,7 +100,7 @@ class ProfileBuilder extends React.Component {
     this.setState({
       skills: [...this.state.skills, ...skillz].reverse(),
       skill: "",
-      mycurrentwork:false
+      mycurrentwork: false,
     });
   };
   addNewEducation = () => {
@@ -105,11 +115,7 @@ class ProfileBuilder extends React.Component {
       },
     ];
     const [{ degree, institution, location, start_date }] = Educationz;
-    if (
-      degree === "" ||
-      institution === "" ||
-      location === ""
-    ) {
+    if (degree === "" || institution === "" || location === "") {
       return this.notify("Please enter all education data");
     }
     this.setState({
@@ -220,8 +226,8 @@ class ProfileBuilder extends React.Component {
   };
   submitForm = (e) => {
     this.setState({
-      isloading:true
-    })
+      isloading: true,
+    });
     e.preventDefault();
     const {
       certifications,
@@ -258,8 +264,8 @@ class ProfileBuilder extends React.Component {
     )
       .then((res) => {
         this.setState({
-          isloading:false
-        })
+          isloading: false,
+        });
         this.notify("Successful");
         setTimeout(() => {
           window.location.assign("/profilebuilder");
@@ -267,11 +273,11 @@ class ProfileBuilder extends React.Component {
       })
       .catch((err) => {
         if (err) {
-          this.notify("Failed to send"); 
+          this.notify("Failed to send");
         }
         this.setState({
-          isloading:false
-        })
+          isloading: false,
+        });
       });
   };
   componentDidMount() {
@@ -281,9 +287,10 @@ class ProfileBuilder extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
-        if(res?.data?.new_user){
-          return
+        if (res?.data?.new_user) {
+          return;
         }
+        // console.log(res.data);
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
@@ -322,6 +329,7 @@ class ProfileBuilder extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
+        // console.log(response)
         if (response.status === 200) {
           this.setState({
             user: response.data,
@@ -350,6 +358,538 @@ class ProfileBuilder extends React.Component {
     this.setState({
       showWarning: false,
     });
+  };
+  CloseEditCertification = () => {
+    this.setState({
+      editcertification: false,
+    });
+  };
+  CloseEditExperience = () => {
+    this.setState({
+      editexperience: false,
+    });
+  };
+  CloseEditEducation = () => {
+    this.setState({
+      editeducation: false,
+    });
+  };
+  CloseEditReference = () => {
+    this.setState({
+      editreference: false,
+    });
+  };
+
+  checkforidExperience = (id, index) => {
+    this.state.experiences.forEach((element) => {
+      if (element.id && element.id === id) {
+        // console.log(index);
+        this.setState({
+          organizationname: element.organisation,
+          organizationposition: element.position,
+          startDate: element.started_from,
+          mycurrentwork: element.current,
+          endDate: element.to,
+          job_description: element.job_description,
+          experience_id: id,
+          editexperience: true,
+        });
+      }
+      if (!element.id) {
+        let experiences = this.state.experiences;
+        experiences.findIndex((element, i) => {
+          if (index === i) {
+            // console.log(i);
+            // console.log(element);
+            if (!element.organizationname) {
+              return this.setState({
+                organizationname: element.organisation,
+                organizationposition: element.position,
+                startDate: element.started_from,
+                mycurrentwork: element.current,
+                endDate: element.to,
+                job_description: element.job_description,
+                editexperience: true,
+                elIndex: i,
+              });
+            }
+            this.setState({
+              organizationname: element.organizationname,
+              organizationposition: element.organizationposition,
+              startDate: element.startDate,
+              mycurrentwork: element.mycurrentwork,
+              endDate: element.endDate,
+              job_description: element.job_description,
+              editexperience: true,
+              elIndex: i,
+            });
+          }
+        });
+      }
+    });
+  };
+  checkforidEdu = (id, index) => {
+    this.state.education.forEach((element) => {
+      if (element.id && element.id == id) {
+        // console.log(element);
+        this.setState({
+          degreeObtained: element.degree,
+          education_doesnot_expire: element.i_currently_study_here,
+          education_id: id,
+          institutionname: element.institution,
+          institutionLocation: element.location,
+          education_valid_from: element.start_date,
+          education_valid_till: element.end_date,
+          editeducation: true,
+        });
+      }
+      if (!element.id) {
+        let education = this.state.education;
+        education.findIndex((element, i) => {
+          if (index === i) {
+            // console.log(i);
+            // console.log(element);
+            if (element.institution) {
+              return this.setState({
+                institutionname: element.institution,
+                institutionLocation: element.location,
+                education_valid_from: element.start_date,
+                education_doesnot_expire: element.i_currently_study_here,
+                education_valid_till: element.end_date,
+                degreeObtained: element.degree,
+                editeducation: true,
+                elIndex: i,
+              });
+            }
+            if (element.institutionname) {
+              this.setState({
+                degreeObtained: element.degreeObtained,
+                education_doesnot_expire: element.education_doesnot_expire,
+                institutionname: element.institutionname,
+                institutionLocation: element.institutionLocation,
+                education_valid_from: element.education_valid_from,
+                education_valid_till: element.education_valid_till,
+                editeducation: true,
+                elIndex: i,
+              });
+            }
+          }
+        });
+      }
+    });
+  };
+  //reference
+  checkforReferenceId = (id, index) => {
+    // console.log(this.state.references);
+    this.state.references.forEach((element) => {
+      if (element.id && element.id == id) {
+        // console.log(element);
+        this.setState({
+          referencetitle: element.title,
+          referencename: element.name,
+          referencephone: element.phone,
+          reference_id: element.id,
+          referenceemail: element.ref_email,
+          referencerelationship: element.relationship,
+          editreference: true,
+        });
+      }
+      if (!element.id) {
+        let references = this.state.references;
+        references.findIndex((element, i) => {
+          if (index === i) {
+            // console.log(i);
+            // console.log(element);
+            if (element.title || element.name) {
+              return this.setState({
+                referencetitle: element.title,
+                referencename: element.name,
+                referencephone: element.phone,
+                reference_id: element.id,
+                referenceemail: element.ref_email,
+                referencerelationship: element.relationship,
+                editreference: true,
+                elIndex: i,
+              });
+            }
+            if (element.referencetitle) {
+              this.setState({
+                referencetitle: element.referencetitle,
+                referencename: element.referencename,
+                referencephone: element.referencephone,
+                reference_id: element.reference_id,
+                referenceemail: element.referenceemail,
+                referencerelationship: element.referencerelationship,
+                editreference: true,
+                elIndex: i,
+              });
+            }
+          }
+        });
+      }
+    });
+  };
+  checkforCertId = (id, index) => {
+    this.state.certifications.forEach((element) => {
+      if (element.id && element.id == id) {
+        console.log(element);
+        this.setState({
+          certificateName: element.certificate_name,
+          expirationStatus: element.does_not_expire,
+          certification_id: id,
+          certificateInstitution: element.institution,
+          valid_from: element.valid_from,
+          valid_till: element.valid_till,
+          editcertification: true,
+        });
+      }
+      if (!element.id) {
+        let certifications = this.state.certifications;
+        certifications.findIndex((element, i) => {
+          if (index === i) {
+            // console.log(i);
+            // console.log(element);
+            if (element.certificate_name) {
+              return this.setState({
+                certificateName: element.certificate_name,
+                expirationStatus: element.does_not_expire,
+                certificateInstitution: element.institution,
+                valid_from: element.valid_from,
+                valid_till: element.valid_till,
+                editcertification: true,
+                elIndex: i,
+              });
+            }
+            if (element.certificateName) {
+              this.setState({
+                certificateName: element.certificateName,
+                expirationStatus: element.expirationStatus,
+                certificateInstitution: element.certificateInstitution,
+                valid_from: element.valid_from,
+                valid_till: element.valid_till,
+                editcertification: true,
+                elIndex: i,
+              });
+            }
+          }
+        });
+      }
+    });
+  };
+  updateExperience = () => {
+    if (!this.state.experience_id) {
+      let experiences = this.state.experiences;
+      this.state.experiences.findIndex((element, i) => {
+        if (this.state.elIndex === i) {
+          experiences[i] = {
+            organisation: this.state.organizationname,
+            position: this.state.organizationposition,
+            started_from: this.state.startDate,
+            to: this.state.endDate,
+            current: this.state.mycurrentwork,
+            job_description: this.state.job_description,
+          };
+          // console.log(experiences);
+          this.setState({
+            experiences: experiences,
+            editexperience: false,
+            organizationname: "",
+            organizationposition: "",
+            startDate: "",
+            mycurrentwork: "",
+            endDate: "",
+            job_description: "",
+          });
+          this.notify("Update Successfull");
+        }
+      });
+      return;
+    }
+    this.setState({
+      isloading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    const data = {
+      organisation: this.state.organizationname,
+      position: this.state.organizationposition,
+      started_from: this.state.startDate,
+      to: this.state.endDate,
+      current: this.state.mycurrentwork,
+      job_description: this.state.job_description,
+    };
+    // console.log(data);
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/dashboard/edit-experience/${this.state.experience_id}/`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        this.setState({
+          isloading: false,
+          editexperience: false,
+          organizationname: "",
+          organizationposition: "",
+          startDate: "",
+          mycurrentwork: "",
+          endDate: "",
+          job_description: "",
+          experience_id: "",
+        });
+        this.notify("Successful");
+        this.componentDidMount();
+      })
+      .catch((err) => {
+        if (err) {
+          this.notify("Failed to send");
+        }
+        this.setState({
+          isloading: false,
+          editexperience: false,
+          organizationname: "",
+          organizationposition: "",
+          startDate: "",
+          mycurrentwork: "",
+          endDate: "",
+          job_description: "",
+          experience_id: "",
+        });
+      });
+  };
+  updateEducation = () => {
+    if (!this.state.education_id) {
+      let education = this.state.education;
+      this.state.education.findIndex((element, i) => {
+        if (this.state.elIndex === i) {
+          education[i] = {
+            degree: this.state.degreeObtained,
+            i_currently_study_here: this.state.education_doesnot_expire,
+            institution: this.state.institutionname,
+            location: this.state.institutionLocation,
+            start_date: this.state.education_valid_from,
+            end_date: this.state.education_valid_till,
+          };
+          // console.log(education);
+          this.setState({
+            education,
+            degreeObtained: " ",
+            education_doesnot_expire: "",
+            institutionname: "",
+            institutionLocation: "",
+            education_valid_from: "",
+            education_valid_till: "",
+            editeducation: false,
+          });
+          this.notify("Education Update Successfull");
+        }
+      });
+      return;
+    }
+    this.setState({
+      isloading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    const data = {
+      degree: this.state.degreeObtained,
+      i_currently_study_here: this.state.education_doesnot_expire,
+      institution: this.state.institutionname,
+      location: this.state.institutionLocation,
+      start_date: this.state.education_valid_from,
+      end_date: this.state.education_valid_till,
+    };
+    // console.log(data);
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/dashboard/edit-education/${this.state.education_id}/`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        this.setState({
+          isloading: false,
+          editeducation: false,
+          degreeObtained: "",
+          education_doesnot_expire: "",
+          institutionname: "",
+          institutionLocation: "",
+          education_valid_from: "",
+          education_valid_till: "",
+        });
+        this.notify("Successful");
+        this.componentDidMount();
+      })
+      .catch((err) => {
+        if (err) {
+          this.notify("Failed to send");
+        }
+        this.setState({
+          isloading: false,
+          editeducation: false,
+          degreeObtained: "",
+          education_doesnot_expire: "",
+          institutionname: "",
+          institutionLocation: "",
+          education_valid_from: "",
+          education_valid_till: "",
+        });
+      });
+  };
+
+  updateCertification = () => {
+    if (!this.state.certification_id) {
+      let certifications = this.state.certifications;
+      this.state.certifications.findIndex((element, i) => {
+        if (this.state.elIndex === i) {
+          certifications[i] = {
+            certificate_name: this.state.certificateName,
+            does_not_expire: this.state.expirationStatus,
+            institution: this.state.certificateInstitution,
+            valid_from: this.state.valid_from,
+            valid_till: this.state.valid_till,
+          };
+          // console.log(certifications);
+          this.setState({
+            certifications,
+            certificateName: "",
+            expirationStatus: "",
+            certificateInstitution: "",
+            valid_from: "",
+            valid_till: "",
+            editcertification: false,
+          });
+          this.notify("Update Successfull");
+        }
+      });
+      return;
+    }
+    this.setState({
+      isloading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    const data = {
+      certificate_name: this.state.certificateName,
+      institution: this.state.certificateInstitution,
+      valid_from: this.state.valid_from,
+      valid_till: this.state.valid_till,
+      does_not_expire: this.state.expirationStatus,
+    };
+    // console.log(data);
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/dashboard/edit-certification/${this.state.certification_id}/`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        this.setState({
+          isloading: false,
+          certificateName: "",
+          expirationStatus: "",
+          certificateInstitution: "",
+          valid_from: "",
+          valid_till: "",
+          editcertification: false,
+        });
+        this.notify("Successful");
+        this.componentDidMount();
+      })
+      .catch((err) => {
+        if (err) {
+          this.notify("Failed to send");
+        }
+        this.setState({
+          isloading: false,
+          certificateName: "",
+          expirationStatus: "",
+          certificateInstitution: "",
+          valid_from: "",
+          valid_till: "",
+          editcertification: false,
+        });
+      });
+  };
+
+  updateReference = () => {
+    if (!this.state.reference_id) {
+      let references = this.state.references;
+      this.state.references.findIndex((element, i) => {
+        if (this.state.elIndex === i) {
+          references[i] = {
+            title: this.state.referencetitle,
+            name: this.state.referencename,
+            phone: this.state.referencephone,
+            ref_email: this.state.referenceemail,
+            relationship: this.state.referencerelationship,
+          };
+          // console.log(references);
+          this.setState({
+            references,
+            referencetitle: "",
+            referencename: "",
+            referencephone: "",
+            referenceemail: "",
+            referencerelationship: "",
+            relationship: "",
+            editreference: false,
+          });
+          this.notify("Update Successfull");
+        }
+      });
+      return;
+    }
+    this.setState({
+      isloading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    const data = {
+      name: this.state.referencename,
+      title: this.state.referencetitle,
+      ref_email: this.state.referenceemail,
+      phone: this.state.referencephone,
+      relationship: this.state.referencerelationship,
+    };
+    // console.log(data);
+    Axios.post<any, AxiosResponse<any>>(
+      `${API}/dashboard/edit-reference/${this.state.reference_id}/`,
+      data,
+      {
+        headers: { Authorization: `Token ${token}` },
+      }
+    )
+      .then((res) => {
+        this.setState({
+          isloading: false,
+          referencetitle: "",
+          referencename: "",
+          referencephone: "",
+          referenceemail: "",
+          referencerelationship: "",
+          editreference: false,
+        });
+        this.notify("Successful");
+        this.componentDidMount();
+      })
+      .catch((err) => {
+        if (err) {
+          this.notify("Failed to send");
+        }
+        this.setState({
+          isloading: false,
+          referencetitle: "",
+          referencename: "",
+          referencephone: "",
+          referenceemail: "",
+          referencerelationship: "",
+          editreference: false,
+        });
+      });
   };
   capitalize = (s) => {
     if (typeof s !== "string") return "";
@@ -458,12 +998,15 @@ class ProfileBuilder extends React.Component {
       twitter,
       instagram,
       facebook,
+      job_description,
       education_valid_from,
       education_valid_till,
       education_doesnot_expire,
+      editeducation,
       width,
       user,
     } = this.state;
+    // console.log(education);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -522,8 +1065,7 @@ class ProfileBuilder extends React.Component {
                             onChange={this.handleChange}
                             id="about"
                             placeholder="Provide a description of what defines you and your process"
-                          >
-                          </textarea>
+                          ></textarea>
                           {/* <input
                             type="text"
                             className="form-control jobr"
@@ -535,6 +1077,7 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                       <hr />
+                      <br />
                       <Row className="rowla" id="experience">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -547,7 +1090,7 @@ class ProfileBuilder extends React.Component {
                               >
                                 <span className="addone"> +</span>
                                 <span className="infoforsave">
-                                From older to latest experience
+                                  From older to latest experience
                                 </span>
                               </div>
                             </div>
@@ -594,7 +1137,7 @@ class ProfileBuilder extends React.Component {
                                     value={mycurrentwork}
                                     onChange={this.onchangeCurrentWork}
                                     name="mycurrentwork"
-                                    checked= {mycurrentwork === true}
+                                    checked={mycurrentwork === true}
                                   />
                                   <span className="checkmark"></span>
                                 </label>
@@ -620,16 +1163,14 @@ class ProfileBuilder extends React.Component {
                           <Row className="rowla">
                             <Col md={12}>
                               <div className="plusnew1">Job Description</div>
-                              <textarea 
+                              <textarea
                                 name=""
                                 id="jobdescription"
                                 onChange={this.handleChange}
                                 className="form-control jobr jbdescr"
                                 placeholder="Enter a job descrption"
                                 value={jobdescription}
-                                >
-                                
-                                </textarea>
+                              ></textarea>
                               {/* <input
                                 name=""
                                 id="jobdescription"
@@ -652,7 +1193,7 @@ class ProfileBuilder extends React.Component {
                           >
                             <span className="addone wrarr">Save</span>
                             <span className="infoforsave">
-                            Click to save entry and add another
+                              Click to save entry and add another
                             </span>
                           </div>
                         </Col>
@@ -663,6 +1204,13 @@ class ProfileBuilder extends React.Component {
                             key={index}
                           >
                             <div className="deleee">
+                              <i
+                                title={"Edit"}
+                                className="editiconn1 fa fa-pencil-square-o"
+                                onClick={() =>
+                                  this.checkforidExperience(data.id, index)
+                                }
+                              ></i>
                               <i
                                 className="fa fa-trash"
                                 onClick={() => this.deleteExperience(index)}
@@ -759,6 +1307,7 @@ class ProfileBuilder extends React.Component {
                         ))}
                       </Row>
                       <hr />
+                      <br />
                       <Row className="rowla" id="education">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -817,7 +1366,7 @@ class ProfileBuilder extends React.Component {
                                     value={education_doesnot_expire}
                                     onChange={this.onchangeCurrentStudy}
                                     name="education_doesnot_expire"
-                                    checked= {education_doesnot_expire === true}
+                                    checked={education_doesnot_expire === true}
                                   />
                                   <span className="checkmark"></span>
                                 </label>
@@ -864,13 +1413,20 @@ class ProfileBuilder extends React.Component {
                           >
                             <span className="addone wrarr">Save</span>
                             <span className="infoforsave">
-                            Click to save entry and add another
+                              Click to save entry and add another
                             </span>
                           </div>
                         </Col>
                         {education.map((data, index) => (
                           <Col md={12}>
                             <div className="deleee">
+                              <i
+                                title={"Edit"}
+                                className="editiconn1 fa fa-pencil-square-o"
+                                onClick={() =>
+                                  this.checkforidEdu(data.id, index)
+                                }
+                              ></i>
                               <i
                                 className="fa fa-trash"
                                 onClick={() => this.deleteEducation(index)}
@@ -965,6 +1521,7 @@ class ProfileBuilder extends React.Component {
                         ))}
                       </Row>
                       <hr />
+                      <br />
                       <Row>
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -1010,6 +1567,7 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                       <hr />
+                      <br />
                       <Row className="rowla">
                         <Col md={12} id="certification">
                           <div className="whatdoudo offpadd1">
@@ -1067,7 +1625,7 @@ class ProfileBuilder extends React.Component {
                                       value={expirationStatus}
                                       onChange={this.onchange1}
                                       id="expirationStatus"
-                                      checked= {expirationStatus === true}
+                                      checked={expirationStatus === true}
                                     />
                                     <span className="checkmark"></span>
                                   </label>
@@ -1101,7 +1659,7 @@ class ProfileBuilder extends React.Component {
                           >
                             <span className="addone wrarr">Save</span>
                             <span className="infoforsave">
-                            Click to save entry and add another
+                              Click to save entry and add another
                             </span>
                           </div>
                         </Col>
@@ -1111,6 +1669,13 @@ class ProfileBuilder extends React.Component {
                               <div className="what12"></div>
                             </div>
                             <div className="deleee">
+                              <i
+                                title={"Edit"}
+                                className="editiconn1 fa fa-pencil-square-o"
+                                onClick={() =>
+                                  this.checkforCertId(data.id, index)
+                                }
+                              ></i>
                               <i
                                 className="fa fa-trash"
                                 onClick={() => this.deleteCertification(index)}
@@ -1189,6 +1754,7 @@ class ProfileBuilder extends React.Component {
                     </Col>
                   </Row>
                   <hr />
+                  <br />
                   <Row>
                     <Col md={12} id="reference">
                       <div className="whatdoudo unbtm">
@@ -1275,14 +1841,21 @@ class ProfileBuilder extends React.Component {
                       >
                         <span className="addone wrarr">Save</span>
                         <span className="infoforsave">
-                            Click to save entry and add another
-                            </span>
+                          Click to save entry and add another
+                        </span>
                       </div>
                     </Col>
                     {references.map((data, index) => (
                       <Col md={12}>
                         <div className="whatdoudo unbtm"></div>
                         <div className="deleee">
+                          <i
+                            title={"Edit"}
+                            className="editiconn1 fa fa-pencil-square-o"
+                            onClick={() =>
+                              this.checkforReferenceId(data.id, index)
+                            }
+                          ></i>
                           <i
                             className="fa fa-trash"
                             onClick={() => this.deleteReference(index)}
@@ -1296,6 +1869,7 @@ class ProfileBuilder extends React.Component {
                               id="referencename"
                               onChange={this.handleChange}
                               value={data.name}
+                              disabled={true}
                               className="form-control jobr subhyt plusnew12"
                               placeholder=""
                             />
@@ -1307,6 +1881,7 @@ class ProfileBuilder extends React.Component {
                               name=""
                               id="referencetitle"
                               value={data.title}
+                              disabled={true}
                               onChange={this.handleChange}
                               className="form-control jobr subhyt plusnew12"
                               placeholder=""
@@ -1320,6 +1895,7 @@ class ProfileBuilder extends React.Component {
                               name=""
                               id="referencephone"
                               value={data.phone}
+                              disabled={true}
                               onChange={this.handleChange}
                               className="form-control jobr subhyt plusnew12"
                               placeholder=""
@@ -1333,6 +1909,7 @@ class ProfileBuilder extends React.Component {
                               id="referenceemail"
                               value={data.ref_email}
                               onChange={this.handleChange}
+                              disabled={true}
                               className="form-control jobr subhyt plusnew12"
                               placeholder=""
                             ></textarea>
@@ -1420,7 +1997,7 @@ class ProfileBuilder extends React.Component {
                         <div className="print">Preview</div>
                       </Link> */}
                       <div className="savebtn" onClick={this.submitForm}>
-                       {isloading? "Saving..." : "Save"}
+                        {isloading ? "Saving..." : "Save"}
                       </div>
                     </Col>
                   </Row>
@@ -1452,6 +2029,384 @@ class ProfileBuilder extends React.Component {
                 </Button>
               </Modal.Footer>
             </Modal>
+            {/* Edit Profile Builder */}
+            {/* Edit Experience modal starts */}
+            <Modal
+              show={this.state.editexperience}
+              onHide={this.CloseEditExperience}
+              className="widincr"
+            >
+              <Modal.Body>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1 ">Organization</div>
+                    <input
+                      id="organizationname"
+                      onChange={this.handleChange}
+                      value={organizationname}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                  <Col md={6}>
+                    {/* <div className="whatdoudo offpad"></div> */}
+                    <div className="plusnew1">Position</div>
+                    <textarea
+                      id="organizationposition"
+                      value={organizationposition}
+                      onChange={this.handleChange}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1">Started From</div>
+                    <Form.Control
+                      type="date"
+                      value={startDate}
+                      id="startDate"
+                      className="fmc jobr subhyt dateinputt"
+                      onChange={this.handleChange}
+                    ></Form.Control>
+                  </Col>
+                  <Col md={6}>
+                    <div className="qflex">
+                      <label className="checkcontainer">
+                        <input
+                          type="checkbox"
+                          value={mycurrentwork}
+                          onChange={this.onchangeCurrentWork}
+                          name="mycurrentwork"
+                          checked={mycurrentwork === true}
+                        />
+                        <span className="checkmark"></span>
+                      </label>
+                      <div className="plusnew2">I currently work here</div>
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1">To</div>
+                    <Form.Control
+                      type="date"
+                      value={endDate}
+                      id="endDate"
+                      className="fmc jobr subhyt dateinputt"
+                      onChange={this.handleChange}
+                      disabled={mycurrentwork ? true : false}
+                    ></Form.Control>
+                  </Col>
+                </Row>
+                <Row className="rowla">
+                  <Col md={12}>
+                    <div className="plusnew1">Job Description</div>
+                    <textarea
+                      name=""
+                      id="job_description"
+                      onChange={this.handleChange}
+                      className="form-control jobr jbdescr"
+                      placeholder="Enter a job descrption"
+                      value={job_description}
+                    ></textarea>
+                  </Col>
+                </Row>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  className="btnws1 savebtn"
+                  variant="danger"
+                  onClick={this.CloseEditExperience}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="success"
+                  onClick={this.updateExperience}
+                  className="btnws savebtn"
+                >
+                  {isloading ? "Updating" : "Update"}
+                </Button>
+              </Modal.Footer>
+            </Modal>
+            {/* Edit Experience modal ends */}
+            {/* Edit Education Modal starts */}
+            <Modal
+              show={this.state.editeducation}
+              onHide={this.CloseEditEducation}
+              className="widincr"
+            >
+              <Modal.Body>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1">Name Of Institution</div>
+                    <input
+                      id="institutionname"
+                      onChange={this.handleChange}
+                      value={institutionname}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <div className="whatdoudo offpad"></div>
+                    <div className="plusnew1">Degree</div>
+                    <textarea
+                      id="degreeObtained"
+                      value={degreeObtained}
+                      onChange={this.handleChange}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1">Started From</div>
+                    <Form.Control
+                      type="date"
+                      value={education_valid_from}
+                      id="education_valid_from"
+                      className="fmc jobr subhyt dateinputt"
+                      onChange={this.handleChange}
+                    ></Form.Control>
+                  </Col>
+                  <Col md={6}>
+                    <div className="qflex">
+                      <label className="checkcontainer">
+                        <input
+                          type="checkbox"
+                          value={education_doesnot_expire}
+                          onChange={this.onchangeCurrentStudy}
+                          name="education_doesnot_expire"
+                          checked={education_doesnot_expire === true}
+                        />
+                        <span className="checkmark"></span>
+                      </label>
+                      <div className="plusnew2">I currently study here</div>
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1">To</div>
+                    <Form.Control
+                      type="date"
+                      value={education_valid_till}
+                      id="education_valid_till"
+                      className="fmc jobr subhyt dateinputt"
+                      onChange={this.handleChange}
+                      disabled={education_doesnot_expire ? true : false}
+                    ></Form.Control>
+                  </Col>
+                  <Col md={6}>
+                    <div className="plusnew1">Location</div>
+                    <Form.Control
+                      type="text"
+                      value={institutionLocation}
+                      id="institutionLocation"
+                      className="fmc jobr subhyt"
+                      onChange={this.handleChange}
+                    ></Form.Control>
+                  </Col>
+                </Row>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  className="btnws1 savebtn"
+                  variant="danger"
+                  onClick={this.CloseEditEducation}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="success"
+                  onClick={this.updateEducation}
+                  className="btnws savebtn"
+                >
+                  {isloading ? "Updating" : "Update"}
+                </Button>
+              </Modal.Footer>
+            </Modal>
+            {/* Edit Education Modal ends */}
+
+            {/* Certificate Update Modal starts */}
+            <Modal
+              show={this.state.editcertification}
+              onHide={this.CloseEditCertification}
+              className="widincr"
+            >
+              <Modal.Body>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1">Certificate Name</div>
+                    <textarea
+                      name=""
+                      className="form-control jobr subhyt"
+                      value={certificateName}
+                      id="certificateName"
+                      onChange={this.handleChange}
+                      placeholder=""
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <div className="whatdoudo offpad"></div>
+                    <div className="plusnew1">Institution</div>
+                    <textarea
+                      name=""
+                      value={certificateInstitution}
+                      id="certificateInstitution"
+                      onChange={this.handleChange}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    ></textarea>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1">Valid From</div>
+                    <Form.Control
+                      type="date"
+                      value={valid_from}
+                      id="valid_from"
+                      className="fmc jobr subhyt dateinputt"
+                      onChange={this.handleChange}
+                    ></Form.Control>
+                    <Col md={12}>
+                      <div className="qflex app11">
+                        <label className="checkcontainer">
+                          <input
+                            type="checkbox"
+                            value={expirationStatus}
+                            onChange={this.onchange1}
+                            id="expirationStatus"
+                            checked={expirationStatus === true}
+                          />
+                          <span className="checkmark"></span>
+                        </label>
+                        <div className="plusnew2">Does not expire</div>
+                      </div>
+                    </Col>
+                  </Col>
+                  <Col md={6}>
+                    <div className="plusnew1">To</div>
+                    <Form.Control
+                      type="date"
+                      value={valid_till}
+                      id="valid_till"
+                      className="fmc jobr subhyt dateinputt"
+                      disabled={expirationStatus ? true : false}
+                      onChange={this.handleChange}
+                    ></Form.Control>
+                  </Col>
+                </Row>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  className="btnws1 savebtn"
+                  variant="danger"
+                  onClick={this.CloseEditCertification}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="success"
+                  onClick={this.updateCertification}
+                  className="btnws savebtn"
+                >
+                  {isloading ? "Updating" : "Update"}
+                </Button>
+              </Modal.Footer>
+            </Modal>
+            {/* Certificate Update Modal ends */}
+            {/* Reference Modal starts */}
+            <Modal
+              show={this.state.editreference}
+              onHide={this.CloseEditReference}
+              className="widincr"
+            >
+              <Modal.Body>
+                <Row>
+                  <Col md={6}>
+                    <div className="plusnew1"> Name</div>
+                    <textarea
+                      name=""
+                      id="referencename"
+                      onChange={this.handleChange}
+                      value={referencename}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <div className="whatdoudo offpad"></div>
+                    <div className="plusnew1">Title</div>
+                    <textarea
+                      name=""
+                      id="referencetitle"
+                      value={referencetitle}
+                      onChange={this.handleChange}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <div className="plusnew1">Phone Number</div>
+                    <textarea
+                      name=""
+                      id="referencephone"
+                      value={referencephone}
+                      onChange={this.handleChange}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <div className="whatdoudo offpad"></div>
+                    <div className="plusnew1">Email</div>
+                    <textarea
+                      name=""
+                      id="referenceemail"
+                      value={referenceemail}
+                      onChange={this.handleChange}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    ></textarea>
+                  </Col>
+                  <Col md={6}>
+                    <div className="whatdoudo offpad"></div>
+                    <div className="plusnew1">Relationship</div>
+                    <input
+                      name=""
+                      id="referencerelationship"
+                      value={referencerelationship}
+                      onChange={this.handleChange}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                </Row>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  className="btnws1 savebtn"
+                  variant="danger"
+                  onClick={this.CloseEditReference}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="success"
+                  onClick={this.updateReference}
+                  className="btnws savebtn"
+                >
+                  {isloading ? "Updating" : "Update"}
+                </Button>
+              </Modal.Footer>
+            </Modal>
+            {/* Reference Modal ends */}
           </Row>
         </Container>
       </>

@@ -119,7 +119,7 @@ const BehaviouralAnalytics = (props) => {
         Axios.spread((res) => {
           // console.log(res.data);
           if (res.status === 200 && res.data.career_fitness) {
-            console.log(res);
+            // console.log(res);
             setState({
               ...state,
               privateModalBody: res.data.career_fitness.info,

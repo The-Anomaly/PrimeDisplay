@@ -230,7 +230,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
     total_pages,
     industry_interest,
   } = state;
-  console.log(counsellorData);
+  // console.log(counsellorData);
   return (
     <>
       <Container fluid={true} className="contann122">

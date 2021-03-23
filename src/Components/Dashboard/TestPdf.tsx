@@ -14,6 +14,7 @@ import { API } from "../../config";
 import userimg1 from "../../assets/userimg1.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CV from "react-cv";
 const moment = require("moment");
 
 // team
@@ -24,8 +25,13 @@ const TestPdf = () => {
     skills: [],
     about: "",
     experiences: [],
+    Experiences: [],
+    References: [],
+    Certifications: [],
     certifications: [],
+    Skills:[],
     education: [],
+    Education: [],
     references: [],
     socials: [],
     facebook: "",
@@ -37,8 +43,10 @@ const TestPdf = () => {
     errorMessage: "",
     job_description: "",
     email: "",
+    website: "",
     address: "",
     phone: "",
+    cv_data: "",
   });
   const {
     skills,
@@ -47,9 +55,14 @@ const TestPdf = () => {
     certifications,
     education,
     references,
+    website,
     socials,
     facebook,
     linkedin,
+    Experiences,
+    References,
+    Certifications,
+    Education,
     instagram,
     twitter,
     last_name,
@@ -58,10 +71,12 @@ const TestPdf = () => {
     email,
     address,
     phone,
+    cv_data,
+    Skills,
   } = state;
   const ref: any = React.useRef();
   useEffect(() => {
-    const tag = document.getElementsByTagName("meta").namedItem("viewport")
+    const tag = document.getElementsByTagName("meta").namedItem("viewport");
     // console.log(tag)
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
@@ -73,11 +88,14 @@ const TestPdf = () => {
         Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profile`, {
           headers: { Authorization: `Token ${token}` },
         }),
+        Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/cv`, {
+          headers: { Authorization: `Token ${token}` },
+        }),
       ])
       .then(
-        axios.spread((res, res1) => {
-          // console.log(res);
+        axios.spread((res, res1, res2) => {
           // console.log(res1);
+          // console.log(res2.data);
           setState({
             ...state,
             skills: [...res.data.skills],
@@ -91,6 +109,12 @@ const TestPdf = () => {
             linkedin: res.data.user_social.linkedin,
             instagram: res.data.user_social.instagram,
             twitter: res.data.user_social.twitter,
+            cv_data: res2.data,
+            Certifications: res2.data.certification,
+            Education: res2.data.education,
+            References: res2.data.user_refernce,
+            Experiences: res2.data.user_experiences,
+            Skills:res2.data.skills,
             ...res1.data,
           });
         })
@@ -106,22 +130,79 @@ const TestPdf = () => {
     return dateTime;
   };
   const notify = (message: string) => toast(message, { containerId: "B" });
-
+  // console.log(cv_data.education);
+  const options = {
+    orientation: 'landscape',
+    unit: 'in',
+    format: [4,2]
+};
   return (
     <div>
       {/* <Navbar /> */}
       <Container fluid={true}>
         <Row className="backgroundcv">
-          <Col md={12} className="padpdf opdd">
-            <Pdf targetRef={ref} filename="resume.pdf" x={-0.5} scale={1.2}>
+          <Col md={12} className="padpdf text-right">
+            <Pdf targetRef={ref} filename="resume.pdf" x={1} y={.5} scale={.7}>
               {({ toPdf }) => (
-                <button onClick={toPdf} className="genpdf">
-                  Download CV
+                <button onClick={()=>window.print()} className="genpdf">
+                  Print/Download CV
                 </button>
               )}
             </Pdf>
           </Col>
-          <Col md={12} className="jcenter2">
+          <Col md={12} ref={ref}>
+            {true && (
+              <CV
+                personalData={{
+                  name: first_name + " " + last_name,
+                  title: job_description,
+                  contacts: [
+                    { type: "email", value: email },
+                    { type: "phone", value: phone },
+                    { type: "location", value: address },
+                    // { type: "website", value: website },
+                    // { type: "linkedin", value: linkedin },
+                    // { type: "twitter", value: twitter },
+                  ],
+                }}
+                sections={[
+                  {
+                    type: "text",
+                    title: "Career Profile",
+                    content: cv_data.about,
+                    icon: "usertie",
+                  },
+                  {
+                    type: "common-list",
+                    title: "Education",
+                    icon: "graduation",
+                    items: Education,
+                  },
+                  {
+                    type: "experiences-list",
+                    title: "Experiences",
+                    icon: "archive",
+                    items: Experiences,
+                  },
+                  {
+                    type: "common-list",
+                    title: "Certification",
+                    description: "",
+                    icon: "comments",
+                    items: Certifications,
+                  },
+                  {
+                    type: "tag-list",
+                    title: "Skills",
+                    icon: "rocket",
+                    items: Skills,
+                  },
+                ]}
+                branding={false} // or false to hide it.
+              />
+            )}
+          </Col>
+          {/* <Col md={12} className="jcenter2">
             <div className="mainwrap" ref={ref}>
               <div className="wrapperdiv">
                 <div className="dsnwrap">
@@ -141,16 +222,11 @@ const TestPdf = () => {
                   </div>
                 </div>
               </div>
-              <div className="wrap2">{/* Loop */}</div>
+
               <div className="shiftrght">
                 <div className="smry1 contact22">Summary</div>
                 <div className="sumrybody">
                   {about}
-                  {/* Risus, vel at pulvinar tempus, vel sem risus, aliquet nisi
-                  fringilla faucibus interdum commodo posuere ut nec sem congue
-                  enim ultricies molestie malesuada nullam feugiat feugiat in
-                  adipiscing nisl vel ut amet, eget lorem et a, faucibus mauris,
-                  tortor quam sit convallis aenean amet in sit sit mi dolor. */}
                 </div>
               </div>
               <div className="rapsecarea">
@@ -185,25 +261,12 @@ const TestPdf = () => {
                   {experiences.map((x, i) => (
                     <div key={i}>
                       <div className="box1">
-                        {/* <div className="box1txt">{x.organisation}</div> */}
                         <div className="box1txt">{x.position}</div>
                         <div className="date1">
                           {formatTime(x.started_from)} - {formatTime(x.to)}
                         </div>
                       </div>
                       <div className="temptext">{x.job_description}</div>
-                      {/* <div className="box3">
-                      <div className="box1txt">UI/UX Designer</div>
-                      <div className="date1">June 2020 - July 2020</div>
-                    </div>
-                    <div className="temptext">
-                      Risus, vel at pulvinar tempus, vel sem risus, aliquet nisi
-                      fringilla faucibus interdum commodo posuere ut nec sem
-                      congue enim ultricies molestie malesuada nullam feugiat
-                      feugiat in adipiscing nisl vel ut amet, eget lorem et a,
-                      faucibus mauris, tortor quam sit convallis aenean amet in
-                      sit sit mi dolor.
-                    </div> */}
                       <div className="shortline1"></div>
                     </div>
                   ))}
@@ -234,20 +297,14 @@ const TestPdf = () => {
                           <div className="namecv">{x.name}</div>
                           <div className="minofwrks">{x.title}</div>
                           <div className="minofwrks">{x.ref_email}</div>
-                          {/* <div className="minofwrks">Abuja, Nigeria</div> */}
                         </div>
-                        {/* <div className="secolcv">
-                        <div className="namecv">Amaechi Rotimi</div>
-                        <div className="minofwrks">Minister of Works</div>
-                        <div className="minofwrks">Abuja, Nigeria</div>
-                      </div> */}
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
-          </Col>
+          </Col> */}
         </Row>
         {/* <Footer /> */}
       </Container>

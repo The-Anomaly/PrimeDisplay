@@ -170,29 +170,6 @@ const Payment = (props: any) => {
               //   3000
               // );
             }
-            // console.log("paid");
-            const availableToken = localStorage.getItem("userToken");
-            const token = availableToken ? JSON.parse(availableToken) : "";
-            axios
-              .get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
-                headers: { Authorization: `Token ${token}` },
-              })
-              .then((response1) => {
-                // console.log(response1);
-                //console.log(response1?.data[0]);
-                localStorage.setItem(
-                  "accessFeature",
-                  JSON.stringify(response1?.data[0])
-                );
-                // console.log(localStorage.getItem("accessFeature"));
-                const stringFeature = localStorage.getItem("accessFeature");
-                const featureToCheck = stringFeature
-                  ? JSON.parse(stringFeature)
-                  : "";
-              })
-              .catch((error) => {
-                // console.error("Payment Status Error");
-              });
             // console.log("Payment Successfull");
           }
           if (response.paymentStatus === "PENDING") {
@@ -1276,7 +1253,7 @@ const Payment = (props: any) => {
                       <Card className=" shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            30000 <span>/month</span>
+                            30,000 <span>/month</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
@@ -1346,7 +1323,7 @@ const Payment = (props: any) => {
                       <Card className="h-300 shadow-sm bg-white payment-card">
                         <Card.Header className="payment-header">
                           <h4>
-                            N10500 <span>/month</span>
+                            N50,500 <span>/month</span>
                           </h4>
                         </Card.Header>
                         <Card.Body>
