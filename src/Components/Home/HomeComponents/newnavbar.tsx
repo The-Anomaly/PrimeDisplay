@@ -39,7 +39,8 @@ const newNavbar = withRouter((props: any) => {
       window.location.pathname === "/counsellor/signin/forgotpassword" || 
       window.location.pathname === "/affiliates/signin" || 
       window.location.pathname === "/affiliates/signup" ||
-      window.location.pathname === "/wana"
+      window.location.pathname === "/wana" ||
+      new RegExp("resetpassword").test(window.location.pathname) === true
     ) {
       setDarkNav(true)
     }

@@ -26,7 +26,7 @@ interface State {
   message: string;
   password: string;
   confirmpassword: string;
-  successMessage: boolean;
+  successMessage: string;
 }
 const ResetPassword: React.FunctionComponent = (props: any) => {
   const [state, setFormState] = React.useState<State>({
@@ -36,7 +36,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
     message: "",
     password: "",
     confirmpassword: "",
-    successMessage: false,
+    successMessage: "",
   });
   const {
     email,
@@ -67,18 +67,13 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
       )
       .then((response) => {
         if (response.status === 200) {
-          setFormState({
+          return setFormState({
             ...state,
             isLoading: false,
             message: response?.data[0]?.message,
+            successMessage: response?.data[0]?.message,
           });
-          return props.history.push(`/signin`);
         }
-        setFormState({
-          ...state,
-          isLoading: false,
-        });
-        
       })
       .catch((error) => {
         if (error && error.response && error.response.data) {
@@ -170,6 +165,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
       [e.target.name]: e.target.value,
       errorMessage: "",
       message: "",
+      successMessage: ""
     });
   };
   const getUserInfo = (token: string): any => {
@@ -238,7 +234,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
                       </span>
                     </div>
                   </div>
-                  {successMessage && (
+                  {successMessage !== "" && (
                     <Alert
                       key={2}
                       variant="success"
@@ -247,7 +243,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
                       {successMessage}
                     </Alert>
                   )}
-                  {errorMessage && (
+                  {errorMessage !== "" && (
                     <Alert
                       key={2}
                       variant="danger"
@@ -285,7 +281,7 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
                       onClick={validateForm}
                       className="rdsgnfrmbtn rdsgnup-animated"
                     >
-                      {isLoading ? "Processing" : "Submit"}
+                      {isLoading ? "Processing..." : "Submit"}
                     </span>
                   </div>
                   <p className="rdsgnalready">

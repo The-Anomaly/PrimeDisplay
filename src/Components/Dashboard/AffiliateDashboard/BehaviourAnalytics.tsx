@@ -146,9 +146,8 @@ const BehaviourAnalytics = (props: any) => {
                       </span>
                     </div>
                     <div className="facce">
-                      Volutpat purus orci ipsum quis faucibus sed elit elit
-                      gravida. Sodales facilisis sed nulla lobortis in convallis
-                      pellentesque urna faucibus.
+                      Your dashboard gives you full insight on every client who
+                      has signed up using your unqiue link.
                     </div>
                     <div className="ttotlaclnt">
                       <div className="boxxqq12">
