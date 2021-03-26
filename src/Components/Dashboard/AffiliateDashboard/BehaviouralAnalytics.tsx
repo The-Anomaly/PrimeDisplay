@@ -764,7 +764,7 @@ const BehaviouralAnalytics = (props) => {
                   <Row>
                     <img className="BAbalance" src={balance} />
                     <div className="BAsubtxt">
-                      It seems a little dry here, but you can change that by
+                      It seems a little empty here, but you can change that by
                       upgrading your subscription to get full insight on all
                       your clients.
                     </div>
