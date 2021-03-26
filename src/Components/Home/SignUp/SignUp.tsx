@@ -308,7 +308,7 @@ const SignUp: React.FunctionComponent = (props: any) => {
             />
           </Col>
           <Col md={5}>
-            <div className="signwa">Sign up</div>
+            <div className="signwa">Sign Up</div>
             <div className="signwa1 difg">To Get Clarity</div>
             {successMsg && (
               <Alert key={1} variant="info">

@@ -226,7 +226,7 @@ const CounsellorOverview = (props: any) => {
         say_something: session_about,
         id: sessionId,
       };
-      console.log(data);
+      // console.log(data);
       Axios.post<any, AxiosResponse<any>>(
         `${API}/counsellor/complete-session`,
         data,

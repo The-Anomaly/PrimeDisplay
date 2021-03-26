@@ -2855,6 +2855,7 @@ textarea.form-control.jobr {
   border-radius: 8px;
   padding: 1rem 2.5rem 1rem 1.15rem;
   height: 80px;
+  margin-bottom: 2rem;
 }
 .building {
   width: 50px;
@@ -4437,12 +4438,17 @@ label {
     width: 80% !important;
     margin-top: 2rem;
   }
+  .widincr .modal-dialog{
+    width: 320px;
+  }
 }
 .editiconn1 {
   color: #9c1258;
   margin-right: 0.5rem;
   margin-top: 0.1rem;
   position: relative;
+  top: .07rem;
+  cursor: pointer;
   top: 0.07rem;
 }
 .btnws1 {
@@ -4457,6 +4463,16 @@ a {
 .widincr .modal-dialog {
   width: 600px;
   max-width: 600px;
+}
+@media print and (color) {
+  * {
+      -webkit-print-color-adjust: exact !important;
+      -webkit-print-color-adjust: exact !important;
+  }
+  /* .pagebreak {
+    clear: both;
+    page-break-after: always;
+} */
 }
 @media(min-width: 767px) {
 .rowla .job-oopt-select-multiple {
@@ -4474,5 +4490,12 @@ a {
 @media(max-width: 767px) {
   .hide-on-desktop {
     display: flex !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .modcomplete .modal-dialog{
+    width: 330px ;
+    max-width: 400px;
   }
 }

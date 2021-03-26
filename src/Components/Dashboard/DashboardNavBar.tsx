@@ -112,7 +112,7 @@ React.useEffect(()=>{
         headers: { Authorization: `Token ${token}` },
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response?.data[0]?.job_recommendation === true) {
             return  window.location.assign("/jobopportunities");;
           }
@@ -121,7 +121,7 @@ React.useEffect(()=>{
           }
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
           // console.error("Payment Status Error");
         });
   };
@@ -136,7 +136,7 @@ React.useEffect(()=>{
         headers: { Authorization: `Token ${token}` },
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response?.data[0]?.ask_counsellor === true) {
             return  window.location.assign("/allusermessages");;
           }
@@ -145,7 +145,7 @@ React.useEffect(()=>{
           }
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
           // console.error("Payment Status Error");
         });
   };

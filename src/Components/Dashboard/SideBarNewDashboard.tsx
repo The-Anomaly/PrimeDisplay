@@ -107,7 +107,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response?.data[0]?.job_recommendation === true) {
           return  window.location.assign("/jobopportunities");;
         }
@@ -116,7 +116,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         // console.error("Payment Status Error");
       });
   };
@@ -129,7 +129,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response?.data[0]?.ask_counsellor === true) {
           return  window.location.assign("/allusermessages");;
         }
@@ -138,7 +138,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         // console.error("Payment Status Error");
       });
   };

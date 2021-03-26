@@ -69,6 +69,7 @@ class ProfileBuilder extends React.Component {
     education_id: "",
     certification_id: "",
     reference_id: "",
+    elIndex: "",
     userHasAddedExperience: false,
     editexperience: false,
     editeducation: false,
@@ -76,6 +77,7 @@ class ProfileBuilder extends React.Component {
     editreference: false,
     startDate: "",
     endDate: "",
+    job_description: "",
     width: 100,
   };
   moveTo = (str) => {
@@ -288,7 +290,7 @@ class ProfileBuilder extends React.Component {
         if (res?.data?.new_user) {
           return;
         }
-        console.log(res.data);
+        // console.log(res.data);
         this.setState({
           skills: res.data.skills,
           about: res.data.about,
@@ -357,7 +359,11 @@ class ProfileBuilder extends React.Component {
       showWarning: false,
     });
   };
-
+  CloseEditCertification = () => {
+    this.setState({
+      editcertification: false,
+    });
+  };
   CloseEditExperience = () => {
     this.setState({
       editexperience: false,
@@ -368,21 +374,16 @@ class ProfileBuilder extends React.Component {
       editeducation: false,
     });
   };
-
   CloseEditReference = () => {
     this.setState({
       editreference: false,
     });
   };
-  CloseEditCertification = () => {
-    this.setState({
-      editcertification: false,
-    });
-  };
-  checkforid = (id) => {
+
+  checkforidExperience = (id, index) => {
     this.state.experiences.forEach((element) => {
-      if (element.id == id) {
-        console.log(element);
+      if (element.id && element.id === id) {
+        // console.log(index);
         this.setState({
           organizationname: element.organisation,
           organizationposition: element.position,
@@ -394,10 +395,216 @@ class ProfileBuilder extends React.Component {
           editexperience: true,
         });
       }
+      if (!element.id) {
+        let experiences = this.state.experiences;
+        experiences.findIndex((element, i) => {
+          if (index === i) {
+            // console.log(i);
+            // console.log(element);
+            if (!element.organizationname) {
+              return this.setState({
+                organizationname: element.organisation,
+                organizationposition: element.position,
+                startDate: element.started_from,
+                mycurrentwork: element.current,
+                endDate: element.to,
+                job_description: element.job_description,
+                editexperience: true,
+                elIndex: i,
+              });
+            }
+            this.setState({
+              organizationname: element.organizationname,
+              organizationposition: element.organizationposition,
+              startDate: element.startDate,
+              mycurrentwork: element.mycurrentwork,
+              endDate: element.endDate,
+              job_description: element.job_description,
+              editexperience: true,
+              elIndex: i,
+            });
+          }
+        });
+      }
     });
   };
-
+  checkforidEdu = (id, index) => {
+    this.state.education.forEach((element) => {
+      if (element.id && element.id == id) {
+        // console.log(element);
+        this.setState({
+          degreeObtained: element.degree,
+          education_doesnot_expire: element.i_currently_study_here,
+          education_id: id,
+          institutionname: element.institution,
+          institutionLocation: element.location,
+          education_valid_from: element.start_date,
+          education_valid_till: element.end_date,
+          editeducation: true,
+        });
+      }
+      if (!element.id) {
+        let education = this.state.education;
+        education.findIndex((element, i) => {
+          if (index === i) {
+            // console.log(i);
+            // console.log(element);
+            if (element.institution) {
+              return this.setState({
+                institutionname: element.institution,
+                institutionLocation: element.location,
+                education_valid_from: element.start_date,
+                education_doesnot_expire: element.i_currently_study_here,
+                education_valid_till: element.end_date,
+                degreeObtained: element.degree,
+                editeducation: true,
+                elIndex: i,
+              });
+            }
+            if (element.institutionname) {
+              this.setState({
+                degreeObtained: element.degreeObtained,
+                education_doesnot_expire: element.education_doesnot_expire,
+                institutionname: element.institutionname,
+                institutionLocation: element.institutionLocation,
+                education_valid_from: element.education_valid_from,
+                education_valid_till: element.education_valid_till,
+                editeducation: true,
+                elIndex: i,
+              });
+            }
+          }
+        });
+      }
+    });
+  };
+  //reference
+  checkforReferenceId = (id, index) => {
+    // console.log(this.state.references);
+    this.state.references.forEach((element) => {
+      if (element.id && element.id == id) {
+        // console.log(element);
+        this.setState({
+          referencetitle: element.title,
+          referencename: element.name,
+          referencephone: element.phone,
+          reference_id: element.id,
+          referenceemail: element.ref_email,
+          referencerelationship: element.relationship,
+          editreference: true,
+        });
+      }
+      if (!element.id) {
+        let references = this.state.references;
+        references.findIndex((element, i) => {
+          if (index === i) {
+            // console.log(i);
+            // console.log(element);
+            if (element.title || element.name) {
+              return this.setState({
+                referencetitle: element.title,
+                referencename: element.name,
+                referencephone: element.phone,
+                reference_id: element.id,
+                referenceemail: element.ref_email,
+                referencerelationship: element.relationship,
+                editreference: true,
+                elIndex: i,
+              });
+            }
+            if (element.referencetitle) {
+              this.setState({
+                referencetitle: element.referencetitle,
+                referencename: element.referencename,
+                referencephone: element.referencephone,
+                reference_id: element.reference_id,
+                referenceemail: element.referenceemail,
+                referencerelationship: element.referencerelationship,
+                editreference: true,
+                elIndex: i,
+              });
+            }
+          }
+        });
+      }
+    });
+  };
+  checkforCertId = (id, index) => {
+    this.state.certifications.forEach((element) => {
+      if (element.id && element.id == id) {
+        console.log(element);
+        this.setState({
+          certificateName: element.certificate_name,
+          expirationStatus: element.does_not_expire,
+          certification_id: id,
+          certificateInstitution: element.institution,
+          valid_from: element.valid_from,
+          valid_till: element.valid_till,
+          editcertification: true,
+        });
+      }
+      if (!element.id) {
+        let certifications = this.state.certifications;
+        certifications.findIndex((element, i) => {
+          if (index === i) {
+            // console.log(i);
+            // console.log(element);
+            if (element.certificate_name) {
+              return this.setState({
+                certificateName: element.certificate_name,
+                expirationStatus: element.does_not_expire,
+                certificateInstitution: element.institution,
+                valid_from: element.valid_from,
+                valid_till: element.valid_till,
+                editcertification: true,
+                elIndex: i,
+              });
+            }
+            if (element.certificateName) {
+              this.setState({
+                certificateName: element.certificateName,
+                expirationStatus: element.expirationStatus,
+                certificateInstitution: element.certificateInstitution,
+                valid_from: element.valid_from,
+                valid_till: element.valid_till,
+                editcertification: true,
+                elIndex: i,
+              });
+            }
+          }
+        });
+      }
+    });
+  };
   updateExperience = () => {
+    if (!this.state.experience_id) {
+      let experiences = this.state.experiences;
+      this.state.experiences.findIndex((element, i) => {
+        if (this.state.elIndex === i) {
+          experiences[i] = {
+            organisation: this.state.organizationname,
+            position: this.state.organizationposition,
+            started_from: this.state.startDate,
+            to: this.state.endDate,
+            current: this.state.mycurrentwork,
+            job_description: this.state.job_description,
+          };
+          // console.log(experiences);
+          this.setState({
+            experiences: experiences,
+            editexperience: false,
+            organizationname: "",
+            organizationposition: "",
+            startDate: "",
+            mycurrentwork: "",
+            endDate: "",
+            job_description: "",
+          });
+          this.notify("Update Successfull");
+        }
+      });
+      return;
+    }
     this.setState({
       isloading: true,
     });
@@ -406,10 +613,12 @@ class ProfileBuilder extends React.Component {
     const data = {
       organisation: this.state.organizationname,
       position: this.state.organizationposition,
-      start_date: this.state.startDate,
-      end_date: this.state.endDate,
-      i_currently_study_here: this.state.mycurrentwork,
+      started_from: this.state.startDate,
+      to: this.state.endDate,
+      current: this.state.mycurrentwork,
+      job_description: this.state.job_description,
     };
+    // console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-experience/${this.state.experience_id}/`,
       data,
@@ -450,6 +659,34 @@ class ProfileBuilder extends React.Component {
       });
   };
   updateEducation = () => {
+    if (!this.state.education_id) {
+      let education = this.state.education;
+      this.state.education.findIndex((element, i) => {
+        if (this.state.elIndex === i) {
+          education[i] = {
+            degree: this.state.degreeObtained,
+            i_currently_study_here: this.state.education_doesnot_expire,
+            institution: this.state.institutionname,
+            location: this.state.institutionLocation,
+            start_date: this.state.education_valid_from,
+            end_date: this.state.education_valid_till,
+          };
+          // console.log(education);
+          this.setState({
+            education,
+            degreeObtained: " ",
+            education_doesnot_expire: "",
+            institutionname: "",
+            institutionLocation: "",
+            education_valid_from: "",
+            education_valid_till: "",
+            editeducation: false,
+          });
+          this.notify("Education Update Successfull");
+        }
+      });
+      return;
+    }
     this.setState({
       isloading: true,
     });
@@ -463,7 +700,7 @@ class ProfileBuilder extends React.Component {
       start_date: this.state.education_valid_from,
       end_date: this.state.education_valid_till,
     };
-    console.log(data);
+    // console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-education/${this.state.education_id}/`,
       data,
@@ -501,52 +738,47 @@ class ProfileBuilder extends React.Component {
         });
       });
   };
-  checkforidEdu = (id) => {
-    this.state.education.forEach((element) => {
-      if (element.id == id) {
-        console.log(element);
-        this.setState({
-          degreeObtained: element.degree,
-          education_doesnot_expire: element.i_currently_study_here,
-          education_id: id,
-          institutionname: element.institution,
-          institutionLocation: element.location,
-          education_valid_from: element.start_date,
-          education_valid_till: element.end_date,
-          editeducation: true,
-        });
-      }
-    });
-  };
-  checkforCertId = (id) => {
-    this.state.certifications.forEach((element) => {
-      if (element.id == id) {
-        console.log(element);
-        this.setState({
-          certificateName: element.certificate_name,
-          expirationStatus: element.does_not_expire,
-          certification_id: id,
-          certificateInstitution: element.institution,
-          education_valid_from: element.valid_from,
-          education_valid_till: element.valid_till,
-          editcertification: true,
-        });
-      }
-    });
-  };
+
   updateCertification = () => {
+    if (!this.state.certification_id) {
+      let certifications = this.state.certifications;
+      this.state.certifications.findIndex((element, i) => {
+        if (this.state.elIndex === i) {
+          certifications[i] = {
+            certificate_name: this.state.certificateName,
+            does_not_expire: this.state.expirationStatus,
+            institution: this.state.certificateInstitution,
+            valid_from: this.state.valid_from,
+            valid_till: this.state.valid_till,
+          };
+          // console.log(certifications);
+          this.setState({
+            certifications,
+            certificateName: "",
+            expirationStatus: "",
+            certificateInstitution: "",
+            valid_from: "",
+            valid_till: "",
+            editcertification: false,
+          });
+          this.notify("Update Successfull");
+        }
+      });
+      return;
+    }
     this.setState({
       isloading: true,
     });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
-      organisation: this.state.certificateName,
-      position: this.state.organizationposition,
-      start_date: this.state.startDate,
-      end_date: this.state.endDate,
-      i_currently_study_here: this.state.mycurrentwork,
+      certificate_name: this.state.certificateName,
+      institution: this.state.certificateInstitution,
+      valid_from: this.state.valid_from,
+      valid_till: this.state.valid_till,
+      does_not_expire: this.state.expirationStatus,
     };
+    // console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-certification/${this.state.certification_id}/`,
       data,
@@ -560,8 +792,8 @@ class ProfileBuilder extends React.Component {
           certificateName: "",
           expirationStatus: "",
           certificateInstitution: "",
-          education_valid_from: "",
-          education_valid_till: "",
+          valid_from: "",
+          valid_till: "",
           editcertification: false,
         });
         this.notify("Successful");
@@ -576,42 +808,54 @@ class ProfileBuilder extends React.Component {
           certificateName: "",
           expirationStatus: "",
           certificateInstitution: "",
-          education_valid_from: "",
-          education_valid_till: "",
+          valid_from: "",
+          valid_till: "",
           editcertification: false,
         });
       });
   };
-  //reference
-  checkforReferenceId = (id) => {
-    this.state.references.forEach((element) => {
-      if (element.id == id) {
-        console.log(element);
-        this.setState({
-          referencetitle: element.title,
-          referencename: element.name,
-          referencephone: element.phone,
-          reference_id: id,
-          referenceemail: element.ref_email,
-          referencerelationship: element.relationship,
-          editreference: true,
-        });
-      }
-    });
-  };
+
   updateReference = () => {
+    if (!this.state.reference_id) {
+      let references = this.state.references;
+      this.state.references.findIndex((element, i) => {
+        if (this.state.elIndex === i) {
+          references[i] = {
+            title: this.state.referencetitle,
+            name: this.state.referencename,
+            phone: this.state.referencephone,
+            ref_email: this.state.referenceemail,
+            relationship: this.state.referencerelationship,
+          };
+          // console.log(references);
+          this.setState({
+            references,
+            referencetitle: "",
+            referencename: "",
+            referencephone: "",
+            referenceemail: "",
+            referencerelationship: "",
+            relationship: "",
+            editreference: false,
+          });
+          this.notify("Update Successfull");
+        }
+      });
+      return;
+    }
     this.setState({
       isloading: true,
     });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
-      organisation: this.state.certificateName,
-      position: this.state.organizationposition,
-      start_date: this.state.startDate,
-      end_date: this.state.endDate,
-      i_currently_study_here: this.state.mycurrentwork,
+      name: this.state.referencename,
+      title: this.state.referencetitle,
+      ref_email: this.state.referenceemail,
+      phone: this.state.referencephone,
+      relationship: this.state.referencerelationship,
     };
+    // console.log(data);
     Axios.post<any, AxiosResponse<any>>(
       `${API}/dashboard/edit-reference/${this.state.reference_id}/`,
       data,
@@ -622,11 +866,11 @@ class ProfileBuilder extends React.Component {
       .then((res) => {
         this.setState({
           isloading: false,
-          certificateName: "",
-          expirationStatus: "",
-          certificateInstitution: "",
-          education_valid_from: "",
-          education_valid_till: "",
+          referencetitle: "",
+          referencename: "",
+          referencephone: "",
+          referenceemail: "",
+          referencerelationship: "",
           editreference: false,
         });
         this.notify("Successful");
@@ -638,11 +882,11 @@ class ProfileBuilder extends React.Component {
         }
         this.setState({
           isloading: false,
-          certificateName: "",
-          expirationStatus: "",
-          certificateInstitution: "",
-          education_valid_from: "",
-          education_valid_till: "",
+          referencetitle: "",
+          referencename: "",
+          referencephone: "",
+          referenceemail: "",
+          referencerelationship: "",
           editreference: false,
         });
       });
@@ -754,6 +998,7 @@ class ProfileBuilder extends React.Component {
       twitter,
       instagram,
       facebook,
+      job_description,
       education_valid_from,
       education_valid_till,
       education_doesnot_expire,
@@ -761,6 +1006,7 @@ class ProfileBuilder extends React.Component {
       width,
       user,
     } = this.state;
+    // console.log(education);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -831,7 +1077,7 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                       <hr />
-                                        <br/>
+                      <br />
                       <Row className="rowla" id="experience">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -961,7 +1207,9 @@ class ProfileBuilder extends React.Component {
                               <i
                                 title={"Edit"}
                                 className="editiconn1 fa fa-pencil-square-o"
-                                onClick={() => this.checkforid(data.id)}
+                                onClick={() =>
+                                  this.checkforidExperience(data.id, index)
+                                }
                               ></i>
                               <i
                                 className="fa fa-trash"
@@ -1059,7 +1307,7 @@ class ProfileBuilder extends React.Component {
                         ))}
                       </Row>
                       <hr />
-                      <br/>
+                      <br />
                       <Row className="rowla" id="education">
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -1175,7 +1423,9 @@ class ProfileBuilder extends React.Component {
                               <i
                                 title={"Edit"}
                                 className="editiconn1 fa fa-pencil-square-o"
-                                onClick={() => this.checkforidEdu(data.id)}
+                                onClick={() =>
+                                  this.checkforidEdu(data.id, index)
+                                }
                               ></i>
                               <i
                                 className="fa fa-trash"
@@ -1271,7 +1521,7 @@ class ProfileBuilder extends React.Component {
                         ))}
                       </Row>
                       <hr />
-                      <br/>
+                      <br />
                       <Row>
                         <Col md={12}>
                           <div className="whatdoudo offpad">
@@ -1317,7 +1567,7 @@ class ProfileBuilder extends React.Component {
                         </Col>
                       </Row>
                       <hr />
-                      <br/>
+                      <br />
                       <Row className="rowla">
                         <Col md={12} id="certification">
                           <div className="whatdoudo offpadd1">
@@ -1422,7 +1672,9 @@ class ProfileBuilder extends React.Component {
                               <i
                                 title={"Edit"}
                                 className="editiconn1 fa fa-pencil-square-o"
-                                onClick={() => this.checkforCertId(data.id)}
+                                onClick={() =>
+                                  this.checkforCertId(data.id, index)
+                                }
                               ></i>
                               <i
                                 className="fa fa-trash"
@@ -1502,7 +1754,7 @@ class ProfileBuilder extends React.Component {
                     </Col>
                   </Row>
                   <hr />
-                  <br/>
+                  <br />
                   <Row>
                     <Col md={12} id="reference">
                       <div className="whatdoudo unbtm">
@@ -1600,7 +1852,9 @@ class ProfileBuilder extends React.Component {
                           <i
                             title={"Edit"}
                             className="editiconn1 fa fa-pencil-square-o"
-                            onClick={() => this.checkforReferenceId(data.id)}
+                            onClick={() =>
+                              this.checkforReferenceId(data.id, index)
+                            }
                           ></i>
                           <i
                             className="fa fa-trash"
@@ -1615,6 +1869,7 @@ class ProfileBuilder extends React.Component {
                               id="referencename"
                               onChange={this.handleChange}
                               value={data.name}
+                              disabled={true}
                               className="form-control jobr subhyt plusnew12"
                               placeholder=""
                             />
@@ -1626,6 +1881,7 @@ class ProfileBuilder extends React.Component {
                               name=""
                               id="referencetitle"
                               value={data.title}
+                              disabled={true}
                               onChange={this.handleChange}
                               className="form-control jobr subhyt plusnew12"
                               placeholder=""
@@ -1639,6 +1895,7 @@ class ProfileBuilder extends React.Component {
                               name=""
                               id="referencephone"
                               value={data.phone}
+                              disabled={true}
                               onChange={this.handleChange}
                               className="form-control jobr subhyt plusnew12"
                               placeholder=""
@@ -1652,6 +1909,7 @@ class ProfileBuilder extends React.Component {
                               id="referenceemail"
                               value={data.ref_email}
                               onChange={this.handleChange}
+                              disabled={true}
                               className="form-control jobr subhyt plusnew12"
                               placeholder=""
                             ></textarea>
@@ -1847,11 +2105,11 @@ class ProfileBuilder extends React.Component {
                     <div className="plusnew1">Job Description</div>
                     <textarea
                       name=""
-                      id="jobdescription"
+                      id="job_description"
                       onChange={this.handleChange}
                       className="form-control jobr jbdescr"
                       placeholder="Enter a job descrption"
-                      value={jobdescription}
+                      value={job_description}
                     ></textarea>
                   </Col>
                 </Row>
@@ -2072,6 +2330,17 @@ class ProfileBuilder extends React.Component {
               <Modal.Body>
                 <Row>
                   <Col md={6}>
+                    <div className="plusnew1"> Name</div>
+                    <textarea
+                      name=""
+                      id="referencename"
+                      onChange={this.handleChange}
+                      value={referencename}
+                      className="form-control jobr subhyt"
+                      placeholder=""
+                    />
+                  </Col>
+                  <Col md={6}>
                     <div className="whatdoudo offpad"></div>
                     <div className="plusnew1">Title</div>
                     <textarea
@@ -2079,17 +2348,6 @@ class ProfileBuilder extends React.Component {
                       id="referencetitle"
                       value={referencetitle}
                       onChange={this.handleChange}
-                      className="form-control jobr subhyt"
-                      placeholder=""
-                    />
-                  </Col>
-                  <Col md={6}>
-                    <div className="plusnew1"> Name</div>
-                    <textarea
-                      name=""
-                      id="referencename"
-                      onChange={this.handleChange}
-                      value={referencename}
                       className="form-control jobr subhyt"
                       placeholder=""
                     />
@@ -2135,7 +2393,7 @@ class ProfileBuilder extends React.Component {
                 <Button
                   className="btnws1 savebtn"
                   variant="danger"
-                  onClick={this.CloseEditCertification}
+                  onClick={this.CloseEditReference}
                 >
                   Back
                 </Button>

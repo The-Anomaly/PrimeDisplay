@@ -193,12 +193,14 @@
     line-height: 41px
   }
   .backgroundcv{
-    background: #e5e5e5;
+    background: #fff;
   }
   .genpdf{
     background: none;
     border: 1px solid #9c1258;
     border-radius: 8px;
+    font-size: 14px;
+    border: none;
   }
   .padpdf{
     text-align: center;
@@ -225,4 +227,19 @@
   }
   .opdd{
     margin-top: 6rem;
+  }
+  .bulma_columns__3WmlH{
+    white-space: pre-wrap;
+  }
+  @media (max-width: 600px) {
+    .widincr .modal-dialog{
+      width: 320px;
+    }
+    .modal.show .modal-dialog{
+      margin: auto;
+    }
+    .modcomplete .modal-dialog{
+      width: 320px;
+      max-width: 400px;
+    }
   }

@@ -122,7 +122,7 @@ class NewDashboardJobOpportunities extends React.Component {
       opportunities_open_to,
       present_industry,
     } = this.state;
-    console.log(industry_interest);
+    // console.log(industry_interest);
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     const data = {
@@ -182,7 +182,7 @@ class NewDashboardJobOpportunities extends React.Component {
     else {
       // console.log("it's in the array")
     }
-    console.log(this.state.opportunities_open_to);
+    // console.log(this.state.opportunities_open_to);
   };
   
   removeInterest = (interest) => {
@@ -202,7 +202,7 @@ class NewDashboardJobOpportunities extends React.Component {
     this.setState({
       opportunities_open_to: [...this.state.opportunities_open_to],
     });
-    console.log(this.state.opportunities_open_to);
+    // console.log(this.state.opportunities_open_to);
     }
   };
   componentDidMount() {

@@ -11,7 +11,7 @@ export const handleChatCheck = () => {
     headers: { Authorization: `Token ${token}` },
   })
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       if (response?.data[0]?.ask_counsellor === true) {
         return  window.location.assign("/allusermessages");;
       }
@@ -20,7 +20,7 @@ export const handleChatCheck = () => {
       }
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
       // console.error("Payment Status Error");
     });
 };

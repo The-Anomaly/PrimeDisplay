@@ -199,7 +199,7 @@ class NewDashboard extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response?.data[0]?.ask_counsellor === true) {
           return window.location.assign("/allusermessages");
         }
@@ -211,7 +211,7 @@ class NewDashboard extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         // console.error("Payment Status Error");
       });
   };
