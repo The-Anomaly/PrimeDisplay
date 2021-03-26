@@ -148,9 +148,8 @@ const ThirdPartyOverview = (props: any) => {
                       </span>
                     </div>
                     <div className="facce">
-                      Volutpat purus orci ipsum quis faucibus sed elit elit
-                      gravida. Sodales facilisis sed nulla lobortis in convallis
-                      pellentesque urna faucibus.
+                      Your dashboard gives you full insight to every client who
+                      signed using your unique link
                     </div>
                     <div className="ttotlaclnt">
                       <div className="boxxqq12">

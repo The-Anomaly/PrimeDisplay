@@ -643,3 +643,8 @@
 .bg-white{
   background: white !important;
 }
+@media(max-width:1299px){
+  .boxxqq12{
+    width: 175px;
+  }
+}

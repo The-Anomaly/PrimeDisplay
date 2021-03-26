@@ -118,7 +118,7 @@ import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
 import ReactPixel from "react-facebook-pixel";
 
-import AllBookedSessions from "./Components/Dashboard/AllBookedSessions"
+import AllBookedSessions from "./Components/Dashboard/AllBookedSessions";
 
 const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {
@@ -150,11 +150,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {window.location.pathname == "/" && (
-          <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
-            <img src={whatsapp} className="whatsapp" alt="whatsapp" />
-          </a>
-        )}
+        {window.location.pathname == "/" ||
+          window.location.pathname == "/dashboardsupport" ||
+          window.location.pathname ==
+            "/counsellorsupport" ? (
+              <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
+                <img src={whatsapp} className="whatsapp" alt="whatsapp" />
+              </a>
+            ):""}
         <div>
           <BrowserRouter>
             <Switch>

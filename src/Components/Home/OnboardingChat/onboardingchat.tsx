@@ -148,6 +148,7 @@ class OnboardingChat extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        console.log(res)
         this.setState({
           isloading: false,
         });

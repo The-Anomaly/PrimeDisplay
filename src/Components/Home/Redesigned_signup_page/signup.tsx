@@ -91,10 +91,11 @@ const Signup = withRouter((props: any) => {
   useEffect(() => {
     const query = new URLSearchParams(props.location.search);
     const referralKey = query.get("referral");
+    console.log(props.location.search.split("?referral=").join(""))
     if (referralKey) {
       setFormState({
         ...state,
-        referral_code: referralKey,
+        referral_code: props.location.search.split("?referral=").join(""),
       });
     }
   }, []);

@@ -41,6 +41,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     incomplete_usersettings: false,
     incomplete_job_rec: false,
     upgradeState: false,
+    isloading:false,
   };
 
   componentWillMount() {
@@ -131,8 +132,11 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     return dateTime;
   };
   handleChatCheck = () => {
-    // console.log("checking payment status");
-    this.setState({ isLoading: true });
+        console.log("checking payment status");
+    this.setState({ 
+      isLoading: true,
+      isloading:true
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -142,56 +146,81 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        // console.log(response);
+        console.log(response);
+        if (
+          response?.data[0]?.book_session === false
+        )  {
+          return this.setState({
+            upgradeState: true,
+            no_subscription: true,
+            isloading:false
+          });
+        }
         if (
           response?.data[0]?.job_recommendation_filled === false &&
           response?.data[0]?.personal_info === false
         ) {
+          console.log("checking payment status 1");
           return this.setState({
             incomplete_usersettings: true,
             incomplete_job_rec: true,
             upgradeState: true,
+            isloading:false
           });
-        } else if (
-          response?.data[0]?.job_recommendation_filled === true &&
-          response?.data[0]?.personal_info === true
-        ) {
-          return this.setState({
-            incomplete_usersettings: false,
-            incomplete_job_rec: false,
-            upgradeState: false,
-          });
-        } else if (
+        } 
+        // if (
+        //   response?.data[0]?.job_recommendation_filled === true &&
+        //   response?.data[0]?.personal_info === true
+        // ) {
+        //   console.log("checking payment status 2");
+        //   return this.setState({
+        //     incomplete_usersettings: false,
+        //     incomplete_job_rec: false,
+        //     upgradeState: false,
+        //     isloading:false
+        //   });
+        // }
+         if (
           response?.data[0]?.job_recommendation_filled === false &&
           response?.data[0]?.personal_info === true
         ) {
+          console.log("checking payment status 3");
           return this.setState({
             incomplete_usersettings: false,
             incomplete_job_rec: true,
             upgradeState: true,
+            isloading:false
           });
-        } else if (
+        } if (
           response?.data[0]?.job_recommendation_filled === true &&
           response?.data[0]?.personal_info === false
         ) {
+          console.log("checking payment status 4");
           return this.setState({
             incomplete_usersettings: true,
             incomplete_job_rec: false,
             upgradeState: true,
+            isloading:false
           });
         }
         if (response?.data[0]?.book_session === true) {
           // console.log("Payment Summary Check");
+          console.log("checking payment status 5");
           return this.sendMessageToCounselor();
         } else {
           return this.setState({
             upgradeState: true,
             no_subscription: true,
+            isloading:false
           });
         }
       })
       .catch((error) => {
+        this.notify("Request failed please try again latter")
         // console.error("Payment Status Error");
+        this.setState({
+          isloading:false
+        })
       });
   };
   onChange = (date) => {
@@ -201,6 +230,10 @@ class CouncellorDates extends React.Component<React.Props<any>> {
     });
   };
   sendMessageToCounselor = () => {
+    console.log("code reached the other function")
+    this.setState({
+      isloading:true
+    })
     const { date, time, phone, feedbackText } = this.state;
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -220,6 +253,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
         if (response.status === 200) {
           this.setState({
             isOpen: true,
+            isloading:false
           });
         }
       })
@@ -229,12 +263,14 @@ class CouncellorDates extends React.Component<React.Props<any>> {
           this.setState({
             errorMessage: error?.response?.data?.message,
             isLoading: false,
+            isloading:false
           });
           this.notify(`Failed to process  ${error?.response?.data?.message}`);
         }
         this.setState({
           errorMessage: "failed",
           isLoading: false,
+          isloading:false
         });
       });
   };
@@ -344,7 +380,7 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                         className="booksession planupgradebtn1"
                         onClick={this.handleChatCheck}
                       >
-                        Book Session <span className="text-white">&#8594;</span>
+                        {!this.state.isloading?"Book Session":"Processing"} <span className="text-white">&#8594;</span>
                       </div>
                     </Col>
                     <ToastContainer
