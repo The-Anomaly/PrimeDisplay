@@ -46,7 +46,7 @@ const NewFooter: React.FC = (props) => {
       <Row md={12} className="home_footer">
         <div className="footer_stay">STAY CONNECTED</div>
         <div className="footer_signup">
-          signup to get news and tips from ur experts
+          signup to get news and tips from our experts
         </div>
         <div className="footer_maill">
           <label htmlFor="newsletter"><p>Enter your email</p></label>

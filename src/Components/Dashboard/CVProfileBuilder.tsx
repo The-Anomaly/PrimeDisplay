@@ -516,8 +516,8 @@ class CVProfileBuilder extends React.Component {
                                   </div>
                                   <div className="time">
                                     {this.formatTime(data.started_from)} -
-                                    {data.current ? " Present" : ""}{" "}
-                                    {data?.to}
+                                    {data.current ? " Present" : " " + data?.to}
+                                    
                                   </div>
                                   <hr />
                                 </Col>

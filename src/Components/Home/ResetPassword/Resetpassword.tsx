@@ -67,16 +67,18 @@ const ResetPassword: React.FunctionComponent = (props: any) => {
       )
       .then((response) => {
         if (response.status === 200) {
-          return setFormState({
+          setFormState({
             ...state,
             isLoading: false,
             message: response?.data[0]?.message,
           });
+          return props.history.push(`/signin`);
         }
         setFormState({
           ...state,
           isLoading: false,
         });
+        
       })
       .catch((error) => {
         if (error && error.response && error.response.data) {
