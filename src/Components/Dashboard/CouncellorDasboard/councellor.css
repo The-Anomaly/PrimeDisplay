@@ -2812,11 +2812,13 @@ textarea.form-control.jobr {
   font-weight: 600;
   font-size: 15px;
   color: #18214d;
+  word-break: break-all;
 }
 .userrdet2 {
   font-size: 12px;
   color: #b8bfd3;
   margin-left: 1rem;
+  word-break: break-all;
 }
 .userrdet3 {
   font-size: 14px;
@@ -4358,4 +4360,112 @@ color: #B8BFD3;
   bottom: 2.6rem;
   right: .2rem;
   cursor: pointer;
+}
+.name-name {
+  font-weight: 900;
+  text-transform: capitalize;
+}
+.date-date {
+  font-weight: 900;
+}
+.newui2222 {
+  padding: 1rem 1rem 1rem 2rem;
+  height: 125px;
+  cursor: pointer;
+}
+.newgha {
+  top: 10px;
+}
+.space-left {
+  padding-left: 10px;
+}
+.search-img-btn {
+  cursor: pointer;
+}
+.back-btn {
+  color: white;
+  background: #9c1258;
+  border: 1px solid #9c1258;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  width: 90px;
+  height: 40px;
+  font-family: 'Brfirma-Regular'
+}
+.recommendation-modal .modal-content {
+  max-height: 90vh;
+  overflow: auto;
+}
+.recomm-ttl {
+  color: #001833;
+  font-weight: 900;
+}
+.recomm-ttl span {
+  text-transform: lowercase;
+}
+.recomm-txt {
+  white-space: break-spaces;
+  height: 100%;
+  padding-top: 1rem !important;
+  color: #001833;
+}
+.recomm-btn {
+  width: 15px;
+    position: absolute;
+    right: 2rem;
+    top: 1.5rem;
+    cursor: pointer;
+}
+.space-left div:nth-child(2) {
+  text-overflow: ellipsis;
+}
+
+@media(max-width: 600px) {
+  .newui2222 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    flex-wrap: wrap;
+    height: 220px;
+  }
+  .avatar-avatar {
+    order: 1;
+    flex: 50%;
+  }
+  .space-left {
+    order: 3;
+    flex: 100%;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .date-date {
+    order: 2;
+    flex: 50%;
+    width: 50%;
+  }
+  .space-left div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+  }
+  .space-left div:nth-child(1) span:nth-child(2) {
+    padding-left: 0;
+  }
+  .space-left div:nth-child(2) {
+    font-size: 13px;
+  }
+  .recommendation-modal {
+    max-width: 90%;
+    margin-left: 5%;
+  }
+  .recomm-btn {
+    right: 1.5rem;
+    top: 1.25rem;
+    width: 12px;
+  }
+  .recomm-txt {
+    font-size: 13px;
+  }
 }

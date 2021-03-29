@@ -215,7 +215,7 @@ const SideBarCounsellorDashboard = withRouter((props: any) => {
                 className="sideimage"
                 alt="sideimage"
               />
-              Recommended Task
+              Recommendations
             </Link>
           </div>
           <div className={props.builder ? "activegb" : "gbn"}>
