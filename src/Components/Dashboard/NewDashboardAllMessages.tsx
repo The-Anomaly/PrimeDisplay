@@ -34,7 +34,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response?.data[0]?.ask_counsellor === false) {
             //notify("Update your subscription to access this feature");
             // console.log("Can't access ask a counselor");
@@ -48,7 +48,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
           }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         // console.error("Payment Status Error");
       });
   }, []);

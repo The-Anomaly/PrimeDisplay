@@ -20,36 +20,36 @@ import { withRouter } from "react-router-dom";
 const NewAssessmentPhaseOne = withRouter((props: any) => {
   const [value, setValue] = React.useState<number>(0);
   const [state, setCheckboxValue]: any = React.useState({
-    question1: "1",
-    question2: "1",
-    question3: "1",
-    question4: "1",
-    question5: "1",
-    question6: "1",
-    question7: "1",
-    question8: "1",
-    question9: "1",
-    question10: "1",
-    question11: "1",
-    question12: "1",
-    question13: "1",
-    question14: "1",
-    question15: "1",
-    question16: "1",
-    question17: "1",
-    question18: "1",
-    question19: "1",
-    question20: "1",
-    question21: "1",
-    question22: "1",
-    question23: "1",
-    question24: "1",
-    question25: "1",
-    question26: "1",
-    question27: "1",
-    question28: "1",
-    question29: "1",
-    question30: "1",
+    question1: "",
+    question2: "",
+    question3: "",
+    question4: "0",
+    question5: "0",
+    question6: "0",
+    question7: "0",
+    question8: "0",
+    question9: "0",
+    question10: "0",
+    question11: "0",
+    question12: "0",
+    question13: "0",
+    question14: "0",
+    question15: "0",
+    question16: "0",
+    question17: "0",
+    question18: "0",
+    question19: "0",
+    question20: "0",
+    question21: "0",
+    question22: "0",
+    question23: "0",
+    question24: "0",
+    question25: "0",
+    question26: "0",
+    question27: "0",
+    question28: "0",
+    question29: "0",
+    question30: "0",
     isloading: false,
     token: "",
   });
@@ -220,7 +220,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name1} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">
@@ -292,7 +292,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name2} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">
@@ -364,7 +364,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name3} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">
@@ -436,7 +436,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name4} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">
@@ -508,7 +508,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name5} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">
@@ -579,7 +579,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name6} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">
@@ -650,7 +650,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name7} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">
@@ -721,7 +721,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name8} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">
@@ -793,7 +793,7 @@ const NewAssessmentPhaseOne = withRouter((props: any) => {
               <div className="agree">Agree</div>
               <div className="checkwrapper flipdirection">
                 <label className="checkcontainer">
-                  <input type="radio" value={0} onChange={onchange} name="" />
+                  <input type="radio" value={0} onChange={onchange} name={name9} />
                   <span className="checkmark"></span>
                 </label>
                 <label className="checkcontainer">

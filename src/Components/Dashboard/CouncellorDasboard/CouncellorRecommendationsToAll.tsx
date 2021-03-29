@@ -64,7 +64,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
     ])
       .then(
         Axios.spread((res, res1) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,

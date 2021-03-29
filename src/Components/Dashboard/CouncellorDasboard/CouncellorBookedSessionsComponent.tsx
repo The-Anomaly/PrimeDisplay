@@ -416,7 +416,7 @@ const CounsellorBookedSessionsComponent = (props: any) => {
         });
     }
   };
-  console.log(completedStatus);
+  // console.log(completedStatus);
   return (
     <>
       <Row>
