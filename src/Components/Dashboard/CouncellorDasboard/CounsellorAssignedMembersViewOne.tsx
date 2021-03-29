@@ -320,7 +320,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
             <Row>
               <Col md={6}>
                 <Form.Group className="userfield1">
-                  <h6 className="gha">What i presently do</h6>
+                  <h6 className="gha newgha">What i presently do</h6>
                   <Form.Control
                     type="text"
                     className="userfield"
@@ -333,7 +333,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
               </Col>
               <Col md={6}>
                 <Form.Group className="userfield1">
-                  <h6 className="gha">What industry i presently work in </h6>
+                  <h6 className="gha newgha">What industry i presently work in </h6>
                   <Form.Control
                     type="text"
                     className="userfield"
@@ -347,7 +347,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
             <Row>
               <Col md={6}>
                 <Form.Group className="userfield1">
-                  <h6 className="gha">
+                  <h6 className="gha newgha">
                     What industry i am currently seeking opportunities
                   </h6>
                   <Form.Control
@@ -361,7 +361,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
               </Col>
               <Col md={6}>
                 <Form.Group className="userfield1">
-                  <h6 className="gha">Present work status </h6>
+                  <h6 className="gha newgha">Present work status </h6>
                   <Form.Control
                     type="text"
                     className="userfield"
@@ -375,7 +375,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
             <Row>
               <Col md={6}>
                 <Form.Group className="userfield1">
-                  <h6 className="gha">Opportunities i am open to</h6>
+                  <h6 className="gha newgha">Opportunities i am open to</h6>
                   <Form.Control
                     type="text"
                     className="userfield"
@@ -387,7 +387,7 @@ const CounsellorAssignedMembersViewOne = (props: any) => {
               </Col>
               {/* <Col md={6}>
                 <Form.Group className="userfield1">
-                  <h6 className="gha">Date of birth </h6>
+                  <h6 className="gha newgha">Date of birth </h6>
                   <Form.Control
                     type="text"
                     className="userfield"

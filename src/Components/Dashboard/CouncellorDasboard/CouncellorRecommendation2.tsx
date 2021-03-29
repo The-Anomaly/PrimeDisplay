@@ -56,6 +56,7 @@ class CounsellorRecommendation2 extends React.Component {
       }
     )
       .then((response) => {
+        console.log(response)
         this.setState({
           counsellor: response.data,
         });
@@ -122,6 +123,19 @@ class CounsellorRecommendation2 extends React.Component {
                   <Row>
                     <Col md={11}>
                       <Col md={12} className="youwss">
+                            <div className="usersentwrap1">
+                              <div className="youwrap">
+                                <span className="you11b">
+                                  Jaiyeola Jones
+                                </span>
+                              </div>
+                              <div className="councellors_response">
+                                Description
+                              </div>
+                              <div className="youwrap textrrr">
+                                <span className="youdate">6th June 2021</span>
+                              </div>
+                            </div>
                         {counsellor &&
                           counsellor?.map((data, i) => (
                             <div className="usersentwrap1" key={i}>
@@ -138,7 +152,7 @@ class CounsellorRecommendation2 extends React.Component {
                               </div>
                             </div>
                           ))}
-                        {counsellor.length === 0 && (
+                        {/* {counsellor.length === 0 && (
                           <div className="norec">
                             <img
                               src={norecommendations}
@@ -150,7 +164,7 @@ class CounsellorRecommendation2 extends React.Component {
                               You dont have any Recommendation yet
                             </div>
                           </div>
-                        )}
+                        )} */}
                       </Col>
                     </Col>
                   </Row>
