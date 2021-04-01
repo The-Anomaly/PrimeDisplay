@@ -404,8 +404,8 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   {/* <div className="kprofile3">Growing Business</div> */}
                 </div>
               </div>
-              <hr />
-              {/* <div className="resultsec2" id="seek">
+              <hr className="lswid divider"/>
+              <div className="resultsec2" id="seek">
                 <div className="csfitscore2">Your Level of Career Clarity</div>
                 <div className="resultsec22">
                   <CirclePie
@@ -420,7 +420,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     percent={client?.career_fitness?.score}
                     padding={0}
                   />
-                  // <img src={firstChart} className="firstChart" alt="firstChart" />
+                  {/* // <img src={firstChart} className="firstChart" alt="firstChart" /> */}
                 </div>
                 <div className="csfitscore">
                   <div className="csfitscore1">Your Level of Career Clarity</div>
@@ -431,7 +431,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   <div className="csbody newcsbody">{client?.career_fitness?.body}</div>
                 </div>
               </div>
-              <hr /> */}
+              <hr className="lswid divider"/>
               <div>
                 <div className="tipswrapper">
                   <div>
@@ -452,7 +452,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   </div>
                 </div>
               </div>
-              <hr />
+              <hr className="lswid divider" />
               <div className="resultsec3" id="personality">
                 <div className="reskwrap">
                   <div className="csfitscore1 juki  reskheader">
@@ -529,7 +529,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   </div>
                 </div>
               </div>
-              <hr />
+              <hr className="lswid divider" />
               {client?.strong_career_competences && (
                 <div id="stongcomp">
                   <div className="competence">Your Strong Competences</div>
@@ -572,7 +572,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   )
                 )}
               </div>
-              <hr />
+              <hr className="lswid divider" />
               {/* Average Competence Starts Here */}
               <div id="avgcomp">
                 {client?.average_career_competences && (
@@ -616,7 +616,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                   )
                 )}
               </div>
-              <hr />
+              <hr className="lswid divider" />
               {/* ?akskks? */}
               {/* Average Competence Starts Here */}
               <div id="weak">
@@ -662,7 +662,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                 ))}
               </div>
               <br />
-              <hr />
+              <hr className="lswid divider" />
               <br />
               <div>
                 <div className="competence" id="expression">
@@ -789,7 +789,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     ))}
                   </div>
                 </div>
-                <hr />
+                <hr className="lswid divider" />
                 {/* Your Job Function Fit style barchart */}
                 <div className="competence" id="jobfunction">
                   Your Job Function Fit
@@ -816,7 +816,7 @@ class KigenniRemainingResult extends React.Component<React.Props<any>> {
                     })}
                   </div>
                 </div>
-                <hr />
+                <hr className="lswid divider" />
                 <div className="otherinfo">
                   {client?.job_function_fit?.field?.map((dataindata, index) => (
                     <div key={index} className="otherinfosub">
