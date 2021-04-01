@@ -9,7 +9,8 @@ body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
   scroll-behavior: smooth;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #ffffff !important;
+  background: #ffffff;
 }
 @media(max-width:700px){
   body{
