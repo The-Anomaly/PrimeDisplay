@@ -148,6 +148,7 @@ const CounsellorOverview = (props: any) => {
           session_email: data.email,
           completedStatus: data.status,
           user_issues: data.user_vent,
+          session_notes:data?.note,
         });
       }
     });

@@ -75,6 +75,7 @@ const CounsellorBookedSessions = (props: any) => {
           sessionId: data.id,
           completedStatus: data.status,
           user_issues: data.user_vent,
+          session_notes:data?.note,
         });
       }
     });
@@ -152,7 +153,7 @@ const CounsellorBookedSessions = (props: any) => {
     ])
       .then(
         Axios.spread((res, res2) => {
-          // console.log(res);
+          console.log(res);
           if (res.status === 200) {
             setState({
               ...state,
