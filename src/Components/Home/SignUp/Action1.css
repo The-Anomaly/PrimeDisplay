@@ -1,0 +1,99 @@
+.action1-section{
+    background-color: #23304C;
+    padding: 198px 20px;
+    height: 100%;
+}
+
+.action1-container{
+    max-width: 1500px;
+    margin-top: 5rem;
+}
+.purple-color{
+    color: #9C1258;
+}
+
+.action1-heading{
+    color: #fff;
+    font-size: 35px;
+    /* font-family: "Brfirma-Medium" */
+}
+.action1-header{
+    text-align: center;
+    padding-bottom: 40px;
+}
+.img-section{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    position: relative;
+}
+.subscribe-btn{
+    display: flex;
+    justify-content: center;
+    padding-top: 4rem;
+}
+.subscribe-button{
+    display: flex;
+    background-color:#9C1258;
+    justify-content: center;
+    color: #fff;
+    padding: 8px 20px;
+    width: 12%;
+    border: none;
+    border-radius: 7px;
+
+}
+.play-btn{
+    position: absolute;
+    top: 40%;
+}
+.image-man{
+    border-radius: 21px;
+}
+
+
+@media (max-width: 768px){
+    .subscribe-button{
+        width: 20%;
+    }
+}
+
+@media (max-width: 590px){
+    .play-btn{
+        /* top: 8rem; */
+    }
+    .action1-heading{
+        color: #fff;
+        font-size: 25px;
+       
+    }
+    .action1-container{
+        margin-top: 3rem;
+    }
+    .subscribe-button{
+        width: 20%;
+    }
+
+    .action1-section{
+        padding: 170px 20px;
+    }
+}
+@media (max-width: 440px){
+    .play-btn{
+        /* top: 5rem; */
+    }
+    .subscribe-button{
+        width: 40%;
+    }
+    .action1-heading{
+        color: #fff;
+        font-size: 18px;
+       
+    }
+    .action1-container{
+        margin-top: 1rem;
+    }
+    .action1-section{
+        padding: 170px 20px;
+    }
+}
