@@ -118,7 +118,11 @@ import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
 import ReactPixel from "react-facebook-pixel";
 
-import AllBookedSessions from "./Components/Dashboard/AllBookedSessions";
+import AllBookedSessions from "./Components/Dashboard/AllBookedSessions"
+import CvDesign from "./Components/Dashboard/CvDesign";
+import Action from "./Components/Home/SignUp/Action";
+import Actionfirst from "./Components/Home/SignUp/Action1";
+import Actionsecond from "./Components/Home/SignUp/Action2";
 
 const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {
@@ -608,6 +612,30 @@ class App extends Component {
                 exact
                 path="/assessmentphasefour"
                 component={NewAssessmentPhaseFour}
+              />
+              <Route 
+                exact 
+                path="/cvdesign"
+                component={CvDesign}
+              
+              />
+              <Route 
+                exact 
+                path="/actions"
+                component={Action}
+              
+              />
+              <Route 
+                exact 
+                path="/actionsfirst"
+                component={Actionfirst}
+              
+              />
+              <Route 
+                exact 
+                path="/actionssecond"
+                component={Actionsecond}
+              
               />
             </Switch>
           </BrowserRouter>

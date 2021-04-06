@@ -1,0 +1,94 @@
+body{
+    background-color: #fff!important;
+}
+
+h1{
+    font-family: "Brfirma-Bold"
+}
+
+.cv-header-section{
+    background-color: #fff;
+    padding: 1rem 1rem;
+    margin: auto;
+
+}
+.cv-heading{
+    text-align:center;
+    color: #000;
+    font-size: 35px;
+
+}
+.cv-heading-p{
+    text-align: center;
+}
+.container {
+
+}
+.section{
+    background-color: #fff;
+}
+.section-header{
+    padding: 1rem 0 0.3rem 0;
+    color: #000;
+    font-size: 30px;
+}
+.section-details-header{
+    padding: 2rem 0;
+}
+.top-line{
+    width: 100%;
+    height: 1px;
+    background-color:#4a4a4a;
+}
+
+.details-top{
+    display: flex;
+    justify-content: space-between;
+}
+.details-top-2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-list ul{
+    list-style: disc;
+    text-align: justify;
+    margin-left: 4rem;
+}
+.section-list li{
+    font-size: 20px;
+    padding: 0.2rem 1rem;
+}
+.position{
+    font-style: italic;
+}
+.name{
+    font-weight: bolder;
+    font-size: 20px;
+
+}
+
+.details-skills-top{
+    padding-top: 20px;
+    font-size: 20px;
+    margin-left: 1rem;
+}
+.details-skills-top li{
+    list-style: none;
+}
+.features{
+    padding-left: 1rem;
+}
+
+.project-list{
+    padding: 0.8rem 0.4rem;
+}
+
+.project-list h1{
+    font-size: 19px;
+    font-weight: lighter;
+}
+.uni h1, .award h1{
+    font-size: 19px;
+    font-weight: lighter;
+}

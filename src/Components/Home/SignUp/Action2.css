@@ -1,0 +1,104 @@
+.action2-section{
+    background-color: #23304C;
+    padding: 198px 20px;
+}
+
+.action2-container{
+    max-width: 1500px;
+    margin-top: 5rem;
+
+}
+.action2-row{
+    justify-content: center;
+}
+.action2-heading{
+    color: #fff;
+    font-size: 40px;
+}
+.action2-header{
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.action2-cards{
+    background-color: #fff;
+    margin: 1rem;
+    max-width: 17rem;
+    height: 400px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding:0;
+}
+.card2-body{
+    padding: 41px 15px 0 17px;
+}
+
+.card2-header{
+    padding-bottom: 19px;
+}
+.card2-info{
+    color: #666666;
+    font-size: 10px
+}
+.card2-amount{
+    padding-top: 26px;
+}
+.card2-amount p{
+    font-family: "Brfirma-Bold";
+    color: #001833;
+    font-size: 36px;
+}
+.for-1-month{
+    color:#666666;
+    font-size: 14px;
+}
+
+.buy-button{
+    padding-top:2rem;
+}
+
+.buy-btn{
+    width: 100%;
+    background-color: #9c1258;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 5px;
+}
+.buy-btn:hover{
+    transform: translateY(-2px);
+}
+
+.line-divider{
+    /* height: 1px;
+    width: 100%;
+    border: 1px solid #666666;
+    padding-top: 3rem; */
+
+    background-color:#666666;
+    width: 100%;
+    margin-top: 3rem;
+    height: 0.5px;
+}
+
+.whats-included{
+    padding-top: 2rem;
+    display: flex;
+}
+.whats-included p{
+    padding-left: 1rem;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: "Brfirma-Bold";
+}
+.down-arrow{
+    padding-left: 2rem;
+}
+
+
+@media (max-width: 500px){
+    .action2-heading{
+        font-size: 30px;
+    }
+}
