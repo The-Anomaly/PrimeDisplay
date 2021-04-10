@@ -119,6 +119,7 @@ import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/Counsell
 import ReactPixel from "react-facebook-pixel";
 
 import AllBookedSessions from "./Components/Dashboard/AllBookedSessions";
+import Dashboard2021 from "./Components/Dashboard/Dashboard2021";
 
 const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {
@@ -609,6 +610,8 @@ class App extends Component {
                 path="/assessmentphasefour"
                 component={NewAssessmentPhaseFour}
               />
+
+              <Route exact path="/overview/new" component={Dashboard2021} />
             </Switch>
           </BrowserRouter>
         </div>
