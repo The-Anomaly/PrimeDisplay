@@ -120,6 +120,7 @@ import ReactPixel from "react-facebook-pixel";
 
 import AllBookedSessions from "./Components/Dashboard/AllBookedSessions"
 import CvDesign from "./Components/Dashboard/CvDesign";
+import Avatardesign from "./Components/Dashboard/Avatardesign";
 import Action from "./Components/Home/SignUp/Action";
 import Actionfirst from "./Components/Home/SignUp/Action1";
 import Actionsecond from "./Components/Home/SignUp/Action2";
@@ -632,6 +633,12 @@ class App extends Component {
                 exact 
                 path="/actionssecond"
                 component={Actionsecond}
+              
+              />
+               <Route 
+                exact 
+                path="/avatardesign"
+                component={Avatardesign}
               
               />
             </Switch>
