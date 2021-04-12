@@ -203,7 +203,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="3">
                 <Card.Body>
-                  <Link to="/allbookedsessions" target="_blank">
+                  <Link to="/allbookedsessions">
                     <div className="task112">Book a private session</div>
                   </Link>
                   <div

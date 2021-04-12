@@ -1,5 +1,5 @@
 .ov-bg {
-    background: #e5e5e5;
+    background: #e5e5e580;
     padding-bottom: 3rem;
 }
 .ov-sec {
@@ -35,6 +35,7 @@
     grid-row-start: 2;
     grid-row-end: 4;
     padding: 1.5rem 1rem;
+    position: relative;
 }
 .ov-sec-4 {
     grid-row-start: 2;
@@ -149,6 +150,13 @@
     background: #fff;
     margin: 1rem 10%;
     width: 80%;
+}
+.ov-sec-3 button { 
+    position: absolute;
+    bottom: 2.5rem;
+    left: 10%;
+    margin: 0;
+    margin-top: 1.5rem;
 }
 
 /* Messages Overview */
@@ -273,4 +281,79 @@
     width: 80%;
     margin: 2rem 0;
     min-width: 140px;
+}
+
+.ov-notasks {
+    text-align: center;
+    margin: 2rem 0;
+}
+.ov-notasks img {
+    width: 75%;
+}
+.ov-nomsgs {
+    text-align: center;
+}
+.ov-nomsgs img {
+    width: 85%;
+}
+.ov-notext {
+    color: #666666;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 1rem;
+}
+.ov-nosession {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px;
+    width: 100%;
+}
+.ov-todo-stat-green {
+    color: #1bb978;
+    background: #87edc491;
+    width: 100px;
+  }
+@media screen and (max-width: 800px) {
+    .ov-sec {
+        grid-template-columns: 100%;
+        margin: auto;
+        max-width: 500px;
+    }
+    .ov-sec-1 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    .ov-sec-2 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    .ov-sec-3 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+    .ov-sec-4 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+    .ov-sec-5 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 5;
+        grid-row-end: 6;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .ov-sec-1 img {
+        display: none;
+    }
 }
