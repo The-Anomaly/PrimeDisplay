@@ -274,7 +274,7 @@ class OnboardingChat extends React.Component {
                                     name="question2"
                                     onClick={() =>
                                       window.location.assign(
-                                        "/assessment/welcome"
+                                        "/overview/new"
                                       )
                                     }
                                   />

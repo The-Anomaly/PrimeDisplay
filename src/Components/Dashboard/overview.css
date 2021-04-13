@@ -1,0 +1,276 @@
+.ov-bg {
+    background: #e5e5e5;
+    padding-bottom: 3rem;
+}
+.ov-sec {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+    column-gap: 1em;
+    row-gap: 1em;
+    margin-right: 2rem;
+}
+.ov-elements {
+    background: #ffffff;
+    border-radius: 5px;
+}
+.ov-sec-1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.ov-sec-2 {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    text-align: center;
+    padding: 1rem 1.5rem;
+}
+.ov-sec-3 {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    padding: 1.5rem 1rem;
+}
+.ov-sec-4 {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    padding: 1.5rem 1rem;
+    position: relative;
+}
+.ov-sec-5 {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    position: relative;
+    padding: 3rem 1.5rem 1.5rem;
+}
+
+/* Dashboard Welcome */
+.ov-sec-1 h1 {
+    color: #001833;
+    font-size: 19px;
+}
+.ov-sec-1 p {
+    font-size: 13px;
+    color: #666666;
+    margin: 10px 0 1rem;
+}
+.ov-sec-1 button {
+    border: 1px solid #9c1258;
+    background: #9c1258;
+    color: #fff;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 14px;
+    width: 150px;
+}
+.ov-sec-1 img {
+    margin-left: 5%;
+    width: 40%;
+}
+
+/* Todo Task Overview */
+.ov-todo-ttl {
+    font-size: 14px;
+    font-family: 'Brfirma-Bold';
+    color: #001833;
+    margin-bottom: 1.2rem;
+}
+.ov-todo {
+    border: 1px solid #D8EDFF;
+    border-radius: 4px;
+    padding: 10px 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.ov-todo div {
+    margin-top: 8px;
+}
+.ov-todo-stat {
+    background: #fce4e4;
+    border-radius: 4px;
+    color: #ff0000;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    width: 80px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: calc(100% - 80px);
+}
+.ov-task {
+    flex: 100%;
+    width: 100%;
+}
+.ov-duration, .ov-date {
+    flex: 50%;
+    width: 50%;
+}
+.ov-date {
+    text-align: right;
+}
+.ov-duration {
+    position: relative;
+}
+.ov-duration::after {
+    content: " ";
+    border: 1px solid #bcbcbc50;
+    display: block;
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 100%;
+    margin: 0 10px
+}
+.ov-todo-sub-ttl {
+    color: #979797;
+    font-size: 10px;
+}
+.ov-todo-sub-txt {
+    color: #001833;
+    font-size: 13px;
+    margin-top: 2px;
+    font-weight: 600;
+}
+.ov-todo-btn {
+    border: 1px solid #9c1258;
+    color: #9c1258;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 8px;
+    background: #fff;
+    margin: 1rem 10%;
+    width: 80%;
+}
+
+/* Messages Overview */
+.ov-msg {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.ov-msg div {
+    margin-left: 10px;
+}
+.ov-msg-ttl {
+    color: #001833;
+    font-weight: 600;
+    font-size: 13px;
+}
+.ov-msg-txt {
+    color: #666666;
+    font-size: 11px;
+    width: 100%;
+    text-overflow: ellipsis;
+    max-width: 220px;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    margin-top: 4px;
+}
+.ov-sec-4 button { 
+    position: absolute;
+    bottom: 2.5rem;
+    left: 10%;
+    margin: 0;
+    margin-top: 1.5rem;
+}
+
+/* Session Overview */
+.ov-sec-5 h2 {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Brfirma-Bold';
+    color: #001833;
+    margin-bottom: 1rem;
+}
+.ov-sec-5 div {
+    background: rgba(147, 109, 255, 0.1);
+    border: 1px dashed #936DFF;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.ov-book-ttl {
+    flex: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #001833;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.ov-book-txt {
+    max-width: 50%;
+    flex: 50%;
+    font-size: 14px;
+    color: #001833;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Profile Overview */
+.ov-avatar {
+    border: 2px solid #D8EDFF;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+.ov-avatar img {
+    width: 93%;
+}
+.ov-profile-name {
+    color: #001833;
+    font-weight: 600;
+    font-size: 15px;
+}
+.ov-profile-descrip {
+    color: #666666;
+    font-size: 13px;
+    margin: 3px 0 5px;
+}
+.ov-profile-deets {
+    display: flex;
+    color: #666666;
+    font-size: 13px;
+    margin-top: 0.8rem;
+}
+.ov-profile-deets p:nth-child(1) {
+    width: 70px;
+    text-align: left;
+    min-width: 70px;
+}
+.ov-profile-deets p:nth-child(2) {
+    font-weight: 600;
+}
+.ov-profile-deets p {
+    word-break: break-all;
+    text-align: left;
+}
+.ov-sec-2 button {
+    border: 1px solid #9c1258;
+    background: #9c1258;
+    color: #fff;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 14px;
+    width: 80%;
+    margin: 2rem 0;
+    min-width: 140px;
+}

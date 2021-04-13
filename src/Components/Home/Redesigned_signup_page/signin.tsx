@@ -95,7 +95,11 @@ const Signin = withRouter((props: any) => {
             response.data[0].next === "onboarding_chat"
           ) {
             return props.history.push("/clientchat");
-          } else if (
+          }
+          if(response.data[0].next){
+            return props.history.push(`/overview/new`);
+          } 
+           else if (
             response.data[0].next === "phase_one" ||
             response.data[0].phase_one === false
           ) {

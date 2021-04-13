@@ -74,6 +74,10 @@ const TestPdf = () => {
     cv_data,
     Skills,
   } = state;
+  const [picker, setPicker] = React.useState({
+    color: 0,
+  });
+  const { color } = picker;
   const ref: any = React.useRef();
   useEffect(() => {
     const tag = document.getElementsByTagName("meta").namedItem("viewport");
@@ -136,15 +140,67 @@ const TestPdf = () => {
     unit: 'in',
     format: [4,2]
 };
+const themePicker = (value) => {
+  setPicker({
+    ...picker,
+    color: value,
+  });
+};
   return (
     <div>
       {/* <Navbar /> */}
       <Container fluid={true}>
-        <Row className="backgroundcv">
-          <Col md={12} className="padpdf text-right">
-            <Pdf targetRef={ref} filename="resume.pdf" x={1} y={.5} scale={.7}>
+        <Row
+          className={
+            color === 1
+              ? "backgroundcv cvclass1"
+              : color === 2
+              ? "backgroundcv cvclass2"
+              : color === 3
+              ? "backgroundcv cvclass3"
+              : color === 4
+              ? "backgroundcv cvclass4"
+              : color === 5
+              ? "backgroundcv cvclass5"
+              : color === 6
+              ? "backgroundcv cvclass6"
+              : color === 7
+              ? "backgroundcv cvclass7"
+              : color === 8
+              ? "backgroundcv cvclass8"
+              : "backgroundcv"
+          }
+        >
+          <Col md={12} className="padpdf newpadpdf text-right">
+          <div className="themepicker">
+              <p>Theme picker:</p>
+              <div>
+                <span onClick={() => themePicker(1)}></span>
+                <span onClick={() => themePicker(2)}></span>
+                <span onClick={() => themePicker(3)}></span>
+                <span onClick={() => themePicker(4)}></span>
+                <span onClick={() => themePicker(5)}></span>
+                <span onClick={() => themePicker(6)}></span>
+                <span onClick={() => themePicker(7)}></span>
+                <span onClick={() => themePicker(8)}></span>
+              </div>
+            </div>
+            <Pdf
+              targetRef={ref}
+              filename={`${first_name}-${last_name}-resume.pdf`}
+              x={1}
+              y={0.5}
+              scale={0.7}
+            >
               {({ toPdf }) => (
-                <button onClick={()=>window.print()} className="genpdf">
+                <button
+                  onClick={() => {
+                    document.title = `${first_name}-${last_name}-Resume.pdf`;
+                    return window.print();
+                  }}
+                  // onClick={toPdf}
+                  className="genpdf"
+                >
                   Print/Download CV
                 </button>
               )}

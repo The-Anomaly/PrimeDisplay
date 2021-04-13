@@ -58,6 +58,15 @@ const Navbar = withRouter((props: any) => {
     })
       .then((response) => {
         if (
+          response.data[0].onboarding_chat === false ||
+          response.data[0].next === "onboarding_chat"
+        ) {
+          return props.history.push("/clientchat");
+        }
+        if(response.data[0].next){
+          return props.history.push(`/overview/new`);
+        } 
+        if (
           (response.status === 200 &&
             response.data[0].next === "phase_two_nature") ||
           response.data[0].next === "phase_two_health" ||

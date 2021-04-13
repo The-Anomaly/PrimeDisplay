@@ -30,6 +30,10 @@ const CounsellorAllMessages = withRouter((props: any) => {
     isloading: false,
     modalState: false,
     search_1: "",
+    page: "",
+    next:"",
+    total_pages:"",
+    previous: "",
   });
   const {
     errorMessage,
