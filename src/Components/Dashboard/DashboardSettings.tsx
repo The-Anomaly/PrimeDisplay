@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DashboardNav from "./DashboardNavBar";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
+import Initial from "./Avatardesign";
 
 class NewDashboardSettings extends React.Component {
   state: any = {
@@ -32,6 +33,7 @@ class NewDashboardSettings extends React.Component {
     fillStatus: true,
     uploadLoading: "",
     country: "",
+    initial: "",
   };
   validateForm = (e) => {
     const {
@@ -165,7 +167,10 @@ class NewDashboardSettings extends React.Component {
   };
   fileInput: HTMLInputElement | null | undefined;
   componentDidMount() {
-    this.setState({ isLoading: true });
+    this.setState({
+      isLoading: true,
+      initial: localStorage.getItem("initial"),
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -213,8 +218,9 @@ class NewDashboardSettings extends React.Component {
       imageName,
       uploadLoading,
       country,
+      initial,
     } = this.state;
-    console.log(this.state.country);
+    console.log(this.state.image);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -230,11 +236,18 @@ class NewDashboardSettings extends React.Component {
                       <div className="smll">
                         {" "}
                         <div className="smalls">
-                          <img
+                          {/* <img
                             src={image !== null ? image : avatar}
                             className="avatar avar"
                             alt=""
-                          />
+                          /> */}
+                          {image ? (
+                            <img src={image} className="avatar avar" alt="avatar" />
+                          ) : (
+                            <div className="avatar avar">
+                              <Initial initial={initial} />
+                            </div>
+                          )}
                         </div>
                         <div>
                           <input

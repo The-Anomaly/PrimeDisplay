@@ -24,6 +24,7 @@
     padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .ov-sec-2 {
     grid-row-start: 1;
@@ -169,8 +170,12 @@
     margin-bottom: 1rem;
     overflow: hidden;
 }
-.ov-msg div {
+.ov-msg-div {
     margin-left: 10px;
+}
+.avatar-body {
+    width: 50px;
+    height: 50px;
 }
 .ov-msg-ttl {
     color: #001833;
@@ -244,7 +249,6 @@
 
 /* Profile Overview */
 .ov-avatar {
-    border: 2px solid #D8EDFF;
     border-radius: 50%;
     width: 70px;
     height: 70px;

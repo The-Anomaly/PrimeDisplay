@@ -27,7 +27,11 @@ const Signin = withRouter((props: any) => {
     successMessage,
     isLoading,
   } = state;
+  const generateTheme = () => {
+    return Math.floor(Math.random()* (3) + 1);
+  }
   const sendFormData = () => {
+    localStorage.setItem("avatar_theme", JSON.stringify(generateTheme()));
     setState({
       ...state,
       isLoading: true,

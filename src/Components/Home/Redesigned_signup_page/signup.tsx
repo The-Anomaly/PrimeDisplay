@@ -36,8 +36,11 @@ const Signup = withRouter((props: any) => {
     successMessage,
     errorMessage,
   } = state;
-
+  const generateTheme = () => {
+    return Math.floor(Math.random()* (3) + 1);
+  }
   const onSubmit = () => {
+    localStorage.setItem("avatar_theme", JSON.stringify(generateTheme()));
     setFormState({ ...state, isLoading: true });
     const data = {
       first_name: firstname,

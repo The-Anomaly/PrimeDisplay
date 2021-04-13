@@ -42,6 +42,7 @@ const SignIn: React.FunctionComponent = (props: any) => {
     isLoading: false,
   });
   const { email, password, errorMessage, isLoading } = state;
+  
   useEffect(() => {
     window.scrollTo(-0, -0);
   }, []);
@@ -246,7 +247,6 @@ const SignIn: React.FunctionComponent = (props: any) => {
         });
     }
   };
-
   return (
     <>
       <Navbar />
