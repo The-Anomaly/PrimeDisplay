@@ -119,12 +119,12 @@ import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/Counsell
 import ReactPixel from "react-facebook-pixel";
 
 import AllBookedSessions from "./Components/Dashboard/AllBookedSessions";
-import Dashboard2021 from "./Components/Dashboard/Dashboard2021";
 import CvDesign from "./Components/Dashboard/CvDesign";
 import Avatardesign from "./Components/Dashboard/Avatardesign";
 import Action from "./Components/Home/SignUp/Action";
 import Actionfirst from "./Components/Home/SignUp/Action1";
 import Actionsecond from "./Components/Home/SignUp/Action2";
+import Dashboard2021 from "./Components/Dashboard/Dashboard2021";
 
 const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {

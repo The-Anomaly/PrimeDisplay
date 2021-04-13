@@ -14,12 +14,12 @@
 
 .action1-heading{
     color: #fff;
-    font-size: 35px;
+    font-size: 25px;
     /* font-family: "Brfirma-Medium" */
 }
 .action1-header{
     text-align: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 .img-section{
     display: flex;
@@ -30,7 +30,8 @@
 .subscribe-btn{
     display: flex;
     justify-content: center;
-    padding-top: 4rem;
+    padding-top: 3rem;
+    font-weight: 900 !important;
 }
 .subscribe-button{
     display: flex;
@@ -49,6 +50,7 @@
 }
 .image-man{
     border-radius: 21px;
+    width: 600px;
 }
 
 

@@ -1,20 +1,19 @@
 .action-section{
     background-color: #23304C;
-    padding: 198px 20px;
+    padding: 30px 20px;
 }
 
 .action-container{
     max-width: 1500px;
-    margin-top: 5rem;
-
-
+    margin-top: 5.5rem;
+    min-height: 90vh;
 }
 
 .action-cards{
     background-color: #fff;
     margin: 1rem;
     max-width: 17rem;
-    height: 220px;
+    height: 180px;
     border-radius: 15px;
 }
 
@@ -26,19 +25,19 @@
 }
 .card-body p{
     font-family: "Brfirma-Bold";
-    font-size: 18px;
+    font-size: 14px;
 }
 .action-card-icon{
-    padding-top: 4rem;
+    padding-top: 2rem;
 }
 .card-icon{
     padding-left: 0.8rem;
 }
 .action-heading{
     color: #fff;
-    font-size: 40px;
+    font-size: 23px;
 }
 .action-header{
     text-align: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }

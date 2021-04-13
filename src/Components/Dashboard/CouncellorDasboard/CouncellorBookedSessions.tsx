@@ -75,6 +75,7 @@ const CounsellorBookedSessions = (props: any) => {
           sessionId: data.id,
           completedStatus: data.status,
           user_issues: data.user_vent,
+          session_notes:data?.note,
         });
       }
     });
