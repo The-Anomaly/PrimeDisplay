@@ -67,7 +67,8 @@
     border-radius: 8px;
     height: 40px;
     font-size: 14px;
-    width: 150px;
+    min-width: 150px;
+    width: 170px;
 }
 .ov-sec-1 img {
     margin-left: 5%;

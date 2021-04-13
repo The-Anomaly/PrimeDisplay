@@ -120,6 +120,11 @@ import ReactPixel from "react-facebook-pixel";
 
 import AllBookedSessions from "./Components/Dashboard/AllBookedSessions";
 import Dashboard2021 from "./Components/Dashboard/Dashboard2021";
+import CvDesign from "./Components/Dashboard/CvDesign";
+import Avatardesign from "./Components/Dashboard/Avatardesign";
+import Action from "./Components/Home/SignUp/Action";
+import Actionfirst from "./Components/Home/SignUp/Action1";
+import Actionsecond from "./Components/Home/SignUp/Action2";
 
 const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {
@@ -611,6 +616,35 @@ class App extends Component {
                 component={NewAssessmentPhaseFour}
               />
 
+              <Route 
+                exact 
+                path="/cvdesign"
+                component={CvDesign}
+              
+              />
+              <Route 
+                exact 
+                path="/actions"
+                component={Action}
+              
+              />
+              <Route 
+                exact 
+                path="/actionsfirst"
+                component={Actionfirst}
+              
+              />
+              <Route 
+                exact 
+                path="/actionssecond"
+                component={Actionsecond}
+              />
+               <Route 
+                exact 
+                path="/avatardesign"
+                component={Avatardesign}
+              />
+              
               <Route exact path="/overview/new" component={Dashboard2021} />
             </Switch>
           </BrowserRouter>
