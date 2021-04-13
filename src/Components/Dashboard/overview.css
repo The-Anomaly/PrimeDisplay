@@ -117,9 +117,11 @@
 }
 .ov-date {
     text-align: right;
+    /* min-width: 80px; */
 }
 .ov-duration {
     position: relative;
+    /* min-width: 60px; */
 }
 .ov-duration::after {
     content: " ";
@@ -210,6 +212,7 @@
     padding: 1rem;
     flex-wrap: wrap;
     margin-bottom: 10px;
+    justify-content: center;
 }
 .ov-book-ttl {
     flex: 100%;
@@ -221,13 +224,22 @@
     margin-bottom: 1rem;
 }
 .ov-book-txt {
-    max-width: 50%;
-    flex: 50%;
     font-size: 14px;
     color: #001833;
     font-weight: 600;
     text-align: center;
 }
+.ov-book-date {
+    max-width: 40%;
+    flex: 40%;
+    min-width: 90px;
+}
+.ov-book-time {
+    max-width: 60%;
+    flex: 60%;
+    min-width: 150px;
+}
+
 
 /* Profile Overview */
 .ov-avatar {
@@ -280,7 +292,7 @@
     font-size: 14px;
     width: 80%;
     margin: 2rem 0;
-    min-width: 140px;
+    min-width: 160px;
 }
 
 .ov-notasks {
@@ -314,7 +326,16 @@
     background: #87edc491;
     width: 100px;
   }
-@media screen and (max-width: 800px) {
+.takeassessimg {
+    margin-right: -1.5rem;
+    margin-bottom: -1rem;
+}
+@media screen and (max-width: 1000px) {
+    .ov-duration::after {
+        left: 80%;
+    }
+}
+@media screen and (max-width: 900px) {
     .ov-sec {
         grid-template-columns: 100%;
         margin: auto;
@@ -349,6 +370,9 @@
         grid-column-end: 2;
         grid-row-start: 5;
         grid-row-end: 6;
+    }
+    .ov-duration::after {
+        left: 100%;
     }
 }
 

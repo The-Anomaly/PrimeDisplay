@@ -13,9 +13,11 @@ import Axios, { AxiosResponse } from "axios";
 import { API } from "../../config";
 import notasks from "../../assets/notasks_overview.svg";
 import nomsgs from "../../assets/nomessages_overview.svg";
+import take from "../../assets/takeassessment.svg";
 
 interface State {
   fullname: string;
+  firstname: string;
   email: string;
   phone: string;
   country: string;
@@ -23,10 +25,14 @@ interface State {
   usertasks: any;
   usermessages: any;
   usersession: any;
+  view_result: any;
+  progress: any;
+  incomplete_assessment: boolean;
 }
 class Dashboard2021 extends React.Component {
     state: State = {
         fullname: "",
+        firstname: "",
         email: "",
         phone: "",
         country: "",
@@ -34,6 +40,9 @@ class Dashboard2021 extends React.Component {
         usertasks: [],
         usermessages: [],
         usersession: [],
+        view_result: [],
+        progress: [],
+        incomplete_assessment: false,
       };
       componentDidMount() { 
         const availableToken = localStorage.getItem("userToken");
@@ -57,22 +66,29 @@ class Dashboard2021 extends React.Component {
             Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
                 headers: { Authorization: `Token ${token}` },
               }),
+            Axios.get<any, AxiosResponse<any>>(`${API}/progress`, {
+                headers: { Authorization: `Token ${token}` },
+            }),
             // Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/get-chats`, {
             //     headers: { Authorization: `Token ${token}` },
             // }),
           ])
-          .then(Axios.spread((res1, res2, res3, res4, res5) => {
-            console.log(res1, res2, res3, res4, res5)
+          .then(Axios.spread((res1, res2, res3, res4, res5, res6) => {
+            console.log(res1, res2, res3, res4, res5, res6)
             if(res1.status === 200 && res2.status === 200 && res3.status === 200 && res4.status === 200 && res5.status === 200) {
                 this.setState({
                     fullname: res1?.data?.first_name + " " + res1?.data?.last_name,
+                    firstname: res1?.data?.first_name,
                     email: res1?.data?.email,
                     phone: res1?.data?.phone,
                     // country: res3?.data?.country,
                     user_profile: res2?.data[0]?.profile,
-                    usertasks: [...res3.data.results].reverse().splice(0, 2),
-                    usersession: [...res4.data.results]
-                    // usermessages: [...res6.data.results].reverse().splice(0, 2),
+                    usertasks: [...res3?.data?.results].reverse().splice(0, 2),
+                    usersession: [...res4?.data?.results],
+                    view_result: res5?.data[0]?.view_result,
+                    progress: res6?.data[0],
+                    incomplete_assessment: !res6?.data[0].phase_two_building || !res6?.data[0].phase_two_business || !res6?.data[0].phase_two_creative || !res6?.data[0].phase_two_health || !res6?.data[0].phase_two_humanitarian || !res6?.data[0].phase_two_nature || !res6?.data[0].phase_two_sports || !res6?.data[0].phase_two_stem || !res6?.data[0].phase_three || !res6?.data[0].phase_four,
+                    // usermessages: [...res6.data.results].reverse().splice(0, 4),
                 })
             }
           }))
@@ -103,9 +119,37 @@ class Dashboard2021 extends React.Component {
             return window.location.assign("/allbookedsessions");
           }
       }
+      viewResult = () => {
+        if (this.state.progress.phase_four && this.state.view_result && !this.state.incomplete_assessment) {
+            return window.location.assign("/fullinsight")
+        }
+        else if(!this.state.progress.phase_one) {
+            return window.location.assign("/assessment/welcome")
+        }
+        else if (
+            !this.state.progress.phase_two_nature ||
+            !this.state.progress.phase_two_health ||
+            !this.state.progress.phase_two_building ||
+            !this.state.progress.phase_two_creative
+          ) {
+            return window.location.assign(`/assessment/phaseone/complete`);
+          } else if (
+            !this.state.progress.phase_two_sports ||
+            !this.state.progress.phase_two_business ||
+            !this.state.progress.phase_two_stem ||
+            !this.state.progress.phase_two_humanitarian
+          ) {
+            return window.location.assign(`/assessmentphasetwo1`);
+          } else if (!this.state.progress.phase_three) {
+            return window.location.assign(`/assessment/phasetwo/complete`);
+          } else if (!this.state.progress.phase_four) {
+            return window.location.assign(`/assessment/phasethree/complete`);
+      } 
+    }
   render() {
     const {
         fullname,
+        firstname,
         email,
         phone,
         country,
@@ -113,8 +157,11 @@ class Dashboard2021 extends React.Component {
         usertasks,
         usermessages,
         usersession,
+        view_result,
+        progress,
+        incomplete_assessment,
       } = this.state;
-      console.log(usersession)
+      console.log(progress)
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -128,15 +175,13 @@ class Dashboard2021 extends React.Component {
                     <div className="ov-sec">
                         <div className="ov-sec-1 ov-elements">
                             <div>
-                                <h1>Welcome back, <strong>Jaiyeola!</strong></h1>
+                                <h1>{this.state.progress.phase_one ? "Welcome back, " : "Welcome, "}<strong>{firstname}!</strong></h1>
                                 <p>
-                                    You can be anything you dream about, 
-                                    all it takes is that extra step when you feel weary.
-                                    Are you going to do that now?
+                                    {!this.state.progress.phase_one ? "A copy to tell them to take the assessment" : incomplete_assessment ? "A copy to tell them to complete the assessment" : view_result && !incomplete_assessment ? "You can be anything you dream about, all it takes is that extra step when you feel weary. Are you going to do that now?" : ""}
                                 </p>
-                                <button>View Insight</button>
+                                <button onClick={this.viewResult}>{!this.state.progress.phase_one ? "Take Assessment" : incomplete_assessment ? "Continue Assessment" : view_result && !incomplete_assessment ? "View Insight" : "Take Assessment"}</button>
                             </div>
-                            <img src={target} alt="" />
+                            <img className={!this.state.progress.phase_one ? "takeassessimg" : ""} src={!this.state.progress.phase_one ? take : target} alt="" />
                         </div>
                         <div className="ov-sec-2 ov-elements">
                             <div className="ov-avatar">
@@ -186,6 +231,18 @@ class Dashboard2021 extends React.Component {
                         </div>
                         <div className="ov-sec-4 ov-elements">
                         <h2 className="ov-todo-ttl">Messages</h2>
+                        {usermessages.length > 0 && usermessages.map((x, i) => (
+                        <div className="ov-msg" key={i}>
+                            <img src={avatar} />
+                            <div>
+                                <p className="ov-msg-ttl">Solange Olatubosun</p>
+                                <p className="ov-msg-txt">
+                                    Thanks Dear, you have been a wonderful sister to me and 
+                                    I really appreciate your help. Please accept this as a 
+                                    show of gratitude
+                                </p>
+                            </div>
+                        </div>))}
                         {/* <div className="ov-msg">
                             <img src={avatar} />
                             <div>
@@ -196,42 +253,13 @@ class Dashboard2021 extends React.Component {
                                     show of gratitude
                                 </p>
                             </div>
-                        </div>
-                        <div className="ov-msg">
-                            <img src={avatar} />
-                            <div>
-                                <p className="ov-msg-ttl">Solange Olatubosun</p>
-                                <p className="ov-msg-txt">
-                                    Thanks Dear, you have been a wonderful sister to me and 
-                                    I really appreciate your help. Please accept this as a 
-                                    show of gratitude
-                                </p>
-                            </div>
-                        </div>
-                        <div className="ov-msg">
-                            <img src={avatar} />
-                            <div>
-                                <p className="ov-msg-ttl">Solange Olatubosun</p>
-                                <p className="ov-msg-txt">
-                                    Thanks Dear, you have been a wonderful sister to me and 
-                                    I really appreciate your help. Please accept this as a 
-                                    show of gratitude
-                                </p>
-                            </div>
-                        </div>
-                        <div className="ov-msg">
-                            <img src={avatar} />
-                            <div>
-                                <p className="ov-msg-ttl">Solange Olatubosun</p>
-                                <p className="ov-msg-txt">
-                                    Thanks Dear, you have been a wonderful sister to me and 
-                                    I really appreciate your help. Please accept this as a 
-                                    show of gratitude
-                                </p>
-                            </div>
-                        </div> */}
+                        </div>*/}
+                        {usermessages.length === 0 && (
+                        <>
                         <div className="ov-nomsgs"><img src={nomsgs} alt="no messages" /></div>
-                        <p className="ov-notext">You do not have any messages </p>
+                        <p className="ov-notext">You do not have any messages </p> 
+                        </>
+                        )}
                         <button className="ov-todo-btn">View all messages</button>
                         </div>
                         <div className="ov-sec-5 ov-elements">
@@ -240,8 +268,8 @@ class Dashboard2021 extends React.Component {
                                 {usersession.length > 0 && (
                                 <>
                                 <p className="ov-book-ttl">You booked a session for</p>
-                                <p className="ov-book-txt">{usersession[0].date}</p>
-                                <p className="ov-book-txt">{usersession[0].time}</p>
+                                <p className="ov-book-txt ov-book-date">{usersession[0].date}</p>
+                                <p className="ov-book-txt ov-book-time">{usersession[0].time}</p>
                                 </>
                                 )}
                                 {usersession.length === 0 && (<p className="ov-nosession">You do not have any booked sessions</p>)}

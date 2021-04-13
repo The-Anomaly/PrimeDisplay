@@ -98,11 +98,7 @@ const RedesignedHome: React.FC = (props: any) => {
 
   const { press, isloading } = state;
 
-  const getCurrentAssessmentPosition = (): void => {
-    const availableToken = localStorage.getItem("userToken");
-    const token: string = availableToken
-      ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
+  const getCurrentAssessmentPosition = (token): void => {
     Axios.get(`${API}/progress`, {
       headers: { Authorization: `Token ${token}` },
     })
@@ -177,7 +173,7 @@ const RedesignedHome: React.FC = (props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
     if (token) {
-      getCurrentAssessmentPosition();
+      getCurrentAssessmentPosition(token);
     } else {
       setState({
         ...state,

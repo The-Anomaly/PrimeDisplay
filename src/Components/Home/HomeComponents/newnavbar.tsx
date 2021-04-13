@@ -71,7 +71,7 @@ const newNavbar = withRouter((props: any) => {
     } else {
       setShowNav({ ...state, userLoggedIn: false });
     }
-    // return getCurrentAssessmentPosition();
+    return getCurrentAssessmentPosition();
   }, []);
 
   const setRedirect = () => {
@@ -104,7 +104,7 @@ const newNavbar = withRouter((props: any) => {
     const availableToken = localStorage.getItem("userToken");
     const token: string = availableToken
       ? JSON.parse(availableToken)
-      : window.location.assign("/signin");
+      : "";
     Axios.get(`${API}/progress`, {
       headers: { Authorization: `Token ${token}` },
     })
