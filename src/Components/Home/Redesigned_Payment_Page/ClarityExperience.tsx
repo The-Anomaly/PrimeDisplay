@@ -14,6 +14,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Home/Home.css";
 
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
+    PaystackPop: any;
+  }
+}
+
 const Payment = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
@@ -288,6 +295,53 @@ const Payment = (props: any) => {
           isLoading: false,
         });
       });
+  };
+
+  const payWithPaystack = () => {
+    try {
+      const { user, cost, reference,selectedplan }: any = state;
+      var handler = window.PaystackPop.setup({
+        key: "pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1",
+        // test key = pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1
+        //live key = pk_live_ea8275cdd785a1758d70ab32591af4467c2085fd
+        email: user[0]?.email,
+        amount: cost,
+        currency: "NGN",
+        ref: reference, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+        metadata: {
+          custom_fields: [
+            {
+              display_name: user[0]?.first_name + "  " + user[0]?.last_name,
+              variable_name: "mobile_number",
+              value: selectedplan,
+            },
+          ],
+        },
+        callback: function (response) {
+          if (response.paymentStatus === "PAID") {
+            if (selectedSubscription !== "") {
+              // console.log("Gift subscription successful!");
+              notify("Subscription successful!");
+              // return setTimeout(
+              //   (window.location.pathname = "/dashboardsubscriptionplan"),
+              //   3000
+              // );
+            }
+            // console.log("Payment Successfull");
+          }
+          // props.history.push("/something");
+        },
+        onClose: function () {
+          return setTimeout(
+            (window.location.pathname = "/dashboardsubscriptionplan"),
+            3000
+          );
+        },
+      });
+      handler.openIframe();
+    } catch (error) {
+      // console.log( 'Failed to initailize payment' + error)
+    }
   };
   return (
     <>
