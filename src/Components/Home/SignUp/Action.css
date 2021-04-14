@@ -20,10 +20,10 @@
 .action-row{
     justify-content: center;
 }
-.card-body{
+.action-card-body{
     padding-top: 2rem;
 }
-.card-body p{
+.action-card-body p{
     font-family: "Brfirma-Bold";
     font-size: 14px;
 }

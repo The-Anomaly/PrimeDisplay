@@ -29,7 +29,7 @@ const Action = () =>{
                         <div className="action-card-icon">
                             <img src={ActivityIcon} className="card-icon" />
                             </div>
-                            <div className="card-body">
+                            <div className="action-card-body">
                                 <p>Start a career <br /> Audit</p>
                             </div>
                     </Col>
@@ -37,7 +37,7 @@ const Action = () =>{
                         <div className="action-card-icon">
                         <img src={SearchIcon} className="card-icon" />
                             </div>
-                            <div className="card-body">
+                            <div className="action-card-body">
                                 <p>Discover your<br/>Strengths</p>
                             </div>
                     </Col>
@@ -45,7 +45,7 @@ const Action = () =>{
                         <div className="action-card-icon">
                         <img src={WorkIcon} className="card-icon" />
                             </div>
-                            <div className="card-body">
+                            <div className="action-card-body">
                                 <p>Build your<br/>Professional Profile</p>
                             </div>
                     </Col>
@@ -53,7 +53,7 @@ const Action = () =>{
                         <div className="action-card-icon">
                         <img src={GraphIcon} className="card-icon" />
                             </div>
-                            <div className="card-body">
+                            <div className="action-card-body">
                                 <p>View Career<br/>Insights</p>
                             </div>
                     </Col>
@@ -64,7 +64,7 @@ const Action = () =>{
                         <div className="action-card-icon">
                             <img src={PhoneIcon} className="card-icon" />
                             </div>
-                            <div className="card-body">
+                            <div className="action-card-body">
                                 <p>Talk to a  <br /> Counsellor</p>
                             </div>
                     </Col>
@@ -72,7 +72,7 @@ const Action = () =>{
                         <div className="action-card-icon">
                         <img src={PaperIcon} className="card-icon" />
                             </div>
-                            <div className="card-body">
+                            <div className="action-card-body">
                                 <p>View Counsellor’s<br/>Recommendation</p>
                             </div>
                     </Col>
@@ -80,7 +80,7 @@ const Action = () =>{
                         <div className="action-card-icon">
                         <img src={CalendarIcon} className="card-icon" />
                             </div>
-                            <div className="card-body">
+                            <div className="action-card-body">
                                 <p>Create a Personal<br/>Career To-Do List</p>
                             </div>
                     </Col>
@@ -88,7 +88,7 @@ const Action = () =>{
                         <div className="action-card-icon">
                         <img src={FolderIcon} className="card-icon" />
                             </div>
-                            <div className="card-body">
+                            <div className="action-card-body">
                                 <p>Currated<br/>Opportunities for you</p>
                             </div>
                     </Col>

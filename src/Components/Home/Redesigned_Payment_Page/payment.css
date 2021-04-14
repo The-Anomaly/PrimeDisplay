@@ -234,6 +234,7 @@
 }
 .subcription-card{
     border-radius: 8px !important;
+    min-width: 280px;
 }
 .subscription-header{
     padding-top: 35px;
