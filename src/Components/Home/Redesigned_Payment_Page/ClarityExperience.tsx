@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import mark from "../../../assets/mark-icn.png";
 import mark_blue from "../../../assets/blue-mark.png";
 import mark_green from "../../../assets/green-mark.png";
+import monnifyLogo from "../../../assets/monnify-logo.png";
+import flutterLogo from "../../../assets/flutterwave-logo.png";
+import paystackLogo from "../../../assets/paystack-logo.png";
 import "./payment.css";
 import { API } from "../../../config";
 import axios, { AxiosResponse } from "axios";
@@ -27,8 +30,9 @@ const Payment = (props: any) => {
     giftASub: false,
     giftASub2: false,
     unavailable: false,
+    choosePaymentGateway: false,
   });
-  const { giftASub, giftASub2, unavailable } = modState;
+  const { giftASub, giftASub2, unavailable, choosePaymentGateway } = modState;
   const openGiftASubscriptionModal = () => {
     setModalState({
       ...modState,
@@ -47,6 +51,12 @@ const Payment = (props: any) => {
       unavailable: true,
     });
   };
+  const openChoosePaymentGateway = () => {
+    setModalState({
+      ...modState,
+      choosePaymentGateway: true,
+    });
+  };
   const closeGiftASubscriptionModal = () => {
     setModalState({
       ...modState,
@@ -63,6 +73,12 @@ const Payment = (props: any) => {
     setModalState({
       ...modState,
       unavailable: false,
+    });
+  };
+  const closeChoosePaymentGateway = () => {
+    setModalState({
+      ...modState,
+      choosePaymentGateway: false,
     });
   };
   const OneOff = () => {
@@ -291,7 +307,7 @@ const Payment = (props: any) => {
             }
           >
             <h3>We have curated payments plans with you in mind</h3>
-            {withoutlogin && (<div className="fourthline pymntline"> </div>)}
+            {withoutlogin && <div className="fourthline pymntline"> </div>}
           </div>
           <div className="webpaymentview">
             <Row className="payment-plans">
@@ -356,7 +372,11 @@ const Payment = (props: any) => {
               <div>
                 {" "}
                 <Row className="centered_payment mobilecards">
-                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
+                  <Col
+                    md={4}
+                    sm={8}
+                    className="margined_col cardmini progressivewidth"
+                  >
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -405,7 +425,11 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
+                  <Col
+                    md={4}
+                    sm={8}
+                    className="margined_col cardmini progressivewidth"
+                  >
                     <Card className=" shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -473,9 +497,10 @@ const Payment = (props: any) => {
                         ) : (
                           <span
                             className="card_btn btn-blue"
-                            onClick={() =>
-                              requestForPayref("One-off Insight Plan", 5000)
-                            }
+                            //onClick={() =>
+                            //requestForPayref("One-off Insight Plan", 5000)
+                            //}
+                            onClick={openChoosePaymentGateway}
                           >
                             Upgrade to Insight
                           </span>
@@ -483,6 +508,7 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
+
                   {/* <Col md={3} sm={8} className="margined_col cardmini">
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
@@ -576,7 +602,11 @@ const Payment = (props: any) => {
             {plan === false && (
               <div>
                 <Row className="centered_payment mobilecards progressivepadding">
-                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
+                  <Col
+                    md={4}
+                    sm={8}
+                    className="margined_col cardmini progressivewidth"
+                  >
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -662,12 +692,13 @@ const Payment = (props: any) => {
                         ) : (
                           <span
                             className="card_btn card_btn--pce1 btn-yellow"
-                            onClick={() =>
-                              requestForPayref(
-                                "Progressive Insight Plan",
-                                12000
-                              )
-                            }
+                            // onClick={() =>
+                            // requestForPayref(
+                            // "Progressive Insight Plan",
+                            //12000
+                            //)
+                            //}
+                            onClick={openChoosePaymentGateway}
                           >
                             Subscribe
                           </span>
@@ -675,7 +706,11 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
+                  <Col
+                    md={4}
+                    sm={8}
+                    className="margined_col cardmini progressivewidth"
+                  >
                     <Card className=" shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -731,12 +766,13 @@ const Payment = (props: any) => {
                         ) : (
                           <span
                             className="card_btn card_btn--pce2 btn-blue"
-                            onClick={() =>
-                              requestForPayref(
-                                "Progressive Direction Plan",
-                                30000
-                              )
-                            }
+                            //onClick={() =>
+                            //requestForPayref(
+                            //"Progressive Direction Plan",
+                            //30000
+                            //)
+                            //}
+                            onClick={openChoosePaymentGateway}
                           >
                             Upgrade to Direction
                           </span>
@@ -744,7 +780,11 @@ const Payment = (props: any) => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col md={4} sm={8} className="margined_col cardmini progressivewidth">
+                  <Col
+                    md={4}
+                    sm={8}
+                    className="margined_col cardmini progressivewidth"
+                  >
                     <Card className="h-300 shadow-sm bg-white payment-card">
                       <Card.Header className="payment-header">
                         <h4>
@@ -816,12 +856,13 @@ const Payment = (props: any) => {
                         ) : (
                           <span
                             className="card_btn btn-green card_btn--pce3 card_btn--animated"
-                            onClick={() =>
-                              requestForPayref(
-                                "Progressive Accountability Plan",
-                                50500
-                              )
-                            }
+                            //onClick={() =>
+                              //requestForPayref(
+                                //"Progressive Accountability Plan",
+                                //50500
+                              //)
+                            //}
+                            onClick={openChoosePaymentGateway}
                           >
                             Upgrade to Accountability
                           </span>
@@ -1086,32 +1127,32 @@ const Payment = (props: any) => {
                       </Card>
                     </Col> */}
                     <Col md={3} sm={8} className="margined_col cardmini">
-                    <Card className="h-300 shadow-sm bg-white subcription-card">
-                      <Card.Header className="subscription-header">
-                        <h6 className="red">Gift a Subscription</h6>
-                      </Card.Header>
-                      <Card.Body>
-                        <p className="sub-p">
-                          Give a gift of success. Choose one of the three
-                          different plans
-                        </p>
-                        {withoutlogin ? (
-                          <Link to="/signin">
-                            <span className="card_btn btn-red card_btn--animated">
+                      <Card className="h-300 shadow-sm bg-white subcription-card">
+                        <Card.Header className="subscription-header">
+                          <h6 className="red">Gift a Subscription</h6>
+                        </Card.Header>
+                        <Card.Body>
+                          <p className="sub-p">
+                            Give a gift of success. Choose one of the three
+                            different plans
+                          </p>
+                          {withoutlogin ? (
+                            <Link to="/signin">
+                              <span className="card_btn btn-red card_btn--animated">
+                                Give a Clarity Subscription
+                              </span>
+                            </Link>
+                          ) : (
+                            <span
+                              className="card_btn btn-red card_btn--animated"
+                              onClick={openGiftASubscriptionModal}
+                            >
                               Give a Clarity Subscription
                             </span>
-                          </Link>
-                        ) : (
-                          <span
-                            className="card_btn btn-red card_btn--animated"
-                            onClick={openGiftASubscriptionModal}
-                          >
-                            Give a Clarity Subscription
-                          </span>
-                        )}
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                          )}
+                        </Card.Body>
+                      </Card>
+                    </Col>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -1419,32 +1460,32 @@ const Payment = (props: any) => {
                       </Card>
                     </Col>
                     <Col md={3} sm={8} className="margined_col cardmini">
-                    <Card className="h-300 shadow-sm bg-white subcription-card">
-                      <Card.Header className="subscription-header">
-                        <h6 className="red">Gift a Subscription</h6>
-                      </Card.Header>
-                      <Card.Body>
-                        <p className="sub-p">
-                          Give a gift of success. Choose one of the three
-                          different plans
-                        </p>
-                        {withoutlogin ? (
-                          <Link to="/signin">
-                            <span className="card_btn btn-red card_btn--animated">
+                      <Card className="h-300 shadow-sm bg-white subcription-card">
+                        <Card.Header className="subscription-header">
+                          <h6 className="red">Gift a Subscription</h6>
+                        </Card.Header>
+                        <Card.Body>
+                          <p className="sub-p">
+                            Give a gift of success. Choose one of the three
+                            different plans
+                          </p>
+                          {withoutlogin ? (
+                            <Link to="/signin">
+                              <span className="card_btn btn-red card_btn--animated">
+                                Give a Clarity Subscription
+                              </span>
+                            </Link>
+                          ) : (
+                            <span
+                              className="card_btn btn-red card_btn--animated"
+                              onClick={openGiftASubscriptionModal2}
+                            >
                               Give a Clarity Subscription
                             </span>
-                          </Link>
-                        ) : (
-                          <span
-                            className="card_btn btn-red card_btn--animated"
-                            onClick={openGiftASubscriptionModal2}
-                          >
-                            Give a Clarity Subscription
-                          </span>
-                        )}
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                          )}
+                        </Card.Body>
+                      </Card>
+                    </Col>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -1461,6 +1502,37 @@ const Payment = (props: any) => {
       </div>
       <div className="mobilepaymentview"></div>
       {/* One-off Gift Modal */}
+      <Modal
+        centered={true}
+        show={choosePaymentGateway}
+        onHide={closeChoosePaymentGateway}
+      >
+        <Modal.Header>
+          <Modal.Title>Choose a payment channel</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="payment-modal-row">
+          <Row >
+            <Col md={4} className="monnify-logo">
+              <Link to="/">
+                <img src={monnifyLogo} className="payment-channel-logo"/>
+              </Link>
+            </Col>
+            <Col md={4}>
+              <Link to="/">
+              <img src={flutterLogo} className="payment-channel-logo"/>
+              </Link>
+            </Col>
+            <Col md={4}>
+              <Link to="/">
+              <img src={paystackLogo} className="payment-channel-logo"/>
+              </Link>
+            </Col>
+          </Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="payment-channel-btn">Continue</button>
+        </Modal.Footer>
+      </Modal>
       <Modal
         centered={true}
         show={giftASub}
@@ -1572,9 +1644,15 @@ const Payment = (props: any) => {
       <Modal show={unavailable} onHide={closeUnavailableModal} centered>
         <Modal.Body>
           <div className="unavailableplan">
-          <h5>This plan is only available for the promo.</h5>
-          <h6>Follow <a href="http://instagram.com/getclarity_" target="_blank">@getclarity_</a> on instagram for more info.</h6>
-          <p>It's the season of love! &#128525;</p>
+            <h5>This plan is only available for the promo.</h5>
+            <h6>
+              Follow{" "}
+              <a href="http://instagram.com/getclarity_" target="_blank">
+                @getclarity_
+              </a>{" "}
+              on instagram for more info.
+            </h6>
+            <p>It's the season of love! &#128525;</p>
           </div>
         </Modal.Body>
       </Modal>
