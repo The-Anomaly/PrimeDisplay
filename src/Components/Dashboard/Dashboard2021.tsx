@@ -251,9 +251,9 @@ class Dashboard2021 extends React.Component<any, any> {
                           </h1>
                           <p>
                             {!this.state.progress.phase_one
-                              ? "A copy to tell them to take the assessment"
+                              ? "It is time to figure out exciting things that can influence your career decisions posiyively."
                               : incomplete_assessment
-                              ? "A copy to tell them to complete the assessment"
+                              ? "You are a few steps away from getting insights that will aid your career decisions. How about you take them now?"
                               : view_result && !incomplete_assessment
                               ? "You can be anything you dream about, all it takes is that extra step when you feel weary. Are you going to do that now?"
                               : ""}
