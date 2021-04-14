@@ -222,6 +222,10 @@ const TodoList = (props: any) => {
   };
   const notify = (message: string) => toast(message, { containerId: "i" });
   React.useEffect(() => {
+    setFormState({
+      ...state,
+      isLoading: true,
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -250,6 +254,15 @@ const TodoList = (props: any) => {
               prevLink: res1.data.previous,
               total_pages: res1.data.total_pages,
             });
+            if(props?.location?.state?.status){
+              setTimeout(() => {
+              if(props?.location?.state?.status === "pending") {
+                return openViewMoreModal(props?.location?.state?.id);
+              } else {
+                return OpenIscompleteModal(props?.location?.state?.id);
+              }
+            }, 2000);
+          }
           }
         })
       )
@@ -738,7 +751,7 @@ const TodoList = (props: any) => {
             <img src={logoutImage} className="popUUp" alt="failedNotice" />{" "}
           </div> */}
           <div className="areusure1">
-            are you sure you want to <b> do this?</b>
+            Are you sure you want to <b> close this task</b>
           </div>
           <div className="text-center planupgrade">
             <div

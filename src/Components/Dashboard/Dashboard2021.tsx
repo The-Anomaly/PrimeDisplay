@@ -33,7 +33,7 @@ interface State {
   incomplete_assessment: boolean;
   isLoading: boolean;
 }
-class Dashboard2021 extends React.Component {
+class Dashboard2021 extends React.Component<any, any> {
   state: State = {
     fullname: "",
     firstname: "",
@@ -74,13 +74,13 @@ class Dashboard2021 extends React.Component {
       Axios.get<any, AxiosResponse<any>>(`${API}/progress`, {
         headers: { Authorization: `Token ${token}` },
       }),
-      // Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/get-chats/`, {
-      //     headers: { Authorization: `Token ${token}` },
-      // }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/get-chats/`, {
+          headers: { Authorization: `Token ${token}` },
+      }),
     ])
       .then(
-        Axios.spread((res1, res2, res3, res4, res5, res6) => {
-          console.log(res1, res2, res3, res4, res5, res6);
+        Axios.spread((res1, res2, res3, res4, res5, res6, res7) => {
+          // console.log(res1, res2, res3, res4, res5, res6, res7);
           if (
             res1.status === 200 &&
             res2.status === 200 &&
@@ -110,42 +110,19 @@ class Dashboard2021 extends React.Component {
                 !res6?.data[0].phase_two_stem ||
                 !res6?.data[0].phase_three ||
                 !res6?.data[0].phase_four,
-              // usermessages: [...res6.data.results].reverse().splice(0, 4),
+              usermessages: [...res7.data].reverse().splice(0, 4),
+              isLoading: false,
             });
           }
-          // this.getChats(token);
-          setTimeout(() => {
-            this.getChats(token);
-          }, 2000);
         })
       )
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         this.setState({
           isLoading: false,
         });
       });
   }
-  getChats = (token: string): any => {
-    Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/get-chats/`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          this.setState({
-            usermessages: [...response.data.results].reverse().splice(0, 4),
-            isLoading: false,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error.response);
-        this.setState({
-          isLoading: false,
-        });
-      });
-  };
   getUserInfo = (token: string): any => {
     Axios.get(`${API}/currentuser`, {
       headers: { Authorization: `Token ${token}` },
@@ -157,18 +134,18 @@ class Dashboard2021 extends React.Component {
       })
       .catch((error) => {});
   };
-  viewProfile = () => {
+  viewProfile= () => {
     if (this.state.phone === "" || this.state.country === "") {
-      return window.location.assign("/dashboardsettings");
+      return this.props.history.push("/dashboardsettings");
     } else {
-      return window.location.assign("/profilebuilder");
+      return this.props.history.push("/profilebuilder");
     }
   };
   bookSession = () => {
     if (this.state.usersession.length > 0) {
-      return window.location.assign("/allusermessages");
+      return this.props.history.push("/allusermessages");
     } else {
-      return window.location.assign("/allbookedsessions");
+      return this.props.history.push("/allbookedsessions");
     }
   };
   viewResult = () => {
@@ -177,35 +154,60 @@ class Dashboard2021 extends React.Component {
       this.state.view_result &&
       !this.state.incomplete_assessment
     ) {
-      return window.location.assign("/fullinsight");
+      return this.props.history.push("/fullinsight");
     } else if (!this.state.progress.phase_one) {
-      return window.location.assign("/assessment/welcome");
+      return this.props.history.push("/assessment/welcome");
     } else if (
       !this.state.progress.phase_two_nature ||
       !this.state.progress.phase_two_health ||
       !this.state.progress.phase_two_building ||
       !this.state.progress.phase_two_creative
     ) {
-      return window.location.assign(`/assessment/phaseone/complete`);
+      return this.props.history.push(`/assessment/phaseone/complete`);
     } else if (
       !this.state.progress.phase_two_sports ||
       !this.state.progress.phase_two_business ||
       !this.state.progress.phase_two_stem ||
       !this.state.progress.phase_two_humanitarian
     ) {
-      return window.location.assign(`/assessmentphasetwo1`);
+      return this.props.history.push(`/assessmentphasetwo1`);
     } else if (!this.state.progress.phase_three) {
-      return window.location.assign(`/assessment/phasetwo/complete`);
+      return this.props.history.push(`/assessment/phasetwo/complete`);
     } else if (!this.state.progress.phase_four) {
-      return window.location.assign(`/assessment/phasethree/complete`);
+      return this.props.history.push(`/assessment/phasethree/complete`);
     }
   };
   getInitials = (name) => {
-    let nameArray = name.split(" ");
-    let initial = nameArray.shift().charAt(0) + nameArray.pop().charAt(0);
-    localStorage.setItem("initial", initial.toUpperCase());
+    const details = localStorage.getItem("user");
+    const user_name = details
+      ? JSON.parse(details)
+      : "";
+    let user_initial = user_name[0]?.first_name?.charAt(0) + user_name[0]?.last_name?.charAt(0);
+    localStorage.setItem("initial", user_initial.toUpperCase());
+
+    let nameArray = name?.split(" ");
+    let initial = nameArray?.shift()?.charAt(0) + nameArray?.pop()?.charAt(0);
     return initial.toUpperCase();
   };
+  goToTask: any = (x) => {
+    if(x.status === "pending") {
+      return this.props.history.push({
+        pathname: `/todolist`,
+        state: {
+          id: x,
+          status: "pending",
+        }
+      })
+    } else {
+      return this.props.history.push({
+        pathname: `/todolist`,
+        state: {
+          id: x,
+          status: "complete",
+        }
+      })
+    }
+  }
   render() {
     const {
       fullname,
@@ -222,7 +224,6 @@ class Dashboard2021 extends React.Component {
       incomplete_assessment,
       isLoading,
     } = this.state;
-    console.log(usermessages);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -279,7 +280,7 @@ class Dashboard2021 extends React.Component {
                       </div>
                       <div className="ov-sec-2 ov-elements">
                         <div className="ov-avatar">
-                          <Initials initial={this.getInitials(fullname)} />
+                          {fullname && (<Initials initial={this.getInitials(fullname)} />)}
                         </div>
                         <p className="ov-profile-name">{fullname}</p>
                         <p className="ov-profile-descrip">
@@ -307,7 +308,9 @@ class Dashboard2021 extends React.Component {
                         <h2 className="ov-todo-ttl">Todo Tasks</h2>
                         {usertasks.length > 0 &&
                           usertasks.map((x, i) => (
-                            <div className="ov-todo">
+                            <div 
+                            onClick={() => this.goToTask(x.id)} 
+                            className="ov-todo">
                               <p
                                 className={
                                   x.status === "pending"

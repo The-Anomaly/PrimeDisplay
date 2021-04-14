@@ -91,6 +91,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 .ov-todo div {
     margin-top: 8px;
