@@ -49,6 +49,25 @@
     background-color: #fff !important;
     cursor: unset;
 }
+
+.payment-channel-btn{
+    background-color: #9C1258;
+    width: 100%;
+    color: #fff;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+}
+.payment-channel-btn:hover{
+    transform: translateY(-3px);
+}
+.monnify-logo{
+    margin-top: 7px;
+}
+.payment-modal-row{
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
 @media (max-width: 760px){
     .btn-yellow{
         margin: 64px 0px;

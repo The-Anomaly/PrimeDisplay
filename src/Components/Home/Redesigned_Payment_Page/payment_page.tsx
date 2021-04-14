@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import Modal from 'react-bootstrap/Modal'
 import { Link } from "react-router-dom";
 import mark from "../../../assets/mark-icn.png";
 import mark_blue from "../../../assets/blue-mark.png";
