@@ -7,6 +7,7 @@ import wana from "../../../assets/chatgirl.png";
 import axios from "axios";
 import { API } from "../../../config";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // team
 type User = string | null;
@@ -40,6 +41,9 @@ const WelcomeIceBreaker = (props: any) => {
       .then((response) => {
         // console.log(response?.data?.message);
         notify(response?.data?.message);
+        setTimeout(() => {
+          return props.history.push(`/overview`);
+        }, 1000);
       })
       .catch((error) => {
         // console.log(error?.response?.message);

@@ -4,11 +4,12 @@ import Navbar from "../HomeComponents/newnavbar";
 import { Container, Row } from "react-bootstrap";
 import { AssessmentFirstSection } from "./AssessmentComponents/AssessmentFirstSection";
 import wana from "../../../assets/chatgirl.png";
+import "react-toastify/dist/ReactToastify.css";
 
 // team
 type User = string | null;
 
-const PhaseFourIceBreaker = () => {
+const PhaseFourIceBreaker = (props: any) => {
   const [name, setName] = React.useState("");
   React.useEffect((): any => {
     window.scrollTo(-0, -0);
@@ -17,7 +18,7 @@ const PhaseFourIceBreaker = () => {
     setName(currentUser[0].first_name);
   }, []);
   const assessmentComplete = () => {
-    return window.location.assign("/free/dashboard");
+    return props.history.push("/overview");
   };
   return (
     <>

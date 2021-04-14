@@ -109,7 +109,7 @@ const newNavbar = withRouter((props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        console.log(response)
+        // console.log(response)
         if (response.status === 200) {
           if (
             response.data[0].onboarding_chat === false ||

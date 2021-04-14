@@ -15,6 +15,7 @@ import noplan from "../../assets/noplan.png";
 import DashboardUsernameheader from "./DashboardUsernameheader";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 import newmessage from "../../assets/newmessage.png";
+import Initial from "./Avatardesign"
 
 const NewDashboardAllMessages = withRouter((props: any) => {
   const [state, setState] = React.useState<any>({
@@ -23,9 +24,14 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     userData: [],
     searchKey: "",
     isLoading: false,
+    initial: "",
   });
-  const { errorMessage, user, userData, searchKey } = state;
+  const { errorMessage, user, userData, searchKey, initial } = state;
   React.useEffect(() => {
+    setState({
+      ...state,
+      initial: localStorage.getItem("initial"),
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -38,10 +44,10 @@ const NewDashboardAllMessages = withRouter((props: any) => {
         if (response?.data[0]?.ask_counsellor === false) {
             //notify("Update your subscription to access this feature");
             // console.log("Can't access ask a counselor");
-            setTimeout(
-              (window.location.pathname = "/dashboardsubscriptionplan"),
-              1000
-            );
+            // setTimeout(
+            //   (window.location.pathname = "/dashboardsubscriptionplan"),
+            //   1000
+            // );
           }
           if (response?.data[0]?.ask_counsellor === true){
             getMessages();
@@ -203,6 +209,11 @@ const NewDashboardAllMessages = withRouter((props: any) => {
   const formatTime = (date) => {
     return moment(date).fromNow();
   };
+  const getInitials = (name) => {
+    let nameArray = name?.split(" ");
+    let initial = nameArray?.shift()?.charAt(0) + nameArray?.pop()?.charAt(0);
+    return initial.toUpperCase();
+  };
   return (
     <>
       <Container fluid={true} className="contann122">
@@ -243,12 +254,13 @@ const NewDashboardAllMessages = withRouter((props: any) => {
                           key={i}
                         >
                           <div className="useri1222 ui1222 ssgs">
-                            <div className="msg1">
-                              <img
+                          <div className="msg1 msg-avi">
+                              {/* <img
                                 src={userimg}
                                 className="userimg imguserrr"
                                 alt="userphoto"
-                              />
+                              /> */}
+                              <Initial initial={getInitials(data?.message?.author)} />
                             </div>
                             <div className="msg2">
                               <div>

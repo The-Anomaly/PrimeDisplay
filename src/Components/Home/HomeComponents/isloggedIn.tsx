@@ -107,9 +107,15 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
         //console.log(error);
       });
   };
+  const goToDashboard = () => {
+    return props.history.push(`/overview`);
+  }
   return (
     <React.Fragment>
       <div className="title1 shiftlefff newshft">
+      <button className="title_t signupbtn newlogin" onClick={goToDashboard}>
+          Dashboard
+        </button>
         <button className="title_t signupbtn newlogin" onClick={props.Logout}>
           Logout
         </button>

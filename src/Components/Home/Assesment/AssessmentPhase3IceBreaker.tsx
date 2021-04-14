@@ -7,6 +7,7 @@ import wana from "../../../assets/chatgirl.png";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { API } from "../../../config";
+import "react-toastify/dist/ReactToastify.css";
 
 // team
 type User = string | null;
@@ -51,7 +52,7 @@ const PhaseThreeIceBreaker = (props: any) => {
       });
   }, []);
   const nextPhase = () => {
-    return window.location.assign("/assessmentphasefour");
+    return props.history.push("/assessmentphasefour");
   };
   const remindMe = () => {
     setSnippet({
@@ -76,6 +77,9 @@ const PhaseThreeIceBreaker = (props: any) => {
           loading2: false,
         })
         notify(response?.data?.message);
+        setTimeout(() => {
+          return props.history.push(`/overview`);
+        }, 1000);
       })
       .catch((error) => {
         // console.log(error?.response?.message);
