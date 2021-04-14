@@ -194,7 +194,8 @@ class OnboardingChat extends React.Component {
   }
   render() {
     let a = "abcdefghijklmnopqrstuvwxyz".split("");
-    // console.log(this.props.messages);
+    console.log(this.props.messages);
+    console.log(this.state.chatid)
     const {
       offline,
       userMessage,
