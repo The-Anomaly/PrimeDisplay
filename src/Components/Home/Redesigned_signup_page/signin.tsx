@@ -27,7 +27,11 @@ const Signin = withRouter((props: any) => {
     successMessage,
     isLoading,
   } = state;
+  const generateTheme = () => {
+    return Math.floor(Math.random()* (3) + 1);
+  }
   const sendFormData = () => {
+    localStorage.setItem("avatar_theme", JSON.stringify(generateTheme()));
     setState({
       ...state,
       isLoading: true,
@@ -55,7 +59,7 @@ const Signin = withRouter((props: any) => {
       })
       .catch((error) => {
         // console.log(error);
-        window.scrollTo(-0,-0);
+        window.scrollTo(-0, -0);
         if (error && error.response && error.response.data) {
           return setState({
             ...state,
@@ -89,56 +93,56 @@ const Signin = withRouter((props: any) => {
     axios
       .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
       .then((response) => {
-        if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_two_nature") ||
-          response.data[0].next === "phase_two_health" ||
-          response.data[0].next === "phase_two_building" ||
-          response.data[0].next === "phase_two_creative"
-        ) {
-          return props.history.push(`/assessmentphasetwo`);
-        }
-        if (
-          (response.status === 200 &&
-            response.data[0].next === "phase_two_sports") ||
-          response.data[0].next === "phase_two_business" ||
-          response.data[0].next === "phase_two_stem" ||
-          response.data[0].next === "phase_two_humanitarian"
-        ) {
-          return props.history.push(`/assessmentphasetwo1`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessment/welcome`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "onboarding_chat"
-        ) {
-          return props.history.push(`/clientchat`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_two") {
-          return props.history.push(`/assessmentphasetwo`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_three"
-        ) {
-          return props.history.push(`/assessmentphasethree`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_five") {
-          return props.history.push(`/assessmentphasefive`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_six") {
-          return props.history.push(`/assessmentphasesix`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_seven"
-        ) {
-          return props.history.push(`/assessmentphaseseven`);
-        }
-        if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/free/dashboard`);
+        if (response.status === 200) {
+          if (
+            response.data[0].onboarding_chat === false ||
+            response.data[0].next === "onboarding_chat"
+          ) {
+            return props.history.push("/clientchat");
+          }
+          if(response.data[0].next){
+            return props.history.push(`/overview/new`);
+          } 
+           else if (
+            response.data[0].next === "phase_one" ||
+            response.data[0].phase_one === false
+          ) {
+            return props.history.push(`/assessment/welcome`);
+          } else if (
+            response.data[0].phase_two_nature === false ||
+            response.data[0].phase_two_health === false ||
+            response.data[0].phase_two_building === false ||
+            response.data[0].phase_two_creative === false
+          ) {
+            return props.history.push(`/assessment/phaseone/complete`);
+          } else if (
+            response.data[0].phase_two_sports === false ||
+            response.data[0].phase_two_business === false ||
+            response.data[0].phase_two_stem === false ||
+            response.data[0].phase_two_humanitarian === false
+          ) {
+            return props.history.push(`/assessmentphasetwo1`);
+          } else if (response.data[0].phase_three === false) {
+            return props.history.push(`/assessment/phasetwo/complete`);
+          } else if (response.data[0].phase_four === false) {
+            return props.history.push(`/assessment/phasethree/complete`);
+          } else if (
+            response.data[0].next === "home" &&
+            response.data[0].onboarding_chat === true &&
+            response.data[0].phase_one === true &&
+            response.data[0].phase_two_sports === true &&
+            response.data[0].phase_two_business === true &&
+            response.data[0].phase_two_stem === true &&
+            response.data[0].phase_two_humanitarian === true &&
+            response.data[0].phase_two_nature === true &&
+            response.data[0].phase_two_health === true &&
+            response.data[0].phase_two_building === true &&
+            response.data[0].phase_two_creative === true &&
+            response.data[0].phase_three === true &&
+            response.data[0].phase_four === true
+          ) {
+            return props.history.push(`/overview`);
+          }
         }
       })
       .catch((error) => {});
@@ -157,11 +161,11 @@ const Signin = withRouter((props: any) => {
   };
   const validateForm = (e) => {
     e.preventDefault();
-    if (email=="" && password == ""){
+    if (email == "" && password == "") {
       return setState({
         ...state,
-        errorMessage: "please enter your details"
-      })
+        errorMessage: "please enter your details",
+      });
     }
     if (email === "") {
       return setState({
@@ -246,10 +250,10 @@ const Signin = withRouter((props: any) => {
                     placeholder="Enter your Password"
                     size={75}
                     onKeyPress={(e) => {
-                    if (e.key === "Enter") {
-                      validateForm(e);
-                    }
-                  }}
+                      if (e.key === "Enter") {
+                        validateForm(e);
+                      }
+                    }}
                     className="form-control rdsignupinput"
                   />
                 </label>
@@ -285,7 +289,7 @@ const Signin = withRouter((props: any) => {
                   </button>
                 </div>
                 <p className="rdsgnalready">
-                <Link to="/signup"> Don't have an account?Sign Up</Link>
+                  <Link to="/signup"> Don't have an account?Sign Up</Link>
                 </p>
               </Form>
             </Col>

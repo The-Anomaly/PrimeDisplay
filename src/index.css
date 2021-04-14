@@ -9,13 +9,17 @@ body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
   scroll-behavior: smooth;
   height: 100%;
+  background-color: #ffffff !important;
+  background: #ffffff;
 }
 @media(max-width:700px){
   body{
     font-size: 14px;
   }
 }
-
+hr {
+  margin: 1.2rem 0 !important;
+}
 html{
   scroll-behavior: smooth;
   overflow-x: hidden;

@@ -335,7 +335,7 @@ class NewDashboard extends React.Component {
                   {!showfullresult && (
                     <div className="notpaid hh oops-upgrade">
                       <div className="notpaid1">
-                        <img src={caution1} className="caution" alt="caution" />
+                        <img src={caution} className="caution" alt="caution" />
                         <div className="notpaidtext">
                           Oops!!! You need to upgrade your plan to get indepth
                           details
@@ -346,7 +346,7 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                   )}
-                  {/* <div className="resultsec2 lswid" id="seek">
+                  <div className="resultsec2 lswid" id="seek">
                     <div className="csfitscore2">
                       Your Level of Career Clarity
                     </div>
@@ -377,7 +377,7 @@ class NewDashboard extends React.Component {
                         {client2?.career_fitness?.body}
                       </div>
                     </div>
-                  </div> */}
+                  </div>
                   <hr className="lswid divider" />
                   <div className="lswid">
                     <div className="tipswrapper">
@@ -582,7 +582,7 @@ class NewDashboard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <hr />
+                  <hr className="lswid divider" />
                   <div className="reess">
                     <h5 className="dash-compromise">
                       <strong>

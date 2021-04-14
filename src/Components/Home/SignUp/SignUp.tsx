@@ -244,53 +244,61 @@ const SignUp: React.FunctionComponent = (props: any) => {
       errorMessage: "Failed to Sign Up",
     });
   };
-  const getCurrentAssessmentPosition = (token: string): void => {
-    axios
-      .get(`${API}/progress`, { headers: { Authorization: `Token ${token}` } })
+  const getCurrentAssessmentPosition = (token): void => {
+    axios.get(`${API}/progress`, {
+      headers: { Authorization: `Token ${token}` },
+    })
       .then((response) => {
-        if (
-          (
-          response.status === 200 &&
-          response.data[0].next === "phase_two_sports") ||
-          response.data[0].next === "phase_two_business" ||
-          response.data[0].next === "phase_two_stem"
-        ) {
-          return props.history.push(`/assessmentphasetwo1`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_one") {
-          return props.history.push(`/assessment/welcome`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_two") {
-          return props.history.push(`/assessmentphasetwo`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_three"
-        ) {
-          return props.history.push(`/assessmentphasethree`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_five") {
-          return props.history.push(`/assessmentphasefive`);
-        }
-        if (response.status === 200 && response.data[0].next === "phase_six") {
-          return props.history.push(`/assessmentphasesix`);
-        }
-        if (
-          response.status === 200 &&
-          response.data[0].next === "phase_seven"
-        ) {
-          return props.history.push(`/assessmentphaseseven`);
-        }
-        if (response.status === 200 && response.data[0].next === "home") {
-          return props.history.push(`/dashboard/personality`);
+        console.log(response)
+        if (response.status === 200) {
+          if (
+            response.data[0].onboarding_chat === false ||
+            response.data[0].next === "onboarding_chat"
+          ) {
+            return props.history.push("/clientchat");
+          } else if (
+            response.data[0].next === "phase_one" ||
+            response.data[0].phase_one === false
+          ) {
+            return props.history.push(`/assessment/welcome`);
+          } else if (
+            response.data[0].phase_two_nature === false ||
+            response.data[0].phase_two_health === false ||
+            response.data[0].phase_two_building === false ||
+            response.data[0].phase_two_creative === false
+          ) {
+            return props.history.push(`/assessment/phaseone/complete`);
+          } else if (
+            response.data[0].phase_two_sports === false ||
+            response.data[0].phase_two_business === false ||
+            response.data[0].phase_two_stem === false ||
+            response.data[0].phase_two_humanitarian === false
+          ) {
+            return props.history.push(`/assessmentphasetwo1`);
+          } else if (response.data[0].phase_three === false) {
+            return props.history.push(`/assessment/phasetwo/complete`);
+          } else if (response.data[0].phase_four === false) {
+            return props.history.push(`/assessment/phasethree/complete`);
+          } else if (
+            response.data[0].next === "home" &&
+            response.data[0].onboarding_chat === true &&
+            response.data[0].phase_one === true &&
+            response.data[0].phase_two_sports === true &&
+            response.data[0].phase_two_business === true &&
+            response.data[0].phase_two_stem === true &&
+            response.data[0].phase_two_humanitarian === true &&
+            response.data[0].phase_two_nature === true &&
+            response.data[0].phase_two_health === true &&
+            response.data[0].phase_two_building === true &&
+            response.data[0].phase_two_creative === true &&
+            response.data[0].phase_three === true &&
+            response.data[0].phase_four === true
+          ) {
+            return props.history.push(`/overview`);
+          }
         }
       })
-      .catch((error) => {
-        setFormState({
-          ...state,
-          errorMessage: error?.response?.data?.detail,
-        });
-      });
+      .catch((error) => {});
   };
   useEffect(() => {
     window.scrollTo(-0, -0);

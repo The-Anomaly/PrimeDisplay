@@ -148,6 +148,7 @@ class OnboardingChat extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
+        console.log(res)
         this.setState({
           isloading: false,
         });
@@ -273,7 +274,7 @@ class OnboardingChat extends React.Component {
                                     name="question2"
                                     onClick={() =>
                                       window.location.assign(
-                                        "/assessment/welcome"
+                                        "/overview/new"
                                       )
                                     }
                                   />

@@ -36,8 +36,11 @@ const Signup = withRouter((props: any) => {
     successMessage,
     errorMessage,
   } = state;
-
+  const generateTheme = () => {
+    return Math.floor(Math.random()* (3) + 1);
+  }
   const onSubmit = () => {
+    localStorage.setItem("avatar_theme", JSON.stringify(generateTheme()));
     setFormState({ ...state, isLoading: true });
     const data = {
       first_name: firstname,
@@ -91,10 +94,11 @@ const Signup = withRouter((props: any) => {
   useEffect(() => {
     const query = new URLSearchParams(props.location.search);
     const referralKey = query.get("referral");
+    console.log(props.location.search.split("?referral=").join(""))
     if (referralKey) {
       setFormState({
         ...state,
-        referral_code: referralKey,
+        referral_code: props.location.search.split("?referral=").join(""),
       });
     }
   }, []);

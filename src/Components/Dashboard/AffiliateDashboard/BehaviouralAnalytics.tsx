@@ -318,61 +318,77 @@ const BehaviouralAnalytics = (props) => {
                   <div className="BArow2txt1">Behavioural Analytics</div>
                 </Row>
                 {/* Subscribed view begins*/}
-                {subscriptionCheck === true &&
-                <>
-                <Row>
-                  <div className="BAsections">
-                    <div
-                      onClick={viewPersonalities}
+                {subscriptionCheck === true && (
+                  <>
+                    <Row>
+                      <div className="BAsections">
+                        <div
+                          onClick={viewPersonalities}
+                          className={
+                            analytics === 1
+                              ? "BAselect activeselect"
+                              : "BAselect"
+                          }
+                        >
+                          Personalities
+                        </div>
+                        <div
+                          onClick={viewCompetencies}
+                          className={
+                            analytics === 2
+                              ? "BAselect activeselect"
+                              : "BAselect"
+                          }
+                        >
+                          Competencies
+                        </div>
+                        <div
+                          onClick={viewWorkStyle}
+                          className={
+                            analytics === 3
+                              ? "BAselect activeselect"
+                              : "BAselect"
+                          }
+                        >
+                          Work Style
+                        </div>
+                        <div
+                          onClick={viewWorkMotivators}
+                          className={
+                            analytics === 4
+                              ? "BAselect activeselect"
+                              : "BAselect"
+                          }
+                        >
+                          Work Motivators
+                        </div>
+                        <div
+                          onClick={viewWorkFunctions}
+                          className={
+                            analytics === 5
+                              ? "BAselect activeselect"
+                              : "BAselect"
+                          }
+                        >
+                          Work Functions
+                        </div>
+                        <div
+                          onClick={viewCareerFitness}
+                          className={
+                            analytics === 6
+                              ? "BAselect activeselect"
+                              : "BAselect"
+                          }
+                        >
+                          Career Fitness
+                        </div>
+                      </div>
+                    </Row>
+                    <Row
                       className={
-                        analytics === 1 ? "BAselect activeselect" : "BAselect"
+                        analytics === 1 ? "BArow3 personalitybg" : "BArow3"
                       }
                     >
-                      Personalities
-                    </div>
-                    <div
-                      onClick={viewCompetencies}
-                      className={
-                        analytics === 2 ? "BAselect activeselect" : "BAselect"
-                      }
-                    >
-                      Competencies
-                    </div>
-                    <div
-                      onClick={viewWorkStyle}
-                      className={
-                        analytics === 3 ? "BAselect activeselect" : "BAselect"
-                      }
-                    >
-                      Work Style
-                    </div>
-                    <div
-                      onClick={viewWorkMotivators}
-                      className={
-                        analytics === 4 ? "BAselect activeselect" : "BAselect"
-                      }
-                    >
-                      Work Motivators
-                    </div>
-                    <div
-                      onClick={viewWorkFunctions}
-                      className={
-                        analytics === 5 ? "BAselect activeselect" : "BAselect"
-                      }
-                    >
-                      Work Functions
-                    </div>
-                    <div
-                      onClick={viewCareerFitness}
-                      className={
-                        analytics === 6 ? "BAselect activeselect" : "BAselect"
-                      }
-                    >
-                      Career Fitness
-                    </div>
-                  </div>
-                </Row>
-                    <Row className={analytics === 1 ? "BArow3 personalitybg" : "BArow3"}>
                       {analytics === 1 ? (
                         <div className="BAAsection">
                           <div className="BAanalyticsttl">
@@ -738,8 +754,8 @@ const BehaviouralAnalytics = (props) => {
                         ""
                       )}
                     </Row>
-                </>
-                }
+                  </>
+                )}
                 {/* Subscribed view ends*/}
 
                 {/* Analytics without subscription begins*/}
@@ -748,9 +764,9 @@ const BehaviouralAnalytics = (props) => {
                   <Row>
                     <img className="BAbalance" src={balance} />
                     <div className="BAsubtxt">
-                      Volutpat purus orci ipsum quis faucibus sed elit elit
-                      gravida. Sodales facilisis sed nulla lobortis in convallis
-                      pellentesque urna faucibus.
+                      It seems a little empty here, but you can change that by
+                      upgrading your subscription to get full insight on all
+                      your clients.
                     </div>
                     <button className="BAsubbtn">Upgrade Subscription</button>
                   </Row>

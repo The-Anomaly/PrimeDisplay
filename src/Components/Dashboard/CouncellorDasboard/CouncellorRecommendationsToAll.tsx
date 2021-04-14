@@ -12,10 +12,11 @@ import { API } from "../../../config";
 import prevpage from "../../../assets/prevpage.svg";
 import nextpage from "../../../assets/nextpage.svg";
 import CounsellorDashboardMobileNav from "./CounsellorsDashboardNavBar";
-import { Spinner } from "react-bootstrap";
+import { Modal, Spinner } from "react-bootstrap";
 import noplan from "../../../assets/noplan.png";
-
-
+import "./councellor.css";
+import search from "../../../assets/search.png";
+import close from "../../../assets/close.png";
 
 const CouncellorRecommendationsToAll = (props: any) => {
   const [state, setFormState] = React.useState<any>({
@@ -28,6 +29,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
     nextLink: "",
     count: "",
     total_pages: "",
+    back: false,
   });
   const {
     errorMessage,
@@ -37,7 +39,28 @@ const CouncellorRecommendationsToAll = (props: any) => {
     nextLink,
     count,
     total_pages,
+    back,
   } = state;
+  const [newstate, setState] = React.useState<any>({
+    searchKey: "",
+    modal: false,
+    modalData: {},
+  });
+  const { searchKey, modal, modalData } = newstate;
+  const openRecommendationModal = (data) => {
+    console.log(data);
+    setState({
+      ...newstate,
+      modal: true,
+      modalData: data,
+    })
+  };
+  const closeRecommendationModal = () => {
+    setState({
+      ...newstate,
+      modal: false,
+    })
+  };
   React.useEffect(() => {
     setFormState({
       ...state,
@@ -55,20 +78,14 @@ const CouncellorRecommendationsToAll = (props: any) => {
           headers: { Authorization: `Token ${token}` },
         }
       ),
-      Axios.get<any, AxiosResponse<any>>(
-        `${API}/counsellor/your-recommendations`,
-        {
-          headers: { Authorization: `Token ${token}` },
-        }
-      ),
     ])
       .then(
-        Axios.spread((res, res1) => {
-          // console.log(res);
+        Axios.spread((res) => {
+          console.log(res);
           if (res.status === 200) {
             setFormState({
               ...state,
-              user: [...res.data.results].reverse(),
+              user: [...res.data.results],
               count: res.data.page,
               nextLink: res.data.next,
               prevLink: res.data.previous,
@@ -120,7 +137,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
               ...state,
               successMsg: true,
               isLoading: false,
-              user: [...res1.data.results].reverse(),
+              user: [...res1.data.results],
               count: res1.data.page,
               nextLink: res1.data.next,
               prevLink: res1.data.previous,
@@ -170,7 +187,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
               ...state,
               successMsg: true,
               isLoading: false,
-              user: [...res1.data.results].reverse(),
+              user: [...res1.data.results],
               count: res1.data.page,
               nextLink: res1.data.next,
               prevLink: res1.data.previous,
@@ -194,7 +211,77 @@ const CouncellorRecommendationsToAll = (props: any) => {
         });
       });
   };
-
+  const onchange = (e) => {
+    setState({
+      ...newstate,
+      searchKey: e.target.value,
+    });
+  };
+  const searchRecommendations = () => {
+    console.log(searchKey);
+    setFormState({
+      ...state,
+      isloading: true,
+      user: [],
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/counsellor/signin");
+    const data = {};
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(
+        `${API}/counsellor/your-recommendations/?q=${searchKey}`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      ),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            return setFormState({
+              ...state,
+              user: [...res.data.results],
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
+              isloading: false,
+              back: true,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error?.response?.status == 400) {
+          setState({
+            ...state,
+            errorMessage: error.response.data.message,
+            counsellorData: [],
+            back: false,
+          });
+        }
+        // console.log(error.response);
+        if (error && error.response && error.response.data) {
+          return setState({
+            ...state,
+            errorMessage: error?.response?.data?.message,
+            isLoading: false,
+            counsellorData: [],
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const goBack = () => {
+    return window.location.reload();
+  }
   // console.log(user);
   return (
     <>
@@ -207,10 +294,32 @@ const CouncellorRecommendationsToAll = (props: any) => {
             <Row>
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
-                <DashboardCounsellorIntroHeader
-                  searcharea={true}
-                  welcomeText="Get insight to the overview of all your concerns"
-                />
+                <div className="flxv1">
+                  <DashboardCounsellorIntroHeader welcomeText="Get insight to the overview of all your concerns" />
+                  {user.length > 0 && (<div className="ffrr1">
+                    <img
+                      src={search}
+                      className="searchi search-img-btn"
+                      alt="search"
+                      onClick={() => searchRecommendations()}
+                    />
+                    <input
+                      placeholder="Search by client name"
+                      type="text"
+                      onChange={onchange}
+                      value={searchKey}
+                      name="searchKey"
+                      onKeyPress={(e) => {
+                        if (e.key == "Enter") {
+                          searchRecommendations();
+                        }
+                      }}
+                      id="searchKey"
+                      className="searchinput form-control"
+                    />
+                  </div>)}
+                </div>
+               {back && ( <button onClick={goBack} className="back-btn">&#8592;  Back</button>)}
                 <Row>
                   <Col md={12} className="mssaag">
                     {isloading && (
@@ -219,27 +328,31 @@ const CouncellorRecommendationsToAll = (props: any) => {
                       </div>
                     )}
                     {user?.map((data, i) => (
-                      <div className="useri1222 ui1222 ">
-                        <div className="sjsso">
+                      <div className="useri1222 ui1222 newui2222" onClick={() => openRecommendationModal(data)}>
+                        <div className="sjsso avatar-avatar">
                           <img
                             src={userimg}
                             className="userimg"
-                            alt="jayeolajones"
+                            alt="user avatar"
                           />
                         </div>
-                        <div className="sjsso1">
+                        <div className="sjsso1 space-left">
                           <div>
-                            <span className="username11">{data.user_name}</span>
+                            <span className="username11 name-name">
+                              {data.user_name}
+                            </span>
                             <span className="useremail11">{data?.email}</span>
                           </div>
                           <div className="messagedetails">
                             {data.description}
                           </div>
                         </div>
-                        <div className="tymeline sjsso2">{data.date}</div>
+                        <div className="tymeline sjsso2 date-date">
+                          {data.date}
+                        </div>
                       </div>
                     ))}
-                     {user.length === 0 && !isloading && (
+                    {user.length === 0 && !isloading && (
                       <div className="norec newnorec">
                         <img
                           src={noplan}
@@ -247,7 +360,7 @@ const CouncellorRecommendationsToAll = (props: any) => {
                           alt="norecommendations"
                         />
                         <div className="udont">
-                          You currently do not have any recommendation
+                          You have not made any recommendations
                         </div>
                       </div>
                     )}
@@ -285,6 +398,15 @@ const CouncellorRecommendationsToAll = (props: any) => {
           </Col>
         </Row>
       </Container>
+      <Modal show={modal} onHide={closeRecommendationModal} className="recommendation-modal" centered>
+        <img className="recomm-btn" src={close} onClick={closeRecommendationModal} alt={close} />
+        <Modal.Header className="recomm-ttl">
+          Recommendations for {modalData.user_name}, {" "} {modalData.date}
+        </Modal.Header>
+        <Modal.Body className="recomm-txt">
+          {modalData.description}
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

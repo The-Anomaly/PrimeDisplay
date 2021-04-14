@@ -155,10 +155,10 @@ const Payment = (props: any) => {
         customerFullName: user[0]?.first_name + "  " + user[0]?.last_name,
         customerEmail: user[0]?.email,
         customerMobileNumber: "",
-        apiKey: "MK_PROD_NNSGXTY6LF",
-        contractCode: "722431733218",
-        // contractCode: "4978848198",
-        // apiKey: "MK_TEST_WQZNXHV9FY",
+        apiKey: "MK_PROD_NNSGXTY6LF", //live key
+        contractCode: "722431733218", //live key
+        // contractCode: "4978848198", //test key
+        // apiKey: "MK_TEST_WQZNXHV9FY", //test key
         // secretKey: "MR4K3WHE7BDLZFTR3Z4VUJ4H4HD88S22",
         paymentDescription: selectedplan,
         isTestMode: false,

@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DashboardNav from "./DashboardNavBar";
 import { Link } from "react-router-dom";
+import Initial from "./Avatardesign";
 
 class DashboardLargeScreenNav extends React.Component<any, any> {
   constructor(props: any) {
@@ -21,15 +22,19 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
       errorMessage: "",
       email: "",
       address: "",
-      image:"",
+      image: "",
       phone: "",
       isLoading: false,
       width: 100,
+      initial: "",
     };
   }
 
   componentDidMount() {
-    this.setState({ isLoading: true });
+    this.setState({
+      isLoading: true,
+      initial: localStorage.getItem("initial"),
+    });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -58,10 +63,9 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
         });
       });
   }
-
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
-    const { first_name, last_name,image } = this.state;
+    const { first_name, last_name, image, initial } = this.state;
     return (
       <>
         <div className="navdash">
@@ -70,7 +74,13 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
             <span>{first_name ? first_name + " " + last_name : ""}</span>
             <span>
               <Link to="/dashboardsettings">
-                <img src={image?image:avatar} className="avatar11" alt="avatar" />
+                {image ? (
+                  <img src={image} className="avatar11" alt="avatar" />
+                ) : (
+                  <div className="avatar11">
+                    <Initial initial={initial} />
+                  </div>
+                )}
               </Link>
             </span>
           </div>

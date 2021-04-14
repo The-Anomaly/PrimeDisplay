@@ -1592,8 +1592,8 @@ textarea.form-control.jobr {
 .divide_thro {
   height: 0.1px;
   background: #d4d3d359;
-  margin-bottom: 0.4rem;
-  margin-top: 0.3rem;
+  margin-bottom: 0.4rem !important;
+  margin-top: 0.3rem !important;
 }
 .jobr {
   height: 93px;
@@ -4107,6 +4107,7 @@ label {
 
 .divider {
   margin-left: 0;
+  margin: 1.5rem 0;
 }
 
 .blur {
@@ -4253,7 +4254,7 @@ label {
 .skill-container > .skills {
   margin-bottom: 5px;
 }
-.oops-upgrade {
+/* .oops-upgrade {
   background: #e5e5e5 !important;
 }
 .oops-upgrade .notpaidtext {
@@ -4261,7 +4262,7 @@ label {
 }
 .oops-upgrade .retaketest {
   text-align: center;
-}
+} */
 .job-oppt-submit {
   border-radius: 6px;
   height: 40px;

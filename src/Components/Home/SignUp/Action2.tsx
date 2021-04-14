@@ -63,7 +63,7 @@ const Action2 = () =>{
                             </div>
                                 <hr className ="line-divider" />
                                 
-                                <div className= "whats-included">
+                                <div className= "whats-included whats-included1">
                                     <p>Whats included</p> <div className="down-arrow"><img src={ArrowDown} className="arrow-down"/></div>
 
                                 </div>

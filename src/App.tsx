@@ -118,12 +118,12 @@ import ReactGA from "react-ga";
 import COUNSELLORRESULT from "./Components/Dashboard/CouncellorDasboard/CounsellorResult";
 import ReactPixel from "react-facebook-pixel";
 
-import AllBookedSessions from "./Components/Dashboard/AllBookedSessions"
+import AllBookedSessions from "./Components/Dashboard/AllBookedSessions";
 import CvDesign from "./Components/Dashboard/CvDesign";
-import Avatardesign from "./Components/Dashboard/Avatardesign";
 import Action from "./Components/Home/SignUp/Action";
 import Actionfirst from "./Components/Home/SignUp/Action1";
 import Actionsecond from "./Components/Home/SignUp/Action2";
+import Dashboard2021 from "./Components/Dashboard/Dashboard2021";
 
 const advancedMatching: any = { em: "yudimyapp@gmail.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
 const options = {
@@ -155,11 +155,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {window.location.pathname == "/" && (
-          <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
-            <img src={whatsapp} className="whatsapp" alt="whatsapp" />
-          </a>
-        )}
+        {window.location.pathname == "/" ||
+          window.location.pathname == "/dashboardsupport" ||
+          window.location.pathname ==
+            "/counsellorsupport" ? (
+              <a href="whatsapp://send?phone=+2348176100160 &text=Hello">
+                <img src={whatsapp} className="whatsapp" alt="whatsapp" />
+              </a>
+            ):""}
         <div>
           <BrowserRouter>
             <Switch>
@@ -611,6 +614,7 @@ class App extends Component {
                 path="/assessmentphasefour"
                 component={NewAssessmentPhaseFour}
               />
+
               <Route 
                 exact 
                 path="/cvdesign"
@@ -633,14 +637,8 @@ class App extends Component {
                 exact 
                 path="/actionssecond"
                 component={Actionsecond}
-              
               />
-               <Route 
-                exact 
-                path="/avatardesign"
-                component={Avatardesign}
-              
-              />
+              <Route exact path="/overview/new" component={Dashboard2021} />
             </Switch>
           </BrowserRouter>
         </div>

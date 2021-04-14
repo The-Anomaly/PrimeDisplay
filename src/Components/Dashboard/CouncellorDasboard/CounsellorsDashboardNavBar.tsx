@@ -280,7 +280,7 @@ const CounsellorsDashboardMobileNav = withRouter((props: any) => {
                     className="sideimage"
                     alt="sideimage"
                   />
-                  Recommended Task
+                  Recommendations
                 </Link>
               </div>
               <div className={props.assignedmemb ? "activegb" : "gbn"}>

@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     justify-items: center;
-    margin-top: 20vw;
 }
 
 .avatar-circle{
@@ -12,8 +11,6 @@
     border-radius: 50%;
     display: flex;
     justify-content: center;
-    
-
 }
 .avatar-circle .blue{
     border: 3px solid rgba(57,6,203,0.3)
@@ -32,8 +29,6 @@
     border-radius: 50%;
     border: none;
     margin: 3px;
-    
-
 }
 .avatar-inner-circle .red{
     background-color: rgba(245,95,68,0.2);
@@ -57,5 +52,48 @@
     color: rgba(245,95,68,1);
 }
 
+/* Avatar styling - Initials */
+.avatar-outter {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    border-radius: 50%;
+}
 
+.avatar-outter h1 {
+    /* font-size: 20px; */
+    width: 91%;
+    height: 91%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 110%;
+}
 
+.avatar-green {
+    border: 2px solid rgba(27,185,120,0.3);
+}
+.avatar-green h1 {
+    color: #1BB978;
+    background-color: rgba(27,185,120,0.2);
+}
+
+.avatar-red {
+    border: 2px solid rgba(245,95,68,0.3)
+}
+.avatar-red h1 {
+    background-color: rgba(245,95,68,0.2);
+    color: rgba(245,95,68,1);
+}
+
+.avatar-blue {
+    border: 2px solid rgba(57,6,203,0.3)
+}
+.avatar-blue h1 {
+    background-color: rgba(57,6,203,0.2);
+    color: rgba(57,6,203,1);
+}
