@@ -37,6 +37,8 @@ const Payment = (props: any) => {
     giftASub: false,
     giftASub2: false,
     unavailable: false,
+    plandetails:"",
+    plancost:"",
     choosePaymentGateway: false,
   });
   const { giftASub, giftASub2, unavailable, choosePaymentGateway } = modState;
@@ -58,10 +60,12 @@ const Payment = (props: any) => {
       unavailable: true,
     });
   };
-  const openChoosePaymentGateway = () => {
+  const openChoosePaymentGateway = (planinfo,cost) => {
     setModalState({
       ...modState,
       choosePaymentGateway: true,
+      plandetails:planinfo,
+      plancost:cost
     });
   };
   const closeGiftASubscriptionModal = () => {
@@ -343,6 +347,8 @@ const Payment = (props: any) => {
       // console.log( 'Failed to initailize payment' + error)
     }
   };
+  console.log(modState.plandetails)
+  console.log(modState.plancost)
   return (
     <>
       <div className={withoutlogin ? "mobilepadding" : ""}>
@@ -554,7 +560,7 @@ const Payment = (props: any) => {
                             //onClick={() =>
                             //requestForPayref("One-off Insight Plan", 5000)
                             //}
-                            onClick={openChoosePaymentGateway}
+                            onClick={()=>openChoosePaymentGateway("One-off Insight Plan",5000)}
                           >
                             Upgrade to Insight
                           </span>
@@ -752,7 +758,7 @@ const Payment = (props: any) => {
                             //12000
                             //)
                             //}
-                            onClick={openChoosePaymentGateway}
+                            onClick={()=>openChoosePaymentGateway("Progressive Insight Plan",12000)}
                           >
                             Subscribe
                           </span>
@@ -826,7 +832,7 @@ const Payment = (props: any) => {
                             //30000
                             //)
                             //}
-                            onClick={openChoosePaymentGateway}
+                            onClick={()=>openChoosePaymentGateway("Progressive Direction Plan",30000)}
                           >
                             Upgrade to Direction
                           </span>
@@ -916,7 +922,7 @@ const Payment = (props: any) => {
                                 //50500
                               //)
                             //}
-                            onClick={openChoosePaymentGateway}
+                            onClick={()=>openChoosePaymentGateway("Progressive Accountability Plan",50500)}
                           >
                             Upgrade to Accountability
                           </span>
