@@ -250,8 +250,8 @@ const Payment = (props: any) => {
         setTimeout(() => {
           payWithMonnify(
             response?.data[0]?.payment_reference,
-            selectedplan,
-            cost
+            modState.plandetails,
+            modState.plancost
           );
         }, 1000);
       })
@@ -1573,9 +1573,9 @@ const Payment = (props: any) => {
         <Modal.Body className="payment-modal-row">
           <Row >
             <Col md={4} className="monnify-logo">
-              <Link to="/">
+              <span onClick={()=>requestForPayref("test","test")}>
                 <img src={monnifyLogo} className="payment-channel-logo"/>
-              </Link>
+              </span>
             </Col>
             <Col md={4}>
               <Link to="/">
