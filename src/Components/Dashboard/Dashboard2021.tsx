@@ -17,6 +17,8 @@ import take from "../../assets/takeassessment.svg";
 import "../Home/Assesment/assessmenticebreaker.css";
 import { Link } from "react-router-dom";
 import Initials from "./Avatardesign";
+import available from "../../assets/available.png";
+import notavailable from "../../assets/notavailable.png";
 
 interface State {
   fullname: string;
@@ -32,6 +34,7 @@ interface State {
   progress: any;
   incomplete_assessment: boolean;
   isLoading: boolean;
+  profile_builder: boolean;
 }
 class Dashboard2021 extends React.Component<any, any> {
   state: State = {
@@ -48,6 +51,7 @@ class Dashboard2021 extends React.Component<any, any> {
     progress: [],
     incomplete_assessment: false,
     isLoading: true,
+    profile_builder: false,
   };
   componentDidMount() {
     const availableToken = localStorage.getItem("userToken");
@@ -80,7 +84,7 @@ class Dashboard2021 extends React.Component<any, any> {
     ])
       .then(
         Axios.spread((res1, res2, res3, res4, res5, res6, res7) => {
-          // console.log(res1, res2, res3, res4, res5, res6, res7);
+          console.log(res1, res2, res3, res4, res5, res6, res7);
           if (
             res1.status === 200 &&
             res2.status === 200 &&
@@ -98,6 +102,7 @@ class Dashboard2021 extends React.Component<any, any> {
               usertasks: [...res3?.data?.results].reverse().splice(0, 2),
               usersession: [...res4?.data?.results],
               view_result: res5?.data[0]?.view_result,
+              profile_builder: res5?.data[0]?.profile_builder_submitted,
               progress: res6?.data[0],
               incomplete_assessment:
                 !res6?.data[0].phase_two_building ||
@@ -147,6 +152,12 @@ class Dashboard2021 extends React.Component<any, any> {
     } else {
       return this.props.history.push("/allbookedsessions");
     }
+  };
+  goToAllTasks = () => {
+    return this.props.history.push("/todolist");
+  };
+  goToAllMessages = () => {
+    return this.props.history.push("/allusermessages");
   };
   viewResult = () => {
     if (
@@ -223,6 +234,7 @@ class Dashboard2021 extends React.Component<any, any> {
       progress,
       incomplete_assessment,
       isLoading,
+      profile_builder,
     } = this.state;
     return (
       <>
@@ -279,6 +291,9 @@ class Dashboard2021 extends React.Component<any, any> {
                         />
                       </div>
                       <div className="ov-sec-2 ov-elements">
+                        <div className="ov-profile-builder-icon">
+                          <Link to="/profilebuilder"><img src={profile_builder ? available : notavailable} alt="" /></Link>
+                        </div>
                         <div className="ov-avatar">
                           {fullname && (<Initials initial={this.getInitials(fullname)} />)}
                         </div>
@@ -350,7 +365,7 @@ class Dashboard2021 extends React.Component<any, any> {
                             </p>
                           </>
                         )}
-                        <button className="ov-todo-btn">
+                        <button onClick={this.goToAllTasks} className="ov-todo-btn">
                           View all your tasks
                         </button>
                       </div>
@@ -391,7 +406,7 @@ class Dashboard2021 extends React.Component<any, any> {
                             </p>
                           </>
                         )}
-                        <button className="ov-todo-btn">
+                        <button onClick={this.goToAllMessages} className="ov-todo-btn">
                           View all messages
                         </button>
                       </div>

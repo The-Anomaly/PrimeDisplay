@@ -216,7 +216,7 @@ class App extends Component {
                 path="/clarityforteams"
                 component={ClarityForTeams}
               />
-              <Route exact path="/overview" component={NewDashboard} />
+              <Route exact path="/overview/old" component={NewDashboard} />
               <Route
                 exact
                 path="/profilebuilder"
@@ -638,7 +638,12 @@ class App extends Component {
                 path="/actionssecond"
                 component={Actionsecond}
               />
-              <Route exact path="/overview/new" component={Dashboard2021} />
+              <Route exact path="/overview" component={Dashboard2021} />
+              <Route
+                exact
+                path="/overview/new"
+                component={() => <Redirect to="/overview" />}
+              />
             </Switch>
           </BrowserRouter>
         </div>

@@ -163,6 +163,9 @@ const newNavbar = withRouter((props: any) => {
   const uniqueKeygen = (): number => {
     return Math.floor(Math.random() * 100);
   };
+  const goToDashboard = () => {
+    return props.history.push(`/overview`);
+  }
   //console.log(darknav)
   return (
     <div>
@@ -276,11 +279,18 @@ const newNavbar = withRouter((props: any) => {
                       </Link>
                     </div>
                   ) : (
+                    <>
+                    <div className="listwraperMob">
+                      <div className={navbar ? "navmobbtn inapplogout" : darknav ? "navmobbtn" : "navmobbtn inapplogout"} onClick={goToDashboard}>
+                        Dashboard
+                      </div>
+                    </div>
                     <div className="listwraperMob">
                       <div className={navbar ? "navmobbtn inapplogout" : darknav ? "navmobbtn" : "navmobbtn inapplogout"} onClick={logout}>
                         Logout
                       </div>
                     </div>
+                    </>
                   )}
                   {/* {userLoggedIn && (
                     <>

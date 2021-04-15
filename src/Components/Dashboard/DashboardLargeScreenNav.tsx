@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import DashboardNav from "./DashboardNavBar";
 import { Link } from "react-router-dom";
 import Initial from "./Avatardesign";
+import available from "../../assets/available.png";
+import notavailable from "../../assets/notavailable.png";
 
 class DashboardLargeScreenNav extends React.Component<any, any> {
   constructor(props: any) {
@@ -27,6 +29,7 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
       isLoading: false,
       width: 100,
       initial: "",
+      profile_builder: false,
     };
   }
 
@@ -40,16 +43,22 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
     const data = {};
-    Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profile`, {
-      headers: { Authorization: `Token ${token}` },
-    })
-      .then((response) => {
+      Axios.all([
+        Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profile`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+      Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(Axios.spread((response, response2) => {
         if (response.status === 200) {
           this.setState({
             ...response.data,
+            profile_builder: response2?.data[0]?.profile_builder_submitted,
           });
         }
-      })
+      }))
       .catch((error) => {
         if (error && error?.response && error?.response?.data) {
           this.setState({
@@ -65,12 +74,15 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
   }
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
-    const { first_name, last_name, image, initial } = this.state;
+    const { first_name, last_name, image, initial, profile_builder } = this.state;
+    console.log(profile_builder);
     return (
       <>
         <div className="navdash">
           <div className="overview ovf">{this.props.title}</div>
-          <div className="prm111">
+          <div className="prm111 nav_prof">
+            <Link to="/profilebuilder"><img className="nav_profile_icon" src={profile_builder ? available : notavailable} alt="" /></Link>
+            <span className="nav_profile">Profile</span>
             <span>{first_name ? first_name + " " + last_name : ""}</span>
             <span>
               <Link to="/dashboardsettings">

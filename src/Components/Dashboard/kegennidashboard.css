@@ -4508,3 +4508,20 @@ a {
     padding-right: 0.9rem !important;
     aspect-ratio: 1;
 }
+.nav_prof {
+  font-weight: 600;
+  color: #001833;
+}
+.nav_profile_icon {
+  width: 28px;
+  cursor: pointer;
+}
+.nav_profile {
+  margin-left: 10px;
+  color: #666666;
+}
+.nav_profile::after {
+  content: " ";
+  border: 1px solid #bcbcbc;
+  margin: 0 1rem;
+}
