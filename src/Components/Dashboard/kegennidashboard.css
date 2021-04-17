@@ -4343,8 +4343,8 @@ label {
   margin: auto;
 }
 .session-status-pending {
-  background: #f93939;
-  border: 1px solid #f93939;
+  background: #ff0000;
+  border: 1px solid #ff0000;
 }
 .session-status-closed {
   background: #19c519;

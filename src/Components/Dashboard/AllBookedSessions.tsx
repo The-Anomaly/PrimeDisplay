@@ -21,12 +21,14 @@ import moment from "moment";
 import failedNotice from "../../assets/failedNotice.png";
 import prevpage from "../../assets/prevpage.svg";
 import nextpage from "../../assets/nextpage.svg";
+import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 import "./CouncellorDasboard/councellor.css";
 
 class AllBookedSessions extends React.Component {
   state: any = {
     fullname: "",
     isLoading: false,
+    isLoading2: false,
     sessionData: [],
     nextLink: "",
     prevLink: "",
@@ -36,7 +38,7 @@ class AllBookedSessions extends React.Component {
   };
   props: any;
   componentDidMount() {
-    this.setState({ isLoading: true });
+    this.setState({ isLoading2: true });
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -51,7 +53,7 @@ class AllBookedSessions extends React.Component {
         axios.spread((res) => {
           // console.log(res);
           this.setState({
-            isLoading: false,
+            isLoading2: false,
             sessionData: [...res.data.results].reverse(),
             count: res.data.page,
             nextLink: res.data.next,
@@ -64,12 +66,12 @@ class AllBookedSessions extends React.Component {
         if (error && error.response && error.response.data) {
           this.setState({
             errorMessage: error.response.data[0].message,
-            isLoading: false,
+            isLoading2: false,
           });
         }
         this.setState({
           errorMessage: "failed",
-          isLoading: false,
+          isLoading2: false,
         });
       });
   }
@@ -172,6 +174,7 @@ class AllBookedSessions extends React.Component {
     const {
       fullname,
       isLoading,
+      isLoading2,
       sessionData,
       nextLink,
       prevLink,
@@ -186,7 +189,8 @@ class AllBookedSessions extends React.Component {
           <Row>
             <SideBarNewDashboard chat={true} />
             <Col md={10} sm={12} className="prm newprm">
-              <div className="navdash">
+            <DashboardLargeScreenNav title="Booked Sessions" />
+              {/* <div className="navdash">
                 <div className="overview ovf">Booked Sessions</div>
                 <div className="prm111">
                   <span>{fullname ? fullname : ""}</span>
@@ -194,9 +198,15 @@ class AllBookedSessions extends React.Component {
                     <img src={avatar} className="avatar11" alt="avatar" />
                   </span>
                 </div>
-              </div>
+              </div> */}
               <Row>
-                <Col md={12} className="kisls kisls22">
+              {isLoading2 && (
+                  <div className="icebreakerpreloader center-it">
+                    <div className="icebreakerspinner"></div>
+                  </div>
+                )}
+              {!isLoading2 && (
+              <Col md={12} className="kisls kisls22">
                   <div className="kdashheader npps">
                     <DashboardUsernameheader
                       welcomeText={
@@ -307,6 +317,7 @@ class AllBookedSessions extends React.Component {
                     </Col>
                   </div>
                 </Col>
+              )}
               </Row>
             </Col>
           </Row>

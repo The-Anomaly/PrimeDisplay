@@ -43,23 +43,25 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
       ? JSON.parse(availableToken)
       : window.location.assign("/signin");
     const data = {};
-      Axios.all([
-        Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profile`, {
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/dashboard/profile`, {
         headers: { Authorization: `Token ${token}` },
       }),
       Axios.get<any, AxiosResponse<any>>(`${API}/paymentstatus`, {
         headers: { Authorization: `Token ${token}` },
       }),
     ])
-      .then(Axios.spread((response, response2) => {
-        if (response.status === 200) {
-          this.setState({
-            ...response.data,
-            profile_builder: response2?.data[0]?.profile_builder_submitted,
-            isLoading: false,
-          });
-        }
-      }))
+      .then(
+        Axios.spread((response, response2) => {
+          if (response.status === 200) {
+            this.setState({
+              ...response.data,
+              profile_builder: response2?.data[0]?.profile_builder_submitted,
+              isLoading: false,
+            });
+          }
+        })
+      )
       .catch((error) => {
         if (error && error?.response && error?.response?.data) {
           this.setState({
@@ -75,16 +77,33 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
   }
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
-    const { first_name, last_name, image, initial, profile_builder, isLoading } = this.state;
+    const {
+      first_name,
+      last_name,
+      image,
+      initial,
+      profile_builder,
+      isLoading,
+    } = this.state;
     // console.log(profile_builder);
     return (
       <>
         <div className="navdash">
           <div className="overview ovf">{this.props.title}</div>
-          {!isLoading && (<div className="prm111 nav_prof">
-            <Link to="/profilebuilder"><img className="nav_profile_icon" src={profile_builder ? available : notavailable} alt="" /></Link>
+          <div className="prm111 nav_prof">
+            {!isLoading && (
+              <>
+            <Link to="/profilebuilder">
+              <img
+                className="nav_profile_icon"
+                src={profile_builder ? available : notavailable}
+                alt=""
+              />
+            </Link>
             <span className="nav_profile">Profile</span>
             <span>{first_name ? first_name + " " + last_name : ""}</span>
+            </>
+            )}
             <span>
               <Link to="/dashboardsettings">
                 {image ? (
@@ -96,7 +115,7 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
                 )}
               </Link>
             </span>
-          </div>)}
+          </div>
         </div>
       </>
     );
