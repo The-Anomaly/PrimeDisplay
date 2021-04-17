@@ -65,6 +65,7 @@ class NewDashboardFullInsight extends React.Component {
         this.setState({
           user: response.data,
           message: "",
+          isLoading: false,
         });
       })
       .catch((error) => {
@@ -102,11 +103,16 @@ class NewDashboardFullInsight extends React.Component {
             <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title={"Full Insight"}/>
               <Row>
-                <Col md={12} className="kislsree">
+              {isLoading && (
+                  <div className="icebreakerpreloader center-it">
+                    <div className="icebreakerspinner"></div>
+                  </div>
+                )}
+                {!isLoading && (<Col md={12} className="kislsree">
                   <Row>
                     <KigenniRemainingResult />
                   </Row>
-                </Col>
+                </Col>)}
               </Row>
             </Col>
           </Row>

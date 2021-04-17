@@ -85,6 +85,7 @@ const TodoList = (props: any) => {
     iscreating,
     reason,
     isloading,
+    isLoading,
     success,
   } = state;
   const {
@@ -372,6 +373,12 @@ const TodoList = (props: any) => {
           <Col md={10} sm={12} className="prm newprm">
             <DashboardLargeScreenNav title="All Tasks" />
             <Row>
+            {isLoading && (
+                  <div className="icebreakerpreloader center-it">
+                    <div className="icebreakerspinner"></div>
+                  </div>
+                )}
+              {!isLoading && (
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <div className="begin task-name">
@@ -527,6 +534,7 @@ const TodoList = (props: any) => {
                   </Col>
                 </Row>
               </Col>
+              )}
             </Row>
           </Col>
         </Row>

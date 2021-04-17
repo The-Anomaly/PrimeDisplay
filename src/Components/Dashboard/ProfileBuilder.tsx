@@ -333,6 +333,7 @@ class ProfileBuilder extends React.Component {
         if (response.status === 200) {
           this.setState({
             user: response.data,
+            isLoading: false,
           });
         }
       })
@@ -1016,6 +1017,12 @@ class ProfileBuilder extends React.Component {
             <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Profile Builder" />
               <Row>
+              {isLoading && (
+                  <div className="icebreakerpreloader center-it">
+                    <div className="icebreakerspinner"></div>
+                  </div>
+                )}
+                {!isLoading && (
                 <Col md={11} className="kisls">
                   <div className="kdashheader uidd11">
                     <div className="fjss">
@@ -2002,6 +2009,7 @@ class ProfileBuilder extends React.Component {
                     </Col>
                   </Row>
                 </Col>
+              )}
               </Row>
             </Col>
             <ToastContainer

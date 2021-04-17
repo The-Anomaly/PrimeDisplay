@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./Home.css";
+import "../../Dashboard/kegennidashboard.css"
 import Navbar from "../HomeComponents/newnavbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -186,9 +187,9 @@ const RedesignedHome: React.FC = (props: any) => {
     <div>
       <Navbar home={true} />
       {isloading && (
-        <div className="isloadd1">
-          <img src={preloader2} className="preloader2" alt="preloader" />
-          <div className="text-teala">Resuming Session</div>
+        <div className="c4ipreloader center-it">
+          <div className="c4ispinner"></div>
+          <h1><i>Hold on...</i></h1>
         </div>
       )}
       {!isloading && (

@@ -50,6 +50,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
         this.setState({
           plan: response.data.plan,
           expiration: response.data.expires,
+          isLoading: false,
         });
       })
       .catch((error) => {
@@ -89,17 +90,23 @@ class NewDashboardSubsriptionPlan extends React.Component {
             <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title={"Subscription"} />
               <Row>
+              {isLoading && (
+                  <div className="icebreakerpreloader center-it">
+                    <div className="icebreakerspinner"></div>
+                  </div>
+                )}
+                {!isLoading && (
                 <Col md={12} className="kisls">
                   <div className="kdashheade npps">
                     <DashboardUsernameheader
                       welcomeText={"A review of your current subcription plans"}
                     />
                     <div className="">
-                      <Button className="retaketest planupgradebtn">
-                        <Link to="/paymentsummary">
-                          Upgrade your subscription
-                        </Link>
-                      </Button>
+                      <Link to="/paymentsummary">
+                        <Button className="retaketest planupgradebtn">
+                            Upgrade your subscription
+                        </Button>
+                      </Link>
                     </div>
                     <div>
                       <hr />
@@ -633,6 +640,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                     )}
                   </div>
                 </Col>
+              )}
               </Row>
             </Col>
           </Row>

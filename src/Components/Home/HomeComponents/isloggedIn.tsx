@@ -113,7 +113,7 @@ export const NavIsLoggedIn = withRouter((props: IAppProps | any) => {
   return (
     <React.Fragment>
       <div className="title1 shiftlefff newshft">
-      <button className="title_t signupbtn newlogin" onClick={goToDashboard}>
+      <button className="title_t signupbtn newlogin nav-nopadd" onClick={goToDashboard}>
           Dashboard
         </button>
         <button className="title_t signupbtn newlogin" onClick={props.Logout}>

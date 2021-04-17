@@ -66,7 +66,7 @@ const IndustryList = [
   { name: "Sports Innovation & Retail" },
   { name: "Sports Management & Development" },
 ];
-class NewDashboardJobOpportunities extends React.Component {
+class NewDashboardJobOpportunities extends React.Component<any, any> {
   state: any = {
     fullname: "",
     errorMessage: "",
@@ -223,7 +223,7 @@ class NewDashboardJobOpportunities extends React.Component {
         if (response.status === 200 && response2.status === 200) {
           if (response2?.data[0]?.job_recommendation === false) {
             return setTimeout(() => {
-              window.location.pathname = "/dashboardsubscriptionplan";
+              this.props.history.push("/dashboardsubscriptionplan");
             }, 2000);
           }
           else {
@@ -234,6 +234,7 @@ class NewDashboardJobOpportunities extends React.Component {
             present_industry: response?.data?.present_industry,
             work_status: response?.data?.work_status,
             dob: response?.data?.dob,
+            isLoading: false,
           })
         }}
       }))
@@ -269,6 +270,7 @@ class NewDashboardJobOpportunities extends React.Component {
         if (response.status === 200) {
           this.setState({
             user: response.data,
+            isLoading: false,
           });
         }
       })
@@ -309,6 +311,12 @@ class NewDashboardJobOpportunities extends React.Component {
             <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Job Notifications" />
               <Row>
+              {isLoading && (
+                  <div className="icebreakerpreloader center-it">
+                    <div className="icebreakerspinner"></div>
+                  </div>
+                )}
+                {!isLoading && (
                 <Col md={11} className="kisls">
                   <div className="kdashheader uidd11">
                     <div className="fjss">
@@ -514,6 +522,7 @@ class NewDashboardJobOpportunities extends React.Component {
                     </Col>
                   </Row>
                 </Col>
+              )}
               </Row>
             </Col>
           </Row>

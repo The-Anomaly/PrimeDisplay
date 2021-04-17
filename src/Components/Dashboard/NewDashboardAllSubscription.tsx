@@ -43,6 +43,7 @@ class NewDashboardAllSubsriptionPlans extends React.Component {
       .then((response) => {
         this.setState({
           plan: response.data.plan,
+          isLoading: false,
         });
       })
       .catch((error) => {
@@ -74,6 +75,12 @@ class NewDashboardAllSubsriptionPlans extends React.Component {
             <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title={"Subscription"} />
               <Row>
+              {isLoading && (
+                  <div className="icebreakerpreloader center-it">
+                    <div className="icebreakerspinner"></div>
+                  </div>
+                )}
+                {!isLoading && (
                 <Col md={12} className="kisls">
                   <div className="kdashheade npps">
                     <DashboardUsernameheader
@@ -104,6 +111,7 @@ class NewDashboardAllSubsriptionPlans extends React.Component {
                     </>
                   </div>
                 </Col>
+              )}
               </Row>
             </Col>
           </Row>

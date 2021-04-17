@@ -162,7 +162,11 @@
         min-width: 300px;
     }
 }
-
+@media(max-width: 670px) {
+    .wanatxt {
+        max-height: 150px;
+    }
+}
 @media(max-width: 600px) {
     .icebreakerprogress {
         padding: 0 1rem;

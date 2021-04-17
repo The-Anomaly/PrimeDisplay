@@ -52,6 +52,10 @@ const TodoOverview = withRouter((props: any) => {
   });
   const { errorMessage, tasklist, user, success, alltask, isLoading } = state;
   React.useEffect(() => {
+    setFormState({
+      ...state,
+      isLoading: true,
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -253,6 +257,12 @@ const TodoOverview = withRouter((props: any) => {
           <Col md={10} sm={12} className="prm newprm">
             <DashboardLargeScreenNav title="Todo Overview" />
             <Row>
+            {isLoading && (
+                  <div className="icebreakerpreloader center-it">
+                    <div className="icebreakerspinner"></div>
+                  </div>
+                )}
+              {!isLoading && (
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <DashboardUsernameheader welcomeText=" Welcome to your Todo sections" />
@@ -471,6 +481,7 @@ const TodoOverview = withRouter((props: any) => {
                   </Col>
                 </Row>
               </Col>
+            )}
             </Row>
           </Col>
         </Row>

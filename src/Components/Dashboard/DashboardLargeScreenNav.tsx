@@ -56,6 +56,7 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
           this.setState({
             ...response.data,
             profile_builder: response2?.data[0]?.profile_builder_submitted,
+            isLoading: false,
           });
         }
       }))
@@ -74,13 +75,13 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
   }
   notify = (message: string) => toast(message, { containerId: "B" });
   render() {
-    const { first_name, last_name, image, initial, profile_builder } = this.state;
-    console.log(profile_builder);
+    const { first_name, last_name, image, initial, profile_builder, isLoading } = this.state;
+    // console.log(profile_builder);
     return (
       <>
         <div className="navdash">
           <div className="overview ovf">{this.props.title}</div>
-          <div className="prm111 nav_prof">
+          {!isLoading && (<div className="prm111 nav_prof">
             <Link to="/profilebuilder"><img className="nav_profile_icon" src={profile_builder ? available : notavailable} alt="" /></Link>
             <span className="nav_profile">Profile</span>
             <span>{first_name ? first_name + " " + last_name : ""}</span>
@@ -95,7 +96,7 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
                 )}
               </Link>
             </span>
-          </div>
+          </div>)}
         </div>
       </>
     );
