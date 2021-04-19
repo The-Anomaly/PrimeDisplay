@@ -9,7 +9,7 @@ import flutterLogo from "../../../assets/flutterwave-logo.png";
 import paystackLogo from "../../../assets/paystack-logo.png";
 import "./payment.css";
 import { API } from "../../../config";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Home/Home.css";
@@ -241,19 +241,24 @@ const Payment = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        // console.log(response);
+        if(selectedplan=="paystack"){
+          payWithPaystack(response?.data[0]?.payment_reference,)
+        }
         setFormState({
           ...state,
-          user: response?.data[0]?.payment_reference,
+          // user: response?.data[0]?.payment_reference,
           isLoading: false,
         });
-        setTimeout(() => {
-          payWithMonnify(
-            response?.data[0]?.payment_reference,
-            modState.plandetails,
-            modState.plancost
-          );
-        }, 1000);
+        console.log(selectedplan)
+        if(selectedplan("monnify")){
+          setTimeout(() => {
+            payWithMonnify(
+              response?.data[0]?.payment_reference,
+              modState.plandetails,
+              modState.plancost
+            );
+          }, 1000);
+        }
       })
       .catch((error) => {
         // console.log(error);
@@ -300,28 +305,34 @@ const Payment = (props: any) => {
         });
       });
   };
-
-  const payWithPaystack = () => {
+  // (new Date()).getTime() reference
+  const payWithPaystack = (reference) => {
+    const availableUser = localStorage.getItem("user");
+    var user = availableUser
+      ? JSON.parse(availableUser)
+      : window.location.assign("/signin");
+      console.log(reference)
     try {
-      const { user, cost, reference,selectedplan }: any = state;
+      const { plandetails,plancost,selectedplan }: any = modState;
       var handler = window.PaystackPop.setup({
         key: "pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1",
         // test key = pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1
         //live key = pk_live_ea8275cdd785a1758d70ab32591af4467c2085fd
         email: user[0]?.email,
-        amount: cost,
+        amount: modState.plancost,
         currency: "NGN",
-        ref: reference, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+        reference: reference, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
         metadata: {
           custom_fields: [
             {
               display_name: user[0]?.first_name + "  " + user[0]?.last_name,
               variable_name: "mobile_number",
-              value: selectedplan,
+              value: plancost,
             },
           ],
         },
         callback: function (response) {
+          console.log(response)
           if (response.paymentStatus === "PAID") {
             if (selectedSubscription !== "") {
               // console.log("Gift subscription successful!");
@@ -344,7 +355,7 @@ const Payment = (props: any) => {
       });
       handler.openIframe();
     } catch (error) {
-      // console.log( 'Failed to initailize payment' + error)
+      console.log( 'Failed to initailize payment' + error)
     }
   };
   console.log(modState.plandetails)
@@ -1572,20 +1583,20 @@ const Payment = (props: any) => {
         </Modal.Header>
         <Modal.Body className="payment-modal-row">
           <Row >
-            <Col md={4} className="monnify-logo">
-              <span onClick={()=>requestForPayref("test","test")}>
+            <Col md={4} className="monnify-logo monnify-logo1">
+              <span className="paylogo1" onClick={()=>requestForPayref("monnify","monnify")}>
                 <img src={monnifyLogo} className="payment-channel-logo"/>
               </span>
             </Col>
             <Col md={4}>
-              <Link to="/">
-              <img src={flutterLogo} className="payment-channel-logo"/>
-              </Link>
+              <span className="paylogo1">
+              <img src={flutterLogo} className="payment-channel-logo" onClick={()=>requestForPayref("test","flutterwave")}/>
+              </span>
             </Col>
             <Col md={4}>
-              <Link to="/">
+              <span className="paylogo1" onClick={()=>requestForPayref("paystack","paystack")}>
               <img src={paystackLogo} className="payment-channel-logo"/>
-              </Link>
+              </span>
             </Col>
           </Row>
         </Modal.Body>

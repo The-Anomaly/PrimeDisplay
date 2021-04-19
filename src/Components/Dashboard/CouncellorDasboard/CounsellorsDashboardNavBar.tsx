@@ -242,7 +242,7 @@ const CounsellorsDashboardMobileNav = withRouter((props: any) => {
                   Booked Sessions
                 </Link>
               </div>
-              <div className={props.builder ? "activegb" : "gbn"}>
+              {/* <div className={props.builder ? "activegb" : "gbn"}>
                 {" "}
                 <Link to="/counsellorprofilebuilder">
                   <img
@@ -256,7 +256,7 @@ const CounsellorsDashboardMobileNav = withRouter((props: any) => {
                   />
                   Profile Builder
                 </Link>
-              </div>
+              </div> */}
               <div className={props.messages ? "activegb" : "gbn"}>
                 {" "}
                 <Link to="/counsellormessages">
