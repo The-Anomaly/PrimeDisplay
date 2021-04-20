@@ -13,6 +13,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Home/Home.css";
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+
 
 declare global {
   interface Window {
@@ -37,8 +39,8 @@ const Payment = (props: any) => {
     giftASub: false,
     giftASub2: false,
     unavailable: false,
-    plandetails:"",
-    plancost:"",
+    plandetails: "",
+    plancost: "",
     choosePaymentGateway: false,
   });
   const { giftASub, giftASub2, unavailable, choosePaymentGateway } = modState;
@@ -60,12 +62,12 @@ const Payment = (props: any) => {
       unavailable: true,
     });
   };
-  const openChoosePaymentGateway = (planinfo,cost) => {
+  const openChoosePaymentGateway = (planinfo, cost) => {
     setModalState({
       ...modState,
       choosePaymentGateway: true,
-      plandetails:planinfo,
-      plancost:cost
+      plandetails: planinfo,
+      plancost: cost,
     });
   };
   const closeGiftASubscriptionModal = () => {
@@ -159,7 +161,7 @@ const Payment = (props: any) => {
       ? JSON.parse(availableUser)
       : window.location.assign("/signin");
     try {
-      window.MonnifySDK.initialize({
+        window.MonnifySDK.initialize({
         amount: cost,
         currency: "NGN",
         reference,
@@ -241,23 +243,31 @@ const Payment = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        if(selectedplan=="paystack"){
-          payWithPaystack(response?.data[0]?.payment_reference,)
+        if(selectedplan=="flutterwave"){
+            handleFlutterPayment({
+              callback: (response) => {
+                 console.log(response);
+                  closePaymentModal() // this will close the modal programmatically
+              },
+              onClose: () => {
+                console.log("closed")
+              },
+            });
+        }
+        if (selectedplan == "paystack") {
+          payWithPaystack(response?.data[0]?.payment_reference);
         }
         setFormState({
           ...state,
-          // user: response?.data[0]?.payment_reference,
           isLoading: false,
         });
-        console.log(selectedplan)
-        if(selectedplan("monnify")){
-          setTimeout(() => {
+        console.log(selectedplan);
+        if (selectedplan == "monnify") {
             payWithMonnify(
               response?.data[0]?.payment_reference,
               modState.plandetails,
               modState.plancost
             );
-          }, 1000);
         }
       })
       .catch((error) => {
@@ -274,6 +284,11 @@ const Payment = (props: any) => {
       ...state,
       isLoading: true,
     });
+    setModalState({
+      ...modState,
+      plandetails:selectedplan,
+      plancost:cost
+    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -311,9 +326,9 @@ const Payment = (props: any) => {
     var user = availableUser
       ? JSON.parse(availableUser)
       : window.location.assign("/signin");
-      console.log(reference)
+    console.log(reference);
     try {
-      const { plandetails,plancost,selectedplan }: any = modState;
+      const { plandetails, plancost, selectedplan }: any = modState;
       var handler = window.PaystackPop.setup({
         key: "pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1",
         // test key = pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1
@@ -321,7 +336,7 @@ const Payment = (props: any) => {
         email: user[0]?.email,
         amount: modState.plancost,
         currency: "NGN",
-        reference: reference, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+        ref: reference, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
         metadata: {
           custom_fields: [
             {
@@ -332,7 +347,7 @@ const Payment = (props: any) => {
           ],
         },
         callback: function (response) {
-          console.log(response)
+          console.log(response);
           if (response.paymentStatus === "PAID") {
             if (selectedSubscription !== "") {
               // console.log("Gift subscription successful!");
@@ -355,11 +370,32 @@ const Payment = (props: any) => {
       });
       handler.openIframe();
     } catch (error) {
-      console.log( 'Failed to initailize payment' + error)
+      console.log("Failed to initailize payment" + error);
     }
   };
-  console.log(modState.plandetails)
-  console.log(modState.plancost)
+  //  flutter wave 
+  const config:any = {
+    public_key: 'FLWPUBK-**************************-X',
+    tx_ref: Date.now(),
+    amount: 100,
+    currency: 'NGN',
+    payment_options: 'card,mobilemoney,ussd',
+    customer: {
+      email: 'user@gmail.com',
+      phonenumber: '07064586146',
+      name: 'joel ugwumadu',
+    },
+    customizations: {
+      title: 'my Payment Title',
+      description: 'Payment for items in cart',
+      logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
+    },
+  };
+
+  const handleFlutterPayment :any = useFlutterwave(config);
+
+  console.log(modState.plandetails);
+  console.log(modState.plancost);
   return (
     <>
       <div className={withoutlogin ? "mobilepadding" : ""}>
@@ -571,7 +607,12 @@ const Payment = (props: any) => {
                             //onClick={() =>
                             //requestForPayref("One-off Insight Plan", 5000)
                             //}
-                            onClick={()=>openChoosePaymentGateway("One-off Insight Plan",5000)}
+                            onClick={() =>
+                              openChoosePaymentGateway(
+                                "One-off Insight Plan",
+                                5000
+                              )
+                            }
                           >
                             Upgrade to Insight
                           </span>
@@ -769,7 +810,12 @@ const Payment = (props: any) => {
                             //12000
                             //)
                             //}
-                            onClick={()=>openChoosePaymentGateway("Progressive Insight Plan",12000)}
+                            onClick={() =>
+                              openChoosePaymentGateway(
+                                "Progressive Insight Plan",
+                                12000
+                              )
+                            }
                           >
                             Subscribe
                           </span>
@@ -843,7 +889,12 @@ const Payment = (props: any) => {
                             //30000
                             //)
                             //}
-                            onClick={()=>openChoosePaymentGateway("Progressive Direction Plan",30000)}
+                            onClick={() =>
+                              openChoosePaymentGateway(
+                                "Progressive Direction Plan",
+                                30000
+                              )
+                            }
                           >
                             Upgrade to Direction
                           </span>
@@ -928,12 +979,17 @@ const Payment = (props: any) => {
                           <span
                             className="card_btn btn-green card_btn--pce3 card_btn--animated"
                             //onClick={() =>
-                              //requestForPayref(
-                                //"Progressive Accountability Plan",
-                                //50500
-                              //)
+                            //requestForPayref(
+                            //"Progressive Accountability Plan",
+                            //50500
+                            //)
                             //}
-                            onClick={()=>openChoosePaymentGateway("Progressive Accountability Plan",50500)}
+                            onClick={() =>
+                              openChoosePaymentGateway(
+                                "Progressive Accountability Plan",
+                                50500
+                              )
+                            }
                           >
                             Upgrade to Accountability
                           </span>
@@ -1582,20 +1638,30 @@ const Payment = (props: any) => {
           <Modal.Title>Choose a payment channel</Modal.Title>
         </Modal.Header>
         <Modal.Body className="payment-modal-row">
-          <Row >
+          <Row>
             <Col md={4} className="monnify-logo monnify-logo1">
-              <span className="paylogo1" onClick={()=>requestForPayref("monnify","monnify")}>
-                <img src={monnifyLogo} className="payment-channel-logo"/>
+              <span
+                className="paylogo1"
+                onClick={() => requestForPayref("monnify", "monnify")}
+              >
+                <img src={monnifyLogo} className="payment-channel-logo" />
               </span>
             </Col>
             <Col md={4}>
               <span className="paylogo1">
-              <img src={flutterLogo} className="payment-channel-logo" onClick={()=>requestForPayref("test","flutterwave")}/>
+                <img
+                  src={flutterLogo}
+                  className="payment-channel-logo"
+                  onClick={() => requestForPayref("flutterwave", "flutterwave")}
+                />
               </span>
             </Col>
             <Col md={4}>
-              <span className="paylogo1" onClick={()=>requestForPayref("paystack","paystack")}>
-              <img src={paystackLogo} className="payment-channel-logo"/>
+              <span
+                className="paylogo1"
+                onClick={() => requestForPayref("paystack", "paystack")}
+              >
+                <img src={paystackLogo} className="payment-channel-logo" />
               </span>
             </Col>
           </Row>
