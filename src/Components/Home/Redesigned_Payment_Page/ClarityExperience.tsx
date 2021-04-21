@@ -343,6 +343,7 @@ const Payment = (props: any) => {
               display_name: user[0]?.first_name + "  " + user[0]?.last_name,
               variable_name: "mobile_number",
               value: plancost,
+              description:plandetails
             },
           ],
         },
