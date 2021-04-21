@@ -1,5 +1,13 @@
 import React from "react";
-import { Container, Row, Col, Card, Modal, Accordion } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Modal,
+  Accordion,
+  Spinner,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import mark from "../../../assets/mark-icn.png";
 import mark_blue from "../../../assets/blue-mark.png";
@@ -13,8 +21,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Home/Home.css";
-import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
-
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
 declare global {
   interface Window {
@@ -27,9 +34,9 @@ const Payment = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
     user: "",
-    firstname:"",
-    lastname:"",
-    email:"",
+    firstname: "",
+    lastname: "",
+    email: "",
     userInfos: [],
     successMsg: false,
     isLoading: false,
@@ -53,18 +60,21 @@ const Payment = (props: any) => {
       giftASub: true,
     });
   };
+
   const openGiftASubscriptionModal2 = () => {
     setModalState({
       ...modState,
       giftASub2: true,
     });
   };
+
   const openUnavailableModal = () => {
     setModalState({
       ...modState,
       unavailable: true,
     });
   };
+
   const openChoosePaymentGateway = (planinfo, cost) => {
     setModalState({
       ...modState,
@@ -73,30 +83,35 @@ const Payment = (props: any) => {
       plancost: cost,
     });
   };
+
   const closeGiftASubscriptionModal = () => {
     setModalState({
       ...modState,
       giftASub: false,
     });
   };
+
   const closeGiftASubscriptionModal2 = () => {
     setModalState({
       ...modState,
       giftASub2: false,
     });
   };
+
   const closeUnavailableModal = () => {
     setModalState({
       ...modState,
       unavailable: false,
     });
   };
+
   const closeChoosePaymentGateway = () => {
     setModalState({
       ...modState,
       choosePaymentGateway: false,
     });
   };
+
   const OneOff = () => {
     setFormState({
       ...state,
@@ -113,7 +128,16 @@ const Payment = (props: any) => {
     // window.scrollTo(-0, -0);
   };
 
-  const { plan, withoutlogin, selectedSubscription, giftmail,firstname,lastname,email } = state;
+  const {
+    plan,
+    withoutlogin,
+    selectedSubscription,
+    giftmail,
+    firstname,
+    lastname,
+    isLoading,
+    email,
+  } = state;
 
   React.useEffect(() => {
     const availableUser = localStorage.getItem("user");
@@ -122,10 +146,10 @@ const Payment = (props: any) => {
       : window.location.assign("/signin");
     setFormState({
       ...state,
-      firstname:user[0]?.first_name,
-      lastname:user[0]?.last_name,
-      email:user[0]?.email
-    })
+      firstname: user[0]?.first_name,
+      lastname: user[0]?.last_name,
+      email: user[0]?.email,
+    });
     if (window.location.pathname === "/pricing") {
       setFormState({
         ...state,
@@ -174,7 +198,7 @@ const Payment = (props: any) => {
       ? JSON.parse(availableUser)
       : window.location.assign("/signin");
     try {
-        window.MonnifySDK.initialize({
+      window.MonnifySDK.initialize({
         amount: cost,
         currency: "NGN",
         reference,
@@ -256,16 +280,16 @@ const Payment = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        if(selectedplan=="flutterwave"){
-            handleFlutterPayment({
-              callback: (response) => {
-                 console.log(response);
-                  closePaymentModal() // this will close the modal programmatically
-              },
-              onClose: () => {
-                console.log("closed")
-              },
-            });
+        if (selectedplan == "flutterwave") {
+          handleFlutterPayment({
+            callback: (response) => {
+              console.log(response);
+              closePaymentModal(); // this will close the modal programmatically
+            },
+            onClose: () => {
+              console.log("closed");
+            },
+          });
         }
         if (selectedplan == "paystack") {
           payWithPaystack(response?.data[0]?.payment_reference);
@@ -276,11 +300,11 @@ const Payment = (props: any) => {
         });
         console.log(selectedplan);
         if (selectedplan == "monnify") {
-            payWithMonnify(
-              response?.data[0]?.payment_reference,
-              modState.plandetails,
-              modState.plancost
-            );
+          payWithMonnify(
+            response?.data[0]?.payment_reference,
+            modState.plandetails,
+            modState.plancost
+          );
         }
       })
       .catch((error) => {
@@ -297,11 +321,6 @@ const Payment = (props: any) => {
       ...state,
       isLoading: true,
     });
-    setModalState({
-      ...modState,
-      plandetails:selectedplan,
-      plancost:cost
-    })
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
       ? JSON.parse(availableToken)
@@ -315,15 +334,15 @@ const Payment = (props: any) => {
         setFormState({
           ...state,
           user: response?.data[0]?.payment_reference,
+          reference: response?.data[0]?.payment_reference,
           isLoading: false,
         });
-        setTimeout(() => {
-          payWithMonnify(
-            response?.data[0]?.payment_reference,
-            selectedplan,
-            cost
-          );
-        }, 1000);
+        setModalState({
+          ...modState,
+          choosePaymentGateway: true,
+          plandetails: selectedplan,
+          plancost: cost,
+        });
       })
       .catch((error) => {
         // console.log(error);
@@ -333,6 +352,7 @@ const Payment = (props: any) => {
         });
       });
   };
+
   // (new Date()).getTime() reference
   const payWithPaystack = (reference) => {
     const availableUser = localStorage.getItem("user");
@@ -347,7 +367,7 @@ const Payment = (props: any) => {
         // test key = pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1
         //live key = pk_live_ea8275cdd785a1758d70ab32591af4467c2085fd
         email: user[0]?.email,
-        amount: modState.plancost,
+        amount: parseInt(modState.plancost) * 100,
         currency: "NGN",
         ref: reference, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
         metadata: {
@@ -356,7 +376,7 @@ const Payment = (props: any) => {
               display_name: user[0]?.first_name + "  " + user[0]?.last_name,
               variable_name: "mobile_number",
               value: plancost,
-              description:plandetails
+              description: plandetails,
             },
           ],
         },
@@ -366,10 +386,10 @@ const Payment = (props: any) => {
             if (selectedSubscription !== "") {
               // console.log("Gift subscription successful!");
               notify("Subscription successful!");
-              // return setTimeout(
-              //   (window.location.pathname = "/dashboardsubscriptionplan"),
-              //   3000
-              // );
+              return setTimeout(
+                (window.location.pathname = "/dashboardsubscriptionplan"),
+                3000
+              );
             }
             // console.log("Payment Successfull");
           }
@@ -387,28 +407,29 @@ const Payment = (props: any) => {
       console.log("Failed to initailize payment" + error);
     }
   };
-  //  flutter wave 
-  const config:any = {
-    public_key: 'FLWPUBK_TEST-7d9d98356bc604228f8f08a27c798d27-X',
+  //  flutter wave
+  const config: any = {
+    public_key: "FLWPUBK_TEST-7d9d98356bc604228f8f08a27c798d27-X",
     //test key FLWPUBK_TEST-7d9d98356bc604228f8f08a27c798d27-X
     // live key FLWPUBK-f0bf6d2535fc87fa0e850d2f15280f71-X
     tx_ref: modState.plandetails,
     amount: modState.plancost,
-    currency: 'NGN',
-    payment_options: 'card,mobilemoney,ussd',
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
     customer: {
       email,
-      phonenumber: '',
-      name: firstname+" "+ lastname,
+      phonenumber: "",
+      name: firstname + " " + lastname,
     },
     customizations: {
-      title: '',
+      title: "",
       description: modState.plandetails,
-      logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
+      logo:
+        "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
     },
   };
 
-  const handleFlutterPayment :any = useFlutterwave(config);
+  const handleFlutterPayment: any = useFlutterwave(config);
 
   console.log(modState.plandetails);
   console.log(modState.plancost);
@@ -717,7 +738,7 @@ const Payment = (props: any) => {
                             className="card_btn btn-red card_btn--animated"
                             onClick={openGiftASubscriptionModal}
                           >
-                            Give a Clarity Subscription
+                            Give a Clarity Subscription{" "}
                           </span>
                         )}
                       </Card.Body>
@@ -1732,6 +1753,7 @@ const Payment = (props: any) => {
           </label>
           <div className="subscripbtn" onClick={giftSubscriptionPayment}>
             Proceed to Payment
+            {isLoading && <Spinner animation={"grow"} />}
           </div>
         </Modal.Body>
       </Modal>
@@ -1791,6 +1813,7 @@ const Payment = (props: any) => {
           </label>
           <div className="subscripbtn" onClick={giftSubscriptionPayment}>
             Proceed to Payment
+            {isLoading && <Spinner animation={"grow"} />}
           </div>
         </Modal.Body>
       </Modal>
