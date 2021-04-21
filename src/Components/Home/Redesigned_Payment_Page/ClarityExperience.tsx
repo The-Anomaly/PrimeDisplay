@@ -27,6 +27,9 @@ const Payment = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
     user: "",
+    firstname:"",
+    lastname:"",
+    email:"",
     userInfos: [],
     successMsg: false,
     isLoading: false,
@@ -110,9 +113,19 @@ const Payment = (props: any) => {
     // window.scrollTo(-0, -0);
   };
 
-  const { plan, withoutlogin, selectedSubscription, giftmail } = state;
+  const { plan, withoutlogin, selectedSubscription, giftmail,firstname,lastname,email } = state;
 
   React.useEffect(() => {
+    const availableUser = localStorage.getItem("user");
+    var user = availableUser
+      ? JSON.parse(availableUser)
+      : window.location.assign("/signin");
+    setFormState({
+      ...state,
+      firstname:user[0]?.first_name,
+      lastname:user[0]?.last_name,
+      email:user[0]?.email
+    })
     if (window.location.pathname === "/pricing") {
       setFormState({
         ...state,
@@ -376,19 +389,21 @@ const Payment = (props: any) => {
   };
   //  flutter wave 
   const config:any = {
-    public_key: 'FLWPUBK-**************************-X',
-    tx_ref: Date.now(),
-    amount: 100,
+    public_key: 'FLWPUBK_TEST-7d9d98356bc604228f8f08a27c798d27-X',
+    //test key FLWPUBK_TEST-7d9d98356bc604228f8f08a27c798d27-X
+    // live key FLWPUBK-f0bf6d2535fc87fa0e850d2f15280f71-X
+    tx_ref: modState.plandetails,
+    amount: modState.plancost,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
     customer: {
-      email: 'user@gmail.com',
-      phonenumber: '07064586146',
-      name: 'joel ugwumadu',
+      email,
+      phonenumber: '',
+      name: firstname+" "+ lastname,
     },
     customizations: {
-      title: 'my Payment Title',
-      description: 'Payment for items in cart',
+      title: '',
+      description: modState.plandetails,
       logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
     },
   };

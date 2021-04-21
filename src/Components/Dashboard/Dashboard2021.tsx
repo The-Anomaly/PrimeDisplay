@@ -236,6 +236,7 @@ class Dashboard2021 extends React.Component<any, any> {
       isLoading,
       profile_builder,
     } = this.state;
+    console.log(progress)
     return (
       <>
         <Container fluid={true} className="contann122">
