@@ -345,7 +345,10 @@ const Payment = (props: any) => {
         });
       })
       .catch((error) => {
-        // console.log(error);
+        console.log();
+        if(error?.response?.status==400){
+          notify(error?.response?.data[0]?.message)
+        }
         setFormState({
           ...state,
           isLoading: false,
@@ -382,15 +385,13 @@ const Payment = (props: any) => {
         },
         callback: function (response) {
           console.log(response);
-          if (response.paymentStatus === "PAID") {
-            if (selectedSubscription !== "") {
+          if (response.status === "success") {
               // console.log("Gift subscription successful!");
               notify("Subscription successful!");
               return setTimeout(
                 (window.location.pathname = "/dashboardsubscriptionplan"),
-                3000
+                2000
               );
-            }
             // console.log("Payment Successfull");
           }
           // props.history.push("/something");
@@ -1218,7 +1219,10 @@ const Payment = (props: any) => {
                             <span
                               className="card_btn btn-blue"
                               onClick={() =>
-                                requestForPayref("One-off Insight Plan", 5000)
+                                openChoosePaymentGateway(
+                                  "One-off Insight Plan",
+                                  5000
+                                )
                               }
                             >
                               Upgrade to Insight
