@@ -68,7 +68,7 @@ export function SelectPaymentPlan(props: any) {
           <div className="pricewraper">
             <div className="plan_1">One Off Insights </div>
             <div className="plancost1">
-              <span>&#8358;</span>7500
+              <span>&#8358;</span>5000
             </div>
             <div className="personality dd11">Strengths & Weaknesses</div>
             <div className="Strengths dd11">Your work life mission</div>

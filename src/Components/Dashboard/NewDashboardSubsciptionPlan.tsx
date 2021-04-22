@@ -507,7 +507,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                               <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
                                 <Card.Header className="payment-header">
                                   <h4>
-                                    N50500 <span>/month</span>
+                                    N50000 <span>/month</span>
                                   </h4>
                                 </Card.Header>
                                 <Card.Body>

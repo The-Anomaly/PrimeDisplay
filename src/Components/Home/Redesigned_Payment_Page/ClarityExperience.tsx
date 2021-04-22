@@ -1019,13 +1019,13 @@ const Payment = (props: any) => {
                             //onClick={() =>
                             //requestForPayref(
                             //"Progressive Accountability Plan",
-                            //50500
+                            //50000
                             //)
                             //}
                             onClick={() =>
                               openChoosePaymentGateway(
                                 "Progressive Accountability Plan",
-                                50500
+                                50000
                               )
                             }
                           >
