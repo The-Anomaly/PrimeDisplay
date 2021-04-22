@@ -110,7 +110,7 @@ const newNavbar = withRouter((props: any) => {
     })
       .then((response) => {
         // console.log(response)
-        if (response.status === 200) {
+        if (response.status === 200 && window.location.pathname =="/") {
           if (
             response.data[0].onboarding_chat === false ||
             response.data[0].next === "onboarding_chat"
@@ -121,7 +121,11 @@ const newNavbar = withRouter((props: any) => {
             response.data[0].phase_one === false
           ) {
             return props.history.push(`/assessment/welcome`);
-          } else if (
+          }
+          if(true){
+            return props.history.push("/overview")
+          }
+          else if (
             response.data[0].phase_two_nature === false ||
             response.data[0].phase_two_health === false ||
             response.data[0].phase_two_building === false ||

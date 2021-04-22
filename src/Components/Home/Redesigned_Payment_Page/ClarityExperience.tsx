@@ -285,6 +285,12 @@ const Payment = (props: any) => {
             callback: (response) => {
               console.log(response);
               closePaymentModal(); // this will close the modal programmatically
+              notify("Payment plan upgraded")
+              setTimeout(()=>{
+                if(response.status=="success"){
+                  window.location.assign("/dashboardsubscriptionplan")
+                }
+              },3000)
             },
             onClose: () => {
               console.log("closed");
@@ -389,8 +395,9 @@ const Payment = (props: any) => {
               // console.log("Gift subscription successful!");
               notify("Subscription successful!");
               return setTimeout(
-                (window.location.pathname = "/dashboardsubscriptionplan"),
-                2000
+                ()=>{
+                  window.location.assign("/dashboardsubscriptionplan")
+                },2000
               );
             // console.log("Payment Successfull");
           }
