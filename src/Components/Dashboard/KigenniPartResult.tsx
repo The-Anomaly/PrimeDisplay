@@ -198,7 +198,7 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
           </div>
           <hr />
           <div className="resultsec2" id="seek">
-            <div className="csfitscore2">Your Career Fitness Score</div>
+            <div className="csfitscore2">Your Clarity Score</div>
             <div className="resultsec22">
               <CirclePie
                 width={190}
@@ -215,7 +215,7 @@ class KigenniPartResult extends React.Component<React.Props<any>> {
             </div>
             <div className="csfitscore">
               <div className="divide"></div>{" "}
-              <div className="csfitscore1">Your Career Fitness Score</div>
+              <div className="csfitscore1">Your Clarity Score</div>
               <div className="vbnc1"> {client?.career_fitness?.heading} </div>
               <div className="csbody">{client?.career_fitness?.body}</div>
             </div>

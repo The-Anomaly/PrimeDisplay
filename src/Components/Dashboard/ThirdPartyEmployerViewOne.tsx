@@ -17,7 +17,7 @@ import { CirclePie } from "salad-ui.chart";
 import StarRatingComponent from "react-star-rating-component";
 import Spinner from "react-bootstrap/Spinner";
 import Testing from "./Testing";
-import precision from "../../assets/precision.png";
+import precision from "../../assets/clarityblack.png";
 import HorizontalBar from "./HorizontalBar";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";

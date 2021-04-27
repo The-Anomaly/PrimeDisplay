@@ -304,7 +304,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                                   <ul className="card-list">
                                     <li>
                                       <img src={mark} className="card-image" />
-                                      Career fitness score
+                                      Your Clarity score
                                     </li>
                                     <li>
                                       <img src={mark} className="card-image" />
@@ -606,7 +606,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                           <ul className="card-list">
                             <li>
                               <img src={mark} className="card-image" />
-                              Career fitness score
+                              Clarity score
                             </li>
                             <li>
                               <img src={mark} className="card-image" />

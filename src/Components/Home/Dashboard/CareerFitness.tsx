@@ -62,7 +62,7 @@ const CareerFitness: React.FunctionComponent<IAppProps> = (props: any) => {
           <div className="dashboardwrap">
             <dashboardContext.Provider value={{ ...state, updateState }}>
               <Sidebar career_fitness={true} />
-              <MainBody title="CAREER FITNESS" result={result} />
+              <MainBody title="Clarity Score" result={result} />
             </dashboardContext.Provider>
           </div>
           <div></div>

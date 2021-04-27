@@ -231,8 +231,8 @@ const BehaviouralAnalytics = (props) => {
     ])
       .then(
         Axios.spread((response, response2) => {
-          // console.log(response);
-          // console.log(response2);
+          console.log(response);
+          console.log(response2);
           if (response.status === 200 && response2.status === 200) {
             setState({
               header1: response?.data?.personality?.data[1]?.heading,
@@ -246,7 +246,7 @@ const BehaviouralAnalytics = (props) => {
               percent5: response?.data?.personality?.data[3]?.graph[0]?.value,
               percent6: response?.data?.personality?.data[3]?.graph[1]?.value,
               percent7: response?.data?.personality?.data[2]?.graph[0]?.value,
-              percent8: response?.data?.personality?.data[2]?.graph[0]?.value,
+              percent8: response?.data?.personality?.data[2]?.graph[1]?.value,
               percent1txt: response?.data?.personality?.data[1]?.graph[0]?.name,
               percent2txt: response?.data?.personality?.data[1]?.graph[1]?.name,
               percent3txt: response?.data?.personality?.data[0]?.graph[0]?.name,
@@ -380,7 +380,7 @@ const BehaviouralAnalytics = (props) => {
                               : "BAselect"
                           }
                         >
-                          Career Fitness
+                          Clarity Score
                         </div>
                       </div>
                     </Row>
@@ -727,13 +727,13 @@ const BehaviouralAnalytics = (props) => {
                         <>
                           <div className="bbgwh">
                             <div className="BAAttl1">
-                              Career Fitness
+                              Clarity Score
                               <img
                                 className="BAinfo"
                                 onClick={() =>
                                   FetchModalDetails(
                                     "/affiliate/career-fitness-graph/",
-                                    "Career Fitness"
+                                    "Clarity Score"
                                   )
                                 }
                                 src={info}
