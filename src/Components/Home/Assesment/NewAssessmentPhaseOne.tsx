@@ -20,9 +20,9 @@ import { withRouter } from "react-router-dom";
 const NewAssessmentPhaseOne = withRouter((props: any) => {
   const [value, setValue] = React.useState<number>(0);
   const [state, setCheckboxValue]: any = React.useState({
-    question1: "",
-    question2: "",
-    question3: "",
+    question1: "0",
+    question2: "0",
+    question3: "0",
     question4: "0",
     question5: "0",
     question6: "0",

@@ -144,7 +144,8 @@ class Dashboard2021 extends React.Component<any, any> {
   viewProfile = () => {
     if (this.state.phone === "" || this.state.country === "") {
       return this.props.history.push("/dashboardsettings");
-    } else {
+    } 
+    else {
       return this.props.history.push("/profilebuilder");
     }
   };
@@ -188,6 +189,9 @@ class Dashboard2021 extends React.Component<any, any> {
       return this.props.history.push(`/assessment/phasetwo/complete`);
     } else if (!this.state.progress.phase_four) {
       return this.props.history.push(`/assessment/phasethree/complete`);
+    }
+    if(this.state.progress.next=="home"){
+      return this.props.history.push("/assessment/welcome")
     }
   };
   getInitials = (name) => {

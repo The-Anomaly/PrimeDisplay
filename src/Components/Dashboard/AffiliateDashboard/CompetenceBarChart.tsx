@@ -87,7 +87,7 @@ const CompetenceBarChart = (props: any) => {
     { text: "Woman", value: 300 },
   ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  // console.log(user);
+  console.log(user);
   return (
     <>
       <Row>

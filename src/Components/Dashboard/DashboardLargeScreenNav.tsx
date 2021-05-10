@@ -52,6 +52,7 @@ class DashboardLargeScreenNav extends React.Component<any, any> {
       }),
     ])
       .then(Axios.spread((response, response2) => {
+        console.log(response2)
         if (response.status === 200) {
           this.setState({
             ...response.data,
