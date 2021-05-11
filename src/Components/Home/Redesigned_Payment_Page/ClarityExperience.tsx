@@ -1,5 +1,13 @@
 import React from "react";
-import { Container, Row, Col, Card, Modal, Accordion } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Modal,
+  Accordion,
+  Spinner,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import mark from "../../../assets/mark-icn.png";
 import mark_blue from "../../../assets/blue-mark.png";
@@ -9,10 +17,11 @@ import flutterLogo from "../../../assets/flutterwave-logo.png";
 import paystackLogo from "../../../assets/paystack-logo.png";
 import "./payment.css";
 import { API } from "../../../config";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Home/Home.css";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
 declare global {
   interface Window {
@@ -25,6 +34,9 @@ const Payment = (props: any) => {
   const [state, setFormState] = React.useState<any>({
     errorMessage: "",
     user: "",
+    firstname: "",
+    lastname: "",
+    email: "",
     userInfos: [],
     successMsg: false,
     isLoading: false,
@@ -37,6 +49,8 @@ const Payment = (props: any) => {
     giftASub: false,
     giftASub2: false,
     unavailable: false,
+    plandetails: "",
+    plancost: "",
     choosePaymentGateway: false,
   });
   const { giftASub, giftASub2, unavailable, choosePaymentGateway } = modState;
@@ -46,48 +60,58 @@ const Payment = (props: any) => {
       giftASub: true,
     });
   };
+
   const openGiftASubscriptionModal2 = () => {
     setModalState({
       ...modState,
       giftASub2: true,
     });
   };
+
   const openUnavailableModal = () => {
     setModalState({
       ...modState,
       unavailable: true,
     });
   };
-  const openChoosePaymentGateway = () => {
+
+  const openChoosePaymentGateway = (planinfo, cost) => {
     setModalState({
       ...modState,
       choosePaymentGateway: true,
+      plandetails: planinfo,
+      plancost: cost,
     });
   };
+
   const closeGiftASubscriptionModal = () => {
     setModalState({
       ...modState,
       giftASub: false,
     });
   };
+
   const closeGiftASubscriptionModal2 = () => {
     setModalState({
       ...modState,
       giftASub2: false,
     });
   };
+
   const closeUnavailableModal = () => {
     setModalState({
       ...modState,
       unavailable: false,
     });
   };
+
   const closeChoosePaymentGateway = () => {
     setModalState({
       ...modState,
       choosePaymentGateway: false,
     });
   };
+
   const OneOff = () => {
     setFormState({
       ...state,
@@ -104,9 +128,28 @@ const Payment = (props: any) => {
     // window.scrollTo(-0, -0);
   };
 
-  const { plan, withoutlogin, selectedSubscription, giftmail } = state;
+  const {
+    plan,
+    withoutlogin,
+    selectedSubscription,
+    giftmail,
+    firstname,
+    lastname,
+    isLoading,
+    email,
+  } = state;
 
   React.useEffect(() => {
+    const availableUser = localStorage.getItem("user");
+    var user = availableUser
+      ? JSON.parse(availableUser)
+      : window.location.assign("/signin");
+    setFormState({
+      ...state,
+      firstname: user[0]?.first_name,
+      lastname: user[0]?.last_name,
+      email: user[0]?.email,
+    });
     if (window.location.pathname === "/pricing") {
       setFormState({
         ...state,
@@ -166,6 +209,7 @@ const Payment = (props: any) => {
         contractCode: "722431733218", //live key
         // contractCode: "4978848198", //test key
         // apiKey: "MK_TEST_WQZNXHV9FY", //test key
+        // apiKey:"MK_PROD_NNSGXTY6LF", //live key
         // secretKey: "MR4K3WHE7BDLZFTR3Z4VUJ4H4HD88S22",
         paymentDescription: selectedplan,
         isTestMode: false,
@@ -237,19 +281,38 @@ const Payment = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
-        // console.log(response);
+        if (selectedplan == "flutterwave") {
+          handleFlutterPayment({
+            callback: (response) => {
+              console.log(response);
+              closePaymentModal(); // this will close the modal programmatically
+              notify("Payment plan upgraded")
+              setTimeout(()=>{
+                if(response.status=="success"){
+                  window.location.assign("/dashboardsubscriptionplan")
+                }
+              },3000)
+            },
+            onClose: () => {
+              console.log("closed");
+            },
+          });
+        }
+        if (selectedplan == "paystack") {
+          payWithPaystack(response?.data[0]?.payment_reference);
+        }
         setFormState({
           ...state,
-          user: response?.data[0]?.payment_reference,
           isLoading: false,
         });
-        setTimeout(() => {
+        console.log(selectedplan);
+        if (selectedplan == "monnify") {
           payWithMonnify(
             response?.data[0]?.payment_reference,
-            selectedplan,
-            cost
+            modState.plandetails,
+            modState.plancost
           );
-        }, 1000);
+        }
       })
       .catch((error) => {
         // console.log(error);
@@ -278,18 +341,21 @@ const Payment = (props: any) => {
         setFormState({
           ...state,
           user: response?.data[0]?.payment_reference,
+          reference: response?.data[0]?.payment_reference,
           isLoading: false,
         });
-        setTimeout(() => {
-          payWithMonnify(
-            response?.data[0]?.payment_reference,
-            selectedplan,
-            cost
-          );
-        }, 1000);
+        setModalState({
+          ...modState,
+          choosePaymentGateway: true,
+          plandetails: selectedplan,
+          plancost: cost,
+        });
       })
       .catch((error) => {
-        // console.log(error);
+        console.log();
+        if(error?.response?.status==400){
+          notify(error?.response?.data[0]?.message)
+        }
         setFormState({
           ...state,
           isLoading: false,
@@ -297,15 +363,21 @@ const Payment = (props: any) => {
       });
   };
 
-  const payWithPaystack = () => {
+  // (new Date()).getTime() reference
+  const payWithPaystack = (reference) => {
+    const availableUser = localStorage.getItem("user");
+    var user = availableUser
+      ? JSON.parse(availableUser)
+      : window.location.assign("/signin");
+    console.log(reference);
     try {
-      const { user, cost, reference,selectedplan }: any = state;
+      const { plandetails, plancost, selectedplan }: any = modState;
       var handler = window.PaystackPop.setup({
-        key: "pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1",
+        key: "pk_live_ea8275cdd785a1758d70ab32591af4467c2085fd",
         // test key = pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1
         //live key = pk_live_ea8275cdd785a1758d70ab32591af4467c2085fd
         email: user[0]?.email,
-        amount: cost,
+        amount: parseInt(modState.plancost) * 100,
         currency: "NGN",
         ref: reference, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
         metadata: {
@@ -313,20 +385,21 @@ const Payment = (props: any) => {
             {
               display_name: user[0]?.first_name + "  " + user[0]?.last_name,
               variable_name: "mobile_number",
-              value: selectedplan,
+              value: plancost,
+              description: plandetails,
             },
           ],
         },
         callback: function (response) {
-          if (response.paymentStatus === "PAID") {
-            if (selectedSubscription !== "") {
+          console.log(response);
+          if (response.status === "success") {
               // console.log("Gift subscription successful!");
               notify("Subscription successful!");
-              // return setTimeout(
-              //   (window.location.pathname = "/dashboardsubscriptionplan"),
-              //   3000
-              // );
-            }
+              return setTimeout(
+                ()=>{
+                  window.location.assign("/dashboardsubscriptionplan")
+                },2000
+              );
             // console.log("Payment Successfull");
           }
           // props.history.push("/something");
@@ -340,9 +413,35 @@ const Payment = (props: any) => {
       });
       handler.openIframe();
     } catch (error) {
-      // console.log( 'Failed to initailize payment' + error)
+      console.log("Failed to initailize payment" + error);
     }
   };
+  //  flutter wave
+  const config: any = {
+    public_key: "FLWPUBK-f0bf6d2535fc87fa0e850d2f15280f71-X",
+    //test key FLWPUBK_TEST-7d9d98356bc604228f8f08a27c798d27-X
+    // live key FLWPUBK-f0bf6d2535fc87fa0e850d2f15280f71-X
+    tx_ref: modState.plandetails,
+    amount: modState.plancost,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email,
+      phonenumber: "",
+      name: firstname + " " + lastname,
+    },
+    customizations: {
+      title: "",
+      description: modState.plandetails,
+      logo:
+        "",
+    },
+  };
+
+  const handleFlutterPayment: any = useFlutterwave(config);
+
+  console.log(modState.plandetails);
+  console.log(modState.plancost);
   return (
     <>
       <div className={withoutlogin ? "mobilepadding" : ""}>
@@ -448,7 +547,7 @@ const Payment = (props: any) => {
                         <ul className="card-list">
                           <li>
                             <img src={mark} className="card-image" />
-                            Career fitness score
+                            Clarity score
                           </li>
                           <li>
                             <img src={mark} className="card-image" />
@@ -554,7 +653,12 @@ const Payment = (props: any) => {
                             //onClick={() =>
                             //requestForPayref("One-off Insight Plan", 5000)
                             //}
-                            onClick={openChoosePaymentGateway}
+                            onClick={() =>
+                              openChoosePaymentGateway(
+                                "One-off Insight Plan",
+                                5000
+                              )
+                            }
                           >
                             Upgrade to Insight
                           </span>
@@ -643,7 +747,7 @@ const Payment = (props: any) => {
                             className="card_btn btn-red card_btn--animated"
                             onClick={openGiftASubscriptionModal}
                           >
-                            Give a Clarity Subscription
+                            Give a Clarity Subscription{" "}
                           </span>
                         )}
                       </Card.Body>
@@ -680,7 +784,7 @@ const Payment = (props: any) => {
                         <ul className="card-list">
                           <li>
                             <img src={mark} className="card-image" />
-                            Career fitness score
+                            Clarity score
                           </li>
                           <li>
                             <img src={mark} className="card-image" />
@@ -752,7 +856,12 @@ const Payment = (props: any) => {
                             //12000
                             //)
                             //}
-                            onClick={openChoosePaymentGateway}
+                            onClick={() =>
+                              openChoosePaymentGateway(
+                                "Progressive Insight Plan",
+                                12000
+                              )
+                            }
                           >
                             Subscribe
                           </span>
@@ -826,7 +935,12 @@ const Payment = (props: any) => {
                             //30000
                             //)
                             //}
-                            onClick={openChoosePaymentGateway}
+                            onClick={() =>
+                              openChoosePaymentGateway(
+                                "Progressive Direction Plan",
+                                30000
+                              )
+                            }
                           >
                             Upgrade to Direction
                           </span>
@@ -911,12 +1025,17 @@ const Payment = (props: any) => {
                           <span
                             className="card_btn btn-green card_btn--pce3 card_btn--animated"
                             //onClick={() =>
-                              //requestForPayref(
-                                //"Progressive Accountability Plan",
-                                //50500
-                              //)
+                            //requestForPayref(
+                            //"Progressive Accountability Plan",
+                            //50000
+                            //)
                             //}
-                            onClick={openChoosePaymentGateway}
+                            onClick={() =>
+                              openChoosePaymentGateway(
+                                "Progressive Accountability Plan",
+                                50000
+                              )
+                            }
                           >
                             Upgrade to Accountability
                           </span>
@@ -1011,7 +1130,7 @@ const Payment = (props: any) => {
                           <ul className="card-list">
                             <li>
                               <img src={mark} className="card-image" />
-                              Career fitness score
+                              Clarity score
                             </li>
                             <li>
                               <img src={mark} className="card-image" />
@@ -1108,7 +1227,10 @@ const Payment = (props: any) => {
                             <span
                               className="card_btn btn-blue"
                               onClick={() =>
-                                requestForPayref("One-off Insight Plan", 5000)
+                                openChoosePaymentGateway(
+                                  "One-off Insight Plan",
+                                  5000
+                                )
                               }
                             >
                               Upgrade to Insight
@@ -1262,7 +1384,7 @@ const Payment = (props: any) => {
                           <ul className="card-list">
                             <li>
                               <img src={mark} className="card-image" />
-                              Career fitness score
+                              Clarity score
                             </li>
                             <li>
                               <img src={mark} className="card-image" />
@@ -1565,22 +1687,32 @@ const Payment = (props: any) => {
           <Modal.Title>Choose a payment channel</Modal.Title>
         </Modal.Header>
         <Modal.Body className="payment-modal-row">
-          <Row >
-            <Col md={4} className="monnify-logo">
-              <Link to="/">
-                <img src={monnifyLogo} className="payment-channel-logo"/>
-              </Link>
+          <Row>
+            <Col md={6} className="monnify-logo monnify-logo1">
+              <span
+                className="paylogo1"
+                onClick={() => requestForPayref("monnify", "monnify")}
+              >
+                <img src={monnifyLogo} className="payment-channel-logo" />
+              </span>
             </Col>
-            <Col md={4}>
-              <Link to="/">
-              <img src={flutterLogo} className="payment-channel-logo"/>
-              </Link>
+            <Col md={6}>
+              <span className="paylogo1">
+                <img
+                  src={flutterLogo}
+                  className="payment-channel-logo"
+                  onClick={() => requestForPayref("flutterwave", "flutterwave")}
+                />
+              </span>
             </Col>
-            <Col md={4}>
-              <Link to="/">
-              <img src={paystackLogo} className="payment-channel-logo"/>
-              </Link>
-            </Col>
+            {/* <Col md={4}>
+              <span
+                className="paylogo1"
+                onClick={() => requestForPayref("paystack", "paystack")}
+              >
+                <img src={paystackLogo} className="payment-channel-logo" />
+              </span>
+            </Col> */}
           </Row>
         </Modal.Body>
         <Modal.Footer>
@@ -1633,6 +1765,7 @@ const Payment = (props: any) => {
           </label>
           <div className="subscripbtn" onClick={giftSubscriptionPayment}>
             Proceed to Payment
+            {isLoading && <Spinner animation={"grow"} />}
           </div>
         </Modal.Body>
       </Modal>
@@ -1692,6 +1825,7 @@ const Payment = (props: any) => {
           </label>
           <div className="subscripbtn" onClick={giftSubscriptionPayment}>
             Proceed to Payment
+            {isLoading && <Spinner animation={"grow"} />}
           </div>
         </Modal.Body>
       </Modal>

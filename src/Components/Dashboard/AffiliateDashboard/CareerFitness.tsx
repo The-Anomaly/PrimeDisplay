@@ -70,7 +70,7 @@ const CareerFitnessPiechart = (props: any) => {
     { text: "Woman", value: 300 },
   ];
   const notify = (message: string) => toast(message, { containerId: "B" });
-  // console.log(user);
+  console.log(user);
   return (
     <>
       <Row className="cllcc">
@@ -79,22 +79,22 @@ const CareerFitnessPiechart = (props: any) => {
             <PieChart
               data={[
                 {
-                  title: user[0]?.name,
+                  title: user[0]?.name +`-${user[0]?.value}`,
                   value: user[0]?.value,
                   color: "#F44E4E",
                 },
                 {
-                  title: user[1]?.name,
+                  title: user[1]?.name +`-${user[1]?.value}`,
                   value: user[1].value,
                   color: "#1BB978",
                 },
                 {
-                  title: user[2]?.name,
+                  title: user[2]?.name +`-${user[2]?.value}`,
                   value: user[2].value,
                   color: "#FFBC41",
                 },
                 {
-                  title: user[3]?.name,
+                  title: user[3]?.name +`-${user[3]?.value}`,
                   value: user[3]?.value,
                   color: "#3965FF",
                 },

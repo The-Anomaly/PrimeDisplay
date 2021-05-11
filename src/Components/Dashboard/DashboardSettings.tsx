@@ -129,22 +129,31 @@ class NewDashboardSettings extends React.Component {
     } = this.state;
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken ? JSON.parse(availableToken) : "";
-    const data = new FormData();
-    // data.append("image", image);
-    data.append("last_name", last_name);
-    data.append("first_name", first_name);
-    data.append("email", email);
-    data.append("address", address);
-    data.append("phone", phone);
-    data.append("country", country);
-    data.append("job_description", job_description);
-    data.append("website_link", website_link);
+    // const data = new FormData();
+    // data.append("last_name", last_name);
+    // data.append("first_name", first_name);
+    // data.append("email", email);
+    // data.append("address", address);
+    // data.append("phone", phone);
+    // data.append("country", country);
+    // data.append("job_description", job_description);
+    // data.append("website_link", website_link);
+    const data = {
+      first_name,
+      last_name,
+      email,
+      address,
+      phone,
+      job_description,
+      website_link,
+      country,
+    }
     Axios.post<any, AxiosResponse<any>>(`${API}/dashboard/profile`, data, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => {
         this.setState({
-          isLoading: false,
+          isloading: false,
         });
         setTimeout(() => {
           this.notify("Successful");
@@ -153,7 +162,7 @@ class NewDashboardSettings extends React.Component {
       })
       .catch((err) => {
         this.setState({
-          isLoading: false,
+          isloading: false,
         });
         this.notify("failed");
         if (err) {
@@ -340,7 +349,7 @@ class NewDashboardSettings extends React.Component {
                             )}
                           </div>   
                           <select id="country" name="country" value={country} className="form-control jobr subhyt" onChange={this.handleChange}>
-                          <option value="">--Select a country--</option>
+                          <option value="">{country}</option>
                               <option value="Afghanistan">Afghanistan</option>
                               <option value="Åland Islands">Åland Islands</option>
                               <option value="Albania">Albania</option>

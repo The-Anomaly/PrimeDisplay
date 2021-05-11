@@ -226,7 +226,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <div className="flxv1">
-                  <DashboardUsernameheader welcomeText="Summary of all Counsellor messages" />
+                  <DashboardUsernameheader welcomeText="Summary of all messages" />
                   <div className="ffrr1">
                     <img src={search} className="searchi" alt="search" />
                     <input

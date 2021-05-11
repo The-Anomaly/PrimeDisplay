@@ -79,17 +79,17 @@ class Dashboard2021 extends React.Component<any, any> {
         headers: { Authorization: `Token ${token}` },
       }),
       Axios.get<any, AxiosResponse<any>>(`${API}/counsellor/get-chats/`, {
-          headers: { Authorization: `Token ${token}` },
+        headers: { Authorization: `Token ${token}` },
       }),
     ])
       .then(
         Axios.spread((res1, res2, res3, res4, res5, res6, res7) => {
           console.log(res1, res2, res3, res4, res5, res6, res7);
           if (
-            res1.status === 200 &&
-            res2.status === 200 &&
-            res3.status === 200 &&
-            res4.status === 200 &&
+            res1.status === 200 ||
+            res2.status === 200 ||
+            res3.status === 200 ||
+            res4.status === 200 ||
             res5.status === 200
           ) {
             this.setState({
@@ -115,7 +115,9 @@ class Dashboard2021 extends React.Component<any, any> {
                 !res6?.data[0].phase_two_stem ||
                 !res6?.data[0].phase_three ||
                 !res6?.data[0].phase_four,
-              usermessages: [...res7.data].reverse().splice(0, 4),
+              usermessages: res7.data.message
+                ? []
+                : [...res7.data].reverse().splice(0, 4),
               isLoading: false,
             });
           }
@@ -139,10 +141,11 @@ class Dashboard2021 extends React.Component<any, any> {
       })
       .catch((error) => {});
   };
-  viewProfile= () => {
+  viewProfile = () => {
     if (this.state.phone === "" || this.state.country === "") {
       return this.props.history.push("/dashboardsettings");
-    } else {
+    } 
+    else {
       return this.props.history.push("/profilebuilder");
     }
   };
@@ -187,13 +190,15 @@ class Dashboard2021 extends React.Component<any, any> {
     } else if (!this.state.progress.phase_four) {
       return this.props.history.push(`/assessment/phasethree/complete`);
     }
+    if(this.state.progress.next=="home"){
+      return this.props.history.push("/assessment/welcome")
+    }
   };
   getInitials = (name) => {
     const details = localStorage.getItem("user");
-    const user_name = details
-      ? JSON.parse(details)
-      : "";
-    let user_initial = user_name[0]?.first_name?.charAt(0) + user_name[0]?.last_name?.charAt(0);
+    const user_name = details ? JSON.parse(details) : "";
+    let user_initial =
+      user_name[0]?.first_name?.charAt(0) + user_name[0]?.last_name?.charAt(0);
     localStorage.setItem("initial", user_initial.toUpperCase());
 
     let nameArray = name?.split(" ");
@@ -201,24 +206,24 @@ class Dashboard2021 extends React.Component<any, any> {
     return initial.toUpperCase();
   };
   goToTask: any = (x) => {
-    if(x.status === "pending") {
+    if (x.status === "pending") {
       return this.props.history.push({
         pathname: `/todolist`,
         state: {
           id: x,
           status: "pending",
-        }
-      })
+        },
+      });
     } else {
       return this.props.history.push({
         pathname: `/todolist`,
         state: {
           id: x,
           status: "complete",
-        }
-      })
+        },
+      });
     }
-  }
+  };
   render() {
     const {
       fullname,
@@ -236,6 +241,7 @@ class Dashboard2021 extends React.Component<any, any> {
       isLoading,
       profile_builder,
     } = this.state;
+    console.log(progress);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -292,10 +298,17 @@ class Dashboard2021 extends React.Component<any, any> {
                       </div>
                       <div className="ov-sec-2 ov-elements">
                         <div className="ov-profile-builder-icon">
-                          <Link to="/profilebuilder"><img src={profile_builder ? available : notavailable} alt="" /></Link>
+                          <Link to="/profilebuilder">
+                            <img
+                              src={profile_builder ? available : notavailable}
+                              alt=""
+                            />
+                          </Link>
                         </div>
                         <div className="ov-avatar">
-                          {fullname && (<Initials initial={this.getInitials(fullname)} />)}
+                          {fullname && (
+                            <Initials initial={this.getInitials(fullname)} />
+                          )}
                         </div>
                         <p className="ov-profile-name">{fullname}</p>
                         <p className="ov-profile-descrip">
@@ -323,9 +336,10 @@ class Dashboard2021 extends React.Component<any, any> {
                         <h2 className="ov-todo-ttl">Todo Tasks</h2>
                         {usertasks.length > 0 &&
                           usertasks.map((x, i) => (
-                            <div 
-                            onClick={() => this.goToTask(x.id)} 
-                            className="ov-todo">
+                            <div
+                              onClick={() => this.goToTask(x.id)}
+                              className="ov-todo"
+                            >
                               <p
                                 className={
                                   x.status === "pending"
@@ -365,7 +379,10 @@ class Dashboard2021 extends React.Component<any, any> {
                             </p>
                           </>
                         )}
-                        <button onClick={this.goToAllTasks} className="ov-todo-btn">
+                        <button
+                          onClick={this.goToAllTasks}
+                          className="ov-todo-btn"
+                        >
                           View all your tasks
                         </button>
                       </div>
@@ -406,7 +423,10 @@ class Dashboard2021 extends React.Component<any, any> {
                             </p>
                           </>
                         )}
-                        <button onClick={this.goToAllMessages} className="ov-todo-btn">
+                        <button
+                          onClick={this.goToAllMessages}
+                          className="ov-todo-btn"
+                        >
                           View all messages
                         </button>
                       </div>

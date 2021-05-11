@@ -130,7 +130,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                               <Card className=" shadow-sm bg-white payment-card subpaymentcard">
                                 <Card.Header className="payment-header">
                                   <h4>
-                                    N3500 <span>/one-off</span>
+                                    N5000 <span>/one-off</span>
                                   </h4>
                                 </Card.Header>
                                 <Card.Body>
@@ -296,7 +296,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                               <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
                                 <Card.Header className="payment-header">
                                   <h4>
-                                    N3500 <span>/month</span>
+                                    N12000 <span>/month</span>
                                   </h4>
                                 </Card.Header>
                                 <Card.Body>
@@ -311,7 +311,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                                   <ul className="card-list">
                                     <li>
                                       <img src={mark} className="card-image" />
-                                      Career fitness score
+                                      Your Clarity score
                                     </li>
                                     <li>
                                       <img src={mark} className="card-image" />
@@ -415,7 +415,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                               <Card className=" shadow-sm bg-white payment-card subpaymentcard">
                                 <Card.Header className="payment-header">
                                   <h4>
-                                    N6000 <span>/month</span>
+                                    N30000 <span>/month</span>
                                   </h4>
                                 </Card.Header>
                                 <Card.Body>
@@ -514,7 +514,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                               <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
                                 <Card.Header className="payment-header">
                                   <h4>
-                                    N10000 <span>/month</span>
+                                    N50000 <span>/month</span>
                                   </h4>
                                 </Card.Header>
                                 <Card.Body>
@@ -613,7 +613,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                           <ul className="card-list">
                             <li>
                               <img src={mark} className="card-image" />
-                              Career fitness score
+                              Clarity score
                             </li>
                             <li>
                               <img src={mark} className="card-image" />

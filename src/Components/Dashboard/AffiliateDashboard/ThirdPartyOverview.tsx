@@ -25,6 +25,8 @@ import more_vertical from "../../../assets/more_vertical.png";
 import { Tab, Table, Tabs } from "react-bootstrap";
 import avatar from "../../../assets/avatar.svg";
 import SmallScreenNavbarAffiliates from "../CouncellorDasboard/SmallScreenNavbarAffiliates";
+import prevpage from "../../../assets/prevpage.svg";
+import nextpage from "../../../assets/nextpage.svg";
 const moment = require("moment");
 
 const ThirdPartyOverview = (props: any) => {
@@ -39,14 +41,22 @@ const ThirdPartyOverview = (props: any) => {
     previous: "",
     free_members: [],
     paid_members: [],
+    nextLink: "",
+    prevLink: "",
+    count: "",
+    success: "",
     total_pages: "",
     page: "",
     overview: {},
   });
   const {
     user,
+    count,
+    total_pages,
     nextSessionMessage,
     paid_members,
+    prevLink,
+    nextLink,
     free_members,
     isLoading,
     hascopiedLink,
@@ -99,6 +109,10 @@ const ThirdPartyOverview = (props: any) => {
               clarityLink: `https://clarity.yudimy.com/signup?referral=${res2.data.aff_name}`,
               paid_members: [...res3.data.results],
               free_members: [...res1.data.results],
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
             });
           }
         })
@@ -109,6 +123,233 @@ const ThirdPartyOverview = (props: any) => {
       });
   }, []);
 
+  const fetchPaidMembers = () => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/affiliates/signin");
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/affiliate/paid-members/`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          if (res.status === 200) {
+            setState({
+              ...state,
+              paid_members: [...res.data.results],
+              successMsg: true,
+              isLoading: false,
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const fetchFreeMembers = () => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/affiliates/signin");
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/affiliate/free-members/`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          if (res.status === 200) {
+            setState({
+              ...state,
+              free_members: [...res.data.results],
+              successMsg: true,
+              isLoading: false,
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const fetchAllMembers = () => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/affiliates/signin");
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${API}/affiliate/members/`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          if (res.status === 200) {
+            setState({
+              ...state,
+              memberInfo: [...res.data.results],
+              successMsg: true,
+              isLoading: false,
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const loadNewData = () => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/affiliates/signin");
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${nextLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          if (res.status === 200) {
+            setState({
+              ...state,
+              memberInfo: [...res.data.results],
+              paid_members: [...res.data.results],
+              successMsg: true,
+              isLoading: false,
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
+  const loadPrevData = () => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken
+      ? JSON.parse(availableToken)
+      : props.history.push("/affiliates/signin");
+    Axios.all([
+      Axios.get<any, AxiosResponse<any>>(`${prevLink}`, {
+        headers: { Authorization: `Token ${token}` },
+      }),
+    ])
+      .then(
+        Axios.spread((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            setState({
+              ...state,
+              isLoading: false,
+              paid_members: [...res.data.results],
+              memberInfo: [...res.data.results],
+              count: res.data.page,
+              nextLink: res.data.next,
+              prevLink: res.data.previous,
+              total_pages: res.data.total_pages,
+            });
+          }
+        })
+      )
+      .catch((error) => {
+        if (error && error.response && error.response.data) {
+          setState({
+            ...state,
+            errorMessage: error.response.data[0].message,
+            isLoading: false,
+          });
+        }
+        setState({
+          ...state,
+          errorMessage: "failed to load",
+          isLoading: false,
+        });
+      });
+  };
   const formatTime = (date) => {
     const dateTime = moment(date).format("MMM YYYY");
     return dateTime;
@@ -259,11 +500,16 @@ const ThirdPartyOverview = (props: any) => {
                 <Row>
                   <Col md={12} className="spec22 spec222e">
                     <Tabs
+                      unmountOnExit={true}
+                      onEnter={fetchAllMembers}
                       defaultActiveKey="TotalClients"
                       id="uncontrolled-tab-exa2"
                       className="ttebe"
                     >
-                      <Tab eventKey="TotalClients" title="Total Clients">
+                      <Tab 
+                        eventKey="TotalClients"
+                        title="Total Clients"
+                       >
                         <Table>
                           <thead>
                             <tr className="table-striped">
@@ -294,11 +540,39 @@ const ThirdPartyOverview = (props: any) => {
                             ))}
                           </tbody>
                         </Table>
+                        <div className="next_page">
+                          {memberInfo.length > 0 && (
+                            <div>
+                              Displaying{" "}
+                              <span className="page_num">{count}</span> out of{" "}
+                              <span className="page_num">{total_pages}</span>
+                            </div>
+                          )}
+                          <div>
+                            {prevLink && (
+                              <img
+                                onClick={loadPrevData}
+                                className="page_change"
+                                src={prevpage}
+                                alt="previous page"
+                              />
+                            )}
+                            {nextLink && (
+                              <img
+                                onClick={loadNewData}
+                                className="page_change"
+                                src={nextpage}
+                                alt="next page"
+                              />
+                            )}
+                          </div>
+                        </div>
                       </Tab>
                       <Tab
                         eventKey="OnFreePlan"
                         className="ttebe ttb22"
                         title="On Free Plan"
+                        onEnter={fetchFreeMembers}
                       >
                         <Table>
                           <thead>
@@ -329,11 +603,39 @@ const ThirdPartyOverview = (props: any) => {
                             ))}
                           </tbody>
                         </Table>
+                        <div className="next_page">
+                          {free_members.length > 0 && (
+                            <div>
+                              Displaying{" "}
+                              <span className="page_num">{count}</span> out of{" "}
+                              <span className="page_num">{total_pages}</span>
+                            </div>
+                          )}
+                          <div>
+                            {prevLink && (
+                              <img
+                                onClick={loadPrevData}
+                                className="page_change"
+                                src={prevpage}
+                                alt="previous page"
+                              />
+                            )}
+                            {nextLink && (
+                              <img
+                                onClick={loadNewData}
+                                className="page_change"
+                                src={nextpage}
+                                alt="next page"
+                              />
+                            )}
+                          </div>
+                        </div>
                       </Tab>
                       <Tab
                         eventKey="contact"
                         className="ttebe ttb21"
                         title="On Paid Subscription"
+                        onEnter={fetchPaidMembers}
                       >
                         <Table>
                           <thead>
@@ -364,6 +666,33 @@ const ThirdPartyOverview = (props: any) => {
                             ))}
                           </tbody>
                         </Table>
+                        <div className="next_page">
+                          {paid_members.length > 0 && (
+                            <div>
+                              Displaying{" "}
+                              <span className="page_num">{count}</span> out of{" "}
+                              <span className="page_num">{total_pages}</span>
+                            </div>
+                          )}
+                          <div>
+                            {prevLink && (
+                              <img
+                                onClick={loadPrevData}
+                                className="page_change"
+                                src={prevpage}
+                                alt="previous page"
+                              />
+                            )}
+                            {nextLink && (
+                              <img
+                                onClick={loadNewData}
+                                className="page_change"
+                                src={nextpage}
+                                alt="next page"
+                              />
+                            )}
+                          </div>
+                        </div>
                       </Tab>
                     </Tabs>
                   </Col>

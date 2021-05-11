@@ -18,7 +18,7 @@ const FreeOverviewCard = (props: any) => {
           <a href="/overview/#drivers">
             <div className="kitemwrapper CareerDrivers">
               <img src={vector3} alt="vector" />
-              <div className="v1strength">Career Fitness Score</div>
+              <div className="v1strength">Clarity Score</div>
               <div className="cardttx">
                 This tells if you're on the right career track and and what
                 really going on.

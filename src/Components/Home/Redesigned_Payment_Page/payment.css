@@ -477,3 +477,14 @@
 .switchcardwidth {
     max-width: 500px;
 }
+.paylogo1{
+    cursor: pointer;
+}
+
+@media(max-width:600px){
+    .payment-channel-logo{
+        max-width: 197px;
+        max-height: 90px;
+        object-fit: contain;
+    }
+}

@@ -38,7 +38,7 @@ const getDashContext:any = React.useContext(dashboardContext)
             <div className="ssflex">
             <img src={seekleft} className="seekleft" alt="left"/>
             <div className="textlink">
-                Career fitness
+            Clarity Score
             </div>
             </div>
             <div className="ssflex">

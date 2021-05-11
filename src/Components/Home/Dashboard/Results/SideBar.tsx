@@ -39,7 +39,7 @@ const getDashContext:any = React.useContext(dashboardContext)
         </div>
         <div className={!sideBarIsOpen?"titlearea1":"hidesidebarlinks animated fadeInLeft"}>
             <Link to="/dashboard/careerfitness"  className={props.career_fitness?"linkss active":"linkss animated fadeInLeft"}>
-                CAREER FITNESS
+                Clarity Score
             </Link>  
         </div>
         <div className={!sideBarIsOpen?"titlearea1":"hidesidebarlinks animated fadeInLeft"}>

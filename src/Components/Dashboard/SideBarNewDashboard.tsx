@@ -81,6 +81,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
+        // console.log(response)
         if (response?.data[0]?.view_result === true) {
           return window.location.assign("/thirdpary/fullresult");
         }
