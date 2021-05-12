@@ -488,3 +488,19 @@
         object-fit: contain;
     }
 }
+
+.slash-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.slash-cards .cardmini {
+    max-width: 320px;
+}
+.slash-txt {
+    margin-top: 5px;
+}
+.slash-btn {
+    margin: 1.5rem 0;
+}

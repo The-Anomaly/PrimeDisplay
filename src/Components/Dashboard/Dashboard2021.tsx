@@ -269,7 +269,7 @@ class Dashboard2021 extends React.Component<any, any> {
                           </h1>
                           <p>
                             {!this.state.progress.phase_one
-                              ? "It is time to figure out exciting things that can influence your career decisions posiyively."
+                              ? "It is time to figure out exciting things that can influence your career decisions positively."
                               : incomplete_assessment
                               ? "You are a few steps away from getting insights that will aid your career decisions. How about you take them now?"
                               : view_result && !incomplete_assessment

@@ -143,7 +143,9 @@ const Payment = (props: any) => {
     const availableUser = localStorage.getItem("user");
     var user = availableUser
       ? JSON.parse(availableUser)
-      : window.location.assign("/signin");
+      : // : window.location.assign("/signin");
+        "";
+
     setFormState({
       ...state,
       firstname: user[0]?.first_name,
@@ -286,12 +288,12 @@ const Payment = (props: any) => {
             callback: (response) => {
               console.log(response);
               closePaymentModal(); // this will close the modal programmatically
-              notify("Payment plan upgraded")
-              setTimeout(()=>{
-                if(response.status=="success"){
-                  window.location.assign("/dashboardsubscriptionplan")
+              notify("Payment plan upgraded");
+              setTimeout(() => {
+                if (response.status == "success") {
+                  window.location.assign("/dashboardsubscriptionplan");
                 }
-              },3000)
+              }, 3000);
             },
             onClose: () => {
               console.log("closed");
@@ -353,8 +355,8 @@ const Payment = (props: any) => {
       })
       .catch((error) => {
         console.log();
-        if(error?.response?.status==400){
-          notify(error?.response?.data[0]?.message)
+        if (error?.response?.status == 400) {
+          notify(error?.response?.data[0]?.message);
         }
         setFormState({
           ...state,
@@ -393,13 +395,11 @@ const Payment = (props: any) => {
         callback: function (response) {
           console.log(response);
           if (response.status === "success") {
-              // console.log("Gift subscription successful!");
-              notify("Subscription successful!");
-              return setTimeout(
-                ()=>{
-                  window.location.assign("/dashboardsubscriptionplan")
-                },2000
-              );
+            // console.log("Gift subscription successful!");
+            notify("Subscription successful!");
+            return setTimeout(() => {
+              window.location.assign("/dashboardsubscriptionplan");
+            }, 2000);
             // console.log("Payment Successfull");
           }
           // props.history.push("/something");
@@ -433,15 +433,14 @@ const Payment = (props: any) => {
     customizations: {
       title: "",
       description: modState.plandetails,
-      logo:
-        "",
+      logo: "",
     },
   };
 
   const handleFlutterPayment: any = useFlutterwave(config);
 
-  console.log(modState.plandetails);
-  console.log(modState.plancost);
+  // console.log(modState.plandetails);
+  // console.log(modState.plancost);
   return (
     <>
       <div className={withoutlogin ? "mobilepadding" : ""}>
@@ -462,7 +461,215 @@ const Payment = (props: any) => {
             <h3>We have curated payments plans with you in mind</h3>
             {withoutlogin && <div className="fourthline pymntline"> </div>}
           </div>
-          <div className="webpaymentview">
+
+          {/* Price slash cards starts */}
+          <div className="slash-cards">
+            <Col
+              md={4}
+              sm={8}
+              className="margined_col cardmini progressivewidth"
+            >
+              <Card className="h-300 shadow-sm bg-white payment-card">
+                <Card.Header className="payment-header">
+                  <h4>
+                    N1500.00 <span>/week</span>
+                  </h4>
+                </Card.Header>
+                <Card.Body>
+                  <div className="card-div">
+                    <h6>Insight</h6>
+                    <p className="slash-txt">
+                      Get a weeks' access to personalized insights on how to use
+                      your characteristics and competencies to your advantage.
+                    </p>
+                  </div>
+                  <ul className="card-list">
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Career Personality Type
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Strength & Weakness Report
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Competence Analysis Report
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Most Suitable Career Business Expression
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Report on Roles Best Suited to You
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Career Drivers and How To Leverage Them
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Career Todo/Reminder
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      Professional Profile Builder/CV Generator
+                    </li>
+                    <li>
+                      <img src={mark} className="card-image" />
+                      In-app "ask a counsellor"
+                    </li>
+                  </ul>
+                  {withoutlogin ? (
+                    <Link to="/signin">
+                      <span className="card_btn btn-yellow slash-btn">Get Started</span>
+                    </Link>
+                  ) : (
+                    <span
+                      className="card_btn btn-yellow slash-btn"
+                      onClick={() =>
+                        openChoosePaymentGateway("Seven Days Plan", 1500)
+                      }
+                    >
+                      Get Insight
+                    </span>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col
+              md={4}
+              sm={8}
+              className="margined_col cardmini progressivewidth"
+            >
+              <Card className="h-300 shadow-sm bg-white payment-card">
+                <Card.Header className="payment-header">
+                  <h4>
+                    N5000.00 <span>/month</span>
+                  </h4>
+                </Card.Header>
+                <Card.Body>
+                  <div className="card-div">
+                    <h6 className="blue">Insight +</h6>
+                    <p className="slash-txt">
+                      Get a months' access to personalized insights on how to
+                      use your characteristics and competencies to your
+                      advantage.
+                    </p>
+                  </div>
+                  <ul className="card-list">
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Career Personality Type
+                    </li>
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Strength & Weakness Report
+                    </li>
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Competence Analysis Report
+                    </li>
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Most Suitable Career Business Expression
+                    </li>
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Report on Roles Best Suited to You
+                    </li>
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Career Drivers and How To Leverage Them
+                    </li>
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Career Todo/Reminder
+                    </li>
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      Professional Profile Builder/CV Generator
+                    </li>
+                    <li>
+                      <img src={mark_blue} className="card-image" />
+                      In-app "ask a counsellor"
+                    </li>
+                  </ul>
+                  {withoutlogin ? (
+                    <Link to="/signin">
+                      <span className="card_btn btn-blue slash-btn">Get Started</span>
+                    </Link>
+                  ) : (
+                    <span
+                      className="card_btn btn-blue slash-btn"
+                      onClick={() =>
+                        openChoosePaymentGateway("Monthly Plan", 5000)
+                      }
+                    >
+                      Get Insight +
+                    </span>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col
+              md={4}
+              sm={8}
+              className="margined_col cardmini progressivewidth"
+            >
+              <Card className="h-300 shadow-sm bg-white payment-card">
+                <Card.Header className="payment-header">
+                  <h4>
+                    N10000.00 <span>/one-off</span>
+                  </h4>
+                </Card.Header>
+                <Card.Body>
+                  <div className="card-div">
+                    <h6 className="green">Book A Session</h6>
+                    <p className="slash-txt">
+                      Book a live session with a career coach to express your
+                      concerns and get helpful recommendations.
+                    </p>
+                  </div>
+                  <ul className="card-list">
+                    <li>
+                      <img src={mark_green} className="card-image" />
+                      Get first-hand interpretation of your career assessment
+                      results
+                    </li>
+                    <li>
+                      <img src={mark_green} className="card-image" />
+                      Get a clearer view of how to move your career journey
+                      forward
+                    </li>
+                    <li>
+                      <img src={mark_green} className="card-image" />
+                      Get a live review of your CV
+                    </li>
+                    <li>Your opportunities are endless</li>
+                  </ul>
+                  {withoutlogin ? (
+                    <Link to="/signin">
+                      <span className="card_btn btn-green slash-btn">Get Started</span>
+                    </Link>
+                  ) : (
+                    <span
+                      className="card_btn btn-green slash-btn"
+                      onClick={() =>
+                        openChoosePaymentGateway("Book Session", 1500)
+                      }
+                    >
+                      Book a session
+                    </span>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+          </div>
+          {/* Price slash cards ends */}
+
+          {/* <div className="webpaymentview">
             <Row className="payment-plans">
               <Col md={5} className="margined_col oneoffmini">
                 <Card
@@ -557,10 +764,10 @@ const Payment = (props: any) => {
                             <img src={mark} className="card-image" />
                             Cv builder
                           </li>
-                          {/* <li>
-                              <img src={mark} className="card-image" />
-                              Strength & Weakness Report
-                            </li> */}
+                          // <li>
+                          //     <img src={mark} className="card-image" />
+                          //     Strength & Weakness Report
+                          //   </li>
                         </ul>
                         {withoutlogin ? (
                           <Link to="/signin">
@@ -667,44 +874,44 @@ const Payment = (props: any) => {
                     </Card>
                   </Col>
 
-                  {/* <Col md={3} sm={8} className="margined_col cardmini">
-                    <Card className="h-300 shadow-sm bg-white payment-card">
-                      <Card.Header className="payment-header">
-                        <h4>
-                          N12000 <span>/one-off</span>
-                        </h4>
-                      </Card.Header>
-                      <Card.Body>
-                        <div className="card-div">
-                          <h6 className="green">Direction Plan</h6>
-                          <p>
-                            Hand in Hand Guidance: Get perspective on your
-                            reports. Get assigned to your personal career coach.
-                            It only gets better.
-                          </p>
-                        </div>
-                        <ul className="card-list">
-                          <li>
-                            <img src={mark_green} className="card-image" />
-                            Everything under{" "}
-                            <span className="blue">INSIGHT</span>
-                          </li>
-                          <li>
-                            <div className="card-list-box">
-                              <div>
-                                <img src={mark_green} className="card-image" />
-                              </div>
-                              40 minutes career-planning session with a Clarity
-                              counsellor
-                            </div>
-                          </li>
-                        </ul>
-                        // {withoutlogin ? (
-                        //   <Link to="/signin">
-                        //     <span className="card_btn btn-green card_btn--animated">
-                        //       Get Started
-                        //     </span>
-                        //   </Link>
+                  // <Col md={3} sm={8} className="margined_col cardmini">
+                  //   <Card className="h-300 shadow-sm bg-white payment-card">
+                  //     <Card.Header className="payment-header">
+                  //       <h4>
+                  //         N12000 <span>/one-off</span>
+                  //      </h4>
+                  //  </Card.Header>
+                  //    <Card.Body>
+                  //      <div className="card-div">
+                  //        <h6 className="green">Direction Plan</h6>
+                  //        <p>
+                  //          Hand in Hand Guidance: Get perspective on your
+                  //          reports. Get assigned to your personal career coach.
+                  //          It only gets better.
+                      //    </p>
+                      //  </div>
+                      //  <ul className="card-list">
+                      //    <li>
+                      //       <img src={mark_green} className="card-image" />
+                      //       Everything under{" "}
+                      //       <span className="blue">INSIGHT</span>
+                      //     </li>
+                      //     <li>
+                      //       <div className="card-list-box">
+                      //         <div>
+                      //           <img src={mark_green} className="card-image" />
+                      //         </div>
+                      //         40 minutes career-planning session with a Clarity
+                      //         counsellor
+                      //       </div>
+                      //     </li>
+                      //   </ul>
+                      //   {withoutlogin ? (
+                      //     <Link to="/signin">
+                      //       <span className="card_btn btn-green card_btn--animated">
+                      //         Get Started
+                      //       </span>
+                      //     </Link>
                         // ) : (
                         //   <span
                         //     className="card_btn btn-green card_btn--animated"
@@ -715,15 +922,15 @@ const Payment = (props: any) => {
                         //     Upgrade to Direction
                         //   </span>
                         // )}
-                        <span
-                            className="card_btn btn-green card_btn--animated"
-                            onClick={openUnavailableModal}
-                          >
-                            Upgrade to Direction
-                          </span>
-                      </Card.Body>
-                    </Card>
-                  </Col>*/}
+                        // <span
+                         //   className="card_btn btn-green card_btn--animated"
+                         //   onClick={openUnavailableModal}
+                        //  >
+                        //    Upgrade to Direction
+                        //  </span>
+                    //  </Card.Body>
+                  //  </Card>
+                //  </Col>
                 </Row>
                 <Row className="centered_payment submargin">
                   <Col md={3} sm={8} className="margined_col cardmini">
@@ -1076,7 +1283,9 @@ const Payment = (props: any) => {
               </div>
             )}
           </div>
-          <div className="mobilepaymentview">
+           */}
+          {/* MOBILE VIEW BEGINS */}
+          {/* <div className="mobilepaymentview">
             <Accordion defaultActiveKey="">
               <Card className="mobilepaymentcard">
                 <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -1239,41 +1448,41 @@ const Payment = (props: any) => {
                         </Card.Body>
                       </Card>
                     </Col>
-                    {/* <Col md={3} sm={8} className="margined_col cardmini">
-                      <Card className="h-300 shadow-sm bg-white payment-card">
-                        <Card.Header className="payment-header">
-                          <h4>
-                            N12000 <span>/one-off</span>
-                          </h4>
-                        </Card.Header>
-                        <Card.Body>
-                          <div className="card-div">
-                            <h6 className="green">Direction Plan</h6>
-                            <p>
-                              Hand in Hand Guidance: Get perspective on your
-                              reports. Get assigned to your personal career
-                              coach. It only gets better.
-                            </p>
-                          </div>
-                          <ul className="card-list">
-                            <li>
-                              <img src={mark_green} className="card-image" />
-                              Everything under{" "}
-                              <span className="blue">INSIGHT</span>
-                            </li>
-                            <li>
-                              <div className="card-list-box">
-                                <div>
-                                  <img
-                                    src={mark_green}
-                                    className="card-image"
-                                  />
-                                </div>
-                                40 minutes career-planning session with a
-                                Clarity counsellor
-                              </div>
-                            </li>
-                          </ul>
+                    //  <Col md={3} sm={8} className="margined_col cardmini">
+                    //   <Card className="h-300 shadow-sm bg-white payment-card">
+                    //     <Card.Header className="payment-header">
+                    //       <h4>
+                    //         N12000 <span>/one-off</span>
+                        //   </h4>
+                        // </Card.Header>
+                        // <Card.Body>
+                        //   <div className="card-div">
+                        //     <h6 className="green">Direction Plan</h6>
+                        //     <p>
+                        //       Hand in Hand Guidance: Get perspective on your
+                        //       reports. Get assigned to your personal career
+                        //       coach. It only gets better.
+                        //     </p>
+                        //   </div>
+                        //   <ul className="card-list">
+                        //     <li>
+                        //       <img src={mark_green} className="card-image" />
+                        //       Everything under{" "}
+                        //       <span className="blue">INSIGHT</span>
+                        //     </li>
+                        //     <li>
+                        //       <div className="card-list-box">
+                        //         <div>
+                        //           <img
+                        //             src={mark_green}
+                        //             className="card-image"
+                        //           />
+                        //         </div>
+                        //         40 minutes career-planning session with a
+                        //         Clarity counsellor
+                        //       </div>
+                        //     </li>
+                          // </ul>
                           // {withoutlogin ? (
                           //   <Link to="/signin">
                           //     <span className="card_btn btn-green card_btn--animated">
@@ -1293,15 +1502,15 @@ const Payment = (props: any) => {
                           //     Upgrade to Direction
                           //   </span>
                           // )}
-                          <span
-                              className="card_btn btn-green card_btn--animated"
-                              onClick={openUnavailableModal}
-                            >
-                              Upgrade to Direction
-                            </span>
-                        </Card.Body>
-                      </Card>
-                    </Col> */}
+                    //       <span
+                    //           className="card_btn btn-green card_btn--animated"
+                    //           onClick={openUnavailableModal}
+                    //         >
+                    //           Upgrade to Direction
+                    //         </span>
+                    //     </Card.Body>
+                    //   </Card>
+                    // </Col>
                     <Col md={3} sm={8} className="margined_col cardmini">
                       <Card className="h-300 shadow-sm bg-white subcription-card">
                         <Card.Header className="subscription-header">
@@ -1440,9 +1649,9 @@ const Payment = (props: any) => {
                               Convert Counsellors recommendations to actionable
                               to-dos with reminders
                             </li>
-                            {/* <li className="cdlisadjmarg">
-                              <img src={mark} className="card-image" />
-                            </li> */}
+                            // <li className="cdlisadjmarg">
+                            //   <img src={mark} className="card-image" />
+                            // </li>
                           </ul>
                           {withoutlogin ? (
                             <Link to="/signin">
@@ -1667,6 +1876,7 @@ const Payment = (props: any) => {
               </Card>
             </Accordion>
           </div>
+           */}
           <ToastContainer
             enableMultiContainer
             containerId={"B"}
@@ -1678,47 +1888,6 @@ const Payment = (props: any) => {
       </div>
       <div className="mobilepaymentview"></div>
       {/* One-off Gift Modal */}
-      <Modal
-        centered={true}
-        show={choosePaymentGateway}
-        onHide={closeChoosePaymentGateway}
-      >
-        <Modal.Header>
-          <Modal.Title>Choose a payment channel</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="payment-modal-row">
-          <Row>
-            <Col md={6} className="monnify-logo monnify-logo1">
-              <span
-                className="paylogo1"
-                onClick={() => requestForPayref("monnify", "monnify")}
-              >
-                <img src={monnifyLogo} className="payment-channel-logo" />
-              </span>
-            </Col>
-            <Col md={6}>
-              <span className="paylogo1">
-                <img
-                  src={flutterLogo}
-                  className="payment-channel-logo"
-                  onClick={() => requestForPayref("flutterwave", "flutterwave")}
-                />
-              </span>
-            </Col>
-            {/* <Col md={4}>
-              <span
-                className="paylogo1"
-                onClick={() => requestForPayref("paystack", "paystack")}
-              >
-                <img src={paystackLogo} className="payment-channel-logo" />
-              </span>
-            </Col> */}
-          </Row>
-        </Modal.Body>
-        <Modal.Footer>
-          <button className="payment-channel-btn">Continue</button>
-        </Modal.Footer>
-      </Modal>
       <Modal
         centered={true}
         show={giftASub}
@@ -1829,6 +1998,7 @@ const Payment = (props: any) => {
           </div>
         </Modal.Body>
       </Modal>
+      {/* Promo Modal */}
       <Modal show={unavailable} onHide={closeUnavailableModal} centered>
         <Modal.Body>
           <div className="unavailableplan">
@@ -1843,6 +2013,48 @@ const Payment = (props: any) => {
             <p>It's the season of love! &#128525;</p>
           </div>
         </Modal.Body>
+      </Modal>
+      {/* Payment Gateway Modal */}
+      <Modal
+        centered={true}
+        show={choosePaymentGateway}
+        onHide={closeChoosePaymentGateway}
+      >
+        <Modal.Header>
+          <Modal.Title>Choose a payment channel</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="payment-modal-row">
+          <Row>
+            <Col md={6} className="monnify-logo monnify-logo1">
+              <span
+                className="paylogo1"
+                onClick={() => requestForPayref("monnify", "monnify")}
+              >
+                <img src={monnifyLogo} className="payment-channel-logo" />
+              </span>
+            </Col>
+            <Col md={6}>
+              <span className="paylogo1">
+                <img
+                  src={flutterLogo}
+                  className="payment-channel-logo"
+                  onClick={() => requestForPayref("flutterwave", "flutterwave")}
+                />
+              </span>
+            </Col>
+            {/* <Col md={4}>
+              <span
+                className="paylogo1"
+                onClick={() => requestForPayref("paystack", "paystack")}
+              >
+                <img src={paystackLogo} className="payment-channel-logo" />
+              </span>
+            </Col> */}
+          </Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="payment-channel-btn">Continue</button>
+        </Modal.Footer>
       </Modal>
     </>
   );
