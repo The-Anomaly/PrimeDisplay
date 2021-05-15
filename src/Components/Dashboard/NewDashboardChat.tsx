@@ -123,7 +123,7 @@ class NewDashboardChat extends React.Component {
               <DashboardLargeScreenNav title="Chat with a counsellor" />
               <Row>
                 <Col md={12} className="kisls">
-                  <div className="kdashheader npps nprr cchatht">
+                  <div className="kdashheader npps nprr cchatht hide-overflow">
                     <DashboardUsernameheader
                       welcomeText={
                         " Need some clarification about your Career Insights? leave a message for your counsellor"

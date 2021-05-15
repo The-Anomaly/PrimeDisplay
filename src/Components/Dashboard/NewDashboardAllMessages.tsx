@@ -23,10 +23,10 @@ const NewDashboardAllMessages = withRouter((props: any) => {
     user: [],
     userData: [],
     searchKey: "",
-    isLoading: false,
+    isLoading: true,
     initial: "",
   });
-  const { errorMessage, user, userData, searchKey, initial } = state;
+  const { errorMessage, user, userData, searchKey, initial, isLoading } = state;
   React.useEffect(() => {
     setState({
       ...state,
@@ -56,6 +56,10 @@ const NewDashboardAllMessages = withRouter((props: any) => {
       .catch((error) => {
         // console.log(error);
         // console.error("Payment Status Error");
+        setState({
+          ...state,
+          isLoading: false,
+        })
       });
   }, []);
   const getMessages = () => {
@@ -77,6 +81,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
               ...state,
               userData: [...res.data].reverse(),
               errorMessage: "",
+              isLoading: false,
             });
           }
         })
@@ -142,14 +147,12 @@ const NewDashboardAllMessages = withRouter((props: any) => {
           return setState({
             ...state,
             errorMessage: error?.response?.data?.message,
-            isLoading: false,
             userData: [],
           });
         }
         setState({
           ...state,
           errorMessage: "failed to load",
-          isLoading: false,
         });
       });
   };
@@ -194,14 +197,12 @@ const NewDashboardAllMessages = withRouter((props: any) => {
           return setState({
             ...state,
             errorMessage: error?.response?.data?.message,
-            isLoading: false,
             userData: [],
           });
         }
         setState({
           ...state,
           errorMessage: "failed to load",
-          isLoading: false,
         });
       });
   };
@@ -223,6 +224,12 @@ const NewDashboardAllMessages = withRouter((props: any) => {
           <Col md={10} sm={12} className="prm newprm">
             <DashboardLargeScreenNav messages="Messages" />
             <Row>
+            {isLoading && (
+                  <div className="c4ipreloader center-it">
+                    <div className="c4ispinner"></div>
+                  </div>
+                )}
+              {!isLoading && (
               <Col md={12} className="firstqq">
                 <div className="kdashheader npps"></div>
                 <div className="flxv1">
@@ -309,6 +316,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
                   </Col>
                 </Row>
               </Col>
+            )}
             </Row>
             <Row>
               <Col></Col>
