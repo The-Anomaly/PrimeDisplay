@@ -97,7 +97,7 @@ class Dashboard2021 extends React.Component<any, any> {
               firstname: res1?.data?.first_name,
               email: res1?.data?.email,
               phone: res1?.data?.phone,
-              country: res3?.data?.country,
+              country: res1?.data?.country,
               user_profile: res2?.data[0]?.profile,
               usertasks: [...res3?.data?.results].reverse().splice(0, 2),
               usersession: [...res4?.data?.results],
@@ -165,10 +165,15 @@ class Dashboard2021 extends React.Component<any, any> {
   viewResult = () => {
     if (
       this.state.progress.phase_four &&
-      this.state.view_result &&
       !this.state.incomplete_assessment
     ) {
-      return this.props.history.push("/fullinsight");
+      if(this.state.view_result) {
+        return this.props.history.push("/fullinsight");
+      }
+      else {
+        return this.props.history.push("/freeresult");
+      }
+
     } else if (!this.state.progress.phase_one) {
       return this.props.history.push("/assessment/welcome");
     } else if (
@@ -272,7 +277,7 @@ class Dashboard2021 extends React.Component<any, any> {
                               ? "It is time to figure out exciting things that can influence your career decisions positively."
                               : incomplete_assessment
                               ? "You are a few steps away from getting insights that will aid your career decisions. How about you take them now?"
-                              : view_result && !incomplete_assessment
+                              : !incomplete_assessment
                               ? "You can be anything you dream about, all it takes is that extra step when you feel weary. Are you going to do that now?"
                               : ""}
                           </p>
@@ -281,7 +286,7 @@ class Dashboard2021 extends React.Component<any, any> {
                               ? "Take Assessment"
                               : incomplete_assessment
                               ? "Continue Assessment"
-                              : view_result && !incomplete_assessment
+                              : !incomplete_assessment
                               ? "View Insight"
                               : "Take Assessment"}
                           </button>

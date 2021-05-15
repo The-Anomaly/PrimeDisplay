@@ -157,7 +157,8 @@ class NewDashboardSettings extends React.Component {
         });
         setTimeout(() => {
           this.notify("Successful");
-          window.location.reload();
+          // window.location.reload();
+          this.componentDidMount()
         }, 2000);
       })
       .catch((err) => {
@@ -189,7 +190,7 @@ class NewDashboardSettings extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         if (response.status === 200) {
           this.setState({
             ...response.data,

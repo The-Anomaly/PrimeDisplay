@@ -18,7 +18,7 @@ const PhaseFourIceBreaker = (props: any) => {
     setName(currentUser[0].first_name);
   }, []);
   const assessmentComplete = () => {
-    return props.history.push("/overview");
+    return props.history.push("/freeresult");
   };
   return (
     <>

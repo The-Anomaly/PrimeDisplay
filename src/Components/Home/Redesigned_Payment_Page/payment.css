@@ -65,7 +65,7 @@
     margin-top: 7px;
 }
 .payment-modal-row{
-    padding-top: 1rem;
+    padding-top: 1rem !important;
     padding-bottom: 2rem;
 }
 @media (max-width: 760px){
@@ -479,6 +479,7 @@
 }
 .paylogo1{
     cursor: pointer;
+    width: 95%;
 }
 
 @media(max-width:600px){
@@ -503,4 +504,13 @@
 }
 .slash-btn {
     margin: 1.5rem 0;
+}
+.paylogosec {
+    border: 1px solid #c4c4c4;
+    border-radius: 8px;
+    padding: 0 5px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

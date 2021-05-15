@@ -46,7 +46,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
       headers: { Authorization: `Token ${token}` },
     })
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         this.setState({
           plan: response.data.plan,
           expiration: response.data.expires,
@@ -116,11 +116,179 @@ class NewDashboardSubsriptionPlan extends React.Component {
                         <div>
                           <div className="activeplac actplan">Active plan</div>
                           <div className="subtert">
-                            You are currently subscribed to the <b>{plan}</b>.{" "}
+                            You are currently subscribed to the <b>{plan[0]}</b>.{" "}
                             {expiration}
                           </div>
                         </div>
-                        <Col md={12} className="youwss">
+                        <Col md={12} className="youwss flex">
+                          {/* Price Slash Cards */}
+                          {plan.includes("Seven Days Plan") && (
+                            <Col
+                            md={4}
+                            sm={8}
+                            className="margined_col subpayment marg"
+                          >
+                            <Card className="shadow-sm bg-white payment-card subpaymentcard">
+                              <Card.Header className="payment-header">
+                                <h4>
+                                  N1500.00 <span>/week</span>
+                                </h4>
+                              </Card.Header>
+                              <Card.Body>
+                                <div className="card-div">
+                                  <h6>Insight</h6>
+                                  <p className="slash-txt">
+                                    Get a weeks' access to personalized insights on how to use
+                                    your characteristics and competencies to your advantage.
+                                  </p>
+                                </div>
+                                <ul className="card-list">
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    Career Personality Type
+                                  </li>
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    Strength & Weakness Report
+                                  </li>
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    Competence Analysis Report
+                                  </li>
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    Most Suitable Career Business Expression
+                                  </li>
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    Report on Roles Best Suited to You
+                                  </li>
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    Career Drivers and How To Leverage Them
+                                  </li>
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    Career Todo/Reminder
+                                  </li>
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    Professional Profile Builder/CV Generator
+                                  </li>
+                                  <li>
+                                    <img src={mark} className="card-image" />
+                                    In-app "ask a counsellor"
+                                  </li>
+                                </ul>
+                              </Card.Body>
+                            </Card>
+                          </Col>            
+                          )}
+                          {plan.includes("Monthly Plan") && (
+                            <Col
+                            md={4}
+                            sm={8}
+                            className="margined_col subpayment marg"
+                          >
+                            <Card className="shadow-sm bg-white payment-card subpaymentcard">
+                              <Card.Header className="payment-header">
+                                <h4>
+                                  N5000.00 <span>/month</span>
+                                </h4>
+                              </Card.Header>
+                              <Card.Body>
+                                <div className="card-div">
+                                  <h6 className="blue">Insight +</h6>
+                                  <p className="slash-txt">
+                                    Get a months' access to personalized insights on how to
+                                    use your characteristics and competencies to your
+                                    advantage.
+                                  </p>
+                                </div>
+                                <ul className="card-list">
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    Career Personality Type
+                                  </li>
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    Strength & Weakness Report
+                                  </li>
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    Competence Analysis Report
+                                  </li>
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    Most Suitable Career Business Expression
+                                  </li>
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    Report on Roles Best Suited to You
+                                  </li>
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    Career Drivers and How To Leverage Them
+                                  </li>
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    Career Todo/Reminder
+                                  </li>
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    Professional Profile Builder/CV Generator
+                                  </li>
+                                  <li>
+                                    <img src={mark_blue} className="card-image" />
+                                    In-app "ask a counsellor"
+                                  </li>
+                                </ul>
+                              </Card.Body>
+                            </Card>
+                          </Col>            
+                          )}
+                          {plan.includes("Book Session") && (
+                            <Col
+                            md={4}
+                            sm={8}
+                            className="margined_col subpayment marg"
+                          >
+                            <Card className="shadow-sm bg-white payment-card subpaymentcard">
+                              <Card.Header className="payment-header">
+                                <h4>
+                                  N10000.00 <span>/one-off</span>
+                                </h4>
+                              </Card.Header>
+                              <Card.Body>
+                                <div className="card-div">
+                                  <h6 className="green">Book A Session</h6>
+                                  <p className="slash-txt">
+                                    Book a live session with a career coach to express your
+                                    concerns and get helpful recommendations.
+                                  </p>
+                                </div>
+                                <ul className="card-list">
+                                  <li>
+                                    <img src={mark_green} className="card-image" />
+                                    Get first-hand interpretation of your career assessment
+                                    results
+                                  </li>
+                                  <li>
+                                    <img src={mark_green} className="card-image" />
+                                    Get a clearer view of how to move your career journey
+                                    forward
+                                  </li>
+                                  <li>
+                                    <img src={mark_green} className="card-image" />
+                                    Get a live review of your CV
+                                  </li>
+                                  <li>Your opportunities are endless</li>
+                                </ul>
+                              </Card.Body>
+                            </Card>
+                          </Col>            
+                          )}
+                          {/* Price Slash Cards */}
                           {plan === "One-Off Insight Plan" && (
                             <Col
                               md={3}
@@ -577,67 +745,62 @@ class NewDashboardSubsriptionPlan extends React.Component {
                       </>
                     )}
                     {plan === undefined && (
-                      // <div className="norec">
-                      //   <img
-                      //     src={noplan}
-                      //     className="norecommendations"
-                      //     alt="norecommendations"
-                      //   />
-                      //   <div className="udont1">Oops!!!</div>
-                      //   <div className="udont">
-                      //     You are not subscribed to any plan yet
-                      //   </div>
-                      // </div>
-                      <div>
-                      <div>
-                          <div className="activeplac actplan">Active plan</div>
-                          <div className="subtert">
-                            You are currently subscribed to the <b>Free Plan</b>.
-                          </div>
+                      <div className="norec">
+                        <img
+                          src={noplan}
+                          className="norecommendations"
+                          alt="norecommendations"
+                        />
+                        <div className="udont1">Oops!!!</div>
+                        <div className="udont">
+                          You are not subscribed to any plan yet
+                        </div>
                       </div>
-                      <Col md={3} sm={8} className="margined_col subpayment">
-                      <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
-                        <Card.Header className="payment-header">
-                          <h4>
-                            N0.00 <span>/one-off</span>
-                          </h4>
-                        </Card.Header>
-                        <Card.Body>
-                          <div className="card-div">
-                            <h6>Free</h6>
-                            <p>
-                              Get the first hand Clarity experience for no
-                              charge at all. Take action to experience career bliss.
-                            </p>
-                          </div>
-                          <ul className="card-list">
-                            <li>
-                              <img src={mark} className="card-image" />
-                              Clarity score
-                            </li>
-                            <li>
-                              <img src={mark} className="card-image" />
-                              Career personality types
-                            </li>
-                            <li>
-                              <img src={mark} className="card-image" />
-                              Cv builder
-                            </li>
-                            <li>
-                              <img src={mark} className="card-image" />
-                              Strength & Weakness Report
-                            </li>
-                          </ul>
-                            {/* <Link to="/dashboardsubscriptionplan">
-                              <span className="card_btn btn-yellow">
-                                Subscribe
-                              </span>
-                            </Link> */}
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                    </div>
-                    )}
+                    //   <div>
+                    //    <div>
+                    //       <div className="activeplac actplan">Active plan</div>
+                    //       <div className="subtert">
+                    //         You are currently subscribed to the <b>Free Plan</b>.
+                    //       </div>
+                    //   </div>
+                    //   <Col md={3} sm={8} className="margined_col subpayment">
+                    //   <Card className="h-300 shadow-sm bg-white payment-card subpaymentcard">
+                    //     <Card.Header className="payment-header">
+                    //       <h4>
+                    //         N0.00 <span>/one-off</span>
+                    //       </h4>
+                    //     </Card.Header>
+                    //     <Card.Body>
+                    //       <div className="card-div">
+                    //         <h6>Free</h6>
+                    //         <p>
+                    //           Get the first hand Clarity experience for no
+                    //           charge at all. Take action to experience career bliss.
+                    //         </p>
+                    //       </div>
+                    //       <ul className="card-list">
+                    //         <li>
+                    //           <img src={mark} className="card-image" />
+                    //           Clarity score
+                    //         </li>
+                    //         <li>
+                    //           <img src={mark} className="card-image" />
+                    //           Career personality types
+                    //         </li>
+                    //         <li>
+                    //           <img src={mark} className="card-image" />
+                    //           Cv builder
+                    //         </li>
+                    //         <li>
+                    //           <img src={mark} className="card-image" />
+                    //           Strength & Weakness Report
+                    //         </li>
+                    //       </ul>
+                    //     </Card.Body>
+                    //   </Card>
+                    // </Col>
+                    // </div>
+                     )}
                   </div>
                 </Col>
               )}

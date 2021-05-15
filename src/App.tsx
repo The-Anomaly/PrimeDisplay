@@ -216,7 +216,7 @@ class App extends Component {
                 path="/clarityforteams"
                 component={ClarityForTeams}
               />
-              <Route exact path="/overview/old" component={NewDashboard} />
+              <Route exact path="/freeresult" component={NewDashboard} />
               <Route
                 exact
                 path="/profilebuilder"

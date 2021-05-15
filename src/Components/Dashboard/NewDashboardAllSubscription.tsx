@@ -21,7 +21,7 @@ import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 import { Link } from "react-router-dom";
 import PaymentSummary from "./paymentsummary";
 
-class NewDashboardAllSubsriptionPlans extends React.Component {
+class NewDashboardAllSubsriptionPlans extends React.Component<any, any> {
   state: any = {
     fullname: "",
     message: "",
@@ -30,6 +30,7 @@ class NewDashboardAllSubsriptionPlans extends React.Component {
     showWarning: false,
     plan: "",
     width: 100,
+    session: this.props?.location?.state?.session ? true : false,
   };
   componentDidMount() {
     this.setState({ isLoading: true });
@@ -45,6 +46,7 @@ class NewDashboardAllSubsriptionPlans extends React.Component {
           plan: response.data.plan,
           isLoading: false,
         });
+        
       })
       .catch((error) => {
         if (error && error.response && error.response.data) {
@@ -65,7 +67,7 @@ class NewDashboardAllSubsriptionPlans extends React.Component {
   };
 
   render() {
-    const { fullname, message, isLoading, width, plan } = this.state;
+    const { fullname, message, isLoading, width, plan, session } = this.state;
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -102,7 +104,7 @@ class NewDashboardAllSubsriptionPlans extends React.Component {
                           <Row className="kli6 bcbv">
                             <Col md={12}>
                               <Row className="centerr">
-                                <PaymentSummary />
+                                <PaymentSummary session={session} />
                               </Row>
                             </Col>
                           </Row>

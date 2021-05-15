@@ -175,7 +175,7 @@ export default function PaymentSummary(props: any) {
   return (
     <div className="fullwidth">
       <Container fluid={true}>
-        <Payment />
+        <Payment session={props.session} />
       </Container>
     </div>
   );

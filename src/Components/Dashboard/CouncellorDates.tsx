@@ -24,7 +24,7 @@ import DashboardNav from "./DashboardNavBar";
 import SideBarNewDashboard from "./SideBarNewDashboard";
 import DashboardLargeScreenNav from "./DashboardLargeScreenNav";
 
-class CouncellorDates extends React.Component<React.Props<any>> {
+class CouncellorDates extends React.Component<any, any> {
   state: any = {
     fullname: "",
     date: new Date(),
@@ -277,7 +277,15 @@ class CouncellorDates extends React.Component<React.Props<any>> {
   notify = (message: string) => {
     toast(message, { containerId: "B" });
   };
-
+  noSub = () => {
+    return this.props.history.push({
+        pathname: `/paymentsummary`,
+        search: "?query=session",
+        state: {
+          session: true,
+        },
+      });
+  }
   render() {
     const {
       fullname,
@@ -450,10 +458,8 @@ class CouncellorDates extends React.Component<React.Props<any>> {
                   Upgrade your Plan
                 </div>
                 <div className="text-center planupgrade">
-                  <div className="retaketest upss1 planupgradebtn">
-                    <Link to="/dashboardsubscriptionplan">
-                      View your current plan
-                    </Link>
+                  <div className="retaketest upss1 planupgradebtn" onClick={this.noSub}>
+                      Pay for a session
                   </div>
                 </div>
               </>

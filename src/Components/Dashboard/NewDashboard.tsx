@@ -279,11 +279,11 @@ class NewDashboard extends React.Component {
     return (
       <>
         <Container fluid={true} className="contann122">
-          <DashboardNav overview={true} />
+          <DashboardNav insight={true} />
           <Row>
-            <SideBarNewDashboard overview={true} />
+            <SideBarNewDashboard insight={true} />
             <Col md={10} sm={12} className="prm newprm">
-              <DashboardLargeScreenNav title="Overview" />
+              <DashboardLargeScreenNav title="Free Result" />
               <Row>
                 <Col md={12} className="kisls kisls22">
                   <div className="kdashheader npps">

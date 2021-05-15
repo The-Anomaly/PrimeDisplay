@@ -143,8 +143,8 @@ const Payment = (props: any) => {
     const availableUser = localStorage.getItem("user");
     var user = availableUser
       ? JSON.parse(availableUser)
-      : // : window.location.assign("/signin");
-        "";
+      : window.location.assign("/signin");
+      // : "";
 
     setFormState({
       ...state,
@@ -211,7 +211,6 @@ const Payment = (props: any) => {
         contractCode: "722431733218", //live key
         // contractCode: "4978848198", //test key
         // apiKey: "MK_TEST_WQZNXHV9FY", //test key
-        // apiKey:"MK_PROD_NNSGXTY6LF", //live key
         // secretKey: "MR4K3WHE7BDLZFTR3Z4VUJ4H4HD88S22",
         paymentDescription: selectedplan,
         isTestMode: false,
@@ -283,6 +282,7 @@ const Payment = (props: any) => {
         headers: { Authorization: `Token ${token}` },
       })
       .then((response) => {
+        closeChoosePaymentGateway();
         if (selectedplan == "flutterwave") {
           handleFlutterPayment({
             callback: (response) => {
@@ -375,7 +375,8 @@ const Payment = (props: any) => {
     try {
       const { plandetails, plancost, selectedplan }: any = modState;
       var handler = window.PaystackPop.setup({
-        key: "pk_live_ea8275cdd785a1758d70ab32591af4467c2085fd",
+        key: "pk_live_ea8275cdd785a1758d70ab32591af4467c2085fd", //live key
+        // key: "pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1", //test key
         // test key = pk_test_8e7b82cecf13543dd8bd9470a4ce0fccad9678e1
         //live key = pk_live_ea8275cdd785a1758d70ab32591af4467c2085fd
         email: user[0]?.email,
@@ -418,7 +419,8 @@ const Payment = (props: any) => {
   };
   //  flutter wave
   const config: any = {
-    public_key: "FLWPUBK-f0bf6d2535fc87fa0e850d2f15280f71-X",
+    public_key: "FLWPUBK-f0bf6d2535fc87fa0e850d2f15280f71-X", //live key
+    // public_key: "FLWPUBK_TEST-7d9d98356bc604228f8f08a27c798d27-X", //test key
     //test key FLWPUBK_TEST-7d9d98356bc604228f8f08a27c798d27-X
     // live key FLWPUBK-f0bf6d2535fc87fa0e850d2f15280f71-X
     tx_ref: modState.plandetails,
@@ -440,7 +442,7 @@ const Payment = (props: any) => {
   const handleFlutterPayment: any = useFlutterwave(config);
 
   // console.log(modState.plandetails);
-  // console.log(modState.plancost);
+  console.log(props.session);
   return (
     <>
       <div className={withoutlogin ? "mobilepadding" : ""}>
@@ -464,7 +466,7 @@ const Payment = (props: any) => {
 
           {/* Price slash cards starts */}
           <div className="slash-cards">
-            <Col
+            {!props.session && (<Col
               md={4}
               sm={8}
               className="margined_col cardmini progressivewidth"
@@ -538,7 +540,8 @@ const Payment = (props: any) => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col
+            )}
+            {!props.session && (<Col
               md={4}
               sm={8}
               className="margined_col cardmini progressivewidth"
@@ -613,7 +616,8 @@ const Payment = (props: any) => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col
+            )}
+            {props.session && (<Col
               md={4}
               sm={8}
               className="margined_col cardmini progressivewidth"
@@ -643,10 +647,6 @@ const Payment = (props: any) => {
                       Get a clearer view of how to move your career journey
                       forward
                     </li>
-                    <li>
-                      <img src={mark_green} className="card-image" />
-                      Get a live review of your CV
-                    </li>
                     <li>Your opportunities are endless</li>
                   </ul>
                   {withoutlogin ? (
@@ -657,7 +657,7 @@ const Payment = (props: any) => {
                     <span
                       className="card_btn btn-green slash-btn"
                       onClick={() =>
-                        openChoosePaymentGateway("Book Session", 1500)
+                        openChoosePaymentGateway("Book Session", 10000)
                       }
                     >
                       Book a session
@@ -666,6 +666,7 @@ const Payment = (props: any) => {
                 </Card.Body>
               </Card>
             </Col>
+            )}
           </div>
           {/* Price slash cards ends */}
 
@@ -2021,11 +2022,11 @@ const Payment = (props: any) => {
         onHide={closeChoosePaymentGateway}
       >
         <Modal.Header>
-          <Modal.Title>Choose a payment channel</Modal.Title>
+          <Modal.Title><b>Choose a payment channel</b></Modal.Title>
         </Modal.Header>
         <Modal.Body className="payment-modal-row">
           <Row>
-            <Col md={6} className="monnify-logo monnify-logo1">
+            <Col className="paylogosec monnify-logo monnify-logo1">
               <span
                 className="paylogo1"
                 onClick={() => requestForPayref("monnify", "monnify")}
@@ -2033,7 +2034,7 @@ const Payment = (props: any) => {
                 <img src={monnifyLogo} className="payment-channel-logo" />
               </span>
             </Col>
-            <Col md={6}>
+            <Col className="paylogosec">
               <span className="paylogo1">
                 <img
                   src={flutterLogo}
@@ -2042,14 +2043,14 @@ const Payment = (props: any) => {
                 />
               </span>
             </Col>
-            {/* <Col md={4}>
+            <Col className="paylogosec">
               <span
                 className="paylogo1"
                 onClick={() => requestForPayref("paystack", "paystack")}
               >
                 <img src={paystackLogo} className="payment-channel-logo" />
               </span>
-            </Col> */}
+            </Col>
           </Row>
         </Modal.Body>
         <Modal.Footer>

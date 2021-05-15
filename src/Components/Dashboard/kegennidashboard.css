@@ -4563,3 +4563,12 @@ a {
   0% {transform: rotate(0deg);}
   100% {transform: rotate(360deg);}
 }
+
+.marg {
+  margin: 3rem 0 !important; 
+}
+.flex {
+  display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
