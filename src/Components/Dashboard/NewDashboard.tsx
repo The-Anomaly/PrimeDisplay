@@ -320,7 +320,7 @@ class NewDashboard extends React.Component {
                           this.checkIfUserHasAccessToAskACounselor()
                         }
                       >
-                        {isLoading_1 ? "Processing" : "Ask a counselor"}
+                        {isLoading_1 ? "Processing" : "Text a coach"}
                       </Button>
                       {showfullresult && (
                         <Button

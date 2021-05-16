@@ -43,7 +43,7 @@ const NewDashboardAllMessages = withRouter((props: any) => {
         // console.log(response);
         if (response?.data[0]?.ask_counsellor === false) {
             //notify("Update your subscription to access this feature");
-            // console.log("Can't access ask a counselor");
+            // console.log("Can't access text a coach");
             // setTimeout(
             //   (window.location.pathname = "/dashboardsubscriptionplan"),
             //   1000

@@ -177,7 +177,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                                   </li>
                                   <li>
                                     <img src={mark} className="card-image" />
-                                    In-app "ask a counsellor"
+                                    In-app "text a coach"
                                   </li>
                                 </ul>
                               </Card.Body>
@@ -240,7 +240,7 @@ class NewDashboardSubsriptionPlan extends React.Component {
                                   </li>
                                   <li>
                                     <img src={mark_blue} className="card-image" />
-                                    In-app "ask a counsellor"
+                                    In-app "text a coach"
                                   </li>
                                 </ul>
                               </Card.Body>

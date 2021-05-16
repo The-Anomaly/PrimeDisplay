@@ -474,7 +474,7 @@ const Payment = (props: any) => {
               <Card className="h-300 shadow-sm bg-white payment-card">
                 <Card.Header className="payment-header">
                   <h4>
-                    N1500.00 <span>/week</span>
+                    N1500.00 <span>7 days access</span>
                   </h4>
                 </Card.Header>
                 <Card.Body>
@@ -520,7 +520,7 @@ const Payment = (props: any) => {
                     </li>
                     <li>
                       <img src={mark} className="card-image" />
-                      In-app "ask a counsellor"
+                      In-app "text a coach"
                     </li>
                   </ul>
                   {withoutlogin ? (
@@ -549,7 +549,7 @@ const Payment = (props: any) => {
               <Card className="h-300 shadow-sm bg-white payment-card">
                 <Card.Header className="payment-header">
                   <h4>
-                    N5000.00 <span>/month</span>
+                    N5000.00 <span>30 days access</span>
                   </h4>
                 </Card.Header>
                 <Card.Body>
@@ -596,7 +596,7 @@ const Payment = (props: any) => {
                     </li>
                     <li>
                       <img src={mark_blue} className="card-image" />
-                      In-app "ask a counsellor"
+                      In-app "text a coach"
                     </li>
                   </ul>
                   {withoutlogin ? (

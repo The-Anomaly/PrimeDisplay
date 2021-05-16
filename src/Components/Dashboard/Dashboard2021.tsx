@@ -462,7 +462,7 @@ class Dashboard2021 extends React.Component<any, any> {
                           className="ov-todo-btn"
                         >
                           {usersession.length > 0
-                            ? "Ask a Counselor"
+                            ? "Text a Coach"
                             : "Book a session"}
                         </button>
                       </div>

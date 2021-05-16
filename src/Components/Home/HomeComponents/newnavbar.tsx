@@ -241,13 +241,13 @@ const newNavbar = withRouter((props: any) => {
                   ) : (
                     " "
                   )}
-                  {!userLoggedIn ? (
+                  {/* {!userLoggedIn ? (
                     <div className="listwraperMob">
                       <Link to="/pricing" className={navbar ? "lightnavlist" : ""}>Pricing</Link>
                     </div>
                   ) : (
                     " "
-                  )}
+                  )} */}
                   {!userLoggedIn ? (
                     <div className="listwraperMob">
                       <Link to="/contact" className={navbar ? "lightnavlist" : ""}>Contact Us</Link>
@@ -373,13 +373,13 @@ const newNavbar = withRouter((props: any) => {
             ) : (
               " "
             )}
-            {!userLoggedIn ? (
+            {/* {!userLoggedIn ? (
               <span className={props.payments ? "title hhome" : "title"}>
                 <Link to="/pricing">Pricing</Link>
               </span>
             ) : (
               " "
-            )}
+            )} */}
             {!userLoggedIn ? (
               <span className={props.contact ? "title hhome" : "title"}>
                 <Link to="/contact">Contact Us</Link>

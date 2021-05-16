@@ -211,7 +211,7 @@ const SideBarNewDashboard = withRouter((props: any) => {
                     className="task112"
                     onClick={checkIfUserHasAccessToAskACounselor}
                   >
-                    Ask a Counselor
+                    Text a Coach
                   </div>
                 </Card.Body>
               </Accordion.Collapse>
