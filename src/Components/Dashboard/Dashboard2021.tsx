@@ -19,6 +19,8 @@ import { Link } from "react-router-dom";
 import Initials from "./Avatardesign";
 import available from "../../assets/available.png";
 import notavailable from "../../assets/notavailable.png";
+import { Button, Modal } from "react-bootstrap";
+import Notification from "./Notification";
 
 interface State {
   fullname: string;
@@ -35,6 +37,8 @@ interface State {
   incomplete_assessment: boolean;
   isLoading: boolean;
   profile_builder: boolean;
+  retakeModal: boolean;
+  retake: boolean;
 }
 class Dashboard2021 extends React.Component<any, any> {
   state: State = {
@@ -52,7 +56,19 @@ class Dashboard2021 extends React.Component<any, any> {
     incomplete_assessment: false,
     isLoading: true,
     profile_builder: false,
+    retakeModal: false,
+    retake: false,
   };
+  openRetakePrompt = () => {
+    this.setState({
+      retakeModal: true,
+    })
+  }
+  closeRetakePrompt = () => {
+    this.setState({
+      retakeModal: false,
+    })
+  }
   componentDidMount() {
     const availableToken = localStorage.getItem("userToken");
     const token = availableToken
@@ -84,7 +100,7 @@ class Dashboard2021 extends React.Component<any, any> {
     ])
       .then(
         Axios.spread((res1, res2, res3, res4, res5, res6, res7) => {
-          console.log(res1, res2, res3, res4, res5, res6, res7);
+          // console.log(res1, res2, res3, res4, res5, res6, res7);
           if (
             res1.status === 200 ||
             res2.status === 200 ||
@@ -103,6 +119,7 @@ class Dashboard2021 extends React.Component<any, any> {
               usersession: [...res4?.data?.results],
               view_result: res5?.data[0]?.view_result,
               profile_builder: res5?.data[0]?.profile_builder_submitted,
+              retake: res5?.data[0]?.retake_assessment,
               progress: res6?.data[0],
               incomplete_assessment:
                 !res6?.data[0].phase_two_building ||
@@ -199,6 +216,28 @@ class Dashboard2021 extends React.Component<any, any> {
       return this.props.history.push("/assessment/welcome")
     }
   };
+  retakeAssessment = (e) => {
+    this.setState({
+      isLoading: true,
+    })
+    e.preventDefault();
+    const availableToken = localStorage.getItem("userToken");
+    const token = availableToken ? JSON.parse(availableToken) : "";
+    Axios.get<any, AxiosResponse<any>>(`${API}/retakeassessment`, {
+      headers: { Authorization: `Token ${token}` },
+    })
+      .then((res) => {
+        this.setState({
+          isLoading: false,
+        })
+        this.props.history.push("/assessment/welcome");
+      })
+      .catch((err) => {
+        this.setState({
+          isLoading: false,
+        })
+      });
+  };
   getInitials = (name) => {
     const details = localStorage.getItem("user");
     const user_name = details ? JSON.parse(details) : "";
@@ -245,8 +284,9 @@ class Dashboard2021 extends React.Component<any, any> {
       incomplete_assessment,
       isLoading,
       profile_builder,
+      retakeModal,
+      retake,
     } = this.state;
-    console.log(progress);
     return (
       <>
         <Container fluid={true} className="contann122">
@@ -255,6 +295,7 @@ class Dashboard2021 extends React.Component<any, any> {
             <SideBarNewDashboard overview={true} />
             <Col md={10} sm={12} className="prm newprm">
               <DashboardLargeScreenNav title="Overview" />
+              {!isLoading && (<Notification />)}
               <Row>
                 {isLoading && (
                   <div className="icebreakerpreloader center-it">
@@ -281,15 +322,18 @@ class Dashboard2021 extends React.Component<any, any> {
                               ? "You can be anything you dream about, all it takes is that extra step when you feel weary. Are you going to do that now?"
                               : ""}
                           </p>
-                          <button onClick={this.viewResult}>
-                            {!this.state.progress.phase_one
-                              ? "Take Assessment"
-                              : incomplete_assessment
-                              ? "Continue Assessment"
-                              : !incomplete_assessment
-                              ? "View Insight"
-                              : "Take Assessment"}
-                          </button>
+                          <div className="ov-btn-sec">
+                            <button onClick={this.viewResult}>
+                              {!this.state.progress.phase_one
+                                ? "Take Assessment"
+                                : incomplete_assessment
+                                ? "Continue Assessment"
+                                : !incomplete_assessment
+                                ? "View Insight"
+                                : "Take Assessment"}
+                            </button>
+                            {retake && (<button onClick={this.openRetakePrompt}>Retake Assessment</button>)}
+                          </div>
                         </div>
                         <img
                           className={
@@ -473,6 +517,27 @@ class Dashboard2021 extends React.Component<any, any> {
             </Col>
           </Row>
         </Container>
+        <Modal show={this.state.retakeModal} onHide={this.closeRetakePrompt}>
+              <Modal.Body>
+                Are you sure you want to retake the assessment?
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  className="btnws"
+                  variant="secondary"
+                  onClick={this.closeRetakePrompt}
+                >
+                  No
+                </Button>
+                <Button
+                  variant="danger"
+                  className="btnws"
+                  onClick={this.retakeAssessment}
+                >
+                  Yes
+                </Button>
+              </Modal.Footer>
+            </Modal>
       </>
     );
   }
