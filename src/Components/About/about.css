@@ -1,0 +1,112 @@
+.p-about-sec1 {
+    border-bottom: 1px solid #99cc33;
+    padding: 5rem 0 4rem;
+    display: flex;
+    align-items: center;
+}
+.p-about-sec1-content {
+    width: 55%;
+    padding-right: 1rem;
+}
+.p-about-sec1-ttl {
+    color: #333333;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+.p-about-sec1-txt {
+    color: #666666;
+    font-size: 15px;
+}
+.p-about-sec1-imgs {
+    width: 45%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+.p-about-img1 img, .p-about-img2 img, .p-about-img3 img, .p-about-img4 img  {
+    width: 100%;
+    height: 100%;
+}
+.p-about-img1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.p-about-img2 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+.p-about-img3 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.p-about-img4 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.p-about-sec2 {
+    padding: 3rem 0;
+}
+.p-about-sec2-ttl {
+    font-weight: 600;
+    max-width: 480px;
+    text-align: center;
+    margin: auto;
+    color: #1E1E1E;
+}
+.p-about-sec2-item {
+    display: flex;
+    align-items: center;
+    padding: 2.5rem 0 4rem;
+}
+.p-about-sec2-item-1 {
+    width: 40%;
+}
+.p-about-hd {
+    color: #000000;
+    font-weight: 900;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+.p-about-descrip {
+    font-size: 15px;
+    color: #333333;
+    max-width: 400px;
+}
+.p-about-sec2-item-2 {
+    width: 60%;
+    text-align: right;
+}
+.p-about-edu {
+    max-width: 600px;
+}
+.p-about-reverse {
+    flex-direction: row-reverse;
+}
+.p-about-reverse .p-about-sec2-item-2 {
+    text-align: left;
+}
+.p-about-sec3 {
+    background: #07113D;
+    color: #fff;
+    position: relative;
+    padding: 2.5rem 3.5rem;
+    border-radius: 6px;
+    margin-bottom: 4rem;
+}
+.p-about-sec3-img {
+    position: absolute;
+    bottom: 0;
+    right: 3rem;
+    width: 230px;
+}
+.p-about-sec3-btn {
+    color: #fff;
+    background: #99cc33;
+    border: 1px solid #99cc33;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    margin: 8px 0 0;
+}

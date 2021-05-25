@@ -22,7 +22,7 @@ const Landing = () => {
   return (
     <>
       <NavBar home={true} />
-      <div className="">
+      <main className="">
         <div className="p-hero p-padd">
           <div className="p-hero-txt1">Prime Display</div>
           <div className="p-hero-hd-sec">
@@ -140,7 +140,7 @@ const Landing = () => {
         </div>
         <Contact />
         <Footer />
-      </div>
+      </main>
     </>
   );
 };
