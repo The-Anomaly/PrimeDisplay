@@ -1,0 +1,37 @@
+.p-sec6 {
+    background-color: #99cc33;
+    background: url("../../assets/contactbg.svg");
+    padding: 4rem 8%;
+    margin-bottom: 4rem;
+}
+.p-sec6-info {
+    background: rgba(34, 34, 34, 0.4);
+    border-radius: 13px;
+    padding: 2.8rem 2.25rem;
+    color: #fff;
+    max-width: 450px;
+}
+.p-sec6-ttl {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    max-width: 250px;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+}
+.p-sec6-txt {
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 1.55;
+    color: #f7f7f7;
+    margin-bottom: 1.5rem;
+}
+.p-sec6-btn {
+    font-size: 14px;
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #fff;
+    height: 45px;
+    width: 150px;
+    border-radius: 6px
+}

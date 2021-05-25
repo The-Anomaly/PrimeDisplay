@@ -1,0 +1,38 @@
+.p-nav-desktop {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 8%;
+    align-items: center;
+}
+.p-logo {
+    width: 80px;
+}
+.p-nav-list {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    color: #999999;
+    font-size: 14px;
+}
+.p-nav-list-items {
+    color: #999999;
+    text-decoration: none;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.p-nav-list-items:hover {
+    transform: scale(1.1);
+    text-decoration: none;
+}
+.p-nav-list-items-active {
+    color: #003399;
+}
+.p-nav-btn {
+    background: #99CC33;
+    border: 1px solid #99CC33;
+    color: #fff;
+    font-size: 13px;
+    height: 38px;
+    width: 140px;
+    border-radius: 6px;
+}
