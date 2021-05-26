@@ -138,9 +138,9 @@ const Landing = () => {
             </div>
           </div>
         </div>
-        <Contact />
-        <Footer />
       </main>
+      <Contact />
+      <Footer />
     </>
   );
 };

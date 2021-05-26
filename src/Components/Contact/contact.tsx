@@ -70,8 +70,8 @@ const Contact = () => {
             <button className="p-ct-btn">Contact Us</button>
           </form>
         </div>
-        <Footer />
       </main>
+    <Footer />
     </>
   );
 };

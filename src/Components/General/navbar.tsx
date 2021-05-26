@@ -45,24 +45,28 @@ const NavBar = (props: any) => {
                 Contact Us
               </span>
             </Link>
-            <span
-              className={
-                props.buy
-                  ? "p-nav-list-items p-nav-list-items-active"
-                  : "p-nav-list-items"
-              }
-            >
-              Buy
-            </span>
-            <span
-              className={
-                props.services
-                  ? "p-nav-list-items p-nav-list-items-active"
-                  : "p-nav-list-items"
-              }
-            >
-              Services
-            </span>
+            <Link className="p-nav-list-items" to="/buy">
+              <span
+                className={
+                  props.buy
+                    ? "p-nav-list-items p-nav-list-items-active"
+                    : "p-nav-list-items"
+                }
+              >
+                Buy
+              </span>
+            </Link>
+            <Link className="p-nav-list-items" to="/services">
+              <span
+                className={
+                  props.services
+                    ? "p-nav-list-items p-nav-list-items-active"
+                    : "p-nav-list-items"
+                }
+              >
+                Services
+              </span>
+            </Link>
           </nav>
           <button className="p-nav-btn">Get in Touch</button>
         </div>

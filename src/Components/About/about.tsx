@@ -114,9 +114,9 @@ const About = () => {
             <button className="p-about-sec3-btn">Ask How</button>
             <img className="p-about-sec3-img" src={chart} alt="chart" />
         </div>
+      </main>
         <Contact />
         <Footer />
-      </main>
     </>
   );
 };

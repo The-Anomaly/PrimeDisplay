@@ -21,8 +21,8 @@ const Footer = () => {
                 </div>
                 <div>
                     <div className="p-footer-hd">Products</div>
-                    <div className="p-footer-item">Services</div>
-                    <div className="p-footer-item">Buy</div>
+                    <Link className="p-footer-link" to="/services"><div className="p-footer-item">Services</div></Link>
+                    <Link className="p-footer-link" to="/buy"><div className="p-footer-item">Buy</div></Link>
                 </div>
                 <div className="p-footer-4">
                     <div className="p-footer-hd">Contacts</div>
