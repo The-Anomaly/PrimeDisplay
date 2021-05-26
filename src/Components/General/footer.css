@@ -24,7 +24,8 @@
 }
 .p-footer-hd {
     color: #8C97AC;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    width: fit-content;
 }
 .p-footer-item {
     color: #999999;
@@ -59,4 +60,10 @@
 .p-ftr-cpysec {
     display: flex;
     justify-content: space-between;
+}
+.p-footer-hd::after {
+    content: "";
+    border: 1px solid #99cc33;
+    display: block;
+    margin-top: 10px;
 }

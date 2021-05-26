@@ -4,6 +4,18 @@ import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 
 const NavBar = (props: any) => {
+  const [nav, setNav] = React.useState({
+    location: true,
+  })
+  const { location } = nav;
+  React.useEffect(() => {
+    if(window.location.pathname !== "/") {
+      setNav({
+        ...nav,
+        location: false,
+      })
+    }
+  }, [])
   return (
     <>
       <header className="p-nav">
@@ -68,7 +80,7 @@ const NavBar = (props: any) => {
               </span>
             </Link>
           </nav>
-          <button className="p-nav-btn">Get in Touch</button>
+          <button className={location ? "p-nav-btn" : "p-nav-btn p-btn-outline"}>Get in Touch</button>
         </div>
         <div className="p-nav-mobile"></div>
       </header>

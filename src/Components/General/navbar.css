@@ -36,3 +36,7 @@
     width: 140px;
     border-radius: 6px;
 }
+.p-btn-outline {
+    background: #fff;
+    color: #99cc33;
+}
