@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./footer.css";
 import logo from "../../assets/logo.png"
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     let date = new Date().getFullYear()
@@ -14,9 +15,9 @@ const Footer = () => {
                 </div>
                 <div>
                     <div className="p-footer-hd">Links</div>
-                    <div className="p-footer-item">Home</div>
-                    <div className="p-footer-item">About Us</div>
-                    <div className="p-footer-item">Contact Us</div>
+                    <Link className="p-footer-link" to="/"><div className="p-footer-item">Home</div></Link>
+                    <Link className="p-footer-link" to="/about"><div className="p-footer-item">About Us</div></Link>
+                    <Link className="p-footer-link" to="/contact"><div className="p-footer-item">Contact Us</div></Link>
                 </div>
                 <div>
                     <div className="p-footer-hd">Products</div>
@@ -31,7 +32,7 @@ const Footer = () => {
                 </div>
                 </div>
                 <hr />
-                <div>
+                <div className="p-ftr-cpysec">
                     <p className="p-footer-copy">&copy; Prime Display {date}, All Rights Reserved</p>
                     <div className="p-footer-socials">
                     <i className="fab fa-twitter"></i>

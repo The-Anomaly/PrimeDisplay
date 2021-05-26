@@ -110,7 +110,7 @@ const About = () => {
           </div>
         </div>
         <div className="p-about-sec3 p-marg">
-            <h5>For Every Opportunity to Pass Information Make it Epic</h5>
+            <h6>For Every Opportunity to Pass Information Make it Epic</h6>
             <button className="p-about-sec3-btn">Ask How</button>
             <img className="p-about-sec3-img" src={chart} alt="chart" />
         </div>

@@ -1,0 +1,112 @@
+.p-contactus {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 0 3rem;
+}
+.p-contactus-ttl {
+    color: #333333;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 1.8rem;
+}
+.p-contactus-txt {
+    font-size: 15px;
+    color: #666666;
+}
+.p-map {
+    margin-left: -3rem;
+    width: 60%;
+    position: relative;
+    z-index: -2;
+}
+.p-contact-form {
+    background: #99cc33;
+    border-radius: 10px;
+    color: #fff;
+    padding: 2rem 4rem 4rem;
+    margin-bottom: 4rem;
+    position: relative;
+}
+.p-ct-info {
+    display: flex;
+    justify-content: space-between;
+}
+.p-ct-location {
+    width: 30%;
+    text-align: center;
+    padding: 1rem 2rem 0;
+    max-width: 250px;
+}
+.p-ct-location i {
+    font-size: 20px;
+    margin-bottom: 1.5rem;
+}
+.p-ct-location p {
+    font-size: 14px;
+}
+.p-ct-white {
+    color: #99cc33;
+    background: #fff;
+    border-radius: 6px;
+}
+.p-ct-form {
+    background: #fff;
+    color: #666666;
+    padding: 2rem 4rem 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+.p-ct-inputs {
+    justify-content: space-between;
+    display: flex;
+}
+.p-ct-deets {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+.p-ct-msg {
+    width: 45%;
+}
+.p-ct-msg textarea {
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid #999999;
+}
+.p-ct-form input {
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #999999;
+    margin-top: 0.8rem;
+}
+.p-ct-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+.p-ct-btn {
+    background: #99cc33;
+    color: #fff;
+    border: 1px solid #99cc33;
+    font-size: 14px;
+    border-radius: 6px;
+    width: 150px;
+    height: 45px;
+    margin-left: calc(50% - 75px);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.p-ct-img {
+    position: absolute;
+    right: 0;
+    top: -28rem;
+    z-index: -1;
+    width: 60%;
+}
+.p-ct-icon {
+    position: absolute;
+    left: 1rem;
+    bottom: 12px;
+}
