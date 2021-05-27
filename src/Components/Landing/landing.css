@@ -9,6 +9,7 @@
 .p-hero {
     padding: 5rem 8% 0.5rem;
     position: relative;
+    background: url("../../assets/herobg.svg");
 }
 .p-hero-txt1 {
     color: #003399;
@@ -43,7 +44,6 @@
     top: -6.5rem;
     position: absolute;
     right: 0;
-    z-index: -1;
 }
 .p-hero-btn {
     background: #99CC33;
@@ -270,4 +270,7 @@
     color: #666666;
     font-size: 15px;
     margin-bottom: 5px;
+}
+.p-link-prod, .p-link-prod:hover {
+    color: #99cc33;
 }

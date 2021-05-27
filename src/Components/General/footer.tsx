@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className="p-footer-list">
                 <div className="p-footer-1">
                     <img className="p-footer-1-img" src={logo} alt="logo" />
-                    <p className="p-footer-1-txt">Pulvinar risus etiam viverra elit. Risus orci proin magna tellus nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris, a, pharetra, neque integer eu.</p>
+                    <p className="p-footer-1-txt">Our goal is to create a more intriguing class/ boardrooms through the provision of high quality interactive projectors and flat panel display units.</p>
                 </div>
                 <div>
                     <div className="p-footer-hd">Links</div>
@@ -27,7 +27,7 @@ const Footer = () => {
                 <div className="p-footer-4">
                     <div className="p-footer-hd">Contacts</div>
                     <p className="p-footer-item">Feel free to get in touch with us via phone or send us a message.</p>
-                    <p className="p-footer-ctct">+1-301-340-3946</p>
+                    <p className="p-footer-ctct">+234 (0) 815 839 3221</p>
                     <p className="p-footer-ctct">info@primedisplay.com</p>
                 </div>
                 </div>

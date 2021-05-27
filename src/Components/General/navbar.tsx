@@ -18,7 +18,7 @@ const NavBar = (props: any) => {
   }, [])
   return (
     <>
-      <header className="p-nav">
+      <header className={location ? "p-nav p-nav-bg" : "p-nav"}>
         <div className="p-nav-desktop">
           <Link to="/">
             <img className="p-logo" src={logo} alt="logo" />

@@ -132,6 +132,7 @@
     height: 40px;
     border-radius: 5px;
     margin-bottom: 1.25rem;
+    cursor: pointer;
 }
 .p-viewmore-progress {
     font-size: 13px;
@@ -192,4 +193,7 @@
 }
 .p-vm-img {
     width: 45%;
+}
+.p-buy-products-img {
+    width: 100%;
 }

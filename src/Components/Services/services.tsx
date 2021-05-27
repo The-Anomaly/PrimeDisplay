@@ -10,8 +10,13 @@ import tab from "../../assets/tab.png";
 import tools from "../../assets/tools.png";
 import sitting from "../../assets/sitting.png";
 import man from "../../assets/man.png";
+import { useHistory } from "react-router-dom";
 
 const Services = () => {
+  let history = useHistory();
+  const contact = () => {
+    return history.push("/contact");
+  };
   return (
     <>
       <NavBar services={true} />
@@ -20,10 +25,9 @@ const Services = () => {
           <div>
             <h1 className="p-contactus-ttl">Services</h1>
             <p className="p-contactus-txt">
-              Services we render, cuts accross everything digital whiteborading
-              Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-              nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris, a,
-              pharetra, neque integer eu.
+              Our services comprises installation maintenance and repairs. We
+              provide both on-site and ad-hoc support services to our clients
+              nationwide.
             </p>
           </div>
           <img className="p-sitting" src={sitting} alt="person sitting" />
@@ -39,11 +43,14 @@ const Services = () => {
               </div>
               <p className="p-sec2-ttl">Repairs</p>
               <p className="p-sec2-txt">
-                Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-                nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris,
-                a, pharetra, neque integer eu. Gllus nunc, facilisis. Odio etiam
-                nunc, lacus et bibendum id. Mauris, a, pharetra, neque integer
-                eu.
+                We have a well-equipped workshop and competent engineers well
+                experienced in systems troubleshooting and repairs. We diagnose
+                the system to discover the damaged parts and we replace them. We
+                are positioned to source for genuine spare parts for after sales
+                services to replace defective parts of products that are within
+                warranty. In the world of cutting edge appliances, having a
+                reliable partner like us who can procure genuine spare parts is
+                key and can make a whole lot of difference.
               </p>
             </div>
             <div className="p-sec2-item">
@@ -52,11 +59,11 @@ const Services = () => {
               </div>
               <p className="p-sec2-ttl">Installation</p>
               <p className="p-sec2-txt">
-                Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-                nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris,
-                a, pharetra, neque integer eu. Gllus nunc, facilisis. Odio etiam
-                nunc, lacus et bibendum id. Mauris, a, pharetra, neque integer
-                eu.
+                We are often called in to provide both on-site and ad-hoc
+                support services such as; assemblage of the disjointed
+                components and mounting of the gadgets. Our engineers have the
+                certification for the equipment they install and service. Our
+                clients attest to our effectiveness, efficiency and promptness.
               </p>
             </div>
             <div className="p-sec2-item no-marg">
@@ -65,17 +72,19 @@ const Services = () => {
               </div>
               <p className="p-sec2-ttl">Maintenance</p>
               <p className="p-sec2-txt">
-                Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-                nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris,
-                a, pharetra, neque integer eu. Gllus nunc, facilisis. Odio etiam
-                nunc, lacus et bibendum id. Mauris, a, pharetra, neque integer
-                eu.
+                Our culture is solely based on Preventive maintenance. Here, we
+                take responsibility of ensuring that clients gadgets do not
+                breakdown, hence, we embark on regular systems servicing to
+                ensure smooth operation. Where there is a breakdown outside the
+                warranty period, the client bears the cost of restoration.
               </p>
             </div>
           </div>
         </div>
         <div className="p-about-sec3 p-marg p-services-btnsec">
-          <button className="p-services-btn">Contact us Now</button>
+          <button className="p-services-btn" onClick={contact}>
+            Contact us Now
+          </button>
           <h6>For top Notch All round Satisfactory Service!</h6>
           <img className="p-services-man" src={man} alt="man excited" />
         </div>

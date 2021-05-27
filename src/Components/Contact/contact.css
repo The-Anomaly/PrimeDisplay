@@ -110,3 +110,19 @@
     left: 1rem;
     bottom: 12px;
 }
+.p-link-num {
+    color: #fff;
+    text-decoration: none;
+}
+.p-link-mail {
+    color: #99cc33;
+    text-decoration: none;
+}
+.p-link-num:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.p-link-mail:hover {
+    color: #99cc33;
+    text-decoration: none;
+}

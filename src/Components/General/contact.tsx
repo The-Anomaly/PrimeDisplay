@@ -1,7 +1,13 @@
 import * as React from "react";
+import { propTypes } from "react-bootstrap/esm/Image";
 import "./contact.css";
+import { useHistory } from "react-router-dom";
 
 const Contact = () => {
+  let history = useHistory();
+  const contact = () => {
+    return history.push("/contact");
+  }
   return (
     <>
       <div className="p-sec6">
@@ -10,14 +16,13 @@ const Contact = () => {
             Create an Interesting Lasting Experience
           </h6>
           <p className="p-sec6-txt">
-            Sed pharetra quam tincidunt nisi sed egestas aenean. Sagittis
-            feugiat neque purus fermentum risus. Amet semper enim rnare risus
-            gravida mauris. Vivamus luctus nulla lacus bibendum mauris sed
-            donec. Nec molestie dui at neque, nulla ut iaculis lectus. Sit in in
-            proin sed. Vivamus luctus nulla lacus bibendum mauris sed donec Nec
-            molestie dui at neque, nulla ut iaculis lectus. Sit in in proin sed.
+            Our focus is specifically on hardware provision towards building a
+            competitive and productive e-learning pathway for schools, colleges
+            and cooperate organisations. We deliver the best possible reliable
+            ICT solutions through uncompromising culture of quality service and
+            customer satisfaction.
           </p>
-          <button className="p-sec6-btn">Contact Us</button>
+          <button className="p-sec6-btn" onClick={contact}>Contact Us</button>
         </div>
       </div>
     </>

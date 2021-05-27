@@ -11,8 +11,13 @@ import edu from "../../assets/edu.png";
 import chart from "../../assets/chart.png";
 import Contact from "../General/contact";
 import Footer from "../General/footer";
+import { useHistory } from "react-router-dom";
 
 const About = () => {
+  let history = useHistory();
+  const contact = () => {
+    return history.push("/contact");
+  }
   return (
     <>
       <NavBar about={true} />
@@ -24,13 +29,17 @@ const About = () => {
             </h1>
             <p className="p-about-sec1-txt">
               Prime Display Solutions provides interactive e-learning solutions
-              to schools, colleges, and corporate organizations. Interactive
-              Learning is a powerful educational technique that gets students
-              actively engaged and interested in the learning process and this
-              has been enhanced through technology. <br />
+              to corporate organizations, schools, and colleges. We engage
+              pupils and empower schools to improve learning and teaching
+              simultaneously. Interactive Learning is a powerful educational
+              technique that gets students actively engaged and interested in
+              the learning process and this has been enhanced through
+              technology. <br />
               In contrast to the more passive technique of traditional
               lecturing, one big benefit of interactive learning is the positive
-              effect it has on student engagement.
+              effect it has on student engagement. The
+              formula is clear; Better Engagement simply results in Better
+              Comprehension.
             </p>
           </div>
           <div className="p-about-sec1-imgs">
@@ -56,10 +65,7 @@ const About = () => {
             <div className="p-about-sec2-item-1">
               <h6 className="p-about-hd">Education</h6>
               <p className="p-about-descrip">
-                Vitae tristique tellus enim nunc in sit ut posuere. Feugiat
-                porttitor velit malesuada urna enim nunc sem. Sollicitudin
-                dictumst blandit nec ante a etiam quisque eleifend. Tempus
-                cursus sit lacus proin lectus egestas at.
+              We help eradicate the more passive technique of traditional lecturing by offering a more interactive way of learning through the provision of high tech interactive projectors, interactive white boards, Flat panel displays and many more advanced interactive displays for a more collaborative classroom.
               </p>
             </div>
             <div className="p-about-sec2-item-2">
@@ -70,10 +76,7 @@ const About = () => {
             <div className="p-about-sec2-item-1">
               <h6 className="p-about-hd">Business</h6>
               <p className="p-about-descrip">
-                Vitae tristique tellus enim nunc in sit ut posuere. Feugiat
-                porttitor velit malesuada urna enim nunc sem. Sollicitudin
-                dictumst blandit nec ante a etiam quisque eleifend. Tempus
-                cursus sit lacus proin lectus egestas at.
+              We make business presentations and boardroom meetings better through the provision of high quality interactive gadgets such as ultra-high definition projectors and flat panel display units. These also aids virtual meetings and presentations.
               </p>
             </div>
             <div className="p-about-sec2-item-2">
@@ -84,10 +87,7 @@ const About = () => {
             <div className="p-about-sec2-item-1">
               <h6 className="p-about-hd">Religious Gathering</h6>
               <p className="p-about-descrip">
-                Vitae tristique tellus enim nunc in sit ut posuere. Feugiat
-                porttitor velit malesuada urna enim nunc sem. Sollicitudin
-                dictumst blandit nec ante a etiam quisque eleifend. Tempus
-                cursus sit lacus proin lectus egestas at.
+              As the World advance in technology and the virtual World emerge in the religious sect, there’s need for ultra-high technical gadgets in religious gatherings. We provide high quality projectors and interactive flat panels for more relativity in such gatherings and virtually.
               </p>
             </div>
             <div className="p-about-sec2-item-2">
@@ -98,10 +98,7 @@ const About = () => {
             <div className="p-about-sec2-item-1">
               <h6 className="p-about-hd">Government</h6>
               <p className="p-about-descrip">
-                Vitae tristique tellus enim nunc in sit ut posuere. Feugiat
-                porttitor velit malesuada urna enim nunc sem. Sollicitudin
-                dictumst blandit nec ante a etiam quisque eleifend. Tempus
-                cursus sit lacus proin lectus egestas at.
+              We provide quality bespoke products such as projectors, interactive flat panel as well as interactive white boards to governments and public organisations for a more interactive and intriguing boardrooms. 
               </p>
             </div>
             <div className="p-about-sec2-item-2">
@@ -110,13 +107,13 @@ const About = () => {
           </div>
         </div>
         <div className="p-about-sec3 p-marg">
-            <h6>For Every Opportunity to Pass Information Make it Epic</h6>
-            <button className="p-about-sec3-btn">Ask How</button>
-            <img className="p-about-sec3-img" src={chart} alt="chart" />
+          <h6>For Every Opportunity to Pass Information Make it Epic</h6>
+          <button className="p-about-sec3-btn" onClick={contact}>Ask How</button>
+          <img className="p-about-sec3-img" src={chart} alt="chart" />
         </div>
       </main>
-        <Contact />
-        <Footer />
+      <Contact />
+      <Footer />
     </>
   );
 };

@@ -17,6 +17,7 @@ import mark from "../../assets/mark.png";
 import client from "../../assets/client.png";
 import Contact from "../General/contact";
 import Footer from "../General/footer";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -30,13 +31,15 @@ const Landing = () => {
             <img className="p-hero-ttl-img" src={logo} alt="" />
           </div>
           <p className="p-hero-txt2">
-            From the smallest classrooms and lecture halls to the largest
-            auditoriums and theaters Prime Display Solutions offers a wide range
-            of interactive projectors, interactive whiteboards, Flat Panels and
-            many more advanced interactive displays to transform boring static
-            presentations and lectures into an engaging collaborative multimedia
-            experience that give students the keys to better learning - even on
-            their own.
+            <b>Prime Display Solutions</b> Limited is wholly an indigenous ICT
+            company, a leading provider of excellent hardware solutions and
+            services, contributing in no small way towards the ICT revolution
+            taking place in Nigeria and Africa by extension. Our focus is
+            specifically on hardware provision towards building a competitive
+            and productive e-learning pathway for schools, colleges and
+            cooperate organisations. We deliver the best possible reliable ICT
+            solutions through uncompromising culture of quality service and
+            customer satisfaction.
           </p>
           <img className="p-student" src={student} alt="" />
           <button className="p-hero-btn">Contact Us</button>
@@ -48,10 +51,13 @@ const Landing = () => {
             </div>
             <p className="p-sec2-ttl">Projectors</p>
             <p className="p-sec2-txt">
-              Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-              nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris, a,
-              pharetra, neque integer eu. Gllus nunc, facilisis. Odio etiam
-              nunc, lacus et bibendum id. Mauris, a, pharetra, neque integer eu.
+              Due to the relationship we share with our partners, we are able to
+              bring to you the latest high quality and user friendly projectors
+              at a very competitive price.
+              <br />
+              <Link to="/buy" className="p-link-prod">
+                See our products
+              </Link>
             </p>
           </div>
           <div className="p-sec2-item">
@@ -60,10 +66,14 @@ const Landing = () => {
             </div>
             <p className="p-sec2-ttl">Accessories</p>
             <p className="p-sec2-txt">
-              Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-              nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris, a,
-              pharetra, neque integer eu. Gllus nunc, facilisis. Odio etiam
-              nunc, lacus et bibendum id. Mauris, a, pharetra, neque integer eu.
+              This denotes the components with which our products function. They
+              include projector mount, adaptor (for DC devices), remote, power
+              cable, HDMI, VGA, video cable, teaching software, electronic
+              pointer etc.
+              <br />
+              <Link to="/buy" className="p-link-prod">
+                See our products
+              </Link>
             </p>
           </div>
           <div className="p-sec2-item no-marg">
@@ -72,10 +82,11 @@ const Landing = () => {
             </div>
             <p className="p-sec2-ttl">Maintenance</p>
             <p className="p-sec2-txt">
-              Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-              nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris, a,
-              pharetra, neque integer eu. Gllus nunc, facilisis. Odio etiam
-              nunc, lacus et bibendum id. Mauris, a, pharetra, neque integer eu.
+              Our culture is solely based on Preventive maintenance. Here, we
+              take responsibility of ensuring that clients gadgets do not
+              breakdown, hence, we embark on regular systems servicing to ensure
+              smooth operation. Where there is a breakdown outside the warranty
+              period, the client bears the cost of restoration.
             </p>
           </div>
         </div>
@@ -85,11 +96,10 @@ const Landing = () => {
               Better Engagement simply results to Better Comprehension
             </h3>
             <p className="p-sec3-txt">
-              Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-              nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris, a,
-              pharetra, neque integer eu. <br /> Gllus nunc, facilisis. Odio
-              etiam nunc, lacus et bibendum id. Mauris, a, pharetra, neque
-              integer eu.
+              According to a study, 87% of the students found classroom more
+              engaging with the addition of more response technologies in a
+              large hall. Interactive learning is best for building excellent
+              comprehensive students.
             </p>
           </div>
           <div className="p-sec3-2">

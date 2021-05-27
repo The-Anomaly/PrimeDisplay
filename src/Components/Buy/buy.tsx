@@ -4,18 +4,87 @@ import NavBar from "../General/navbar";
 import Footer from "../General/footer";
 import "../Landing/landing.css";
 import product from "../../assets/product.png";
+import product2 from "../../assets/product2.png";
+
+const screens = [
+    {
+        id: 0,
+        name: "Gx series 6",
+        descrip: "short description, short description",
+        image: product,
+    },
+    {
+        id: 1,
+        name: "Gx Pro series 6",
+        descrip: "short description, short description Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque",
+        image: product2,
+    },
+    {
+        id: 2,
+        name: "Gx Max series 6",
+        descrip: " Odio etiam nunc, lacus et bibendum idshort description, short description",
+        image: product,
+    },
+    {
+        id: 3,
+        name: "Sx series 8",
+        descrip: "short description Odio etiam nunc, lacus et bibendum id, short description",
+        image: product2,
+    }
+]
+
+const projectors = [
+    {
+        id: 0,
+        name: "K9 series",
+        descrip: "short description, short description",
+        image: product,
+    },
+    {
+        id: 1,
+        name: "Tazer Pro",
+        descrip: "short description, short description Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque",
+        image: product2,
+    },
+    {
+        id: 2,
+        name: "Audi Max",
+        descrip: " Odio etiam nunc, lacus et bibendum idshort description, short description",
+        image: product,
+    },
+]
 
 const Buy = () => {
   const [state, setState] = React.useState<any>({
-    switchIt: true,
+    switchIt: false,
     number: 1,
+    img: "",
+    description: "",
+    product_name: "",
   });
-  const { switchIt, number } = state;
+  const { switchIt, number, img, description, product_name } = state;
   const handleChange = (e: any) => {
     setState({
         ...state,
         [e.target.name]: e.target.value
     })
+  }
+  const viewMore = (x: any) => {
+      window.scrollTo(-0, -0);
+      setState({
+          ...state,
+          switchIt: true,
+          img: x.image,
+          description: x.descrip,
+          product_name: x.name,
+      })
+  }
+  const goBack = () => {
+    window.scrollTo(-0, -0);
+      setState({
+          ...state,
+          switchIt: false,
+      })
   }
   return (
     <>
@@ -37,66 +106,30 @@ const Buy = () => {
           <div className="p-buy-products p-marg">
             <h5 className="p-buy-sec1-ttl">Smart Screens</h5>
             <div className="p-buy-itemsec">
-              <div className="p-buy-items">
-                <img src={product} alt="" />
-                <h6 className="p-buy-products-hd">6000x Series</h6>
+              {screens.map((x) => (<div className="p-buy-items">
+                <img className="p-buy-products-img" src={x.image} alt="" />
+                <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">
-                  Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque
-                  integer eu.
+                  {x.descrip}
                 </p>
-                <a className="p-buy-products-link">View More</a>
-              </div>
-              <div className="p-buy-items">
-                <img src={product} alt="" />
-                <h6 className="p-buy-products-hd">6000x Series</h6>
-                <p className="p-buy-products-descrip">
-                  Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque
-                  integer eu.
-                </p>
-                <a className="p-buy-products-link">View More</a>
-              </div>
-              <div className="p-buy-items">
-                <img src={product} alt="" />
-                <h6 className="p-buy-products-hd">6000x Series</h6>
-                <p className="p-buy-products-descrip">
-                  Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque
-                  integer eu.
-                </p>
-                <a className="p-buy-products-link">View More</a>
-              </div>
-              <div className="p-buy-items">
-                <img src={product} alt="" />
-                <h6 className="p-buy-products-hd">6000x Series</h6>
-                <p className="p-buy-products-descrip">
-                  Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque
-                  integer eu.
-                </p>
-                <a className="p-buy-products-link">View More</a>
-              </div>
-              <div className="p-buy-items">
-                <img src={product} alt="" />
-                <h6 className="p-buy-products-hd">6000x Series</h6>
-                <p className="p-buy-products-descrip">
-                  Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque
-                  integer eu.
-                </p>
-                <a className="p-buy-products-link">View More</a>
-              </div>
-              <div className="p-buy-items">
-                <img src={product} alt="" />
-                <h6 className="p-buy-products-hd">6000x Series</h6>
-                <p className="p-buy-products-descrip">
-                  Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque
-                  integer eu.
-                </p>
-                <a className="p-buy-products-link">View More</a>
-              </div>
+                <a className="p-buy-products-link" onClick={() => viewMore(x)}>View More</a>
+              </div>))}
             </div>
           </div>
+
+          {/* Projectors */}
           <div className="p-buy-products p-marg">
             <h5 className="p-buy-sec1-ttl">Projectors</h5>
             <div className="p-buy-itemsec">
-              <div className="p-buy-items">
+              {projectors.map((x) => (<div className="p-buy-items">
+                <img className="p-buy-products-img" src={x.image} alt="" />
+                <h6 className="p-buy-products-hd">{x.name}</h6>
+                <p className="p-buy-products-descrip">
+                  {x.descrip}
+                </p>
+                <a className="p-buy-products-link" onClick={() => viewMore(x)}>View More</a>
+              </div>))}
+              {/* <div className="p-buy-items">
                 <img src={product} alt="" />
                 <h6 className="p-buy-products-hd">6000x Series</h6>
                 <p className="p-buy-products-descrip">
@@ -104,25 +137,7 @@ const Buy = () => {
                   integer eu.
                 </p>
                 <a className="p-buy-products-link">View More</a>
-              </div>
-              <div className="p-buy-items">
-                <img src={product} alt="" />
-                <h6 className="p-buy-products-hd">6000x Series</h6>
-                <p className="p-buy-products-descrip">
-                  Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque
-                  integer eu.
-                </p>
-                <a className="p-buy-products-link">View More</a>
-              </div>
-              <div className="p-buy-items">
-                <img src={product} alt="" />
-                <h6 className="p-buy-products-hd">6000x Series</h6>
-                <p className="p-buy-products-descrip">
-                  Odio etiam nunc, lacus et bibendum id. Mauris pharetra, neque
-                  integer eu.
-                </p>
-                <a className="p-buy-products-link">View More</a>
-              </div>
+              </div> */}
             </div>
           </div>
         </main>
@@ -143,18 +158,14 @@ const Buy = () => {
             </div>
           <div className="p-viewmore">
             <div className="p-viewmore-1">
-              <button className="p-viewmore-backbtn">Go Back</button>
+              <button className="p-viewmore-backbtn" onClick={goBack}>Go Back</button>
               <div className="p-viewmore-progress">
                 <span>Home</span> › <span>Buy</span> ›{" "}
-                <span>Gx Pro Series</span>
+                <span>{product_name}</span>
               </div>
-              <h2 className="p-vm-ttl">Gx Pro Series</h2>
+              <h2 className="p-vm-ttl">{product_name}</h2>
               <p className="p-vm-descrip">
-                Pulvinar risus etiam viverra elit. Risus orci proin magna tellus
-                nunc, facilisis. Odio etiam nunc, lacus et bibendum id. Mauris,
-                a, pharetra, neque integer eu. Gllus nunc, facilisis. Odio etiam
-                nunc, lacus et bibendum id. Mauris, a, pharetra, neque integer
-                eu.
+                {description}
               </p>
               <div className="p-colorsec">
                 <div className="p-prod-color-border p-prod-color-active"><div className="p-prod-color p-prod-color-black"></div></div>
@@ -163,7 +174,7 @@ const Buy = () => {
               </div>
               <div className="p-vm-ctc">Have a Question?  <a>Contact Us</a></div>
             </div>
-            <img className="p-vm-img" src={product} alt="product" />
+            <img className="p-vm-img" src={img} alt="product" />
           </div>
         </main>
       )}

@@ -6,6 +6,17 @@ import point from "../../assets/point.png";
 import Footer from "../General/footer";
 
 const Contact = () => {
+  const [state, setState] = React.useState({
+    name: "",
+    mail: "",
+  })
+  const { name, mail } = state;
+  const handleChange = (e: any) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    })
+  }
   return (
     <>
       <NavBar contact={true} />
@@ -28,21 +39,21 @@ const Contact = () => {
           <div className="p-ct-info">
             <div className="p-ct-location">
               <i className="fas fa-map-marker-alt"></i>
-              <p>No 12, Muri Okunola Street, VI Lagos State Nigeria</p>
+              <p>Head Office - 37 Ogunlana drive, Surulere, Lagos</p>
             </div>
             <div className="p-ct-location p-ct-white">
               <i className="fas fa-envelope"></i>
               <p>
-                info@primedisplay.com <br />
-                ask@primedisplay.com
+                <a href="mailto: info@primedisplay.com" className="p-link-mail">info@primedisplay.com</a> <br />
+                <a href="mailto: ask@primedisplay.com" className="p-link-mail">ask@primedisplay.com</a>
               </p>
             </div>
             <div className="p-ct-location">
               <i className="fas fa-phone-alt"></i>
               <p>
-                +234 (0) 803 456 7654
+                <a href="tel:+2348158393221" className="p-link-num">+234 (0) 815 839 3221</a>
                 <br />
-                +234 (0) 803 456 7654
+                <a href="tel:+2349051130003" className="p-link-num">+234 (0) 905 113 0003</a>
               </p>
             </div>
           </div>
@@ -52,12 +63,12 @@ const Contact = () => {
                 <label htmlFor="name">
                   Your Name
                   <i className="fas fa-user p-ct-icon"></i>
-                  <input id="name" type="text" name="name" />
+                  <input id="name" type="text" name="name" value={name} onChange={handleChange} />
                 </label>
                 <label htmlFor="mail">
                   Your Email
                     <i className="fas fa-envelope p-ct-icon"></i>
-                  <input id="mail" type="email" name="mail" /> 
+                  <input id="mail" type="email" name="mail" value={mail} onChange={handleChange} /> 
                 </label>
               </div>
               <div className="p-ct-msg">
