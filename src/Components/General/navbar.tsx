@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./navbar.css";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const NavBar = (props: any) => {
   const [nav, setNav] = React.useState({
@@ -16,6 +16,10 @@ const NavBar = (props: any) => {
       })
     }
   }, [])
+  let history = useHistory();
+  const contact = () => {
+    return history.push("/contact");
+  }
   return (
     <>
       <header className={location ? "p-nav p-nav-bg" : "p-nav"}>
@@ -80,7 +84,7 @@ const NavBar = (props: any) => {
               </span>
             </Link>
           </nav>
-          <button className={location ? "p-nav-btn" : "p-nav-btn p-btn-outline"}>Get in Touch</button>
+          <button className={location ? "p-nav-btn" : "p-nav-btn p-btn-outline"} onClick={contact}>Get in Touch</button>
         </div>
         <div className="p-nav-mobile"></div>
       </header>

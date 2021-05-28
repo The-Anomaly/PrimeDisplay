@@ -17,9 +17,13 @@ import mark from "../../assets/mark.png";
 import client from "../../assets/client.png";
 import Contact from "../General/contact";
 import Footer from "../General/footer";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Landing = () => {
+  let history = useHistory();
+  const contact = () => {
+    return history.push("/contact");
+  }
   return (
     <>
       <NavBar home={true} />
@@ -42,7 +46,7 @@ const Landing = () => {
             customer satisfaction.
           </p>
           <img className="p-student" src={student} alt="" />
-          <button className="p-hero-btn">Contact Us</button>
+          <button className="p-hero-btn" onClick={contact}>Contact Us</button>
         </div>
         <div className="p-padd p-sec2">
           <div className="p-sec2-item">

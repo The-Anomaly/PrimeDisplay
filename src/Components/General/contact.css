@@ -3,6 +3,8 @@
     background: url("../../assets/contactbg.svg");
     padding: 4rem 8%;
     margin-bottom: 4rem;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .p-sec6-info {
     background: rgba(34, 34, 34, 0.4);
