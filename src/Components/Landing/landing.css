@@ -167,6 +167,10 @@
 }
 .p-sec4-img-sec {
     position: relative;
+    width: 70%;
+}
+.p-sec4-img-sec img:nth-child(1) {
+    width: 100%;
 }
 .p-sec4-img-sec-2 {
     position: absolute;
@@ -177,11 +181,14 @@
     position: absolute;
     left: -6rem;
     bottom: 1.2rem;
+    left: -8%;
+    width: 20%;
 }
 .p-sec4-right {
     position: absolute;
-    right: -1rem;
+    right: -8%;
     top: 8rem;
+    width: 15%
 }
 .p-sec5 {
     position: relative;
@@ -200,7 +207,7 @@
 .p-sec5-1-ttl {
     color: #333333;
     font-weight: 900;
-    font-size: 1.15rem;
+    font-size: 1.5rem;
     max-width: 200px;
 }
 .p-sec5-arrow-sec {
@@ -242,6 +249,11 @@
     position: absolute;
     top: -3rem;
     left: calc(50% - 50px);
+    justify-content: center;
+    align-items: center;
+}
+.p-sec5-client-avatar img {
+    width: 95%;
 }
 .p-sec5-txt-sec {
     margin: 3rem 0 2rem;
@@ -273,4 +285,101 @@
 }
 .p-link-prod, .p-link-prod:hover {
     color: #99cc33;
+}
+@media(max-width: 1000px) {
+    .p-padd {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+    .p-marg {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+    .p-sec4-left {
+        left: -4%;
+    }
+    .p-sec4-right {
+        right: -4%;
+    }
+}
+@media(max-width: 800px) {
+    .p-student {
+        display: none;
+    }
+    .p-hero {
+        padding: 8rem 4% 1rem;
+    }
+    .p-hero-ttl {
+        font-size: 3rem;
+        max-width: 300px;
+    }
+    .p-hero-txt2 {
+        width: 100%;
+    }
+    .p-sec2 {
+        flex-direction: column;
+    }
+    .p-sec2-item {
+        margin-right: 0;
+        margin-bottom: 2.5rem;
+        width: 100%;
+        padding-right: 2rem;
+    }
+    .p-sec3 {
+        flex-direction: column;
+    align-items: center;
+    }
+    .p-sec3-1 {
+        width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    }
+    .p-sec3-2 {
+        width: 100%;
+    text-align: center;
+    margin-top: 3rem;
+    }
+    .p-sec3-2-1 {
+        width: 80px;
+        height: 80px;
+        left: 0;
+        top: -2rem;
+        border-radius: 8px;
+    }
+    .p-sec3-img {
+        border-radius: 8px;
+    }
+    .p-sec4-left, .p-sec4-right {
+        display: none;
+    }
+    .p-sec4-img-sec {
+        width: 90%;
+    }
+    .p-sec5-1 {
+        width: 60vw;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+    }
+    .p-sec5-client {
+        padding: 2rem;
+    margin: 8rem auto 0;
+    width: 80vw;
+    }
+    .p-sec5-arrow-sec {
+        top: 5rem;
+    right: 4%;
+    }
+}
+
+@media(max-width: 600px) {
+    .p-sec5-1 {
+        width: 70vw;
+    }
+    .p-hero-ttl {
+        font-size: 2.5rem;
+        max-width: 240px;
+    }
 }

@@ -31,13 +31,18 @@ const Footer = () => {
                     <p className="p-footer-ctct">info@primedisplay.com</p>
                 </div>
                 </div>
+                <div className="p-footer-socials p-footer-socials-mobile">
+                    <a href="https://twitter.com/PrimeDisplayNig"><i className="fab fa-twitter frt-soc"></i></a>
+                    <i className="fab fa-facebook-f frt-soc"></i>
+                    <i className="fab fa-google frt-soc"></i>
+                    </div>
                 <hr />
                 <div className="p-ftr-cpysec">
                     <p className="p-footer-copy">&copy; Prime Display {date}, All Rights Reserved</p>
                     <div className="p-footer-socials">
-                    <i className="fab fa-twitter"></i>
-                    <i className="fab fa-facebook-f"></i>
-                    <i className="fab fa-google"></i>
+                    <a href="https://twitter.com/PrimeDisplayNig"><i className="fab fa-twitter frt-soc"></i></a>
+                    <i className="fab fa-facebook-f frt-soc"></i>
+                    <i className="fab fa-google frt-soc"></i>
                     </div>
                 </div>
             </footer>

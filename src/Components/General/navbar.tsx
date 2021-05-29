@@ -86,7 +86,79 @@ const NavBar = (props: any) => {
           </nav>
           <button className={location ? "p-nav-btn" : "p-nav-btn p-btn-outline"} onClick={contact}>Get in Touch</button>
         </div>
-        <div className="p-nav-mobile"></div>
+        <div className="p-nav-mobile">
+          <nav className="navbar navbar-expand-lg">
+            <Link to="/">
+              <img className="p-logo navbar-brand" src={logo} alt="logo" />
+            </Link>
+            <div className="p-nav-mobile-toggle" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <div className="line1"></div>
+              <div className="line2"></div>
+              <div className="line1"></div>
+            </div>
+
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <div className="navbar-nav mr-auto p-navlist-mobile">
+                <Link className="p-nav-list-items" to="/">
+              <span
+                className={
+                  props.home
+                    ? "p-nav-list-items p-nav-list-items-active"
+                    : "p-nav-list-items"
+                }
+              >
+                Home
+              </span>
+            </Link>
+                <Link className="p-nav-list-items" to="/about">
+                  <span
+                    className={
+                      props.about
+                        ? "p-nav-list-items p-nav-list-items-active"
+                        : "p-nav-list-items"
+                    }
+                  >
+                    About Us
+                  </span>
+                </Link>
+                <Link className="p-nav-list-items" to="/contact">
+                  <span
+                    className={
+                      props.contact
+                        ? "p-nav-list-items p-nav-list-items-active"
+                        : "p-nav-list-items"
+                    }
+                  >
+                    Contact Us
+                  </span>
+                </Link>
+                <Link className="p-nav-list-items" to="/buy">
+                  <span
+                    className={
+                      props.buy
+                        ? "p-nav-list-items p-nav-list-items-active"
+                        : "p-nav-list-items"
+                    }
+                  >
+                    Buy
+                  </span>
+                </Link>
+                <Link className="p-nav-list-items" to="/services">
+              <span
+                className={
+                  props.services
+                    ? "p-nav-list-items p-nav-list-items-active"
+                    : "p-nav-list-items"
+                }
+              >
+                Services
+              </span>
+            </Link>
+                <button className={location ? "p-nav-btn" : "p-nav-btn p-btn-outline"} onClick={contact}>Get in Touch</button>
+              </div>
+            </div>
+          </nav>
+        </div>
       </header>
     </>
   );
