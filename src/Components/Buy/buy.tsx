@@ -11,10 +11,10 @@ import prod3 from "../../assets/prod3.jpg";
 import prod4 from "../../assets/prod4.jpg";
 import prod5 from "../../assets/prod5.jpg";
 import prod6 from "../../assets/prod6.jpg";
-import prod7 from "../../assets/prod7.jpg";
+import prod7 from "../../assets/prod7-bg.png";
 import prod8 from "../../assets/prod8.jpg";
-import prod9 from "../../assets/prod9.jpg";
-import prod10 from "../../assets/prod10.jpg";
+import prod9 from "../../assets/prod9-bg.png";
+import prod10 from "../../assets/prod10-bg.png";
 import prod11 from "../../assets/prod11.jpg";
 import prod12 from "../../assets/prod12.jpg";
 import { useHistory } from "react-router-dom";
@@ -162,6 +162,7 @@ const Buy = () => {
   });
   const { search, screens, projectors, searchClick, nosearch } = state;
   React.useEffect(() => {
+    window.scrollTo(-0,-0);
     setState({
       ...state,
       screens: [
@@ -274,7 +275,7 @@ const Buy = () => {
           short_descrip:
             "The ZH406ST is a compact short throw Full HD 1080p DuraCore laser projector. Designed for maintenance-free, continuous operation. It can be installed in virtually any orientation.",
           descrip: [
-            "The ZH406ST is a compact short throw Full HD 1080p DuraCore laser projector. Designed for maintenance-free, continuous operation. It can be installed in virtually any orientation. Pack full of features, this compact laser projector has built-in speakers, 4K and HDR compatible, and low maintenance with extremely long-life laser technology. For ultimate control, the projector comes with RJ45 connection allowing you to monitor and control your network in multiple rooms. It exhibits 30,000 hours maintenance-free laser light source. Perfect for business, education and museums where a clear bright image is required.",
+            "The ZH406ST is a compact short throw Full HD 1080p DuraCore laser projector. Designed for maintenance-free, continuous operation. It can be installed in virtually any orientation. Pack full of features, this compact laser projector has built-in speakers, 4K and HDR compatible, and low maintenance with extremely long-life laser technology.", "For ultimate control, the projector comes with RJ45 connection allowing you to monitor and control your network in multiple rooms. It exhibits 30,000 hours maintenance-free laser light source. Perfect for business, education and museums where a clear bright image is required.",
           ],
           image: prod12,
           keywords: ["zh406st", "projector","zh406", "zh 406", "zh 406st", "zh"],
@@ -345,7 +346,7 @@ const Buy = () => {
               "Equipped with an OPS slot, and easy to download OTA updates. The touchscreen display is future-proofed should your requirements change in the ever-changing world of technology (OPS sold separately).",
             ],
             image: prod1,
-            keywords: ["optoma", "3751RK", "smart screens", "screens", "3751RK OPTOMA Flat panel", "flat panel", "75", "interactive", "interactive flat display panel"],
+            keywords: ["optoma", "3751rk", "3751", "3751 rk", "smart screens", "screens", "3751rk optoma flat panel", "flat panel", "75", "interactive", "interactive flat display panel"],
           },
           {
             id: 1,
@@ -358,7 +359,7 @@ const Buy = () => {
               "Meeting room scheduling is simplified with the included Joan meeting widget and app, a collaborative calendar tool that seamlessly pairs with popular calendars to take the guesswork out of meeting room availability directly. Book meetings on the spot or through your existing desktop calendar and mobile phone.",
             ],
             image: prod2,
-            keywords: ["optoma", "3861RK", "smart screens", "screens", "3861RK OPTOMA", "flat panel", "86", "interactive", "interactive flat display panel"],
+            keywords: ["optoma", "3861rk", "3861 rk", "3861", "smart screens", "screens", "3861rk optoma", "flat panel", "86", "interactive", "interactive flat display panel"],
           },
           {
             id: 2,
@@ -371,7 +372,7 @@ const Buy = () => {
               "Meeting room scheduling is simplified with the included Joan meeting widget and app, a collaborative calendar tool that seamlessly pairs with popular calendars to take the guesswork out of meeting room availability directly. Book meetings on the spot or through your existing desktop calendar and mobile phone.",
             ],
             image: prod4,
-            keywords: ["optoma", "5751RK", "smart screens", "screens", "5751RK OPTOMA", "flat panel", "75", "interactive", "interactive flat display panel"],
+            keywords: ["optoma", "5751rk", "5751 rk", "5751", "smart screens", "screens", "5751rk optoma", "flat panel", "75", "interactive", "interactive flat display panel"],
           },
         ],
         projectors: [
@@ -385,7 +386,7 @@ const Buy = () => {
               "This projector is easy to connect to with multiple inputs, a built-in speaker and USB Power. Perfect for connecting HDMI dongles such as the Optoma HDCast Pro and the Google Chromecast or a laptop, PC or Blu-ray player for clear projected images with sound. It’s a Portable and lightweight projector can be installed or taken on the move for off-site meetings with the optional carry bag.",
             ],
             image: prod7,
-            keywords: ["S334E", "projector"],
+            keywords: ["s334e", "projector", "334e", "s334", "s 334e"],
           },
           {
             id: 1,
@@ -397,7 +398,7 @@ const Buy = () => {
               "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and two HDMI 2.0 ports.",
             ],
             image: prod8,
-            keywords: ["UHD35", "projector"],
+            keywords: ["uhd35", "projector", "uhd 35", "uhd"],
           },
           {
             id: 2,
@@ -409,7 +410,7 @@ const Buy = () => {
               "This HD ready product boasts simplicity in design, with easy navigation and reliability. Convenient, with multiple inputs including HDMI and MHL. This projector is ideal for connecting HDMI dongles such as the Google Chromecast and the Optoma HDCast Pro enabling you to connect your laptop, PC or Blu-ray player. This compact can either be installed or conveniently taken on the move due to its Lightweight and portability.",
             ],
             image: prod9,
-            keywords: ["W400", "projector"],
+            keywords: ["w400", "projector", "w 400"],
           },
           {
             id: 3,
@@ -421,7 +422,7 @@ const Buy = () => {
               "Multiple inputs, USB power and a built-in speaker provide an easy set-up perfect for connecting to laptop, PC or Blu-ray player for clear projected images with sound. You can even connect a HDMI dongle for wireless presentations.",
             ],
             image: prod10,
-            keywords: ["X309ST", "projector"],
+            keywords: ["x309st", "projector", "x 309st", "x309", "x 309"],
           },
           {
             id: 4,
@@ -434,7 +435,7 @@ const Buy = () => {
               "It maintains excellent image quality as brightness and colour saturation is preserved for longer compared to lamp systems.",
             ],
             image: prod11,
-            keywords: ["ZH403", "projector"],
+            keywords: ["zh403", "projector", "zh 403", "zh"],
           },
           {
             id: 5,
@@ -445,7 +446,7 @@ const Buy = () => {
               "The ZH406ST is a compact short throw Full HD 1080p DuraCore laser projector. Designed for maintenance-free, continuous operation. It can be installed in virtually any orientation. Pack full of features, this compact laser projector has built-in speakers, 4K and HDR compatible, and low maintenance with extremely long-life laser technology. For ultimate control, the projector comes with RJ45 connection allowing you to monitor and control your network in multiple rooms. It exhibits 30,000 hours maintenance-free laser light source. Perfect for business, education and museums where a clear bright image is required.",
             ],
             image: prod12,
-            keywords: ["ZH406ST", "projector"],
+            keywords: ["zh406st", "projector","zh406", "zh 406", "zh 406st", "zh"],
           },
         ],
         search: "",
@@ -475,7 +476,7 @@ const Buy = () => {
             }
             />
             <button className="p-buy-search-btn" onClick={searchProduct}>Search</button>
-            {searchClick && (<span className="p-cancel-search" onClick={displayAll}>x</span>)}
+            {searchClick && (<i onClick={displayAll}  className="far fa-times-circle p-cancel-search"></i>)}
           </div>
         </div>
         <div className="p-buy-products p-marg">

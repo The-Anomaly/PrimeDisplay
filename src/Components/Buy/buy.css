@@ -206,9 +206,9 @@
 }
 .p-cancel-search {
     position: absolute;
-    font-size: 40px;
+    margin-top: 15px;
+    font-size: 30px;
     color: #99cc33;
-    font-family: cursive;
     margin-left: 1.5rem;
     cursor: pointer;
 }

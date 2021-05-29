@@ -72,7 +72,7 @@ const ExpandedBuy = (props: any) => {
                 <div key={i}>{x}</div>
               ))}
             </p>
-            <div className="p-colorsec">
+            {/* <div className="p-colorsec">
               <div className="p-prod-color-border p-prod-color-active">
                 <div className="p-prod-color p-prod-color-black"></div>
               </div>
@@ -82,7 +82,7 @@ const ExpandedBuy = (props: any) => {
               <div className="p-prod-color-border">
                 <div className="p-prod-color p-prod-color-white"></div>
               </div>
-            </div>
+            </div> */}
             <div className="p-vm-ctc">
               Have a Question? <Link to="/contact">Contact Us</Link>
             </div>
