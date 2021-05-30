@@ -907,7 +907,7 @@ button {
   font-family: "Brfirma-Bold";
 }
 .smhometext {
-  font-size: 30px;
+  font-size: 25px;
   font-family: 'Brfirma-Regular';
   font-weight: 500;
   margin-top: 1rem;
@@ -939,9 +939,10 @@ button {
   padding: 1rem;
   margin-top: 1rem;
   font-size: 15px;
-  width: 190px;
   text-align: center;
   cursor: pointer;
+  letter-spacing: 0.5px;
+  width: 200px;
 }
 .newsecondrow {
   background: #ffffff;
@@ -971,7 +972,7 @@ button {
   display: inline-flex;
 }
 .trustttl {
-  padding-top: 5px;
+  padding-top: 3px;
 }
 .clientttl {
   padding-top: 12px;
@@ -1199,6 +1200,7 @@ button {
 .fourthsubsec {
   text-align: center;
   width: 290px;
+  height: 240px;
 }
 .fourthsubhead {
   font-family: "Brfirma-Bold";
@@ -1275,7 +1277,7 @@ button {
 }
 .border5 {
   position: absolute;
-  margin-top: 1.75rem;
+  margin-top: 1.35rem;
   margin-left: 2rem;
   width: 280px;
 }
@@ -1374,14 +1376,15 @@ button {
   color: #0c9fb3;
   background: #ffffff;
   text-align: center;
-  width: 170px;
   font-family: "Brfirma-Regular";
   font-weight: 600;
   padding: 0.8rem 1rem;
   border-radius: 7px;
-  font-size: 13.5px;
   margin-top: 2rem;
   cursor: pointer;
+  width: 200px;
+  font-size: 15px;
+  letter-spacing: 0.3px;
 }
 .takefree {
   display: block;
@@ -1735,7 +1738,8 @@ button {
     border: 1px dashed #666666;
     border-radius: 45%;
     padding: 2rem 3rem;
-    width: 355px;
+    width: 280px;
+    height: auto;
   }
   .newfirstrow {
     background-image: url("../../../assets/mobilebackdrop.svg");
@@ -1750,7 +1754,7 @@ button {
     margin-top: 15rem;
   }
   .smhometext {
-    font-size: 25px;
+    font-size: 22px;
   }
   .jaiyeimg {
     display: block;
@@ -1784,6 +1788,8 @@ button {
   }
   .fourthsec {
     padding: 2rem 3%;
+    max-width: 700px;
+    margin: auto;
   }
   .fourthttl {
     font-size: 28px;
@@ -1799,7 +1805,7 @@ button {
     font-size: 13px;
   }
   .fourthsubsec {
-    width: 335px;
+    /* width: 335px; */
   }
   .trustimg {
     width: 50px;
@@ -1870,7 +1876,7 @@ button {
   }
   .trustttl {
     padding-right: 1.5rem;
-    padding-top: 4px;
+    padding-top: 0px;
     padding-bottom: 4px;
   }
   .secondimg {
@@ -2011,22 +2017,35 @@ button {
   .rightborder {
     transform: rotate(180deg);
     margin-left: 8rem;
-    width: 185px;
-    height: 284.4px;
+    /* width: 185px;
+    height: 284.4px; */
+    height: 191px;
+    width: 140px;
   }
   .leftborder {
     margin-left: -4rem;
   }
   .leftborder1 {
     margin-top: 1.7rem;
-    height: 330px;
+    /* height: 330px; */
+    height: 206px;
+    width: 140px;
+    margin-left: -2rem;
   }
   .rightborder2 {
-    height: 317px;
-    width: 180px;
+    /* height: 317px;
+    width: 180px; */
+    height: 223px;
+    width: 140px;
   }
   .leftborder2 {
-    height: 284px;
+    /* height: 284px; */
+    height: 207px;
+    width: 140px;
+    margin-left: -2rem;
+  }
+  .subsecmarg {
+    margin-bottom: 2rem;
   }
 }
 
@@ -2342,6 +2361,7 @@ button {
 @media (max-width: 600px) {
   .homethinktxt {
     font-size: 20px;
+    max-width: 300px;
   }
   .helpfix {
     display: block;

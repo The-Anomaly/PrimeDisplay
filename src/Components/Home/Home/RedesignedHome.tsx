@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./Home.css";
-import "../../Dashboard/kegennidashboard.css"
+import "../../Dashboard/kegennidashboard.css";
 import Navbar from "../HomeComponents/newnavbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -109,7 +109,7 @@ const RedesignedHome: React.FC = (props: any) => {
           ...state,
           isloading: false,
         });
-         if (response.status === 200) {
+        if (response.status === 200) {
           if (
             response.data[0].onboarding_chat === false ||
             response.data[0].next === "onboarding_chat"
@@ -189,7 +189,9 @@ const RedesignedHome: React.FC = (props: any) => {
       {isloading && (
         <div className="c4ipreloader center-it">
           <div className="c4ispinner"></div>
-          <h1><i>Hold on...</i></h1>
+          <h1>
+            <i>Hold on...</i>
+          </h1>
         </div>
       )}
       {!isloading && (
@@ -211,14 +213,14 @@ const RedesignedHome: React.FC = (props: any) => {
                   data-aos-easing="ease-in-sine"
                   data-aos-once={false}
                 >
-                  <div>We are like a map but for your career.</div>
-                  {/* <div>Let's connect all the dots...</div> */}
+                  <div>Get a Career Makeover.</div>
                   <div className="smhometext">
-                    Discover your passion and talent. Discover a more meaningful
-                    work life.
+                    Evaluate your strengths. <br />
+                    Discover the best career paths for you. Be positioned for
+                    better opportunities.
                   </div>
                   <Link to="/signup">
-                    <div className="hstarted">GET STARTED</div>
+                    <div className="hstarted">Free Career Audit</div>
                   </Link>
                 </div>
               </Col>
@@ -268,7 +270,7 @@ const RedesignedHome: React.FC = (props: any) => {
                 data-aos-easing="ease-in-sine"
                 data-aos-duration="600"
               >
-                It's a Vicious{" "}
+                Break the Vicious{" "}
                 <span className="secondtitle1">
                   Circle{" "}
                   <img src={rect} className="secondimg" alt="purple block" />
@@ -404,10 +406,10 @@ const RedesignedHome: React.FC = (props: any) => {
             {press === false ? (
               <Row md={12} className="newthirdrow">
                 <div className="newthirdrowtext" data-aos="flip-left">
-                  Clarity by Yudimy is Lagos' leading career mapping platform
-                  that helps you discover and define a clear road map with
-                  practical and actionable steps to get to you to your
-                  destination of a meaningful and organized work-life.
+                  Clarity by Yudimy is a career discovery, makeover and growth
+                  application that provides you with a personalized career
+                  playbook for your personality type, strengths and abilities in
+                  a post-Covid era.
                 </div>
                 <div className="newthirdrowbtn" onClick={GetStarted}>
                   GET STARTED
@@ -464,9 +466,10 @@ const RedesignedHome: React.FC = (props: any) => {
             )}
             <Row md={12} className="newfourthrow">
               <div className="secondtitle fourthttl">
-                A navigator you can{" "}
+                {/* A navigator you can{" "} */}
+                Benefits of the Clarity{" "}
                 <span className="secondtitle1 trustttl">
-                  trust{" "}
+                  {/* trust{" "} */} App
                   <img
                     src={rect}
                     className="secondimg fourthimg"
@@ -501,14 +504,16 @@ const RedesignedHome: React.FC = (props: any) => {
                         className="trustimg"
                         alt="mental assessment"
                       />
-                      <div className="fourthsubhead" data-aos="fade-right">
+                      {/* <div className="fourthsubhead">
                         Career & Competence Evaluation Assessment
-                      </div>
-                      <div className="fourthsubtext" data-aos="fade-right">
-                        This one of a kind assessment tells if you are on the
+                      </div> */}
+                      <div className="fourthsubtext">
+                        {/* This one of a kind assessment tells if you are on the
                         right career track or not, the competencies you need to
                         develop, the best career-business expressions for your
-                        talent and the kind of roles you should work in.
+                        talent and the kind of roles you should work in. */}
+                        Know if you're on the right career path or not with
+                        regular career audits.
                       </div>
                     </div>
                   </div>
@@ -525,17 +530,20 @@ const RedesignedHome: React.FC = (props: any) => {
                         className="trustimg"
                         alt="communication"
                       />
-                      <div className="fourthsubhead" data-aos="fade-right">
+                      {/* <div className="fourthsubhead">
                         Talk to a Counselor
-                      </div>
-                      <div className="fourthsubtext" data-aos="fade-right">
-                        Your career trajectory is the sum of all the choices you
+                      </div> */}
+                      <div className="fourthsubtext">
+                        {/* Your career trajectory is the sum of all the choices you
                         have made so far. However, an important step when making
                         future decisions is to connect the dots between where
                         your passion and talent lies and which career will
                         enable you to best express them. Speaking with a Clarity
                         counsellor will help you achieve this with specific
-                        recommendations on how.
+                        recommendations on how. */}
+                        Text Career & Productivity Coaches to figure out your
+                        next move, organize your life & navigate workplace
+                        complexities.
                       </div>
                     </div>
                   </div>
@@ -550,21 +558,21 @@ const RedesignedHome: React.FC = (props: any) => {
                     />
                     <div className="fourthsubsechov">
                       <img src={trust3} className="trustimg" alt="list" />
-                      <div className="fourthsubhead">TO DO’s</div>
-                      <div
-                        className="fourthsubtext frheight"
-                        data-aos="fade-right"
-                      >
-                        Knowing what step to take next is one thing but getting
+                      {/* <div className="fourthsubhead">TO DO’s</div> */}
+                      <div className="fourthsubtext frheight">
+                        {/* Knowing what step to take next is one thing but getting
                         there is another! With Yudimy's Clarity you can
                         immediately convert the recommendations from your
                         counselling session into actionable tasks and set up
                         frequent reminders to keep you accountable and help you
-                        achieve them.
+                        achieve them. */}
+                        Rebrand your career with freshly minted CV & LinkedIn
+                        Profile, and get a playbook of words describing your
+                        competencies and strengths for your CV.
                       </div>
                     </div>
                   </div>
-                  <div className="fourthsubsec hov4">
+                  <div className="fourthsubsec hov4 subsecmarg">
                     <img className="border4" src={border4} alt="border" />
                     <img
                       className="leftborder leftborder2"
@@ -577,13 +585,14 @@ const RedesignedHome: React.FC = (props: any) => {
                         className="trustimg trustimgin"
                         alt="growth"
                       />
-                      <div className="fourthsubhead">Growth Challenge</div>
-                      <div className="fourthsubtext" data-aos="fade-right">
-                        When preparation meets opportunity, the result is
+                      {/* <div className="fourthsubhead">Growth Challenge</div> */}
+                      <div className="fourthsubtext">
+                        {/* When preparation meets opportunity, the result is
                         success. Clarity's growth challenge feature is supported
                         by our career talent managers who keep you accountable
                         to your career development goals thereby increasing your
-                        appeal.
+                        appeal. */}
+                        Job application support to break the nerves.
                       </div>
                     </div>
                   </div>
@@ -592,15 +601,17 @@ const RedesignedHome: React.FC = (props: any) => {
                   <img className="border5" src={border5} alt="border" />
                   <div className="fourthsubsechov">
                     <img src={trust5} className="trustimg" alt="position" />
-                    <div className="fourthsubhead">
+                    {/* <div className="fourthsubhead">
                       Career Positioning & Opportunity Recommendation
-                    </div>
-                    <div className="fourthsubtext" data-aos="fade-left">
-                      As your career-talent managers, we are committed to your success,
+                    </div> */}
+                    <div className="fourthsubtext">
+                      {/* As your career-talent managers, we are committed to your success,
                       we work with you to articulate your unique value
                       proposition, profile and brand. Also, because we now
                       understand you, we curate and connect you to the best
-                      opportunities.
+                      opportunities. */}
+                      A clear road map of activities & accountability reminders
+                      to achieve your goals.
                     </div>
                   </div>
                 </div>
