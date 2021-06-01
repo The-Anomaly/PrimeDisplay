@@ -217,3 +217,9 @@
     margin-bottom: 6rem;
     margin-top: -2rem;
 }
+.p-buy-list-2itemsonly {
+    justify-content: flex-start;
+}
+.p-buy-list-2itemsonly .p-buy-items {
+    margin-right: 3%;
+}

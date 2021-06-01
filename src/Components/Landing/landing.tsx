@@ -135,13 +135,12 @@ const Landing = () => {
             <div className="p-sec5-txt-sec">
               <img src={mark} />
               <p className="p-sec5-client-txt">
-                Gllus nunc, facilisis. Odio etiam nunc, lacus et bibendum id.
-                Mauris, a, pharetra, neque integer eu.
+              The interactive white boards and projectors really works well and have been very helpful. It has helped my teachers immensely as teaching has been made easy with its availability. My students’ attentiveness and comprehension has improved exponentially as well. <br /> Thank you PRIME DISPLAY.
               </p>
               <img className="p-sec5-txt-end" src={mark} />
             </div>
-            <p className="p-sec5-client-name">Grace Ama</p>
-            <p className="p-sec5-client-location">University of Lagos</p>
+            <p className="p-sec5-client-name">MANNA KIDDIES ACADEMY</p>
+            {/* <p className="p-sec5-client-location">University of Lagos</p> */}
           </div>
           <div className="p-sec5-arrow-sec">
             <div className="p-sec5-arrow p-sec5-arrow-left">

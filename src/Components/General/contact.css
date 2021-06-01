@@ -35,11 +35,11 @@
     color: #fff;
     height: 45px;
     width: 150px;
-    border-radius: 6px
+    border-radius: 6px;
 }
 
 @media(max-width: 800px) {
     .p-sec6 {
-            background-image: url("../../assets/contactbg-mobile.svg");
+        background-image: url("../../assets/contactbg-mobile.svg");
     }
 }

@@ -44,7 +44,7 @@ const Contact = () => {
             <div className="p-ct-location p-ct-white">
               <i className="fas fa-envelope"></i>
               <p>
-                <a href="mailto: info@primedisplay.com" className="p-link-mail">info@primedisplay.com</a> <br />
+                <a href="mailto: info@primedisplay.ng" className="p-link-mail">info@primedisplay.ng</a> <br />
                 <a href="mailto: ask@primedisplay.com" className="p-link-mail">ask@primedisplay.com</a>
               </p>
             </div>
