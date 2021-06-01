@@ -21,7 +21,6 @@
 .p-about-sec1-imgs {
     width: 45%;
     display: grid;
-    grid-template-columns: 1fr;
     gap: 1rem;
 }
 .p-about-img1 img, .p-about-img2 img, .p-about-img3 img, .p-about-img4 img  {
@@ -77,9 +76,11 @@
 .p-about-sec2-item-2 {
     width: 60%;
     text-align: right;
+    margin-left: 2rem;
 }
 .p-about-edu {
     max-width: 600px;
+    width: 100%;
 }
 .p-about-reverse {
     flex-direction: row-reverse;
@@ -99,7 +100,8 @@
     position: absolute;
     bottom: 0;
     right: 3rem;
-    width: 230px;
+    max-width: 230px;
+    width: 30%;
 }
 .p-about-sec3-btn {
     color: #fff;
@@ -113,4 +115,96 @@
 }
 .p-about-sec3 h6 {
     font-size: 1.1rem;
+}
+
+@media(max-width: 1000px) {
+    .p-about-sec1-ttl {
+        font-size: 3rem;
+    }
+    .p-about-sec2-item-2 {
+        width: 50%;
+    }
+}
+
+@media(max-width: 800px) {
+    .p-about-sec2-item-2 {
+        width: 50%;
+    }
+    .p-about-sec1 {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 7rem;
+        border: none;
+        padding-bottom: 2rem;
+    }
+    .p-about-sec1-content {
+        width: 100%;
+        max-width: 750px;
+    }
+    .p-about-sec1-imgs {
+        width: 100%;
+        max-width: 500px;
+        margin-top: 1.5rem;
+    }
+    .p-about-sec1-ttl {
+        font-size: 2.75rem;
+    }
+    .p-about-sec2-ttl {
+        font-size: 1.5rem;
+    }
+    .p-about-sec2-item {
+        flex-direction: column;
+        padding-bottom: 1rem;
+    }
+    .p-about-sec2-item-1 {
+        width: 100%;
+    }
+    .p-about-hd {
+        text-align: center;
+    }
+    .p-about-descrip {
+        max-width: 750px;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+        margin-bottom: 1.2rem;
+        line-height: 1.7;
+    }
+    .p-about-sec2-item-2, .p-about-reverse .p-about-sec2-item-2 {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+    .p-about-edu {
+        width: 100%;
+        max-width: 500px;
+    }
+    .p-about-sec3 h6 {
+        max-width: 250px;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+    .p-about-sec3 {
+        padding: 4rem 2.5rem 5rem;
+    }
+    .p-about-sec3-img {
+        right: 2rem;
+        max-width: 230px;
+        width: 35%;
+    }
+}
+
+@media(max-width: 600px) {
+    .p-about-sec3 {
+        padding: 4rem 1rem 6rem 8%;
+    }
+    .p-about-sec3 h6 {
+        max-width: 180px;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+    .p-about-sec3-img {
+        width: 40%;
+        right: 1rem;
+    }
 }
