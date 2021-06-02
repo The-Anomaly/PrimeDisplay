@@ -98,7 +98,7 @@
 .p-view-ctrl-2 {
     width: 380px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 .p-view-details {

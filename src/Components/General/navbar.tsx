@@ -47,18 +47,7 @@ const NavBar = (props: any) => {
                     : "p-nav-list-items"
                 }
               >
-                About Us
-              </span>
-            </Link>
-            <Link className="p-nav-list-items" to="/contact">
-              <span
-                className={
-                  props.contact
-                    ? "p-nav-list-items p-nav-list-items-active"
-                    : "p-nav-list-items"
-                }
-              >
-                Contact Us
+                About
               </span>
             </Link>
             <Link className="p-nav-list-items" to="/buy">
@@ -69,7 +58,18 @@ const NavBar = (props: any) => {
                     : "p-nav-list-items"
                 }
               >
-                Buy
+                Product
+              </span>
+            </Link>
+            <Link className="p-nav-list-items" to="/contact">
+              <span
+                className={
+                  props.contact
+                    ? "p-nav-list-items p-nav-list-items-active"
+                    : "p-nav-list-items"
+                }
+              >
+                Contact
               </span>
             </Link>
             <Link className="p-nav-list-items" to="/services">
@@ -118,18 +118,7 @@ const NavBar = (props: any) => {
                         : "p-nav-list-items"
                     }
                   >
-                    About Us
-                  </span>
-                </Link>
-                <Link className="p-nav-list-items" to="/contact">
-                  <span
-                    className={
-                      props.contact
-                        ? "p-nav-list-items p-nav-list-items-active"
-                        : "p-nav-list-items"
-                    }
-                  >
-                    Contact Us
+                    About
                   </span>
                 </Link>
                 <Link className="p-nav-list-items" to="/buy">
@@ -140,7 +129,18 @@ const NavBar = (props: any) => {
                         : "p-nav-list-items"
                     }
                   >
-                    Buy
+                    Product
+                  </span>
+                </Link>
+                <Link className="p-nav-list-items" to="/contact">
+                  <span
+                    className={
+                      props.contact
+                        ? "p-nav-list-items p-nav-list-items-active"
+                        : "p-nav-list-items"
+                    }
+                  >
+                    Contact
                   </span>
                 </Link>
                 <Link className="p-nav-list-items" to="/services">

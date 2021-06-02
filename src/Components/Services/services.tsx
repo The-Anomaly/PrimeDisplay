@@ -36,7 +36,7 @@ const Services = () => {
           <h3 className="p-about-sec2-ttl">
             Experience lightening fast and reliable service with Prime Display
           </h3>
-          <div className="p-padd p-sec2">
+          <div className="p-sec2">
             <div className="p-sec2-item">
               <div className="p-sec2-icon p-sec2-icon-1">
                 <img src={projector} alt="projector icon" />

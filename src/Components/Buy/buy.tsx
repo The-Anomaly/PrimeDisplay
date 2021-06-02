@@ -65,7 +65,7 @@ const Buy = () => {
       screens: [
         {
           id: 0,
-          name: "3751RK OPTOMA Flat panel",
+          name: "OPTOMA 3751RK",
           short_descrip:
             "Robust collaboration, extensive connectivity options and a value-focused design",
           descrip: [
@@ -91,32 +91,7 @@ const Buy = () => {
         },
         {
           id: 1,
-          name: "3861RK OPTOMA",
-          short_descrip:
-            "It exhibits robust collaboration, extensive connectivity options and a value-focused design.",
-          descrip: [
-            "It exhibits robust collaboration, extensive connectivity options and a value-focused design. Optoma Creative Touch 5 Series premium interactive flat panel displays provide excellent collaboration and connectivity features for any classroom or business space. Premium wireless collaboration software tools are preinstalled to enable seamless interactivity from a variety of different devices.",
-            "The included quick-draw pen instantly activates the whiteboard application, saving the time and energy spent on having to manually change modes. With a slim, narrow-bezel, high-end design the 5 Series will fit seamlessly into any environment. The screen features a 1mm air gap for natural touch functionality so you can write clearly and confidently with improved accuracy.",
-            "Meeting room scheduling is simplified with the included Joan meeting widget and app, a collaborative calendar tool that seamlessly pairs with popular calendars to take the guesswork out of meeting room availability directly. Book meetings on the spot or through your existing desktop calendar and mobile phone.",
-          ],
-          image: prod2,
-          keywords: [
-            "optoma",
-            "3861rk",
-            "3861 rk",
-            "3861",
-            "smart screens",
-            "screens",
-            "3861rk optoma",
-            "flat panel",
-            "86",
-            "interactive",
-            "interactive flat display panel",
-          ],
-        },
-        {
-          id: 2,
-          name: "5751RK OPTOMA",
+          name: "OPTOMA 5751RK",
           short_descrip:
             "Optoma Creative Touch 5 Series premium interactive flat panel displays provide excellent collaboration and connectivity features for any classroom or business space",
           descrip: [
@@ -139,6 +114,31 @@ const Buy = () => {
             "interactive flat display panel",
           ],
         },
+        {
+          id: 1,
+          name: "OPTOMA 3861RK",
+          short_descrip:
+            "It exhibits robust collaboration, extensive connectivity options and a value-focused design.",
+          descrip: [
+            "It exhibits robust collaboration, extensive connectivity options and a value-focused design. Optoma Creative Touch 5 Series premium interactive flat panel displays provide excellent collaboration and connectivity features for any classroom or business space. Premium wireless collaboration software tools are preinstalled to enable seamless interactivity from a variety of different devices.",
+            "The included quick-draw pen instantly activates the whiteboard application, saving the time and energy spent on having to manually change modes. With a slim, narrow-bezel, high-end design the 5 Series will fit seamlessly into any environment. The screen features a 1mm air gap for natural touch functionality so you can write clearly and confidently with improved accuracy.",
+            "Meeting room scheduling is simplified with the included Joan meeting widget and app, a collaborative calendar tool that seamlessly pairs with popular calendars to take the guesswork out of meeting room availability directly. Book meetings on the spot or through your existing desktop calendar and mobile phone.",
+          ],
+          image: prod2,
+          keywords: [
+            "optoma",
+            "3861rk",
+            "3861 rk",
+            "3861",
+            "smart screens",
+            "screens",
+            "3861rk optoma",
+            "flat panel",
+            "86",
+            "interactive",
+            "interactive flat display panel",
+          ],
+        },
       ],
       projectors: [
         {
@@ -155,15 +155,15 @@ const Buy = () => {
         },
         {
           id: 1,
-          name: "UHD35",
+          name: "X309STE",
           short_descrip:
-            "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector.",
+            "Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
           descrip: [
-            "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector. The lightning-fast, low latency 4K UHD UHD35 delivers impressive cinema-quality images, an ultra-low input lag of 4.2ms and a high refresh rate of 240Hz perfect for a competitive classroom/boardroom and Big screen entertainment.",
-            "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and two HDMI 2.0 ports.",
+            "Short throw, bright and compact projector - Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
+            "Multiple inputs, USB power and a built-in speaker provide an easy set-up perfect for connecting to laptop, PC or Blu-ray player for clear projected images with sound. You can even connect a HDMI dongle for wireless presentations.",
           ],
-          image: prod8,
-          keywords: ["uhd35", "projector", "uhd 35", "uhd"],
+          image: prod10,
+          keywords: ["x309ste", "projector", "x 309ste", "x309", "x 309"],
         },
         {
           id: 2,
@@ -179,18 +179,53 @@ const Buy = () => {
         },
         {
           id: 3,
-          name: "X309STE",
-          short_descrip:
-            "Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
+          name: "EH412",
+          short_descrip: "High resolution, versatile and powerful projector",
           descrip: [
-            "Short throw, bright and compact projector - Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
-            "Multiple inputs, USB power and a built-in speaker provide an easy set-up perfect for connecting to laptop, PC or Blu-ray player for clear projected images with sound. You can even connect a HDMI dongle for wireless presentations.",
+            "Lightweight and portable, perfect for classroom and meeting room presentations, this projector is designed to be used at any time of day. Additionally, it boasts easy connectivity with multiple inputs including HDMI, VGA and a built in 10W speaker.",
+            "The Optoma EH412 has 1080P HD resolution and supports 4K HDR input sources, sRGB and REC.709 colour profiles. Adds 50,000:1 contrast ratio and users are guaranteed bright, sharp and vivid images.",
+            "You can even use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
           ],
-          image: prod10,
-          keywords: ["x309ste", "projector", "x 309ste", "x309", "x 309"],
+          image: prod13,
+          keywords: ["eh412", "projector", "eh 412", "eh"],
         },
         {
           id: 4,
+          name: "EH416",
+          short_descrip: "Full HD 1080p, compact and powerful",
+          descrip: [
+            "Project high resolution visuals regardless of the ambient light level using the bright full HD 1080p EH416. Designed for businesses and professional installation environments this compact and powerful projector can be installed or taken on the move. Perfect for small edge blending and stacking projects.",
+            "Easy to connect to with multiple inputs including two HDMI, MHL, VGA and a built in 10W speaker. You can even present wirelessly using the HDCast Pro (sold separately) or use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
+            "For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control. For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control.",
+          ],
+          image: prod14,
+          keywords: ["eh416", "projector", "eh 416", "eh"],
+        },
+        {
+          id: 5,
+          name: "UHD30",
+          short_descrip: "4K UHD gaming and home entertainment projector",
+          descrip: [
+            "Immerse yourself in a world of Ultra HD gaming, live sports, TV shows and movies. The UHD30 delivers impressive 4K cinema quality images and lightning fast refresh rate of 240Hz for silky smooth gaming. Its Full 3D compatible. TV and movie fans can also enjoy excellent colour depth, crystal clear detail, and sparkling contrast for a stunningly immersive experience.",
+            "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and HDMI 2.0. Perfect for enjoying life-like big-screen entertainment in any living space.",
+          ],
+          image: prod15,
+          keywords: ["uhd30", "projector", "uhd 30", "uhd"],
+        },
+        {
+          id: 6,
+          name: "UHD35",
+          short_descrip:
+            "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector.",
+          descrip: [
+            "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector. The lightning-fast, low latency 4K UHD UHD35 delivers impressive cinema-quality images, an ultra-low input lag of 4.2ms and a high refresh rate of 240Hz perfect for a competitive classroom/boardroom and Big screen entertainment.",
+            "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and two HDMI 2.0 ports.",
+          ],
+          image: prod8,
+          keywords: ["uhd35", "projector", "uhd 35", "uhd"],
+        },
+        {
+          id: 7,
           name: "ZH403",
           short_descrip:
             "Designed for maintenance free continuous operation, the ZH403 can be installed in virtually any orientation.",
@@ -203,8 +238,8 @@ const Buy = () => {
           keywords: ["zh403", "projector", "zh 403", "zh"],
         },
         {
-          id: 5,
-          name: "ZH406ST",
+          id: 8,
+          name: "ZH406",
           short_descrip:
             "The ZH406ST is a compact short throw Full HD 1080p DuraCore laser projector. Designed for maintenance-free, continuous operation. It can be installed in virtually any orientation.",
           descrip: [
@@ -221,49 +256,14 @@ const Buy = () => {
             "zh",
           ],
         },
-        {
-          id: 6,
-          name: "EH412",
-          short_descrip: "High resolution, versatile and powerful projector",
-          descrip: [
-            "Lightweight and portable, perfect for classroom and meeting room presentations, this projector is designed to be used at any time of day. Additionally, it boasts easy connectivity with multiple inputs including HDMI, VGA and a built in 10W speaker.",
-            "The Optoma EH412 has 1080P HD resolution and supports 4K HDR input sources, sRGB and REC.709 colour profiles. Adds 50,000:1 contrast ratio and users are guaranteed bright, sharp and vivid images.",
-            "You can even use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
-          ],
-          image: prod13,
-          keywords: ["eh412", "projector", "eh 412", "eh"],
-        },
-        {
-          id: 7,
-          name: "EH416",
-          short_descrip: "Full HD 1080p, compact and powerful",
-          descrip: [
-            "Project high resolution visuals regardless of the ambient light level using the bright full HD 1080p EH416. Designed for businesses and professional installation environments this compact and powerful projector can be installed or taken on the move. Perfect for small edge blending and stacking projects.",
-            "Easy to connect to with multiple inputs including two HDMI, MHL, VGA and a built in 10W speaker. You can even present wirelessly using the HDCast Pro (sold separately) or use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
-            "For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control. For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control.",
-          ],
-          image: prod14,
-          keywords: ["eh416", "projector", "eh 416", "eh"],
-        },
-        {
-          id: 8,
-          name: "UHD30",
-          short_descrip: "4K UHD gaming and home entertainment projector",
-          descrip: [
-            "Immerse yourself in a world of Ultra HD gaming, live sports, TV shows and movies. The UHD30 delivers impressive 4K cinema quality images and lightning fast refresh rate of 240Hz for silky smooth gaming. Its Full 3D compatible. TV and movie fans can also enjoy excellent colour depth, crystal clear detail, and sparkling contrast for a stunningly immersive experience.",
-            "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and HDMI 2.0. Perfect for enjoying life-like big-screen entertainment in any living space.",
-          ],
-          image: prod15,
-          keywords: ["uhd30", "projector", "uhd 30", "uhd"],
-        },
       ],
       boards: [
         {
           id: 0,
           name: "82' Interactive Whiteboard",
-          short_descrip: "",
+          short_descrip: "SMAAT 82 inch for enhanced learning interaction and collaborative experience",
           descrip: [
-            "",
+            "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
           ],
           image: prod16,
           keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "82", "82 inch", "82'" ],
@@ -271,9 +271,9 @@ const Buy = () => {
         {
           id: 1,
           name: "96' Interactive Whiteboard",
-          short_descrip: "",
+          short_descrip: "SMAAT 96 inch for enhanced learning interaction and collaborative experience",
           descrip: [
-            "",
+            "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
           ],
           image: prod17,
           keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "96", "96 inch", "96'" ],
@@ -335,7 +335,7 @@ const Buy = () => {
       screens: [
         {
           id: 0,
-          name: "3751RK OPTOMA Flat panel",
+          name: "OPTOMA 3751RK",
           short_descrip:
             "Robust collaboration, extensive connectivity options and a value-focused design",
           descrip: [
@@ -361,32 +361,7 @@ const Buy = () => {
         },
         {
           id: 1,
-          name: "3861RK OPTOMA",
-          short_descrip:
-            "It exhibits robust collaboration, extensive connectivity options and a value-focused design.",
-          descrip: [
-            "It exhibits robust collaboration, extensive connectivity options and a value-focused design. Optoma Creative Touch 5 Series premium interactive flat panel displays provide excellent collaboration and connectivity features for any classroom or business space. Premium wireless collaboration software tools are preinstalled to enable seamless interactivity from a variety of different devices.",
-            "The included quick-draw pen instantly activates the whiteboard application, saving the time and energy spent on having to manually change modes. With a slim, narrow-bezel, high-end design the 5 Series will fit seamlessly into any environment. The screen features a 1mm air gap for natural touch functionality so you can write clearly and confidently with improved accuracy.",
-            "Meeting room scheduling is simplified with the included Joan meeting widget and app, a collaborative calendar tool that seamlessly pairs with popular calendars to take the guesswork out of meeting room availability directly. Book meetings on the spot or through your existing desktop calendar and mobile phone.",
-          ],
-          image: prod2,
-          keywords: [
-            "optoma",
-            "3861rk",
-            "3861 rk",
-            "3861",
-            "smart screens",
-            "screens",
-            "3861rk optoma",
-            "flat panel",
-            "86",
-            "interactive",
-            "interactive flat display panel",
-          ],
-        },
-        {
-          id: 2,
-          name: "5751RK OPTOMA",
+          name: "OPTOMA 5751RK",
           short_descrip:
             "Optoma Creative Touch 5 Series premium interactive flat panel displays provide excellent collaboration and connectivity features for any classroom or business space",
           descrip: [
@@ -409,6 +384,31 @@ const Buy = () => {
             "interactive flat display panel",
           ],
         },
+        {
+          id: 1,
+          name: "OPTOMA 3861RK",
+          short_descrip:
+            "It exhibits robust collaboration, extensive connectivity options and a value-focused design.",
+          descrip: [
+            "It exhibits robust collaboration, extensive connectivity options and a value-focused design. Optoma Creative Touch 5 Series premium interactive flat panel displays provide excellent collaboration and connectivity features for any classroom or business space. Premium wireless collaboration software tools are preinstalled to enable seamless interactivity from a variety of different devices.",
+            "The included quick-draw pen instantly activates the whiteboard application, saving the time and energy spent on having to manually change modes. With a slim, narrow-bezel, high-end design the 5 Series will fit seamlessly into any environment. The screen features a 1mm air gap for natural touch functionality so you can write clearly and confidently with improved accuracy.",
+            "Meeting room scheduling is simplified with the included Joan meeting widget and app, a collaborative calendar tool that seamlessly pairs with popular calendars to take the guesswork out of meeting room availability directly. Book meetings on the spot or through your existing desktop calendar and mobile phone.",
+          ],
+          image: prod2,
+          keywords: [
+            "optoma",
+            "3861rk",
+            "3861 rk",
+            "3861",
+            "smart screens",
+            "screens",
+            "3861rk optoma",
+            "flat panel",
+            "86",
+            "interactive",
+            "interactive flat display panel",
+          ],
+        },
       ],
       projectors: [
         {
@@ -425,15 +425,15 @@ const Buy = () => {
         },
         {
           id: 1,
-          name: "UHD35",
+          name: "X309STE",
           short_descrip:
-            "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector.",
+            "Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
           descrip: [
-            "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector. The lightning-fast, low latency 4K UHD UHD35 delivers impressive cinema-quality images, an ultra-low input lag of 4.2ms and a high refresh rate of 240Hz perfect for a competitive classroom/boardroom and Big screen entertainment.",
-            "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and two HDMI 2.0 ports.",
+            "Short throw, bright and compact projector - Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
+            "Multiple inputs, USB power and a built-in speaker provide an easy set-up perfect for connecting to laptop, PC or Blu-ray player for clear projected images with sound. You can even connect a HDMI dongle for wireless presentations.",
           ],
-          image: prod8,
-          keywords: ["uhd35", "projector", "uhd 35", "uhd"],
+          image: prod10,
+          keywords: ["x309ste", "projector", "x 309ste", "x309", "x 309"],
         },
         {
           id: 2,
@@ -449,18 +449,53 @@ const Buy = () => {
         },
         {
           id: 3,
-          name: "X309STE",
-          short_descrip:
-            "Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
+          name: "EH412",
+          short_descrip: "High resolution, versatile and powerful projector",
           descrip: [
-            "Short throw, bright and compact projector - Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
-            "Multiple inputs, USB power and a built-in speaker provide an easy set-up perfect for connecting to laptop, PC or Blu-ray player for clear projected images with sound. You can even connect a HDMI dongle for wireless presentations.",
+            "Lightweight and portable, perfect for classroom and meeting room presentations, this projector is designed to be used at any time of day. Additionally, it boasts easy connectivity with multiple inputs including HDMI, VGA and a built in 10W speaker.",
+            "The Optoma EH412 has 1080P HD resolution and supports 4K HDR input sources, sRGB and REC.709 colour profiles. Adds 50,000:1 contrast ratio and users are guaranteed bright, sharp and vivid images.",
+            "You can even use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
           ],
-          image: prod10,
-          keywords: ["x309ste", "projector", "x 309ste", "x309", "x 309"],
+          image: prod13,
+          keywords: ["eh412", "projector", "eh 412", "eh"],
         },
         {
           id: 4,
+          name: "EH416",
+          short_descrip: "Full HD 1080p, compact and powerful",
+          descrip: [
+            "Project high resolution visuals regardless of the ambient light level using the bright full HD 1080p EH416. Designed for businesses and professional installation environments this compact and powerful projector can be installed or taken on the move. Perfect for small edge blending and stacking projects.",
+            "Easy to connect to with multiple inputs including two HDMI, MHL, VGA and a built in 10W speaker. You can even present wirelessly using the HDCast Pro (sold separately) or use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
+            "For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control. For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control.",
+          ],
+          image: prod14,
+          keywords: ["eh416", "projector", "eh 416", "eh"],
+        },
+        {
+          id: 5,
+          name: "UHD30",
+          short_descrip: "4K UHD gaming and home entertainment projector",
+          descrip: [
+            "Immerse yourself in a world of Ultra HD gaming, live sports, TV shows and movies. The UHD30 delivers impressive 4K cinema quality images and lightning fast refresh rate of 240Hz for silky smooth gaming. Its Full 3D compatible. TV and movie fans can also enjoy excellent colour depth, crystal clear detail, and sparkling contrast for a stunningly immersive experience.",
+            "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and HDMI 2.0. Perfect for enjoying life-like big-screen entertainment in any living space.",
+          ],
+          image: prod15,
+          keywords: ["uhd30", "projector", "uhd 30", "uhd"],
+        },
+        {
+          id: 6,
+          name: "UHD35",
+          short_descrip:
+            "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector.",
+          descrip: [
+            "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector. The lightning-fast, low latency 4K UHD UHD35 delivers impressive cinema-quality images, an ultra-low input lag of 4.2ms and a high refresh rate of 240Hz perfect for a competitive classroom/boardroom and Big screen entertainment.",
+            "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and two HDMI 2.0 ports.",
+          ],
+          image: prod8,
+          keywords: ["uhd35", "projector", "uhd 35", "uhd"],
+        },
+        {
+          id: 7,
           name: "ZH403",
           short_descrip:
             "Designed for maintenance free continuous operation, the ZH403 can be installed in virtually any orientation.",
@@ -473,8 +508,8 @@ const Buy = () => {
           keywords: ["zh403", "projector", "zh 403", "zh"],
         },
         {
-          id: 5,
-          name: "ZH406ST",
+          id: 8,
+          name: "ZH406",
           short_descrip:
             "The ZH406ST is a compact short throw Full HD 1080p DuraCore laser projector. Designed for maintenance-free, continuous operation. It can be installed in virtually any orientation.",
           descrip: [
@@ -491,49 +526,14 @@ const Buy = () => {
             "zh",
           ],
         },
-        {
-          id: 6,
-          name: "EH412",
-          short_descrip: "High resolution, versatile and powerful projector",
-          descrip: [
-            "Lightweight and portable, perfect for classroom and meeting room presentations, this projector is designed to be used at any time of day. Additionally, it boasts easy connectivity with multiple inputs including HDMI, VGA and a built in 10W speaker.",
-            "The Optoma EH412 has 1080P HD resolution and supports 4K HDR input sources, sRGB and REC.709 colour profiles. Adds 50,000:1 contrast ratio and users are guaranteed bright, sharp and vivid images.",
-            "You can even use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
-          ],
-          image: prod13,
-          keywords: ["eh412", "projector", "eh 412", "eh"],
-        },
-        {
-          id: 7,
-          name: "EH416",
-          short_descrip: "Full HD 1080p, compact and powerful",
-          descrip: [
-            "Project high resolution visuals regardless of the ambient light level using the bright full HD 1080p EH416. Designed for businesses and professional installation environments this compact and powerful projector can be installed or taken on the move. Perfect for small edge blending and stacking projects.",
-            "Easy to connect to with multiple inputs including two HDMI, MHL, VGA and a built in 10W speaker. You can even present wirelessly using the HDCast Pro (sold separately) or use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
-            "For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control. For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control.",
-          ],
-          image: prod14,
-          keywords: ["eh416", "projector", "eh 416", "eh"],
-        },
-        {
-          id: 8,
-          name: "UHD30",
-          short_descrip: "4K UHD gaming and home entertainment projector",
-          descrip: [
-            "Immerse yourself in a world of Ultra HD gaming, live sports, TV shows and movies. The UHD30 delivers impressive 4K cinema quality images and lightning fast refresh rate of 240Hz for silky smooth gaming. Its Full 3D compatible. TV and movie fans can also enjoy excellent colour depth, crystal clear detail, and sparkling contrast for a stunningly immersive experience.",
-            "Packed with the latest technology and features, this stylish projector boasts High Dynamic Range (HDR) and HLG compatibility, Full 3D and HDMI 2.0. Perfect for enjoying life-like big-screen entertainment in any living space.",
-          ],
-          image: prod15,
-          keywords: ["uhd30", "projector", "uhd 30", "uhd"],
-        },
       ],
       boards: [
         {
           id: 0,
           name: "82' Interactive Whiteboard",
-          short_descrip: "",
+          short_descrip: "SMAAT 82 inch for enhanced learning interaction and collaborative experience",
           descrip: [
-            "",
+            "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
           ],
           image: prod16,
           keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "82", "82 inch", "82'" ],
@@ -541,9 +541,9 @@ const Buy = () => {
         {
           id: 1,
           name: "96' Interactive Whiteboard",
-          short_descrip: "",
+          short_descrip: "SMAAT 96 inch for enhanced learning interaction and collaborative experience",
           descrip: [
-            "",
+            "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
           ],
           image: prod17,
           keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "96", "96 inch", "96'" ],
@@ -586,10 +586,29 @@ const Buy = () => {
           </div>
         </div>
 
+        {/* Interactive Whiteboards */}
+        {!nosearch && (<div className="p-buy-products p-marg">
+          {projectors.length > 0 && (
+            <h5 className="p-buy-sec1-ttl">Interactive White Boards</h5>
+          )}
+          <div className="p-buy-itemsec p-buy-list-2itemsonly">
+            {boards.map((x: any, i: any) => (
+              <div className="p-buy-items" key={i}>
+                <img className="p-buy-products-img" src={x.image} alt="" />
+                <h6 className="p-buy-products-hd">{x.name}</h6>
+                <p className="p-buy-products-descrip">{x.short_descrip}</p>
+                <a className="p-buy-products-link" onClick={() => viewMore(x)}>
+                  View More
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>)}
+
         {/* Smart screens */}
         {!nosearch && (<div className="p-buy-products p-marg">
           {screens.length > 0 && (
-            <h5 className="p-buy-sec1-ttl">Smart Screens</h5>
+            <h5 className="p-buy-sec1-ttl">Interactive Flat Panels</h5>
           )}
           <div className="p-buy-itemsec">
             {screens.map((x: any, i: any) => (
@@ -624,24 +643,6 @@ const Buy = () => {
           </div>
         </div>)}
 
-        {/* Interactive Whiteboards */}
-        {!nosearch && (<div className="p-buy-products p-marg">
-          {projectors.length > 0 && (
-            <h5 className="p-buy-sec1-ttl">Interactive Whiteboards</h5>
-          )}
-          <div className="p-buy-itemsec p-buy-list-2itemsonly">
-            {boards.map((x: any, i: any) => (
-              <div className="p-buy-items" key={i}>
-                <img className="p-buy-products-img" src={x.image} alt="" />
-                <h6 className="p-buy-products-hd">{x.name}</h6>
-                <p className="p-buy-products-descrip">{x.short_descrip}</p>
-                <a className="p-buy-products-link" onClick={() => viewMore(x)}>
-                  View More
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>)}
         {nosearch && (
           <h2 className="p-nosearch">No items match your search :(</h2>
         )}

@@ -204,7 +204,10 @@
         font-size: 1rem;
     }
     .p-about-sec3-img {
-        width: 40%;
+        width: 50%;
         right: 1rem;
+    }
+    .p-about-sec1-ttl {
+        font-size: 2.5rem;
     }
 }

@@ -37,23 +37,20 @@ const Contact = () => {
             alt="lady pointing towards map"
           />
           <div className="p-ct-info">
-            <div className="p-ct-location">
+            <div className="p-ct-location p-ct-location-1">
               <i className="fas fa-map-marker-alt"></i>
               <p>Head Office - 37 Ogunlana drive, Surulere, Lagos</p>
             </div>
             <div className="p-ct-location p-ct-white">
               <i className="fas fa-envelope"></i>
               <p>
-                <a href="mailto: info@primedisplay.ng" className="p-link-mail">info@primedisplay.ng</a> <br />
-                <a href="mailto: ask@primedisplay.com" className="p-link-mail">ask@primedisplay.com</a>
+                <a href="mailto: info@primedisplay.ng" className="p-link-mail">info@primedisplay.ng</a>
               </p>
             </div>
             <div className="p-ct-location">
               <i className="fas fa-phone-alt"></i>
               <p>
                 <a href="tel:+2348158393221" className="p-link-num">+234 (0) 815 839 3221</a>
-                <br />
-                <a href="tel:+2349051130003" className="p-link-num">+234 (0) 905 113 0003</a>
               </p>
             </div>
           </div>

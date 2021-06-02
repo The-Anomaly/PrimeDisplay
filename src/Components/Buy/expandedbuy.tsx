@@ -45,16 +45,16 @@ const ExpandedBuy = (props: any) => {
             <span className="p-view-details">Specs</span>
           </div>
           <div className="p-view-ctrl-2">
-            <span>
+            {/* <span>
               On Sale from <b>$3,299.00</b>
-            </span>
-            <input
+            </span> */}
+            {/* <input
               className="p-buy-num"
               name="number"
               onChange={handleChange}
               value={number}
               type="number"
-            />
+            /> */}
             <button className="p-buy-btn">Buy</button>
           </div>
         </div>

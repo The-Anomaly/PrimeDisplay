@@ -33,5 +33,75 @@
     bottom: 0;
 }
 .p-services-btnsec {
-    margin-top: 4rem;
+    margin-top: 3rem;
+}
+
+@media(max-width: 1000px) {
+    .p-sitting {
+        width: 50%;
+    }
+}
+
+@media(max-width: 800px) {
+    .p-sitting {
+        width: 100%;
+        max-width: 500px;
+        margin-top: 1.5rem;
+    }
+    .p-services-btnsec {
+        margin-top: 0;
+    }
+    .p-services-man {
+        width: 55%;
+    }
+    .p-services-btnsec h6 {
+        font-size: 1.2rem;
+        max-width: 350px;
+        margin-bottom: 1.2rem;
+    }
+    .p-services {
+        border: none;
+    }
+    .p-services-sec2 {
+        padding: 1rem 0;
+    }
+    .p-services-sec2 .p-sec2 {
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+    }
+    .p-services-sec2 .p-sec2-item {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-right: 0;
+    }
+    .p-services-sec2 .p-sec2-icon {
+        margin: auto;
+    }
+}
+
+@media(max-width: 600px) {
+    .p-services-man {
+        display: none;
+    }
+    .p-services-btnsec {
+        padding: 3rem 2rem;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .p-services-btnsec h6 {
+        text-align: center;
+        max-width: initial;
+        font-size: 1.1rem;
+    }
+    .p-services-btnsec button {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media(max-width: 400px) {
+    .p-services-btnsec h6 {
+        font-size: 1rem;
+    }
 }

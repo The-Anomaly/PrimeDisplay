@@ -126,3 +126,35 @@
     color: #99cc33;
     text-decoration: none;
 }
+.p-ct-location-1 {
+    padding: 1rem;
+}
+
+@media(max-width: 1000px) {
+    .p-contactus-ttl {
+        font-size: 3rem;
+    }
+}
+
+@media(max-width: 800px) {
+    .p-contactus-ttl {
+        font-size: 2.75rem;
+    }
+    .p-contactus {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 7rem;
+        border: none;
+        padding-bottom: 2rem;
+    }
+    .p-contactus div:nth-child(1) {
+        width: 100%;
+        max-width: 750px;
+    }
+}
+
+@media(max-width: 600px) {
+    .p-contactus-ttl {
+        font-size: 2.5rem;
+    }
+}
