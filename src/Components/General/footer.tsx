@@ -16,13 +16,13 @@ const Footer = () => {
                 <div>
                     <div className="p-footer-hd">Links</div>
                     <Link className="p-footer-link" to="/"><div className="p-footer-item">Home</div></Link>
-                    <Link className="p-footer-link" to="/about"><div className="p-footer-item">About Us</div></Link>
-                    <Link className="p-footer-link" to="/contact"><div className="p-footer-item">Contact Us</div></Link>
+                    <Link className="p-footer-link" to="/about"><div className="p-footer-item">About</div></Link>
+                    <Link className="p-footer-link" to="/contact"><div className="p-footer-item">Contact</div></Link>
                 </div>
                 <div>
                     <div className="p-footer-hd">Products</div>
                     <Link className="p-footer-link" to="/services"><div className="p-footer-item">Services</div></Link>
-                    <Link className="p-footer-link" to="/buy"><div className="p-footer-item">Buy</div></Link>
+                    <Link className="p-footer-link" to="/buy"><div className="p-footer-item">Products</div></Link>
                 </div>
                 <div className="p-footer-4">
                     <div className="p-footer-hd">Contacts</div>
