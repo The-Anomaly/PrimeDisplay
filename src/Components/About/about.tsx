@@ -8,6 +8,9 @@ import photo2 from "../../assets/photo2.png";
 import photo3 from "../../assets/photo3.png";
 import photo4 from "../../assets/photo4.png";
 import edu from "../../assets/edu.png";
+import bus from "../../assets/business.png";
+import rel from "../../assets/religious.png";
+import gov from "../../assets/gov.png";
 import chart from "../../assets/chart.png";
 import Contact from "../General/contact";
 import Footer from "../General/footer";
@@ -22,7 +25,7 @@ const About = () => {
     <>
       <NavBar about={true} />
       <main>
-        <div className="p-about-sec1 p-marg">
+        <div className="p-about-sec1 p-padd">
           <div className="p-about-sec1-content">
             <h1 className="p-about-sec1-ttl">
               About <br /> Prime Display
@@ -57,6 +60,7 @@ const About = () => {
             </div>
           </div>
         </div>
+        <hr className="p-div p-marg" />
         <div className="p-about-sec2 p-marg">
           <h3 className="p-about-sec2-ttl">
             We Deliver with Top Notch Quality for Every Sector
@@ -80,7 +84,7 @@ const About = () => {
               </p>
             </div>
             <div className="p-about-sec2-item-2">
-              <img className="p-about-edu" src={edu} />
+              <img className="p-about-edu" src={bus} />
             </div>
           </div>
           <div className="p-about-sec2-item">
@@ -91,7 +95,7 @@ const About = () => {
               </p>
             </div>
             <div className="p-about-sec2-item-2">
-              <img className="p-about-edu" src={edu} />
+              <img className="p-about-edu" src={rel} />
             </div>
           </div>
           <div className="p-about-sec2-item p-about-reverse">
@@ -102,7 +106,7 @@ const About = () => {
               </p>
             </div>
             <div className="p-about-sec2-item-2">
-              <img className="p-about-edu" src={edu} />
+              <img className="p-about-edu" src={gov} />
             </div>
           </div>
         </div>

@@ -25,11 +25,14 @@
     font-weight: 600;
     letter-spacing: 0.3px;
     margin-top: 10px;
+    font-family: 'Circular Std';
+    z-index: 1;
+    position: relative;
 }
 .p-hero-ttl-img {
     position: absolute;
     bottom: -15px;
-    z-index: -1;
+    z-index: 0;
     max-width: 200px;
     margin-left: 1.5%;
 }
@@ -94,6 +97,7 @@
     color: #333333;
     font-weight: 900;
     margin: 1.6rem 0 0.8rem;
+    font-family: 'Circular Std';
 }
 .p-sec2-txt {
     font-size: 14px;
@@ -116,6 +120,7 @@
     font-weight: 900;
     max-width: 300px;
     margin-bottom: 1.5rem;
+    font-family: 'Circular Std';
 }
 .p-sec3-txt {
     color: #666666;
@@ -158,6 +163,7 @@
     color: #003399;
     font-weight: 900;
     margin-bottom: 1rem;
+    font-family: 'Circular Std';
 }
 .p-sec4-txt {
     color: #666666;
@@ -209,6 +215,7 @@
     font-weight: 900;
     font-size: 1.5rem;
     max-width: 200px;
+    font-family: 'Circular Std';
 }
 .p-sec5-arrow-sec {
     display: flex;
@@ -372,6 +379,13 @@
         top: 5rem;
     right: 4%;
     }
+    .p-sec5-client-txt {
+        text-align: left;
+    }
+    .p-hero-ttl-img {
+        width: 175px;
+        bottom: -12px;
+    }
 }
 
 @media(max-width: 600px) {
@@ -381,5 +395,8 @@
     .p-hero-ttl {
         font-size: 2.5rem;
         max-width: 240px;
+    }
+    .p-hero-ttl-img {
+        width: 150px;
     }
 }

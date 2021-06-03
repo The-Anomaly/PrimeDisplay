@@ -32,17 +32,17 @@ const Footer = () => {
                 </div>
                 </div>
                 <div className="p-footer-socials p-footer-socials-mobile">
-                    <a href="https://twitter.com/PrimeDisplayNig"><i className="fab fa-twitter frt-soc"></i></a>
-                    <i className="fab fa-facebook-f frt-soc"></i>
-                    <i className="fab fa-google frt-soc"></i>
+                    <a href="https://twitter.com/PrimeDisplayNig" target="blank"><i className="fab fa-twitter frt-soc"></i></a>
+                    <a href="https://web.facebook.com/PrimedisplayNG/" target="blank"><i className="fab fa-facebook-f frt-soc"></i></a>
+                    {/* <i className="fab fa-google frt-soc"></i> */}
                     </div>
                 <hr />
                 <div className="p-ftr-cpysec">
                     <p className="p-footer-copy">&copy; Prime Display {date}, All Rights Reserved</p>
                     <div className="p-footer-socials">
-                    <a href="https://twitter.com/PrimeDisplayNig"><i className="fab fa-twitter frt-soc"></i></a>
-                    <i className="fab fa-facebook-f frt-soc"></i>
-                    <i className="fab fa-google frt-soc"></i>
+                    <a href="https://twitter.com/PrimeDisplayNig" target="blank"><i className="fab fa-twitter frt-soc"></i></a>
+                    <a href="https://web.facebook.com/PrimedisplayNG/" target="blank"><i className="fab fa-facebook-f frt-soc"></i></a>
+                    {/* <i className="fab fa-google frt-soc"></i> */}
                     </div>
                 </div>
             </footer>

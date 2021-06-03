@@ -45,8 +45,9 @@
     color: #99cc33;
     display: flex;
     justify-content: space-between;
-    width: 80px;
+    /* width: 80px; */
     font-size: 14px;
+    width: 40px;
 }
 .p-footer-link, .p-footer-link:hover {
     text-decoration: none;
@@ -74,6 +75,10 @@
 .frt-soc {
     cursor: pointer;
     color: #99cc33;
+}
+.p-footer-ctct:hover {
+    text-decoration: underline;
+    color: #FE6201;
 }
 
 @media(max-width: 1000px) {

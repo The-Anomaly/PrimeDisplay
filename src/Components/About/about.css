@@ -1,8 +1,12 @@
 .p-about-sec1 {
-    border-bottom: 1px solid #99cc33;
-    padding: 5rem 0 4rem;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
     display: flex;
     align-items: center;
+    background: url("../../assets/herobg.svg");
+}
+.p-div {
+    background: #99cc33;
 }
 .p-about-sec1-content {
     width: 55%;
@@ -13,6 +17,7 @@
     font-weight: 700;
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    font-family: 'Circular Std';
 }
 .p-about-sec1-txt {
     color: #666666;
@@ -53,6 +58,7 @@
     text-align: center;
     margin: auto;
     color: #1E1E1E;
+    font-family: 'Circular Std';
 }
 .p-about-sec2-item {
     display: flex;
@@ -65,8 +71,9 @@
 .p-about-hd {
     color: #000000;
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
+    font-family: 'Circular Std';
 }
 .p-about-descrip {
     font-size: 15px;
@@ -87,6 +94,7 @@
 }
 .p-about-reverse .p-about-sec2-item-2 {
     text-align: left;
+    margin-left: 0;
 }
 .p-about-sec3 {
     background: #07113D;
@@ -191,6 +199,9 @@
         right: 2rem;
         max-width: 230px;
         width: 35%;
+    }
+    .p-about-hd {
+        font-size: 1.2rem;
     }
 }
 

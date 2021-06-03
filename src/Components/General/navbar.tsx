@@ -6,13 +6,20 @@ import { Link, useHistory } from "react-router-dom";
 const NavBar = (props: any) => {
   const [nav, setNav] = React.useState({
     location: true,
+    extendedBuy: false,
   })
-  const { location } = nav;
+  const { location, extendedBuy } = nav;
   React.useEffect(() => {
     if(window.location.pathname !== "/") {
       setNav({
         ...nav,
         location: false,
+      })
+    }
+    if(window.location.pathname !== "/buy/:product") {
+      setNav({
+        ...nav,
+        extendedBuy: true,
       })
     }
   }, [])
@@ -22,7 +29,7 @@ const NavBar = (props: any) => {
   }
   return (
     <>
-      <header className={location ? "p-nav p-nav-bg" : "p-nav"}>
+      <header className={!extendedBuy ? "p-nav" : "p-nav p-nav-bg"}>
         <div className="p-nav-desktop">
           <Link to="/">
             <img className="p-logo" src={logo} alt="logo" />
@@ -87,7 +94,7 @@ const NavBar = (props: any) => {
           <button className={location ? "p-nav-btn" : "p-nav-btn p-btn-outline"} onClick={contact}>Get in Touch</button>
         </div>
         <div className="p-nav-mobile">
-          <nav className="navbar navbar-expand-lg">
+          <nav className="navbar navbar-expand-lg p-nav-bg">
             <Link to="/">
               <img className="p-logo navbar-brand" src={logo} alt="logo" />
             </Link>

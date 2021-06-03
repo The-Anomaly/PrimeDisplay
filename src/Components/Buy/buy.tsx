@@ -3,14 +3,9 @@ import "./buy.css";
 import NavBar from "../General/navbar";
 import Footer from "../General/footer";
 import "../Landing/landing.css";
-import product from "../../assets/product.png";
-import product2 from "../../assets/product2.png";
 import prod1 from "../../assets/prod1.jpg";
 import prod2 from "../../assets/prod2.jpg";
-import prod3 from "../../assets/prod3.jpg";
 import prod4 from "../../assets/prod4.jpg";
-import prod5 from "../../assets/prod5.jpg";
-import prod6 from "../../assets/prod6.jpg";
 import prod7 from "../../assets/prod7-bg.png";
 import prod8 from "../../assets/prod8.jpg";
 import prod9 from "../../assets/prod9-bg.png";
@@ -143,7 +138,7 @@ const Buy = () => {
       projectors: [
         {
           id: 0,
-          name: "S334E",
+          name: "OPTOMA S334e",
           short_descrip:
             "The S334e boasts amazing colour, long lamp life and energy-saving features to provide you with a low overall cost of ownership.",
           descrip: [
@@ -155,7 +150,7 @@ const Buy = () => {
         },
         {
           id: 1,
-          name: "X309STE",
+          name: "OPTOMA X309STe",
           short_descrip:
             "Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
           descrip: [
@@ -167,7 +162,7 @@ const Buy = () => {
         },
         {
           id: 2,
-          name: "W400",
+          name: "OPTOMA W400",
           short_descrip:
             "Transform the delivery of your presentation with the first ever 4,000 lumen, small, lightweight W400 projector.",
           descrip: [
@@ -179,7 +174,7 @@ const Buy = () => {
         },
         {
           id: 3,
-          name: "EH412",
+          name: "OPTOMA EH412",
           short_descrip: "High resolution, versatile and powerful projector",
           descrip: [
             "Lightweight and portable, perfect for classroom and meeting room presentations, this projector is designed to be used at any time of day. Additionally, it boasts easy connectivity with multiple inputs including HDMI, VGA and a built in 10W speaker.",
@@ -191,7 +186,7 @@ const Buy = () => {
         },
         {
           id: 4,
-          name: "EH416",
+          name: "OPTOMA EH416",
           short_descrip: "Full HD 1080p, compact and powerful",
           descrip: [
             "Project high resolution visuals regardless of the ambient light level using the bright full HD 1080p EH416. Designed for businesses and professional installation environments this compact and powerful projector can be installed or taken on the move. Perfect for small edge blending and stacking projects.",
@@ -203,7 +198,7 @@ const Buy = () => {
         },
         {
           id: 5,
-          name: "UHD30",
+          name: "OPTOMA UHD30",
           short_descrip: "4K UHD gaming and home entertainment projector",
           descrip: [
             "Immerse yourself in a world of Ultra HD gaming, live sports, TV shows and movies. The UHD30 delivers impressive 4K cinema quality images and lightning fast refresh rate of 240Hz for silky smooth gaming. Its Full 3D compatible. TV and movie fans can also enjoy excellent colour depth, crystal clear detail, and sparkling contrast for a stunningly immersive experience.",
@@ -214,7 +209,7 @@ const Buy = () => {
         },
         {
           id: 6,
-          name: "UHD35",
+          name: "OPTOMA UHD35",
           short_descrip:
             "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector.",
           descrip: [
@@ -226,7 +221,7 @@ const Buy = () => {
         },
         {
           id: 7,
-          name: "ZH403",
+          name: "OPTOMA ZH403",
           short_descrip:
             "Designed for maintenance free continuous operation, the ZH403 can be installed in virtually any orientation.",
           descrip: [
@@ -239,7 +234,7 @@ const Buy = () => {
         },
         {
           id: 8,
-          name: "ZH406",
+          name: " OPTOMA ZH406ST",
           short_descrip:
             "The ZH406ST is a compact short throw Full HD 1080p DuraCore laser projector. Designed for maintenance-free, continuous operation. It can be installed in virtually any orientation.",
           descrip: [
@@ -260,7 +255,7 @@ const Buy = () => {
       boards: [
         {
           id: 0,
-          name: "82' Interactive Whiteboard",
+          name: "SMAAT 82\" INTERACTIVE WHITE BOARD",
           short_descrip: "SMAAT 82 inch for enhanced learning interaction and collaborative experience",
           descrip: [
             "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
@@ -270,13 +265,23 @@ const Buy = () => {
         },
         {
           id: 1,
-          name: "96' Interactive Whiteboard",
+          name: "SMAAT 96\" INTERACTIVE WHITE BOARD",
           short_descrip: "SMAAT 96 inch for enhanced learning interaction and collaborative experience",
           descrip: [
             "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
           ],
           image: prod17,
           keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "96", "96 inch", "96'" ],
+        },
+        {
+          id: 2,
+          name: "SMAAT 102\" INTERACTIVE WHITE BOARD",
+          short_descrip: "SMAAT 102 inch for enhanced learning interaction and collaborative experience",
+          descrip: [
+            "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
+          ],
+          image: prod17,
+          keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "102", "102 inch", "102'" ],
         },
       ],
     });
@@ -309,12 +314,14 @@ const Buy = () => {
         if (item.keywords.includes(search.toLowerCase())) {
           console.log(item);
           newscreen.push(item);
+          return;
         }
       });
       projectors.map((item: any) => {
         if (item.keywords.includes(search.toLowerCase())) {
           console.log(item);
           newprojectors.push(item);
+          return;
         }
       });
       setState({
@@ -413,7 +420,7 @@ const Buy = () => {
       projectors: [
         {
           id: 0,
-          name: "S334E",
+          name: "OPTOMA S334e",
           short_descrip:
             "The S334e boasts amazing colour, long lamp life and energy-saving features to provide you with a low overall cost of ownership.",
           descrip: [
@@ -425,7 +432,7 @@ const Buy = () => {
         },
         {
           id: 1,
-          name: "X309STE",
+          name: "OPTOMA X309STe",
           short_descrip:
             "Designed for small meeting rooms and classrooms, this short throw projector boasts amazing colour, a long lamp life and energy saving features for a lower overall cost of ownership.",
           descrip: [
@@ -437,7 +444,7 @@ const Buy = () => {
         },
         {
           id: 2,
-          name: "W400",
+          name: "OPTOMA W400",
           short_descrip:
             "Transform the delivery of your presentation with the first ever 4,000 lumen, small, lightweight W400 projector.",
           descrip: [
@@ -449,7 +456,7 @@ const Buy = () => {
         },
         {
           id: 3,
-          name: "EH412",
+          name: "OPTOMA EH412",
           short_descrip: "High resolution, versatile and powerful projector",
           descrip: [
             "Lightweight and portable, perfect for classroom and meeting room presentations, this projector is designed to be used at any time of day. Additionally, it boasts easy connectivity with multiple inputs including HDMI, VGA and a built in 10W speaker.",
@@ -461,7 +468,7 @@ const Buy = () => {
         },
         {
           id: 4,
-          name: "EH416",
+          name: "OPTOMA EH416",
           short_descrip: "Full HD 1080p, compact and powerful",
           descrip: [
             "Project high resolution visuals regardless of the ambient light level using the bright full HD 1080p EH416. Designed for businesses and professional installation environments this compact and powerful projector can be installed or taken on the move. Perfect for small edge blending and stacking projects.",
@@ -473,7 +480,7 @@ const Buy = () => {
         },
         {
           id: 5,
-          name: "UHD30",
+          name: "OPTOMA UHD30",
           short_descrip: "4K UHD gaming and home entertainment projector",
           descrip: [
             "Immerse yourself in a world of Ultra HD gaming, live sports, TV shows and movies. The UHD30 delivers impressive 4K cinema quality images and lightning fast refresh rate of 240Hz for silky smooth gaming. Its Full 3D compatible. TV and movie fans can also enjoy excellent colour depth, crystal clear detail, and sparkling contrast for a stunningly immersive experience.",
@@ -484,7 +491,7 @@ const Buy = () => {
         },
         {
           id: 6,
-          name: "UHD35",
+          name: "OPTOMA UHD35",
           short_descrip:
             "Immerse yourself in a world of Ultra HD teaching and presentations with an excellent colour depth, crystal clear detail, and sparkling contrast projector.",
           descrip: [
@@ -496,7 +503,7 @@ const Buy = () => {
         },
         {
           id: 7,
-          name: "ZH403",
+          name: "OPTOMA ZH403",
           short_descrip:
             "Designed for maintenance free continuous operation, the ZH403 can be installed in virtually any orientation.",
           descrip: [
@@ -509,7 +516,7 @@ const Buy = () => {
         },
         {
           id: 8,
-          name: "ZH406",
+          name: " OPTOMA ZH406ST",
           short_descrip:
             "The ZH406ST is a compact short throw Full HD 1080p DuraCore laser projector. Designed for maintenance-free, continuous operation. It can be installed in virtually any orientation.",
           descrip: [
@@ -530,7 +537,7 @@ const Buy = () => {
       boards: [
         {
           id: 0,
-          name: "82' Interactive Whiteboard",
+          name: "SMAAT 82\" INTERACTIVE WHITE BOARD",
           short_descrip: "SMAAT 82 inch for enhanced learning interaction and collaborative experience",
           descrip: [
             "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
@@ -540,13 +547,23 @@ const Buy = () => {
         },
         {
           id: 1,
-          name: "96' Interactive Whiteboard",
+          name: "SMAAT 96\" INTERACTIVE WHITE BOARD",
           short_descrip: "SMAAT 96 inch for enhanced learning interaction and collaborative experience",
           descrip: [
             "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
           ],
           image: prod17,
           keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "96", "96 inch", "96'" ],
+        },
+        {
+          id: 2,
+          name: "SMAAT 102\" INTERACTIVE WHITE BOARD",
+          short_descrip: "SMAAT 102 inch for enhanced learning interaction and collaborative experience",
+          descrip: [
+            "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
+          ],
+          image: prod17,
+          keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "102", "102 inch", "102'" ],
         },
       ],
       search: "",
@@ -558,7 +575,7 @@ const Buy = () => {
     <>
       <NavBar buy={true} />
       <main>
-        <div className="p-buy-sec1 p-marg">
+        <div className="p-buy-sec1 p-padd">
           <h5 className="p-buy-sec1-ttl">Our Products</h5>
           <div className="p-buy-sec1-inputsec">
             <input
@@ -591,7 +608,7 @@ const Buy = () => {
           {projectors.length > 0 && (
             <h5 className="p-buy-sec1-ttl">Interactive White Boards</h5>
           )}
-          <div className="p-buy-itemsec p-buy-list-2itemsonly">
+          <div className="p-buy-itemsec">
             {boards.map((x: any, i: any) => (
               <div className="p-buy-items" key={i}>
                 <img className="p-buy-products-img" src={x.image} alt="" />

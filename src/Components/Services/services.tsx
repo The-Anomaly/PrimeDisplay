@@ -21,7 +21,7 @@ const Services = () => {
     <>
       <NavBar services={true} />
       <main>
-        <div className="p-marg p-contactus p-services">
+        <div className="p-padd p-contactus p-services">
           <div>
             <h1 className="p-contactus-ttl">Services</h1>
             <p className="p-contactus-txt">
@@ -32,6 +32,7 @@ const Services = () => {
           </div>
           <img className="p-sitting" src={sitting} alt="person sitting" />
         </div>
+        <hr className="p-div p-marg" />
         <div className="p-marg p-services-sec2">
           <h3 className="p-about-sec2-ttl">
             Experience lightening fast and reliable service with Prime Display

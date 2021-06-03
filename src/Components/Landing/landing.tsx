@@ -2,7 +2,7 @@ import * as React from "react";
 import { Container } from "react-bootstrap";
 import "./landing.css";
 import NavBar from "../General/navbar";
-import logo from "../../assets/logo2.png";
+import logo from "../../assets/logo2.svg";
 import student from "../../assets/student.png";
 import projector from "../../assets/projector.png";
 import tab from "../../assets/tab.png";
@@ -23,7 +23,7 @@ const Landing = () => {
   let history = useHistory();
   const contact = () => {
     return history.push("/contact");
-  }
+  };
   return (
     <>
       <NavBar home={true} />
@@ -35,18 +35,20 @@ const Landing = () => {
             <img className="p-hero-ttl-img" src={logo} alt="" />
           </div>
           <p className="p-hero-txt2">
-            <b>Prime Display Solutions</b> Limited is wholly an indigenous ICT
-            company, a leading provider of excellent hardware solutions and
-            services, contributing in no small way towards the ICT revolution
-            taking place in Nigeria and Africa by extension. Our focus is
-            specifically on hardware provision towards building a competitive
-            and productive e-learning pathway for schools, colleges and
-            cooperate organisations. We deliver the best possible reliable ICT
-            solutions through uncompromising culture of quality service and
-            customer satisfaction.
+            Prime Display Solutions Limited is wholly an indigenous ICT company,
+            a leading provider of excellent hardware solutions and services,
+            contributing in no small way towards the ICT revolution taking place
+            in Nigeria and Africa by extension. Our focus is specifically on
+            hardware provision towards building a competitive and productive
+            e-learning pathway for schools, colleges and cooperate
+            organisations. We deliver the best possible reliable ICT solutions
+            through uncompromising culture of quality service and customer
+            satisfaction.
           </p>
           <img className="p-student" src={student} alt="" />
-          <button className="p-hero-btn" onClick={contact}>Contact Us</button>
+          <button className="p-hero-btn" onClick={contact}>
+            Contact Us
+          </button>
         </div>
         <div className="p-padd p-sec2">
           <div className="p-sec2-item">
@@ -135,21 +137,25 @@ const Landing = () => {
             <div className="p-sec5-txt-sec">
               <img src={mark} />
               <p className="p-sec5-client-txt">
-              The interactive white boards and projectors really works well and have been very helpful. It has helped my teachers immensely as teaching has been made easy with its availability. My students’ attentiveness and comprehension has improved exponentially as well. <br /> Thank you PRIME DISPLAY.
+                The interactive white boards and projectors really works well
+                and have been very helpful. It has helped my teachers immensely
+                as teaching has been made easy with its availability. My
+                students’ attentiveness and comprehension has improved
+                exponentially as well. <br /> Thank you Prime Display.
               </p>
               <img className="p-sec5-txt-end" src={mark} />
             </div>
             <p className="p-sec5-client-name">MANNA KIDDIES ACADEMY</p>
             {/* <p className="p-sec5-client-location">University of Lagos</p> */}
           </div>
-          <div className="p-sec5-arrow-sec">
+          {/* <div className="p-sec5-arrow-sec">
             <div className="p-sec5-arrow p-sec5-arrow-left">
               <img src={arrow} alt="left arrow" />
             </div>
             <div className="p-sec5-arrow">
               <img src={arrow} alt="right arrow" />
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
       <Contact />

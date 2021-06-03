@@ -1,12 +1,14 @@
 .p-buy-sec1 {
     padding: 5rem 0 4rem;
     text-align: center;
+    background: url("../../assets/herobg.svg");
 }
 .p-buy-sec1-ttl {
     color: #333333;
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    font-family: 'Circular Std';
 }
 .p-buy-sec1-inputsec {
     margin: auto;
@@ -51,6 +53,7 @@
     font-size: 15px;
     margin: 1rem 0 10px;
     text-transform: uppercase;
+    font-family: 'Circular Std';
 }
 .p-buy-products-descrip {
     color: #666666;
@@ -216,10 +219,4 @@
     text-align: center;
     margin-bottom: 6rem;
     margin-top: -2rem;
-}
-.p-buy-list-2itemsonly {
-    justify-content: flex-start;
-}
-.p-buy-list-2itemsonly .p-buy-items {
-    margin-right: 3%;
 }

@@ -21,7 +21,7 @@ const Contact = () => {
     <>
       <NavBar contact={true} />
       <main>
-        <div className="p-marg p-contactus">
+        <div className="p-padd p-contactus">
           <div>
             <h1 className="p-contactus-ttl">Contact Us</h1>
             <p className="p-contactus-txt">
@@ -29,13 +29,18 @@ const Contact = () => {
             </p>
           </div>
           <img className="p-map" src={map} alt="map" />
-        </div>
-        <div className="p-marg p-contact-form">
           <img
             className="p-ct-img"
             src={point}
             alt="lady pointing towards map"
           />
+        </div>
+        <div className="p-marg p-contact-form">
+          {/* <img
+            className="p-ct-img"
+            src={point}
+            alt="lady pointing towards map"
+          /> */}
           <div className="p-ct-info">
             <div className="p-ct-location p-ct-location-1">
               <i className="fas fa-map-marker-alt"></i>
