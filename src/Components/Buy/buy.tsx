@@ -273,16 +273,16 @@ const Buy = () => {
           image: prod17,
           keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "96", "96 inch", "96'" ],
         },
-        {
-          id: 2,
-          name: "SMAAT 102\" INTERACTIVE WHITE BOARD",
-          short_descrip: "SMAAT 102 inch for enhanced learning interaction and collaborative experience",
-          descrip: [
-            "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
-          ],
-          image: prod17,
-          keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "102", "102 inch", "102'" ],
-        },
+        // {
+        //   id: 2,
+        //   name: "SMAAT 102\" INTERACTIVE WHITE BOARD",
+        //   short_descrip: "SMAAT 102 inch for enhanced learning interaction and collaborative experience",
+        //   descrip: [
+        //     "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
+        //   ],
+        //   image: prod17,
+        //   keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "102", "102 inch", "102'" ],
+        // },
       ],
     });
   }, []);
@@ -309,28 +309,37 @@ const Buy = () => {
     if (search) {
       let newscreen: any[] = [];
       let newprojectors: any[] = [];
+      let newboards: any[] = [];
 
       screens.map((item: any) => {
         if (item.keywords.includes(search.toLowerCase())) {
-          console.log(item);
+          //console.log(item);
           newscreen.push(item);
           return;
         }
       });
       projectors.map((item: any) => {
         if (item.keywords.includes(search.toLowerCase())) {
-          console.log(item);
+          // console.log(item);
           newprojectors.push(item);
+          return;
+        }
+      });
+      boards.map((item: any) => {
+        if (item.keywords.includes(search.toLowerCase())) {
+          // console.log(item);
+          newboards.push(item);
           return;
         }
       });
       setState({
         ...state,
-        screens: newscreen,
-        projectors: newprojectors,
+        screens: newscreen.length === 0 && newprojectors.length === 0 && newboards.length === 0  ? screens : newscreen,
+        projectors: newscreen.length === 0 && newprojectors.length === 0 && newboards.length === 0  ? projectors : newprojectors,
+        boards: newscreen.length === 0 && newprojectors.length === 0 && newboards.length === 0  ? boards : newboards,
         searchClick: true,
         nosearch:
-          newscreen.length === 0 && newprojectors.length === 0 ? true : false,
+          newscreen.length === 0 && newprojectors.length === 0 && newboards.length === 0 ? true : false,
       });
       return;
     }
@@ -555,16 +564,16 @@ const Buy = () => {
           image: prod17,
           keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "96", "96 inch", "96'" ],
         },
-        {
-          id: 2,
-          name: "SMAAT 102\" INTERACTIVE WHITE BOARD",
-          short_descrip: "SMAAT 102 inch for enhanced learning interaction and collaborative experience",
-          descrip: [
-            "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
-          ],
-          image: prod17,
-          keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "102", "102 inch", "102'" ],
-        },
+        // {
+        //   id: 2,
+        //   name: "SMAAT 102\" INTERACTIVE WHITE BOARD",
+        //   short_descrip: "SMAAT 102 inch for enhanced learning interaction and collaborative experience",
+        //   descrip: [
+        //     "It exhibits an Infra-red Touch Screen technology, a 20 point multi-touch screen, a Windows operating system and a Teaching software.", "Its lightning Fast and swift response makes it ideal for classrooms and business presentation. It can be easily installed and integrated. With a gross weight of 25kg and an aluminium frame, performance is optimum."
+        //   ],
+        //   image: prod17,
+        //   keywords: ["interactive white board", "interactive whiteboard", "interactive", "white board", "whiteboard", "102", "102 inch", "102'" ],
+        // },
       ],
       search: "",
       searchClick: false,
@@ -608,7 +617,7 @@ const Buy = () => {
           {projectors.length > 0 && (
             <h5 className="p-buy-sec1-ttl">Interactive White Boards</h5>
           )}
-          <div className="p-buy-itemsec">
+          <div className="p-buy-itemsec p-buy-2itemsonly">
             {boards.map((x: any, i: any) => (
               <div className="p-buy-items" key={i}>
                 <img className="p-buy-products-img" src={x.image} alt="" />

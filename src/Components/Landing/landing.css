@@ -399,4 +399,19 @@
     .p-hero-ttl-img {
         width: 150px;
     }
+    .p-sec3-2-1 {
+        width: 55px;
+        height: 55px;
+        top: -1.5rem;
+        left: -5px;
+        width: 15%;
+        height: auto;
+        aspect-ratio: 1;
+    }
+    .p-sec5-client {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        padding: 1rem 1.2rem;
+    }
 }

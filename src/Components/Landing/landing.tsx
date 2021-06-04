@@ -18,6 +18,7 @@ import client from "../../assets/client.png";
 import Contact from "../General/contact";
 import Footer from "../General/footer";
 import { Link, useHistory } from "react-router-dom";
+import mka from "../../assets/mkalogo.png"
 
 const Landing = () => {
   let history = useHistory();
@@ -113,7 +114,7 @@ const Landing = () => {
             <img className="p-sec3-img" src={brand1} alt="" />
           </div>
         </div>
-        <div className="p-marg p-sec4">
+        {/* <div className="p-marg p-sec4">
           <h3 className="p-sec4-ttl">Prime Display Solutions</h3>
           <p className="p-sec4-txt">
             Our interactive display solutions transform regular classrooms into
@@ -126,13 +127,14 @@ const Landing = () => {
           <img className="p-sec4-left" src={camera} />
           <img className="p-sec4-right" src={pen} />
         </div>
+         */}
         <div className="p-padd p-sec5">
           <div className="p-sec5-1">
             <h5 className="p-sec5-1-ttl">What our Clients say About Us</h5>
           </div>
           <div className="p-sec5-client">
             <div className="p-sec5-client-avatar">
-              <img src={client} alt="client avatar" />
+              <img src={mka} alt="client avatar" />
             </div>
             <div className="p-sec5-txt-sec">
               <img src={mark} />

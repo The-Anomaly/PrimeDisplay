@@ -55,7 +55,7 @@ const ExpandedBuy = (props: any) => {
               value={number}
               type="number"
             /> */}
-            <button className="p-buy-btn">Buy</button>
+            <a href="http://techdirect.ng/" className="p-buy-btn">Buy</a>
           </div>
         </div>
         <div className="p-viewmore">
