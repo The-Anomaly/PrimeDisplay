@@ -1,6 +1,6 @@
 .p-buy-sec1 {
-    padding: 5rem 0 4rem;
-    /* padding: 11.5rem 0 4rem; */
+    /* padding: 5rem 0 4rem; */
+    padding: 11.5rem 0 4rem;
     text-align: center;
     background: url("../../assets/herobg.svg");
 }
@@ -278,6 +278,9 @@
     }
 }
 @media(max-width: 800px) {
+    .p-buy-sec1 {
+        padding-top: 9.5rem;
+    }
     .padd-main {
         padding-top: 4.25rem;
     }
@@ -299,13 +302,16 @@
     .p-buy-items {
         width: 45%;
     }
+    .p-buy-2itemsonly {
+        justify-content: space-between;
+    }
     .p-buy-2itemsonly .p-buy-items {
-        margin-right: 2.5%;
+        margin-right: 0;
     }
     .p-viewmore {
         flex-direction: column-reverse;
         background: #f6f6f6;
-        padding-top: 6.5rem;
+        padding-top: 7.5rem;
         padding-bottom: 0;
     }
     .p-viewmore-1 {
@@ -323,15 +329,18 @@
     .p-viewmore-backbtn {
         position: absolute;
         left: 2rem;
-        top: 11rem;
+        top: 11.2rem;
     }
     .p-viewmore-progress {
         position: absolute;
         left: 2rem;
-        top: 14rem;
+        top: 14.2rem;
     }
     .p-vm-descrip {
         padding-right: 2rem;
+    }
+    .p-vm-ttl {
+        font-size: 1.75rem;
     }
 }
 @media(max-width: 600px) {

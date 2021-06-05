@@ -98,7 +98,8 @@
     }
     .p-navlist-mobile {
         justify-content: center;
-    align-items: center;
+        align-items: center;
+        margin-left: -40px;
     }
     .p-nav-list-items {
         margin-top: 2rem;

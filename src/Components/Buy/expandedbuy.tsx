@@ -41,8 +41,8 @@ const ExpandedBuy = (props: any) => {
             <span className="p-view-details p-view-details-active">
               About Product
             </span>
-            <span className="p-view-details">Details</span>
-            <span className="p-view-details">Specs</span>
+            {/* <span className="p-view-details">Details</span>
+            <span className="p-view-details">Specs</span> */}
           </div>
           <div className="p-view-ctrl-2">
             {/* <span>
