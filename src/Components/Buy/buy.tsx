@@ -623,9 +623,12 @@ const Buy = () => {
                 <img className="p-buy-products-img" src={x.image} alt="" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
-                <a className="p-buy-products-link" onClick={() => viewMore(x)}>
+                <div className="p-buy-links">
+                  <a className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
                 </a>
+                <a className="p-buy-product" href="http://techdirect.ng/" target="blank">Buy</a>
+                </div>
               </div>
             ))}
           </div>
@@ -642,9 +645,12 @@ const Buy = () => {
                 <img className="p-buy-products-img" src={x.image} alt="" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
-                <a className="p-buy-products-link" onClick={() => viewMore(x)}>
+                <div className="p-buy-links">
+                  <a className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
                 </a>
+                <a className="p-buy-product" href="http://techdirect.ng/" target="blank">Buy</a>
+                </div>
               </div>
             ))}
           </div>
@@ -661,9 +667,12 @@ const Buy = () => {
                 <img className="p-buy-products-img" src={x.image} alt="" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
-                <a className="p-buy-products-link" onClick={() => viewMore(x)}>
+                <div className="p-buy-links">
+                  <a className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
                 </a>
+                <a className="p-buy-product" href="http://techdirect.ng/" target="blank">Buy</a>
+                </div>
               </div>
             ))}
           </div>

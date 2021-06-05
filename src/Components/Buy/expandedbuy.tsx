@@ -35,7 +35,7 @@ const ExpandedBuy = (props: any) => {
   return (
     <>
       <NavBar buy={true} />
-      <main>
+      <main className="padd-main">
         <div className="p-view-ctrl p-padd">
           <div className="p-view-ctrl-1">
             <span className="p-view-details p-view-details-active">
@@ -55,7 +55,7 @@ const ExpandedBuy = (props: any) => {
               value={number}
               type="number"
             /> */}
-            <a href="http://techdirect.ng/" className="p-buy-btn">Buy</a>
+            <a href="http://techdirect.ng/" target="blank" className="p-buy-btn">Buy</a>
           </div>
         </div>
         <div className="p-viewmore">
@@ -87,7 +87,9 @@ const ExpandedBuy = (props: any) => {
               Have a Question? <Link to="/contact">Contact Us</Link>
             </div>
           </div>
-          <img className="p-vm-img" src={img} alt="product" />
+          <div className="p-vm-img">
+          <img src={img} alt="product" />
+          </div>
         </div>
       </main>
       <Footer />

@@ -1,5 +1,6 @@
 .p-buy-sec1 {
     padding: 5rem 0 4rem;
+    /* padding: 11.5rem 0 4rem; */
     text-align: center;
     background: url("../../assets/herobg.svg");
 }
@@ -13,7 +14,9 @@
 .p-buy-sec1-inputsec {
     margin: auto;
     position: relative;
-    width: 800px;
+    max-width: 800px;
+    width: 80%;
+    transition: 0.3s;
 }
 .p-buy-search-input {
     border: 1px solid #99cc33;
@@ -22,6 +25,7 @@
     height: 64px;
     font-size: 14px;
     padding-left: 2rem;
+    transition: 0.3s;
 }
 .p-buy-search-btn {
     position: absolute;
@@ -34,6 +38,7 @@
     width: 120px;
     top: 10%;
     font-size: 14px;
+    transition: 0.3s;
 }
 .p-buy-products {
     padding-bottom: 1rem;
@@ -47,6 +52,7 @@
 .p-buy-items {
     width: 30%;
     margin-bottom: 3rem;
+    min-width: 240px;
 }
 .p-buy-products-hd {
     color: #333333;
@@ -62,7 +68,7 @@
 }
 .p-buy-products-link {
     color: #99cc33 !important;
-    font-size: 15px;
+    font-size: 14px;
     cursor: pointer;
 }
 
@@ -211,6 +217,9 @@
 .p-vm-img {
     width: 45%;
 }
+.p-vm-img img {
+    width: 100%;
+}
 .p-buy-products-img {
     width: 100%;
     height: 200px;
@@ -238,4 +247,112 @@
 }
 .p-buy-2itemsonly .p-buy-items {
     margin-right: 3.5%;
+}
+.p-buy-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.p-buy-product {
+    color: #fff;
+    background: #99cc33;
+    border: 1px solid #99cc33;
+    padding: 1px 1.2rem;
+    font-size: 13px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.p-buy-product:hover {
+    transform: scale(1.1);
+    color: #fff;
+    text-decoration: none;
+}
+.padd-main {
+    padding-top: 6.5rem;
+}
+@media(max-width: 1000px) {
+    .p-viewmore-1 {
+        padding-left: 4%;
+    }
+}
+@media(max-width: 800px) {
+    .padd-main {
+        padding-top: 4.25rem;
+    }
+    .p-buy-sec1-inputsec {
+        width: 90%;
+    }
+    .p-buy-search-input {
+        padding-left: 1rem;
+        height: 50px;
+    }
+    .p-buy-search-btn {
+        width: 95px;
+    }
+    .p-cancel-search {
+        right: -1.2rem;
+        top: -2.4rem;
+        margin: 0;
+    }
+    .p-buy-items {
+        width: 45%;
+    }
+    .p-buy-2itemsonly .p-buy-items {
+        margin-right: 2.5%;
+    }
+    .p-viewmore {
+        flex-direction: column-reverse;
+        background: #f6f6f6;
+        padding-top: 6.5rem;
+        padding-bottom: 0;
+    }
+    .p-viewmore-1 {
+        width: 100%;
+    }
+    .p-vm-img {
+        width: 100%;
+        text-align: center;
+        background: #fff;
+    }
+    .p-vm-img img {
+        width: 100%;
+        max-width: 500px;
+    }
+    .p-viewmore-backbtn {
+        position: absolute;
+        left: 2rem;
+        top: 11rem;
+    }
+    .p-viewmore-progress {
+        position: absolute;
+        left: 2rem;
+        top: 14rem;
+    }
+    .p-vm-descrip {
+        padding-right: 2rem;
+    }
+}
+@media(max-width: 600px) {
+    .p-buy-search-btn {
+        position: relative;
+        width: 100%;
+        margin-top: 1rem;
+        height: 42px;
+        right: 0;
+    }
+    .p-nosearch {
+        font-size: 1.5rem;
+        padding: 0 1.5rem;
+    }
+    .p-buy-items {
+        width: 90%;
+    }
+    .p-buy-2itemsonly .p-buy-items {
+        margin-right: 0;
+    }
+    .p-buy-itemsec {
+        justify-content: center;
+    }
 }

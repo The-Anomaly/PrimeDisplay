@@ -1,7 +1,8 @@
 .p-contactus {
     display: flex;
     align-items: center;
-    padding-top: 1.5rem;
+    /* padding-top: 1.5rem; */
+    padding-top: 8rem;
     background: url("../../assets/herobg.svg");
     padding-bottom: 0;
     position: relative;
