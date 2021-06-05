@@ -31,7 +31,7 @@ const NavBar = (props: any) => {
     return history.push("/contact");
   }
   const handleScroll = () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 75) {
       setNav({
         ...nav,
         scrollNav: true
@@ -44,18 +44,12 @@ const NavBar = (props: any) => {
     }
   };
   window.addEventListener("scroll", handleScroll);
-  //console.log(window.scrollY);
-  const openNav = () => {
-    return setNav({
-      ...nav,
-      showNav: true,
-    })
-  }
+  // console.log(window.scrollY);
   return (
     <>
       <header 
       // className={!extendedBuy ? "p-nav" : "p-nav p-nav-bg"}
-      className={scrollNav ? "p-nav p-nav-bg p-nav-fix" : "p-nav p-nav-bg"}
+      className={scrollNav ? "p-nav p-nav-bg p-nav-fix" : "p-nav"}
       >
         <div className="p-nav-desktop">
           <Link to="/">

@@ -2,14 +2,15 @@
     position: fixed;
     width: 100%;
     z-index: 3;
-    transition: 0.5s;
+    transition: 0.3s;
+    background: transparent;
 }
 .p-nav-desktop {
     display: flex;
     justify-content: space-between;
     padding: 2rem 8%;
     align-items: center;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 .p-nav-bg {
     background: #fbf9ef;
@@ -77,6 +78,7 @@
     .p-nav-mobile {
         display: block;
         padding: 1rem 2rem;
+        background: #fbf9ef;
     }
     .p-nav-mobile-toggle {
         height: 15px;
