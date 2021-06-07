@@ -303,7 +303,7 @@ const Buy = () => {
       },
     });
   };
-  console.log(screens);
+  // console.log(screens);
 
   const searchProduct = () => {
     if (search) {
@@ -344,7 +344,7 @@ const Buy = () => {
       return;
     }
   };
-  console.log(nosearch);
+  // console.log(nosearch);
   const displayAll = () => {
     return setState({
       ...state,
