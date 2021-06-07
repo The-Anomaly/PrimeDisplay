@@ -30,19 +30,19 @@ const NavBar = (props: any) => {
   const contact = () => {
     return history.push("/contact");
   }
-  // const handleScroll = () => {
-  //   if (window.scrollY > 75) {
-  //     setNav({
-  //       ...nav,
-  //       scrollNav: true
-  //     })
-  //   } else {
-  //     setNav({
-  //       ...nav,
-  //       scrollNav: false
-  //     })
-  //   }
-  // };
+  const handleScroll = () => {
+    if (window.scrollY > 75) {
+      setNav({
+        ...nav,
+        scrollNav: true
+      })
+    } else {
+      setNav({
+        ...nav,
+        scrollNav: false
+      })
+    }
+  };
   window.addEventListener("scroll", handleScroll);
   // console.log(window.scrollY);
   return (
