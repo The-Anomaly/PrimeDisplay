@@ -1,6 +1,5 @@
 import * as React from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
-import "./contact.css";
+// import "./contact.css";
 import { useHistory } from "react-router-dom";
 
 const Contact = () => {

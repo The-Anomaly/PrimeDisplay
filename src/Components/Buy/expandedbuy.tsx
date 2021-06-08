@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./buy.css";
+// import "./buy.css";
 import NavBar from "../General/navbar";
 import Footer from "../General/footer";
 import "../Landing/landing.css";
