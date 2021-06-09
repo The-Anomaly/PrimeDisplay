@@ -1,14 +1,14 @@
 {
-  "short_name": "Clarity",
-  "name": "Clarity",
+  "short_name": "SEMUnilag",
+  "name": "SEMUnilag",
   "icons": [
     {
-      "src": "./clarity.png",
+      "src": "./teamlogo.png",
       "type": "image/png",
       "sizes": "30x9"
     },
     {
-      "src": "./clarity.png",
+      "src": "./teamlogo.png",
       "type": "image/png",
       "sizes": "30x9"
     }

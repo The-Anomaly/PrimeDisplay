@@ -1,5 +1,3 @@
-
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -30,21 +28,6 @@
   }
 }
 
-
-@media (max-width: 460px) {
-  .whatsapp {
-    width: 40px;
-    position: fixed;
-    bottom: 2rem;
-    left: 1rem;
-    z-index: 100;
-  }
-}
-@media(min-width:461px){
-  .whatsapp{
-    display: none;
-  }
-}
 .App{
   overflow-x: hidden;
 }

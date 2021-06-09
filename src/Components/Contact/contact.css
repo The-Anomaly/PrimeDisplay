@@ -1,0 +1,211 @@
+.p-contactus {
+    display: flex;
+    align-items: center;
+    /* padding-top: 1.5rem; */
+    padding-top: 8rem;
+    background: url("../../assets/herobg.svg");
+    padding-bottom: 0;
+    position: relative;
+}
+.p-contactus-ttl {
+    color: #333333;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 1.8rem;
+    font-family: 'Circular Std';
+    position: relative;
+    z-index: 2;
+}
+.p-contactus-txt {
+    font-size: 15px;
+    color: #666666;
+}
+.p-map {
+    margin-left: -3rem;
+    width: 65%;
+    position: relative;
+    z-index: 0;
+}
+.p-contact-form {
+    background: #99cc33;
+    border-radius: 10px;
+    color: #fff;
+    padding: 2rem 4rem 4rem;
+    margin-bottom: 4rem;
+    position: relative;
+}
+.p-ct-info {
+    display: flex;
+    justify-content: space-between;
+}
+.p-ct-location {
+    width: 30%;
+    text-align: center;
+    padding: 1rem 2rem 0;
+    max-width: 250px;
+}
+.p-ct-location i {
+    font-size: 20px;
+    margin-bottom: 1.5rem;
+}
+.p-ct-location p {
+    font-size: 14px;
+}
+.p-ct-white {
+    color: #99cc33;
+    background: #fff;
+    border-radius: 6px;
+}
+.p-ct-form {
+    background: #fff;
+    color: #666666;
+    padding: 2rem 4rem 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+.p-ct-inputs {
+    justify-content: space-between;
+    display: flex;
+}
+.p-ct-deets {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+.p-ct-msg {
+    width: 45%;
+}
+.p-ct-msg textarea {
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid #999999;
+}
+.p-ct-form input {
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #999999;
+    margin-top: 0.8rem;
+}
+.p-ct-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+.p-ct-btn {
+    background: #99cc33;
+    color: #fff;
+    border: 1px solid #99cc33;
+    font-size: 14px;
+    border-radius: 6px;
+    width: 150px;
+    height: 45px;
+    margin-left: calc(50% - 75px);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.p-ct-img {
+    position: absolute;
+    width: 50%;
+    bottom: 0;
+    right: 8%;
+    z-index: 2;
+}
+.p-ct-icon {
+    position: absolute;
+    left: 1rem;
+    bottom: 12px;
+}
+.p-link-num {
+    color: #fff;
+    text-decoration: none;
+}
+.p-link-mail {
+    color: #99cc33;
+    text-decoration: none;
+}
+.p-link-num:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.p-link-mail:hover {
+    color: #99cc33;
+    text-decoration: none;
+}
+.p-ct-location-1 {
+    padding: 1rem;
+}
+
+@media(max-width: 1000px) {
+    .p-contactus-ttl {
+        font-size: 3rem;
+    }
+    .p-ct-location {
+        padding: 1rem;
+    }
+    .p-contact-form {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media(max-width: 800px) {
+    .p-contactus-ttl {
+        font-size: 2.75rem;
+    }
+    .p-contactus {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 12rem;
+        border: none;
+        padding-bottom: 5rem;
+        position: relative;
+    }
+    .p-contactus div:nth-child(1) {
+        width: 100%;
+        max-width: 750px;
+    }
+    .p-ct-img {
+        display: none;
+    }
+    .p-map {
+        position: absolute;
+        top: 5rem;
+        margin: auto;
+        right: 0;
+    }
+    .p-contact-form {
+        margin-top: 0;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+    .p-ct-info, .p-ct-inputs {
+        flex-direction: column;
+        align-items: center;
+    }
+    .p-ct-location, .p-ct-msg, .p-ct-deets {
+        width: 100%;
+    }
+    .p-ct-form {
+        margin-top: 1rem;
+    }
+}
+
+@media(max-width: 600px) {
+    .p-contactus-ttl {
+        font-size: 2.5rem;
+    }
+    .p-map {
+        width: 85%;
+    }
+    .p-ct-form {
+        padding-left: 1.5rem;
+        padding-right: 1.5em;
+    }
+    .p-contactus {
+        padding-bottom: 3.5rem;
+    }
+}
