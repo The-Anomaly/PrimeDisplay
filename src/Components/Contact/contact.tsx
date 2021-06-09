@@ -1,5 +1,5 @@
 import * as React from "react";
-// import "./contact.css";
+import "./contact.css";
 import NavBar from "../General/navbar";
 import map from "../../assets/map.png";
 import point from "../../assets/point.png";

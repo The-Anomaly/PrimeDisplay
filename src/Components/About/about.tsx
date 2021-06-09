@@ -1,6 +1,7 @@
 import * as React from "react";
-// import "./about.css";
-// import "../Landing/landing.css";
+import { Container } from "react-bootstrap";
+import "./about.css";
+import "../Landing/landing.css";
 import NavBar from "../General/navbar";
 import photo1 from "../../assets/photo1.png";
 import photo2 from "../../assets/photo2.png";

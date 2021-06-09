@@ -1,5 +1,5 @@
 import * as React from "react";
-// import "./navbar.css";
+import "./navbar.css";
 import logo from "../../assets/logo.png";
 import { Link, useHistory } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
