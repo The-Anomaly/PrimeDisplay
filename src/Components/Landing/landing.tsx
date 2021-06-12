@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Container } from "react-bootstrap";
 import "./landing.css";
 import NavBar from "../General/navbar";
 import logo from "../../assets/logo2.svg";
@@ -14,11 +13,15 @@ import pen from "../../assets/pen.png";
 import camera from "../../assets/camera.png";
 import arrow from "../../assets/arrow.png";
 import mark from "../../assets/mark.png";
-import client from "../../assets/client.png";
-import Contact from "../General/contact";
+// import Contact from "../General/contact";
 import Footer from "../General/footer";
 import { Link, useHistory } from "react-router-dom";
-import mka from "../../assets/mkalogo.png"
+import mka from "../../assets/mkalogo.png";
+import { lazy, Suspense } from 'react';
+
+const Contact = lazy(() => import('../General/contact'));
+
+const renderLoader = () => <p>Loading</p>;
 
 const Landing = () => {
   let history = useHistory();
@@ -33,7 +36,7 @@ const Landing = () => {
           <div className="p-hero-txt1">Prime Display</div>
           <div className="p-hero-hd-sec">
             <h1 className="p-hero-ttl">Interactive e-Learning Solutions</h1>
-            <img className="p-hero-ttl-img" src={logo} alt="" />
+            <img className="p-hero-ttl-img" src={logo} alt="prime logo" />
           </div>
           <p className="p-hero-txt2">
             Prime Display Solutions Limited is wholly an indigenous ICT company,
@@ -42,11 +45,12 @@ const Landing = () => {
             in Nigeria and Africa by extension. Our focus is specifically on
             hardware provision towards building a competitive and productive
             e-learning pathway for schools, colleges and cooperate
-            organisations. We deliver the best possible reliable ICT solutions
+            organisations. 
+            {/* We deliver the best possible reliable ICT solutions
             through uncompromising culture of quality service and customer
-            satisfaction.
+            satisfaction. */}
           </p>
-          <img className="p-student" src={student} alt="" />
+          <img className="p-student" src={student} alt="student" />
           <button className="p-hero-btn" onClick={contact}>
             Contact Us
           </button>
@@ -69,7 +73,7 @@ const Landing = () => {
           </div>
           <div className="p-sec2-item">
             <div className="p-sec2-icon p-sec2-icon-2">
-              <img src={tab} alt="projector icon" />
+              <img src={tab} alt="accesssories icon" />
             </div>
             <p className="p-sec2-ttl">Accessories</p>
             <p className="p-sec2-txt">
@@ -85,7 +89,7 @@ const Landing = () => {
           </div>
           <div className="p-sec2-item no-marg">
             <div className="p-sec2-icon p-sec2-icon-3">
-              <img src={tools} alt="projector icon" />
+              <img src={tools} alt="maintenance icon" />
             </div>
             <p className="p-sec2-ttl">Maintenance</p>
             <p className="p-sec2-txt">
@@ -137,15 +141,15 @@ const Landing = () => {
               <img src={mka} alt="client avatar" />
             </div>
             <div className="p-sec5-txt-sec">
-              <img src={mark} />
+              <img src={mark} alt="opening quote" />
               <p className="p-sec5-client-txt">
                 The interactive white boards and projectors really works well
                 and have been very helpful. It has helped my teachers immensely
                 as teaching has been made easy with its availability. My
                 students’ attentiveness and comprehension has improved
-                exponentially as well. <br /> Thank you Prime Display.
+                exponentially as well.
               </p>
-              <img className="p-sec5-txt-end" src={mark} />
+              <img className="p-sec5-txt-end" src={mark} alt="closing quote"/>
             </div>
             <p className="p-sec5-client-name">MANNA KIDDIES ACADEMY</p>
             {/* <p className="p-sec5-client-location">University of Lagos</p> */}
@@ -160,7 +164,10 @@ const Landing = () => {
           </div> */}
         </div>
       </main>
-      <Contact />
+      {/* <Contact /> */}
+      <Suspense fallback={renderLoader()}>
+    <Contact />
+  </Suspense>
       <Footer />
     </>
   );

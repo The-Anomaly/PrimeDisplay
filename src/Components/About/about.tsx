@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Container } from "react-bootstrap";
 import "./about.css";
 import "../Landing/landing.css";
 import NavBar from "../General/navbar";
@@ -73,7 +72,7 @@ const About = () => {
               </p>
             </div>
             <div className="p-about-sec2-item-2">
-              <img className="p-about-edu" src={edu} />
+              <img className="p-about-edu" src={edu} alt="" />
             </div>
           </div>
           <div className="p-about-sec2-item p-about-reverse">
@@ -84,7 +83,7 @@ const About = () => {
               </p>
             </div>
             <div className="p-about-sec2-item-2">
-              <img className="p-about-edu" src={bus} />
+              <img className="p-about-edu" src={bus} alt="" />
             </div>
           </div>
           <div className="p-about-sec2-item">
@@ -95,7 +94,7 @@ const About = () => {
               </p>
             </div>
             <div className="p-about-sec2-item-2">
-              <img className="p-about-edu" src={rel} />
+              <img className="p-about-edu" src={rel} alt="" />
             </div>
           </div>
           <div className="p-about-sec2-item p-about-reverse">
@@ -106,7 +105,7 @@ const About = () => {
               </p>
             </div>
             <div className="p-about-sec2-item-2">
-              <img className="p-about-edu" src={gov} />
+              <img className="p-about-edu" src={gov} alt="" />
             </div>
           </div>
         </div>

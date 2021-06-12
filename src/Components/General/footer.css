@@ -80,7 +80,9 @@
     text-decoration: underline;
     color: #FE6201;
 }
-
+.p-footer-4 a {
+    text-decoration: none !important;
+}
 @media(max-width: 1000px) {
     .p-footer {
         padding: 5rem 4% 1rem;

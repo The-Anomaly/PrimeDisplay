@@ -2,7 +2,7 @@
     position: fixed;
     width: 100%;
     z-index: 3;
-    transition: 0.3s;
+    /* transition: 0.3s; */
     background: transparent;
 }
 .p-nav-desktop {
@@ -10,7 +10,7 @@
     justify-content: space-between;
     padding: 2rem 8%;
     align-items: center;
-    transition: 0.3s;
+    /* transition: 0.3s; */
 }
 .p-nav-bg {
     background: #fbf9ef;

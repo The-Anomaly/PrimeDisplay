@@ -25,12 +25,13 @@ const NavBar = (props: any) => {
         extendedBuy: true,
       })
     }
-  }, [])
+  }, []);
   let history = useHistory();
   const contact = () => {
     return history.push("/contact");
   }
   const handleScroll = () => {
+    let scheduledAnimationFrame;
     if (window.scrollY > 75) {
       setNav({
         ...nav,
@@ -42,9 +43,12 @@ const NavBar = (props: any) => {
         scrollNav: false
       })
     }
+    if (scheduledAnimationFrame) return;
+
+    scheduledAnimationFrame = true;
+    window.requestAnimationFrame(handleScroll);
   };
   window.addEventListener("scroll", handleScroll);
-  // console.log(window.scrollY);
   return (
     <>
       <header 
