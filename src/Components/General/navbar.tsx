@@ -3,6 +3,7 @@ import "./navbar.css";
 import logo from "../../assets/logo.png";
 import { Link, useHistory } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
+import { useDebouncedCallback } from "use-debounce";
 
 const NavBar = (props: any) => {
   const [nav, setNav] = React.useState({
@@ -29,25 +30,20 @@ const NavBar = (props: any) => {
   let history = useHistory();
   const contact = () => {
     return history.push("/contact");
-  }
-  const handleScroll = () => {
-    let scheduledAnimationFrame;
-    if (window.scrollY > 75) {
-      setNav({
-        ...nav,
-        scrollNav: true
-      })
-    } else {
-      setNav({
-        ...nav,
-        scrollNav: false
-      })
-    }
-    if (scheduledAnimationFrame) return;
-
-    scheduledAnimationFrame = true;
-    window.requestAnimationFrame(handleScroll);
   };
+  const handleScroll = useDebouncedCallback(() => {
+    if (window.scrollY > 75) {
+          setNav({
+            ...nav,
+            scrollNav: true,
+          })
+        } else {
+          setNav({
+            ...nav,
+            scrollNav: false,
+          })
+        }
+  });
   window.addEventListener("scroll", handleScroll);
   return (
     <>

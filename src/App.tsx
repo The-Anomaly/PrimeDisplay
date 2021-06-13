@@ -12,7 +12,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={Landing} />
@@ -23,7 +22,6 @@ class App extends Component {
               <Route exact path="/buy/:product" component={ExpandedBuy} />
             </Switch>
           </BrowserRouter>
-        </div>
       </div>
     );
   }

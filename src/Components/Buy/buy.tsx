@@ -344,7 +344,7 @@ const Buy = () => {
       return;
     }
   };
-  console.log(nosearch);
+  // console.log(nosearch);
   const displayAll = () => {
     return setState({
       ...state,
