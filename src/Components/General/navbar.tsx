@@ -3,15 +3,15 @@ import "./navbar.css";
 import logo from "../../assets/logo.png";
 import { Link, useHistory } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
+import { useDebouncedCallback } from "use-debounce";
 
 const NavBar = (props: any) => {
   const [nav, setNav] = React.useState({
     location: true,
-    extendedBuy: false,
     scrollNav: false,
     showNav: false,
   })
-  const { location, extendedBuy, scrollNav, showNav } = nav;
+  const { location, scrollNav, showNav } = nav;
   React.useEffect(() => {
     if(window.location.pathname !== "/") {
       setNav({
@@ -19,36 +19,31 @@ const NavBar = (props: any) => {
         location: false,
       })
     }
-    if(window.location.pathname !== "/" && window.location.pathname !== "/buy" && window.location.pathname !== "/about" && window.location.pathname !== "/contact" && window.location.pathname !== "/services" ) {
-      setNav({
-        ...nav,
-        extendedBuy: true,
-      })
-    }
-  }, [])
+  }, []);
   let history = useHistory();
   const contact = () => {
     return history.push("/contact");
-  }
-  const handleScroll = () => {
-    if (window.scrollY > 75) {
-      setNav({
-        ...nav,
-        scrollNav: true
-      })
-    } else {
-      setNav({
-        ...nav,
-        scrollNav: false
-      })
-    }
   };
+  const handleScroll = useDebouncedCallback(() => {
+    if (window.scrollY > 75) {
+          setNav({
+            ...nav,
+            scrollNav: true,
+          })
+        } else {
+          setNav({
+            ...nav,
+            scrollNav: false,
+          })
+        }
+  });
   window.addEventListener("scroll", handleScroll);
-  // console.log(window.scrollY);
+  const uniqueKeygen = (): number => {
+    return Math.floor(Math.random() * 100);
+  };
   return (
     <>
       <header 
-      // className={!extendedBuy ? "p-nav" : "p-nav p-nav-bg"}
       className={scrollNav ? "p-nav p-nav-bg p-nav-fix" : "p-nav"}
       >
         <div className="p-nav-desktop">
@@ -135,7 +130,7 @@ const NavBar = (props: any) => {
               itemHoverStyle={{ backgroundColor: "inherit" }}
               title={[
                 <div
-                  // key={uniqueKeygen()}
+                  key={uniqueKeygen()}
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",

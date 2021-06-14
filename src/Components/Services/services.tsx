@@ -44,14 +44,13 @@ const Services = () => {
               </div>
               <p className="p-sec2-ttl">Repairs</p>
               <p className="p-sec2-txt">
-                We have a well-equipped workshop and competent engineers well
+                We have a well-equipped workshop and competent engineers
                 experienced in systems troubleshooting and repairs. We diagnose
-                the system to discover the damaged parts and we replace them. We
+                the system to discover the damaged parts and replace them. 
+                {/* We
                 are positioned to source for genuine spare parts for after sales
                 services to replace defective parts of products that are within
-                warranty. In the world of cutting edge appliances, having a
-                reliable partner like us who can procure genuine spare parts is
-                key and can make a whole lot of difference.
+                warranty. */}
               </p>
             </div>
             <div className="p-sec2-item">
@@ -60,11 +59,10 @@ const Services = () => {
               </div>
               <p className="p-sec2-ttl">Installation</p>
               <p className="p-sec2-txt">
-                We are often called in to provide both on-site and ad-hoc
-                support services such as; assemblage of the disjointed
-                components and mounting of the gadgets. Our engineers have the
-                certification for the equipment they install and service. Our
-                clients attest to our effectiveness, efficiency and promptness.
+                We provide both on-site and ad-hoc support services such as;
+                assemblage of the disjointed components and mounting of the
+                gadgets. Our engineers have the certification for the equipment
+                they install and service.
               </p>
             </div>
             <div className="p-sec2-item no-marg">
@@ -73,11 +71,9 @@ const Services = () => {
               </div>
               <p className="p-sec2-ttl">Maintenance</p>
               <p className="p-sec2-txt">
-                Our culture is solely based on Preventive maintenance. Here, we
-                take responsibility of ensuring that clients gadgets do not
-                breakdown, hence, we embark on regular systems servicing to
-                ensure smooth operation. Where there is a breakdown outside the
-                warranty period, the client bears the cost of restoration.
+                We have a culture based on preventive maintenance. We ensure
+                that clients gadgets don't break down, hence, we embark on
+                regular systems servicing to ensure smooth operation.
               </p>
             </div>
           </div>

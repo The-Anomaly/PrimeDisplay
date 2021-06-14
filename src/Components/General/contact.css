@@ -1,6 +1,6 @@
 .p-sec6 {
     background-color: #99cc33;
-    background-image: url("../../assets/contactbg.svg");
+    background-image: url("../../assets/contactbg.png");
     padding: 4rem 8%;
     margin-bottom: 4rem;
     background-repeat: no-repeat;
@@ -41,6 +41,6 @@
 
 @media(max-width: 800px) {
     .p-sec6 {
-        background-image: url("../../assets/contactbg-mobile.svg");
+        background-image: url("../../assets/contactbg-mobile.jpg");
     }
 }

@@ -600,7 +600,9 @@ const Buy = () => {
                 }
               }}
             />
-            <button className="p-buy-search-btn" onClick={searchProduct}>
+            <button className="p-buy-search-btn" 
+            onClick={searchProduct}
+            >
               Search
             </button>
             {searchClick && (
@@ -620,7 +622,7 @@ const Buy = () => {
           <div className="p-buy-itemsec p-buy-2itemsonly">
             {boards.map((x: any, i: any) => (
               <div className="p-buy-items" key={i}>
-                <img className="p-buy-products-img" src={x.image} alt="" />
+                <img className="p-buy-products-img" src={x.image} alt="product image" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
                 <div className="p-buy-links">
@@ -642,7 +644,7 @@ const Buy = () => {
           <div className="p-buy-itemsec">
             {screens.map((x: any, i: any) => (
               <div className="p-buy-items" key={i}>
-                <img className="p-buy-products-img" src={x.image} alt="" />
+                <img className="p-buy-products-img" src={x.image} alt="product image" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
                 <div className="p-buy-links">
@@ -664,7 +666,7 @@ const Buy = () => {
           <div className="p-buy-itemsec">
             {projectors.map((x: any, i: any) => (
               <div className="p-buy-items" key={i}>
-                <img className="p-buy-products-img" src={x.image} alt="" />
+                <img className="p-buy-products-img" src={x.image} alt="product image" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
                 <div className="p-buy-links">

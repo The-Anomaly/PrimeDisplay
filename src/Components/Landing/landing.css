@@ -8,7 +8,6 @@
 }
 .p-hero {
     padding: 9.5rem 8% 0.5rem;
-    /* padding: 5rem 8% 0.5rem; */
     position: relative;
     background: url("../../assets/herobg.svg");
 }
@@ -41,11 +40,11 @@
     color: #666666;
     margin-top: 2.5rem;
     max-width: 650px;
-    width: 60%;
+    width: 58%;
 }
 .p-student {
-    width: 50%;
-    /* top: -6.5rem; */
+    width: 50vw;
+    max-width: 700px;
     top: 0;
     position: absolute;
     right: 0;
@@ -63,7 +62,7 @@
 }
 .p-sec2 {
     padding-top: 7rem;
-    padding-bottom: 3rem;
+    padding-bottom: 5rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -72,6 +71,7 @@
     min-width: 250px;
     margin-right: 2rem;
     width: 25%;
+    text-align: center;
 }
 .no-marg {
     margin: 0;
@@ -82,7 +82,8 @@
     height: 65px;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    margin: auto;
 }
 .p-sec2-icon img {
     width: 50%;
@@ -106,6 +107,8 @@
     font-size: 14px;
     color: #666666;
     letter-spacing: 0.2px;
+    max-width: 350px;
+    margin: 1rem auto;
 }
 
 .p-sec3 {
@@ -146,8 +149,8 @@
     position: absolute;
     top: -3rem;
     left: -3rem;
-    width: 100px;
-    height: 100px;
+    width: 100w;
+    height: 100w;
     z-index: -1;
     border-radius: 4px;
 }
@@ -201,8 +204,8 @@
 }
 .p-sec5 {
     position: relative;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 .p-sec5-1 {
     background: #FAF8ED;
@@ -296,6 +299,11 @@
 .p-link-prod, .p-link-prod:hover {
     color: #99cc33;
 }
+@media(min-width: 1350px) {
+    .p-hero-txt2 {
+        width: 60%;
+    }
+}
 @media(max-width: 1000px) {
     .p-padd {
         padding-left: 4%;
@@ -328,12 +336,13 @@
     }
     .p-sec2 {
         flex-direction: column;
+        padding-bottom: 3rem;
     }
     .p-sec2-item {
         margin-right: 0;
         margin-bottom: 2.5rem;
         width: 100%;
-        padding-right: 2rem;
+        /* padding-right: 2rem; */
     }
     .p-sec3 {
         flex-direction: column;

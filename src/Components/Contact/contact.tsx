@@ -9,8 +9,9 @@ const Contact = () => {
   const [state, setState] = React.useState({
     name: "",
     mail: "",
+    message: "",
   })
-  const { name, mail } = state;
+  const { name, mail, message } = state;
   const handleChange = (e: any) => {
     setState({
       ...state,
@@ -59,7 +60,7 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <form className="p-ct-form">
+          <form className="p-ct-form" encType="multipart/form-data" method="post" name="primecontactform" action="mailto: favouradekogbe@gmail.com">
             <div className="p-ct-inputs">
               <div className="p-ct-deets">
                 <label htmlFor="name">
@@ -76,7 +77,7 @@ const Contact = () => {
               <div className="p-ct-msg">
                 <label htmlFor="message">
                   Your Message
-                  <textarea id="message"></textarea>
+                  <textarea onChange={handleChange} value={message} name="message" id="message"></textarea>
                 </label>
               </div>
             </div>
