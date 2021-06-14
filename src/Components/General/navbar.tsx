@@ -8,22 +8,15 @@ import { useDebouncedCallback } from "use-debounce";
 const NavBar = (props: any) => {
   const [nav, setNav] = React.useState({
     location: true,
-    extendedBuy: false,
     scrollNav: false,
     showNav: false,
   })
-  const { location, extendedBuy, scrollNav, showNav } = nav;
+  const { location, scrollNav, showNav } = nav;
   React.useEffect(() => {
     if(window.location.pathname !== "/") {
       setNav({
         ...nav,
         location: false,
-      })
-    }
-    if(window.location.pathname !== "/" && window.location.pathname !== "/buy" && window.location.pathname !== "/about" && window.location.pathname !== "/contact" && window.location.pathname !== "/services" ) {
-      setNav({
-        ...nav,
-        extendedBuy: true,
       })
     }
   }, []);
@@ -45,10 +38,12 @@ const NavBar = (props: any) => {
         }
   });
   window.addEventListener("scroll", handleScroll);
+  const uniqueKeygen = (): number => {
+    return Math.floor(Math.random() * 100);
+  };
   return (
     <>
       <header 
-      // className={!extendedBuy ? "p-nav" : "p-nav p-nav-bg"}
       className={scrollNav ? "p-nav p-nav-bg p-nav-fix" : "p-nav"}
       >
         <div className="p-nav-desktop">
@@ -135,7 +130,7 @@ const NavBar = (props: any) => {
               itemHoverStyle={{ backgroundColor: "inherit" }}
               title={[
                 <div
-                  // key={uniqueKeygen()}
+                  key={uniqueKeygen()}
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
