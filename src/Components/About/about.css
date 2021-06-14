@@ -1,0 +1,224 @@
+.p-about-sec1 {
+    padding-top: 11.2rem;
+    padding-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    background: url("../../assets/herobg.svg");
+}
+.p-div {
+    background: #99cc33;
+}
+.p-about-sec1-content {
+    width: 55%;
+    padding-right: 1rem;
+}
+.p-about-sec1-ttl {
+    color: #333333;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Circular Std';
+}
+.p-about-sec1-txt {
+    color: #666666;
+    font-size: 15px;
+}
+.p-about-sec1-imgs {
+    width: 45%;
+    display: grid;
+    gap: 1rem;
+}
+.p-about-img1 img, .p-about-img2 img, .p-about-img3 img, .p-about-img4 img  {
+    width: 100%;
+    height: 100%;
+}
+.p-about-img1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.p-about-img2 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+.p-about-img3 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.p-about-img4 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.p-about-sec2 {
+    padding: 3rem 0;
+}
+.p-about-sec2-ttl {
+    font-weight: 600;
+    max-width: 480px;
+    text-align: center;
+    margin: auto;
+    color: #1E1E1E;
+    font-family: 'Circular Std';
+}
+.p-about-sec2-item {
+    display: flex;
+    align-items: center;
+    padding: 2.5rem 0 4rem;
+}
+.p-about-sec2-item-1 {
+    width: 40%;
+}
+.p-about-hd {
+    color: #000000;
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Circular Std';
+}
+.p-about-descrip {
+    font-size: 15px;
+    color: #333333;
+    max-width: 400px;
+}
+.p-about-sec2-item-2 {
+    width: 60%;
+    text-align: right;
+    margin-left: 2rem;
+}
+.p-about-edu {
+    max-width: 600px;
+    width: 100%;
+}
+.p-about-reverse {
+    flex-direction: row-reverse;
+}
+.p-about-reverse .p-about-sec2-item-2 {
+    text-align: left;
+    margin-left: 0;
+}
+.p-about-sec3 {
+    background: #07113D;
+    color: #fff;
+    position: relative;
+    padding: 2.8rem 3.5rem 2.5rem;
+    border-radius: 6px;
+    margin-bottom: 4rem;
+}
+.p-about-sec3-img {
+    position: absolute;
+    bottom: 0;
+    right: 3rem;
+    max-width: 230px;
+    width: 30%;
+}
+.p-about-sec3-btn {
+    color: #fff;
+    background: #99cc33;
+    border: 1px solid #99cc33;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    margin: 8px 0 0;
+    font-size: 14px;
+}
+.p-about-sec3 h6 {
+    font-size: 1.1rem;
+}
+
+@media(max-width: 1000px) {
+    .p-about-sec1-ttl {
+        font-size: 3rem;
+    }
+    .p-about-sec2-item-2 {
+        width: 50%;
+    }
+}
+
+@media(max-width: 800px) {
+    .p-about-sec2-item-2 {
+        width: 50%;
+    }
+    .p-about-sec1 {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 11rem;
+        border: none;
+        padding-bottom: 2rem;
+    }
+    .p-about-sec1-content {
+        width: 100%;
+        max-width: 750px;
+    }
+    .p-about-sec1-imgs {
+        width: 100%;
+        max-width: 500px;
+        margin-top: 1.5rem;
+    }
+    .p-about-sec1-ttl {
+        font-size: 2.75rem;
+    }
+    .p-about-sec2-ttl {
+        font-size: 1.5rem;
+    }
+    .p-about-sec2-item {
+        flex-direction: column;
+        padding-bottom: 1rem;
+    }
+    .p-about-sec2-item-1 {
+        width: 100%;
+    }
+    .p-about-hd {
+        text-align: center;
+    }
+    .p-about-descrip {
+        max-width: 750px;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+        margin-bottom: 1.2rem;
+        line-height: 1.7;
+    }
+    .p-about-sec2-item-2, .p-about-reverse .p-about-sec2-item-2 {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+    .p-about-edu {
+        width: 100%;
+        max-width: 500px;
+    }
+    .p-about-sec3 h6 {
+        max-width: 250px;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+    .p-about-sec3 {
+        padding: 4rem 2.5rem 5rem;
+    }
+    .p-about-sec3-img {
+        right: 2rem;
+        max-width: 230px;
+        width: 35%;
+    }
+    .p-about-hd {
+        font-size: 1.2rem;
+    }
+}
+
+@media(max-width: 600px) {
+    .p-about-sec3 {
+        padding: 4rem 1rem 6rem 8%;
+    }
+    .p-about-sec3 h6 {
+        max-width: 180px;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+    .p-about-sec3-img {
+        width: 50%;
+        right: 1rem;
+    }
+    .p-about-sec1-ttl {
+        font-size: 2.5rem;
+    }
+}

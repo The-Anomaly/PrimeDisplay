@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'Circular Std';
+  src: url('./Circular Std/CircularStd-Black.eot');
+  src: local('./Circular Std/Circular Std Black'), local('CircularStd-Black'),
+      url('./Circular Std/CircularStd-Black.eot?#iefix') format('embedded-opentype'),
+      url('./Circular Std/CircularStd-Black.woff2') format('woff2'),
+      url('./Circular Std/CircularStd-Black.woff') format('woff'),
+      url('./Circular Std/CircularStd-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('./Circular Std/CircularStd-Medium.eot');
+  src: local('./Circular Std/Circular Std Medium'), local('CircularStd-Medium'),
+      url('./Circular Std/CircularStd-Medium.eot?#iefix') format('embedded-opentype'),
+      url('./Circular Std/CircularStd-Medium.woff2') format('woff2'),
+      url('./Circular Std/CircularStd-Medium.woff') format('woff'),
+      url('./Circular Std/CircularStd-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('./Circular Std/CircularStd-Bold.eot');
+  src: local('./Circular Std/Circular Std Bold'), local('CircularStd-Bold'),
+      url('./Circular Std/CircularStd-Bold.eot?#iefix') format('embedded-opentype'),
+      url('./Circular Std/CircularStd-Bold.woff2') format('woff2'),
+      url('./Circular Std/CircularStd-Bold.woff') format('woff'),
+      url('./Circular Std/CircularStd-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std Book';
+  src: url('./Circular Std/CircularStd-Book.eot');
+  src: local('./Circular Std/Circular Std Book'), local('CircularStd-Book'),
+      url('./Circular Std/CircularStd-Book.eot?#iefix') format('embedded-opentype'),
+      url('./Circular Std/CircularStd-Book.woff2') format('woff2'),
+      url('./Circular Std/CircularStd-Book.woff') format('woff'),
+      url('./Circular Std/CircularStd-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+body {
+  margin: 0;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  scroll-behavior: smooth;
+  height: 100%;
+  transition: 0.3s;
+  font-family: 'Circular Std Book';
+  font-weight: normal;
+  font-display: swap;
+}
+@media(max-width:700px){
+  body{
+    font-size: 14px;
+  }
+}
+
+html{
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: 0.3s;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #99CC33; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #99CC33; 
+}

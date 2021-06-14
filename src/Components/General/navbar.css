@@ -1,0 +1,131 @@
+.p-nav {
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    /* transition: 0.3s; */
+    background: transparent;
+}
+.p-nav-desktop {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 8%;
+    align-items: center;
+    /* transition: 0.3s; */
+}
+.p-nav-bg {
+    background: #fbf9ef;
+}
+.p-logo {
+    width: 80px;
+}
+.p-nav-list {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    color: #999999;
+    font-size: 15px;
+}
+.p-nav-list-items {
+    color: #999999;
+    text-decoration: none;
+    transition: 0.2s;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+}
+.p-nav-list-items:hover {
+    transform: scale(1.1);
+    text-decoration: none;
+}
+.p-nav-list-items-active {
+    color: #003399;
+}
+.p-nav-btn {
+    background: #99CC33;
+    border: 1px solid #99CC33;
+    color: #fff;
+    font-size: 13px;
+    height: 38px;
+    width: 140px;
+    border-radius: 6px;
+    position: relative;
+    z-index: 2;
+}
+.p-nav .p-nav-btn {
+    z-index: 5;
+}
+.p-btn-outline {
+    background: #fff;
+    color: #99cc33;
+}
+.p-nav-mobile {
+    display: none;
+}
+/* Responsiveness */
+@media(max-width: 1000px) {
+    .p-nav-desktop {
+        padding: 2rem 4%;
+    }
+    .p-nav-list {
+        width: 380px;
+    }
+}
+
+@media(max-width: 800px) {
+    .p-nav {
+        background: #fbf9ef !important;
+    }
+    .p-nav-desktop {
+        display: none;
+    }
+    .p-nav-mobile {
+        display: block;
+        padding: 1rem 2rem;
+    }
+    .p-nav-mobile-toggle {
+        height: 15px;
+        width: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+    .line1 {
+        height: 2px;
+        background: #003399;
+    }
+    .line2 {
+        background: #003399;
+        height: 2px;
+        width: 50%;
+        margin-left: 50%;
+    }
+    .p-navlist-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: -40px;
+    }
+    .p-nav-list-items {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 18px;
+    }
+    .p-nav-btn {
+        margin: 1.8rem 0 1rem;
+    }
+    .p-nav-ctrl {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.p-nav-fix {
+    z-index: 10;
+}
+.p-nav-fix .p-nav-desktop {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
