@@ -17,9 +17,9 @@ import mark from "../../assets/mark.png";
 import Footer from "../General/footer";
 import { Link, useHistory } from "react-router-dom";
 import mka from "../../assets/mkalogo.png";
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense } from "react";
 
-const Contact = lazy(() => import('../General/contact'));
+const Contact = lazy(() => import("../General/contact"));
 
 const renderLoader = () => <p>Loading</p>;
 
@@ -45,7 +45,7 @@ const Landing = () => {
             in Nigeria and Africa by extension. Our focus is specifically on
             hardware provision towards building a competitive and productive
             e-learning pathway for schools, colleges and cooperate
-            organisations. 
+            organisations.
             {/* We deliver the best possible reliable ICT solutions
             through uncompromising culture of quality service and customer
             satisfaction. */}
@@ -77,10 +77,9 @@ const Landing = () => {
             </div>
             <p className="p-sec2-ttl">Accessories</p>
             <p className="p-sec2-txt">
-              This denotes the components with which our products function. They
-              include projector mount, adaptor (for DC devices), remote, power
-              cable, HDMI, VGA, video cable, teaching software, electronic
-              pointer etc.
+              We provide the components with which our products function such as
+              projector mount, adaptor (for DC devices), remote, power cable,
+              HDMI, VGA, video cable, teaching software etc.
               <br />
               <Link to="/buy" className="p-link-prod">
                 See our products
@@ -93,11 +92,9 @@ const Landing = () => {
             </div>
             <p className="p-sec2-ttl">Maintenance</p>
             <p className="p-sec2-txt">
-              Our culture is solely based on Preventive maintenance. Here, we
-              take responsibility of ensuring that clients gadgets do not
-              breakdown, hence, we embark on regular systems servicing to ensure
-              smooth operation. Where there is a breakdown outside the warranty
-              period, the client bears the cost of restoration.
+              We have a culture based on preventive maintenance. We ensure that
+              clients gadgets don't break down, hence, we embark on regular
+              systems servicing to ensure smooth operation.
             </p>
           </div>
         </div>
@@ -149,7 +146,7 @@ const Landing = () => {
                 students’ attentiveness and comprehension has improved
                 exponentially as well.
               </p>
-              <img className="p-sec5-txt-end" src={mark} alt="closing quote"/>
+              <img className="p-sec5-txt-end" src={mark} alt="closing quote" />
             </div>
             <p className="p-sec5-client-name">MANNA KIDDIES ACADEMY</p>
             {/* <p className="p-sec5-client-location">University of Lagos</p> */}
@@ -166,8 +163,8 @@ const Landing = () => {
       </main>
       {/* <Contact /> */}
       <Suspense fallback={renderLoader()}>
-    <Contact />
-  </Suspense>
+        <Contact />
+      </Suspense>
       <Footer />
     </>
   );

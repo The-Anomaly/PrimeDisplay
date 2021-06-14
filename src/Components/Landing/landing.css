@@ -8,7 +8,6 @@
 }
 .p-hero {
     padding: 9.5rem 8% 0.5rem;
-    /* padding: 5rem 8% 0.5rem; */
     position: relative;
     background: url("../../assets/herobg.svg");
 }
@@ -45,7 +44,7 @@
 }
 .p-student {
     width: 50vw;
-    /* top: -6.5rem; */
+    max-width: 700px;
     top: 0;
     position: absolute;
     right: 0;
@@ -72,6 +71,7 @@
     min-width: 250px;
     margin-right: 2rem;
     width: 25%;
+    text-align: center;
 }
 .no-marg {
     margin: 0;
@@ -82,7 +82,8 @@
     height: 65px;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    margin: auto;
 }
 .p-sec2-icon img {
     width: 50%;
@@ -106,6 +107,8 @@
     font-size: 14px;
     color: #666666;
     letter-spacing: 0.2px;
+    max-width: 350px;
+    margin: 1rem auto;
 }
 
 .p-sec3 {
@@ -201,8 +204,8 @@
 }
 .p-sec5 {
     position: relative;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 .p-sec5-1 {
     background: #FAF8ED;
@@ -339,7 +342,7 @@
         margin-right: 0;
         margin-bottom: 2.5rem;
         width: 100%;
-        padding-right: 2rem;
+        /* padding-right: 2rem; */
     }
     .p-sec3 {
         flex-direction: column;

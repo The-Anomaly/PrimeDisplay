@@ -60,7 +60,7 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <form className="p-ct-form" method="post" name="primecontactform" action="contact.php">
+          <form className="p-ct-form" encType="multipart/form-data" method="post" name="primecontactform" action="mailto: favouradekogbe@gmail.com">
             <div className="p-ct-inputs">
               <div className="p-ct-deets">
                 <label htmlFor="name">

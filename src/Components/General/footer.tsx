@@ -25,7 +25,7 @@ const Footer = () => {
                     <Link className="p-footer-link" to="/buy"><div className="p-footer-item">Products</div></Link>
                 </div>
                 <div className="p-footer-4">
-                    <div className="p-footer-hd">Contacts</div>
+                    <div className="p-footer-hd">Contact</div>
                     <p className="p-footer-item">Feel free to get in touch with us via phone or send us a message.</p>
                     <a href="tel: +2348158393221"><p className="p-footer-ctct">+234 (0) 815 839 3221</p></a>
                     <a href="mailto: info@primedisplay.ng"><p className="p-footer-ctct">info@primedisplay.ng</p></a>

@@ -1,7 +1,6 @@
 .p-contactus {
     display: flex;
     align-items: center;
-    /* padding-top: 1.5rem; */
     padding-top: 8rem;
     background: url("../../assets/herobg.svg");
     padding-bottom: 0;
@@ -212,5 +211,9 @@
     }
     .p-contactus {
         padding-bottom: 3.5rem;
+    }
+    .p-contact-form {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
