@@ -18,6 +18,7 @@ import prod14 from "../../assets/prod14.jpg";
 import prod15 from "../../assets/prod15.jpg";
 import prod16 from "../../assets/prod16.jpg";
 import prod17 from "../../assets/prod17.jpg";
+import prod18 from "../../assets/prod18.jpg";
 
 
 //Smart Screens
@@ -38,6 +39,7 @@ import prod17 from "../../assets/prod17.jpg";
 // EH412 prod13
 // EH416 prod14
 // UHD30 prod15
+// EH461 prod18
 
 //Interactive Whiteboards
 // Interactive Whiteboard 82 prod16
@@ -186,15 +188,16 @@ const Buy = () => {
         },
         {
           id: 4,
-          name: "OPTOMA EH416",
-          short_descrip: "Full HD 1080p, compact and powerful",
+          name: "OPTOMA EH461",
+          short_descrip: "Bright, full HD 1080p EH461",
           descrip: [
             "Project high resolution visuals regardless of the ambient light level using the bright full HD 1080p EH416. Designed for businesses and professional installation environments this compact and powerful projector can be installed or taken on the move. Perfect for small edge blending and stacking projects.",
             "Easy to connect to with multiple inputs including two HDMI, MHL, VGA and a built in 10W speaker. You can even present wirelessly using the HDCast Pro (sold separately) or use the USB Power to connect and power HDMI dongles such as the Google Chromecast.",
             "For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control. For more complex installations, this projector is equipped with a large 1.6x zoom range, vertical lens shift and networking features for remote monitoring and control.",
+            "With a 5000 LUMENS INTENSITY, OPTOMA EH461 Full HD 1080p projector Boasts ultra-bright images for optimum visibility and a wide range of inputs which allow you to effortlessly connect to devices such as computers and tablets."
           ],
-          image: prod14,
-          keywords: ["eh416", "projector", "eh 416", "eh"],
+          image: prod18,
+          keywords: ["eh461", "projector", "eh 461", "eh"],
         },
         {
           id: 5,
