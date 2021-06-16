@@ -39,6 +39,12 @@ const Contact = () => {
       mail: mail,
       message: message,
     }
+    setState({
+      ...state,
+      name: "",
+      mail: "",
+      message: "",
+    })
     // console.log("send message", data);
   }
   return (
