@@ -10,13 +10,36 @@ const Contact = () => {
     name: "",
     mail: "",
     message: "",
+    noName: false,
+    noMail: false,
+    noMessage: false,
   })
-  const { name, mail, message } = state;
+  const { name, mail, message, noName, noMail, noMessage } = state;
   const handleChange = (e: any) => {
     setState({
       ...state,
       [e.target.name]: e.target.value,
     })
+  }
+  const validateDetails = (e) => {
+    e.preventDefault();
+    if(!name || !mail || !message) {
+      return setState({
+        ...state,
+        noName: !name ? true : false,
+        noMail: !mail ? true : false,
+        noMessage: !message ? true : false,
+      })
+    }
+    else return sendDetails();
+  }
+  const sendDetails = () => {
+    const data = {
+      name: name,
+      mail: mail,
+      message: message,
+    }
+    // console.log("send message", data);
   }
   return (
     <>
@@ -37,11 +60,6 @@ const Contact = () => {
           />
         </div>
         <div className="p-marg p-contact-form">
-          {/* <img
-            className="p-ct-img"
-            src={point}
-            alt="lady pointing towards map"
-          /> */}
           <div className="p-ct-info">
             <div className="p-ct-location p-ct-location-1">
               <i className="fas fa-map-marker-alt"></i>
@@ -60,28 +78,28 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <form className="p-ct-form" encType="multipart/form-data" method="post" name="primecontactform" action="mailto: favouradekogbe@gmail.com">
+          <form className="p-ct-form">
             <div className="p-ct-inputs">
               <div className="p-ct-deets">
                 <label htmlFor="name">
                   Your Name
                   <i className="fas fa-user p-ct-icon"></i>
-                  <input id="name" type="text" name="name" value={name} onChange={handleChange} />
+                  <input className={noName ? "noInput" : ""} id="name" type="text" name="name" value={name} onChange={handleChange} />
                 </label>
                 <label htmlFor="mail">
                   Your Email
                     <i className="fas fa-envelope p-ct-icon"></i>
-                  <input id="mail" type="email" name="mail" value={mail} onChange={handleChange} /> 
+                  <input className={noMail ? "noInput" : ""} id="mail" type="email" name="mail" value={mail} onChange={handleChange} /> 
                 </label>
               </div>
               <div className="p-ct-msg">
                 <label htmlFor="message">
                   Your Message
-                  <textarea onChange={handleChange} value={message} name="message" id="message"></textarea>
+                  <textarea className={noMessage ? "noInput" : ""} onChange={handleChange} value={message} name="message" id="message"></textarea>
                 </label>
               </div>
             </div>
-            <button className="p-ct-btn">Contact Us</button>
+            <button onClick={validateDetails} className="p-ct-btn">Contact Us</button>
           </form>
         </div>
       </main>

@@ -89,6 +89,7 @@
     border: 1px solid #999999;
     margin-top: 0.8rem;
     padding-left: 2.2rem;
+    outline: none !important;
 }
 .p-ct-form label {
     display: flex;
@@ -108,6 +109,12 @@
     margin-left: calc(50% - 75px);
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.p-ct-btn:hover {
+    background: #99cc3395;
+    border: 1px solid #99cc3395;
 }
 .p-ct-img {
     position: absolute;
@@ -216,4 +223,8 @@
         padding-left: 1rem;
         padding-right: 1rem;
     }
+}
+
+.noInput {
+    border: 1px solid red !important;
 }
