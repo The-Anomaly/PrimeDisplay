@@ -55,7 +55,7 @@
     z-index: 5;
 }
 .p-btn-outline {
-    background: #fff;
+    background: transparent;
     color: #99cc33;
 }
 .p-nav-mobile {

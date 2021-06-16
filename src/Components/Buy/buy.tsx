@@ -18,7 +18,7 @@ import prod14 from "../../assets/prod14.jpg";
 import prod15 from "../../assets/prod15.jpg";
 import prod16 from "../../assets/prod16.jpg";
 import prod17 from "../../assets/prod17.jpg";
-import prod18 from "../../assets/prod18.jpg";
+import prod18 from "../../assets/prod18.png";
 
 
 //Smart Screens
