@@ -75,26 +75,23 @@ const Landing = () => {
             <div className="p-sec2-icon p-sec2-icon-2">
               <img src={tab} alt="accesssories icon" />
             </div>
-            <p className="p-sec2-ttl">Accessories</p>
+            <p className="p-sec2-ttl">Installation</p>
             <p className="p-sec2-txt">
-              We provide the components with which our products function such as
-              projector mount, adaptor (for DC devices), remote, power cable,
-              HDMI, VGA, video cable, teaching software etc.
-              <br />
-              <Link to="/buy" className="p-link-prod">
-                See our products
-              </Link>
+              We provide both on-site and ad-hoc support services such as;
+              assemblage of the disjointed components and mounting of the
+              gadgets. Our engineers have the certification for the equipment
+              they install and service.
             </p>
           </div>
           <div className="p-sec2-item no-marg">
             <div className="p-sec2-icon p-sec2-icon-3">
               <img src={tools} alt="maintenance icon" />
             </div>
-            <p className="p-sec2-ttl">Maintenance</p>
+            <p className="p-sec2-ttl">Repairs</p>
             <p className="p-sec2-txt">
-              We have a culture based on preventive maintenance. We ensure that
-              clients gadgets don't break down, hence, we embark on regular
-              systems servicing to ensure smooth operation.
+              We have a well-equipped workshop and competent engineers
+              experienced in systems troubleshooting and repairs. We diagnose
+              the system to discover the damaged parts and replace them.
             </p>
           </div>
         </div>

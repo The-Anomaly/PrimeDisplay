@@ -10,7 +10,7 @@ import tab from "../../assets/tab.png";
 import tools from "../../assets/tools.png";
 import sitting from "../../assets/sitting.png";
 import man from "../../assets/man.png";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Services = () => {
   let history = useHistory();
@@ -42,15 +42,15 @@ const Services = () => {
               <div className="p-sec2-icon p-sec2-icon-1">
                 <img src={projector} alt="projector icon" />
               </div>
-              <p className="p-sec2-ttl">Repairs</p>
+              <p className="p-sec2-ttl">Projectors</p>
               <p className="p-sec2-txt">
-                We have a well-equipped workshop and competent engineers
-                experienced in systems troubleshooting and repairs. We diagnose
-                the system to discover the damaged parts and replace them. 
-                {/* We
-                are positioned to source for genuine spare parts for after sales
-                services to replace defective parts of products that are within
-                warranty. */}
+                Due to the relationship we share with our partners, we are able
+                to bring to you the latest high quality and user friendly
+                projectors at a very competitive price.
+                <br />
+                <Link to="/buy" className="p-link-prod">
+                  See our products
+                </Link>
               </p>
             </div>
             <div className="p-sec2-item">
@@ -69,11 +69,11 @@ const Services = () => {
               <div className="p-sec2-icon p-sec2-icon-3">
                 <img src={tools} alt="projector icon" />
               </div>
-              <p className="p-sec2-ttl">Maintenance</p>
+              <p className="p-sec2-ttl">Repairs</p>
               <p className="p-sec2-txt">
-                We have a culture based on preventive maintenance. We ensure
-                that clients gadgets don't break down, hence, we embark on
-                regular systems servicing to ensure smooth operation.
+                We have a well-equipped workshop and competent engineers
+                experienced in systems troubleshooting and repairs. We diagnose
+                the system to discover the damaged parts and replace them.
               </p>
             </div>
           </div>
