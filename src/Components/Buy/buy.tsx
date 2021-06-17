@@ -19,6 +19,7 @@ import prod15 from "../../assets/prod15.jpg";
 import prod16 from "../../assets/prod16.jpg";
 import prod17 from "../../assets/prod17.jpg";
 import prod18 from "../../assets/prod18.png";
+import { Modal } from "react-bootstrap";
 
 
 //Smart Screens
@@ -584,6 +585,29 @@ const Buy = () => {
       nosearch: false,
     });
   };
+  const [modState, setModState] = React.useState({
+    buy: false,
+  });
+  const { buy } = modState;
+  const closeModal = () => {
+    setModState({
+      ...modState,
+      buy: false,
+    })
+  }
+  const goToTectDirect = () => {
+    setModState({
+      ...modState,
+      buy: true,
+    });
+    setTimeout(() => {
+      window.location.href = "http://techdirect.ng/";
+      setModState({
+        ...modState,
+        buy: false,
+      });
+    }, 2500);
+  }
   return (
     <>
       <NavBar buy={true} />
@@ -633,7 +657,7 @@ const Buy = () => {
                   <a className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
                 </a>
-                <a className="p-buy-product" href="http://techdirect.ng/" target="blank">Buy</a>
+                <button className="p-buy-product" onClick={goToTectDirect}>Buy</button>
                 </div>
               </div>
             ))}
@@ -655,7 +679,7 @@ const Buy = () => {
                   <a className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
                 </a>
-                <a className="p-buy-product" href="http://techdirect.ng/" target="blank">Buy</a>
+                <button className="p-buy-product" onClick={goToTectDirect}>Buy</button>
                 </div>
               </div>
             ))}
@@ -677,7 +701,7 @@ const Buy = () => {
                   <a className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
                 </a>
-                <a className="p-buy-product" href="http://techdirect.ng/" target="blank">Buy</a>
+                <button className="p-buy-product" onClick={goToTectDirect}>Buy</button>
                 </div>
               </div>
             ))}
@@ -689,6 +713,12 @@ const Buy = () => {
         )}
       </main>
       <Footer />
+      <Modal className="redirectModal" show={buy} onHide={closeModal} centered>
+        <Modal.Body>
+            <div className="buy-spinner"></div>
+            <h3 className="redirect">Rerouting you to our E-commerce platform...</h3>
+        </Modal.Body>
+        </Modal>
     </>
   );
 };

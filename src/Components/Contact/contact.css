@@ -82,6 +82,7 @@
     padding-left: 1rem;
     padding-top: 1rem;
     font-family: 'Circular Std';
+    outline: none !important;
 }
 .p-ct-form input {
     height: 40px;
@@ -227,4 +228,38 @@
 
 .noInput {
     border: 1px solid red !important;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #f7f7f780;
+    z-index: 10;
+    text-align: center;
+}
+
+.spinner {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #99cc33;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    margin: auto;
+    z-index: 4;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }

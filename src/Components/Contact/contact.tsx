@@ -13,8 +13,9 @@ const Contact = () => {
     noName: false,
     noMail: false,
     noMessage: false,
+    loading: false,
   })
-  const { name, mail, message, noName, noMail, noMessage } = state;
+  const { name, mail, message, noName, noMail, noMessage, loading } = state;
   const handleChange = (e: any) => {
     setState({
       ...state,
@@ -34,23 +35,26 @@ const Contact = () => {
     else return sendDetails();
   }
   const sendDetails = () => {
-    const data = {
-      name: name,
-      mail: mail,
-      message: message,
-    }
+    setState({
+      ...state,
+      loading: true,
+    })
+    setTimeout(() => {
+      window.location.href = `mailto: info@primedisplay.ng? subject=Prime Display Contact&body=Good day, I am ${name}. ${message}`
     setState({
       ...state,
       name: "",
       mail: "",
       message: "",
+      loading: false,
     })
-    // console.log("send message", data);
+    }, 2500);
   }
   return (
     <>
       <NavBar contact={true} />
       <main>
+          {loading && (<div className="spinner"></div>)}
         <div className="p-padd p-contactus">
           <div>
             <h1 className="p-contactus-ttl">Contact Us</h1>

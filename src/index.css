@@ -99,3 +99,7 @@ html{
 ::-webkit-scrollbar-thumb:hover {
   background: #99CC33; 
 }
+
+button {
+  outline: none !important;
+}

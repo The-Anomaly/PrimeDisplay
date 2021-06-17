@@ -364,3 +364,21 @@
         justify-content: center;
     }
 }
+.buy-spinner {
+    border: 12px solid #f3f3f3;
+    border-top: 12px solid #99cc33;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    margin: 4rem auto 3rem;
+}
+.redirect {
+    text-align: center;
+    font-size: 18px;
+    padding: 1rem 1.5rem 4rem;
+    color: #333;
+}
+.redirectModal .modal-content {
+    background: #eaf1dc;
+}

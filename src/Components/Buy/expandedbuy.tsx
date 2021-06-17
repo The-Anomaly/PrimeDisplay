@@ -4,6 +4,8 @@ import NavBar from "../General/navbar";
 import Footer from "../General/footer";
 import "../Landing/landing.css";
 import { Link } from "react-router-dom";
+import { Modal } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const ExpandedBuy = (props: any) => {
   const [state, setState] = React.useState<any>({
@@ -13,6 +15,16 @@ const ExpandedBuy = (props: any) => {
     product_name: "",
   });
   const { number, img, description, product_name } = state;
+  const [modState, setModState] = React.useState({
+    buy: false,
+  });
+  const { buy } = modState;
+  const closeModal = () => {
+    setModState({
+      ...modState,
+      buy: false,
+    })
+  }
   React.useEffect(() => {
     window.scrollTo(-0, -0);
     setState({
@@ -32,6 +44,19 @@ const ExpandedBuy = (props: any) => {
   const goBack = () => {
     return props.history.push("/buy");
   };
+  const goToTectDirect = () => {
+    setModState({
+      ...modState,
+      buy: true,
+    });
+    setTimeout(() => {
+      window.location.href = "http://techdirect.ng/";
+      setModState({
+        ...modState,
+        buy: false,
+      });
+    }, 2500);
+  }
   return (
     <>
       <NavBar buy={true} />
@@ -55,7 +80,7 @@ const ExpandedBuy = (props: any) => {
               value={number}
               type="number"
             /> */}
-            <a href="http://techdirect.ng/" target="blank" className="p-buy-btn">Buy</a>
+            <button onClick={goToTectDirect} className="p-buy-btn">Buy</button>
           </div>
         </div>
         <div className="p-viewmore">
@@ -93,6 +118,12 @@ const ExpandedBuy = (props: any) => {
         </div>
       </main>
       <Footer />
+      <Modal className="redirectModal" show={buy} onHide={closeModal} centered>
+        <Modal.Body>
+            <div className="buy-spinner"></div>
+            <h3 className="redirect">Rerouting you to our E-commerce platform...</h3>
+        </Modal.Body>
+        </Modal>
     </>
   );
 };
