@@ -291,7 +291,7 @@ const Buy = () => {
     });
   }, []);
   const handleChange = (e: any) => {
-    setState({
+    return setState({
       ...state,
       [e.target.name]: e.target.value,
     });
@@ -321,6 +321,7 @@ const Buy = () => {
           newscreen.push(item);
           return;
         }
+        return;
       });
       projectors.map((item: any) => {
         if (item.keywords.includes(search.toLowerCase())) {
@@ -328,6 +329,7 @@ const Buy = () => {
           newprojectors.push(item);
           return;
         }
+        return;
       });
       boards.map((item: any) => {
         if (item.keywords.includes(search.toLowerCase())) {
@@ -335,8 +337,9 @@ const Buy = () => {
           newboards.push(item);
           return;
         }
+        return;
       });
-      setState({
+      return setState({
         ...state,
         screens: newscreen.length === 0 && newprojectors.length === 0 && newboards.length === 0  ? screens : newscreen,
         projectors: newscreen.length === 0 && newprojectors.length === 0 && newboards.length === 0  ? projectors : newprojectors,
@@ -345,8 +348,8 @@ const Buy = () => {
         nosearch:
           newscreen.length === 0 && newprojectors.length === 0 && newboards.length === 0 ? true : false,
       });
-      return;
     }
+    return;
   };
   // console.log(nosearch);
   const displayAll = () => {
@@ -590,7 +593,7 @@ const Buy = () => {
   });
   const { buy } = modState;
   const closeModal = () => {
-    setModState({
+    return setModState({
       ...modState,
       buy: false,
     })
@@ -600,7 +603,7 @@ const Buy = () => {
       ...modState,
       buy: true,
     });
-    setTimeout(() => {
+    return setTimeout(() => {
       window.location.href = "http://techdirect.ng/";
       setModState({
         ...modState,
@@ -650,13 +653,13 @@ const Buy = () => {
           <div className="p-buy-itemsec p-buy-2itemsonly">
             {boards.map((x: any, i: any) => (
               <div className="p-buy-items" key={i}>
-                <img className="p-buy-products-img" src={x.image} alt="product image" />
+                <img className="p-buy-products-img" src={x.image} alt="product" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
                 <div className="p-buy-links">
-                  <a className="p-buy-products-link" onClick={() => viewMore(x)}>
+                  <div className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
-                </a>
+                </div>
                 <button className="p-buy-product" onClick={goToTectDirect}>Buy</button>
                 </div>
               </div>
@@ -672,13 +675,13 @@ const Buy = () => {
           <div className="p-buy-itemsec">
             {screens.map((x: any, i: any) => (
               <div className="p-buy-items" key={i}>
-                <img className="p-buy-products-img" src={x.image} alt="product image" />
+                <img className="p-buy-products-img" src={x.image} alt="product" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
                 <div className="p-buy-links">
-                  <a className="p-buy-products-link" onClick={() => viewMore(x)}>
+                  <div className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
-                </a>
+                </div>
                 <button className="p-buy-product" onClick={goToTectDirect}>Buy</button>
                 </div>
               </div>
@@ -694,13 +697,13 @@ const Buy = () => {
           <div className="p-buy-itemsec">
             {projectors.map((x: any, i: any) => (
               <div className="p-buy-items" key={i}>
-                <img className="p-buy-products-img" src={x.image} alt="product image" />
+                <img className="p-buy-products-img" src={x.image} alt="product" />
                 <h6 className="p-buy-products-hd">{x.name}</h6>
                 <p className="p-buy-products-descrip">{x.short_descrip}</p>
                 <div className="p-buy-links">
-                  <a className="p-buy-products-link" onClick={() => viewMore(x)}>
+                  <div className="p-buy-products-link" onClick={() => viewMore(x)}>
                   View More
-                </a>
+                </div>
                 <button className="p-buy-product" onClick={goToTectDirect}>Buy</button>
                 </div>
               </div>
